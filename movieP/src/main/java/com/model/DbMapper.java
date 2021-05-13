@@ -8,4 +8,9 @@ import org.apache.ibatis.annotations.Mapper;
 public interface DbMapper {
 
 	List<MovieTimeDTO> movieTime();
+	List<MovieInfoDTO> movieInfo();
+	
+	void insertMovieTime(MovieTimeDTO dto);
+	
+	MovieInfoDTO findMovie(String movietitle);
 }
