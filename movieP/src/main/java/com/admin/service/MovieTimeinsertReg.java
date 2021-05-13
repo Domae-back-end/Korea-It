@@ -34,7 +34,6 @@ public class MovieTimeinsertReg implements MovieTimeService {
 		} else {
 			Calendar now = Calendar.getInstance();
 			Date date = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			MovieInfoDTO mdto = db.findMovie(dto.getMovietitle());
 			now.set(Calendar.MONTH, (Integer.parseInt(dal))-1);
 			now.set(Calendar.DATE, Integer.parseInt(el));
