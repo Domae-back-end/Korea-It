@@ -12,6 +12,7 @@ import com.admin.service.Provider;
 
 @Controller
 @RequestMapping("admin/movietime/{cate}")
+
 public class MovieTimeController {
 	
 	@Resource
