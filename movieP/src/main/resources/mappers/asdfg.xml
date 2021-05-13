@@ -8,4 +8,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			select * from movietime 
 			order by m_index desc 
 	</select>
+	
+	<select id="movieInfo" resultType="MovieInfoDTO">
+			select * from movieinfo
+			order by m_index desc 
+	</select>
+	
+	<select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">
+			select * from movieinfo where movietitle = #{movietitle}
+	</select>
+	<insert id="insertMovieTime" parameterType="MovieTimeDTO" >
+		insert into movietime (movietitle,sectorno,starttime,endtime,reg_date) 
+		values 
+		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
+	</insert>
 </mapper>

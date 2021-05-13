@@ -133,7 +133,7 @@ if (request.getParameter("dal") != null && request.getParameter("el") != null) {
 <c:choose>
 	<c:when test="<%=check%>">
 		<div class="menu1">
-			<a href="">등록하기</a>
+			<a href="/admin/movietime/insert?dal=<%=request.getParameter("dal")%>&el=<%=request.getParameter("el")%>">등록하기</a>
 		</div>
 		<div class="menu1">
 			<a href="">검색</a>

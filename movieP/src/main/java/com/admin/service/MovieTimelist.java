@@ -20,10 +20,10 @@ public class MovieTimelist implements MovieTimeService {
 	DbMapper db;
 	
 	@Override
-	public Object execute(String dal, String el) {
-		List<MovieTimeDTO> dto = db.movieTime();
+	public Object execute(String dal, String el, MovieTimeDTO dto) {
+		List<MovieTimeDTO> dto1 = db.movieTime();
 		List<MovieTimeDTO> res = new ArrayList<MovieTimeDTO>();
-		for (MovieTimeDTO a : dto) {
+		for (MovieTimeDTO a : dto1) {
 			if(((a.getReg_date().getMonth()+1)+"").equals(dal) &&
 					(a.getReg_date().getDate()+"").equals(el)) {
 				res.add(a); 
