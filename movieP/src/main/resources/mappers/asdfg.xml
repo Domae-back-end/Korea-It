@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			order by m_index desc 
 	</select>
 	
+	
 	<select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">
 			select * from movieinfo where movietitle = #{movietitle}
 	</select>
