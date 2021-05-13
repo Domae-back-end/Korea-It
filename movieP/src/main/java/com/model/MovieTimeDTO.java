@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class MovieTimeDTO {
 
-	Integer m_index,sectorno;
-	String movietitle;
+	Integer m_index;
+	String movietitle,sectorno;
 	Date starttime,endtime,reg_date;
 }
