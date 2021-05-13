@@ -12,7 +12,7 @@ public class AdminController {
 	
 	@ModelAttribute("bodyurl")
 	String bodypageUrl() {
-		return "movietime/main";
+		return "movietime/movielist";
 	}
 	
 	@RequestMapping

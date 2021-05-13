@@ -9,8 +9,8 @@
 		
 		$(".btn").click(function() {
 			const togo = $(this).val()
-			alert("/admin/" + togo + "/main기능 메인으로 이동.")
-			location.replace("/admin/" + togo + "/main");
+			alert("/admin/" + togo + "기능으로 이동.")
+			location.replace("/admin/" + togo );
 
 		})
 
@@ -28,7 +28,7 @@
 		class="btn btn-success">홈페이지설정</button>
 
 
-	<button  id="movietime" value="movietime" type="button"
+	<button  id="movietime" value="movietime/list" type="button"
 		class="btn btn-success">상영시간표관리</button>
 
 
@@ -36,7 +36,7 @@
 		class="btn btn-success">고객문의처리</button>
 
 
-	<button  id="sales" value="sales" type="button"
+	<button  id="sales" value="sales/main" type="button"
 		class="btn btn-success">매출/정산</button>
 
 	<button  id="userinfo" value="userinfo" type="button"
