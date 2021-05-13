@@ -148,7 +148,7 @@ if (request.getParameter("dal") != null && request.getParameter("el") != null) {
 			<div class="both"></div>
 			<c:forEach var="a" items="${data }" varStatus="i">
 				<div class="timebox1">${i.index }</div>
-				<div class="timebox2"><a href="/admin/movietime/detail?id=${m_index }">${a.movietitle }</a></div>
+				<div class="timebox2"><a href="/admin/movietime/detail?id=${a.m_index }">${a.movietitle }</a></div>
 				<div class="timebox2">
 					<fmt:formatDate value="${a.starttime }" type="both"
 						pattern="hh:mm:ss" />
