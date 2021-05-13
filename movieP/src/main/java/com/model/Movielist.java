@@ -18,7 +18,7 @@ public class Movielist implements MovieAction{
 	@Override
 	public Object execute() {
 		System.out.println("Movielist execute()");
-		List<MovieDTO> list = mm.movielist();
+		List<MovieInfoDTO> list = mm.movielist();
 //		Iterator it = list.iterator();
 //		while(it.hasNext()) {
 //			MovieDTO dd = (MovieDTO)it.next();

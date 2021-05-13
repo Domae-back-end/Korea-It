@@ -13,4 +13,5 @@ public interface DbMapper {
 	void insertMovieTime(MovieTimeDTO dto);
 	
 	MovieInfoDTO findMovie(String movietitle);
+	
 }

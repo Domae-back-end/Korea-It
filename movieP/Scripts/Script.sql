@@ -10,3 +10,12 @@ create table movieinfo(
 	movieimg	varchar(100),
 	star	int
 );
+
+create table movietime (
+	m_index int auto_increment primary key,
+	movietitle varchar(100),
+	sectorNo varchar(100),
+	starttime time,
+	endttime time,
+	reg_date date
+);
