@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.admin.service.MovieTimeService;
 import com.admin.service.Provider;
+import com.admin.service.SalesService;
 
 @Controller
 @RequestMapping("admin/sales/{service}")
@@ -20,8 +21,10 @@ public class SalesController {
 	
 	@ModelAttribute("data")
 	Object data(@PathVariable String service) {
-		MovieTimeService sr = pr.getContext().getBean("MovieTime"+service,MovieTimeService.class);
-		return sr.execute();
+		System.out.println("실행합니다:"+service);
+		SalesService sr = pr.getContext().getBean("sales"+service,SalesService.class);
+		Object obj= new Object();
+		return sr.execute(obj);
 	}
 	
 	@ModelAttribute("bodyurl")
