@@ -11,7 +11,7 @@ import com.admin.service.MovieTimeService;
 import com.admin.service.Provider;
 
 @Controller
-@RequestMapping("admin/movietime/{cate}")
+@RequestMapping("movie/movieinfo/{service}")
 
 public class MovieTimeController {
 	

@@ -1,0 +1,29 @@
+
+server  :
+  port  : 8080
+ 
+
+    
+spring  :
+  #### DB
+  datasource  :
+    driver-class-name : org.mariadb.jdbc.Driver
+    url : jdbc:mariadb://localhost:3306/movie
+    username :  root
+    password :  
+    
+  ### 내용 갱신시 서버 reloading
+  devtools :
+    livereload :
+      enabled : true
+      
+      
+  ### view page setting
+  mvc :
+    view  :
+      prefix  : /views/
+      suffix  : .jsp
+  ### mybatis 설정
+mybatis:
+  mapper-locations: mappers/**/*.xml
+  type-aliases-package: com.model
