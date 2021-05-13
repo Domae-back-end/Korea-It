@@ -19,15 +19,15 @@ public class SalesController {
 	Provider pr;
 	
 	@ModelAttribute("data")
-	Object data(@PathVariable String cate) {
-		MovieTimeService sr = pr.getContext().getBean("MovieTime"+cate,MovieTimeService.class);
+	Object data(@PathVariable String service) {
+		MovieTimeService sr = pr.getContext().getBean("MovieTime"+service,MovieTimeService.class);
 		return sr.execute();
 	}
 	
 	@ModelAttribute("bodyurl")
-	String bodypageUrl(@PathVariable String service,  NoticeDTO dto) {
+	String bodypageUrl(@PathVariable String service) {
 		
-		return "movietime/"+cate;
+		return "sales/"+service;
 	}
 	
 	@RequestMapping

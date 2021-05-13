@@ -17,7 +17,7 @@ public class MovieController {
 	
 	@RequestMapping
 	String mainpage() {
-		return "admin/index";
+		return "movie/index";
 	}
 	
 }
