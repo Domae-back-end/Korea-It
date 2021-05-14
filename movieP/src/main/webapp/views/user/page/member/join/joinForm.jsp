@@ -206,7 +206,7 @@ p{
 							<option value="gmail.com">지메일</option>
 				</select>
 				<small>
-						<p>이메일 주소 입력 시 사용 가능 특수 문자 : - . _</p>
+					<p>이메일 주소 입력 시 사용 가능 특수 문자 : - . _</p>
 				</small>
 			</div>
 		</div>

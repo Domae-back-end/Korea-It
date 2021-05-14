@@ -22,5 +22,4 @@ public class MemberController {
 		return "user/page/member/"+cate+"/"+service;
 	}
 
-	
 }
