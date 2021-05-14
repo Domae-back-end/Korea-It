@@ -2,7 +2,6 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.model.DbMapper">
 
 
@@ -31,6 +30,60 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
 	</insert>
 	
+	
+	<select id="findactor" resultType="ActorDTO" parameterType="java.lang.String">
+		select * from actor where actorname = #{actorname}
+	</select>
+	<!-- 이름이 같으면서 ,생일 다른 동명이인 가져오게 한다.   -->
+	
+	<!-- 영화정보 등록 시1 ... 영화기본정보 -->
+	<insert id="movieinfoinsert"  parameterType="MovieInfoDTO">
+		insert into movieinfo (movietitle, mdir, mdate, mplaytime, mplot)
+		values
+		(#{movietitle}, #{mdir}, #{mdate}, #{mplaytime}, #{mplot} )
+		
+	</insert>
+	<!-- 영화정보 등록 시2 ... 배우들 -->
+	<insert id="actormovieinsert" parameterType="ActorDTO">
+		insert into actor (actorid, movietitle )
+		values
+		(#{actorid}, #{movietitle}    )
+	</insert>
+	<!-- 영화정보 등록 시3 ... 카테고리 -->
+	<insert id="catemovieinsert" parameterType="CateDTO">
+		insert into cate (movietitle, cate) 
+		values
+		( #{movietitle}  ,#{cate})
+		
+	</insert>
+	
+	<!--==========영화정보 불러올 때1  from  movieinfo ====================-->
+	 <select id="pullmovieinfo">
+	  select * from movieinfo where movietitle =#{movietitle}
+	 </select>
+	
+	<!--영화정보 불러올 때2  배우들-->
+	
+	 <select id="pullactor">
+	 	 select * from actor where movietitle =#{movietitle}
+	 </select>	
+	
+	<!--영화정보 불러올 때3  -->
+	
+	 <select id="pullcate">
+	  select * from cate where movietitle =#{movietitle}
+	 </select>			
+			
+	<!--영화정보 불러올 때4 > 영화 이미지   -->
+	
+	 <select id="pullimg">
+	  select * from movieimg where movietitle =#{movietitle}
+	 </select>	
+	
+	
+	
+	
+	<insert id="cateinsert"></insert>
 	
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
 import com.model.MovieTimeDTO;
+import com.model.MovieInfoDTO;
 
 //Service단
 @Service
@@ -31,5 +32,6 @@ public class Pageeditbanner implements PageeditService {
 //		}
 		return "배너";
 	}
+
 	
 }

@@ -19,3 +19,30 @@ create table movietime (
 	endttime time,
 	reg_date date
 );
+
+
+create table actor(
+	actorid varchar(100) ,
+	actorname varchar(100) ,
+	movietitle varchar(100) not null,
+	birthdata date
+);
+
+
+create table cate(
+	movietitle varchar(100) not null,
+	cate varchar(100) not null
+);
+
+create table memberinfo(
+   userid varchar(100) primary key,
+   userpw varchar(100),
+   username varchar(20),
+   userbirth date,
+   userpnum varchar(20), 
+   useremail varchar(100),
+   userpoint int,
+   joinday date
+);
+
+

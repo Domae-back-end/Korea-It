@@ -77,6 +77,8 @@
 			<div class="aside"><jsp:include page="inc/submenu.jsp" /></div>
 
 			<div class="body"><jsp:include page="page/${bodyurl }.jsp" /></div>
+			
+			<!--  page/   pageedit/banner .jsp 를 열어줘.  -->
 
 
 		</div>

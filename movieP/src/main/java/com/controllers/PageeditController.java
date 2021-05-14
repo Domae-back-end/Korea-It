@@ -2,8 +2,10 @@ package com.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,11 +28,25 @@ public class PageeditController {
 	Provider pr;
 	
 	@ModelAttribute("data")
-	Object data(@PathVariable String service, MovieInfoDTO dto) {
+	Object data(@PathVariable String service, MovieInfoDTO mdto,HttpServletRequest request) {
+		
+		
 		System.out.println("pageedit-"+service+"실행");
+		System.out.println(mdto);
 		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);
-		Object obj= new Object();
+		
+		
+		Map<String, Object> obj= new HashMap<String, Object>();
+		obj.put("service", service);
+		obj.put("mdto", mdto);
+		obj.put("request", request);
+		
+		
 		return sr.execute(obj);
+		
+		
+		
+		
 	}
 	
 	@ModelAttribute("bodyurl")
@@ -55,7 +71,13 @@ public class PageeditController {
 	
 	
 	@RequestMapping
-	String mainpage() {
+	String mainpage(@PathVariable String service) {
+		
+		if(service.endsWith("Reg")) {
+			return "admin/page/alter";
+		}
+		
+		
 		return "admin/index";
 	}
 	
