@@ -11,10 +11,12 @@ public interface DbMapper {
 	List<MovieInfoDTO> movieInfo();
 	
 	void insertMovieTime(MovieTimeDTO dto);
-	
+
 	MovieInfoDTO findMovie(String movietitle);
+	List<MovieTimeDTO> findMovieTime(String movietitle);
 	List<MovieInfoDTO> movielist();
 	
+<<<<<<< HEAD
 	
 	List<ActorDTO> findactor(String actorname);
 	
@@ -29,6 +31,10 @@ public interface DbMapper {
 	
 	
 	
+=======
+	List<MemberDTO> meminsert();
+	MemberDTO memdetail();
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 	
 	
 	
