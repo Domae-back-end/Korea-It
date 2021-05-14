@@ -124,7 +124,7 @@ p{
 </style>
 </head>
 <body>
-<form action ="joinReg.jsp">
+<form action ="joinReg" method="post" enctype="multipart/form-data" >
 <h1>기본정보</h1>
 	<div>
 		<div>

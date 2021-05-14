@@ -16,9 +16,8 @@ public interface DbMapper {
 	List<MovieTimeDTO> findMovieTime(String movietitle);
 	List<MovieInfoDTO> movielist();
 	
-	
-	
-	
+	List<MemberDTO> meminsert();
+	MemberDTO memdetail();
 	
 	
 	
