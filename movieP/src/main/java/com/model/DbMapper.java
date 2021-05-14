@@ -16,7 +16,6 @@ public interface DbMapper {
 	List<MovieTimeDTO> findMovieTime(String movietitle);
 	List<MovieInfoDTO> movielist();
 	
-<<<<<<< HEAD
 	
 	List<ActorDTO> findactor(String actorname);
 	
@@ -30,12 +29,8 @@ public interface DbMapper {
 	List<CateDTO> pullcate(String movietitle);
 	
 	
-	
-=======
 	List<MemberDTO> meminsert();
 	MemberDTO memdetail();
->>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
-	
 	
 	
 }
