@@ -13,7 +13,7 @@
 
 
 <c:forEach var="i"   items="${submenu }">
-     <a href="">${i.title }</a><br>
+     <a href="${i.url}">${i.title }</a><br>
    
 </c:forEach>
 
