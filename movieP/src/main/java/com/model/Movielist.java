@@ -18,7 +18,16 @@ public class Movielist implements MovieAction{
 	@Override
 	public Object execute() {
 		System.out.println("Movielist execute()");
-		List<MovieInfoDTO> list = mm.movieInfo();
+//<<<<<<< HEAD
+		List<MovieInfoDTO> list = mm.movielist();
+//		Iterator it = list.iterator();
+//		while(it.hasNext()) {
+//			MovieDTO dd = (MovieDTO)it.next();
+//			System.out.println(dd.getMovietitle());
+//		}
+//=======
+//		List<MovieInfoDTO> list = mm.movieInfo();
+//>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 		return list;
 	}
 	

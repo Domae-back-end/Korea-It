@@ -22,10 +22,10 @@ public class MovieTimeController {
 
 	@Resource
 	Provider pr;
-
 	
 	@ModelAttribute("data")
 	Object data(@PathVariable String cate, String dal, String el, MovieTimeDTO dto) {
+		System.out.println();
 		MovieTimeService sr = pr.getContext().getBean("MovieTime" + cate, MovieTimeService.class);
 		return sr.execute(dal, el, dto);
 	}

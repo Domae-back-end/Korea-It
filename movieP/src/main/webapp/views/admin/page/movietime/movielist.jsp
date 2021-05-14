@@ -107,16 +107,25 @@ if (request.getParameter("dal") != null && request.getParameter("el") != null) {
 <br>
 <div class="dallay">
 	<c:forEach var="a" begin="1" end="12">
+	<c:choose>
+		<c:when test="${a == now.date }">
+		<div class="dal">
+			<a href="?dal=${a }">[ ${a } 월 ]</a>
+		</div>
+		</c:when>
+		<c:otherwise>	
 		<div class="dal">
 			<a href="?dal=${a }">${a } 월</a>
 		</div>
+		</c:otherwise>
+	</c:choose>
 	</c:forEach>
 	<div class="both"></div>
 </div>
 <div class="ellay">
 
 	<c:forEach var="a" begin="1"
-		end="<%=today.get(Calendar.DAY_OF_WEEK)%>">
+		end="<%=today.get(Calendar.DAY_OF_WEEK)-1%>">
 		<div class="el"></div>
 	</c:forEach>
 	<c:forEach var="a" begin="1"
@@ -148,7 +157,7 @@ if (request.getParameter("dal") != null && request.getParameter("el") != null) {
 			<div class="both"></div>
 			<c:forEach var="a" items="${data }" varStatus="i">
 				<div class="timebox1">${i.index }</div>
-				<div class="timebox2"><a href="/admin/movietime/detail?id=${a.m_index }">${a.movietitle }</a></div>
+				<div class="timebox2"><a href="/admin/movietime/detail?movietitle=${a.movietitle }">${a.movietitle }</a></div>
 				<div class="timebox2">
 					<fmt:formatDate value="${a.starttime }" type="both"
 						pattern="hh:mm:ss" />
@@ -159,7 +168,7 @@ if (request.getParameter("dal") != null && request.getParameter("el") != null) {
 				</div>
 				<div class="timebox2">
 					<fmt:formatDate value="${a.reg_date }" type="both"
-						pattern="yyyy:MM:dd" />
+						pattern="yyyy-MM-dd" />
 				</div>
 				<div class="both"></div>
 			</c:forEach>

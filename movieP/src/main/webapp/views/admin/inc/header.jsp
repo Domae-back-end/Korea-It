@@ -6,7 +6,13 @@
 	
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+
+		$(".btn1").click(function() {
+			const togo = $(this).val()
+			alert("/admin/" + togo + "/main기능 메인으로 이동.")
+			location.replace("/admin/" + togo + "/list");
+
+		})
 		$(".btn").click(function() {
 			const togo = $(this).val()
 			alert("/admin/" + togo + "기능으로 이동.")
@@ -24,13 +30,12 @@
 <body>
 
 
-	<button  id="pagecontrol" value="pagecontrol" type="button"
+	<button  id="pageedit" value="pageedit/banner" type="button"
 		class="btn btn-success">홈페이지설정</button>
 
 
 	<button  id="movietime" value="movietime/list" type="button"
 		class="btn btn-success">상영시간표관리</button>
-
 
 	<button  id="qna" value="qna" type="button"
 		class="btn btn-success">고객문의처리</button>
