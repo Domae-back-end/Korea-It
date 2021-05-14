@@ -11,6 +11,10 @@
 		color: white;
 		width: 200px;
 		
+	}
+	
+	.pp>div{
+		display: inline-block;
 	}	
 </style>
 </head>
