@@ -23,6 +23,7 @@ public interface DbMapper {
 	void actormovieinsert(ActorDTO dto);
 	void catemovieinsert(CateDTO dto);
 	
+	
 	MovieInfoDTO pullmovieinfo(String movietitle);
 	
 	List<ActorDTO> pullactor(String movietitle);

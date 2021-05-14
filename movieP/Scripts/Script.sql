@@ -22,10 +22,13 @@ create table movietime (
 
 
 create table actor(
-	actorid varchar(100) not null,
-	actorname varchar(100) not null,
-	movietitle varchar(100) not null
+	actorid varchar(100) ,
+	actorname varchar(100) ,
+	movietitle varchar(100) not null,
+	birthdata date
 );
+
+
 create table cate(
 	movietitle varchar(100) not null,
 	cate varchar(100) not null

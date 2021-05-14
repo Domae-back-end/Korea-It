@@ -48,26 +48,36 @@
 		enctype="multipart/form-data">
 		영화제목 <input type="text" name="movietitle" /><br> 감독 <input
 			type="text" name="mdir" /><br>
-
+<hr />
 		<div id="actor">
-			배우 <input type="text" name="mactrs" /><br>
 			<button type="button" id="addactor">배우추가</button>
+			배우 <input type="text" name="mactrs" />	<button type="button" id="actorsearch">배우찾기</button><br>
+			배우 <input type="text" name="mactrs" /><button type="button" id="actorsearch">배우찾기</button><br>	
+			
 
 		</div>
-
+<hr />
 		<div id="cate">
-			카테고리 <input type="text" name="mcate" /><br>
 			<button type="button" id="addcate">카테고리추가</button>
+			카테고리 <input type="text" name="mcate" /><br>
+			카테고리 <input type="text" name="mcate" /><br>
+			
 		</div>
-		개봉일 <input type="date" name="mdate" /><br> 상영시간 <input
-			type="text" name="mplaytime" /><br> 줄거리<br>
-		<textarea name="mplot" rows="5" cols="30"></textarea>
+		<hr />
+		개봉일 <input type="date" name="mdate" /><br> 
+		<hr />
+		상영시간(숫자!) <input	type="text" name="mplaytime" /><br>
+		<hr />
+		 줄거리<br><textarea name="mplot" rows="5" cols="30"></textarea>
 		<br>
-
+		<hr />
 		<div id="image">
-			영화이미지 <input type="file" name="file" /><br>
 			<button type="button" id="addimg">이미지추가</button>
+			영화이미지 <input type="file" name="file" /><br>
+			영화이미지 <input type="file" name="file" /><br>
+			
 		</div>
+		<hr />
 		<input type="submit" value="영화 등록하기" />
 	</form>
 

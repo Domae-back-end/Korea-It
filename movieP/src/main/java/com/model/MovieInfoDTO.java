@@ -19,10 +19,6 @@ public class MovieInfoDTO {
 	String movieimg;
 	String imgurl;
 	String mdate;//(mdate 2021-05-11 꼴로 날라옴.)
-	String[] mactrss;
-	String[] mcates;
-	
-	
 	
 	
 	MultipartFile file;
