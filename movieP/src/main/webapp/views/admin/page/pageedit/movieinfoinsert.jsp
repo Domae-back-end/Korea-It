@@ -17,7 +17,7 @@
 
 					var newinput = document.createElement("input");
 					newinput.setAttribute("type", "text");
-					newinput.setAttribute("name", "actor");
+					newinput.setAttribute("name", "mactrs");
 					document.getElementById("actor").appendChild(newinput)
 					alert("배우 추가합니다.");
 				}
@@ -33,8 +33,7 @@
 					var newinput = document.createElement("input");
 					newinput.setAttribute("type", "file");
 					newinput.setAttribute("name", "file");
-					document.getElementById("image").appendChild(newinput)					
-						document.getElementById("image").appendChild("<br>")
+					document.getElementById("image").appendChild(newinput)			
 					alert("이미지 추가");
 				}
 			}
@@ -51,7 +50,7 @@
 			type="text" name="mdir" /><br>
 
 		<div id="actor">
-			배우 <input type="text" name="actor" /><br>
+			배우 <input type="text" name="mactrs" /><br>
 			<button type="button" id="addactor">배우추가</button>
 
 		</div>
@@ -60,7 +59,7 @@
 			카테고리 <input type="text" name="mcate" /><br>
 			<button type="button" id="addcate">카테고리추가</button>
 		</div>
-		개봉일 <input type="text" name="mdate" /><br> 상영시간 <input
+		개봉일 <input type="date" name="mdate" /><br> 상영시간 <input
 			type="text" name="mplaytime" /><br> 줄거리<br>
 		<textarea name="mplot" rows="5" cols="30"></textarea>
 		<br>

@@ -9,12 +9,12 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
-import com.model.MovieTimeDTO;
 import com.model.MovieInfoDTO;
+import com.model.MovieTimeDTO;
 
 //Service단
 @Service
-public class Pageeditbanner implements PageeditService {
+public class PageeditmovieinfoinsertReg implements PageeditService {
 	
 
 	@Resource
@@ -30,8 +30,7 @@ public class Pageeditbanner implements PageeditService {
 //				res.add(a); 
 //			}
 //		}
-		return "배너";
+		return "이거실행.";
 	}
 
-	
 }

@@ -26,11 +26,26 @@ public class PageeditController {
 	Provider pr;
 	
 	@ModelAttribute("data")
-	Object data(@PathVariable String service, MovieInfoDTO dto) {
+	Object data(@PathVariable String service, MovieInfoDTO mdto) {
 		System.out.println("pageedit-"+service+"실행");
+		System.out.println(mdto);
 		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);
+		
+		
+		
+		
+		
+		
+		
 		Object obj= new Object();
+		
+		
+		
 		return sr.execute(obj);
+		
+		
+		
+		
 	}
 	
 	@ModelAttribute("bodyurl")

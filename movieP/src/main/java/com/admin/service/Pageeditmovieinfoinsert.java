@@ -21,14 +21,11 @@ public class Pageeditmovieinfoinsert implements PageeditService {
 	
 	@Override
 	public Object execute(Object obj) {
-//		List<MovieTimeDTO> dto1 = db.movieTime();
-//		List<MovieTimeDTO> res = new ArrayList<MovieTimeDTO>();
-//		for (MovieTimeDTO a : dto1) {
-//			if(((a.getReg_date().getMonth()+1)+"").equals(dal) &&
-//					(a.getReg_date().getDate()+"").equals(el)) {
-//				res.add(a); 
-//			}
-//		}
+		
+		
+		
+		
+		
 		return "글쓰기화면";
 	}
 	
