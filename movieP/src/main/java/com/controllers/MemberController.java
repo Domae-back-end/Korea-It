@@ -20,6 +20,10 @@ public class MemberController {
 	
 	@RequestMapping
 	public String view(@PathVariable String cate, @PathVariable String service) {
+		
+		if(service.endsWith("Reg"))
+			return "user/page/member/alert";
+		
 		return "user/page/member/"+cate+"/"+service;
 	}
 	

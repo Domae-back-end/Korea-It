@@ -133,92 +133,20 @@ function mainGo() {
 <h1>기본정보</h1>
 	<div>
 		<div>
-			<div><span>√</span>이름</div>
-			<div><input type="text" name="name" maxlength="10"/></div>
-		</div>
-		<div>
-			<div><span>√</span>아이디</div>
+			<div>아이디</div>
 			<div>
 				<input type="text" name="id" maxlength="8" placeholder="아이디를 입력해주세요"/>
-				<input type="button" value="중복확인"/>
-				<small><p>영문자, 숫자 조합하여 8~12자리</p></small>
 			</div>
 		</div>
 		<div>
-			<div><span>√</span>비밀번호</div>
+			<div>비밀번호</div>
 			<div>
 				<input type="password" name="pw" maxlength="16" placeholder="비밀번호를 입력해주세요"/>
-				<small>
-					<p>영문자, 숫자,특수문자 조합하여 8~12자리, 아이디와 4자리이상 동일,반복 문자숫자 불가<br/>
-							사용 가능 특수 문자 : !"#$%&'()*+,-./:;<=>?@[]^_'{|}~</p>
-				</small>
-			</div>
-		</div>
-		<div>
-			<div><span>√</span>비밀번호 확인</div>
-			<div><input type="password" name="pw" maxlength="16" placeholder="비밀번호를 재입력해주세요"/></div>
-		</div>
-		<div>
-			<div class = "firstT"><span>√</span>생년월일</div>
-			<div >
-				<select name="birth">
-					<c:forEach var="i" begin="1966" end="2020" step="1" >
-						<option value="${i }">${i }</option>
-					</c:forEach>	
-				</select>
-						<label>년</label>
-				<select name="birth">
-					<c:forEach var="i" begin="1" end="12" step="1" >
-						<option value="${i }">${i }</option>
-					</c:forEach>	
-				</select>
-						<label>월</label>
-				<select name="birth">
-					<c:forEach var="i" begin="1" end="31" step="1" >
-						<option value="${i }">${i }</option>
-					</c:forEach>		
-				</select>
-				<label>일</label>
-				<small>
-					<p>설정하신 생일을 기준으로 15일 전 생일쿠폰이 발행됩니다.</p>
-				</small>
-			</div>			
-		</div>
-		<div>
-			<div class = "firstT"><span>√</span>휴대전화</div>
-			<div>
-				<select name="tel">
-						<option value="010" selected>010</option>
-						<option value="011">011</option>
-						<option value="016">016</option>
-				</select> -
-				<input type="text" name="tel" maxlength="4"/> -
-				<input type="text" name="tel" maxlength="4"/>
-				<small>
-					<p>결제 쿠폰, 이벤트 정보 등을 제공 받으실 수 있습니다.</p>
-				</small>
-			</div>	
-		</div>
-		<div>
-			<div class = "firstT"><span>√</span>이메일</div>
-			<div>
-				<input type="text" name="tel" maxlength="16"/> @
-				<input type="text" name="tel" maxlength="16" placeholder= "naver.com"/>		
-				<select name="tel">
-							<option value="naver.com" selected>네이버</option>
-							<option value="hanmail.net">한메일</option>
-							<option value="nate.com">네이트</option>
-							<option value="gmail.com">지메일</option>
-				</select>
-				<small>
-					<p>이메일 주소 입력 시 사용 가능 특수 문자 : - . _</p>
-				</small>
 			</div>
 		</div>
 	</div>
 <div>
-	<input type="button" onclick="mainGo()" value="취소"/>
-	<input type="submit" value="등록"/>
+	<input type="submit" value="로그인"/>
 </div>
 </form>
 
