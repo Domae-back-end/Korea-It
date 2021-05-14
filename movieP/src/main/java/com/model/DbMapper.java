@@ -15,4 +15,10 @@ public interface DbMapper {
 	MovieInfoDTO findMovie(String movietitle);
 	List<MovieInfoDTO> movielist();
 	
+	
+	
+	
+	
+	
+	
 }

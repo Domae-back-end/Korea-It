@@ -4,6 +4,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.model.DbMapper">
+
+
+
 	<select id="movieTime" resultType="MovieTimeDTO">
 			select * from movietime 
 			order by m_index desc 
@@ -23,4 +26,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		values 
 		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
 	</insert>
+	
+	
+	
+	
+	
+	
+	
 </mapper>
