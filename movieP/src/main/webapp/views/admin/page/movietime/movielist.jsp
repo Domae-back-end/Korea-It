@@ -91,10 +91,8 @@
 Calendar today = Calendar.getInstance();
 boolean check = false;
 if (request.getParameter("dal") != null) {
-	today.set(Calendar.MONTH, Integer.parseInt(request.getParameter("dal")) + 1);
+	today.set(Calendar.MONTH, Integer.parseInt(request.getParameter("dal")));
 }
-int nowDate = today.get(Calendar.DATE);
-int nowMonth = today.get(Calendar.MONTH);
 today.set(Calendar.DATE, 1);
 if (request.getParameter("dal") != null && request.getParameter("el") != null) {
 	check = true;
@@ -107,33 +105,58 @@ if (request.getParameter("dal") != null && request.getParameter("el") != null) {
 <br>
 <div class="dallay">
 	<c:forEach var="a" begin="1" end="12">
-	<c:choose>
-		<c:when test="${a == now.date }">
-		<div class="dal">
-			<a href="?dal=${a }">[ ${a } 월 ]</a>
-		</div>
-		</c:when>
-		<c:otherwise>	
-		<div class="dal">
-			<a href="?dal=${a }">${a } 월</a>
-		</div>
-		</c:otherwise>
-	</c:choose>
+		<c:choose>
+			<c:when test="${now.month >= a }">
+				<div class="dal">
+					<a href="?dal=${a }">x ${a } 월</a>
+				</div>
+			</c:when>
+			<c:otherwise>			
+				<div class="dal">
+					<a href="?dal=${a }">${a } 월</a>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</c:forEach>
 	<div class="both"></div>
 </div>
 <div class="ellay">
-
 	<c:forEach var="a" begin="1"
 		end="<%=today.get(Calendar.DAY_OF_WEEK)-1%>">
 		<div class="el"></div>
 	</c:forEach>
 	<c:forEach var="a" begin="1"
 		end="<%=today.getActualMaximum(Calendar.DATE)%>">
-		<div class="el">
-			<a
-				href="?dal=<%=(Calendar.getInstance().get(Calendar.MONTH))+1 %>&el=${a}">${a }일</a>
-		</div>
+		<c:choose>
+			<c:when test="${param.dal == now.month+1 }">
+				<c:choose>
+					<c:when test="${a == now.date }">
+						<div class="el">
+							<a
+								href="?dal=<%=(Calendar.getInstance().get(Calendar.MONTH))+1 %>&el=${a}">[ ${a } ] 일</a>
+						</div>
+					</c:when>
+					<c:when test="${a <= now.date }">
+						<div class="el">
+							<a
+								href="?dal=<%=(Calendar.getInstance().get(Calendar.MONTH))+1 %>&el=${a}">x ${a } 일</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="el">
+							<a
+								href="?dal=<%=(Calendar.getInstance().get(Calendar.MONTH))+1 %>&el=${a}">${a }일</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</c:when>
+			<c:otherwise>
+						<div class="el">
+							<a
+								href="?dal=<%=(Calendar.getInstance().get(Calendar.MONTH))+1 %>&el=${a}">${a }일</a>
+						</div>
+			</c:otherwise>
+		</c:choose>
 	</c:forEach>
 </div>
 <div class="both"></div>
