@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.admin.service.FileupService;
 import com.admin.service.MovieTimeService;
 import com.admin.service.PageeditService;
 import com.admin.service.Provider;
@@ -25,8 +24,8 @@ import com.model.MovieInfoDTO;
 
 
 @Controller
-@RequestMapping("admin/pageedit/{service}")
-public class PageeditController {
+@RequestMapping("aaaa")
+public class UploadController {
 	
 	@Resource
 	Provider pr;
@@ -35,24 +34,27 @@ public class PageeditController {
 	Object data(@PathVariable String service, MovieInfoDTO mdto,HttpServletRequest request) {
 		//  문제.. multipart를 받을 수단이 없음.
 		//String uploadPath = mulrequest.getRealPath("/images/uploadFiles");
-		//System.out.println("uploadPath:"+uploadPath);		
+		//System.out.println("uploadPath:"+uploadPath);
+		System.out.println(" mdto에 mimg가 잘 들어왔다 .배열이!-----------------------------");
+		MultipartFile[] array = mdto.getMimg();
+		System.out.println("들어온 이미지갯수:"+array.length);
+		System.out.println(array[0].getSize());
+		System.out.println(array[0].getOriginalFilename());
+		System.out.println(array[0].getName());
+		System.out.println(array[0].getContentType());
 		System.out.println("-----------------------------");
+		
+		
 		System.out.println("pageedit-"+service+"실행");
 		System.out.println(mdto);
-		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
-		if(mdto.getMimg()!=null) {			
-				System.out.println("멀티파트파일있어요, 파일업 서비스 실행."+"번쨰");
-				FileupService fservice = (FileupService)pr.getContext().getBean("fileupService");
-				//용량이 초과할 경우 > 바로 alter 리턴.
-				fservice.fileup(mdto.getMimg(), request,mdto.getMovietitle());		
-		}
+		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);
 		
 		
 		Map<String, Object> obj= new HashMap<String, Object>();
 		obj.put("service", service);
 		obj.put("mdto", mdto);
 		obj.put("request", request);
-		//obj.put("mrequest", mrequest); //이렇게 다때려박아도 괜찮은건가.
+		//obj.put("mulrequest", mulrequest); //이렇게 다때려박아도 괜찮은건가.
 		
 		
 		return sr.execute(obj);		

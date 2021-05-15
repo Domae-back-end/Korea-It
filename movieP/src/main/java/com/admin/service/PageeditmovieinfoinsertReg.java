@@ -10,6 +10,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
+import org.springframework.web.multipart.support.DefaultMultipartHttpServletRequest;
 
 import com.model.ActorDTO;
 import com.model.AlterDTO;
@@ -27,13 +31,13 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 
 	@Override
 	public Object execute(Object obj) {// 여기에 movieinfodto
+		System.out.println("movieinfo insertReg 화면 진입");
 		AlterDTO al = new AlterDTO();
 		HashMap<String, Object> map = (HashMap) obj;
-
+		
 		MovieInfoDTO mdto = (MovieInfoDTO) map.get("mdto");
-		System.out.println("reg 화면 진입");
-		System.out.println(mdto);
-
+		MultipartHttpServletRequest mrequest= (MultipartHttpServletRequest)map.get("mrequest");
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		// 유효성은 자바스크립트에서 처리 .
 		// MovieInfoDTO(m_index=null, mplaytime=123, star=null,
 		// movietitle=아아, mdir=아아, mactrs=아아,바바, mcate=아아,바바, mplot=아아
@@ -76,9 +80,32 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		db.movieinfoinsert(mdto);
 		
 		System.out.println("영화정보 in");
-		// db.actormovieinsert(adto);
 
-		// db.catemovieinsert(cdto);
+		
+		
+		// 이미지 업로드.
+		MultipartFile[] array = mdto.getMimg();		
+		String path= request.getRealPath("moivedata");//movieP\src\main\webapp\moive			
+		System.out.println("들어온 이미지갯수:"+array.length);
+		System.out.println(array[0].getSize());
+		System.out.println(array[0].getOriginalFilename());
+		System.out.println(array[0].getName());
+		System.out.println(array[0].getContentType());
+		
+		for (MultipartFile multipartFile : array) {
+			
+			
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		al.setMsg("인서트 성공");
 		al.setUrl("/admin/pageedit/movieinfolist");

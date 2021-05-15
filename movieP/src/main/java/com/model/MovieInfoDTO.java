@@ -21,5 +21,6 @@ public class MovieInfoDTO {
 	String mdate;//(mdate 2021-05-11 꼴로 날라옴.)
 	
 	
-	MultipartFile file;
+//	MultipartFile file;
+	MultipartFile[] mimg;
 }

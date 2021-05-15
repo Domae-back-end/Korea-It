@@ -53,7 +53,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<insert id="catemovieinsert" parameterType="CateDTO">
 		insert into cate (movietitle, cate) 
 		values
-		( #{movietitle}  ,#{cate})
+		( #{movietitle}  ,#{cate})		
+	</insert>
+	
+	<insert id="movieimgin" parameterType="MimgDTO">
+	<!-- String 배열은 어렵.. -->
+		insert into movieimg (movietitle, imgname)
+		values
+		(#{movietitle}, #{imgname})
 		
 	</insert>
 	

@@ -1,3 +1,4 @@
+<!-- 영화 정보 관리 관련 테이블  -->
 create table movieinfo(
 	m_index int auto_increment primary key,
 	movietitle varchar(100),
@@ -9,15 +10,6 @@ create table movieinfo(
 	mplaytime	int,
 	movieimg	varchar(100),
 	star	int
-);
-
-create table movietime (
-	m_index int auto_increment primary key,
-	movietitle varchar(100),
-	sectorNo varchar(100),
-	starttime time,
-	endttime time,
-	reg_date date
 );
 
 
@@ -33,6 +25,30 @@ create table cate(
 	movietitle varchar(100) not null,
 	cate varchar(100) not null
 );
+
+create table movieimg(
+	movietitle varchar(100) not null,
+	imgname varchar(100)
+
+);
+
+
+
+
+<!-- 영화 예매기능 관련 테이블  -->
+
+create table movietime (
+	m_index int auto_increment primary key,
+	movietitle varchar(100),
+	sectorNo varchar(100),
+	starttime time,
+	endttime time,
+	reg_date date
+);
+
+
+
+
 
 create table memberinfo(
    userid varchar(100) primary key,

@@ -32,7 +32,7 @@
 				document.getElementById("addimg").onclick = function() {
 					var newinput = document.createElement("input");
 					newinput.setAttribute("type", "file");
-					newinput.setAttribute("name", "mimg");
+					newinput.setAttribute("name", "file");
 					document.getElementById("image").appendChild(newinput)			
 					alert("이미지 추가");
 				}
@@ -52,7 +52,6 @@
 		<div id="actor">
 			<button type="button" id="addactor">배우추가</button>
 			배우 <input type="text" name="mactrs" />	<button type="button" id="actorsearch">배우찾기</button><br>
-		<!--각 actorsearch 와  mactrs value를 엮어주는 방법..  -->
 			배우 <input type="text" name="mactrs" /><button type="button" id="actorsearch">배우찾기</button><br>	
 			
 
@@ -74,8 +73,8 @@
 		<hr />
 		<div id="image">
 			<button type="button" id="addimg">이미지추가</button>
-			영화이미지 <input type="file" name="mimg" /><br>
-			영화이미지 <input type="file" name="mimg" /><br>
+			영화이미지 <input type="file" name="file" /><br>
+			영화이미지 <input type="file" name="file" /><br>
 			
 		</div>
 		<hr />
