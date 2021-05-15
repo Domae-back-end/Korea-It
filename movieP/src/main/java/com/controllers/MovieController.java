@@ -31,7 +31,18 @@ public class MovieController {
 		MovieAction res = pr.getContext().getBean("movie"+cate, MovieAction.class);
 		return res.execute();
 	}
-
 	
+	@ModelAttribute("moviedatabefore")
+	Object mmBefore(@PathVariable String cate) {
+		
+		MovieAction res = pr.getContext().getBean("moviebefore", MovieAction.class);
+		return res.execute();
+	}
 	
+	@ModelAttribute("moviedataafter")
+	Object mmAfter(@PathVariable String cate) {
+		
+		MovieAction res = pr.getContext().getBean("movieafter", MovieAction.class);
+		return res.execute();
+	}
 }
