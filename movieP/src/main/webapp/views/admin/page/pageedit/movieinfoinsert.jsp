@@ -32,7 +32,7 @@
 				document.getElementById("addimg").onclick = function() {
 					var newinput = document.createElement("input");
 					newinput.setAttribute("type", "file");
-					newinput.setAttribute("name", "mimg");
+					newinput.setAttribute("name", "infoimg");
 					document.getElementById("image").appendChild(newinput)			
 					alert("이미지 추가");
 				}
@@ -74,8 +74,8 @@
 		<hr />
 		<div id="image">
 			<button type="button" id="addimg">이미지추가</button>
-			영화이미지 <input type="file" name="mimg" /><br>
-			영화이미지 <input type="file" name="mimg" /><br>
+			영화이미지 <input type="file" name="infoimg" /><br>
+			영화이미지 <input type="file" name="infoimg" /><br>
 			
 		</div>
 		<hr />

@@ -13,6 +13,7 @@ public class MovieInfoDTO {
 	Integer star;
 	String movietitle;
 	String  mdir;
+	String mimg;
 	String  mactrs;
 	String  mcate;
 	String  mplot;
@@ -22,6 +23,6 @@ public class MovieInfoDTO {
 	
 	int length;
 	
-//	MultipartFile file;
-	MultipartFile[] mimg;
+	MultipartFile file;
+	MultipartFile[] infoimg;
 }

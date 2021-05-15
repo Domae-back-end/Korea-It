@@ -36,7 +36,7 @@ public class UploadController {
 		//String uploadPath = mulrequest.getRealPath("/images/uploadFiles");
 		//System.out.println("uploadPath:"+uploadPath);
 		System.out.println(" mdto에 mimg가 잘 들어왔다 .배열이!-----------------------------");
-		MultipartFile[] array = mdto.getMimg();
+		MultipartFile[] array = mdto.getInfoimg();
 		System.out.println("들어온 이미지갯수:"+array.length);
 		System.out.println(array[0].getSize());
 		System.out.println(array[0].getOriginalFilename());

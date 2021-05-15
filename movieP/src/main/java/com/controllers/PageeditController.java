@@ -44,7 +44,7 @@ public class PageeditController {
 				System.out.println("멀티파트파일있어요, 파일업 서비스 실행."+"번쨰");
 				FileupService fservice = (FileupService)pr.getContext().getBean("fileupService");
 				//용량이 초과할 경우 > 바로 alter 리턴.
-				fservice.fileup(mdto.getMimg(), request,mdto.getMovietitle());		
+				fservice.fileup(mdto.getInfoimg(), request,mdto.getMovietitle());		
 		}
 		
 		

@@ -84,7 +84,7 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		
 		
 		// 이미지 업로드.
-		MultipartFile[] array = mdto.getMimg();		
+		MultipartFile[] array = mdto.getInfoimg();		
 		String path= request.getRealPath("moivedata");//movieP\src\main\webapp\moive			
 		System.out.println("들어온 이미지갯수:"+array.length);
 		System.out.println(array[0].getSize());
