@@ -20,6 +20,7 @@ public class MovieInfoDTO {
 	String imgurl;
 	String mdate;//(mdate 2021-05-11 꼴로 날라옴.)
 	
+	int length;
 	
 //	MultipartFile file;
 	MultipartFile[] mimg;

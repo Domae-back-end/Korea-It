@@ -1,5 +1,7 @@
 package com.controllers;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.admin.service.Provider;
 import com.model.MovieAction;
+import com.model.MovieInfoDTO;
 
 @Controller
 @RequestMapping("/user/movie/{cate}")
@@ -22,12 +25,13 @@ public class MovieController {
 		return "user/page/movie/"+cate;
 	}
 	
-//	@ModelAttribute("moviedata")
-//	Object mm(@PathVariable String service) {
-//		
-//		System.out.println(service);
-//		MovieAction res = pr.getContext().getBean("movie"+service, MovieAction.class);
-//		return res.execute();
-//	}
+	@ModelAttribute("moviedata")
+	Object mm(@PathVariable String cate) {
+		
+		MovieAction res = pr.getContext().getBean("movie"+cate, MovieAction.class);
+		return res.execute();
+	}
+
+	
 	
 }
