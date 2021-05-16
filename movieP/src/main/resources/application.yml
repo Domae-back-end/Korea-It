@@ -9,8 +9,8 @@ spring  :
   datasource  :
     driver-class-name : org.mariadb.jdbc.Driver
     url : jdbc:mariadb://localhost:3306/unoestellar
-    username :  unoestellar
-    password :  korea11@@  
+    username :  root
+    password :    
     
   ### 내용 갱신시 서버 reloading
   devtools :

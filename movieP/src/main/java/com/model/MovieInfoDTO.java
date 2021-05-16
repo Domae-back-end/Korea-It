@@ -18,7 +18,7 @@ public class MovieInfoDTO {
 	String  mplot;
 	String movieimg;
 	String imgurl;
-	String mdate;//(mdate 2021-05-11 꼴로 날라옴.)
+	Date mdate;//(mdate 2021-05-11 꼴로 날라옴.)
 	
 	int length;
 	

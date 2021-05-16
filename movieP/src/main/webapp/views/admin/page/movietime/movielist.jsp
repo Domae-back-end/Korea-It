@@ -168,7 +168,7 @@ if (request.getParameter("dal") != null && request.getParameter("el") != null) {
 			<a href="/admin/movietime/insert?dal=<%=request.getParameter("dal")%>&el=<%=request.getParameter("el")%>">등록하기</a>
 		</div>
 		<div class="menu1">
-			<a href="">검색</a>
+			<a href="/admin/movietime/search">검색</a>
 		</div>
 		<div class="timeservice">
 			<div class="both"></div>

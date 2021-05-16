@@ -83,7 +83,7 @@
 			<fmt:formatDate value="${a.endtime }" type="both"
 							pattern="hh:mm:ss" /></div>
 	
-			<div class="removemenu"><a href="?index=${a.m_index}&movietitle=${a.movietitle}">수정하기</a></div>
+			<div class="removemenu"><a href="update?index=${a.m_index}&movietitle=${a.movietitle}">수정하기</a></div>
 			<div class="removemenu"><a href="?index=${a.m_index}&movietitle=${a.movietitle}">삭제하기</a></div>
 			<div class="both"></div>
 		</c:forEach>
