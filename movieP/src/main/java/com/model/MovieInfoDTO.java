@@ -19,10 +19,21 @@ public class MovieInfoDTO {
 	String  mplot;
 	String movieimg;
 	String imgurl;
-	String mdate;//(mdate 2021-05-11 꼴로 날라옴.)
+	//String moviedate;
 	
+	Date mdate;//(mdate 2021-05-11 꼴로 날라옴.)
+
 	int length;
 	
 	MultipartFile file;
 	MultipartFile[] infoimg;
+	
+	
+	public void setMoviedate(String datevalue){
+		System.out.println(datevalue);
+		String[] arr= datevalue.split("-");
+		mdate= new Date(Integer.parseInt(arr[0])-1900, Integer.parseInt(arr[1])-1,Integer.parseInt(arr[2]));		
+	}
+	
+	
 }
