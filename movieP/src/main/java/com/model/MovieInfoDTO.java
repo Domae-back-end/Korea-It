@@ -1,7 +1,5 @@
 package com.model;
 
-import java.util.Date;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
@@ -28,6 +26,7 @@ public class MovieInfoDTO {
 	MultipartFile file;
 	MultipartFile[] infoimg;
 	
+<<<<<<< HEAD
 	
 	public void setMoviedate(String datevalue){
 		System.out.println(datevalue);
@@ -36,4 +35,6 @@ public class MovieInfoDTO {
 	}
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 }

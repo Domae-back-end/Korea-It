@@ -16,6 +16,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			order by m_index desc 
 	</select>
 	
+	<select id="movieInfoBefore" resultType="MovieInfoDTO">
+			select * from movieinfo
+			where sysdate() > mdate
+			order by m_index asc 
+	</select>
+	
+	<select id="movieInfoAfter" resultType="MovieInfoDTO">
+			select * from movieinfo
+			where mdate > sysdate()
+			order by m_index asc 
+	</select>
+	
+	
+	
 	<select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">
 			select * from movieinfo where movietitle = #{movietitle}
 	</select>

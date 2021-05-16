@@ -9,6 +9,8 @@ public interface DbMapper {
 
 	List<MovieTimeDTO> movieTime();
 	List<MovieInfoDTO> movieInfo();
+	List<MovieInfoDTO> movieInfoBefore();
+	List<MovieInfoDTO> movieInfoAfter();
 	
 	void insertMovieTime(MovieTimeDTO dto);
 
