@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.Arrays;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
@@ -23,5 +25,6 @@ public class MovieInfoDTO {
 	
 	MultipartFile file;
 	MultipartFile[] infoimg;
+	
 	
 }

@@ -11,7 +11,8 @@ public interface DbMapper {
 	List<MovieInfoDTO> movieInfo();
 	List<MovieInfoDTO> movieInfoBefore();
 	List<MovieInfoDTO> movieInfoAfter();
-	
+	MovieInfoDTO movieDetail(Integer index);
+
 	void insertMovieTime(MovieTimeDTO dto);
 
 	MovieInfoDTO findMovie(String movietitle);
