@@ -1,6 +1,5 @@
 package com.model;
 
-import java.util.Arrays;
 
 import org.springframework.web.multipart.MultipartFile;
 

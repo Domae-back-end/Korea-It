@@ -2,6 +2,8 @@ package com.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -33,25 +35,33 @@ public class PageeditController {
 	
 	@ModelAttribute("data")
 	Object data(@PathVariable String service, MovieInfoDTO mdto,HttpServletRequest request) {
-		//  문제.. multipart를 받을 수단이 없음.
-		//String uploadPath = mulrequest.getRealPath("/images/uploadFiles");
-		//System.out.println("uploadPath:"+uploadPath);		
-		System.out.println("-----------------------------");
+		System.out.println("${data}제작중.-----------------------------");
 		System.out.println("pageedit-"+service+"실행");
-		System.out.println(mdto);
-		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
-		if(mdto.getMimg()!=null) {			
-				System.out.println("멀티파트파일있어요, 파일업 서비스 실행."+"번쨰");
-				FileupService fservice = (FileupService)pr.getContext().getBean("fileupService");
-				//용량이 초과할 경우 > 바로 alter 리턴.
-				fservice.fileup(mdto.getInfoimg(), request,mdto.getMovietitle());		
+		System.out.println("MovieInfoDTO:"+mdto);
+		
+		HashSet<String> imgnames= new HashSet<>();//뭔가어색.
+		
+		
+		if(mdto.getInfoimg()!=null) {			
+			FileupService fservice = (FileupService)pr.getContext().getBean("fileupService");
+			//용량이 초과할 경우 > 바로 alter 리턴.
+			fservice.fileup(mdto.getInfoimg(), request,mdto.getMovietitle());
+			for (MultipartFile mf : mdto.getInfoimg()) {
+				imgnames.add(mf.getOriginalFilename());
+			}
+			
+			
 		}
 		
+		
+		
+		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
 		
 		Map<String, Object> obj= new HashMap<String, Object>();
 		obj.put("service", service);
 		obj.put("mdto", mdto);
 		obj.put("request", request);
+		obj.put("imgnames", imgnames);
 		//obj.put("mrequest", mrequest); //이렇게 다때려박아도 괜찮은건가.
 		
 		
@@ -71,7 +81,7 @@ public class PageeditController {
 	
 	@ModelAttribute("submenu")
 	ArrayList<Menu> subMenu( ) {
-		System.out.println("서브메뉴들어간다.");
+		System.out.println("초기단계-서브메뉴들어간다");
 		HashMap<String, ArrayList<Menu>>map = new HashMap<>();
 		
 		map.put("pageedit", new ArrayList<Menu>());

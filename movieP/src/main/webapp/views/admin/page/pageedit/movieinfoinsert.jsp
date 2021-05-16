@@ -65,7 +65,7 @@
 			
 		</div>
 		<hr />
-		개봉일 <input type="date" name="mdate" /><br> 
+		개봉일 <input type="date" name="moviedate" /><br> <!--setMoviedate  -->
 		<hr />
 		상영시간(숫자!) <input	type="text" name="mplaytime" /><br>
 		<hr />

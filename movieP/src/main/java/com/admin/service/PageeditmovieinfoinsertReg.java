@@ -33,19 +33,9 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 	public Object execute(Object obj) {// 여기에 movieinfodto
 		System.out.println("movieinfo insertReg 화면 진입");
 		AlterDTO al = new AlterDTO();
-		HashMap<String, Object> map = (HashMap) obj;
-		
+		HashMap<String, Object> map = (HashMap) obj;		
 		MovieInfoDTO mdto = (MovieInfoDTO) map.get("mdto");
-		MultipartHttpServletRequest mrequest= (MultipartHttpServletRequest)map.get("mrequest");
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
-		// 유효성은 자바스크립트에서 처리 .
-		// MovieInfoDTO(m_index=null, mplaytime=123, star=null,
-		// movietitle=아아, mdir=아아, mactrs=아아,바바, mcate=아아,바바, mplot=아아
-		System.out.println("배우 몇명:" + mdto.getMactrs().split(",").length);
-		// 배우 id 가 담겨있음.
-		System.out.println("카테 몇개:" + mdto.getMcate().split(",").length);
-		// 카테 담겨있음.
-		// id 코드 + 영화 정보가 만들어진다.
 		ArrayList<ActorDTO> adto = new ArrayList<>();
 
 		for (int i = 0; i < mdto.getMactrs().split(",").length; i++) {
@@ -62,15 +52,13 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 			db.actormovieinsert(actor);
 		}
 		System.out.println("액터정보 in");
-		ArrayList<CateDTO> cdto = new ArrayList<>();
-		
+		ArrayList<CateDTO> cdto = new ArrayList<>();		
 		for (int i = 0; i < mdto.getMcate().split(",").length; i++) {
 			CateDTO cate = new CateDTO();
 			cate.setMovietitle(mdto.getMovietitle());
 			cate.setCate(mdto.getMcate().split(",")[i]);
 			
-			cdto.add(i,cate);
-			
+			cdto.add(i,cate);			
 		}
 		for (CateDTO cate : cdto) {
 			System.out.println(cate);
@@ -83,20 +71,7 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 
 		
 		
-		// 이미지 업로드.
-		MultipartFile[] array = mdto.getInfoimg();		
-		String path= request.getRealPath("moivedata");//movieP\src\main\webapp\moive			
-		System.out.println("들어온 이미지갯수:"+array.length);
-		System.out.println(array[0].getSize());
-		System.out.println(array[0].getOriginalFilename());
-		System.out.println(array[0].getName());
-		System.out.println(array[0].getContentType());
-		
-		for (MultipartFile multipartFile : array) {
-			
-			
-		
-		}
+		// 이미지 db저장
 		
 		
 		
