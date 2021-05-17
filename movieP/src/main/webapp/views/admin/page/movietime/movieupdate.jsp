@@ -68,24 +68,20 @@
 	<hr>
 	
 	<form action="/admin/movietime/updateReg">
+		<input type="hidden" value="<%=request.getParameter("movietitle") %>" name="movietitle" />
 		<div class="detaillay">
 			<div class="to1">날짜</div>
 			<div class="to1">시작 시간</div>
-			<div class="to1">종료 시간</div>
 			<div class="both"></div>
 			<c:forEach var="a" items="<%=ac %>">
 					<div class="to1">
-					<input type="text" value="<fmt:formatDate value="${a.reg_date }" type="both"
-								pattern="yyyy-MM-dd" />" name="reg_date">
+					<input type="date" value="<fmt:formatDate value="${a.reg_date }" type="both"
+								pattern="yyyy-MM-dd" />" name="reg_datelist" />
 				</div>
 				<div class="to1">
-					<input type="text" name="starttime" value="<fmt:formatDate value="${a.starttime }" type="both"
+					<input type="text" name="starttime1" value="<fmt:formatDate value="${a.starttime }" type="both"
 								pattern="hh:mm:ss" />">
 								</div>
-				<div class="to1">
-		
-					<input type="text" name="endtime" value="<fmt:formatDate value="${a.endtime }" type="both"
-								pattern="hh:mm:ss" />"></div>
 				<div class="both"></div>
 			</c:forEach>
 		</div>

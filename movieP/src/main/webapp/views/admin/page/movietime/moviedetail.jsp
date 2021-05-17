@@ -47,6 +47,18 @@
 		height: 100%;
 		margin: 0 auto;
 	}
+	.updatemenu{
+		float: right;
+		width: 150px;
+		height: 50px;
+		background: black;
+		line-height: 50px;
+		color: white;
+		font-weight: bold;
+	}
+	.updatemenu > a{
+		color: white;
+	}
 </style>
 <%
 	HashMap<String, Object> ar = (HashMap<String, Object>)request.getAttribute("data");
@@ -71,7 +83,7 @@
 		<div class="to1">시작 시간</div>
 		<div class="to1">종료 시간</div>
 		<div class="both"></div>
-		<c:forEach var="a" items="<%=ac %>">
+		<c:forEach var="a" items="<%=ac %>" varStatus="i">
 				<div class="to1">
 			<fmt:formatDate value="${a.reg_date }" type="both"
 							pattern="yyyy-MM-dd" /></div>
@@ -82,9 +94,10 @@
 			<div class="to1">
 			<fmt:formatDate value="${a.endtime }" type="both"
 							pattern="hh:mm:ss" /></div>
-	
-			<div class="removemenu"><a href="update?index=${a.m_index}&movietitle=${a.movietitle}">수정하기</a></div>
-			<div class="removemenu"><a href="?index=${a.m_index}&movietitle=${a.movietitle}">삭제하기</a></div>
+			<c:if test="${i.index == 0  }">			
+			<div class="updatemenu"><a href="update?movietitle=${a.movietitle}">수정하기</a></div>
+			</c:if>	
+			<div class="removemenu"><a href="?movietitle=${a.movietitle}">삭제하기</a></div>
 			<div class="both"></div>
 		</c:forEach>
 	</div>
