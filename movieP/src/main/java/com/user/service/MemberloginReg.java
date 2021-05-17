@@ -1,4 +1,4 @@
-package com.admin.service;
+package com.user.service;
 
 import org.springframework.stereotype.Service;
 
@@ -7,7 +7,7 @@ import com.model.MemberAction;
 import com.model.MemberDTO;
 
 @Service
-public class MemberjoinReg implements MemberAction {
+public class MemberloginReg implements MemberAction {
 
 	@Override
 	public Object execute(MemberDTO mdto) {
@@ -15,7 +15,7 @@ public class MemberjoinReg implements MemberAction {
 		
 		AlterDTO ad = new  AlterDTO();
 		
-		ad.setMsg("가입이 완료 되었습니다.");
+		ad.setMsg("로그인 되었습니다.");
 		ad.setUrl("../../main");
 		return ad;
 	}

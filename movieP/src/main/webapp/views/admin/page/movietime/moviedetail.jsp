@@ -62,7 +62,7 @@
 	<div class="movieImg"><img src="/img/${data.info.movieimg }" alt="이미지 파일 없음."></div>
 	<div class="movieImg">${data.info.movietitle }</div>
 	<div class="movieImg">${data.info.mplot }</div>
-	<div class="movieImg">${data.info.mplaytime } 시간</div>
+	<div class="movieImg">${data.info.mplaytime }</div>
 	<div class="movieImg">${data.info.star }</div>
 	<div class="both"></div>
 	<hr>

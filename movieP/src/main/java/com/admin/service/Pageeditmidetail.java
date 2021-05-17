@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ import com.model.MovieTimeDTO;
 
 //Service단
 @Service
-public class Pageeditmovieinfolist implements PageeditService {
+public class Pageeditmidetail implements PageeditService {
 	
 
 	@Resource
@@ -29,41 +30,38 @@ public class Pageeditmovieinfolist implements PageeditService {
 	
 	@Override
 	public Object execute(Object obj) {
+		System.out.println("영화정보디테일서비스");
 		HashMap<String, Object> map = (HashMap) obj;		
-		
 		System.out.println("들어온pdto:"+map.get("pdto"));
 		MinfoPageDTO pdto=(MinfoPageDTO)map.get("pdto");
+		HttpServletRequest request= (HttpServletRequest)map.get("request");
+		pdto.setStart(1);		//임의설정값.
+		Integer m_index= Integer.parseInt(request.getParameter("mid"));		
 		
-		
-		pdto.setStart(1);		
-		MinfListDTO res= new MinfListDTO();		
-		List<MovieInfoDTO> answer= db.movieinfolist(map);		
-		System.out.println("list 화면으로 가져간다. >>뽑아올");
-		System.out.println("갯수 : "+ db.movieinfolist(map).size());
-		for (MovieInfoDTO each : answer) {
+		MovieInfoDTO res;		
+		System.out.println("나오는것. : "+ db.movieDetail(m_index));
+			res=db.movieDetail(m_index);
 			String mactrs="",mcate="",movieimg="";
-			String movietitle= each.getMovietitle();
-			System.out.println(each);
+			String movietitle= res.getMovietitle();
+			System.out.println(res);
 			for (ActorDTO ee : db.pullactor(movietitle)) {
 				mactrs+=ee.getActorid()+",";
 			}
 			mactrs=mactrs.substring(0, mactrs.length()-1);
-			//List<CateDTO> pullcate(String movietitle);
-			//List<MimgDTO> pullimg(String movietitle);
 			for (CateDTO ee : db.pullcate(movietitle)) {
 				mcate+=ee.getCate()+",";
 			}
 			mcate= mcate.substring(0, mcate.length()-1);
 			for (MimgDTO ee : db.pullimg(movietitle)) {
-				movieimg+=ee.getImgname();
+				movieimg+=ee.getImgname()+",";
 			}			
-			each.setMactrs(mactrs);
-			each.setMcate(mcate);
-			each.setMovieimg(movieimg);			
-		}		
+			res.setMactrs(mactrs);
+			res.setMcate(mcate);
+			res.setMovieimg(movieimg);			
+				
 		//MinfListDTO( movielist >정보에 리스트가 있음.)
-		res.setMovielist(answer);
-		System.out.println("result는 있음.");
+	
+		System.out.println("Detail 끗. ");
 		return res;
 	}
 	

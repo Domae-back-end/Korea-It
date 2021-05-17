@@ -31,7 +31,7 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 
 	@Override
 	public Object execute(Object obj) {// 여기에 movieinfodto
-		System.out.println("movieinfo insertReg 화면 진입");
+		System.out.println("movieinfo insertReg 서비스 진입");
 		AlterDTO al = new AlterDTO();
 		HashMap<String, Object> map = (HashMap) obj;		
 		MovieInfoDTO mdto = (MovieInfoDTO) map.get("mdto");
@@ -68,7 +68,7 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		db.movieinfoinsert(mdto);
 		
 		System.out.println("영화정보 in");
-
+		
 		
 		
 		// 이미지 db저장

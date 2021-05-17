@@ -10,38 +10,22 @@
 <c:forEach items="${moviedata }">
 	<% cnt = cnt+1; %>
 </c:forEach>
+
+<%
+	String cg = request.getParameter("cg");
+	String cgUrl = cg+".jsp";
+%>
+
+
 <script src="<c:url value="/my_js/jquery-3.6.0.js"/>"></script>
 <script>
 
 $(function(){
 	
-	$(".btn1").click(function(){
-		console.log($(this).html());
-		$.ajax({
-			url:"/views/user/page/movie/inputdata.jsp",
-			data:{kind:$(this).html(), dd:"${moviedatabefore}"}, 
-			success:function(data){
-				$(".wrapper").html(data)
-			},
-			error:function(e){
-				alert(e.responseText)
-			}
-		})
+	$("#tBtn").click(function(){
+		alert("예매창으로");
 	})
-	
-		$(".btn2").click(function(){
-		console.log($(this).html());
-		$.ajax({
-			url:"/views/user/page/movie/inputdata.jsp",
-			data:{kind:$(this).html(), dd:"${moviedataafter}"}, 
-			success:function(data){
-				$(".wrapper").html(data)
-			},
-			error:function(e){
-				alert(e.responseText)
-			}
-		})
-	})
+
 	
 	
 })	
@@ -79,21 +63,22 @@ $(function(){
 		width: 200px;
 		
 	}
-	#pos>img{
+	#pos>a>img{
 		width:250px;
 		height:400px;
 	}
+	
 
 </style>
 
 </head>
 <body>
 	<div class = "pp">
-		<div class ="btn1">boxoffice</div>
-		<div class ="btn2">expect</div>
+		<div class ="btn1"><a href = "?cg=boxoffice">박스오피스</a></div>
+		<div class ="btn2"><a href = "?cg=expect">상영예정작</a></div>
 	</div>
 <div class = "wrapper">
-
+	<jsp:include page = "<%=cgUrl %>"/>
 </div>
 
 </body>
