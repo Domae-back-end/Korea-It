@@ -25,7 +25,7 @@
 		clear: both;
 	}
 	.removemenu{
-		float: left;
+		float: right;
 		width: 150px;
 		height: 50px;
 		background: black;
@@ -62,33 +62,37 @@
 	<div class="movieImg"><img src="/img/${data.info.movieimg }" alt="이미지 파일 없음."></div>
 	<div class="movieImg">${data.info.movietitle }</div>
 	<div class="movieImg">${data.info.mplot }</div>
-	<div class="movieImg">${data.info.mplaytime }</div>
+	<div class="movieImg">${data.info.mplaytime } 시간</div>
 	<div class="movieImg">${data.info.star }</div>
 	<div class="both"></div>
 	<hr>
-	<div class="detaillay">
-		<div class="to1">날짜</div>
-		<div class="to1">시작 시간</div>
-		<div class="to1">종료 시간</div>
-		<div class="both"></div>
-		<c:forEach var="a" items="<%=ac %>">
-				<div class="to1">
-			<fmt:formatDate value="${a.reg_date }" type="both"
-							pattern="yyyy-MM-dd" /></div>
-			<div class="to1">
-			<fmt:formatDate value="${a.starttime }" type="both"
-							pattern="hh:mm:ss" />
-							</div>
-			<div class="to1">
-			<fmt:formatDate value="${a.endtime }" type="both"
-							pattern="hh:mm:ss" /></div>
 	
-			<div class="removemenu"><a href="update?index=${a.m_index}&movietitle=${a.movietitle}">수정하기</a></div>
-			<div class="removemenu"><a href="?index=${a.m_index}&movietitle=${a.movietitle}">삭제하기</a></div>
+	<form action="/admin/movietime/updateReg">
+		<div class="detaillay">
+			<div class="to1">날짜</div>
+			<div class="to1">시작 시간</div>
+			<div class="to1">종료 시간</div>
 			<div class="both"></div>
-		</c:forEach>
+			<c:forEach var="a" items="<%=ac %>">
+					<div class="to1">
+					<input type="text" value="<fmt:formatDate value="${a.reg_date }" type="both"
+								pattern="yyyy-MM-dd" />" name="reg_date">
+				</div>
+				<div class="to1">
+					<input type="text" name="starttime" value="<fmt:formatDate value="${a.starttime }" type="both"
+								pattern="hh:mm:ss" />">
+								</div>
+				<div class="to1">
+		
+					<input type="text" name="endtime" value="<fmt:formatDate value="${a.endtime }" type="both"
+								pattern="hh:mm:ss" />"></div>
+				<div class="both"></div>
+			</c:forEach>
+		</div>
+		<input type="submit" value="수정하기" class="removemenu">
+				
+	</form>
 	</div>
-</div>
 <div class="both"></div>
 <hr>
 

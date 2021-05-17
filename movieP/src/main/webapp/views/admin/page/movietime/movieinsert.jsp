@@ -51,8 +51,8 @@
 				<div class="choice">${a.movietitle }</div>
 				<div class="choice">${a.mdir }</div>
 				<div class="choice">	
-					<fmt:formatDate value="${a.mdate }" type="both"
-							pattern="yyyy:MM:dd" />
+			<fmt:formatDate value="${a.mdate }" type="both"
+							pattern="yyyy-MM-dd" />
 				</div>	
 				<div class="choice">${a.mplaytime } 시간</div>
 				<div class="choice">${a.star }</div>

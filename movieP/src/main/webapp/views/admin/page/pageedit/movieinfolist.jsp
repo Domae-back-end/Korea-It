@@ -15,24 +15,24 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>체크박스</th>
-        <th>대분류</th>
-            <th>소분류</th>
-        <th>상품명/영화명</th>
-            <th>액수</th>
+        <th>영화제목</th>
+        <th>감독명</th>
+            <th>개봉일</th>
+        <th>배우</th>
+            <th>카테고리</th>
                 <th>수량</th>
       </tr>
     </thead>
     <tbody>
-<c:forEach var="i"   begin="0" end="10">
+<c:forEach var="i" items="${data.movielist }" >
       <tr>
-        <td>${i }체크박스</td>
-        <td>${i }대분류</td>
-        <td>${i }소분류</td>
-         <td>${i }상품/영화명</td>
+        <%-- <td>${i }체크박스</td> --%>
+        <td><a href="midetail?mid=${i.m_index}">${i.movietitle }</a></td>
+        <td>${i.mdir }&nbsp; </td>
+         <td>${i.mdate }</td>
          
-        <td>${i }액수</td>
-         <td>${i }수량</td>
+        <td>${i.mactrs }</td>
+         <td>${i.mcate }</td>
       </tr>
    
 </c:forEach>

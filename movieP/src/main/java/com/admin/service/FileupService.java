@@ -7,16 +7,25 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.model.DbMapper;
+import com.model.MimgDTO;
+
 @Service
 public class FileupService {
 	//@Value("${app.upload.dir:${user.home}}")
 	//private String uploadDir;	
+
+	@Resource
+	DbMapper db;
+
+		
 	public void fileup(MultipartFile multipartFiles[],HttpServletRequest request,String movietitle) {
 		System.out.println("fileUp 실행해요."+multipartFiles.length);
 		String foldername= request.getRealPath("moviedata")+"/"+movietitle;
@@ -25,11 +34,20 @@ public class FileupService {
 			makefolder.mkdir(); 
 		}
 		
+		
+		
+		
 		for (MultipartFile multipartFile : multipartFiles) {
 			
 			//Path copyOfLocation = Paths.get(uploadDir + File.separator + StringUtils.cleanPath(multipartFile.getOriginalFilename()));
 			Path copyOfLocation= Paths.get(foldername+"/"+multipartFile.getOriginalFilename());
 			System.out.println("주소 어딘가요."+copyOfLocation);
+			MimgDTO dto= new MimgDTO();
+			dto.setImgname(movietitle+"/"+multipartFile.getOriginalFilename());
+			dto.setMovietitle(movietitle);
+			db.movieimgin(dto);
+			
+			
 			try {
 				Files.copy(multipartFile.getInputStream(), copyOfLocation, StandardCopyOption.REPLACE_EXISTING);
 				
