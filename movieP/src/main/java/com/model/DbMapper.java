@@ -47,8 +47,8 @@ public interface DbMapper {
 	List<CateDTO> pullcate(Integer m_index);
 	List<MimgDTO> pullimg(Integer m_index);
 	
-	List<MemberDTO> meminsert();
-	MemberDTO memdetail();
+	void memjoin(MemberDTO mdto);
+	MemberDTO memlogin(MemberDTO mdto);
 	
 	
 	

@@ -117,8 +117,8 @@ function checkGo() {
 </script>
 </head>
 <body>
-<form action ="joinReg" method="post" enctype="multipart/form-data" name="frm">
 <h1>기본정보</h1>
+<form action ="joinReg" method="post" enctype="multipart/form-data" name="frm">
 	<div>
 		<div class = "boxF">
 			<div><span>√</span>이름</div>
@@ -127,7 +127,7 @@ function checkGo() {
 		<div>
 			<div class = "firstT"><span>√</span>아이디</div>
 			<div>
-				<input type="text" name="userid" maxlength="8" placeholder="아이디를 입력해주세요"/>
+				<input type="text" name="userid" maxlength="12" placeholder="아이디를 입력해주세요"/>
 				<input type="button" onclick="checkGo()" value="중복확인"/>
 				<small><p>영문자, 숫자 조합하여 8~12자리</p></small>
 			</div>
@@ -137,7 +137,7 @@ function checkGo() {
 			<div>
 				<input type="password" name="userpw" maxlength="16" placeholder="비밀번호를 입력해주세요"/>
 				<small>
-					<p>영문자, 숫자,특수문자 조합하여 8~12자리, 아이디와 4자리이상 동일,반복 문자숫자 불가<br>
+					<p>영문자, 숫자,특수문자 조합하여 8~16자리, 아이디와 4자리이상 동일,반복 문자숫자 불가<br>
 							사용 가능 특수 문자 : !"#$%&'()*+,-./:;<=>?@[]^_'{|}~</p>
 				</small>
 			</div>

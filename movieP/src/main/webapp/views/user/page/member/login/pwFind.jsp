@@ -58,17 +58,6 @@ input{
 	border : 1px solid rgb(192, 192, 192);
 	margin-top: 10px;
 }
-.butt{
-	margin:20px;
-	width:150px;
-	border : 1px solid rgb(192, 192, 192);
-	text-align: center;
-	list-style: none;
-	float:left;
-}
-a{
-	text-decoration: none;
-}
 </style>
 <script src="<c:url value="/my_js/jquery-3.6.0.js"/>"></script>
 <script>
@@ -77,12 +66,7 @@ a{
 </head>
 <body>
 <h1>아이디/비밀번호 찾기</h1>
-	<div class="mainList">
-		<ul>
-			<li class ="butt"><a href="idFind">아이디 찾기</a></li>
-			<li class ="butt" ><a href="pwFind">비밀번호 찾기</a></li>
-		</ul>
-	</div>
+
 	<form action="loginReg" method="post" enctype="multipart/form-data" name="frm">
 		<div class="main">
 			<div class="outF">

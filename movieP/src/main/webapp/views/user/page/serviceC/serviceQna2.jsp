@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>자주묻는질문</title>
+<script src="../../../../my_js/jquery-3.6.0.js"></script>
+
 <style>
 	* {padding: 0px; margin: 0px; }
 	ul, li {text-decoration: none; list-style: none; }

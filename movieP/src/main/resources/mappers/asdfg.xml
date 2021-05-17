@@ -137,8 +137,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<insert id="cateinsert"></insert>
 	
 	
+	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO" >
+		select * from memberinfo where userid=#{userid} and userpw=#{userpw}
+	</select>
 	
-	
+	<insert id="memjoin" parameterType="MemberDTO" >
+		insert into memberinfo 
+		(userid, userpw, username, userbirth, userpnum, useremail, joinday) 
+		values 
+		(#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
+	</insert>
 	
 	<insert id="insertBanner" parameterType="BannerDTO">
 	<!-- 조건문을 달고 싶은데..  -->
