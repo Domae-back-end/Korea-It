@@ -22,19 +22,18 @@ public class FileupService {
 	//@Value("${app.upload.dir:${user.home}}")
 	//private String uploadDir;	
 
+
 	@Resource
 	DbMapper db;
-
 		
-	public void fileup(MultipartFile multipartFiles[],HttpServletRequest request,String movietitle) {
+	public void fileup(MultipartFile multipartFiles[],HttpServletRequest request,String movietitle,int  m_index) {
 		System.out.println("fileUp 실행해요."+multipartFiles.length);
 		String foldername= request.getRealPath("moviedata")+"/"+movietitle;
 		File makefolder = new File(request.getRealPath("moviedata")+"/"+movietitle);		
 		if(!makefolder.exists()) {
 			makefolder.mkdir(); 
+			System.out.println("존재하지 않으므로 폴더생성.");
 		}
-		
-		
 		
 		
 		for (MultipartFile multipartFile : multipartFiles) {
@@ -42,11 +41,14 @@ public class FileupService {
 			//Path copyOfLocation = Paths.get(uploadDir + File.separator + StringUtils.cleanPath(multipartFile.getOriginalFilename()));
 			Path copyOfLocation= Paths.get(foldername+"/"+multipartFile.getOriginalFilename());
 			System.out.println("주소 어딘가요."+copyOfLocation);
-			MimgDTO dto= new MimgDTO();
-			dto.setImgname(movietitle+"/"+multipartFile.getOriginalFilename());
-			dto.setMovietitle(movietitle);
-			db.movieimgin(dto);
+			MimgDTO imgdto= new MimgDTO();
+			imgdto.setImgname(movietitle+"/"+multipartFile.getOriginalFilename());
+			imgdto.setM_index(m_index);
+			System.out.println("1"+movietitle);
+			System.out.println("2"+imgdto);
 			
+			db.movieimgin(imgdto);
+			System.out.println("3");
 			
 			try {
 				Files.copy(multipartFile.getInputStream(), copyOfLocation, StandardCopyOption.REPLACE_EXISTING);

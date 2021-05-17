@@ -4,9 +4,10 @@ import lombok.Data;
 
 @Data
 public class ActorDTO {
-	String movietitle;
+
 	String actorname;
 	String birthdata;
 	String actorid;
-
+	
+	Integer m_index;
 }

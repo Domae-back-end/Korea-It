@@ -12,7 +12,7 @@ public class MinfoPageDTO {
 	
 
 	Integer page = 1;
-	Integer start, limit = 8, pageLimit = 5, total, startPage, endPage;
+	Integer start, limit = 80, pageLimit = 5, total, startPage, endPage;
 	Integer cnt=0;
 	Integer ttt;
 	

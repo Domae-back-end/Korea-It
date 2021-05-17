@@ -5,5 +5,7 @@ import lombok.Data;
 @Data
 public class CateDTO {
 	String cate;
-	String movietitle;
+
+	
+	Integer m_index;
 }

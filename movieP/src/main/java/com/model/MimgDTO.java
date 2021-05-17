@@ -5,5 +5,7 @@ import lombok.Data;
 @Data
 public class MimgDTO {
 	String imgname;
-	String movietitle;
+
+	
+	int m_index;
 }

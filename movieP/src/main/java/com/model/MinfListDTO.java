@@ -9,4 +9,5 @@ public class MinfListDTO {
 	List<MovieInfoDTO> movielist;
 	MovieInfoDTO midto;
 	MinfoPageDTO mpdto;
+	String posterurl;
 }
