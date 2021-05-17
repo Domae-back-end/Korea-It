@@ -14,6 +14,7 @@ public interface DbMapper {
 	List<MovieInfoDTO> movieInfoAfter();
 	
 	
+	//영화 시간표
 	MovieInfoDTO movieDetail(Integer m_index);
 
 	void insertMovieTime(MovieTimeDTO dto);
@@ -21,7 +22,7 @@ public interface DbMapper {
 	MovieInfoDTO findMovie(String movietitle);
 	List<MovieTimeDTO> findMovieTime(String movietitle);
 	List<MovieInfoDTO> movielist();
-	
+	int updatemovielist(MovieTimeDTO dto);
 	
 	
 	//게시판 page 이동.

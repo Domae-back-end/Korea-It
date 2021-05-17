@@ -43,7 +43,7 @@
 		float: left;
 	}
 	.detaillay{
-		width: 1000px;
+		width: 1200px;
 		height: 100%;
 		margin: 0 auto;
 	}
@@ -78,12 +78,17 @@
 	<div class="movieImg">${data.info.star }</div>
 	<div class="both"></div>
 	<hr>
+	<div class="updatemenu"><a href="update?movietitle=<%=request.getParameter("movietitle")%>">수정하기</a></div>
 	<div class="detaillay">
+		<div class="to1">관</div>
 		<div class="to1">날짜</div>
 		<div class="to1">시작 시간</div>
 		<div class="to1">종료 시간</div>
 		<div class="both"></div>
 		<c:forEach var="a" items="<%=ac %>" varStatus="i">
+				<div class="to1">
+				${a.sectorno }
+				</div>
 				<div class="to1">
 			<fmt:formatDate value="${a.reg_date }" type="both"
 							pattern="yyyy-MM-dd" /></div>
@@ -95,7 +100,6 @@
 			<fmt:formatDate value="${a.endtime }" type="both"
 							pattern="hh:mm:ss" /></div>
 			<c:if test="${i.index == 0  }">			
-			<div class="updatemenu"><a href="update?movietitle=${a.movietitle}">수정하기</a></div>
 			</c:if>	
 			<div class="removemenu"><a href="?movietitle=${a.movietitle}">삭제하기</a></div>
 			<div class="both"></div>
