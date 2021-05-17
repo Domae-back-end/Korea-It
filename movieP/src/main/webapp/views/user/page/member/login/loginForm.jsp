@@ -52,6 +52,6 @@ input[type=submit]{
 		<a href="pwFind">PW 찾기</a>
 	</div>
 	<div>
-		<a href=""><img src="/img/ico-naver.png" alt="네이버 로그인" /></a>
+		<a href="/member/naverLogin"><img src="/img/ico-naver.png" alt="네이버 로그인" /></a>
 	</div>
 </form>

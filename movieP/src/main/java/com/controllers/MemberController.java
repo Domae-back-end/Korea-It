@@ -23,7 +23,7 @@ public class MemberController {
 		
 		MemberAction res = pr.getContext().getBean("member"+service, MemberAction.class);
 		
-		return res.execute(mdto);// 
+		return res.execute(mdto);
 
 	}
 	
@@ -32,9 +32,7 @@ public class MemberController {
 		
 		return "page/member/"+cate+"/"+service;
 	}
-	
-	
-	
+
 	@RequestMapping
 	public String view(@PathVariable String cate, @PathVariable String service) {
 		
