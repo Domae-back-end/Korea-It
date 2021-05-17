@@ -101,7 +101,7 @@
 							pattern="hh:mm:ss" /></div>
 			<c:if test="${i.index == 0  }">			
 			</c:if>	
-			<div class="removemenu"><a href="?movietitle=${a.movietitle}">삭제하기</a></div>
+			<div class="removemenu"><a href="deleteReg?movietitle=${a.movietitle}&m_index=${a.m_index}">삭제하기</a></div>
 			<div class="both"></div>
 		</c:forEach>
 	</div>

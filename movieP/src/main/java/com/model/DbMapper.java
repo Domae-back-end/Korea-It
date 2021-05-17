@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+
 @Mapper
 public interface DbMapper {
 
@@ -23,7 +24,7 @@ public interface DbMapper {
 	List<MovieTimeDTO> findMovieTime(String movietitle);
 	List<MovieInfoDTO> movielist();
 	int updatemovielist(MovieTimeDTO dto);
-	
+	int deletemovie(MovieTimeDTO dto);
 	
 	//게시판 page 이동.
 	int totalCnt(HashMap<String, Object> map);

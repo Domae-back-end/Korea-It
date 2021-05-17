@@ -25,6 +25,9 @@ public class MovieTimeupdateReg implements MovieTimeService {
 		
 		ArrayList<MovieTimeDTO> list = dto.getList();
 		MovieInfoDTO mdto = db.findMovie(dto.getMovietitle());
+		
+		ArrayList<Integer> ar = new ArrayList<>();
+		
 		for (int i = 0; i < list.size(); i++) {	
 			Calendar now = Calendar.getInstance();
 			Date date = new Date();
@@ -34,10 +37,19 @@ public class MovieTimeupdateReg implements MovieTimeService {
 			list.get(i).setEndtime(date);
 			
 			list.get(i).setMovietitle(dto.getMovietitle());
-			
-			db.updatemovielist(list.get(i));
+			int a = db.updatemovielist(list.get(i));
+			ar.add(a);
 		}
 		
-		return null;
+		AlterDTO adt = new AlterDTO();
+		if(ar.contains(0)) {
+			adt.setMsg("수정에 실패하였습니다.");
+			adt.setUrl("/admin/movietime/update?movietitle="+dto.getMovietitle());
+		}else {
+			adt.setMsg("수정이 완료되었습니다.");
+			adt.setUrl("/admin/movietime/detail?movietitle="+dto.getMovietitle());
+		}
+		
+		return adt;
 	}
 }
