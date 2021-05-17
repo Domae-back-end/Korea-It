@@ -19,9 +19,11 @@ public class ServiceController {
 	
 	
 	
-	@ModelAttribute("bodyurl")
+	@ModelAttribute("bodyurl2")
 	String bodypageUrl(@PathVariable String service) {
 		
-		return "/"+service;
+		//return "serviceHome";
+		//return "serviceHistory";
+		return "serviceQna2";
 	}
 }
