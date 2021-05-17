@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상담내역 확인</title>
+<title>공지사항</title>
 <style>
 	* {padding: 0px; margin: 0px; }
 	ul, li {text-decoration: none; list-style: none; }
@@ -16,8 +16,8 @@
 	
 	h2 {text-align: left; font-size: 30px; margin-bottom: 20px; }
 	
-	div ul li {width: 170px; height: 60px; background: red; margin-bottom: 5px; line-height: 60px; display: inline-block; }
-	div ul li a {font-size: 18px; width: 170px; height: 60px; display: inline-block;}
+	#sideBar ul li {width: 170px; height: 60px; background: red; margin-bottom: 5px; line-height: 60px; display: inline-block; }
+	#sideBar ul li a {font-size: 18px; width: 170px; height: 60px; display: inline-block;}
 		
 
 	
@@ -37,7 +37,7 @@
 </div>
 
 <div id="content">
-	상담내역 확인
+	<h2>공지사항</h2>
 </div>
 
 <div class="clear"></div>
