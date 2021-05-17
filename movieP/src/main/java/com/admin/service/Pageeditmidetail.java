@@ -44,23 +44,21 @@ public class Pageeditmidetail implements PageeditService {
 			String mactrs="",mcate="",movieimg="";
 			String movietitle= res.getMovietitle();
 			System.out.println(res);
-			for (ActorDTO ee : db.pullactor(movietitle)) {
+			for (ActorDTO ee : db.pullactor(m_index)) {
 				mactrs+=ee.getActorid()+",";
 			}
 			mactrs=mactrs.substring(0, mactrs.length()-1);
-			for (CateDTO ee : db.pullcate(movietitle)) {
+			for (CateDTO ee : db.pullcate(m_index)) {
 				mcate+=ee.getCate()+",";
 			}
 			mcate= mcate.substring(0, mcate.length()-1);
-			for (MimgDTO ee : db.pullimg(movietitle)) {
+			for (MimgDTO ee : db.pullimg(m_index)) {
 				movieimg+=ee.getImgname()+",";
 			}			
 			res.setMactrs(mactrs);
 			res.setMcate(mcate);
 			res.setMovieimg(movieimg);			
 				
-		//MinfListDTO( movielist >정보에 리스트가 있음.)
-	
 		System.out.println("Detail 끗. ");
 		return res;
 	}
