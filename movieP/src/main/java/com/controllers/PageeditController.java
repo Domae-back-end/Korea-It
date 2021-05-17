@@ -27,7 +27,7 @@ import com.model.MovieInfoDTO;
 
 
 @Controller
-@RequestMapping("admin/pageedit/{service}")
+@RequestMapping("admin/pageedit/{service}") // member/  ddd
 public class PageeditController {
 	
 	@Resource

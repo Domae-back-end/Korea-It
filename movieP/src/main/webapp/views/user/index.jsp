@@ -49,7 +49,7 @@
 <body>
 <div class="main">
 	<div class="header"><jsp:include page="inc/header.jsp" /> </div>
-	<div class="body"><jsp:include page="inc/${bodyurl }.jsp" /> </div>
+	<div class="body"><jsp:include page="${bodyurl }.jsp" /> </div>
 	<div class="footer"><jsp:include page="inc/footer.jsp" /> </div>
 </div>
 </body>

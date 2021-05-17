@@ -117,8 +117,8 @@ function checkGo() {
 </script>
 </head>
 <body>
-<form action ="joinReg" method="post" enctype="multipart/form-data" name="frm">
 <h1>기본정보</h1>
+<form action ="joinReg" method="post" enctype="multipart/form-data" name="frm">
 	<div>
 		<div class = "boxF">
 			<div><span>√</span>이름</div>

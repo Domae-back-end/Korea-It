@@ -25,7 +25,7 @@ public class UserController {
 	
 	@ModelAttribute("bodyurl")
 	String bodypageUrl() {
-		return "body";
+		return "inc/body";
 	}
 
 }
