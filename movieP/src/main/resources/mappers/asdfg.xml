@@ -47,6 +47,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
 	</insert>
 	
+	<update id="updatemovielist"  parameterType="MovieTimeDTO">
+		update movietime set 
+		sectorno=#{sectorno},starttime=#{starttime},endtime=#{endtime},
+		reg_date=#{reg_date}
+		where m_index=#{m_index} and movietitle = #{movietitle}
+	</update>
+	
+	<delete id="deletemovie" parameterType="MovieTimeDTO" >
+		delete from movietime where m_index = #{m_index} and movietitle = #{movietitle}
+	</delete>
 	
 	<select id="findactor" resultType="ActorDTO" parameterType="java.lang.String">
 		select * from actor where actorname = #{actorname}
