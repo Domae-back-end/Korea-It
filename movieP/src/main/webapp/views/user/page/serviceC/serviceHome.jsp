@@ -16,8 +16,8 @@
 	
 	h2 {text-align: left; font-size: 30px; margin-bottom: 20px; }
 	
-	div ul li {width: 170px; height: 60px; background: red; margin-bottom: 5px; line-height: 60px; display: inline-block; }
-	div ul li a {font-size: 18px; width: 170px; height: 60px; display: inline-block;}
+	#sideBar ul li {width: 170px; height: 60px; background: red; margin-bottom: 5px; line-height: 60px; display: inline-block; }
+	#sideBar ul li a {font-size: 18px; width: 170px; height: 60px; display: inline-block;}
 		
 	/* content 속지 */
 	.qna1 {width: 800px; height: 100px; background: blue; margin-bottom: 50px; border-radius: 25px; font-size: 25px; line-height: 100px;}
@@ -47,7 +47,7 @@
 <body>
 <div id="sideBar">
 	<ul>
-		<li><a href="serviceMain2">고객센터 홈</a></li>
+		<li><a href="serviceMain">고객센터 홈</a></li>
 		<li><a href="serviceHistory">상담내역 확인</a></li>
 		<li><a href="#">자주 묻는 질문</a></li>
 		<li><a href="#">1대1 문의</a></li>
