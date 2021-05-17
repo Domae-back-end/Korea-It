@@ -92,9 +92,10 @@ Calendar today = Calendar.getInstance();
 boolean check = false;
 if (request.getParameter("dal") != null) {
 	today.set(Calendar.MONTH, Integer.parseInt(request.getParameter("dal")));
+	today.set(Calendar.MONTH, today.get(Calendar.MONTH)-1);
 }
 today.set(Calendar.DATE, 1);
-if (request.getParameter("dal") != null && request.getParameter("el") != null) {
+if(request.getParameter("dal") != null && request.getParameter("el") != null) {
 	check = true;
 }
 %>
@@ -128,7 +129,7 @@ if (request.getParameter("dal") != null && request.getParameter("el") != null) {
 	<c:forEach var="a" begin="1"
 		end="<%=today.getActualMaximum(Calendar.DATE)%>">
 		<c:choose>
-			<c:when test="${param.dal == now.month+1 }">
+			<c:when test="<%=today.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH) %>">
 				<c:choose>
 					<c:when test="${a == now.date }">
 						<div class="el">
