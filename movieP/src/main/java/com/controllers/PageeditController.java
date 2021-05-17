@@ -23,6 +23,7 @@ import com.admin.service.PageeditService;
 import com.admin.service.Provider;
 import com.admin.service.SalesService;
 import com.model.Menu;
+import com.model.MinfoPageDTO;
 import com.model.MovieInfoDTO;
 
 
@@ -34,7 +35,8 @@ public class PageeditController {
 	Provider pr;
 	
 	@ModelAttribute("data")
-	Object data(@PathVariable String service, MovieInfoDTO mdto,HttpServletRequest request) {
+	Object data(@PathVariable String service,HttpServletRequest request, MovieInfoDTO mdto,
+				MinfoPageDTO pdto) {
 		System.out.println("${data}제작중.-----------------------------");
 		System.out.println("pageedit-"+service+"실행");
 		System.out.println("MovieInfoDTO:"+mdto);
@@ -48,12 +50,8 @@ public class PageeditController {
 			fservice.fileup(mdto.getInfoimg(), request,mdto.getMovietitle());
 			for (MultipartFile mf : mdto.getInfoimg()) {
 				imgnames.add(mf.getOriginalFilename());
-			}
-			
-			
+			}			
 		}
-		
-		
 		
 		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
 		
@@ -62,16 +60,11 @@ public class PageeditController {
 		obj.put("mdto", mdto);
 		obj.put("request", request);
 		obj.put("imgnames", imgnames);
-		//obj.put("mrequest", mrequest); //이렇게 다때려박아도 괜찮은건가.
+		obj.put("pdto", pdto);
 		
 		
-		return sr.execute(obj);		
+		return sr.execute(obj);	// has > servie,mdto,req, imgnames,pdto	
 	}
-	
-	
-	
-	
-	
 	
 	@ModelAttribute("bodyurl")
 	String bodypageUrl(@PathVariable String service) {
@@ -91,16 +84,12 @@ public class PageeditController {
 		map.get("pageedit").add(new Menu("movieinfolist","영화정보관리"));
 		
 		return map.get("pageedit");
-	}
-	
-	
+	}	
 	@RequestMapping
-	String mainpage(@PathVariable String service) {
-		
+	String mainpage(@PathVariable String service) {	
 		if(service.endsWith("Reg")) {
 			return "admin/page/alter";
-		}
-		
+			}
 		
 		return "admin/index";
 	}
