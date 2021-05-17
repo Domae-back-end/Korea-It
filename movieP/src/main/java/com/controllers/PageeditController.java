@@ -40,9 +40,6 @@ public class PageeditController {
 		System.out.println("${data}제작중.-----------------------------");
 		System.out.println("pageedit-"+service+"실행");
 		System.out.println("MovieInfoDTO:"+mdto);
-		
-	
-		
 		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
 		
 		Map<String, Object> obj= new HashMap<String, Object>();
@@ -64,10 +61,8 @@ public class PageeditController {
 	@ModelAttribute("submenu")
 	ArrayList<Menu> subMenu( ) {
 		System.out.println("초기단계-서브메뉴들어간다");
-		HashMap<String, ArrayList<Menu>>map = new HashMap<>();
-		
-		map.put("pageedit", new ArrayList<Menu>());
-		
+		HashMap<String, ArrayList<Menu>>map = new HashMap<>();		
+		map.put("pageedit", new ArrayList<Menu>());		
 		map.get("pageedit").add(new Menu("banner","메인베너관리"));
 		map.get("pageedit").add(new Menu("noticelist","공지사항/뉴스"));
 		map.get("pageedit").add(new Menu("movieinfolist","영화정보관리"));
@@ -75,11 +70,11 @@ public class PageeditController {
 		return map.get("pageedit");
 	}	
 	@RequestMapping
-	String mainpage(@PathVariable String service) {	
+	String view(@PathVariable String service) {	
 		if(service.endsWith("Reg")) {
 			return "admin/page/alter";
 			}
-		
+	
 		return "admin/index";
 	}
 	

@@ -17,7 +17,6 @@ import com.model.MovieTimeDTO;
 
 @Controller
 @RequestMapping("admin/movietime/{cate}")
-
 public class MovieTimeController {
 
 	@Resource

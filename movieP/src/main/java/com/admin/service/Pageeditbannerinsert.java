@@ -15,13 +15,13 @@ import com.model.MovieInfoDTO;
 
 //Service단
 @Service
-public class Pageeditbanner implements PageeditService {
+public class Pageeditbannerinsert implements PageeditService {
 	
 
 	@Resource
 	DbMapper db;
 	
-	@Override // 배너 보기.
+	@Override // 배너 변경
 	public Object execute(Object obj) {
 		
 		ArrayList<BannerDTO> res= (ArrayList<BannerDTO>) db.selectBanner();

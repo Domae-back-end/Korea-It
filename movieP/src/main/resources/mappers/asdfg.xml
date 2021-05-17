@@ -151,8 +151,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<insert id="insertBanner" parameterType="BannerDTO">
 	<!-- 조건문을 달고 싶은데..  -->
 		insert into bannerimg (#{bannerindex}, #{imgurl})
-	</insert>
-	
+	</insert>	
 	
 	<update id="changeBanner"   parameterType="BannerDTO"  >
 		update bannerimg imgurl= #{imgurl} where bannerindex= #{bannerindex}
