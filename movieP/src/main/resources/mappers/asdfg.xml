@@ -85,11 +85,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	 <select id="pullmovieinfo">
 	  select * from movieinfo where movietitle =#{movietitle}
 	 </select>
-	
+	<!-- 이걸 일단 끊어서 가져올 꺼고. 가져온 애들 각각 movietitle 확인해서  -->
 	<!--영화정보 불러올 때2  배우들-->
 	
-	 <select id="pullactor" resultType="ActorDTO">
-	 	 select * from actor where movietitle =#{movietitle}
+	 <select id="pullactor" resultType="ActorDTO" >
+	 	 select * from actor where movietitle =#{m_index}
 	 </select>	
 	
 	<!--영화정보 불러올 때3  -->

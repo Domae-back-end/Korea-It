@@ -47,12 +47,14 @@ public class Pageeditmovieinfolist implements PageeditService {
 			for (ActorDTO ee : db.pullactor(movietitle)) {
 				mactrs+=ee.getActorid()+",";
 			}
+			if(mactrs.length()>1)
 			mactrs=mactrs.substring(0, mactrs.length()-1);
 			//List<CateDTO> pullcate(String movietitle);
 			//List<MimgDTO> pullimg(String movietitle);
 			for (CateDTO ee : db.pullcate(movietitle)) {
 				mcate+=ee.getCate()+",";
 			}
+			if(mcate.length()>1)
 			mcate= mcate.substring(0, mcate.length()-1);
 			for (MimgDTO ee : db.pullimg(movietitle)) {
 				movieimg+=ee.getImgname();

@@ -7,8 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-영화 디테일 페이지
-이제 여기서 다시 id 읽어야 함.
-${moviedetail }
+<div>
+	<div id="detail">
+		<p id="title">${moviedetail.movietitle }</p>
+		<p id="poster"><img src="/views/user/img/movie/${moviedetail.movieimg }"></p>	
+	</div>
+</div>
+<div>
+	<p id="plot">${moviedetail.mplot }</p>
+	<p id="movieinfo">${moviedetail.mdir }</p>
+</div>
 </body>
 </html>

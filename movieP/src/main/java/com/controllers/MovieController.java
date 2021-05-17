@@ -19,19 +19,26 @@ import com.model.MovieAction2;
 import com.model.MovieInfoDTO;
 
 @Controller
-@RequestMapping("/user/movie/{cate}")
+@RequestMapping("/user/movie/{service}")
 public class MovieController {
 
 	@Resource
 	Provider pr;
 	
 	@RequestMapping
-	public String view(@PathVariable String cate) {
-		return "user/page/movie/"+cate;
+	public String view(@PathVariable String service) {
+		return "user/page/movie/"+service;
+	}
+	
+	@ModelAttribute("bodyurl")
+	String bodypageUrl(@PathVariable String service) {
+		
+		System.out.println("바디유알엘");
+		return "moviemain";
 	}
 	
 	@ModelAttribute("moviedata")
-	Object mm(@PathVariable String cate) {
+	Object mm(@PathVariable String service) {
 		
 		MovieAction res = pr.getContext().getBean("movielist", MovieAction.class);
 		return res.execute();
@@ -50,14 +57,14 @@ public class MovieController {
 	}
 	
 	@ModelAttribute("moviedatabefore")
-	Object mmBefore(@PathVariable String cate) {
+	Object mmBefore(@PathVariable String service) {
 		
 		MovieAction res = pr.getContext().getBean("moviebefore", MovieAction.class);
 		return res.execute();
 	}
 	
 	@ModelAttribute("moviedataafter")
-	Object mmAfter(@PathVariable String cate) {
+	Object mmAfter(@PathVariable String service) {
 		
 		MovieAction res = pr.getContext().getBean("movieafter", MovieAction.class);
 		return res.execute();

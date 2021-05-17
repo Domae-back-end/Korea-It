@@ -1,7 +1,7 @@
 package com.controllers;
 
 import javax.annotation.Resource;
-
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,7 +24,7 @@ public class UserController {
 	
 	
 	@ModelAttribute("bodyurl")
-	String bodypageUrl() {
+	String bodypageUrl(HttpServletRequest req) {
 		return "body";
 	}
 

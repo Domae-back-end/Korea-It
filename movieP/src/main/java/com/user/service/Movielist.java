@@ -21,6 +21,11 @@ public class Movielist implements MovieAction{
 	public Object execute() {
 		System.out.println("Movielist execute()");
 		List<MovieInfoDTO> list = mm.movieInfo();
+		
+		//  이부분이.. 좀 두꺼워져야해요 ㅠㅜㅠ
+		
+		
+
 		return list;
 	}
 	
