@@ -12,11 +12,40 @@
 </c:forEach>
 <script src="<c:url value="/my_js/jquery-3.6.0.js"/>"></script>
 <script>
+
 $(function(){
-	$(".tBtn").click(function(){
-		alert("예매페이지로 보내기")
+	
+	$(".btn1").click(function(){
+		console.log($(this).html());
+		$.ajax({
+			url:"/views/user/page/movie/inputdata.jsp",
+			data:{kind:$(this).html(), dd:"${moviedatabefore}"}, 
+			success:function(data){
+				$(".wrapper").html(data)
+			},
+			error:function(e){
+				alert(e.responseText)
+			}
+		})
 	})
-})
+	
+		$(".btn2").click(function(){
+		console.log($(this).html());
+		$.ajax({
+			url:"/views/user/page/movie/inputdata.jsp",
+			data:{kind:$(this).html(), dd:"${moviedataafter}"}, 
+			success:function(data){
+				$(".wrapper").html(data)
+			},
+			error:function(e){
+				alert(e.responseText)
+			}
+		})
+	})
+	
+	
+})	
+
 </script>
 
 <style>
@@ -60,21 +89,11 @@ $(function(){
 </head>
 <body>
 	<div class = "pp">
-		<div><a href='<c:url value="/views/user/page/movie/boxoffice.jsp"/>'>박스오피스</a></div>
-		<div>상영예정작</div>
+		<div class ="btn1">boxoffice</div>
+		<div class ="btn2">expect</div>
 	</div>
 <div class = "wrapper">
-	<c:forEach items="${moviedata }" var="mm" varStatus="no">
-	<table border="">
-		<tr><td>${no.index +1}</td></tr>
-		<tr><td id="pos"><img alt ="" src='<c:url value= "/views/user/img/movie/${mm.movieimg }"/>'></td></tr>
-		<tr><td>${mm.movietitle }</td></tr>
-		<tr>
-			<td>평점: ${mm.star }
-			<input class = "tBtn" type="button" value="예매하기"></td>
-		</tr>
-	</table>
-	</c:forEach>
+
 </div>
 
 </body>

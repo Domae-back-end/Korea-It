@@ -18,6 +18,9 @@ public class MovieTimeupdate implements MovieTimeService{
 	
 	@Override
 	public Object execute(String dal, String el, MovieTimeDTO dto) {
-		return null;
+		HashMap<String, Object> ar = new HashMap<>();
+		ar.put("info", db.findMovie(dto.getMovietitle()));
+		ar.put("time", db.findMovieTime(dto.getMovietitle()));
+		return ar;
 	}
 }
