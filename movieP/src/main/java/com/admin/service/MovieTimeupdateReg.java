@@ -13,7 +13,7 @@ import com.model.DbMapper;
 import com.model.MovieInfoDTO;
 import com.model.MovieTimeDTO;
 
-@Service(value = "MovieTimeinsertReg")
+@Service(value = "MovieTimeupdateReg")
 public class MovieTimeupdateReg implements MovieTimeService {
 
 	@Resource
