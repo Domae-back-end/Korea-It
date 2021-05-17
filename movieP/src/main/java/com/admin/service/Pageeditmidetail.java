@@ -59,8 +59,6 @@ public class Pageeditmidetail implements PageeditService {
 			res.setMcate(mcate);
 			res.setMovieimg(movieimg);			
 				
-		//MinfListDTO( movielist >정보에 리스트가 있음.)
-	
 		System.out.println("Detail 끗. ");
 		return res;
 	}
