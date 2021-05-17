@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.model.BannerDTO;
 import com.model.DbMapper;
 import com.model.MovieTimeDTO;
 import com.model.MovieInfoDTO;
@@ -22,15 +23,14 @@ public class Pageeditbanner implements PageeditService {
 	
 	@Override
 	public Object execute(Object obj) {
-//		List<MovieTimeDTO> dto1 = db.movieTime();
-//		List<MovieTimeDTO> res = new ArrayList<MovieTimeDTO>();
-//		for (MovieTimeDTO a : dto1) {
-//			if(((a.getReg_date().getMonth()+1)+"").equals(dal) &&
-//					(a.getReg_date().getDate()+"").equals(el)) {
-//				res.add(a); 
-//			}
-//		}
-		return "배너";
+		
+		ArrayList<BannerDTO> res= (ArrayList<BannerDTO>) db.selectBanner();
+		
+		System.out.println(res.size());
+		
+		
+		
+		return res;
 	}
 
 	
