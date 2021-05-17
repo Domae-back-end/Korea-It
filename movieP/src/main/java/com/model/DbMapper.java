@@ -30,19 +30,22 @@ public interface DbMapper {
 	//영화정보 list 
 	List<MovieInfoDTO> movieinfolist(HashMap<String,Object> map);
 	
+	// 영화 제목으로 인덱스 Integer뽑아오기.
+	Integer getIndexByTitle(String movietitle);
 	
 	//영화정보insert
-	List<ActorDTO> findactor(String actorname);	
+		List<ActorDTO> findactor(String actorname);	
 	void movieinfoinsert(MovieInfoDTO dto);
 	void actormovieinsert(ActorDTO dto);
 	void catemovieinsert(CateDTO dto);
 	void movieimgin(MimgDTO dto);
 	
+	
 	MovieInfoDTO pullmovieinfo(String movietitle);	
 	
-	List<ActorDTO> pullactor(String movietitle);
-	List<CateDTO> pullcate(String movietitle);
-	List<MimgDTO> pullimg(String movietitle);
+	List<ActorDTO> pullactor(Integer m_index);
+	List<CateDTO> pullcate(Integer m_index);
+	List<MimgDTO> pullimg(Integer m_index);
 	
 	List<MemberDTO> meminsert();
 	MemberDTO memdetail();

@@ -41,17 +41,7 @@ public class PageeditController {
 		System.out.println("pageedit-"+service+"실행");
 		System.out.println("MovieInfoDTO:"+mdto);
 		
-		HashSet<String> imgnames= new HashSet<>();//뭔가어색.
-		
-		
-		if(mdto.getInfoimg()!=null) {			
-			FileupService fservice = (FileupService)pr.getContext().getBean("fileupService");
-			//용량이 초과할 경우 > 바로 alter 리턴.
-			fservice.fileup(mdto.getInfoimg(), request,mdto.getMovietitle());
-			for (MultipartFile mf : mdto.getInfoimg()) {
-				imgnames.add(mf.getOriginalFilename());
-			}			
-		}
+	
 		
 		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
 		
@@ -59,7 +49,6 @@ public class PageeditController {
 		obj.put("service", service);
 		obj.put("mdto", mdto);
 		obj.put("request", request);
-		obj.put("imgnames", imgnames);
 		obj.put("pdto", pdto);
 		
 		
