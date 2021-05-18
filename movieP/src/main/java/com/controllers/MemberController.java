@@ -46,5 +46,5 @@ public class MemberController {
 			return "user/index";
 		
 		return "user/page/member/"+cate+"/"+service;
-	}
+	} 
 }
