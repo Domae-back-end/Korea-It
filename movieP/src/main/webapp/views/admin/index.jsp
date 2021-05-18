@@ -16,6 +16,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<c:url value="/my_js/jquery-3.6.0.js"/>"></script>
 
 <title>관리자 메인 화면</title>
 <style>

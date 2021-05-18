@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>바디(메인)</title>
+<title>Insert title here</title>
 </head>
 <body>
-바디
-
+메인페이지
 </body>
 </html>

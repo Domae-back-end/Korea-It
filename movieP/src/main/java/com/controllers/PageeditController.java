@@ -22,6 +22,7 @@ import com.admin.service.MovieTimeService;
 import com.admin.service.PageeditService;
 import com.admin.service.Provider;
 import com.admin.service.SalesService;
+import com.model.BannerDTO;
 import com.model.Menu;
 import com.model.MinfoPageDTO;
 import com.model.MovieInfoDTO;
@@ -36,13 +37,10 @@ public class PageeditController {
 	
 	@ModelAttribute("data")
 	Object data(@PathVariable String service,HttpServletRequest request, MovieInfoDTO mdto,
-				MinfoPageDTO pdto) {
+				MinfoPageDTO pdto,BannerDTO banDTO) {
 		System.out.println("${data}제작중.-----------------------------");
 		System.out.println("pageedit-"+service+"실행");
 		System.out.println("MovieInfoDTO:"+mdto);
-		
-	
-		
 		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
 		
 		Map<String, Object> obj= new HashMap<String, Object>();
@@ -50,7 +48,7 @@ public class PageeditController {
 		obj.put("mdto", mdto);
 		obj.put("request", request);
 		obj.put("pdto", pdto);
-		
+		obj.put("banDTO", banDTO);
 		
 		return sr.execute(obj);	// has > servie,mdto,req, imgnames,pdto	
 	}
@@ -64,10 +62,8 @@ public class PageeditController {
 	@ModelAttribute("submenu")
 	ArrayList<Menu> subMenu( ) {
 		System.out.println("초기단계-서브메뉴들어간다");
-		HashMap<String, ArrayList<Menu>>map = new HashMap<>();
-		
-		map.put("pageedit", new ArrayList<Menu>());
-		
+		HashMap<String, ArrayList<Menu>>map = new HashMap<>();		
+		map.put("pageedit", new ArrayList<Menu>());		
 		map.get("pageedit").add(new Menu("banner","메인베너관리"));
 		map.get("pageedit").add(new Menu("noticelist","공지사항/뉴스"));
 		map.get("pageedit").add(new Menu("movieinfolist","영화정보관리"));
@@ -75,11 +71,11 @@ public class PageeditController {
 		return map.get("pageedit");
 	}	
 	@RequestMapping
-	String mainpage(@PathVariable String service) {	
+	String view(@PathVariable String service) {	
 		if(service.endsWith("Reg")) {
 			return "admin/page/alter";
 			}
-		
+	
 		return "admin/index";
 	}
 	

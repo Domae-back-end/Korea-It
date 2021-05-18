@@ -21,7 +21,7 @@ public class Pageeditbanner implements PageeditService {
 	@Resource
 	DbMapper db;
 	
-	@Override
+	@Override // 배너 보기.
 	public Object execute(Object obj) {
 		
 		ArrayList<BannerDTO> res= (ArrayList<BannerDTO>) db.selectBanner();

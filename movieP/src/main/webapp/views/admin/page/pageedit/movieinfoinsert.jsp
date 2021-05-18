@@ -12,7 +12,7 @@
 	<script>
 		$(document).ready(function() {
 
-			window.onload = function() {//윈도우가 열리면
+			//윈도우가 열리면
 				document.getElementById("addactor").onclick = function() {
 
 					var newinput = document.createElement("input");
@@ -36,7 +36,7 @@
 					document.getElementById("image").appendChild(newinput)			
 					alert("이미지 추가");
 				}
-			}
+			
 
 		})
 	</script>
