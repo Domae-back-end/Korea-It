@@ -88,8 +88,15 @@ INSERT INTO bannerimg (bannerindex,imgurl) VALUES
 
 	 
 	 
-	 
-	 
+	 <!-- 매출 관련 게시판 ( 테스트용)  -->
+	 CREATE TABLE `salestest` (
+	`purchaseNo`	auto_increment primary key,
+	`userid`	varchar(20)	,
+	`purchasePrice`	int	,
+	`purchaseType`	varchar(30)	,
+	`purchaseName`	varchar(30)	,
+	`purchasetime`	datetime	
+);
 	 
 	 
 	 
