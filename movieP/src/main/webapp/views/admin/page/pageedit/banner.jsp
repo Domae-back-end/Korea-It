@@ -20,6 +20,8 @@
 		
 		$(".changeBtn").click(function(){
 			alert("사진 수정"+$(this).val()+":"+"#bancontainer"+$(this).val())
+			
+			$("#changeexists").val("1");
 			console.log($(this).val())
 			var tobeeditted = document.getElementById("bancontainer"+$(this).val())
 			while(tobeeditted.hasChildNodes()){
@@ -46,18 +48,29 @@
 	
 		
 		$("#saveBtn").click(function saveGo() {
-	
-			alert("변경사항 있으면 저장합니다.")
+			if(check()){
+			
+			if(confirm("저장하시겠습니까?")){
 			saveform.action = "bannersaveReg"
 			
-			saveform.submit()		
-
+			saveform.submit()		}
+			else{
+			console.log("저장 안함");
+			}
+			}
 			})
 		
 		
 		
 		
-		
+		function check() {
+        if ($("#changeexists").val() === '1') {
+            return true;
+        } else {
+            alert("변경 사항이 없습니다.");
+            return false;
+        }
+    }
 		
 		
 		
@@ -73,7 +86,7 @@
 </script>
 
 <div id="bannercontainer">
-<form name="saveform" method="post" enctype="multipart/form-data" action="">
+<form name="saveform" method="post" enctype="multipart/form-data" >
 <c:forEach var="i" items="${data}" >
 
 		<div id="bancontainer${i.bannerindex }">
@@ -84,7 +97,7 @@
 		</div>
 		
 </c:forEach>
-
+<input type="hidden" id="changeexists" value="0" />
 <button  id="saveBtn" type="button" >저장하기</button>
 </form>
 </div>

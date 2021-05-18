@@ -59,7 +59,7 @@ public class PageeditbannersaveReg implements PageeditService {
 		
 		
 
-		al.setMsg("저장 실패(default)");
+		al.setMsg("저장 완료되었습니다.(default)");
 		al.setUrl("/admin/pageedit/banner");
 
 //			}
