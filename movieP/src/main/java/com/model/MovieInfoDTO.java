@@ -92,6 +92,7 @@ public class MovieInfoDTO {
 	String posterUrl;
 	//String mdate;//(mdate 2021-05-11 꼴로 날라옴.)
 	Date mdate;
+	String mdate_s;
 	int length;
 	
 	MultipartFile file;
