@@ -15,33 +15,36 @@ import com.model.MemberDTO;
 @RequestMapping("/user/member/{cate}/{service}")
 public class MemberController {
 
-	@Resource
-	Provider pr;
+   @Resource
+   Provider pr;
 
-	@ModelAttribute("memdata")
-	Object ddd(@PathVariable String service, MemberDTO mdto) { 
-		
-		MemberAction res = pr.getContext().getBean("member"+service, MemberAction.class);
-		
-		return res.execute(mdto);
+   @ModelAttribute("memdata")
+   Object ddd(@PathVariable String service, MemberDTO mdto) { 
+      
+      if(service.endsWith("Form"))
+         return null;
+      
+      MemberAction res = pr.getContext().getBean("member"+service, MemberAction.class);
+      
+      return res.execute(mdto);
 
-	}
-	
-	@ModelAttribute("bodyurl")
-	String bodypageUrl(@PathVariable String cate, @PathVariable String service) {
-		
-		return "page/member/"+cate+"/"+service;
-	}
+   }
+   
+   @ModelAttribute("bodyurl")
+   String bodypageUrl(@PathVariable String cate, @PathVariable String service) {
+      
+      return "member/"+cate+"/"+service;
+   }
 
-	@RequestMapping
-	public String view(@PathVariable String cate, @PathVariable String service) {
-		
-		if(service.endsWith("Reg"))
-			return "user/page/member/alert";
-		
-		if(cate.endsWith("login") || cate.endsWith("mypage") )
-			return "user/index";
-		
-		return "user/page/member/"+cate+"/"+service;
-	}
+   @RequestMapping
+   public String view(@PathVariable String cate, @PathVariable String service) {
+      
+      if(service.endsWith("Reg"))
+         return null;
+      
+      if(cate.endsWith("login") || cate.endsWith("mypage") )
+         return "user/index";
+      
+      return "user/page/member/"+cate+"/"+service;
+   } 
 }
