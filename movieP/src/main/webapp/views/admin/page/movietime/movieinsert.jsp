@@ -40,7 +40,7 @@
 			<option value="3D관">3D관</option>
 		</select>
 		시작 시간 : <input type="time" name="starttime1"> 
-		<a href="" class="checktime">중복확인</a>
+		<a href="?" class="checktime">중복확인</a>
 		<input type="submit" value="시간표 추가">
 		<div class="both"></div>
 		<hr>
