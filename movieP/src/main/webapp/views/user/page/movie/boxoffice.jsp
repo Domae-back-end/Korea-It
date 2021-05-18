@@ -12,7 +12,7 @@
       <tr><td>${no.index +1}</td></tr>
       <tr>
       <td id="pos">
-      <a href = "/user/movie/moviedetail?ind=${mm.m_index}">
+      <a href = "/user/movie/moviedetail?sub=info&ind=${mm.m_index}">
       <img alt ="" src='<c:url value= "/moviedata/${mm.movietitle }/${mm.movieimg }"/>'>
       </a>
       </td></tr>

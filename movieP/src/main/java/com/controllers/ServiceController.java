@@ -19,9 +19,14 @@ public class ServiceController {
 	
 	
 	
-	@ModelAttribute("bodyurl")
+	@ModelAttribute("bodyurl2")
 	String bodypageUrl(@PathVariable String service) {
 		
-		return "/"+service;
+		//return "serviceHome"; //메인
+		//return "serviceHistory"; //상담내역
+		//return "serviceQna2"; //자주묻는질문
+		//return "servicePersonal"; //1대1문의
+		return "serviceNotice"; //공지사항
+//		자주찾는서비스
 	}
 }

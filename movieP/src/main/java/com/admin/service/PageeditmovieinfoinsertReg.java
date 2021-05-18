@@ -3,6 +3,7 @@ package com.admin.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,25 +29,35 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 
 	@Resource
 	DbMapper db;
+	
+	@Resource
+	FileupService fservice;
 
 	@Override
 	public Object execute(Object obj) {// 여기에 movieinfodto
 		System.out.println("movieinfo insertReg 서비스 진입");
-		AlterDTO al = new AlterDTO();
 		HashMap<String, Object> map = (HashMap) obj;		
 		MovieInfoDTO mdto = (MovieInfoDTO) map.get("mdto");
-		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletRequest request = (HttpServletRequest)map.get("request");	
+		db.movieinfoinsert(mdto);// 일단 집어넣고.	
+		int m_index =db.getIndexByTitle(mdto.getMovietitle());
+		HashSet<String> imgnames= new HashSet<>();
+		if(mdto.getInfoimg()!=null) {			
+			System.out.println("이미지가 있다.");
+			//FileupService fservice = new FileupService();//용량이 초과할 경우 > 바로 alter 리턴.
+			fservice.fileup(mdto.getInfoimg(), request,  mdto.getMovietitle(),m_index);
+			for (MultipartFile mf : mdto.getInfoimg()) {
+				imgnames.add(mf.getOriginalFilename());
+			}			
+		}		
+		AlterDTO al = new AlterDTO();	
 		ArrayList<ActorDTO> adto = new ArrayList<>();
-
 		for (int i = 0; i < mdto.getMactrs().split(",").length; i++) {
 			ActorDTO actor = new ActorDTO();
 			actor.setActorid(mdto.getMactrs().split(",")[i]);
-			actor.setMovietitle(mdto.getMovietitle());
-			
-			adto.add(i, actor);
-			
+			actor.setM_index(m_index);;			
+			adto.add(i, actor);			
 		}
-
 		for (ActorDTO actor : adto) {
 			System.out.println(actor);
 			db.actormovieinsert(actor);
@@ -55,9 +66,8 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		ArrayList<CateDTO> cdto = new ArrayList<>();		
 		for (int i = 0; i < mdto.getMcate().split(",").length; i++) {
 			CateDTO cate = new CateDTO();
-			cate.setMovietitle(mdto.getMovietitle());
-			cate.setCate(mdto.getMcate().split(",")[i]);
-			
+			cate.setM_index(m_index);;
+			cate.setCate(mdto.getMcate().split(",")[i]);			
 			cdto.add(i,cate);			
 		}
 		for (CateDTO cate : cdto) {
@@ -65,9 +75,7 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 			db.catemovieinsert(cate);
 		}
 		System.out.println("카테정보 in");
-		db.movieinfoinsert(mdto);
-		
-		System.out.println("영화정보 in");
+	
 		
 		
 		

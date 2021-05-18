@@ -17,16 +17,7 @@ public class MemberController {
 
 	@Resource
 	Provider pr;
-	
-	@RequestMapping
-	public String view(@PathVariable String cate, @PathVariable String service) {
-		
-		if(service.endsWith("Reg"))
-			return "user/page/member/alert";
-		
-		return "user/page/member/"+cate+"/"+service;
-	}
-	
+
 	@ModelAttribute("memdata")
 	Object ddd(@PathVariable String service, MemberDTO mdto) { 
 		
@@ -35,5 +26,22 @@ public class MemberController {
 		return res.execute(mdto);
 
 	}
+	
+	@ModelAttribute("bodyurl")
+	String bodypageUrl(@PathVariable String cate, @PathVariable String service) {
+		
+		return "page/member/"+cate+"/"+service;
+	}
 
+	@RequestMapping
+	public String view(@PathVariable String cate, @PathVariable String service) {
+		
+		if(service.endsWith("Reg"))
+			return "user/page/member/alert";
+		
+		if(cate.endsWith("login") || cate.endsWith("mypage") )
+			return "user/index";
+		
+		return "user/page/member/"+cate+"/"+service;
+	}
 }

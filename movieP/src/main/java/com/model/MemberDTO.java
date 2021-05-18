@@ -9,6 +9,5 @@ public class MemberDTO {
 
 	String userid, userpw , username , userpnum, useremail;
 	Date userbirth, joinday;
-	int userpoint;
 	
 }

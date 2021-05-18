@@ -12,26 +12,28 @@ create table movieinfo(
 	star	int
 );
 
+drop table actor;
+drop table cate;
+drop table movieimg;
 
 create table actor(
 	actorid varchar(100) ,
 	actorname varchar(100) ,
-	movietitle varchar(100) not null,
+	m_index int,
 	birthdata date
 );
 
 
 create table cate(
-	movietitle varchar(100) not null,
-	cate varchar(100) not null
+	m_index int,
+	cate varchar(100)
 );
 
-create table movieimg(
-	movietitle varchar(100) not null,
+create table movieimg(	
+	m_index int,
 	imgname varchar(100)
 
 );
-
 
 
 

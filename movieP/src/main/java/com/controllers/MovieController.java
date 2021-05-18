@@ -26,7 +26,12 @@ public class MovieController {
 	Provider pr;
 	
 	@RequestMapping
-	public String view(@PathVariable String service) {
+	public String view(@PathVariable String service, HttpServletRequest req) {
+		
+		if(req.getParameter("submenu") != null) {
+			String s = req.getParameter("submenu");
+			return "/user/page/movie/submenu/"+s;
+		}
 		return "user/page/movie/"+service;
 	}
 	
@@ -49,10 +54,38 @@ public class MovieController {
 		
 		if(req.getParameter("ind") != null) {
 			MovieAction2 res = pr.getContext().getBean("moviedetail", MovieAction2.class);
-			System.out.println(req.getParameter("ind"));
 			return res.execute(Integer.parseInt(req.getParameter("ind")) );
-		}
+		}	
+		return null;
+	}
+	
+	@ModelAttribute("movieactor")
+	Object aa(HttpServletRequest req) {
 		
+		if(req.getParameter("ind") != null) {
+			MovieAction2 res = pr.getContext().getBean("movieactor", MovieAction2.class);
+			return res.execute(Integer.parseInt(req.getParameter("ind")) );
+		}	
+		return null;
+	}
+	
+	@ModelAttribute("movieimage")
+	Object ii(HttpServletRequest req) {
+		
+		if(req.getParameter("ind") != null) {
+			MovieAction2 res = pr.getContext().getBean("movieimg", MovieAction2.class);
+			return res.execute(Integer.parseInt(req.getParameter("ind")) );
+		}	
+		return null;
+	}
+	
+	@ModelAttribute("moviecate")
+	Object cc(HttpServletRequest req) {
+		
+		if(req.getParameter("ind") != null) {
+			MovieAction2 res = pr.getContext().getBean("moviecate", MovieAction2.class);
+			return res.execute(Integer.parseInt(req.getParameter("ind")) );
+		}	
 		return null;
 	}
 	

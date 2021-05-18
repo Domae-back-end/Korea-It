@@ -68,24 +68,52 @@
 	<hr>
 	
 	<form action="/admin/movietime/updateReg">
+		<input type="hidden" value="<%=request.getParameter("movietitle") %>" name="movietitle" />
 		<div class="detaillay">
+			<div class="to1">순서</div>
+			<div class="to1">관</div>
 			<div class="to1">날짜</div>
 			<div class="to1">시작 시간</div>
-			<div class="to1">종료 시간</div>
 			<div class="both"></div>
-			<c:forEach var="a" items="<%=ac %>">
+			<c:forEach var="a" items="<%=ac %>" varStatus="i">
+					<input type="hidden" value="${a.m_index }" name="m_indexlist">
+					<div class="to1">${i.index+1 }</div>
 					<div class="to1">
-					<input type="text" value="<fmt:formatDate value="${a.reg_date }" type="both"
-								pattern="yyyy-MM-dd" />" name="reg_date">
+						<select name="sectornolist">
+							<c:choose>
+								<c:when test="${a.sectorno eq '작은관' }">
+									<option value="작은관" selected="selected">작은관</option>
+								</c:when>
+								<c:otherwise>
+									<option value="작은관">작은관</option>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${a.sectorno eq '기존관' }">
+									<option value="기존관" selected="selected">기존관</option>
+								</c:when>
+								<c:otherwise>
+									<option value="기존관">기존관</option>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${a.sectorno eq '3D' }">
+									<option value="3D" selected="selected">3D</option>
+								</c:when>
+								<c:otherwise>
+									<option value="3D">3D</option>
+								</c:otherwise>
+							</c:choose>
+						</select>
+					</div>
+					<div class="to1">
+					<input type="date" value="<fmt:formatDate value="${a.reg_date }" type="both"
+								pattern="yyyy-MM-dd" />" name="reg_datelist" />
 				</div>
 				<div class="to1">
-					<input type="text" name="starttime" value="<fmt:formatDate value="${a.starttime }" type="both"
-								pattern="hh:mm:ss" />">
+					<input type="text" name="starttime1" value="<fmt:formatDate value="${a.starttime }" type="both"
+								pattern="hh:mm:ss" />" />
 								</div>
-				<div class="to1">
-		
-					<input type="text" name="endtime" value="<fmt:formatDate value="${a.endtime }" type="both"
-								pattern="hh:mm:ss" />"></div>
 				<div class="both"></div>
 			</c:forEach>
 		</div>

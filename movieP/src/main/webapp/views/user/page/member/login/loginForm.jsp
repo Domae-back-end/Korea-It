@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>로그인</title>
+
 <style>
 *{
 	margin: 0;
@@ -18,9 +14,10 @@ div{
 }
 .secondD{
 	height: 40px;
+	text-align: center;
 }
 a{
-	margin-left:15px;
+	margin-left:10px;
 	text-decoration:none;
 	color: #000;
 	font-size: 15px;
@@ -41,11 +38,6 @@ input[type=submit]{
 	color:#fff;
 }
 </style>
-<script src="<c:url value="/my_js/jquery-3.6.0.js"/>"></script>
-<script>
-</script>
-</head>
-<body>
 <form action ="loginReg" method="post" enctype="multipart/form-data" name="frm">
 <h1>로그인</h1>
 	<div>
@@ -55,13 +47,11 @@ input[type=submit]{
 		<input type="submit" value="로그인"/>
 	</div>
 	<div class="secondD">
-		<a href="idFind">ID/PW 찾기</a>
+		<a href="idFind">ID 찾기</a>
 		<a href="../join/joinForm">회원가입</a>
-		<a href="noMLogin">비회원 예매확인</a>
+		<a href="pwFind">PW 찾기</a>
 	</div>
 	<div>
-		<a href=""><img src="/img/ico-naver.png" alt="네이버 로그인" /></a>
+		<a href="/member/naverLogin"><img src="/img/ico-naver.png" alt="네이버 로그인" /></a>
 	</div>
 </form>
-</body>
-</html>

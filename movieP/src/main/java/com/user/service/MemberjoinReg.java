@@ -16,7 +16,7 @@ public class MemberjoinReg implements MemberAction {
 		AlterDTO ad = new  AlterDTO();
 		
 		ad.setMsg("가입이 완료 되었습니다.");
-		ad.setUrl("../../main");
+		ad.setUrl("/user/main");
 		return ad;
 	}
 	

@@ -20,7 +20,7 @@
             <th>개봉일</th>
         <th>배우</th>
             <th>카테고리</th>
-                <th>수량</th>
+                <th>포스터</th>
       </tr>
     </thead>
     <tbody>
@@ -33,6 +33,8 @@
          
         <td>${i.mactrs }</td>
          <td>${i.mcate }</td>
+         <td><img src='<c:url value="/${i.posterUrl }"/>' alt="안보여" style="width: 40px;height:60px;" /></td>
+         
       </tr>
    
 </c:forEach>
