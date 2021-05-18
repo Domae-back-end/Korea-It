@@ -33,6 +33,21 @@
 	.qna2_top>ul>li>button {width: 160px; height: 40px; font-size: 14px; line-height: 40px; cursor: pointer;
 							box-sizing: border-box;border: 1px solid gray; background: yellow; }
 	
+	/* qna2 바디 */
+	.body_td {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
+	.body_td tr:first-of-type>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
+	.body_td tr:first-of-type>td:nth-of-type(1) {width: 50px;}
+	.body_td tr:first-of-type>td:nth-of-type(2) {width: 150px;  }
+	.body_td tr:first-of-type>td:nth-of-type(3) {width: 600px;  }
+	.body_td tr>td:nth-of-type(1) {text-align: center; }
+	.body_td tr>td:nth-of-type(2) {text-align: center; }
+	
+	/* 검색 search */
+	.search {width: 400px; height: 50px; background: lime; margin-left: 400px; }
+	.search>select {font-size: 16px; width: 100px; height: 40px;   }
+	.search>input[type="text"] {font-size: 16px; width: 200px; height: 36px; }
+	.search>input[type="submit"] {font-size: 16px; width: 50px; height: 40px; }
+	
 	
 </style>
 </head>
@@ -79,6 +94,40 @@
 				</li>
 			</ul>
 		</div>
+		
+		<div class="qna2_body">
+			<div class="tot">
+				총 10건이 검색되었습니다.
+			</div>
+			
+			<table class="body_td">
+				<tr>
+					<td>번호</td>
+					<td>카테고리</td><!-- 카테고리(전체, 영화/예매, 가입, 영화관, 기타) -->
+					<td>제목</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>가입</td>
+					<td>포인트적립도 있나요?</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>가입</td>
+					<td>가입은 어떻게 하나요?</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>영화관</td>
+					<td>휴관일정은 어디서 확인하나요?</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>영화/예매</td>
+					<td>환불은 어떻게 하나요?</td>
+				</tr>
+			</table>
+		</div><!-- qna2_body -->
 	</div>
 </div>
 
