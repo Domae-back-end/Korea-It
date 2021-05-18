@@ -37,7 +37,7 @@ public class PageeditbannersaveReg implements PageeditService {
 
 	@Override
 	public Object execute(Object obj) {// 여기에 movieinfodto
-		System.out.println("movieinfo insertReg 서비스 진입");
+		System.out.println("bannersaveReg서비스 진입");
 		HashMap<String, Object> map = (HashMap) obj;		
 		BannerDTO banDTO = (BannerDTO) map.get("banDTO");
 		HttpServletRequest request =(HttpServletRequest)map.get("request");

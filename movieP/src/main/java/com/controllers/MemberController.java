@@ -30,7 +30,7 @@ public class MemberController {
 	@ModelAttribute("bodyurl")
 	String bodypageUrl(@PathVariable String cate, @PathVariable String service) {
 		
-		return "page/member/"+cate+"/"+service;
+		return "member/"+cate+"/"+service;
 	}
 
 	@RequestMapping

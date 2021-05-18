@@ -49,7 +49,7 @@ create table movietime (
 );
 
 
-
+<!-- 회원관련 -->
 
 
 create table memberinfo(
@@ -61,6 +61,12 @@ create table memberinfo(
    useremail varchar(100),
    userpoint int,
    joinday date
+);
+
+<!-- 배너관련 -->
+create table bannerimg(
+	bannerindex int,
+	imgurl varchar(1000)
 );
 
 
