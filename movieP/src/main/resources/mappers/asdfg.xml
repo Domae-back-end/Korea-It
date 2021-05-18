@@ -165,6 +165,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
 	</insert>
 	
+	<select id="memChk" resultType="MemberDTO" parameterType="MemberDTO"  >	
+		select * from memberinfo where userid = #{userid}
+	</select>
+	
 	<insert id="insertBanner" parameterType="BannerDTO">
 	<!-- 조건문을 달고 싶은데..  -->
 		insert into bannerimg (#{bannerindex}, #{imgurl})

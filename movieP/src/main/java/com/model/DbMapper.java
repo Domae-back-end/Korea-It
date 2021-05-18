@@ -54,7 +54,7 @@ public interface DbMapper {
 	
 	void memjoin(MemberDTO mdto);
 	MemberDTO memlogin(MemberDTO mdto);
-	
+	MemberDTO memChk(String id);
 	
 	
 	
