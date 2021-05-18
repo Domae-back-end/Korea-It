@@ -19,19 +19,31 @@ import com.model.MovieAction2;
 import com.model.MovieInfoDTO;
 
 @Controller
-@RequestMapping("/user/movie/{cate}")
+@RequestMapping("/user/movie/{service}")
 public class MovieController {
 
 	@Resource
 	Provider pr;
 	
 	@RequestMapping
-	public String view(@PathVariable String cate) {
-		return "user/page/movie/"+cate;
+	public String view(@PathVariable String service, HttpServletRequest req) {
+		
+		if(req.getParameter("submenu") != null) {
+			String s = req.getParameter("submenu");
+			return "/user/page/movie/submenu/"+s;
+		}
+		return "user/page/movie/"+service;
+	}
+	
+	@ModelAttribute("bodyurl")
+	String bodypageUrl(@PathVariable String service) {
+		
+		System.out.println("바디유알엘");
+		return "moviemain";
 	}
 	
 	@ModelAttribute("moviedata")
-	Object mm(@PathVariable String cate) {
+	Object mm(@PathVariable String service) {
 		
 		MovieAction res = pr.getContext().getBean("movielist", MovieAction.class);
 		return res.execute();
@@ -42,22 +54,50 @@ public class MovieController {
 		
 		if(req.getParameter("ind") != null) {
 			MovieAction2 res = pr.getContext().getBean("moviedetail", MovieAction2.class);
-			System.out.println(req.getParameter("ind"));
 			return res.execute(Integer.parseInt(req.getParameter("ind")) );
-		}
+		}	
+		return null;
+	}
+	
+	@ModelAttribute("movieactor")
+	Object aa(HttpServletRequest req) {
 		
+		if(req.getParameter("ind") != null) {
+			MovieAction2 res = pr.getContext().getBean("movieactor", MovieAction2.class);
+			return res.execute(Integer.parseInt(req.getParameter("ind")) );
+		}	
+		return null;
+	}
+	
+	@ModelAttribute("movieimage")
+	Object ii(HttpServletRequest req) {
+		
+		if(req.getParameter("ind") != null) {
+			MovieAction2 res = pr.getContext().getBean("movieimg", MovieAction2.class);
+			return res.execute(Integer.parseInt(req.getParameter("ind")) );
+		}	
+		return null;
+	}
+	
+	@ModelAttribute("moviecate")
+	Object cc(HttpServletRequest req) {
+		
+		if(req.getParameter("ind") != null) {
+			MovieAction2 res = pr.getContext().getBean("moviecate", MovieAction2.class);
+			return res.execute(Integer.parseInt(req.getParameter("ind")) );
+		}	
 		return null;
 	}
 	
 	@ModelAttribute("moviedatabefore")
-	Object mmBefore(@PathVariable String cate) {
+	Object mmBefore(@PathVariable String service) {
 		
 		MovieAction res = pr.getContext().getBean("moviebefore", MovieAction.class);
 		return res.execute();
 	}
 	
 	@ModelAttribute("moviedataafter")
-	Object mmAfter(@PathVariable String cate) {
+	Object mmAfter(@PathVariable String service) {
 		
 		MovieAction res = pr.getContext().getBean("movieafter", MovieAction.class);
 		return res.execute();

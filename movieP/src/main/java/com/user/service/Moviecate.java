@@ -6,27 +6,24 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.model.CateDTO;
 import com.model.DbMapper;
+import com.model.MimgDTO;
 import com.model.MovieAction;
+import com.model.MovieAction2;
 import com.model.MovieInfoDTO;
 
 
 @Service
-public class Movielist implements MovieAction{
+public class Moviecate implements MovieAction2{
 	
 	@Resource
 	DbMapper mm;
 	
 	@Override
-	public Object execute() {
-		System.out.println("Movielist execute()");
-		List<MovieInfoDTO> list = mm.movieInfo();
-		
-		//  이부분이.. 좀 두꺼워져야해요 ㅠㅜㅠ
-		
-		
-
-		return list;
+	public Object execute(Integer index) {
+		List<CateDTO> res = mm.pullcate(index);
+		return res;
 	}
 	
 
