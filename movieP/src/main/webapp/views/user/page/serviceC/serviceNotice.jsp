@@ -51,41 +51,43 @@
 
 <div id="content">
 	<h2>공지사항</h2>
-	
-	<div class="search">
-		<select name="kind">
-			<option value="title" >제목</option>
-			<option value="pname" >내용</option>
-		</select>
-		<input type="text" />
-		<input type="submit" value="검색" />
-	</div>
-	
-	<div>
-	<table class="td1">
-		<tr>
-			<td>번호</td>
-			<td>구분</td>
-			<td>제목</td>
-			<td>등록일</td>
-			<td>조회수</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>가입</td>
-			<td>ㅇ안된다고</td>
-			<td>2020/05/17</td>
-			<td>답변완료</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>가입</td>
-			<td>가입이안되요</td>
-			<td>2020/05/17</td>
-			<td>미답변</td>
-		</tr>
-	</table>
-	</div>
+	<form action="" method="post">
+		<div class="search">
+			<select name="kind">
+				<option value="title" >제목</option>
+				<option value="pname" >내용</option>
+			</select>
+			<input type="text" />
+			<input type="submit" value="검색" />
+		</div>
+		
+		<div class="notice_tb">
+			<!-- 구분 시스템, 영화관, 기타 -->
+			<table class="td1">
+				<tr>
+					<td>번호</td>
+					<td>구분</td>
+					<td>제목</td>
+					<td>등록일</td>
+					<td>조회수</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>시스템</td>
+					<td>홈페이지 점검</td>
+					<td>2020/05/17</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>영화관</td>
+					<td>영화관 휴관일정</td>
+					<td>2020/05/17</td>
+					<td>3</td>
+				</tr>
+			</table>
+		</div>
+	</form>
 </div>
 
 <div class="clear"></div>
