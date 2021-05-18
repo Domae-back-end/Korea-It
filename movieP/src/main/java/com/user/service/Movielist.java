@@ -20,10 +20,7 @@ public class Movielist implements MovieAction{
 	@Override
 	public Object execute() {
 		System.out.println("Movielist execute()");
-		List<MovieInfoDTO> list = mm.movieInfo();
-		
-		//  이부분이.. 좀 두꺼워져야해요 ㅠㅜㅠ
-		
+		List<MovieInfoDTO> list = mm.movieInfo();		
 		
 
 		return list;

@@ -103,5 +103,15 @@ public class MovieController {
 		return res.execute();
 	}
 	
+	
+	@ModelAttribute("moviereview")
+	Object rr(HttpServletRequest req) {
+		
+		if(req.getParameter("ind") != null) {
+			MovieAction2 res = pr.getContext().getBean("moviereview", MovieAction2.class);
+			return res.execute(Integer.parseInt(req.getParameter("ind")) );
+		}	
+		return null;
+	}
 
 }

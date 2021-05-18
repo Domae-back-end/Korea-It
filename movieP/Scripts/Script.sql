@@ -98,7 +98,14 @@ INSERT INTO bannerimg (bannerindex,imgurl) VALUES
 	purchasetime	datetime	
 );
 
-	 
+
+create table review(
+	cnt int auto_increment primary key,
+	cate varchar(100),
+	userid varchar(100),
+	postcontent varchar(2000),
+	posttime date
+);	 
 	 
 	 
 	 

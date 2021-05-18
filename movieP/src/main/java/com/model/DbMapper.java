@@ -43,6 +43,8 @@ public interface DbMapper {
 	void catemovieinsert(CateDTO dto);
 	void movieimgin(MimgDTO dto);
 	
+	//영화당 review
+	List<MovieReviewDTO> review(Integer num);
 	
 	MovieInfoDTO pullmovieinfo(String movietitle);	
 	

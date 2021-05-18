@@ -16,7 +16,6 @@
 	String cgUrl = cg+".jsp";
 %>
 
-
 <script src="<c:url value="/my_js/jquery-3.6.0.js"/>"></script>
 <script>
 
