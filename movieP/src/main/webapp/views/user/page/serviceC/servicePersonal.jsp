@@ -89,21 +89,8 @@
 							<option value="ticket">예매</option>
 							<option value="lost">분실물</option>
 							<option value="sugges">제안/건의</option>
-							<option value="etc">기타</option>
 						</select>
 					</td>
-				</tr>
-				<tr>
-					<td><label for="pnameG">이름*</label></td>
-					<td><input type="text" name="pname" id="pnameG" class="sub" /></td>
-				</tr>
-				<tr>
-					<td><label for="emailG">이메일*</label></td>
-					<td><input type="text" name="email" id="emailG" class="sub" /></td>
-				</tr>
-				<tr>
-					<td><label for="phoneG">휴대전화*</label></td>
-					<td><input type="text" name="phone" id="phoneG" class="sub" /></td>
 				</tr>
 				<tr>
 					<td><label for="titleG">제목*</label></td>
