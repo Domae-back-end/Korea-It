@@ -44,7 +44,7 @@ public class MovieTimeinsertReg implements MovieTimeService {
 			now.set(Calendar.MINUTE, Integer.parseInt(dto.getStarttime1().split(":")[1]));
 			date= now.getTime();
 			dto.setStarttime(date);
-			now.add(Calendar.HOUR, mdto.getMplaytime());
+			now.add(Calendar.MINUTE, mdto.getMplaytime());
 			date= now.getTime();
 			dto.setEndtime(date);
 			db.insertMovieTime(dto);

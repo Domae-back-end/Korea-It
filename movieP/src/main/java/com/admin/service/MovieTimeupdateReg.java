@@ -35,7 +35,7 @@ public class MovieTimeupdateReg implements MovieTimeService {
 			Calendar now = Calendar.getInstance();
 			Date date = new Date();
 			now.setTime(list.get(i).getStarttime());
-			now.add(Calendar.HOUR, mdto.getMplaytime());
+			now.add(Calendar.MINUTE, mdto.getMplaytime());
 			date = now.getTime();
 			list.get(i).setEndtime(date);
 

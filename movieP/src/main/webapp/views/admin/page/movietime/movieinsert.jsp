@@ -23,6 +23,12 @@
 		width: 100px;
 		height: 100px;
 	}
+	.checktime{
+		border: 1px solid #000;
+		color: black;
+		font-size: 18px;
+		background:white;
+	}
 </style>
 <form action="/admin/movietime/insertReg">
 	<input type="hidden" value="<%=request.getParameter("dal")%>" name="dal">
@@ -34,6 +40,7 @@
 			<option value="3D관">3D관</option>
 		</select>
 		시작 시간 : <input type="time" name="starttime1"> 
+		<a href="" class="checktime">중복확인</a>
 		<input type="submit" value="시간표 추가">
 		<div class="both"></div>
 		<hr>
@@ -54,7 +61,7 @@
 			<fmt:formatDate value="${a.mdate }" type="both"
 							pattern="yyyy-MM-dd" />
 				</div>	
-				<div class="choice">${a.mplaytime } 시간</div>
+				<div class="choice">${a.mplaytime } 분</div>
 				<div class="choice">${a.star }</div>
 				<div class="both"></div>
 			</c:forEach>
