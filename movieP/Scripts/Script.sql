@@ -44,7 +44,7 @@ create table movietime (
 	movietitle varchar(100),
 	sectorNo varchar(100),
 	starttime time,
-	endttime time,
+	endtime time,
 	reg_date date
 );
 
