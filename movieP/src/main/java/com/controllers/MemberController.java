@@ -21,6 +21,9 @@ public class MemberController {
 	@ModelAttribute("memdata")
 	Object ddd(@PathVariable String service, MemberDTO mdto) { 
 		
+		if(service.endsWith("Form"))
+			return null;
+		
 		MemberAction res = pr.getContext().getBean("member"+service, MemberAction.class);
 		
 		return res.execute(mdto);
@@ -30,18 +33,18 @@ public class MemberController {
 	@ModelAttribute("bodyurl")
 	String bodypageUrl(@PathVariable String cate, @PathVariable String service) {
 		
-		return "page/member/"+cate+"/"+service;
+		return "member/"+cate+"/"+service;
 	}
 
 	@RequestMapping
 	public String view(@PathVariable String cate, @PathVariable String service) {
 		
 		if(service.endsWith("Reg"))
-			return "user/page/member/alert";
+			return null;
 		
 		if(cate.endsWith("login") || cate.endsWith("mypage") )
 			return "user/index";
 		
 		return "user/page/member/"+cate+"/"+service;
-	}
+	} 
 }
