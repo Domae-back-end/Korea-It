@@ -7,20 +7,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
-	#still{
-		display: inline-block;
-	}
-	#still>img{
-		width: 400px;
-		height:600px;
-		overflow:hidden;
-	}
 	.container{
-		width:500px;
-		height: 500px;
+		width: 500px;	
+		height:400px;
 	}
-	#p{
-		font-size: 30px;
+	.item{
+		width: 500px;
+		height:100%;
+		vertical-align: center;	
+		object-fit: cover;
+	}
+	.item active{
+		width: 500px;
+		height:100%;
+		vertical-align: center;	
+		object-fit: cover;
 	}
 </style>
 <script>
@@ -29,6 +30,10 @@
 <c:forEach items="${movieimage }" var="i" varStatus="no">
 	<%cnt = cnt+1; %>
 </c:forEach>
+
+
+${movieimage }
+
 
 <div id="p">${moviedetail.movietitle } 영화에 대한 <%=cnt %>개의 스틸컷이 있어요!</div>
 
@@ -41,21 +46,20 @@
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
+
     <!-- Wrapper for slides -->
  <div class="carousel-inner">
   <c:forEach items="${movieimage }" var="i" varStatus="no">
       <c:if test="${no.index == 0 }">
 	      <div class="item active">
-	       <img src="/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="Los Angeles" style="width:100%;">
-	       <div class="carousel-caption">
-	       </div>
+	       <img src="/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="${i.imgname }">
       </div>
       </c:if>
+      <c:if test="${no.index != 0 }">
       <div class="item">
-        <img src="/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="Los Angeles" style="width:100%;">
-        <div class="carousel-caption">
-        </div>
+        <img src="/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="${i.imgname }">
       </div>
+      </c:if>
   	</c:forEach>
     </div>
 

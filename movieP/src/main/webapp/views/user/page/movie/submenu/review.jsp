@@ -6,10 +6,19 @@
 	#reviewwrapper{
 		border: 3px solid #000;
 		width: 1000px;
+		display: inline-block;
 	}
 	
 	#aa{
 		border: 1px solid #a0a;
+	}
+	#userinfo{
+		display: inline-block;
+		border: 2px solid #ccc;
+		text-align: center;
+	}
+	#content{
+		display: inline-block;
 	}
 	
 	
@@ -18,7 +27,7 @@
 <c:forEach items="${moviereview }" var="r" varStatus="no">
 <div id = "aa">
 	<div id= "userinfo">
-		${r.userid }
+		${r.userid }<br>
 		${r.posttime_s }
 	</div>
 	<div id= "content">${r.postcontent }</div>
