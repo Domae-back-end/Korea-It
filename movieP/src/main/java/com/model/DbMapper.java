@@ -26,6 +26,7 @@ public interface DbMapper {
 	int updatemovielist(MovieTimeDTO dto);
 	int deletemovie(MovieTimeDTO dto);
 	
+	
 	//게시판 page 이동.
 	int totalCnt(HashMap<String, Object> map);
 	
