@@ -9,5 +9,6 @@ public class BannerDTO {
 	String imgurl;
 	int bannerindex;
 	int delindex;	
-	MultipartFile[] mfiles;
+	MultipartFile[] ff;
+	String[] still;
 }

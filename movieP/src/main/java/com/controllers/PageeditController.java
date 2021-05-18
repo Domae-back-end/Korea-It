@@ -22,6 +22,7 @@ import com.admin.service.MovieTimeService;
 import com.admin.service.PageeditService;
 import com.admin.service.Provider;
 import com.admin.service.SalesService;
+import com.model.BannerDTO;
 import com.model.Menu;
 import com.model.MinfoPageDTO;
 import com.model.MovieInfoDTO;
@@ -36,7 +37,7 @@ public class PageeditController {
 	
 	@ModelAttribute("data")
 	Object data(@PathVariable String service,HttpServletRequest request, MovieInfoDTO mdto,
-				MinfoPageDTO pdto) {
+				MinfoPageDTO pdto,BannerDTO banDTO) {
 		System.out.println("${data}제작중.-----------------------------");
 		System.out.println("pageedit-"+service+"실행");
 		System.out.println("MovieInfoDTO:"+mdto);
@@ -47,7 +48,7 @@ public class PageeditController {
 		obj.put("mdto", mdto);
 		obj.put("request", request);
 		obj.put("pdto", pdto);
-		
+		obj.put("banDTO", banDTO);
 		
 		return sr.execute(obj);	// has > servie,mdto,req, imgnames,pdto	
 	}
