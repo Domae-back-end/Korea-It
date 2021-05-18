@@ -38,11 +38,10 @@ public class PageeditController {
 	@ModelAttribute("data")
 	Object data(@PathVariable String service,HttpServletRequest request, MovieInfoDTO mdto,
 				MinfoPageDTO pdto,BannerDTO banDTO) {
-		System.out.println("${data}제작중.-----------------------------");
 		System.out.println("pageedit-"+service+"실행");
-		System.out.println("MovieInfoDTO:"+mdto);
+		System.out.println("Mdto:"+mdto);
 		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
-		
+	
 		Map<String, Object> obj= new HashMap<String, Object>();
 		obj.put("service", service);
 		obj.put("mdto", mdto);

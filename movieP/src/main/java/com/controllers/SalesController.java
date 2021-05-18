@@ -26,10 +26,12 @@ public class SalesController {
 	
 	@ModelAttribute("data")
 	Object data(@PathVariable String service) {
-		System.out.println("실행합니다:"+service);
+		System.out.println(service+"를 실행합니다:");
 		SalesService sr = pr.getContext().getBean("sales"+service,SalesService.class);
+		//일단 검색 가능하도록.
+		
 		Object obj= new Object();
-		return sr.execute(obj);
+		return sr.execute(obj);//execute결과물 map으로해주면 ,jsp에서 알아서뽑아올수있음.
 	}
 	
 	@ModelAttribute("bodyurl")
@@ -41,12 +43,11 @@ public class SalesController {
 	
 	@ModelAttribute("submenu")
 	ArrayList<Menu> subMenu( ) {
-		System.out.println("서브메뉴들어간다.");
 		HashMap<String, ArrayList<Menu>>map = new HashMap<>();
 		
 		map.put("sales", new ArrayList<Menu>());
 		map.get("sales").add(new Menu("main","매출보기"));
-		map.get("sales").add(new Menu("","추가가능"));
+		map.get("sales").add(new Menu("graph","그래프로조회"));
 		map.get("sales").add(new Menu("","추가가능"));
 		
 		return map.get("sales");
