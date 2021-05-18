@@ -69,4 +69,14 @@ create table bannerimg(
 	imgurl varchar(1000)
 );
 
+<!-- 공지 게시판 테이블 -->
+CREATE TABLE `noticeboard` (
+	`noticeindex`	auto_increment,
+	`noticeViews`	int	default 0,
+	`noticeTitle`	varchar(100)  ,
+	`noticeContent`	varchar(3000)	,
+	`noticeTime`	datetime	,
+	`noticeImg`	varchar(100)
+	
+);
 
