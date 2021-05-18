@@ -33,6 +33,9 @@
 	.qna_form .title {width: 620px; font-size: 16px; height: 30px} 
 	.qna_form textarea {width: 620px; font-size: 16px; height: 300px; resize: vertical; }
 	
+	.qna_form_tb td {border-bottom: 1px solid black; }
+	
+	
 	.upload_box p {display: inline-block; margin-bottom: 10px; }
 	.upload_box input[type="file"] { font-size: 16px; width: 1px; height: 1px; margin: -1px; overflow: hidden;}
 	.upload_box .upfile_class {padding: 5px 10px; font-size: 16px; background-color: lime; margin-left: 10px; 
@@ -65,11 +68,11 @@
 <body>
 <div id="sideBar">
 	<ul>
-		<li><a href="serviceMain">고객센터 홈</a></li>
+		<li><a href="serviceHome">고객센터 홈</a></li>
 		<li><a href="serviceHistory">상담내역 확인</a></li>
-		<li><a href="#">자주 묻는 질문</a></li>
-		<li><a href="#">1대1 문의</a></li>
-		<li><a href="#">공지사항</a></li>
+		<li><a href="serviceQna">자주 묻는 질문</a></li>
+		<li><a href="servicePersonal">1대1 문의</a></li>
+		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>
 
@@ -78,7 +81,7 @@
 	
 	<div class="qna_form">
 		<form action="" method="post" enctype="multipart/form-data">
-			<table>
+			<table class="qna_form_tb">
 				<tr>
 					<td>문의유형*</td>
 					<td>

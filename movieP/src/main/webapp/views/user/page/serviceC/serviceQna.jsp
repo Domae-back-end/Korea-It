@@ -23,8 +23,8 @@
 		
 	/* content 속지 */
 	.qna1 {width: 800px; height: 100px; background: blue; margin-bottom: 50px; border-radius: 25px; font-size: 25px; line-height: 100px;}
-	.inputText {font-size: 25px; width: 370px;  }
-	.inputButton {font-size: 25px; width: 70px; }
+	.inputText {font-size: 20px; width: 370px; height: 50px;   }
+	.inputButton {font-size: 20px; width: 70px; height: 50px; line-height: 50px; }
 	
 	/* qna2 상단bar */
 	.qna2_top {width: 800px; background: yellow; }
@@ -41,6 +41,7 @@
 	.body_td tr:first-of-type>td:nth-of-type(3) {width: 600px;  }
 	.body_td tr>td:nth-of-type(1) {text-align: center; }
 	.body_td tr>td:nth-of-type(2) {text-align: center; }
+	.body_td tr>td:nth-of-type(3) {text-align: left; }
 	
 	/* 검색 search */
 	.search {width: 400px; height: 50px; background: lime; margin-left: 400px; }
@@ -48,18 +49,18 @@
 	.search>input[type="text"] {font-size: 16px; width: 200px; height: 36px; }
 	.search>input[type="submit"] {font-size: 16px; width: 50px; height: 40px; }
 	
-	
+	.tot {text-align: left; }
 </style>
 </head>
 
 <body>
 <div id="sideBar">
 	<ul>
-		<li><a href="serviceMain">고객센터 홈</a></li>
+		<li><a href="serviceHome">고객센터 홈</a></li>
 		<li><a href="serviceHistory">상담내역 확인</a></li>
-		<li><a href="#">자주 묻는 질문</a></li>
-		<li><a href="#">1대1 문의</a></li>
-		<li><a href="#">공지사항</a></li>
+		<li><a href="serviceQna">자주 묻는 질문</a></li>
+		<li><a href="servicePersonal">1대1 문의</a></li>
+		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>
 

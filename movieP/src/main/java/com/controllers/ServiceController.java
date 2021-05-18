@@ -10,23 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ServiceController {
 
 	
-	
 	@RequestMapping
-	public String view(@PathVariable String service) {
-		
-		return "user/page/serviceC/"+service;
+	public String view(@PathVariable String service) { //일단 처음에 들어오면 무조건 index로가. index에서 include된 bodyurl만 밑에꺼로 포함되서 가져와
+
+		return "user/index";
 	}
 	
 	
-	
-	@ModelAttribute("bodyurl2")
-	String bodypageUrl(@PathVariable String service) {
+	@ModelAttribute("bodyurl") 
+	String bodygogo(@PathVariable String service) {
 		
-		//return "serviceHome"; //메인
-		//return "serviceHistory"; //상담내역
-		//return "serviceQna"; //자주묻는질문
-		//return "servicePersonal"; //1대1문의
-		return "serviceNotice"; //공지사항
-//		자주찾는서비스
+		return "serviceC/"+service; //메인
 	}
+	
+	
 }

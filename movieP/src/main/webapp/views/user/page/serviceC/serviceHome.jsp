@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>고객센터 메인</title>
 <style>
 	* {padding: 0px; margin: 0px; }
 	ul, li {text-decoration: none; list-style: none; }
@@ -21,8 +21,8 @@
 		
 	/* content 속지 */
 	.qna1 {width: 800px; height: 100px; background: blue; margin-bottom: 50px; border-radius: 25px; font-size: 25px; line-height: 100px;}
-	.inputText {font-size: 25px; width: 370px;  }
-	.inputButton {font-size: 25px; width: 70px; }
+	.inputText {font-size: 20px; width: 370px; height: 50px;   }
+	.inputButton {font-size: 20px; width: 70px; height: 50px; line-height: 50px; }
 	
 	
 	/* content2 속지 */
@@ -47,16 +47,16 @@
 <body>
 <div id="sideBar">
 	<ul>
-		<li><a href="serviceMain">고객센터 홈</a></li>
+		<li><a href="serviceHome">고객센터 홈</a></li>
 		<li><a href="serviceHistory">상담내역 확인</a></li>
-		<li><a href="#">자주 묻는 질문</a></li>
-		<li><a href="#">1대1 문의</a></li>
-		<li><a href="#">공지사항</a></li>
+		<li><a href="serviceQna">자주 묻는 질문</a></li>
+		<li><a href="servicePersonal">1대1 문의</a></li>
+		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>
 
 <div id="content">
-	<h2>고객센터 홈</h2>
+	<h2>고객센터 메인</h2>
 	
 	<div class="qna1">
 		<form action="">

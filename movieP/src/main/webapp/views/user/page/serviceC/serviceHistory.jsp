@@ -23,10 +23,11 @@
 	.td1 tr:first-of-type>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
 	.td1 tr:first-of-type>td:nth-of-type(1) {width: 50px;  }
 	.td1 tr:first-of-type>td:nth-of-type(2) {width: 100px;  }
-	.td1 tr:first-of-type>td:nth-of-type(3) {width: 430px;  }
+	.td1 tr:first-of-type>td:nth-of-type(3) {width: 430px; }
+	.td1 tr>td:nth-of-type(3) {text-align: left; }
 	.td1 tr:first-of-type>td:nth-of-type(4) {width: 120px;  }
 	.td1 tr:first-of-type>td:nth-of-type(5) {width: 100px;  }
-	
+	.pp {margin: 5px 0;  }
 	
 </style>
 </head>
@@ -34,11 +35,11 @@
 <body>
 <div id="sideBar">
 	<ul>
-		<li><a href="serviceMain">고객센터 홈</a></li>
+		<li><a href="serviceHome">고객센터 홈</a></li>
 		<li><a href="serviceHistory">상담내역 확인</a></li>
-		<li><a href="#">자주 묻는 질문</a></li>
-		<li><a href="#">1대1 문의</a></li>
-		<li><a href="#">공지사항</a></li>
+		<li><a href="serviceQna">자주 묻는 질문</a></li>
+		<li><a href="servicePersonal">1대1 문의</a></li>
+		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>
 
@@ -46,7 +47,7 @@
 	<h2>상담내역 확인</h2>
 	
 	<div>
-	<table class="td1">
+	<table class="td1" >
 		<tr>
 			<td>번호</td>
 			<td>카테고리</td>
@@ -60,8 +61,8 @@
 			<td>ㅇ안된다고</td>
 			<td>2020/05/17</td>
 			<td>
-				<p>2020/05/18</p>
-				<p>답변완료</p>
+				<p class="pp">2020/05/18</p>
+				<p class="pp">답변완료</p>
 			</td>
 		</tr>
 		<tr>

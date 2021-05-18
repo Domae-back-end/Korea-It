@@ -32,8 +32,8 @@
 	/* 검색 search */
 	.search {width: 400px; height: 50px; background: lime; margin-left: 400px; }
 	.search>select {font-size: 16px; width: 100px; height: 40px;   }
-	.search>input[type="text"] {font-size: 16px; width: 200px; height: 36px; }
-	.search>input[type="submit"] {font-size: 16px; width: 50px; height: 40px; }
+	.search>input[type="text"] {font-size: 16px; width: 200px; height: 38px; }
+	.search>input[type="submit"] {font-size: 16px; width: 50px; height: 38px; }
 	
 </style>
 </head>
@@ -41,11 +41,11 @@
 <body>
 <div id="sideBar">
 	<ul>
-		<li><a href="serviceMain">고객센터 홈</a></li>
+		<li><a href="serviceHome">고객센터 홈</a></li>
 		<li><a href="serviceHistory">상담내역 확인</a></li>
-		<li><a href="#">자주 묻는 질문</a></li>
-		<li><a href="#">1대1 문의</a></li>
-		<li><a href="#">공지사항</a></li>
+		<li><a href="serviceQna">자주 묻는 질문</a></li>
+		<li><a href="servicePersonal">1대1 문의</a></li>
+		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>
 
