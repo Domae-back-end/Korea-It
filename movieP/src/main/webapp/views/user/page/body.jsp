@@ -12,11 +12,14 @@
 		function picture_slider(){
 		    setInterval( switch_picture, 1000 ); // corrected removing "()"
 		}
-		var bild = document.getElementById("bannerimg")		
+
+		var bild = document.getElementById("bannerimg")
+		var i = 0; // Start from image 0.jpg
 		picture_slider();
+
 		function switch_picture() { // don't iterate a loop in here!
 			bild.src = "/banner/poster"+ ((i++ % 5)+1) +".jpg";
-		
+			
 		}
 		
 	})
