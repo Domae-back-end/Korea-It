@@ -166,7 +166,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>	
 	
 	<update id="changeBanner"   parameterType="BannerDTO"  >
-		update bannerimg imgurl= #{imgurl} where bannerindex= #{bannerindex}
+		update bannerimg  set imgurl= #{imgurl} where bannerindex= #{bannerindex}
 	</update>
 	
 	<delete id="deleteBanner" parameterType="BannerDTO" >
