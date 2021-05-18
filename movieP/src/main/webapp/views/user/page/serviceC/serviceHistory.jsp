@@ -70,7 +70,6 @@
 		</tr>
 	</table>
 	</div>
-	
 </div>
 
 <div class="clear"></div>
