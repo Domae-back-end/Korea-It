@@ -1,5 +1,6 @@
 package com.user.service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,6 +23,10 @@ public class Moviedetail implements MovieAction2{
 	public Object execute(Integer index) {
 		System.out.println("Moviedetail execute()");
 		MovieInfoDTO res = mm.movieDetail(index);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년M월dd일");
+		String date = sdf.format(res.getMdate());
+		res.setMdate_s(date);
+		
 		return res;
 	}
 	
