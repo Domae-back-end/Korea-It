@@ -1,5 +1,7 @@
 package com.user.service;
 
+import java.time.chrono.MinguoDate;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -20,8 +22,15 @@ public class Movieimg implements MovieAction2{
 	DbMapper mm;
 	
 	@Override
-	public Object execute(Integer index) {
-		List<MimgDTO> res = mm.pullimg(index);
+	public Object execute(Integer m_index) {
+
+		
+		List<MimgDTO> res = mm.pullimg(m_index);
+		Iterator<MimgDTO> it = res.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
+		
 		return res;
 	}
 	
