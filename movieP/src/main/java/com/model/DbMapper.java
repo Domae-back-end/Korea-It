@@ -71,4 +71,27 @@ public interface DbMapper {
 	
 	
 	
+	
+	
+	
+	//현준 Service C  mapper
+	
+	void insertPersQna(ServicePersonalDTO persDTO); //1대1문의넣기
+	List<ServiceNoticeDTO> noticelist(); //공지사항보기
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -81,7 +81,7 @@
 				<tr>
 					<td>1</td>
 					<td>영화관</td>
-					<td>영화관 휴관일정</td>
+					<td><a href="serviceNoticeDetail">영화관 휴관일정</a></td>
 					<td>2020/05/17</td>
 					<td>3</td>
 				</tr>

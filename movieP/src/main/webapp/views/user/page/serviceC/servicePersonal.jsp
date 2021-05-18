@@ -80,28 +80,29 @@
 	<h2>1대1 문의</h2>
 	
 	<div class="qna_form">
-		<form action="" method="post" enctype="multipart/form-data">
+		<form action="/user/serviceC/qnainsertReg" method="post" enctype="multipart/form-data">
+		<!--  입력 성공했습니다!// 또는 등록 실패했습니다! >> alert 를 주는 페이지를 띄우고 싶다면.>그리고 유저메인이든,  serviceC메인이든.>index.. -->
 			<table class="qna_form_tb">
 				<tr>
 					<td>문의유형*</td>
 					<td>
-						<select name="kind">
-							<option value="nor">일반문의</option>
-							<option value="movInfo">영화정보</option>
+						<select name="perscate">
+							<option value="basic">일반문의</option>
+							<option value="movinfo">영화정보</option>
 							<option value="member">회원</option>
 							<option value="ticket">예매</option>
 							<option value="lost">분실물</option>
-							<option value="sugges">제안/건의</option>
+							<option value="suggest">제안/건의</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td><label for="titleG">제목*</label></td>
-					<td><input type="text" name="title" id="titleG" class="title" /></td>
+					<td><input type="text" name="perstitle" id="titleG" class="title" /></td>
 				</tr>
 				<tr>
 					<td><label for="contG">내용*</label></td>
-					<td><textarea name="cont" cols="30" rows="5" id="contG"></textarea></td>
+					<td><textarea name="perscont" cols="30" rows="5" id="contG"></textarea></td>
 				</tr>
 				<tr>
 					<td>사진첨부</td>
@@ -110,7 +111,7 @@
 						<div class="upload_box">
 							<p>* JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다.</p>
 							<label for="upfileG" class="upfile_class">파일선택</label>
-							<input type="file" name="upfile" id="upfileG" class="upload_hidden" />
+							<input type="file" name="file" id="upfileG" class="upload_hidden" />
 							<input class="upload_name" value="파일선택" disabled="disabled">
 						</div>
 					</td>

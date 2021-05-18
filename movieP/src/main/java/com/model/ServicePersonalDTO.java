@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -15,8 +17,10 @@ public class ServicePersonalDTO {
 	String perstitle; //제목
 	String perscont; //내용
 	String persimg; //사진
+	MultipartFile file; //사진실제데이터
 	Date persqtime; //등록일
 	Date persatime; //답변시간
 	String persstate; //답변상태
+	
 
 }
