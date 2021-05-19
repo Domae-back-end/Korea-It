@@ -58,7 +58,7 @@
 		<tr>
 			<td>2</td>
 			<td>가입</td>
-			<td>ㅇ안된다고</td>
+			<td><a href="serviceHistoryDetail">ㅇ안된다고</a></td>
 			<td>2020/05/17</td>
 			<td>
 				<p class="pp">2020/05/18</p>

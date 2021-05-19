@@ -83,7 +83,7 @@
 				</tr>
 			</table>
 			<div class="back_list">
-				<a href="">목록</a>
+				<a href="serviceNotice">목록</a>
 			</div>
 		</div>
 	</div>
