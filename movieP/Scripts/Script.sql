@@ -47,6 +47,12 @@ create table movietime (
 	endtime time,
 	reg_date date
 );
+<!-- movietimetable > testdata -->
+
+insert into movietime (movietitle, sectorNo, starttime, endtime, reg_date)
+values ('테스트제목','4','12:00:00', '14:00:00', '2021-05-25');
+
+
 
 
 <!-- 회원관련 -->
@@ -89,16 +95,28 @@ INSERT INTO bannerimg (bannerindex,imgurl) VALUES
 	 
 	 
 	 <!-- 매출 관련 게시판 ( 테스트용)  -->
-	 CREATE TABLE salestest (
- 	purchaseNo int auto_increment primary key,
-	userid varchar(100),
-	purchasePrice	int	,
-	purchaseType	varchar(100)	,
-	purchaseName	varchar(100)	,
-	purchasetime	datetime	
+	 
+ CREATE TABLE salestest (
+ sales_index int auto_increment primary key,
+ ticket_index int,
+ ticket_pcount int,
+ salesprice int,
+ userid varchar(100),
+ movietitle	varchar(100)	,
+ moviesector	varchar(100)	,
+ sales_type	varchar(100),
+ sales_time datetime
 );
+/* 매출 테이블  testdata*/
+insert into salestest (ticket_index, ticket_pcount,salesprice , userid,movietitle ,
+moviesector, sales_type,sales_time)
+values (1, 4,40000, 'bb1111','오늘의기억','작은1관','현금','2021-05-22 12:00:00'),
+ (1, 4,-40000, 'bb1111','오늘의기억','작은1관','환불','2021-05-23 14:00:00') ;
 
 
+
+
+<!-- 리뷰테이블  -->
 create table review(
 	cnt int auto_increment primary key,
 	cate varchar(100),

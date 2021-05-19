@@ -25,7 +25,7 @@ public class FileupService {
 
 	@Resource
 	DbMapper db;
-		
+	// 파일업로드 여기서 관리.	
 	public void fileup(MultipartFile multipartFiles[],HttpServletRequest request,String movietitle,int  m_index) {
 		System.out.println("fileUp 실행해요."+multipartFiles.length);
 		String foldername= request.getRealPath("moviedata")+"/"+movietitle;
