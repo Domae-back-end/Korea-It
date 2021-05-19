@@ -40,7 +40,7 @@ public class MemberController {
 	public String view(@PathVariable String cate, @PathVariable String service) {
 		
 		if(service.endsWith("Reg"))
-			return null;
+			return "user/page/member/alert";
 		
 		if(cate.endsWith("login") || cate.endsWith("mypage") )
 			return "user/index";

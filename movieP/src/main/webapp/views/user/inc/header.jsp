@@ -7,5 +7,6 @@
 <a href="/user/serviceC/serviceHome">고객센터</a>
 <a href="/user/member/join/joinForm">회원가입</a>
 <a href="/user/member/login/loginForm">로그인</a>
+<a href="/member/logout">로그아웃</a>
 <a href="/user/member/mypage/mypageMain">마이페이지</a>
 
