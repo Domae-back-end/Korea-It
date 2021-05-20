@@ -25,7 +25,7 @@ public class SalesGraphSltView implements SalesService {
 		//반환
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("message", 500);
-		result.put("message2", "문자열");
+		result.put("message2", "문자열열");
 		
 		
 		
