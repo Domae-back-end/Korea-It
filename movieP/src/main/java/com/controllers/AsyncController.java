@@ -62,9 +62,10 @@ public class AsyncController {
 	@RequestMapping(value = "/salesGraphSltView.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> ajaxtest(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
-		System.out.println(map.get("startdate"));
-		System.out.println(map.get("enddate"));
-		System.out.println(map.get("enddate").getClass());
+		System.out.println(map.get("startyear"));
+		System.out.println(map.get("endyear"));
+		
+		
 		
 		
 		//SalesService sr = pr.getContext().getBean("salesGraphSltView",SalesService.class);	
