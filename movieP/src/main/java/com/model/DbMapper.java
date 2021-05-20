@@ -54,7 +54,7 @@ public interface DbMapper {
 	
 	void memjoin(MemberDTO mdto);
 	MemberDTO memlogin(MemberDTO mdto);
-	int memModify(MemberDTO mdto);
+	MemberDTO memChk(String id);
 	
 	
 	// 유저메인화면 베너 관리용.
