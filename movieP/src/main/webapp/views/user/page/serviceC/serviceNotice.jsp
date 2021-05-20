@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,20 +74,64 @@
 					<td>등록일</td>
 					<td>조회수</td>
 				</tr>
+			<c:forEach items="${data }" var="nDTO" varStatus="no" >
 				<tr>
-					<td>2</td>
-					<td>시스템</td>
-					<td>홈페이지 점검</td>
-					<td>2020/05/17</td>
-					<td>4</td>
+					<td>${nDTO.noticeindex }</td>
+					<td>${nDTO.noticecate }</td>
+					<td>${nDTO.noticetitle }</td>
+					<td>${nDTO.datetime }</td>
+					<td>${nDTO.noticeview }</td>
 				</tr>
+			</c:forEach>
+			
+			
+			
+			
+			
+			
+			
 				<tr>
-					<td>1</td>
-					<td>영화관</td>
-					<td><a href="serviceNoticeDetail">영화관 휴관일정</a></td>
-					<td>2020/05/17</td>
-					<td>3</td>
+					<td colspan="5" align="center">
+					d
+					<%-- 
+						<c:if test="${data.nDTO.startPage > 1 }">
+							<input type="button" class="btn" dd="${data.nDTO.startPage-1 }" value="&lt" />	
+						</c:if>
+						
+						<c:forEach begin="${data.nDTO.startPage }" end="${data.nDTO.endPage }" step="1" var="i">
+							<c:choose>
+								<c:when test="${i==data.nDTO.page }">
+									[${i }]
+								</c:when>
+								<c:otherwise>
+									<input type="button" class="btn" dd="${i }" value="${i }" />
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						
+						<c:if test="${data.nDTO.endPage < data.nDTO.total }">
+							<input type="button" class="btn" dd="${data.nDTO.endPage+1 }" value="&gt" />
+						</c:if>
+					 --%>
+					
+					
+					</td>
 				</tr>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			</table>
 		</div>
 	</form>

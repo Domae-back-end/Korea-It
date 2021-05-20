@@ -62,25 +62,14 @@ public class AsyncController {
 	@RequestMapping(value = "/salesGraphSltView.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> ajaxtest(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
-		System.out.println(map.get("startdate"));
-		System.out.println(map.get("enddate"));
-		System.out.println(map.get("enddate").getClass());
-		
-		
-		//SalesService sr = pr.getContext().getBean("salesGraphSltView",SalesService.class);	
 		
 		
 		
+		SalesService sr = pr.getContext().getBean("salesGraphSltView",SalesService.class);	
+		//SalesGraphSltView , 
 		
-		
-		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("message", 500);
-		result.put("message2", "문자열");
-		
-		
-		return result;
-		// 로그인 끝.
-
+		return (HashMap<String, Object>)sr.execute(map);
+	
 	}
 	
 	

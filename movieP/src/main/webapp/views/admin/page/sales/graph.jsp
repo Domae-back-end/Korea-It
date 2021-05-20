@@ -16,18 +16,22 @@ $(document).ready(function(){
 	
 	
 	var ssggbutton= document.getElementById("graphdateGoBtn") 
-		let ssggSdate= document.getElementById("ssggstartdate");
-		let ssggEdate= document.getElementById("ssggenddate");
-	
+		let ssggSyear= document.getElementById("ssggstartyear");
+		let ssggSmonth= document.getElementById("ssggstartmonth");	
+		let ssggEyear= document.getElementById("ssggendyear");
+		let ssggEmonth= document.getElementById("ssggendmonth");
 	ssggbutton.addEventListener("click",function(){
 		
 	
 			alert("버튼 눌름. ajax 가동.")
 			
 			var xhttp= new XMLHttpRequest();
-			startdate= ssggSdate.value
-			enddate= ssggEdate.value			
-			console.log(startdate+"~"+enddate)			
+			startyear= ssggSyear.value
+			startmonth= ssggSmonth.value
+			endyear= ssggEyear.value			
+			endmonth=ssggEmonth.value
+			
+			console.log(ssggSyear+","+ssggSmonth+"~"+ssggEyear+","+ssggEmonth)			
 			xhttp.onreadystatechange =function(){					
 				if(xhttp.readyState == 4){
 					console.log("readyState==4")
@@ -50,7 +54,8 @@ $(document).ready(function(){
 				          //"application/x-www-form-urlencoded"슈레기
 				 		"application/json"//이게 개꿀.       
 				);
-				var data= JSON.stringify({"startdate":startdate,"enddate":enddate });
+				var data= JSON.stringify({"startyear":startyear,"startmonth":startmonth,
+					"endyear":endyear, "endmonth":endmonth });
 				console.log(data)
 				
 				xhttp.send(data);//sfy해서 서버에보냄	
@@ -89,9 +94,43 @@ $(document).ready(function(){
 값이 있는가?ㅣ: ${!empty data }
 
 <form action="graphView" >
-시작날짜<input type="date" name="startdate" id="ssggstartdate" />
-시작날짜<input type="date" name="enddate" id="ssggenddate" />
+<!-- let ssggSyear= document.getElementById("ssggstartyear");
+		let ssggSmonth= document.getElementById("ssggstartmonth");	
+		let ssggEyear= document.getElementById("ssggendyear");
+		let ssggEmonth= document.getElementById("ssggendmonth"); -->
+시작년월
+<select id="ssggstartyear">
+<option>연</option>
+<c:forEach var="yyyy" begin="2010" end="2021" step="1" >
+<option>${yyyy}</option>
+</c:forEach>
 
+
+</select>년
+<select id="ssggstartmonth">
+<option>월</option>
+<c:forEach var="MM" begin="1" end="12" step="1" >
+<option>${MM}</option>
+</c:forEach>
+</select>월
+<br>
+종료연월
+<select id="ssggendyear">
+<option>연</option>
+<c:forEach var="yyyy" begin="2010" end="2021" step="1" >
+<option>${yyyy}</option>
+</c:forEach>
+</select>년
+<select id="ssggendmonth">
+<option>월</option>
+<c:forEach var="MM" begin="1" end="12" step="1" >
+<option>${MM}</option>
+</c:forEach>
+</select>월
+
+
+
+<br>
 <button id="graphdateGoBtn"  type="button">조회하기</button>
 
 </form>
