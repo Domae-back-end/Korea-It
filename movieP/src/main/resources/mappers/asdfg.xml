@@ -15,17 +15,53 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			order by m_index desc 
 	</select>
 	
-	<select id="movieInfoBefore" resultType="MovieInfoDTO">
+	<select id="movieInfoBefore" resultType="MovieInfoDTO" parameterType="java.lang.String">
 			select * from movieinfo
-			where sysdate() > mdate
+		
+			
+			<include refid="whereMovie"></include>
 			order by m_index asc 
 	</select>
 	
-	<select id="movieInfoAfter" resultType="MovieInfoDTO">
+	<sql id="whereMovie">
+		<choose>
+			<when test="str != null">
+				<where>
+					sysdate() > mdate and
+					movietitle like '%${str}%'
+				</where>
+			</when>
+			<otherwise>
+			<where>
+					sysdate() > mdate 
+			</where>
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<sql id="whereMovie2">
+		<choose>
+			<when test="str != null">
+				<where>
+					mdate > sysdate()  and
+					movietitle like '%${str}%'
+				</where>
+			</when>
+			<otherwise>
+			<where>
+					mdate > sysdate()  
+			</where>
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="movieInfoAfter" resultType="MovieInfoDTO" parameterType="java.lang.String">
 			select * from movieinfo
-			where mdate > sysdate()
+			<include refid="whereMovie2"></include>
 			order by m_index asc 
 	</select>
+	
+
 	
 	<select id="movieDetail" resultType="MovieInfoDTO">
 	  select * from movieinfo where m_index =#{m_index}
@@ -36,6 +72,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	 	select * from review
 	 	where cate = #{cate}
 	 	order by posttime desc
+	</select>
+	
+	<!-- sch존재할 때 -->
+		<select id="moviebeforsearch" resultType="MovieInfoDTO" parameterType="java.lang.String">
+			select * from movieinfo
+			where sysdate() > mdate and movietitle like '%${str}%'
+			order by m_index asc 
 	</select>
 	
 	

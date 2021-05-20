@@ -11,9 +11,10 @@ public interface DbMapper {
 
 	List<MovieTimeDTO> movieTime();
 	List<MovieInfoDTO> movieInfo();
-	List<MovieInfoDTO> movieInfoBefore();
-	List<MovieInfoDTO> movieInfoAfter();
-	
+	List<MovieInfoDTO> movieInfoBefore(String str);
+	List<MovieInfoDTO> movieInfoAfter(String str);
+	//List<MovieInfoDTO> moviebeforsearch(String str);
+
 	
 	//영화 시간표
 	MovieInfoDTO movieDetail(Integer m_index);

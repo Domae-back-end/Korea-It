@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.admin.service.Provider;
 import com.model.MovieAction;
 import com.model.MovieAction2;
+import com.model.MovieAction3;
 import com.model.MovieInfoDTO;
 
 @Controller
@@ -90,17 +91,18 @@ public class MovieController {
 	}
 	
 	@ModelAttribute("moviedatabefore")
-	Object mmBefore(@PathVariable String service) {
-		
-		MovieAction res = pr.getContext().getBean("moviebefore", MovieAction.class);
-		return res.execute();
+	Object mmBefore(HttpServletRequest req) {
+
+		MovieAction3 res = pr.getContext().getBean("moviebefore", MovieAction3.class);
+		return res.execute(req.getParameter("sch"));
 	}
 	
 	@ModelAttribute("moviedataafter")
-	Object mmAfter(@PathVariable String service) {
+	Object mmAfter(HttpServletRequest req) {
 		
-		MovieAction res = pr.getContext().getBean("movieafter", MovieAction.class);
-		return res.execute();
+		MovieAction3 res = pr.getContext().getBean("movieafter", MovieAction3.class);
+		return res.execute(req.getParameter("sch"));
+		
 	}
 	
 	
@@ -113,5 +115,6 @@ public class MovieController {
 		}	
 		return null;
 	}
+	
 
 }

@@ -25,6 +25,10 @@ $(function(){
 		alert("예매창으로");
 	})
 
+	$(".sbtn").click(function(){
+		var value = $(".search").val();
+		location.replace("?cg=<%=cg%>&sch="+$(".search").val());
+	})
 	
 	
 })	
@@ -66,16 +70,25 @@ $(function(){
 		width:250px;
 		height:400px;
 	}
+	#sh{
+		width:1000px;
+		float: right;
+	}
 	
 
 </style>
 
 </head>
 <body>
-	<div class = "pp">
-		<div class ="btn1"><a href = "?cg=boxoffice">박스오피스</a></div>
-		<div class ="btn2"><a href = "?cg=expect">상영예정작</a></div>
-	</div>
+<div class = "pp">
+	<div class ="btn1"><a href = "?cg=boxoffice">박스오피스</a></div>
+	<div class ="btn2"><a href = "?cg=expect">상영예정작</a></div>
+</div>
+<form action="" name = "frm">
+	<input class="search" type = "text"/>
+</form>
+<input class="sbtn" type="button" value="검색" />
+
 <div class = "wrapper">
 	<jsp:include page = "<%=cgUrl %>"/>
 </div>
