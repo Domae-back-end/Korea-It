@@ -299,6 +299,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	select * from salestest
 </select>
 	
+	<!-- 
+	select * from bookRoom 
+	
+	where date_format(checkinDate ,'%Y-%m-%d')
+	
+	 between '2020-01-01' and '2020-03-30';
+	
+	 -->
+	<select id="getMonthlygraph" resultType="SalesDTO" parameterType="TimeVO">
+	select * from salestest 
+
+	where date_format(sales_time, '%Y-%m')
+	
+	between #{sym} and #{eym}	
+	 </select>
+	
+	
 	
 	
 	
