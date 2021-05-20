@@ -60,6 +60,7 @@ public class InitData { // 서버 시작시에 // 자주쓰는 주소들이나. 
 		map.get("pageedit").add(new Menu("banner","메인베너관리"));
 		map.get("pageedit").add(new Menu("noticelist","공지사항/뉴스"));
 		map.get("pageedit").add(new Menu("movieinfolist","영화정보관리"));
+		map.get("pageedit").add(new Menu("faqlist","자주찾는질문관리"));
 		
 		
 		

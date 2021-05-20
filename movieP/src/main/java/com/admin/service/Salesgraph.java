@@ -18,7 +18,8 @@ DbMapper db;
 	
 @Override
 public Object execute(Object obj) {
-	// TODO Auto-generated method stub
+	
+	
 	
 	
 	

@@ -24,7 +24,9 @@ public class ServiceController {
 	
 	
 	@ModelAttribute("data")
-	public Object data(@PathVariable String service, HttpServletRequest request, ServicePersonalDTO persDTO) {		
+	public Object data(@PathVariable String service, HttpServletRequest request, ServicePersonalDTO persDTO
+			//, ServiceNoticePageDTO nDTO
+			) {		
 		//service = qnainsertReg (1대1문의 jsp에서 따옴)
 		
 		ServiceCservice sr = pr.getContext().getBean("serviceC"+service, ServiceCservice.class);	
@@ -35,6 +37,7 @@ public class ServiceController {
 		map.put("request", request);
 		map.put("persDTO", persDTO);
 		map.put("service", service);
+		//map.put("nDTO", nDTO);
 		
 		
 		return sr.execute(map);// 서비스도 바뀌고 return 값도 바뀌고..
