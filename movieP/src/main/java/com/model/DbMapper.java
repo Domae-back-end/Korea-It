@@ -3,7 +3,7 @@ package com.model;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Mapper;import com.admin.service.SalesService;
 
 
 @Mapper
@@ -76,6 +76,16 @@ public interface DbMapper {
 	
 	void insertPersQna(ServicePersonalDTO persDTO); //1대1문의넣기
 	List<ServiceNoticeDTO> noticelist(); //공지사항보기
+	
+	
+	
+	
+	
+	//매출관련기능 of 관리자. 
+	
+	
+	List<SalesDTO> getsales();
+	
 	
 	
 }

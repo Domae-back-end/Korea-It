@@ -15,8 +15,8 @@ public class TimeVO {
 	
 	String dal;
 	String el;
-	String startday;// 매출 검색 시작날짜
-	String endday;// 매출 검색 끝날짜
+	String startdate;// 매출 검색 시작날짜
+	String enddate;// 매출 검색 끝날짜
 	
 	Date timedata;
 	
