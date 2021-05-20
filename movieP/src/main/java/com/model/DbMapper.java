@@ -81,6 +81,18 @@ public interface DbMapper {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//매출관련기능 of 관리자. 
 	
 	
