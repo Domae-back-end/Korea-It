@@ -68,17 +68,8 @@ public class AsyncController {
 		SalesService sr = pr.getContext().getBean("salesGraphSltView",SalesService.class);	
 		//SalesGraphSltView , 
 		
-		
-		
-		
-		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("message", 500);
-		result.put("message2", "문자열");
-		//result =(HashMap<String, Object>)sr.execute(map);
+		return (HashMap<String, Object>)sr.execute(map);
 	
-		return result;
-		// 로그인 끝.
-
 	}
 	
 	
