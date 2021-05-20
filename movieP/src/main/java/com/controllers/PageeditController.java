@@ -23,6 +23,7 @@ import com.admin.service.PageeditService;
 import com.admin.service.Provider;
 import com.admin.service.SalesService;
 import com.model.BannerDTO;
+import com.model.InitData;
 import com.model.Menu;
 import com.model.MinfoPageDTO;
 import com.model.MovieInfoDTO;
@@ -60,14 +61,7 @@ public class PageeditController {
 	
 	@ModelAttribute("submenu")
 	ArrayList<Menu> subMenu( ) {
-		System.out.println("초기단계-서브메뉴들어간다");
-		HashMap<String, ArrayList<Menu>>map = new HashMap<>();		
-		map.put("pageedit", new ArrayList<Menu>());		
-		map.get("pageedit").add(new Menu("banner","메인베너관리"));
-		map.get("pageedit").add(new Menu("noticelist","공지사항/뉴스"));
-		map.get("pageedit").add(new Menu("movieinfolist","영화정보관리"));
-		
-		return map.get("pageedit");
+		return InitData.getSubmenusbyCateName("pageedit");
 	}	
 	@RequestMapping
 	String view(@PathVariable String service) {	
