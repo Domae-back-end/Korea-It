@@ -231,7 +231,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
       </choose>
       
    </sql>   
-   
+    
     <select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO" >
       select * from memberinfo <include refid="checkform" />
    </select>
