@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,10 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.admin.service.Provider;
+import com.model.TimeVO;
+
 
 /**
  * Handles requests for the application home page.
  */
+@Controller
 public class AsyncController {
 //
 //	@Autowired
@@ -30,6 +35,9 @@ public class AsyncController {
 //
 //	@Autowired
 //	private userService userServiceIm;
+	
+	@Resource
+	Provider pr;
 
 
 
@@ -39,8 +47,6 @@ public class AsyncController {
 																						// 필요 >> data :
 																						// JSON.stringify(sample),
 		Map<String, String> result = map;
-
-		
 		return result;
 	}
 
@@ -52,14 +58,24 @@ public class AsyncController {
 																													// JSON.stringify(sample),
 		
 		Map<String, String> result = new HashMap<String, String>();
-	
+		return result;
+		// 로그인 끝.
+
+	}//ajaxtest.do
+	@RequestMapping(value = "/ajaxtest.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> ajaxtest(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
+		Map<String, String> result = new HashMap<String, String>();
+		System.out.println(map.get("startdate"));
+		System.out.println(map.get("enddate"));
+		
+		
 		
 		
 		return result;
 		// 로그인 끝.
 
 	}
-
 	
 	
 
