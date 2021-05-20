@@ -14,7 +14,7 @@ import com.model.ServiceNoticeDTO;
 
 //Service단
 @Service
-public class Pageeditnoticelist implements PageeditService {
+public class Pageeditnoticeinsert implements PageeditService {
 	
 
 	@Resource
