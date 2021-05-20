@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.admin.service.PageeditService;
 import com.admin.service.Provider;
+import com.admin.service.SalesService;
 import com.model.TimeVO;
 
 
@@ -41,14 +43,6 @@ public class AsyncController {
 
 
 
-	@RequestMapping(value = "/salesGraphSltView.do", method = RequestMethod.POST)
-	@ResponseBody 
-	public Map<String, String> duplCheckByName(@RequestBody Map<String, String> map) {// @RequestBody JSON data "형식" 이라
-																						// 필요 >> data :
-																						// JSON.stringify(sample),
-		Map<String, String> result = map;
-		return result;
-	}
 
 	
 
@@ -61,15 +55,27 @@ public class AsyncController {
 		return result;
 		// 로그인 끝.
 
-	}//ajaxtest.do
-	@RequestMapping(value = "/ajaxtest.do", method = RequestMethod.POST)
+	}
+	
+	
+	
+	@RequestMapping(value = "/salesGraphSltView.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> ajaxtest(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
-		Map<String, String> result = new HashMap<String, String>();
+	public Map<String, Object> ajaxtest(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
 		System.out.println(map.get("startdate"));
 		System.out.println(map.get("enddate"));
+		System.out.println(map.get("enddate").getClass());
 		
 		
+		//SalesService sr = pr.getContext().getBean("salesGraphSltView",SalesService.class);	
+		
+		
+		
+		
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("message", 500);
+		result.put("message2", "문자열");
 		
 		
 		return result;

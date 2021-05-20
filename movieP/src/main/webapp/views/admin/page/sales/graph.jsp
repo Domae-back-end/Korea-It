@@ -32,7 +32,10 @@ $(document).ready(function(){
 				if(xhttp.readyState == 4){
 					console.log("readyState==4")
 					if(xhttp.status == 200){
-					console.log("서버랑 통신잘댐.")				
+					console.log("서버랑 통신잘댐."+xhttp.responseText)
+					var parsed= JSON.parse(xhttp.responseText)
+					console.log(parsed)
+					console.log(parsed.message2)
 					//받아오면 뭔일할래?
 					
 					
@@ -41,24 +44,17 @@ $(document).ready(function(){
 					}									
 				}};
 				
-				xhttp.open("POST","/ajaxtest.do",true);
+				xhttp.open("POST","/salesGraphSltView.do",true);
 				xhttp.setRequestHeader(
 				          "Content-Type",
-				          //"application/x-www-form-urlencoded"
-				 		"application/json"       
+				          //"application/x-www-form-urlencoded"슈레기
+				 		"application/json"//이게 개꿀.       
 				);
 				var data= JSON.stringify({"startdate":startdate,"enddate":enddate });
 				console.log(data)
 				
-				xhttp.send(data);	
-				
-				
-			
-			
-			
-			
-		
-	})
+				xhttp.send(data);//sfy해서 서버에보냄	
+				})
 	
 	
 	
