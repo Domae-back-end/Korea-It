@@ -52,9 +52,11 @@ public interface DbMapper {
 	List<CateDTO> pullcate(Integer m_index);
 	List<MimgDTO> pullimg(Integer m_index);
 	
+	
+	
 	void memjoin(MemberDTO mdto);
 	MemberDTO memlogin(MemberDTO mdto);
-	MemberDTO memChk(String id);
+	int memModify(MemberDTO mdto);
 	
 	
 	// 유저메인화면 베너 관리용.
