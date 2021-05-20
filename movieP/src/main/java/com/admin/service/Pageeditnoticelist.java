@@ -34,7 +34,7 @@ public class Pageeditnoticelist implements PageeditService {
 		
 		
 		
-		System.out.println("빈 이름 serviceCserviceNotice 소환됨");
+		System.out.println("빈 이름 Pageeditnoticelist 소환됨");
 		//service라는 이름의 키로 >  table 이름을 담는 클래스 dto? 
 		
 
