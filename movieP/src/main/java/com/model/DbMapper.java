@@ -52,23 +52,23 @@ public interface DbMapper {
 	List<CateDTO> pullcate(Integer m_index);
 	List<MimgDTO> pullimg(Integer m_index);
 	
-	
+
 	
 	void memjoin(MemberDTO mdto);
 	MemberDTO memlogin(MemberDTO mdto);
 	int memModify(MemberDTO mdto);
-	
-	
-	// 유저메인화면 베너 관리용.
-	int deleteBanner(BannerDTO bannerdto);
-	
-	void insertBanner(BannerDTO bannerdto);
-	
-	int changeBanner(BannerDTO bannerdto);
-	
-	List<BannerDTO> selectBanner();
-	
-	
+
+
+   // 유저메인화면 베너 관리용.
+   int deleteBanner(BannerDTO bannerdto);
+   
+   void insertBanner(BannerDTO bannerdto);
+   
+   int changeBanner(BannerDTO bannerdto);
+   
+   List<BannerDTO> selectBanner();
+   
+
 	
 	
 	
@@ -79,7 +79,7 @@ public interface DbMapper {
 	void insertPersQna(ServicePersonalDTO persDTO); //1대1문의넣기
 	List<ServiceNoticeDTO> noticelist(); //공지사항보기
 	
-	
+	void insertNotice(ServiceNoticeDTO nDTO); //어드민딴에서 공지 추가하기
 	
 	
 	

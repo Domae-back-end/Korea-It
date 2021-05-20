@@ -14,7 +14,7 @@ import com.model.ServiceNoticeDTO;
 
 //Service단
 @Service
-public class Pageeditnoticelist implements PageeditService {
+public class Pageeditnoticeinsert implements PageeditService {
 	
 
 	@Resource
@@ -34,11 +34,13 @@ public class Pageeditnoticelist implements PageeditService {
 		
 		
 		
-		System.out.println("빈 이름 Pageeditnoticelist 소환됨");
+		System.out.println("빈 이름 serviceCserviceNotice 소환됨");
 		//service라는 이름의 키로 >  table 이름을 담는 클래스 dto? 
 		
-
-		List<ServiceNoticeDTO> result=db.noticelist();
+		
+		List<ServiceNoticeDTO> result = 
+				
+				db.insertNotice();
 		
 		System.out.println("db갓"+result.size());
 		

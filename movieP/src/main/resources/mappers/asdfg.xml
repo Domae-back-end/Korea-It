@@ -172,7 +172,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</sql>	
 	
-	 <select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO" >
+	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO" >
 		select * from memberinfo <include refid="checkform" />
 	</select>
 	
@@ -184,6 +184,45 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 
 	
+	
+	
+	<insert id="cateinsert"></insert>
+	
+	
+	<sql id="checkform">
+   
+      <choose>
+         <when test="userpw != null and userpw == ''">
+            <where> <![CDATA[userid = #{userid} and userpw = #{userpw}]]> </where>
+         </when>
+         
+         <when test="userpnum != null and userpnum == ''">
+            <where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} ]]> </where>
+         </when>
+         
+         <when test="userid == null">
+            <where> <![CDATA[username = #{username} and userbirth = #{userbirth} and userpnum = #{userpnum} ]]> </where>
+         </when>
+         
+         <otherwise>
+            <where> <![CDATA[userid = #{userid}]]> </where>
+         </otherwise>
+         
+      </choose>
+      
+   </sql>   
+   
+    <select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO" >
+      select * from memberinfo <include refid="checkform" />
+   </select>
+   
+   <insert id="memjoin" parameterType="MemberDTO" >
+      insert into memberinfo 
+      (userid, userpw, username, userbirth, userpnum, useremail, joinday) 
+      values 
+      (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
+   </insert>
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 	
 	
 	
