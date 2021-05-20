@@ -148,14 +148,32 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	  
 	  </select>
 	 
-	 
+	 		
+	<sql id="checkform">
 	
-	
-	<insert id="cateinsert"></insert>
-	
+		<choose>
+			<when test="userpw != null and userpw == ''">
+				<where> <![CDATA[userid = #{userid} and userpw = #{userpw}]]> </where>
+			</when>
+			
+			<when test="userpnum != null and userpnum == ''">
+				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} ]]> </where>
+			</when>
+			
+			<when test="userid == null">
+				<where> <![CDATA[username = #{username} and userbirth = #{userbirth} and userpnum = #{userpnum} ]]> </where>
+			</when>
+			
+			<otherwise>
+				<where> <![CDATA[userid = #{userid}]]> </where>
+			</otherwise>
+			
+		</choose>
+		
+	</sql>	
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO" >
-		select * from memberinfo where userid=#{userid} and userpw=#{userpw}
+		select * from memberinfo <include refid="checkform" />
 	</select>
 	
 	<insert id="memjoin" parameterType="MemberDTO" >
@@ -164,11 +182,51 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		values 
 		(#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
 	</insert>
+
 	
-	<select id="memChk" resultType="MemberDTO" parameterType="MemberDTO"  >	
-		select * from memberinfo where userid = #{userid}
-	</select>
 	
+	
+	<insert id="cateinsert"></insert>
+	
+	
+	<sql id="checkform">
+   
+      <choose>
+         <when test="userpw != null and userpw == ''">
+            <where> <![CDATA[userid = #{userid} and userpw = #{userpw}]]> </where>
+         </when>
+         
+         <when test="userpnum != null and userpnum == ''">
+            <where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} ]]> </where>
+         </when>
+         
+         <when test="userid == null">
+            <where> <![CDATA[username = #{username} and userbirth = #{userbirth} and userpnum = #{userpnum} ]]> </where>
+         </when>
+         
+         <otherwise>
+            <where> <![CDATA[userid = #{userid}]]> </where>
+         </otherwise>
+         
+      </choose>
+      
+   </sql>   
+   
+    <select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO" >
+      select * from memberinfo <include refid="checkform" />
+   </select>
+   
+   <insert id="memjoin" parameterType="MemberDTO" >
+      insert into memberinfo 
+      (userid, userpw, username, userbirth, userpnum, useremail, joinday) 
+      values 
+      (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
+   </insert>
+	
+	
+	
+	<insert id="cateinsert"></insert>
+
 	<insert id="insertBanner" parameterType="BannerDTO">
 	<!-- 조건문을 달고 싶은데..  -->
 		insert into bannerimg (#{bannerindex}, #{imgurl})
@@ -214,7 +272,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from noticeboard
 	</select>	
 	
-	
+	<!-- 어드민에 공지사항 추가하기 -->
+	<insert id="insertNotice" parameterType="ServicePNoticeDTO" >
+		insert into noticeboard 
+		(noticecate, noticetitle, noticecont, datetime, noticeview) 
+		values 
+		(#{noticecate}, #{noticetitle}, #{noticecont}, ddd(), null)
+	</insert>
 	
 	
 	
