@@ -1,5 +1,6 @@
 package com.model;
 
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 
@@ -97,7 +98,7 @@ public interface DbMapper {
 	
 	
 	List<SalesDTO> getsales();
-	
+	List<SalesDTO> getMonthlygraph(TimeVO timeVO);
 	
 	
 }
