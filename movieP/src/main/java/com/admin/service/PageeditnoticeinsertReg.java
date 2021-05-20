@@ -49,10 +49,10 @@ public class PageeditnoticeinsertReg implements PageeditService {
 		
 		//재료완성 > 재료 넣어서 메서드.
 		
+		
+		
+		
 		db.insertNotice(nDTO);
-		
-		
-		
 
 		AlterDTO ad = new  AlterDTO();
 		
