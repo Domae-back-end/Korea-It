@@ -38,13 +38,13 @@ public class Pageeditnoticeinsert implements PageeditService {
 		//service라는 이름의 키로 >  table 이름을 담는 클래스 dto? 
 		
 		
-		List<ServiceNoticeDTO> result = 
+		//List<ServiceNoticeDTO> result = 
 				
-				db.insertNotice();
+			//	db.insertNotice();
 		
-		System.out.println("db갓"+result.size());
+		//System.out.println("db갓"+result.size());
 		
-		return result;
+		return null;
 	}
 	
 	

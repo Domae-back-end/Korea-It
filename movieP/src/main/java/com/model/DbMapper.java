@@ -58,7 +58,6 @@ public interface DbMapper {
 	MemberDTO memlogin(MemberDTO mdto);
 	int memModify(MemberDTO mdto);
 
-
    // 유저메인화면 베너 관리용.
    int deleteBanner(BannerDTO bannerdto);
    
