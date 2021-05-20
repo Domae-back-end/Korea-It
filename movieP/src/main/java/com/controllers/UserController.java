@@ -17,7 +17,6 @@ public class UserController {
 		System.out.println("usercontroller");
 		
 		session.setAttribute("sessionId", request.getParameter("userid") );
-		
 		return "user/index";
 	}
 	
