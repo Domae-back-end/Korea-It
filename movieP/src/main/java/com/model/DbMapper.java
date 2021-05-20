@@ -1,9 +1,10 @@
 package com.model;
 
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;import com.admin.service.SalesService;
+import org.apache.ibatis.annotations.Mapper;
 
 
 @Mapper
@@ -11,9 +12,10 @@ public interface DbMapper {
 
 	List<MovieTimeDTO> movieTime();
 	List<MovieInfoDTO> movieInfo();
-	List<MovieInfoDTO> movieInfoBefore();
-	List<MovieInfoDTO> movieInfoAfter();
-	
+	List<MovieInfoDTO> movieInfoBefore(String str);
+	List<MovieInfoDTO> movieInfoAfter(String str);
+	//List<MovieInfoDTO> moviebeforsearch(String str);
+
 	
 	//영화 시간표
 	MovieInfoDTO movieDetail(Integer m_index);
@@ -98,7 +100,7 @@ public interface DbMapper {
 	
 	
 	List<SalesDTO> getsales();
-	
+	List<SalesDTO> getMonthlygraph(TimeVO timeVO);
 	
 	
 }

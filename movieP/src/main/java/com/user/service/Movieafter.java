@@ -13,20 +13,21 @@ import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
 import com.model.MovieAction;
+import com.model.MovieAction3;
 import com.model.MovieInfoDTO;
 
 
 @Service
-public class Movieafter implements MovieAction{
+public class Movieafter implements MovieAction3{
 	
 	@Resource
 	DbMapper mm;
 	
+
 	@Override
-	public Object execute() {
-		System.out.println("Movielist execute()");
-		List<MovieInfoDTO> list = mm.movieInfoAfter();
-	
+	public Object execute(String str) {
+		List<MovieInfoDTO> list = mm.movieInfoAfter(str);
+		
 		return list;
 	}
 	

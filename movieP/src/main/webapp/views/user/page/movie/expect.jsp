@@ -10,15 +10,16 @@
  <c:forEach items="${moviedataafter }" var="mm" varStatus="no">
    <table border="">
       <tr><td>${no.index +1}</td></tr>
-      <tr><td id="pos">
-	      <div id="darkness"></div>
-	      <a href= "/views/user/img/movie/moviedetail.jsp">
-	      <img alt ="" src='<c:url value= "/views/user/img/movie/${mm.movieimg }"/>'>
-	      </a>
+      <tr>
+      <td id="pos">
+      <a href = "/user/movie/moviedetail?sub=info&ind=${mm.m_index}">
+      <img alt ="" src= "/moviedata/${mm.movieimg}">
+      </a>
       </td></tr>
       <tr><td>${mm.movietitle }</td></tr>
       <tr>
          <td>평점: ${mm.star }
+         <input id = "tBtn" type="button" value="예매하기"></td>
       </tr>
    </table>
  </c:forEach>
