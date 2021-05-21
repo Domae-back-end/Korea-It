@@ -27,7 +27,9 @@ import com.model.InitData;
 import com.model.Menu;
 import com.model.MinfoPageDTO;
 import com.model.MovieInfoDTO;
+import com.model.ServiceFullDTO;
 import com.model.ServiceNoticeDTO;
+import com.model.ServiceNoticePageDTO;
 
 
 @Controller
@@ -39,9 +41,9 @@ public class PageeditController {
 	
 	@ModelAttribute("data")
 	Object data(@PathVariable String service,HttpServletRequest request, MovieInfoDTO mdto,
-				MinfoPageDTO pdto,BannerDTO banDTO
-				, ServiceNoticeDTO nDTO
-			) {
+			MinfoPageDTO pdto,BannerDTO banDTO
+			, ServiceFullDTO sfDTO,ServiceNoticePageDTO npDTO
+		) {
 		System.out.println("pageedit-"+service+"실행");
 		System.out.println("Mdto:"+mdto);
 		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
@@ -52,8 +54,8 @@ public class PageeditController {
 		obj.put("request", request);
 		obj.put("pdto", pdto);
 		obj.put("banDTO", banDTO);
-		obj.put("nDTO", nDTO);
-		
+		obj.put("sfDTO", sfDTO);
+		obj.put("npDTO", npDTO);
 		return sr.execute(obj);	// has > servie,mdto,req, imgnames,pdto	
 	}
 	

@@ -286,8 +286,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 <!-- 매출관련 정보(테스트용) salestest -->
 
-<select id="getsales" resultType="SalesDTO" >
-	select * from salestest
+<select id="getsales" resultType="SalesDTO" parameterType="HashMap" >
+	select * from salestest	
 </select>
 	
 	
@@ -298,10 +298,40 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	between #{sym} and #{eym}	
 	 </select>
+	 
+	 <sql id="faqlist">
+	
+		<choose>
+			
+
+			<when test="bDTO.sch!=null and bDTO.sch!='' ">
+				<where>
+				<!-- 	pname like concat('%',#{bDTO.sch},'%') -->
+				
+				${bDTO.kind} like '%${bDTO.sch}%'
+				
+				</where>
+			</when>
+
+
+		</choose>
+		
+	
+	</sql>
+	 
 	
 	
-	
-	
+	<!--자찾질  가져오기   -->
+	<select id="faqtotalCnt" resultType="java.lang.Integer"   parameterType="HashMap">
+		select count(*) from basicqna
+			<choose>			
+			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
+				<where>
+				${sfDTO.kind2} like '%${sfDTO.sch}%'				
+				</where>
+			</when>
+		</choose>
+	</select>
 	
 	
 	

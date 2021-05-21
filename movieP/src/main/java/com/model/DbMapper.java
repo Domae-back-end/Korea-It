@@ -101,7 +101,8 @@ public interface DbMapper {
 	
 	List<SalesDTO> getsales();
 	List<SalesDTO> getMonthlygraph(TimeVO timeVO);
-	
+	List<ServiceFullDTO> getfaq(HashMap<String, Object> map);
+	int faqtotalCnt(HashMap<String,Object> map);
 	
 }
 
