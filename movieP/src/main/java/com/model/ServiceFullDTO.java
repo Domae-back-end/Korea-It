@@ -15,7 +15,7 @@ public class ServiceFullDTO {
 	
 
 	//공지사항테이블. 	
-	Integer noticeindex; //auto번호
+	Integer noticeindex; //auto번호//
 	String noticecate; //구분(시스템, 영화관, 기타)
 	String noticetitle; //제목
 	String noticecont; //내용
