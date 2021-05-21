@@ -17,14 +17,7 @@ public class MovieTimeinsert implements MovieTimeService{
 	DbMapper db;
 	
 	@Override
-	public Object execute(String dal, String el, MovieTimeDTO dto) {List<MovieTimeDTO> ar = db.movieTime();
-	
-//	for (MovieTimeDTO a : ar) {
-//		if(dto.getStarttime().after(a.getStarttime()) || dto.getEndtime().before(dto.getEndtime())){
-//			
-//		}
-//	}
-//		
+	public Object execute(String dal, String el, MovieTimeDTO dto) {
 		return db.movieInfo();
 	}
 }
