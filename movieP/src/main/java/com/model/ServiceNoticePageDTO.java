@@ -28,28 +28,36 @@ public class ServiceNoticePageDTO {
 	
 	
 	public void init(DbMapper dm, HashMap<String, Object> map) {
-		start = (page-1) * limit;
-		
-		
-		int ttt = dm.totalCnt(map); //총갯수정함. 페이지나눠야하니깐.
-		
-		this.total = ttt/limit;
-		
+		start = (page-1) * limit;		
+		int ttt = dm.totalCnt(map); //총갯수정함. 페이지나눠야하니깐.		
+		this.total = ttt/limit;		
 		if (ttt%limit > 0) {
 			total++;
-		}
-		
-//		페이지가정해지면 스타트가정해짐
-		start = (page-1) * limit;
-		
+		}		
+		start = (page-1) * limit;		
 		startPage = (page-1)/pageLimit * pageLimit +1;
-		endPage = startPage + pageLimit - 1;
-		
+		endPage = startPage + pageLimit - 1;		
 		if (endPage > total) {
 			endPage = total;
 		}
+		System.out.println(page+",검색된첫 "+start+", "+limit+", "+pageLimit+",총검색결과수 "+total+", "+startPage+", "+endPage);
+	}
+	
 
-		System.out.println(page+", "+start+", "+limit+", "+pageLimit+", "+total+", "+startPage+", "+endPage);
+	public void initfaq(DbMapper dm, HashMap<String, Object> map) {
+		start = (page-1) * limit;		
+		int ttt = dm.faqtotalCnt(map); //총갯수정함. 페이지나눠야하니깐.		
+		this.total = ttt/limit;		
+		if (ttt%limit > 0) {
+			total++;
+		}		
+		start = (page-1) * limit;		
+		startPage = (page-1)/pageLimit * pageLimit +1;
+		endPage = startPage + pageLimit - 1;		
+		if (endPage > total) {
+			endPage = total;
+		}
+		System.out.println(page+",검색된첫 "+start+", "+limit+", "+pageLimit+",총검색결과수 "+total+", "+startPage+", "+endPage);
 	}
 	
 }

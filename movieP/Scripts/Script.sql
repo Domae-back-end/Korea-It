@@ -107,6 +107,9 @@ INSERT INTO bannerimg (bannerindex,imgurl) VALUES
  sales_type	varchar(100),
  sales_time datetime
 );
+/* 표 시간은 > 예매정보테이블에서 ,티켓고유번호로 가져오기. sales_time 은 즉 결제시간 또는 환불시간을 의미  */
+
+
 /* 매출 테이블  testdata*/
 insert into salestest (ticket_index, ticket_pcount,salesprice , userid,movietitle ,
 moviesector, sales_type,sales_time)
@@ -184,8 +187,22 @@ create table basicqna (
 	bqindex int auto_increment primary key,
 	bqcate varchar(100),
 	bqtitle varchar(100),
-	bqcont varchar(3000)
+	bqcont varchar(3000),
+	faqurl1 varchar(100),
+	faqurl2 varchar(100)
 );
+drop table basicqna;
+<!--자찾질 테스트용  -->
+insert into basicqna (bqcate, bqtitle, bqcont, faqurl1, faqurl2) 
+values('영화/예매가입영화관기타','테스트1','테스트글2','/user/main','/user/main'),
+('영화/예매가입영화관기타','테스트제목2','테스트글2','/user/main','/user/main'),
+('영화/예매가입영화관기타','테스트3','테스트글2','/user/main','/user/main'),
+('영화/예매가입영화관기타','테스트제목4','테스트글2','/user/main','/user/main'),
+('영화/예매가입영화관기타','테스트5','테스트글2','/user/main','/user/main'),
+('영화/예매가입영화관기타','테스트6','테스트글2','/user/main','/user/main'),
+('영화/예매가입영화관기타','테스트제목7','테스트글2','/user/main','/user/main');
+
+
 
 
 
