@@ -19,8 +19,10 @@ public class ServiceCserviceNoticeDetail implements ServiceCservice {//빈 창�
 
 	@Override
 	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		db.addCount(sfDTO);
+		
+		return db.noticedetail(sfDTO);
 	}
 
 

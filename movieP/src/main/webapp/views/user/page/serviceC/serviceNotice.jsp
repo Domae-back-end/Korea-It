@@ -55,6 +55,7 @@
 		//alert("detailGo 눌렀냐?"+aa)
 		frm.action = "serviceNoticeDetail"
 		$("#detailId").val(aa)
+		alert(aa+"번으로 이동")
 		frm.submit()
 	}
 	
@@ -76,7 +77,7 @@
 	<h2>공지사항</h2>
 	<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
-		<input type="hidden" name="id" id="detailId" />
+		<input type="hidden" name="noticeindex" id="detailId" />
 	
 		<div class="search">
 			<select name="kind">

@@ -226,10 +226,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		limit #{npDTO.start}, #{npDTO.limit}
 	</select>	
 	
+	
 	<!-- 공지사항검색(미완) -->
 	<select id="noticesearch" resultType="ServiceFullDTO">
 		select * from noticeboard
 	</select>	
+	
 	
 	<!-- 어드민에 공지사항 추가하기 -->
 	<insert id="insertNotice" parameterType="ServiceFullDTO" > 
@@ -239,18 +241,25 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{noticecate}, #{noticetitle}, #{noticecont}, sysdate(), 0)
 	</insert>
 	
+	
+	<!-- 게시글수 구하기 -->
 	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
-		
 		select count(*) from noticeboard
-		
 	</select>
 	
+	
+	<!-- 공지사항 디테일 -->
 	<select id="noticedetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
 		select * from noticeboard where noticeindex = ${noticeindex}
 	</select>
 	
-	
-	
+
+	<!-- 공지사항 조회수 -->
+	<update id="addCount" parameterType="ServiceFullDTO">
+		update noticeboard set 
+		noticeview = noticeview +1
+		where noticeindex = #{noticeindex}
+	</update>
 	
 	
 	

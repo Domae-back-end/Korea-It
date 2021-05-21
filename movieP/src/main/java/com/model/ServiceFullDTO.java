@@ -20,7 +20,7 @@ public class ServiceFullDTO {
 	String noticetitle; //제목
 	String noticecont; //내용
 	Date noticetime; //등록일
-	int noticeview; //조회수
+	Integer noticeview = 0; //조회수
 	
 	
 	
