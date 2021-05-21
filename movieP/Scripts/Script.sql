@@ -188,8 +188,8 @@ create table basicqna (
 	bqcate varchar(100),
 	bqtitle varchar(100),
 	bqcont varchar(3000),
-	faqurl1 varchar(100) default '',
-	faqurl2 varchar(100) dafault ''
+	faqurl1 varchar(100) default 'user/mainpage/main',
+	faqurl2 varchar(100) default 'user/mainpage/main'
 );
 drop table basicqna;
 <!--자찾질 테스트용  -->
