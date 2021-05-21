@@ -315,7 +315,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from basicqna
 	
 	</select>
+	<insert id="insertfaq" parameterType="ServiceFullDTO">
+		insert into basicqna (bqcate, bqtitle, bqcont, faqurl1, faqurl2) 
 	
+	</insert>
 	
 	
 	

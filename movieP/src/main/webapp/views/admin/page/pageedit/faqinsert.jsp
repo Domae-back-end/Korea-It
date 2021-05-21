@@ -20,6 +20,10 @@
 			질문 제목 <input type="text" name="bqtitle" />
 			<br>
 			질문 내용 <textarea name="bqcont" rows="5" cols="30"></textarea>
+			<br>
+			안내 링크 2<input type="text" name="faqurl1" />
+			<br>
+			안내 링크 2<input type="text" name="faqurl2" />
 <input type="submit" value="등록하기"/>
 </form>
 
