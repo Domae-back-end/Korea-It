@@ -50,7 +50,7 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 				imgnames.add(mf.getOriginalFilename());
 			}			
 		}		
-		AlterDTO al = new AlterDTO();	
+	
 		ArrayList<ActorDTO> adto = new ArrayList<>();
 		for (int i = 0; i < mdto.getMactrs().split(",").length; i++) {
 			ActorDTO actor = new ActorDTO();
@@ -87,7 +87,7 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		
 		
 		
-		
+		AlterDTO al = new AlterDTO();	
 		
 
 		al.setMsg("인서트 성공");

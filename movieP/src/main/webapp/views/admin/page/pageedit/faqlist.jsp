@@ -35,7 +35,7 @@
 			<table class="td1">
 				<tr>
 					<td colspan="5" style="text-align: right; ">
-						<a href="admin/pageedit/faqinsert">글쓰기</a>
+						<a href="faqinsert">글쓰기</a>
 						<!-- <a href="admin/pageedit/faqmodify">수정</a> -->
 					<!-- 	<a href="admin/pageedit/faqdelete">삭제</a> -->
 					</td>
@@ -47,14 +47,12 @@
 					<td>등록일</td>
 					<td>조회수</td>
 				</tr>
-			<c:forEach items="${data }" var="faqDTO" varStatus="no" >
+			<c:forEach items="${data.sfDTO }" var="faqDTO" varStatus="no" >
 				<tr>
-					<td>${faqDTO.noticeindex }</td>
-					<td>${faqDTO.noticecate }</td>
-					<td>${faqDTO.noticetitle }</td>
-					<td>${faqDTO.datetime }</td>
-					<td>${faqDTO.noticeview }</td>
-					<td>${faqDTO.noticeview }</td>
+					<td>${faqDTO.bqindex }</td>
+					<td>${faqDTO.bqcate }</td>
+					<td>${faqDTO.bqtitle }</td>
+					
 				</tr>
 			</c:forEach>
 

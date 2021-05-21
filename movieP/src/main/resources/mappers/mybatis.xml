@@ -281,9 +281,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	
 	
-	
-	
-	
 <!-- 매출관련 정보(테스트용) salestest -->
 
 <select id="getsales" resultType="SalesDTO" parameterType="HashMap" >
@@ -299,25 +296,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	between #{sym} and #{eym}	
 	 </select>
 	 
-	 <sql id="faqlist">
 	
-		<choose>
-			
-
-			<when test="bDTO.sch!=null and bDTO.sch!='' ">
-				<where>
-				<!-- 	pname like concat('%',#{bDTO.sch},'%') -->
-				
-				${bDTO.kind} like '%${bDTO.sch}%'
-				
-				</where>
-			</when>
-
-
-		</choose>
-		
-	
-	</sql>
 	 
 	
 	
@@ -332,6 +311,27 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 		</choose>
 	</select>
+	<select id="getfaq" resultType="ServiceFullDTO" parameterType="HashMap"   >
+		select * from basicqna
+	
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

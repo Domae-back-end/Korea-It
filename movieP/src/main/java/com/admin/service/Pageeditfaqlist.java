@@ -30,11 +30,12 @@ public class Pageeditfaqlist implements SalesService, PageeditService {
 		
 		map.put("sfDTO", sfdto);
 		map.put("npDTO", npDTO);		
-		npDTO.init(db, map);
+		npDTO.initfaq(db, map);
 		
 	
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();	
+		
 		result.put("sfDTO", db.getfaq(map));		
 		result.put("npDTO", result);
 		
