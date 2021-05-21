@@ -28,7 +28,7 @@
 			<tr>
 				<td>구분</td>
 				<td>
-					<select name="noticate">
+					<select name="noticecate">
 						<option value="system">시스템</option>
 						<option value="movie">영화관</option>
 						<option value="etc">기타</option>
@@ -37,11 +37,11 @@
 			</tr>
 			<tr>
 				<td><label for="titleG">제목*</label></td>
-				<td><input type="text" name="notititle" id="titleG" class="title" /></td>
+				<td><input type="text" name="noticetitle" id="titleG" class="title" /></td>
 			</tr>
 			<tr>
 				<td><label for="contG">내용*</label></td>
-				<td><textarea name="noticont" cols="30" rows="5" id="contG"></textarea></td>
+				<td><textarea name="noticecont" cols="30" rows="5" id="contG"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;">

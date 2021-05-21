@@ -14,7 +14,8 @@ public class ServiceFullDTO {
 	String schkey;//searchkey
 	
 
-	//공지사항테이블. 	int noticeindex; //auto번호
+	//공지사항테이블. 	
+	Integer noticeindex; //auto번호
 	String noticecate; //구분(시스템, 영화관, 기타)
 	String noticetitle; //제목
 	String noticecont; //내용
@@ -39,9 +40,8 @@ public class ServiceFullDTO {
 	
 	
 	//자주묻는질문. 
-	//int bqindex auto번호
 	
-	int bqindex;	
+	int bqindex; //auto번호
 	String bqcate; //카테고리(전체, 영화/예매, 가입, 영화관, 기타)
 	String bqtitle; //제목
 	String bqcont; //내용

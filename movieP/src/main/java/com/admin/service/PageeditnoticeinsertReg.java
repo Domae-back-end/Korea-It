@@ -1,21 +1,14 @@
 package com.admin.service;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
 import com.model.AlterDTO;
 import com.model.DbMapper;
-import com.model.MovieTimeDTO;
-import com.model.ServiceNoticeDTO;
-import com.model.ServicePersonalDTO;
+import com.model.ServiceFullDTO;
 
 //Service단
 @Service
@@ -30,7 +23,7 @@ public class PageeditnoticeinsertReg implements PageeditService {
 		System.out.println("빈 이름 PageeditnoticeinsertReg 소환됨");
 		
 		HashMap<String, Object> map= (HashMap)obj;
-		ServiceNoticeDTO nDTO = (ServiceNoticeDTO)map.get("nDTO");
+		ServiceFullDTO sfDTO = (ServiceFullDTO)map.get("sfDTO");
 		
 //		HttpServletRequest request = (HttpServletRequest)map.get("request");
 //		//상상 .
@@ -52,12 +45,12 @@ public class PageeditnoticeinsertReg implements PageeditService {
 		
 		
 		
-		db.insertNotice(nDTO);
+		db.insertNotice(sfDTO);
 
 		AlterDTO ad = new  AlterDTO();
 		
 		ad.setMsg("공지등록 완료");
-		ad.setUrl("/admin/pageedit/noticeinsertReg");
+		ad.setUrl("/admin/pageedit/noticelist");
 		
 		return ad;
 		
@@ -65,6 +58,6 @@ public class PageeditnoticeinsertReg implements PageeditService {
 		//return null;
 		
 	}
-	
+
 	
 }

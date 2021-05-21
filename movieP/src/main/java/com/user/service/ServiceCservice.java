@@ -1,7 +1,10 @@
 package com.user.service;
 
+import com.model.ServiceFullDTO;
+import com.model.ServiceNoticePageDTO;
+
 public interface ServiceCservice {
 	
-	Object execute(Object obj);
+	Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO);
 
 }
