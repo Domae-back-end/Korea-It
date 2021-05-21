@@ -23,6 +23,7 @@ spring  :
     view  :
       prefix  : /views/
       suffix  : .jsp
+    static-path-pattern : /resources/**
   ### mybatis 설정
 mybatis:
   mapper-locations: mappers/**/*.xml

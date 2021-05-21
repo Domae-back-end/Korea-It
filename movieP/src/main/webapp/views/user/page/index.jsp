@@ -16,41 +16,20 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
+<script src="<c:url value="/resources/my_js/jquery-ui.min.js"/>"></script>
 
+<link rel="stylesheet" href='<c:url value="/resources/css/index.css" />'>
+<link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
+<script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
 
 <title>유저 메인 화면</title>
-<style>
-	*{
-		padding: 0;
-		margin: 0;
-	}
-	.main{
-		text-align: center;
-		width: 1000px;
-		height: 100%;
-		margin: 0 auto;
-	}
-	.header{
-		width: 1000px;
-		height: 100px;
-	}
-	.body{
-		width: 1000px;
-		height: 100%;
-	}
-	.footer{
-		text-align: center;
-		width: 1000px;
-		height: 100px;
-		background: red;
-	}
-</style>
 </head>
 <body>
-<div class="main">
-	<div class="header"><jsp:include page="inc/header.jsp" /> </div>
-	<div class="body"><jsp:include page="page/${bodyurl }.jsp" /> </div>
-	<div class="footer"><jsp:include page="inc/footer.jsp" /> </div>
-</div>
+
+	<header> <jsp:include page="inc/header.jsp" /> </header>
+	<jsp:include page="${PPPData.cate}/${PPPData.service}.jsp" /> 
+	<footer> <jsp:include page="inc/footer.jsp" /></footer>
+
 </body>
 </html>

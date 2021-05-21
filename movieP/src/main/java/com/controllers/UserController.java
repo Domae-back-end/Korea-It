@@ -13,18 +13,9 @@ public class UserController {
 
 	@RequestMapping
 	public String view(HttpServletRequest request, HttpSession session) {
-		// /user 치면 메인페이지 
-		System.out.println("usercontroller");
-		
+
 		session.setAttribute("sessionId", request.getParameter("userid") );
-		return "user/index";
+		return "/user/home";
 	}
 	
-	
-	@ModelAttribute("bodyurl")
-	String bodypageUrl() {
-		return "body";
-	}
-
-
 }

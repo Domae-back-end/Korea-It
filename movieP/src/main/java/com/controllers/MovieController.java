@@ -18,6 +18,7 @@ import com.model.MovieAction;
 import com.model.MovieAction2;
 import com.model.MovieAction3;
 import com.model.MovieInfoDTO;
+import com.model.PPPData;
 
 @Controller
 @RequestMapping("/user/movie/{service}")
@@ -36,11 +37,10 @@ public class MovieController {
 		return "user/page/movie/"+service;
 	}
 	
-	@ModelAttribute("bodyurl")
-	String bodypageUrl(@PathVariable String service) {
-		
-		System.out.println("바디유알엘");
-		return "moviemain";
+	@ModelAttribute
+	PPPData pppData(@PathVariable String service) {
+		System.out.println(service);
+		return new PPPData("movie", service);
 	}
 	
 	@ModelAttribute("moviedata")

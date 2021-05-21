@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.admin.service.Provider;
+import com.model.PPPData;
 import com.model.ServicePersonalDTO;
 import com.user.service.ServiceCservice;
 
@@ -21,8 +22,6 @@ public class ServiceController {
 	@Resource
 	Provider pr; //@Service이 붙은애들 읽음
 
-	
-	
 	@ModelAttribute("data")
 	public Object data(@PathVariable String service, HttpServletRequest request, ServicePersonalDTO persDTO
 			//, ServiceNoticePageDTO nDTO
@@ -44,15 +43,10 @@ public class ServiceController {
 	}
 	
 	
-	
-	@ModelAttribute("bodyurl") 
-	String bodygogo(@PathVariable String service) {	
-		
-		return "serviceC/"+service; //메인
+	@ModelAttribute
+	PPPData pppData(@PathVariable String service) {
+		return new PPPData("serviceC", service);
 	}
-
-	
-	
 	
 	@RequestMapping // 보내주는페이지
 	public String view(@PathVariable String service) { //일단 처음에 들어오면 무조건 index로가. index에서 include된 bodyurl만 밑에꺼로 포함되서 가져와
@@ -61,7 +55,7 @@ public class ServiceController {
 			return "user/page/alert";
 		}
 		
-		return "user/index";
+		return "user/page/index";
 	}
 	
 }
