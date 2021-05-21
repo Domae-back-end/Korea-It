@@ -71,6 +71,19 @@ public class AsyncController {
 		return (HashMap<String, Object>)sr.execute(map);
 	
 	}
+	///faqdetail.do
+	@RequestMapping(value = "faqdetail.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> faqdetail(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
+		
+		
+		
+		SalesService sr = pr.getContext().getBean("faqdetail",SalesService.class);	
+		
+		
+		return (HashMap<String, Object>)sr.execute(map);
+	
+	}
 	
 	
 

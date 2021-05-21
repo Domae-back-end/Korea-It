@@ -333,9 +333,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		</choose>
 	</select>
 	<select id="getfaq" resultType="ServiceFullDTO" parameterType="HashMap"   >
-		select * from basicqna
+		select * from basicqna order by bqindex desc limit #{npDTO.start},#{npDTO.limit}
 	
 	</select>
+	
+	
+	
 	<insert id="insertfaq" parameterType="ServiceFullDTO">
 		insert into basicqna (bqcate, bqtitle, bqcont, faqurl1, faqurl2) 
 		values (#{bqcate},#{bqtitle}, #{bqcont}  ,#{faqurl1}, #{faqurl2})

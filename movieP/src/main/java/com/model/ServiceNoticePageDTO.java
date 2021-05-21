@@ -78,7 +78,7 @@ public class ServiceNoticePageDTO {
 		if (endPage > total) {
 			endPage = total;
 		}
-		System.out.println(page + ",검색된첫 " + start + ", " + limit + ", " + pageLimit + ",총검색결과수 " + total + ", "
+		System.out.println("faqINIT"+page + ",검색된첫 " + start + ", " + limit + ", " + pageLimit + ",총검색결과수 " + total + ", "
 				+ startPage + ", " + endPage);
 	}
 }

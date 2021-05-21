@@ -12,7 +12,7 @@
 	
 	
 	
-	/* 공지테이블 */
+	/* FAQ 조회하기 */
 	.td1 {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
 	.td1 tr:nth-of-type(2)>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(1) {width: 50px;  }
@@ -24,6 +24,36 @@
 </style>
 
 <title>자주찾는질문관리</title>
+
+
+<script type="text/javascript">
+
+
+	
+
+			bbb = 11;
+	
+	function detailGo(aa) {
+		
+		console.log(bbb)
+			//var before = aa+""
+			alert("디테일 고 누름."+aa+"+"+bbb)			
+			var clicked= document.getElementById(aa+"")
+			var before= document.getElementById(bbb+"")
+			clicked.style.display= "initial"
+			before.style.display="none"
+			
+				
+				
+			
+			
+			
+				}
+
+	console.log("디테일 고 누름."+before)	
+
+</script>
+
 </head>
 
 
@@ -44,16 +74,17 @@
 					<td>번호</td>
 					<td>구분</td>
 					<td>제목</td>
-					<td>등록일</td>
-					<td>조회수</td>
+				
 				</tr>
 			<c:forEach items="${data.sfDTO }" var="faqDTO" varStatus="no" >
-				<tr>
+				<tr id="row${faqDTO.bqindex }">
 					<td>${faqDTO.bqindex }</td>
 					<td>${faqDTO.bqcate }</td>
-					<td>${faqDTO.bqtitle }</td>
+					<td style="border: 1px solid;">
+					<a href="javascript:detailGo(${faqDTO.bqindex })">${faqDTO.bqtitle }</a></td>
 					
 				</tr>
+				<tr><td colspan="3" id="${faqDTO.bqindex }" style="display: none;">${faqDTO.bqcont }</td> </tr>
 			</c:forEach>
 
 			
