@@ -25,7 +25,7 @@ public class CheckController {
 
 	@Resource
 	DbMapper db;
-
+	//중복체크 컨트롤러
 	@ResponseBody
 	@RequestMapping(value = "/admin/movietime/check", method = RequestMethod.GET)
 	public int timecheck(@RequestParam("time") String time, @RequestParam("movietitle") String movietitle) {
