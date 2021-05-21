@@ -22,6 +22,24 @@ public class ServiceFullDTO {
 	Date noticetime; //등록일
 	Integer noticeview = 0; //조회수
 	
+	public String getNoticecontBr() {
+		return noticecont.replaceAll("\n", "<br>");
+	}
+	
+	public String getNoticecateKr() {
+		
+		switch (noticecate) {
+			case "system": System.out.println("시스템");
+			return "시스템";
+			
+			case "movie": System.out.println("영화관");
+			return "영화관";
+			
+			case "etc": System.out.println("기타");
+			return "기타";
+		}
+		return null;
+	}
 	
 	
 	

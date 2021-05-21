@@ -100,10 +100,11 @@ public interface DbMapper {
 	
 	ServiceFullDTO noticedetail(ServiceFullDTO sfDTO); //공지사항 디테일보기
 	
-	void addCount(ServiceFullDTO sfDTO);
+	void addCount(ServiceFullDTO sfDTO); //주회수 증가
 	
+	ServiceFullDTO noticeNext(ServiceFullDTO sfDTO); //공지사항 다음글
 	
-	
+	ServiceFullDTO noticeBefore(ServiceFullDTO sfDTO); //공지사항 이전글
 	
 	
 	
