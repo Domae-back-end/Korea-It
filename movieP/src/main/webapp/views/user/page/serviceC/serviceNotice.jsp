@@ -101,7 +101,7 @@
 			<c:forEach items="${data.sfdto }" var="sfDTO" varStatus="no" >
 				<tr>
 					<td>${sfDTO.noticeindex }</td>
-					<td>${sfDTO.noticecate }</td>
+					<td>${sfDTO.noticecateKr }</td>
 					<td>
 <%-- 						<a href="serviceNoticeDetail?id=${sfDTO.noticeindex }&page=${data.snpdto.page}">${sfDTO.noticetitle }</a> --%>
 						<a href="javascript:detailGo(${sfDTO.noticeindex })">${sfDTO.noticetitle }</a>

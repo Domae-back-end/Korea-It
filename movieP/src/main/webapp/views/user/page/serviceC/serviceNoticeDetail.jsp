@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,35 +59,31 @@
 		<!-- 구분 시스템, 영화관, 기타 -->
 		<div class="detail_top">
 			<ul>
-				<li>${data.noticeindex }</li>
-				<li>as</li>
-				
-				<li>등록일 2021.05.18</li>
-				<li>조회수 8</li>
+				<li>[${data.now.noticecateKr }] ${data.now.noticetitle }</li>				
+				<li>등록일 <fmt:formatDate value="${data.now.noticetime }" type="both" pattern="yyy.MM.dd"/></li>
+				<li>조회수 ${data.now.noticeview }</li>
 			</ul>
 		</div>
 		<div class="detail_cont">
 			<p>
-				안녕하십니까. CGV인천연수입니다. <br />
-				제9회 디아스포라영화제 대관으로 인해 CGV인천연수 상영관은 미운영됩니다. <br />
-				CGV인천연수 이용 고객님께서는 아래 일정을 참고 부탁드립니다. <br />
-				일반영화 관람을 원하시는 경우 인근 CGV인천, CGV인천학익을 이용 부탁드립니다. <br />
-				감사합니다. <br />
+				${data.now.noticecontBr }
 			</p>
 		</div>
 		<div class="detail_bot">
 			<table>
 				<tr>
 					<td>이전글</td>
-					<td><a href="">[시스템] 아이돌 마스터 밀리언 라이브! 7thLive Q@MP FLYER!!!</a></td>
+					<td><a href="serviceNoticeDetail?page=1&noticeindex=${data.next.noticeindex }&kind=title">${data.next.noticetitle }</a></td>
 				</tr>
 				<tr>
 					<td>다음글</td>
-					<td><a href="">[기타] 제 9회 디아스포라 영화제 대관으로 인한 미운영</a></td>
+					<td><a href="serviceNoticeDetail?page=1&noticeindex=${data.before.noticeindex }&kind=title">${data.before.noticetitle }</a></td>
 				</tr>
 			</table>
 			<div class="back_list">
 				<a href="serviceNotice">목록</a>
+				<%-- <a href="serviceNotice?page=${npDTO.page }">목록</a> --%>
+				
 			</div>
 		</div>
 	</div>
