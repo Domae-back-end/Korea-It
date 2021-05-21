@@ -58,21 +58,9 @@
 		<!-- 구분 시스템, 영화관, 기타 -->
 		<div class="detail_top">
 			<ul>
-				<li>${data.sfdto.noticeindex }</li>
-				<li>${data.sfDTO.noticeindex }</li>
-				<li>${data.snpdto.noticeindex }</li>
 				<li>${data.noticeindex }</li>
-				<li>${sfdto.noticeindex }</li>
-				<li>${sfDTO.noticeindex }</li>
-				<li>${noticeindex }</li>
 				<li>as</li>
-				<li>${data.id }</li>
-				<li>${data.sfdto.id }</li>
-				<li>${data.sfDTO.id }</li>
-				<li>${data.snpdto.id }</li>
-				<li>${sfdto.id }</li>
-				<li>${sfDTO.id }</li>
-				<li>${id }</li>
+				
 				<li>등록일 2021.05.18</li>
 				<li>조회수 8</li>
 			</ul>

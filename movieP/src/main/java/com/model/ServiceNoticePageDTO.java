@@ -17,6 +17,7 @@ public class ServiceNoticePageDTO {
 //	Integer endPage;		//pagelimit에 다다르고 그담페이지번호 계산 (1일땐 1~4) (2일땐 5~8)
 
 	Integer page = 1; // 내가누른 페이지번호
+	Integer cnt = 0;
 	Integer start; // 1일때 3(limit), 2일때 6(limit*2)
 	Integer limit = 5; // 한페이지에 게시글 갯수
 	Integer pageLimit = 4; // 밑에페이지번호 갯수 (1창에 4개만)
@@ -24,6 +25,20 @@ public class ServiceNoticePageDTO {
 	Integer startPage; // pagelimit에 다다르고 그담페이지번호 계산 (1일땐 1~4) (2일땐 5~8)
 	Integer endPage; // pagelimit에 다다르고 그담페이지번호 계산 (1일땐 1~4) (2일땐 5~8)
 
+	
+	
+	
+	public void setCnt(Integer cnt) {
+		this.cnt = cnt;
+		
+		if (cnt == null) {
+			this.cnt = 0;
+		}
+	}
+	
+	
+	
+	
 	public void init(DbMapper dm, HashMap<String, Object> map) {
 		start = (page - 1) * limit;
 

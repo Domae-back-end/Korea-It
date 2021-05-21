@@ -80,6 +80,16 @@ public interface DbMapper {
 	List<BannerDTO> selectBanner();
 
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//현준 Service C
 	
 	void insertPersQna(ServiceFullDTO sfDTO); //1대1문의넣기
@@ -90,7 +100,7 @@ public interface DbMapper {
 	
 	ServiceFullDTO noticedetail(ServiceFullDTO sfDTO); //공지사항 디테일보기
 	
-	
+	void addCount(ServiceFullDTO sfDTO);
 	
 	
 	
