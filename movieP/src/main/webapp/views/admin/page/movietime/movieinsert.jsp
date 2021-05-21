@@ -43,9 +43,18 @@ $(function() {
 	
 	$(".checktime").click(function() {
 		var time = $('#starttime1').val();
-		var movie = $('#movietitle').val();
+		var el = $('#el').val();
+		var dal = $('#dal').val();
+		var movie
+	    const moviechek = document.getElementsByName('movietitle');
+		  moviechek.forEach((node) => {
+		    if(node.checked)  {
+		    	movie = node.value;
+		    }
+		  }) 
 		$.ajax({
-			url : '${pageContext.request.contextPath}/admin/movietime/check?time='+time+'&movietitle='+movie,
+			url : '${pageContext.request.contextPath}/admin/movietime/check?time='+time+'&movietitle='+movie+'&el='+
+					el+'&dal='+dal,
 			type : 'get',
 			success : function(data) {
 				if(data == 1){
@@ -64,8 +73,8 @@ $(function() {
 });
 </script>
 <form action="/admin/movietime/insertReg">
-	<input type="hidden" value="<%=request.getParameter("dal")%>" name="dal">
-	<input type="hidden" value="<%=request.getParameter("el")%>" name="el">
+	<input type="hidden" id="dal" value="<%=request.getParameter("dal")%>" name="dal">
+	<input type="hidden" id="el" value="<%=request.getParameter("el")%>" name="el">
 	<div class="inputbox">
 		<select name="sectorno">
 			<option value="작은관">작은관</option>

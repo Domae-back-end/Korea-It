@@ -25,8 +25,6 @@ public class MovieTimeupdateReg implements MovieTimeService {
 
 		ArrayList<MovieTimeDTO> list = dto.getList();
 		MovieInfoDTO mdto = db.findMovie(dto.getMovietitle());
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:MM:ss");
-		ArrayList<Integer> ar = new ArrayList<>();
 		AlterDTO adt = new AlterDTO();
 		adt.setMsg("수정이 완료되었습니다.");
 		adt.setUrl("/admin/movietime/detail?movietitle=" + dto.getMovietitle());

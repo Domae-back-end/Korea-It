@@ -15,13 +15,14 @@ import com.admin.service.MovieTimeService;
 import com.admin.service.Provider;
 import com.model.MovieTimeDTO;
 
+
 @Controller
 @RequestMapping("admin/movietime/{cate}")
 public class MovieTimeController {
 
 	@Resource
 	Provider pr;
-	
+
 	@ModelAttribute("data")
 	Object data(@PathVariable String cate, String dal, String el, MovieTimeDTO dto) {
 		MovieTimeService sr = pr.getContext().getBean("MovieTime" + cate, MovieTimeService.class);
@@ -32,7 +33,6 @@ public class MovieTimeController {
 	String bodypageUrl(@PathVariable String cate) {
 		return "movietime/movie" + cate;
 	}
-	
 	
 
 	@RequestMapping
