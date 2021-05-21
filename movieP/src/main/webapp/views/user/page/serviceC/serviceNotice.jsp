@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <!DOCTYPE html>
@@ -39,6 +40,25 @@
 	.search>input[type="submit"] {font-size: 16px; width: 50px; height: 38px; }
 	
 </style>
+<script src="../../../../my_js/jquery-3.6.0.js"></script>
+<script>
+	$(function() {
+		//alert("안녕");
+		$(".btn").click(function(){
+			//alert("눌렀냐?"+$(this).attr("dd"))
+			$("#pageIN").val($(this).attr("dd"))
+			frm.submit()
+		})
+	})
+	
+	function detailGo(aa) {
+		//alert("detailGo 눌렀냐?"+aa)
+		frm.action = "serviceNoticeDetail"
+		$("#detailId").val(aa)
+		frm.submit()
+	}
+	
+</script>
 </head>
 
 <body>
@@ -54,7 +74,10 @@
 
 <div id="content">
 	<h2>공지사항</h2>
-	<form action="" method="post">
+	<form action="" name="frm">
+		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
+		<input type="hidden" name="id" id="detailId" />
+	
 		<div class="search">
 			<select name="kind">
 				<option value="title" >제목</option>
@@ -74,13 +97,18 @@
 					<td>등록일</td>
 					<td>조회수</td>
 				</tr>
-			<c:forEach items="${data }" var="nDTO" varStatus="no" >
+			<c:forEach items="${data.sfdto }" var="sfDTO" varStatus="no" >
 				<tr>
-					<td>${nDTO.noticeindex }</td>
-					<td>${nDTO.noticecate }</td>
-					<td>${nDTO.noticetitle }</td>
-					<td>${nDTO.datetime }</td>
-					<td>${nDTO.noticeview }</td>
+					<td>${sfDTO.noticeindex }</td>
+					<td>${sfDTO.noticecate }</td>
+					<td>
+<%-- 						<a href="serviceNoticeDetail?id=${sfDTO.noticeindex }&page=${data.snpdto.page}">${sfDTO.noticetitle }</a> --%>
+						<a href="javascript:detailGo(${sfDTO.noticeindex })">${sfDTO.noticetitle }</a>
+					</td>
+					<td>					
+						<fmt:formatDate value="${sfDTO.noticetime}" type="both" pattern="yyy.MM.dd"/>					
+					</td>
+					<td>${sfDTO.noticeview }</td>
 				</tr>
 			</c:forEach>
 			
@@ -92,15 +120,14 @@
 			
 				<tr>
 					<td colspan="5" align="center">
-					d
-					<%-- 
-						<c:if test="${data.nDTO.startPage > 1 }">
-							<input type="button" class="btn" dd="${data.nDTO.startPage-1 }" value="&lt" />	
+					
+						<c:if test="${data.snpdto.startPage > 1 }">
+							<input type="button" class="btn" dd="${data.snpdto.startPage-1 }" value="&lt" />	
 						</c:if>
 						
-						<c:forEach begin="${data.nDTO.startPage }" end="${data.nDTO.endPage }" step="1" var="i">
+						<c:forEach begin="${data.snpdto.startPage }" end="${data.snpdto.endPage }" step="1" var="i">
 							<c:choose>
-								<c:when test="${i==data.nDTO.page }">
+								<c:when test="${i==data.snpdto.page }">
 									[${i }]
 								</c:when>
 								<c:otherwise>
@@ -109,10 +136,10 @@
 							</c:choose>
 						</c:forEach>
 						
-						<c:if test="${data.nDTO.endPage < data.nDTO.total }">
-							<input type="button" class="btn" dd="${data.nDTO.endPage+1 }" value="&gt" />
+						<c:if test="${data.snpdto.endPage < data.snpdto.total }">
+							<input type="button" class="btn" dd="${data.snpdto.endPage+1 }" value="&gt" />
 						</c:if>
-					 --%>
+					
 					
 					
 					</td>

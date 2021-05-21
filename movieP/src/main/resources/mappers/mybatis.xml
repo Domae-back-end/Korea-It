@@ -210,10 +210,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	
 	
-	
 	<!--박현준 ServiceC  -->
 	<!-- 1대1문의넣기 -->
-	<insert id="insertPersQna" parameterType="ServicePersonalDTO" >
+	<insert id="insertPersQna" parameterType="ServiceFullDTO" >
 		insert into personalqna 
 		(perscate, persid, perstitle, perscont, persimg, persqtime, persatime, persstate) 
 		values 
@@ -222,22 +221,35 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	
 	<!-- 공지사항 리스트 -->
-	<select id="noticelist" resultType="ServiceNoticeDTO">
+	<select id="noticelist" resultType="ServiceFullDTO" parameterType="HashMap">
 		select * from noticeboard order by noticeindex desc
+		limit #{npDTO.start}, #{npDTO.limit}
 	</select>	
 	
 	<!-- 공지사항검색(미완) -->
-	<select id="noticesearch" resultType="ServiceNoticeDTO">
+	<select id="noticesearch" resultType="ServiceFullDTO">
 		select * from noticeboard
 	</select>	
 	
 	<!-- 어드민에 공지사항 추가하기 -->
-	<insert id="insertNotice" parameterType="ServiceNoticeDTO" >
-		insert into noticeboard 
-		(noticecate, noticetitle, noticecont, datetime, noticeview) 
+	<insert id="insertNotice" parameterType="ServiceFullDTO" > 
+			insert into noticeboard 
+		(noticecate, noticetitle, noticecont, noticetime, noticeview) 
 		values 
-		(#{noticecate}, #{noticetitle}, #{noticecont}, ddd(), null)
+		(#{noticecate}, #{noticetitle}, #{noticecont}, sysdate(), 0)
 	</insert>
+	
+	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
+		
+		select count(*) from noticeboard
+		
+	</select>
+	
+	<select id="noticedetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
+		select * from noticeboard where noticeindex = ${noticeindex}
+	</select>
+	
+	
 	
 	
 	

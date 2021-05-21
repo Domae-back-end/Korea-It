@@ -2,8 +2,6 @@ package com.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,22 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.admin.service.FileupService;
-import com.admin.service.MovieTimeService;
 import com.admin.service.PageeditService;
 import com.admin.service.Provider;
-import com.admin.service.SalesService;
 import com.model.BannerDTO;
 import com.model.InitData;
 import com.model.Menu;
 import com.model.MinfoPageDTO;
 import com.model.MovieInfoDTO;
 import com.model.ServiceFullDTO;
-import com.model.ServiceNoticeDTO;
 import com.model.ServiceNoticePageDTO;
 
 
@@ -41,11 +32,12 @@ public class PageeditController {
 	
 	@ModelAttribute("data")
 	Object data(@PathVariable String service,HttpServletRequest request, MovieInfoDTO mdto,
-			MinfoPageDTO pdto,BannerDTO banDTO
-			, ServiceFullDTO sfDTO,ServiceNoticePageDTO npDTO
-		) {
+				MinfoPageDTO pdto,BannerDTO banDTO
+				, ServiceFullDTO sfDTO,ServiceNoticePageDTO npDTO
+			) {
 		System.out.println("pageedit-"+service+"실행");
-		System.out.println("Mdto:"+mdto);
+		//System.out.println("Mdto:"+mdto);
+
 		PageeditService sr = pr.getContext().getBean("pageedit"+service,PageeditService.class);		
 	
 		Map<String, Object> obj= new HashMap<String, Object>();
@@ -56,6 +48,9 @@ public class PageeditController {
 		obj.put("banDTO", banDTO);
 		obj.put("sfDTO", sfDTO);
 		obj.put("npDTO", npDTO);
+		
+		
+		
 		return sr.execute(obj);	// has > servie,mdto,req, imgnames,pdto	
 	}
 	

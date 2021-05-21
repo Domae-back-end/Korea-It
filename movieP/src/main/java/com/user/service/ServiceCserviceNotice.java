@@ -1,13 +1,15 @@
 package com.user.service;
 
-import java.util.List;
+import java.util.HashMap;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.admin.service.ServiceNotiListDTO;
 import com.model.DbMapper;
-import com.model.ServiceNoticeDTO;
+import com.model.ServiceFullDTO;
+import com.model.ServiceNoticePageDTO;
 
 @Service
 public class ServiceCserviceNotice implements ServiceCservice {//빈 창고에 등록이되는데.
@@ -18,17 +20,22 @@ public class ServiceCserviceNotice implements ServiceCservice {//빈 창고에 �
 	
 	
 	@Override
-	public Object execute(Object obj) {
+	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO) {
 		
 		System.out.println("빈 이름 serviceCserviceNotice 소환됨");
-		//service라는 이름의 키로 >  table 이름을 담는 클래스 dto? 
-		
 
-		List<ServiceNoticeDTO> result=db.noticelist();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("npDTO", npDTO);
+		map.put("sfDTO", sfDTO);
 		
-		System.out.println("db갓"+result.size());
+		npDTO.init(db, map);
 		
-		return result;
+		ServiceNotiListDTO res= new ServiceNotiListDTO();
+		res.setSfdto(db.noticelist(map));
+		res.setSnpdto(npDTO);
+		
+		return res;
 	}
-	
+
+
 }
