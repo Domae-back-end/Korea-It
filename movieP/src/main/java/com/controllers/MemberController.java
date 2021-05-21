@@ -35,7 +35,7 @@ public class MemberController {
 		
 		return new PPPData(cate, service);
 	}
-
+	
 	@RequestMapping
 	public String view(@PathVariable String cate, @PathVariable String service) {
 
