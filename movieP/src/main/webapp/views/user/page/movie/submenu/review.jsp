@@ -25,21 +25,14 @@
 </style>
 
 <script>
-
-
-
-		function deleteGo(idx){
-			alert("idx:"+idx)
-			console.log(idx)
-			// cate영화의, idx 번 글 삭제. 
-			
-			console.log("/user/movie/reviewdeleteReg?cate="+${param.ind}+"&cnt="+idx)
-			location.href = "/user/movie/reviewdeleteReg?cate="+${param.ind}+"&cnt="+idx
-			
-		}
+	function deleteGo(idx){
+		//console.log(idx)
+		// cate영화의, idx 번 글 삭제. 
+		//console.log("/user/movie/reviewdeleteReg?cate="+${param.ind}+"&cnt="+idx)
+		location.href = "/user/movie/reviewdeleteReg?cate="+${param.ind}+"&cnt="+idx
+		
+	}
 	
-	
-
 </script>
 
 <form id="reviewForm" action="reviewinsertReg" method="post" name="reviewgo">
@@ -57,11 +50,9 @@
 		${r.posttime_s }
 	</div>
 	<div id= "content">${r.postcontent }</div>
-	<div> <a href="javascript:deleteGo(${r.cnt})">삭제하기</a> </button></div>
+	<div> <a href="javascript:deleteGo(${r.cnt})">삭제하기</a></div>
 </div>
 </c:forEach>
-
-
 
 </div>
 </form>
