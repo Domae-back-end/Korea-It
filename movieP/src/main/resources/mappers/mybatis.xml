@@ -87,6 +87,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		delete from review where cnt = #{cnt}
 	</select>
 	
+	<!-- 좋아요 -->
+	<select id="likeupdate" parameterType="LikeDTO">
+		INSERT INTO userlikes (userid, m_index) 
+		SELECT userid, m_index FROM userlikes
+		WHERE NOT EXISTS ( SELECT userid FROM userlikes WHERE userid=#{userid} and m_index=${m_index})
+	</select>
+	
 	
 	<select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">
 			select * from movieinfo where movietitle = #{movietitle}

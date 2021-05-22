@@ -16,8 +16,13 @@
 	String cgUrl = cg+".jsp";
 %>
 
-<script src="<c:url value="/my_js/jquery-3.6.0.js"/>"></script>
+<script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
 <script>
+
+
+function likeGo(idx){
+	location.href = "/user/movie/likeReg?m_index="+idx+"&cg=${param.cg}"
+}
 
 $(function(){
 	

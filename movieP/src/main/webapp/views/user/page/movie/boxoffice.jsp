@@ -6,6 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
 
 <style>
  #like{
@@ -13,11 +14,9 @@
  }
 </style>
 
-<script>
-function likeGo(){
-	location.href("/user/movie/likeReg")
-}
-</script>
+
+
+
  <c:forEach items="${moviedatabefore }" var="mm" varStatus="no">
    <table border="">
       <tr><td>${no.index +1}</td></tr>
@@ -30,7 +29,7 @@ function likeGo(){
       <tr><td>${mm.movietitle }</td></tr>
       <tr>
          <td>평점: ${mm.star }
-         <div id="like"> <a href="javascript:likeGo(${r.cnt})">좋아요</a></div>
+         <div > <a href="javascript:likeGo(${mm.m_index})">좋아요</a></div>
          </td>
       </tr>
       <tr>

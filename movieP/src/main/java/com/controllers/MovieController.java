@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.admin.service.Provider;
+import com.model.InfoDTO;
+import com.model.LikeDTO;
 import com.model.MovieAction;
 import com.model.MovieAction2;
 import com.model.MovieAction3;
 import com.model.MovieAction4;
+import com.model.MovieAction5;
 import com.model.MovieInfoDTO;
 import com.model.MovieReviewDTO;
 import com.model.PPPData;
@@ -125,8 +128,24 @@ public class MovieController {
 	@ModelAttribute("data")
 	Object reviewreg(HttpServletRequest req, MovieReviewDTO dto, @PathVariable String service) {
 		
-		System.out.println(service);
-		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg")) {
+		System.out.println("userid"+req.getSession().getId());
+
+		if(service.equals("likeReg")) {
+			//MovieAction2 res = pr.getContext().getBean("movie"+service, MovieAction2.class);
+			System.out.println("좋아요해서 넘어온 m_index값: "+req.getParameter("m_index"));
+			
+			InfoDTO info = new InfoDTO();
+			info.setCg(req.getParameter("cg"));
+			
+			LikeDTO dd = new LikeDTO();
+			dd.setM_index(Integer.parseInt(req.getParameter("m_index")));
+			dd.setUserid(req.getSession().getId());
+			
+			MovieAction5 res = pr.getContext().getBean("movie" + service, MovieAction5.class);
+			return res.execute(dd, info);
+		}
+		
+		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg") || service.equals("likeReg")) {
 			req.getSession().setAttribute("userId", "Hogu");
 			
 			if (dto.getPostcontent() != "") {
