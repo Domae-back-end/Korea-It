@@ -283,11 +283,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<sql id="checkform">
    
       <choose>
-         <when test="userpw != null and userpw == ''">
+         <when test="userpw != null or userpw == ''">
             <where> <![CDATA[userid = #{userid} and userpw = #{userpw}]]> </where>
          </when>
          
-         <when test="userpnum != null and userpnum == ''">
+         <when test="userpnum != null or userpnum == ''">
             <where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} ]]> </where>
          </when>
          
