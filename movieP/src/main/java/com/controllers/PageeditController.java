@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,7 +32,7 @@ public class PageeditController {
 	Provider pr;
 	
 	@ModelAttribute("data")
-	Object data(@PathVariable String service,HttpServletRequest request, MovieInfoDTO mdto,
+	Object data(@PathVariable String service,HttpServletRequest request,HttpServletResponse response, MovieInfoDTO mdto,
 				MinfoPageDTO pdto,BannerDTO banDTO
 				, ServiceFullDTO sfDTO,ServiceNoticePageDTO npDTO
 			) {
@@ -44,6 +45,7 @@ public class PageeditController {
 		obj.put("service", service);
 		obj.put("mdto", mdto);
 		obj.put("request", request);
+		obj.put("response", response);
 		obj.put("pdto", pdto);
 		obj.put("banDTO", banDTO);
 		obj.put("sfDTO", sfDTO);
