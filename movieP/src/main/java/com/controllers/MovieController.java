@@ -126,6 +126,7 @@ public class MovieController {
 		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg")) {
 			req.getSession().setAttribute("userId", "Hogu");
 			
+			
 			if (dto.getPostcontent() != "") {
 				dto.setUserid((String)req.getSession().getAttribute("userId"));
 				System.out.println("reviewDTO:" + dto);
