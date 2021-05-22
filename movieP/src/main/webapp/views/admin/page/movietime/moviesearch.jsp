@@ -32,16 +32,22 @@
 	width: 100px;
 	height: 25px;
 }
+
+table {
+	width: 500px;
+	margin: 0 auto;
+}
 </style>
 <div class="layouttime">
 	<form action="">
-		<select name="choice">
+		<select name="m_index">
 			<option value="1">영화제목</option>
-			<option value="2">시작시간</option>
-			<option value="3">종료시간</option>
-			<option value="4">관</option>
+			<option value="2">날짜</option>
+			<option value="3">시작시간</option>
+			<option value="4">종료시간</option>
+			<option value="5">관</option>
 		</select>
-		<input type="text" />
+		<input type="text" name="search" />
 		<input type="submit" value="검색"/>
 	</form>
 </div>
@@ -53,7 +59,7 @@
 	<div class="timebox">시작 시간</div>
 	<div class="timebox">종료 시간</div>
 	<div class="both"></div>
-	<c:forEach var="a" items="${data.time }" varStatus="in">
+	<c:forEach var="a" items="${data }" varStatus="in">
 		<div class="timebox">${in.index }</div>
 		<div class="timebox">${a.movietitle }</div>
 		<div class="timebox">${a.sectorno }</div>

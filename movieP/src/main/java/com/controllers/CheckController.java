@@ -28,31 +28,35 @@ public class CheckController {
 	//중복체크 컨트롤러
 	@ResponseBody
 	@RequestMapping(value = "/admin/movietime/check", method = RequestMethod.GET)
-	public int timecheck(@RequestParam("time") String time, @RequestParam("movietitle") String movietitle) {
-		List<MovieTimeDTO> ar = db.movieTime();
+	public int timecheck(@RequestParam("time") String time, @RequestParam("movietitle") String movietitle,
+			@RequestParam("dal") String dal,@RequestParam("el") String el) {
+		List<MovieTimeDTO> ar = db.movieTimeCheck(movietitle);
 
 		Calendar start = Calendar.getInstance();
-		Calendar end = Calendar.getInstance();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		int check = 1;
+		SimpleDateFormat checksdf = new SimpleDateFormat("yyyy-MM-dd");
 
-		MovieInfoDTO mdto = db.findMovie(movietitle);
+		Calendar buf = Calendar.getInstance();
+		buf.set(Calendar.MONTH, Integer.parseInt(dal)-1);
+		buf.set(Calendar.DATE, Integer.parseInt(el));
 		for (MovieTimeDTO a : ar) {
-			try {
-				start.setTime(sdf.parse("1970-01-01 " + time + ":00"));
-				end.setTime(sdf.parse("1970-01-01 " + time + ":00"));
-			} catch (Exception e) {
-				System.out.println("날짜오류");
-			}
-			end.add(Calendar.MINUTE, mdto.getMplaytime());
-			if (a.getStarttime().before(end.getTime()) && a.getStarttime().after(start.getTime())) {
-				System.out.println("걸림");
-				check = 0;
-				break;
+			if(checksdf.format(a.getReg_date()).equals(checksdf.format(buf.getTime()))) {
+				try {
+					start.setTime(sdf.parse("1970-01-01 " + time + ":00"));
+				} catch (Exception e) {
+					System.out.println("날짜오류2");
+				}
+				System.out.println(sdf.format(start.getTime()));
+				System.out.println(sdf.format(a.getStarttime()));
+				System.out.println(sdf.format(a.getEndtime()));
+				if (start.getTime().before(a.getEndtime()) && start.getTime().after(a.getStarttime())) {
+					System.out.println("걸림");
+					return 0;
+				}
 			}
 		}
-		return check;
+		return 1;
 	}
 
 }

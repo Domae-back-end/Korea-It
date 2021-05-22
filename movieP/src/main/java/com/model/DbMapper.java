@@ -32,7 +32,11 @@ public interface DbMapper {
 	int updatemovielist(MovieTimeDTO dto);
 
 	int deletemovie(MovieTimeDTO dto);
-
+	
+	List<MovieTimeDTO> movieTimeCheck(String movietitle);
+	List<MovieTimeDTO> movieTimefind(MovieTimeDTO dto);
+	
+	
 	// 게시판 page 이동.
 	int totalCnt(HashMap<String, Object> map);
 

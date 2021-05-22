@@ -68,7 +68,7 @@
 	<hr>
 	
 	<form action="/admin/movietime/updateReg">
-		<input type="hidden" value="<%=request.getParameter("movietitle") %>" name="movietitle" />
+		<input type="hidden" value="<%=request.getParameter("movietitle") %>" name="movietitle"/>
 		<div class="detaillay">
 			<div class="to1">순서</div>
 			<div class="to1">관</div>
