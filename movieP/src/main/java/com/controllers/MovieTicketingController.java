@@ -11,7 +11,7 @@ import com.model.PPPData;
 @RequestMapping("user/movietime/{cate}")
 public class MovieTicketingController {
 	
-	@ModelAttribute
+	@ModelAttribute("PPPData")
 	PPPData pppData(@PathVariable("cate")String cate) {
 		System.out.println("?");
 		return new PPPData("movietime","movietime"+cate);
