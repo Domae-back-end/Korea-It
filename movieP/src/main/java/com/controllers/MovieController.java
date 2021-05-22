@@ -126,10 +126,11 @@ public class MovieController {
 		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg")) {
 			req.getSession().setAttribute("userId", "Hogu");
 			
+			
 			if (dto.getPostcontent() != "") {
 				dto.setUserid((String)req.getSession().getAttribute("userId"));
 				System.out.println("reviewDTO:" + dto);
-				
+				//
 				MovieAction4 res = pr.getContext().getBean("movie" + service, MovieAction4.class);
 				System.out.println(service + "클래스실행.");
 				return res.execute(dto);

@@ -26,6 +26,6 @@ public class MoviereviewinsertReg implements MovieAction4{
 		mm.reviewinsert(dto);
 		
 		return alt;
-	}
+	}//
 	
 }
