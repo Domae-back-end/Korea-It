@@ -79,6 +79,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	 	order by posttime desc
 	</select>
 	
+	<select id="reviewinsert" parameterType="MovieReviewDTO">
+		insert into review (cate, userid, postcontent, posttime) values (#{cate}, #{userid}, #{postcontent},sysdate())
+	</select>
+	
 	
 	<select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">
 			select * from movieinfo where movietitle = #{movietitle}

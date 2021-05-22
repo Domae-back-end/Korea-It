@@ -59,6 +59,14 @@ public interface DbMapper {
 
 	// 영화당 review
 	List<MovieReviewDTO> review(Integer num);
+	
+	
+	//리뷰 저장하기
+	void reviewinsert(MovieReviewDTO dto);
+	
+	
+	
+	
 
 	MovieInfoDTO pullmovieinfo(String movietitle);
 

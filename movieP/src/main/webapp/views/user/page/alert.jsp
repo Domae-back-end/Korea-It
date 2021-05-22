@@ -9,7 +9,7 @@
 <body>
 
 <script>
-	alert("${data.msg}") // 블라블라!등록성공!
+	alert("${data.msg}") 
 	location.href = "${data.url}"
 </script>
 </body>
