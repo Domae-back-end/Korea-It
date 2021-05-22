@@ -6,7 +6,7 @@
 <a href="/user/movie/moviemain?cg=boxoffice">영화</a>
 <a href="/user/movie/list">예매</a>
 <a href="/user/serviceC/serviceHome">고객센터</a>
-<a href="/member/join/joinForm">회원가입</a>
+<c:if test="${sessionId == null }"><a href="/member/join/joinForm">회원가입</a></c:if>
 <c:choose>
 	<c:when test="${sessionId == null }">
 		<a href="/member/login/loginForm">로그인</a>
