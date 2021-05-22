@@ -9,6 +9,7 @@
 <body>
 
 <script>
+
 	alert("${data.msg}") 
 	location.href = "${data.url}"
 </script>
