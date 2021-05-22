@@ -23,7 +23,7 @@ public class MoviereviewdeleteReg implements MovieAction4{
 		alt.setMsg(dto.getUserid()+"님 관람평 삭제 완료.");
 		alt.setUrl( "moviedetail?sub=review&ind="+dto.getCate());
 		
-		//mm.reviewinsert(dto);
+		mm.reviewdelete(dto);
 		
 		return alt;
 	}

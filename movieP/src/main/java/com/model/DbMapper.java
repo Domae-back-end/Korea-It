@@ -63,8 +63,8 @@ public interface DbMapper {
 	
 	//리뷰 저장하기
 	void reviewinsert(MovieReviewDTO dto);
-	
-	
+	//리뷰 삭제하기
+	void reviewdelete(MovieReviewDTO dto);
 	
 	
 
