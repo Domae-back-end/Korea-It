@@ -17,7 +17,7 @@ public class MoviereviewdeleteReg implements MovieAction4{
 	
 	@Override
 	public Object execute(MovieReviewDTO dto) {
-		System.out.println("MovieReviewdeleteReg 서비스빈. 영화번호"+dto.getCate());
+		//System.out.println("MovieReviewdeleteReg 서비스빈. 영화번호"+dto.getCate());
 		
 		AlterDTO alt = new AlterDTO();
 		alt.setMsg(dto.getUserid()+"님 관람평 삭제 완료.");

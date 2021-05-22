@@ -24,7 +24,6 @@ public class Moviereview implements MovieAction2{
 	
 	@Override
 	public Object execute(Integer num) {
-		System.out.println("리뷰 확인하기");
 		List<MovieReviewDTO> list = mm.review(num);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년M월dd일 HH:mm:ss");
 		Iterator<MovieReviewDTO> it = list.iterator();

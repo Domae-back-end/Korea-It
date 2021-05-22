@@ -19,7 +19,6 @@ public class Movielist implements MovieAction{
 	
 	@Override
 	public Object execute() {
-		System.out.println("Movielist execute()");
 		List<MovieInfoDTO> list = mm.movieInfo();		
 		
 

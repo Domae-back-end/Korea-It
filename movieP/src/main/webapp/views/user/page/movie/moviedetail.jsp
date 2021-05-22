@@ -46,7 +46,7 @@
 <div>
 	<div id="detail">
 		<p id="title">${moviedetail.movietitle }</p>
-		<p id="poster"><img src="/moviedata/${moviedetail.movieimg }"></p>	
+		<p id="poster"><img src="/resources/moviedata/${moviedetail.movieimg }"></p>	
 		<input id="btn1" type="button" value="예매하기"/>
 	</div>
 </div>

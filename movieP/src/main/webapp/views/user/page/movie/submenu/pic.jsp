@@ -30,10 +30,11 @@
 <c:forEach items="${movieimage }" var="i" varStatus="no">
 	<%cnt = cnt+1; %>
 </c:forEach>
-
-
-${movieimage }
-
+<style>
+	#p{
+		font-size: 30px;
+	}
+</style>
 
 <div id="p">${moviedetail.movietitle } 영화에 대한 <%=cnt %>개의 스틸컷이 있어요!</div>
 
@@ -41,9 +42,16 @@ ${movieimage }
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
+    <c:forEach begin="0" end="<%=cnt-1 %>" var="i" varStatus="no">
+    	<c:choose>
+    		<c:when test="i ==0">
+    			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    		</c:when>
+    		<c:otherwise>
+    			 <li data-target="#myCarousel" data-slide-to="${no.index }"></li>
+    		</c:otherwise>
+    	</c:choose>
+    </c:forEach>
     </ol>
 
 
@@ -52,12 +60,12 @@ ${movieimage }
   <c:forEach items="${movieimage }" var="i" varStatus="no">
       <c:if test="${no.index == 0 }">
 	      <div class="item active">
-	       <img src="/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="${i.imgname }">
+	       <img src="/resources/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="${i.imgname }">
       </div>
       </c:if>
       <c:if test="${no.index != 0 }">
       <div class="item">
-        <img src="/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="${i.imgname }">
+        <img src="/resources/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="${i.imgname }">
       </div>
       </c:if>
   	</c:forEach>

@@ -32,6 +32,7 @@ public class MovieController {
 	@RequestMapping
 	public String view(@PathVariable String service, HttpServletRequest req) {
 
+		System.out.println(service);
 		if (service.endsWith("Reg")) {
 			return "user/page/alert";
 		}
@@ -123,14 +124,14 @@ public class MovieController {
 
 	@ModelAttribute("data")
 	Object reviewreg(HttpServletRequest req, MovieReviewDTO dto, @PathVariable String service) {
+		
+		System.out.println(service);
 		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg")) {
 			req.getSession().setAttribute("userId", "Hogu");
-			
 			
 			if (dto.getPostcontent() != "") {
 				dto.setUserid((String)req.getSession().getAttribute("userId"));
 				System.out.println("reviewDTO:" + dto);
-				//
 				MovieAction4 res = pr.getContext().getBean("movie" + service, MovieAction4.class);
 				System.out.println(service + "클래스실행.");
 				return res.execute(dto);

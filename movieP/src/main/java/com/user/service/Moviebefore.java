@@ -26,13 +26,7 @@ public class Moviebefore implements MovieAction3{
 
 	@Override
 	public Object execute(String str) {
-		System.out.println("Movielist execute()");
 		List<MovieInfoDTO> list = mm.movieInfoBefore(str);
-		Iterator<MovieInfoDTO> it = list.iterator();
-		while(it.hasNext()) {
-			MovieInfoDTO obj = it.next();
-			System.out.println(obj.getMovietitle());
-		}
 		return list;
 	}
 	
