@@ -65,8 +65,9 @@ public interface DbMapper {
 	void reviewinsert(MovieReviewDTO dto);
 	//리뷰 삭제하기
 	void reviewdelete(MovieReviewDTO dto);
-	
-	
+	//좋아요 업데이트하기
+	Integer likeupdate(LikeDTO dto);
+	//좋아요 취소하기
 
 	MovieInfoDTO pullmovieinfo(String movietitle);
 
