@@ -1,5 +1,7 @@
 package com.controllers;
 
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.admin.service.Provider;
 import com.model.MemberAction;
 import com.model.MemberDTO;
+import com.model.Menu;
 import com.model.PPPData;
 
 @Controller
@@ -22,7 +25,7 @@ public class MemberController {
 	@ModelAttribute("memdata")
 	Object ddd(@PathVariable String service, MemberDTO mdto) {
 
-		if (service.endsWith("Form") || service.endsWith("Find"))
+		if (service.endsWith("Form") || service.endsWith("Find") || service.startsWith("my") )
 			return null;
 
 		MemberAction res = pr.getContext().getBean("member" + service, MemberAction.class);
@@ -33,7 +36,25 @@ public class MemberController {
 	@ModelAttribute
 	PPPData pppData(@PathVariable String cate, @PathVariable String service) {
 		
+		if(cate.endsWith("mypage"))
+			return new PPPData(cate, "mypageMain");
+			
 		return new PPPData(cate, service);
+	}	
+	
+	@ModelAttribute("subMenu")
+	Menu subMenu(@PathVariable String service) {
+		
+		HashMap<String, Menu> map = new HashMap<>();
+
+		map.put("mypageMain", new Menu("mycinema", null));
+		map.put("mycinema", new Menu("mycinema", null));
+		map.put("myfna", new Menu("myfna", null));
+		map.put("myinfor", new Menu("myinfor", null));
+		map.put("mypurchase", new Menu("mypurchase", null));
+		map.put("myinforchange", new Menu("myinforchange", null));
+		
+		return map.get(service);
 	}
 	
 	@RequestMapping

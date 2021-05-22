@@ -1,6 +1,8 @@
 package com.admin.service;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -18,8 +20,15 @@ public class MovieTimesearch implements MovieTimeService {
 	
 	@Override
 	public Object execute(String dal, String el, MovieTimeDTO dto) {
-		HashMap<String, Object> ar = new HashMap<>();
-		ar.put("time", db.movieTime());
-		return ar;
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
+		if(dto.getM_index() != null) {
+			if(dto.getM_index() == 3 || dto.getM_index() == 4) {
+				
+			}else if(dto.getM_index() == 2) {
+				//날짜
+			}
+		}
+		return db.movieTimefind(dto);
 	}
 }

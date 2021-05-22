@@ -14,6 +14,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			select * from movieinfo
 			order by m_index desc 
 	</select>
+		
+	<select id="movieTimeCheck" resultType="MovieTimeDTO" parameterType="java.lang.String">
+			select * from movietime where movietitle = #{movietitle}
+	</select>
 	
 <!-- 영화 리스트 검색기능 구현한 부분!!! -->
   <select id="movieInfoBefore" resultType="MovieInfoDTO" parameterType="java.lang.String">
@@ -55,6 +59,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
          </otherwise>
       </choose>
    </sql>
+   
    
    <select id="movieInfoAfter" resultType="MovieInfoDTO" parameterType="java.lang.String">
          select * from movieinfo
@@ -262,6 +267,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	
 	<!-- 공지사항 디테일 -->
 	<select id="noticedetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
 		select * from noticeboard where noticeindex = ${noticeindex}
@@ -276,18 +282,44 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</update>
 	
 	
+   <select id="movieTimefind" resultType="MovieTimeDTO" parameterType="MovieTimeDTO">
+   		select * from movietime <include refid="searchmovietime" />
+   </select>
 	
-	
+	<sql id="searchmovietime">
+      <choose>
+         <when test="m_index == 1">
+            <where>movietitle = #{search}</where>
+         </when>
+         
+         <when test="m_index == 2">
+            <where>reg_date = > str_to_date('#{search}', '%Y-%m-%d')</where>
+         </when>
+         
+         <when test="m_index == 3">
+            <where>starttime = str_to_date('#{search}', '%Y-%m-%d') </where>
+         </when>
+         
+         <when test="m_index == 4">
+            <where>endtime = str_to_date('#{search}', '%Y-%m-%d')</where>
+         </when>
+         <when test="m_index == 5">
+            <where>sectorno = #{search}</where>
+         </when>
+         
+      </choose>
+         
+	</sql>
 	
 	
 	<sql id="checkform">
    
       <choose>
-         <when test="userpw != null and userpw == ''">
+         <when test="userpw != null or userpw == ''">
             <where> <![CDATA[userid = #{userid} and userpw = #{userpw}]]> </where>
          </when>
          
-         <when test="userpnum != null and userpnum == ''">
+         <when test="userpnum != null or userpnum == ''">
             <where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} ]]> </where>
          </when>
          

@@ -10,16 +10,16 @@ import lombok.Data;
 @Data
 public class MovieTimeDTO {
 
-	String choice;
-	
 	Integer m_index;
 	String movietitle, sectorno, starttime1;
 	Date starttime, endtime, reg_date;
-
+	
 	String reg_datelist;
 	String m_indexlist;
 	String sectornolist;
 
+	String search;
+	
 	public ArrayList<MovieTimeDTO> getList(){
 
 		String[] buf1 = starttime1.split(",");
