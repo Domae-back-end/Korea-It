@@ -3,8 +3,6 @@
  */
  $(function() {
 	
-	
-	
 	$('#check').click(function(){
 		
 		$.ajax({

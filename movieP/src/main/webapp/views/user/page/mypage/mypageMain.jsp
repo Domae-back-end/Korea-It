@@ -1,25 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<style>
-
-li{
-	list-style: none;
-	height: 100px;
-}
-ul{
-	width: 300px;
-	height: 500px;
-}
-
-</style>
-<nav>
-	<ul>
-		<li><a href="mycinema">나의 영화관</a></li>
-		<li><a href="mypurchase">예매내역</a></li>
-		<li><a href="myfna">문의내역</a></li>
-		<li><a href="myinfor">내 정보수정</a></li>
-	</ul>
-</nav>
-
-<jsp:include page="${PPPData.cate}/${PPPData.service}.jsp" /> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+ 
+<c:choose>
 	
+	<c:when test="${sessionId!=null }">
+		<nav>
+			<ul>
+				<a href="/member/mypage/mycinema"><li>나의 영화관</li></a>
+				<a href="/member/mypage/mypurchase"><li>예매내역</li></a>
+				<a href="/member/mypage/myfna"><li>문의내역</li></a>
+				<a href="/member/mypage/myinfor"><li>내 정보수정</li></a>
+			</ul>
+			</nav>
+		<div class="outer">
+			 <jsp:include page="${subMenu.url}.jsp" /> 
+		</div>	
+	</c:when>
+	
+</c:choose>    

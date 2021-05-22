@@ -12,7 +12,7 @@ import com.model.PPPData;
 public class MovieTicketingController {
 	
 	@ModelAttribute("PPPData")
-	PPPData pppData(@PathVariable("cate")String cate) {
+	PPPData pppData(@PathVariable("cate") String cate) {
 		System.out.println("?");
 		return new PPPData("movietime","movietime"+cate);
 	}
@@ -20,6 +20,6 @@ public class MovieTicketingController {
 	
 	@RequestMapping
 	String url() {
-		return "/user/home";
+		return "user/page/index";
 	}
 }
