@@ -3,6 +3,7 @@ package com.model;
 import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -77,11 +78,25 @@ public interface DbMapper {
 
 	List<MimgDTO> pullimg(Integer m_index);
 
+	
+	
+	
 	void memjoin(MemberDTO mdto);
 
 	MemberDTO memlogin(MemberDTO mdto);
 
 	int memModify(MemberDTO mdto);
+	
+	List<Map<String, String>> memlikeinfor(MemberDTO mdto);
+	List<Map<String, String>> memcomment(MemberDTO mdto);
+	
+	List<ServiceFullDTO> memfna(MemberDTO mdto);
+	
+	List<SalesDTO> mempurchase(MemberDTO mdto);
+	
+	
+	
+	
 
 	// 유저메인화면 베너 관리용.
 	int deleteBanner(BannerDTO bannerdto);
