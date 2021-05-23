@@ -50,6 +50,7 @@
 		${r.posttime_s }
 	</div>
 	<div id= "content">${r.postcontent }</div>
+	<c:if test=""></c:if>
 	<div> <a href="javascript:deleteGo(${r.cnt})">삭제하기</a></div>
 </div>
 </c:forEach>

@@ -8,7 +8,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			select * from movietime 
 			order by m_index desc 
 	</select>
-
+	
+	
 	
 	<select id="movieInfo" resultType="MovieInfoDTO">
 			select * from movieinfo
@@ -83,15 +84,26 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		insert into review (cate, userid, postcontent, posttime) values (#{cate}, #{userid}, #{postcontent},sysdate())
 	</select>
 	
-	<select id="reviewdelete" parameterType="MovieReviewDTO">
-		delete from review where cnt = #{cnt}
-	</select>
+	<delete id="reviewdelete" parameterType="MovieReviewDTO">
+		delete from review where cnt = #{cnt} and userid=#{userid}
+	</delete>
 	
-	<!-- 좋아요 -->
-	<select id="likeupdate" parameterType="LikeDTO">
-		INSERT INTO userlikes (userid, m_index) 
-		SELECT userid, m_index FROM userlikes
-		WHERE NOT EXISTS ( SELECT userid FROM userlikes WHERE userid=#{userid} and m_index=${m_index})
+		<!-- 좋아요 -->
+	<insert id="likeupdate" parameterType="LikeDTO">
+		insert into userlikes(userid, m_index)
+		select '${userid}', ${m_index} from dual
+		where not exists
+		(
+		 select userid, m_index
+		 from userlikes
+		 where userid='${userid}' and
+		 m_index=${m_index}
+		)
+	</insert>
+	
+	<!-- 좋아요 수 가져오기 -->
+	<select id="selectlike" parameterType="MovieinfoDTO" resultType="java.lang.Integer">
+		select count(*) from userlikes where m_index=#{m_index}
 	</select>
 	
 	
@@ -431,8 +443,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	</insert>
 	
+	<!-- 매출 정산 테스트  -->
 	
-	
+	<insert id="insertdaysale" parameterType="SalesDTO">
+		insert into daysales (daysaletime,sumall,totalsale,totalrefund)
+		values
+		(#{daysaletime} 
+
+		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%') 
+		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE concat('%',#{daysaletime},'%') and sales_type!='환불')
+		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%' and sales_type='환불')
+		)	
+	</insert>
+	<!--concat('%',#{daysaletime},'%') mysql.  -->
 	
 	
 	

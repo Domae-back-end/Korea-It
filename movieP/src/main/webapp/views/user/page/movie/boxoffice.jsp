@@ -14,22 +14,19 @@
  }
 </style>
 
-
-
-
- <c:forEach items="${moviedatabefore }" var="mm" varStatus="no">
+<c:forEach items="${moviedatabefore }" var="mm" varStatus="no">
    <table border="">
       <tr><td>${no.index +1}</td></tr>
       <tr>
       <td id="pos">
       <a href = "/user/movie/moviedetail?sub=info&ind=${mm.m_index}">
-      <img alt ="" src= "/resources/moviedata/${mm.movieimg}">
+      <img alt ="" src= "movieP/src/main/webapp/moviedata/${mm.movieimg}">
       </a>
       </td></tr>
       <tr><td>${mm.movietitle }</td></tr>
       <tr>
          <td>평점: ${mm.star }
-         <div > <a href="javascript:likeGo(${mm.m_index})">좋아요</a></div>
+         <div > <a href="javascript:likeGo(${mm.m_index})">좋아요 ${mm.mlike }</a></div>
          </td>
       </tr>
       <tr>
