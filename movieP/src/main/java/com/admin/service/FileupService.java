@@ -39,24 +39,17 @@ public class FileupService {
 	public void fileup(MultipartFile multipartFiles[],HttpServletRequest request,String movietitle,int  m_index){
 		logger.debug("fileUp 실행 : {}",multipartFiles.length);
 		//String folderName =request.getsessi;
-		String foldername= request.getRealPath("moviedata")+"\\"+movietitle;
-		foldername=request.getSession().getServletContext().getRealPath("/resources/static/moviedata");
+		//String foldername= request.getRealPath("moviedata")+"\\"+movietitle;
 	
-		System.out.println("folder:"+foldername);
-		System.out.println("서블릿컨텍스트:"+servletContext.getRealPath("/"));
-		
-		
+	
+		String foldername=request.getSession().getServletContext().getRealPath("/moviedata");
 		File makefolder = new File(request.getRealPath("moviedata")+"/"+movietitle);		
 		if(!makefolder.exists()) {
 			makefolder.mkdir(); 
-			System.out.println("존재하지 않으므로 폴더생성.");
+			logger.info("신규영화. 폴더 생성됩니다.");
 		}
-		//getClass().getResource("/static/moviedata");
-		
-		for (MultipartFile multipartFile : multipartFiles) {
-		
-			Path copyOfLocation= Paths.get(foldername+"/"+multipartFile.getOriginalFilename());
-			System.out.println("주소 어딘가요."+copyOfLocation);
+		for (MultipartFile multipartFile : multipartFiles) {		
+			Path copyOfLocation= Paths.get(foldername+"/"+movietitle+"/"+multipartFile.getOriginalFilename());
 			MimgDTO imgdto= new MimgDTO();
 			imgdto.setImgname(movietitle+"/"+multipartFile.getOriginalFilename());
 			imgdto.setM_index(m_index);
@@ -65,7 +58,7 @@ public class FileupService {
 				MovieInfoDTO mdto = new MovieInfoDTO();
 				mdto.setMovieimg(movietitle+"/"+multipartFile.getOriginalFilename());
 				mdto.setMovietitle(movietitle);
-			db.updatepostername(mdto);
+			db.updatepostername(mdto); 
 			}
 			try {
 				Files.copy(multipartFile.getInputStream(), copyOfLocation, StandardCopyOption.REPLACE_EXISTING);
