@@ -95,7 +95,7 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		
 		AlterDTO al = new AlterDTO();	
 		
-
+//
 		al.setMsg("인서트 성공");
 		al.setUrl("/admin/pageedit/movieinfolist");
 
