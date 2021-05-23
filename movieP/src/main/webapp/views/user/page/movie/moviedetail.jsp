@@ -40,6 +40,9 @@
 	#sub{
 	
 	}
+	#sub1>a{
+		font-size: 30px;
+	}
 </style>
 </head>
 <body>
@@ -50,7 +53,7 @@
 		<input id="btn1" type="button" value="예매하기"/>
 	</div>
 </div>
-<div>
+<div id="sub1">
 	<a href="?sub=info&ind=${moviedetail.m_index }">주요정보</a>
 	<a href="?sub=review&ind=${moviedetail.m_index }">관람평</a>
 	<a href="?sub=pic&ind=${moviedetail.m_index }">스틸컷</a>

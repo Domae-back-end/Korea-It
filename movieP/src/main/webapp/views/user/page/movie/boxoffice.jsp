@@ -26,7 +26,7 @@
       <tr><td>${mm.movietitle }</td></tr>
       <tr>
          <td>평점: ${mm.star }
-         <div > <a href="javascript:likeGo(${mm.m_index})">좋아요 ${mm.mlike }</a></div>
+         <div id="like"> <a href="javascript:likeGo(${mm.m_index})">좋아요 ${mm.mlike }</a></div>
          </td>
       </tr>
       <tr>
