@@ -105,14 +105,14 @@ public class MovieController {
 
 	@ModelAttribute("moviedatabefore")
 	Object mmBefore(HttpServletRequest req) {
-
+		//박스오피스에서 검색했을 때 or 검색 안했을 때
 		MovieAction3 res = pr.getContext().getBean("moviebefore", MovieAction3.class);
 		return res.execute(req.getParameter("sch"));
 	}
 
 	@ModelAttribute("moviedataafter")
 	Object mmAfter(HttpServletRequest req) {
-
+		//상영예정작에서 검색했을 때
 		MovieAction3 res = pr.getContext().getBean("movieafter", MovieAction3.class);
 		return res.execute(req.getParameter("sch"));
 
