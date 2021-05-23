@@ -83,16 +83,22 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		insert into review (cate, userid, postcontent, posttime) values (#{cate}, #{userid}, #{postcontent},sysdate())
 	</select>
 	
-	<select id="reviewdelete" parameterType="MovieReviewDTO">
-		delete from review where cnt = #{cnt}
-	</select>
+	<delete id="reviewdelete" parameterType="MovieReviewDTO">
+		delete from review where cnt = #{cnt} and userid=#{userid}
+	</delete>
 	
-	<!-- 좋아요 -->
-	<select id="likeupdate" parameterType="LikeDTO">
-		INSERT INTO userlikes (userid, m_index) 
-		SELECT userid, m_index FROM userlikes
-		WHERE NOT EXISTS ( SELECT userid FROM userlikes WHERE userid=#{userid} and m_index=${m_index})
-	</select>
+		<!-- 좋아요 -->
+	<insert id="likeupdate" parameterType="LikeDTO">
+		insert into userlikes(userid, m_index)
+		select '${userid}', ${m_index} from dual
+		where not exists
+		(
+		 select userid, m_index
+		 from userlikes
+		 where userid='${userid}' and
+		 m_index=${m_index}
+		)
+	</insert>
 	
 	
 	<select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">

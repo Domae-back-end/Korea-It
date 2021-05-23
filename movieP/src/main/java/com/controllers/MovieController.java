@@ -44,6 +44,8 @@ public class MovieController {
 			String s = req.getParameter("submenu");
 			return "/user/page/movie/submenu/" + s;
 		}
+		
+		System.out.println("/user/page/index 로 이동");
 		return "user/page/index";
 	}
 
@@ -56,6 +58,7 @@ public class MovieController {
 	@ModelAttribute("moviedata")
 	Object mm(@PathVariable String service) {
 
+		
 		MovieAction res = pr.getContext().getBean("movielist", MovieAction.class);
 		return res.execute();
 	}
@@ -128,8 +131,8 @@ public class MovieController {
 	@ModelAttribute("data")
 	Object reviewreg(HttpServletRequest req, MovieReviewDTO dto, @PathVariable String service) {
 		
-		System.out.println("userid"+req.getSession().getId());
-
+		System.out.println("현재 로그인된 ID: "+req.getSession().getAttribute("sessionId"));
+		
 		if(service.equals("likeReg")) {
 			//MovieAction2 res = pr.getContext().getBean("movie"+service, MovieAction2.class);
 			System.out.println("좋아요해서 넘어온 m_index값: "+req.getParameter("m_index"));
@@ -139,18 +142,16 @@ public class MovieController {
 			
 			LikeDTO dd = new LikeDTO();
 			dd.setM_index(Integer.parseInt(req.getParameter("m_index")));
-			dd.setUserid(req.getSession().getId());
+			dd.setUserid((String) req.getSession().getAttribute("sessionId"));
 			
 			MovieAction5 res = pr.getContext().getBean("movie" + service, MovieAction5.class);
 			return res.execute(dd, info);
 		}
 		
 		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg") || service.equals("likeReg")) {
-			req.getSession().setAttribute("userId", "Hogu");
 			
 			if (dto.getPostcontent() != "") {
-				dto.setUserid((String)req.getSession().getAttribute("userId"));
-				System.out.println("reviewDTO:" + dto);
+				dto.setUserid((String) req.getSession().getAttribute("sessionId"));
 				MovieAction4 res = pr.getContext().getBean("movie" + service, MovieAction4.class);
 				System.out.println(service + "클래스실행.");
 				return res.execute(dto);
