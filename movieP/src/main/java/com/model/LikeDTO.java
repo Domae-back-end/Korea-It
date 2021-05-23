@@ -6,4 +6,5 @@ import lombok.Data;
 public class LikeDTO {
 	String userid;
 	Integer m_index;
+	Integer now_like;
 }

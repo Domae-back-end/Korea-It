@@ -104,6 +104,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectlike" parameterType="MovieinfoDTO" resultType="java.lang.Integer">
 		select count(*) from userlikes where m_index=#{m_index}
 	</select>
+	<!-- 좋아요 +1 -->
+	<select id="updatemlike" parameterType="LikeDTO">
+		update movieinfo set mlike =#{now_like}
+		where m_index=#{m_index}
+	</select>
 	
 	
 	<select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">

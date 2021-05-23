@@ -69,7 +69,9 @@ public interface DbMapper {
 	Integer likeupdate(LikeDTO dto);
 	//영화별 좋아요 수 가져오기
 	Integer selectlike(Integer m_index);
-
+	//movieinfo mlike에 +1
+	void updatemlike(LikeDTO dto);
+	
 	MovieInfoDTO pullmovieinfo(String movietitle);
 
 	List<ActorDTO> pullactor(Integer m_index);

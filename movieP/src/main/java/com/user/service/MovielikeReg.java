@@ -27,6 +27,7 @@ public class MovielikeReg implements MovieAction5{
 		dd.setMsg("좋아요한 영화에 추가되었습니다.");
 		dd.setUrl("/user/movie/moviemain?cg="+d.getCg());
 		
+
 		System.out.println("ldto의 userid : "+ldto.getUserid());
 		
 		if(ldto.getUserid()==null) {
@@ -37,15 +38,19 @@ public class MovielikeReg implements MovieAction5{
 		System.out.println("likeDTO로 전달되는 userid : "+ldto.getUserid());
 		System.out.println("likeDTO로 전달되는 m_index : "+ldto.getM_index());
 	
+		//userlikes 테이블에 컬럼 추가
+	
 		Integer s = mm.likeupdate(ldto);
 		System.out.println("insert된 개수: "+s);
 
 		
 		if(s <= 0) {
 			dd.setMsg("이미 좋아요 한 영화입니다.");
+			return dd;
 		}
-		
-
+		Integer k = mm.selectlike(ldto.getM_index());
+		ldto.setNow_like(k);
+		mm.updatemlike(ldto);
 		return dd;
 	}
 	
