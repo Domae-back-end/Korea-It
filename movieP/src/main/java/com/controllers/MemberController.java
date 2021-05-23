@@ -3,6 +3,7 @@ package com.controllers;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,14 +24,17 @@ public class MemberController {
 	Provider pr;
 
 	@ModelAttribute("memdata")
-	Object ddd(@PathVariable String service, MemberDTO mdto) {
+	Object ddd(@PathVariable String service, MemberDTO mdto, HttpSession session) {
 
-		if (service.endsWith("Form") || service.endsWith("Find") || service.startsWith("my") )
+		if (service.endsWith("Form") || service.endsWith("Find"))
 			return null;
+		
+		if(service.startsWith("my"))
+			service = "mypage";
 
 		MemberAction res = pr.getContext().getBean("member" + service, MemberAction.class);
 
-		return res.execute(mdto);
+		return res.execute(mdto, session);
 	}
 
 	@ModelAttribute

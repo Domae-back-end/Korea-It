@@ -10,7 +10,8 @@
 <script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
 <link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
 <script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h1>기본정보</h1>

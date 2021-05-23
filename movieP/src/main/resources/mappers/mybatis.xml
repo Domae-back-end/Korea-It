@@ -8,7 +8,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			select * from movietime 
 			order by m_index desc 
 	</select>
-
+	
+	
 	
 	<select id="movieInfo" resultType="MovieInfoDTO">
 			select * from movieinfo
@@ -367,15 +368,40 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    </sql>   
     
     <select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO" >
-      select * from memberinfo <include refid="checkform" />
+       select * from memberinfo <include refid="checkform" />
    </select>
    
    <insert id="memjoin" parameterType="MemberDTO" >
-      insert into memberinfo 
-      (userid, userpw, username, userbirth, userpnum, useremail, joinday) 
-      values 
-      (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
+       insert into memberinfo 
+       (userid, userpw, username, userbirth, userpnum, useremail, joinday) 
+       values 
+       (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
    </insert>
+    
+   <select id="mempurchase" resultType="SalesDTO" parameterType="MemberDTO" >
+	   select * from salestest where userid=#{userid}
+   </select>
+
+ 	<select id="memcomment" resultType="map" parameterType="MemberDTO" >
+	    select movietitle, imgname, postcontent, posttime from review
+		left outer join movieinfo on movieinfo.m_index = review.cate
+		left outer join movieimg on movieinfo.m_index = movieimg.m_index
+		where movieinfo.m_index in (select cate from review where userid=#{userid});
+  	</select>
+
+ 	<select id="memlikeinfor" resultType="map" parameterType="MemberDTO" >
+	    select movietitle, imgname, mlike from movieinfo
+		left outer join movieimg on movieinfo.m_index = movieimg.m_index
+		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid});
+  	</select>
+    
+   <select id="memfna" resultType="ServiceFullDTO" parameterType="MemberDTO" >
+	   	select * from personalqna where persid=#{userid}
+   </select>
+	
+	
+	
+	
 	
 	
 	
@@ -422,8 +448,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	</insert>
 	
+	<!-- 매출 정산 테스트  -->
 	
-	
+	<insert id="insertdaysale" parameterType="SalesDTO">
+		insert into daysales (daysaletime,sumall,totalsale,totalrefund)
+		values
+		(#{daysaletime} 
+
+		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%') 
+		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE concat('%',#{daysaletime},'%') and sales_type!='환불')
+		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%' and sales_type='환불')
+		)	
+	</insert>
+	<!--concat('%',#{daysaletime},'%') mysql.  -->
 	
 	
 	
