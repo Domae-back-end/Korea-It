@@ -157,6 +157,8 @@ public interface DbMapper {
 	int faqtotalCnt(HashMap<String, Object> map);
 	void insertfaq(ServiceFullDTO sfDTO);
 	ServiceFullDTO detailfaq(ServiceFullDTO sfDTO);
+
+	int updatepostername(MovieInfoDTO mdto);
 	
 	
 

@@ -133,6 +133,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where m_index=#{m_index} and movietitle = #{movietitle}
 	</update>
 	
+	
+	
+	
+	
 	<delete id="deletemovie" parameterType="MovieTimeDTO" >
 		delete from movietime where m_index = #{m_index} and movietitle = #{movietitle}
 	</delete>
@@ -149,6 +153,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{movietitle}, #{mdir}, #{mdate}, #{mplaytime}, #{mplot} )
 		
 	</insert>
+	<!-- 영화정보 등록시 포스터이름도 update -->
+	<update id="updatepostername"  parameterType="MovieInfoDTO">
+		update movieinfo set movieimg=#{movieimg} where movietitle=#{movietitle}
+	
+	</update>
 	
 	
 	
@@ -161,9 +170,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<!-- 영화정보 등록 시2 ... 배우들 -->
 	<insert id="actormovieinsert" parameterType="ActorDTO">
-		insert into actor (actorid, m_index )
+		insert into actor (actorname, m_index )
 		values
-		(#{actorid}, #{m_index}    )
+		(#{actorname}, #{m_index}    )
 	</insert>
 	<!-- 영화정보 등록 시3 ... 카테고리 -->
 	<insert id="catemovieinsert" parameterType="CateDTO">

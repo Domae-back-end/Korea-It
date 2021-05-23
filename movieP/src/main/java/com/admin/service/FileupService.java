@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.model.DbMapper;
 import com.model.MimgDTO;
+import com.model.MovieInfoDTO;
 
 @Service
 public class FileupService {
@@ -58,7 +59,14 @@ public class FileupService {
 			System.out.println("주소 어딘가요."+copyOfLocation);
 			MimgDTO imgdto= new MimgDTO();
 			imgdto.setImgname(movietitle+"/"+multipartFile.getOriginalFilename());
-			imgdto.setM_index(m_index);db.movieimgin(imgdto);
+			imgdto.setM_index(m_index);
+			db.movieimgin(imgdto);
+			if(multipartFile.getOriginalFilename().contains("poster")) {
+				MovieInfoDTO mdto = new MovieInfoDTO();
+				mdto.setMovieimg(movietitle+"/"+multipartFile.getOriginalFilename());
+				mdto.setMovietitle(movietitle);
+			db.updatepostername(mdto);
+			}
 			try {
 				Files.copy(multipartFile.getInputStream(), copyOfLocation, StandardCopyOption.REPLACE_EXISTING);
 				
