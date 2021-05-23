@@ -64,10 +64,11 @@ public interface DbMapper {
 	//리뷰 저장하기
 	void reviewinsert(MovieReviewDTO dto);
 	//리뷰 삭제하기
-	void reviewdelete(MovieReviewDTO dto);
+	Integer reviewdelete(MovieReviewDTO dto);
 	//좋아요 업데이트하기
 	Integer likeupdate(LikeDTO dto);
-	//좋아요 취소하기
+	//영화별 좋아요 수 가져오기
+	Integer selectlike(Integer m_index);
 
 	MovieInfoDTO pullmovieinfo(String movietitle);
 

@@ -18,8 +18,12 @@
       </td></tr>
       <tr><td>${mm.movietitle }</td></tr>
       <tr>
-         <td>평점: ${mm.star }
-         <input id = "tBtn" type="button" value="예매하기"></td>
+        <td>평점: ${mm.star }
+         <div > <a href="javascript:likeGo(${mm.m_index})">좋아요 ${mm.mlike }</a></div>
+      </td>
+      </tr>
+      <tr>
+      	<td>   <input id = "tBtn" type="button" value="예매하기"></td>
       </tr>
    </table>
  </c:forEach>

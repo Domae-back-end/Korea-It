@@ -138,11 +138,12 @@ create table review(
 	posttime date
 );	 
 	 
-	 
-	 
-	 
-	 
-	 
+<!-- 유저 좋아요 테이블-->
+create table userlikes(
+g_index int auto_increment primary key,
+userid varchar(200),
+m_index int
+);	 
 	 
 	 
 	 
