@@ -385,7 +385,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
   	</select>
 
  	<select id="memlikeinfor" resultType="map" parameterType="MemberDTO" >
-	    select movietitle, imgname from movieinfo
+	    select movietitle, imgname, mlike from movieinfo
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
 		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid});
   	</select>
