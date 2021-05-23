@@ -48,6 +48,7 @@ public class MovielikeReg implements MovieAction5{
 			dd.setMsg("이미 좋아요 한 영화입니다.");
 			return dd;
 		}
+		
 		Integer k = mm.selectlike(ldto.getM_index());
 		ldto.setNow_like(k);
 		mm.updatemlike(ldto);
