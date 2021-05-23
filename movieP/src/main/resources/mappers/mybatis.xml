@@ -8,7 +8,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			select * from movietime 
 			order by m_index desc 
 	</select>
-
+	
+	
 	
 	<select id="movieInfo" resultType="MovieInfoDTO">
 			select * from movieinfo
@@ -406,8 +407,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	</insert>
 	
+	<!-- 매출 정산 테스트  -->
 	
-	
+	<insert id="insertdaysale" parameterType="SalesDTO">
+		insert into daysales (daysaletime,sumall,totalsale,totalrefund)
+		values
+		(#{daysaletime} 
+
+		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%') 
+		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE concat('%',#{daysaletime},'%') and sales_type!='환불')
+		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%' and sales_type='환불')
+		)	
+	</insert>
+	<!--concat('%',#{daysaletime},'%') mysql.  -->
 	
 	
 	

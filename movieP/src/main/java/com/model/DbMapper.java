@@ -92,7 +92,9 @@ public interface DbMapper {
 
 	List<BannerDTO> selectBanner();
 
+	//매출 관련 
 	
+	void insertdaysale(SalesDTO saleDTO);
 	
 	
 	

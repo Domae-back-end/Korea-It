@@ -1,20 +1,37 @@
 package com.config;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.admin.service.DailysaleAuto;
+import com.admin.service.Provider;
+
 @Component
 public class ScheduleConfig {
 	
+	
+	@Resource
+	Provider pr;
+
+	@Resource
+	DailysaleAuto dailysaleAuto;
+
+	
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@Scheduled(cron="0 0 5 * * *")
+	
+	@Scheduled(cron="* * */5 * * *")
 	//자바 크론식
 	// 초 분 시 일 월 요일 연도
 	public void sample1() {
-		logger.info("50분마다 스케쥴 실행됨");
-		logger.info("쉬\n세\n요\n");
+		logger.info("매일 5시");
+		dailysaleAuto.dailysaleDo();
 	}
 }
