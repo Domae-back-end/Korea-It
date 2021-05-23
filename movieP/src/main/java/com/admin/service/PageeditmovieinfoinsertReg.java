@@ -45,7 +45,12 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		if(mdto.getInfoimg()!=null) {			
 			System.out.println("이미지가 있다.");
 			//FileupService fservice = new FileupService();//용량이 초과할 경우 > 바로 alter 리턴.
-			fservice.fileup(mdto.getInfoimg(), request,  mdto.getMovietitle(),m_index);
+			try {
+				fservice.fileup(mdto.getInfoimg(), request,  mdto.getMovietitle(),m_index);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			for (MultipartFile mf : mdto.getInfoimg()) {
 				imgnames.add(mf.getOriginalFilename());
 			}			

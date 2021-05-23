@@ -1,5 +1,7 @@
 package com.user.service;
 
+import java.util.Optional;
+
 import javax.annotation.Resource;
 
 import org.json.simple.JSONObject;
@@ -32,6 +34,7 @@ public class MembernaverLogin implements MemberNaverAction {
 		dto.setUserpnum(userphone);
 		dto.setUseremail(useremail);
 		dto.setUserbirth(birthday, birthYear);
+		Optional<MemberDTO> dtoo = Optional.ofNullable(dm.memlogin(dto));
 		
 		MemberDTO mdCh = dm.memlogin(dto);	
 		
