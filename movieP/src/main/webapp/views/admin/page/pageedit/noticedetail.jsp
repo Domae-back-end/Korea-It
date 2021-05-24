@@ -36,34 +36,69 @@
 
 <script>
 	$(function() {
-		$(".btnnn").click(function(){ //페이지번호
-			//alert("눌렀냐?"+$(this).attr("dd"))
-			$("#pageIN").val($(this).attr("dd"))
+		function detailGo(aa) { //디테일페이지꺼
+			alert("detailGo 눌렀냐?"+aa)
+			frm.action = "noticedetail"
+			
+			$("#detailId").val(aa)
+			
+			alert(aa+"번으로 이동")
 			frm.submit()
-		})
+		}
+		
+		$(".deleteGo").click(function() {
+			var confirm_val = confirm("정말 삭제하시겠습니까?");
+			
+			if (confirm_val) {
+				var checkArr = new Array();
+				checkArr.push($(this).attr("value"));
+	
+				$.ajax({
+					url : "noticedeleteReg",
+					type : "post",
+					data : {
+						checkArr : checkArr
+						},
+					success : function(res) {
+							/* text.indexOf(findString)
+							console.log(res) */ 
+							console.log(res)
+						if (res.indexOf("삭제 성공") != -1) {
+							alert(checkArr+"번 삭제성공!");
+							location.href = "noticelist";
+						} else {
+							alert("삭제가 취소되었습니다!");
+						}
+					}
+				});
+			}
+		});
 		
 		
 	})
 	
 	
-	function detailGo(aa) { //디테일페이지꺼
-		alert("detailGo 눌렀냐?"+aa)
-		frm.action = "serviceNoticeDetail"
-		
-		$("#detailId").val(aa)
-		
-		alert(aa+"번으로 이동")
-		frm.submit()
-	}
+	
 	
 </script>
 
 <body>
 <h2>공지/뉴스 게시판 리스트</h2>
-<%-- 
+
 <div class="notice_tb">
 	<div class="notice_detail">
 		<!-- 구분 시스템, 영화관, 기타 -->
+		<table class="td1">
+			<tr>
+				<td colspan="5" style="text-align: right; ">
+					<a href="noticeinsert?page=${data.npDTO.page }">글쓰기</a>
+					<a href="">수정</a>
+					<button type="button" class="deleteGo" value="${data.now.noticeindex }">삭제</button>
+				</td>
+			</tr>
+		</table>
+		
+		
 		<div class="detail_top">
 			<ul>
 				<li>[${data.now.noticecateKr }] ${data.now.noticetitle }</li>				
@@ -84,7 +119,7 @@
 						<td><a href="#">이전글이 없습니다.</a></td>
 					</c:if>
 					<c:if test="${data.next.noticetitle != null}">
-						<td><a href="serviceNoticeDetail?page=${data.npDTO.page }&noticeindex=${data.next.noticeindex }&kind=title">${data.next.noticetitle }</a></td>
+						<td><a href="noticedetail?page=${data.npDTO.page }&noticeindex=${data.next.noticeindex }&kind=title">${data.next.noticetitle }</a></td>
 					</c:if>
 				</tr>
 				<tr>
@@ -93,18 +128,18 @@
 						<td><a href="#">다음글이 없습니다.</a></td>
 					</c:if>
 					<c:if test="${data.before.noticetitle != null}">
-						<td><a href="serviceNoticeDetail?page=${data.npDTO.page }&noticeindex=${data.before.noticeindex }&kind=title">${data.before.noticetitle }</a></td>
+						<td><a href="noticedetail?page=${data.npDTO.page }&noticeindex=${data.before.noticeindex }&kind=title">${data.before.noticetitle }</a></td>
 					</c:if>
 				</tr>
 			</table>
 			<div class="back_list">
-				<a href="serviceNotice?page=${data.npDTO.page }">목록</a>
+				<a href="noticelist?page=${data.npDTO.page }">목록</a>
 			</div>
 		</div>
 	</div>
 </div> 
 <div class="clear"></div>
---%>
+
 		
 </body>
 </html>

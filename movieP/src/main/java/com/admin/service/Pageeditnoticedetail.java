@@ -31,14 +31,14 @@ public class Pageeditnoticedetail implements PageeditService {
 		ServiceFullDTO before = db.noticeBefore(sfDTO);
 		
 		System.out.println(next+", "+before);
-//		
-//		ServiceNoticeBNDTO res = new ServiceNoticeBNDTO();
-//		res.setNow(db.noticedetail(sfDTO));
-//		res.setBefore(before);
-//		res.setNext(next);
-//		res.setNpDTO(npDTO);
 		
-		return null;
+		ServiceNoticeBNDTO res = new ServiceNoticeBNDTO();
+		res.setNow(db.noticedetail(sfDTO));
+		res.setBefore(before);
+		res.setNext(next);
+		res.setNpDTO(npDTO);
+		
+		return res;
 	}
 	
 	
