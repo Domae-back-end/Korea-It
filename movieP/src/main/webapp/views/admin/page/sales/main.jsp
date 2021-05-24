@@ -8,6 +8,11 @@
 
 데이터 있냐:${not empty data} 
 
+<form action="SearchReg">
+	아이디 <input type="text" name="userid" />
+	<input type="submit" value="검색" />
+</form>
+
 	  <table class="table table-striped">
     <thead>
       <tr>

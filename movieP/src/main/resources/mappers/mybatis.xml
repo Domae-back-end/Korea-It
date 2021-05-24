@@ -448,6 +448,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <select id="getsales" resultType="SalesDTO" parameterType="HashMap" >
    select * from salestest   
 </select>
+
+<select id="getsalesbyId" resultType="SalesDTO">
+	select * from salestest where userid like concat('%',#{userid},'%')
+</select>
    
    
    <select id="getMonthlygraph" resultType="SalesDTO" parameterType="TimeVO">

@@ -48,7 +48,6 @@ public class SalesController {
 		return "sales/"+service;
 	}
 	
-	
 	@ModelAttribute("submenu")
 	ArrayList<Menu> subMenu( ) {
 		return InitData.getSubmenusbyCateName("sales");
@@ -56,7 +55,11 @@ public class SalesController {
 	
 	
 	@RequestMapping
-	String mainpage() {
+	String viewgo(@PathVariable String service) {
+		if(service.contains("Reg")) {
+			return "admin/page/alter";
+		}
+		
 		return "admin/index";
 	}
 	

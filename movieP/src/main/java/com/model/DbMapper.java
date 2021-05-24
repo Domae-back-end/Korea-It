@@ -150,9 +150,8 @@ public interface DbMapper {
    
    
    //매출관련기능 of 관리자. 
-   List<SalesDTO> getsales();
-
-	List<SalesDTO> getsales(HashMap<String, Object> map);
+   List<SalesDTO> getsalesbyId(String userid);
+   List<SalesDTO> getsales(HashMap<String, Object> map);
    List<SalesDTO> getMonthlygraph(TimeVO timeVO);
 
    List<ServiceFullDTO> getfaq(HashMap<String, Object> map);
