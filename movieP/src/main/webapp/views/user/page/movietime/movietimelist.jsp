@@ -78,7 +78,8 @@
 		</div>
 		<div class="both"></div>
 		<div class="totaltiketing">
-			영화 : <%=request.getParameter("movietitle") %>
+			영화 : <%=request.getParameter("movietitle") %><br>
+			
 		</div>
 	</div> 
 </form>
