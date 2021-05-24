@@ -69,7 +69,7 @@
 				<div class="movietitlelay"><a href="?movietitle=<%=request.getParameter("movietitle") %>&sectorno=기존관">기존관</a></div>
 				<div class="movietitlelay"><a href="?movietitle=<%=request.getParameter("movietitle") %>&sectorno=3D관">3D</a></div>
 				<div class="movietitlelay"><a href="?movietitle=<%=request.getParameter("movietitle") %>&sectorno=작은관">작은관</a></div>
-		</div>
+			</div>
 		<div class="lay1_2">
 			<div class="movietitle2">날짜</div>
 		</div>
@@ -78,8 +78,11 @@
 		</div>
 		<div class="both"></div>
 		<div class="totaltiketing">
-			영화 : <%=request.getParameter("movietitle") %><br>
-			
+			영화 : <%=request.getParameter("movietitle") %>   /
+			관 : <%=request.getParameter("sectorno") %>   /
+			시간 : <%=request.getParameter("sectorno") %>   /
+			선택 : <%=request.getParameter("sectorno") %><br>
+			<input type="submit" value="예약" />
 		</div>
 	</div> 
 </form>

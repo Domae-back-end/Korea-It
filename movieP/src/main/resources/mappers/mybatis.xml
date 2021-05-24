@@ -9,7 +9,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
          order by m_index desc 
    </select>
    
-   
+   <select id="movielist" resultType="MovieInfoDTO">
+         select * from movieinfo 
+   </select>
    
    <select id="movieInfo" resultType="MovieInfoDTO">
          select * from movieinfo
