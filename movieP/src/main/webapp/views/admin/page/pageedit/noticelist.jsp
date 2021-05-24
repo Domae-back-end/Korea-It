@@ -27,24 +27,64 @@
 
 <title>공지뉴스/리스트</title>
 </head>
-<script src="../../../../my_js/jquery-3.6.0.js"></script>
+
 <script>
 	$(function() {
-		//alert("안녕");
 		$(".btn").click(function(){
 			//alert("눌렀냐?"+$(this).attr("dd"))
 			$("#pageIN").val($(this).attr("dd"))
 			frm.submit()
 		})
-	})
+		
+		
+		$("#allChk").click(function() {
+			//alert("전체선택");
+			var chk = $("#allChk").prop("checked");
+
+			if (chk) {
+				$(".postno").prop("checked", true);
+			} else {
+				$(".postno").prop("checked", false);
+			}
+
+		})
+		
+		$(".postno").click(function(){
+			$("#allChk").prop("checked", false);
+		});
+		
+
+		$(".deleteGo").click(function() {
+			var confirm_val = confirm("정말 삭제하시겠습니까?");
+			
+			if (confirm_val) {
+				var checkArr = new Array();
 	
+				$("input[class='postno']:checked").each(function() {
+					checkArr.push($(this).attr("value"));
+					alert($(this).attr("value"))
+				});
+	
+				$.ajax({
+					url : "noticedeleteGo",
+					type : "post",
+					data : {
+						checkArr : checkArr
+						},
+					success : function() {
+						location.href = "noticelist";
+					}
+				});
+			}
+		});
+	})
 </script>
 
 <body>
 <h2>공지/뉴스 게시판 리스트</h2>
 
 <div class="notice_tb">
-	<form action="" method="post" name="frm">
+	<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
 	
 			<!-- 구분 시스템, 영화관, 기타 -->
@@ -53,11 +93,11 @@
 					<td colspan="5" style="text-align: right; ">
 						<a href="noticeinsert">글쓰기</a>
 						<a href="">수정</a>
-						<a href="">삭제</a>
+						<button type="button" class="deleteGo" >삭제</button>
 					</td>
 				</tr>
 				<tr>
-					<td>번호</td>
+					<td><input type="checkbox" name="allChk" id="allChk"/> 번호</td>
 					<td>구분</td>
 					<td>제목</td>
 					<td>등록일</td>
@@ -65,7 +105,7 @@
 				</tr>
 			<c:forEach items="${data.sfdto }" var="nDTO" varStatus="no" >
 				<tr>
-					<td><input type="checkbox" /> ${nDTO.noticeindex }</td>
+					<td><input type="checkbox" name="postno" class="postno" value="${nDTO.noticeindex }"/> ${nDTO.noticeindex }</td>
 					<td>${nDTO.noticecate }</td>
 					<td>${nDTO.noticetitle }</td>
 					<td>

@@ -242,7 +242,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<!-- 공지사항 리스트 -->
 	<select id="noticelist" resultType="ServiceFullDTO" parameterType="HashMap">
-		select * from noticeboard order by noticeindex desc
+		select * from noticeboard 
+		<!-- <include refid="noticesearch" /> -->
+		order by noticeindex desc
 		limit #{npDTO.start}, #{npDTO.limit}
 	</select>	
 	
@@ -262,10 +264,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 공지사항검색(미완) -->
-	<select id="noticesearch" resultType="ServiceFullDTO">
-		select * from noticeboard
-	</select>	
-	
+<!-- 	<sql id="noticesearch">
+		<choose>
+			<when test="sfDTO.schkey != null and sfDTO.schkey != ''">
+				<where>
+					${sfDTO.kind} like '%${sfDTO.schkey}%'
+				</where>
+			</when>
+		</choose>
+	</sql> -->
 	
 	<!-- 어드민에 공지사항 추가하기 -->
 	<insert id="insertNotice" parameterType="ServiceFullDTO" > 
@@ -279,8 +286,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<!-- 게시글수 구하기 -->
 	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from noticeboard
+		<!-- <include refid="noticesearch" /> -->
 	</select>
-	
 	
 	
 	<!-- 공지사항 디테일 -->
@@ -295,6 +302,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		noticeview = noticeview +1
 		where noticeindex = #{noticeindex}
 	</update>
+	
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="noticedelete" parameterType="ServiceFullDTO">
+		delete from noticeboard where noticeindex = #{noticeindex}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
    <select id="movieTimefind" resultType="MovieTimeDTO" parameterType="MovieTimeDTO">

@@ -27,7 +27,6 @@ public class Pageeditnoticelist implements PageeditService {
 		ServiceNoticePageDTO npDTO=   (ServiceNoticePageDTO)orimap.get("npDTO");
 		ServiceFullDTO sfDTO = (ServiceFullDTO)orimap.get("sfDTO");
 		
-		System.out.println("11");
 		System.out.println("빈 이름 Pageeditnoticelist 소환됨");
 		//service라는 이름의 키로 >  table 이름을 담는 클래스 dto? 
 		
