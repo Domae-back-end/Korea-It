@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
 
 $(document).ready(function(){
@@ -24,6 +24,11 @@ $(document).ready(function(){
 		
 	
 			alert("버튼 눌름. ajax 가동.")
+			
+			// 월값, 금액정보 배열 
+			var coldata = new Array();
+			var moneydata = new Array();
+			
 			
 			var xhttp= new XMLHttpRequest();
 			startyear= ssggSyear.value
@@ -41,13 +46,82 @@ $(document).ready(function(){
 					console.log(parsed)
 					console.log(parsed.message2)
 					//받아오면 뭔일할래?
+					// 만약 parsed 가 2개 이상이면..
+					for(var rr in parsed){
+						console.log(rr)
+						coldata.push(rr)
+						console.log(parsed[rr])
+						moneydata.push(parsed[rr])
+						if(rr==='answer'){
+							coldata.pop()
+							moneydata.pop()
+						}
+						
+					}// 출력 
+					
+
+					// 우선 컨텍스트를 가져옵니다. 
+					var ctx = document.getElementById("myChart").getContext('2d');
+					/*
+					- Chart를 생성하면서, 
+					- ctx를 첫번째 argument로 넘겨주고, 
+					- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+					*/
+					var myChart = new Chart(ctx, {
+					    type: 'bar',
+					    data: {
+					        //labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+					        labels: coldata,
+					        datasets: [{
+					            label: '매출액 현황',
+					            data: moneydata,
+					            backgroundColor: [
+					                'rgba(255, 99, 132, 0.2)',
+					                'rgba(54, 162, 235, 0.2)',
+					                'rgba(255, 206, 86, 0.2)',
+					                'rgba(75, 192, 192, 0.2)',
+					                'rgba(54, 162, 235, 0.2)',
+					                'rgba(255, 206, 86, 0.2)',
+					                'rgba(75, 192, 192, 0.2)',
+					                'rgba(153, 102, 255, 0.2)',
+					                'rgba(255, 159, 64, 0.2)'
+					            ],
+					            borderColor: [
+					                'rgba(255,99,132,1)',
+					                'rgba(54, 162, 235, 1)',
+					                'rgba(255, 206, 86, 1)',
+					                'rgba(255,99,132,1)',
+					                'rgba(54, 162, 235, 1)',
+					                'rgba(255, 206, 86, 1)',
+					                'rgba(75, 192, 192, 1)',
+					                'rgba(153, 102, 255, 1)',
+					                'rgba(255, 159, 64, 1)'
+					            ],
+					            borderWidth: 1
+					        }]
+					    },
+					    options: {
+					        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+					        scales: {
+					            yAxes: [{
+					                ticks: {
+					                    beginAtZero:true
+					                }
+					            }]
+					        }
+					    }
+					});// ajax 결과잘 온 경우 행동 끗.
+
+					
+					
+					
 					
 					
 					
 					
 					}									
 				}};
-				
+				//
 				xhttp.open("POST","/salesGraphSltView.do",true);
 				xhttp.setRequestHeader(
 				          "Content-Type",
@@ -101,8 +175,8 @@ $(document).ready(function(){
 시작년월
 <select id="ssggstartyear">
 <option>연</option>
-<c:forEach var="yyyy" begin="2010" end="2021" step="1" >
-<option>${yyyy}</option>
+<c:forEach var="yyyy" begin="0" end="22" step="1" >
+<option>${2021-yyyy}</option>
 </c:forEach>
 
 
@@ -117,8 +191,8 @@ $(document).ready(function(){
 종료연월
 <select id="ssggendyear">
 <option>연</option>
-<c:forEach var="yyyy" begin="2010" end="2021" step="1" >
-<option>${yyyy}</option>
+<c:forEach var="yyyy" begin="0" end="22" step="1" >
+<option>${2021-yyyy}</option>
 </c:forEach>
 </select>년
 <select id="ssggendmonth">
@@ -131,7 +205,14 @@ $(document).ready(function(){
 
 
 <br>
-<button id="graphdateGoBtn"  type="button">조회하기</button>
+<button id="graphdateGoBtn"  type="button">조회하기</button> <hr />
+
+<div style="width:800px">
+    <canvas id="myChart"></canvas>
+</div>
+
+
+
 
 </form>
 <div id="salesGraphWrapper" >

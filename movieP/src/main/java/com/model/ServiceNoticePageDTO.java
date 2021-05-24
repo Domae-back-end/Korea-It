@@ -34,7 +34,8 @@ public class ServiceNoticePageDTO {
 		start = (page - 1) * limit;
 
 		int ttt = dm.totalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
-
+		//
+		System.out.println("토탈cnt"+ttt);
 		this.total = ttt / limit;
 
 		if (ttt % limit > 0) {

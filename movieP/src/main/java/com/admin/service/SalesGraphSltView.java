@@ -44,8 +44,7 @@ public class SalesGraphSltView implements SalesService {
 		
 		//반환
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("message", 500);
-		result.put("message2", "문자열열");
+		
 		result.put("answer", "no");
 		if(res.size()>0) {
 			result.put("answer","yes");
@@ -54,7 +53,7 @@ public class SalesGraphSltView implements SalesService {
 			
 		//	
 			for (SalesDTO ss : res) {
-				result.put(sdf.format(ss.getMonthdate()), sdf);
+				result.put(sdf.format(ss.getMonthdate())+"-"+ss.getSectorCode(), ss.getSumall());
 			}
 		}
 		

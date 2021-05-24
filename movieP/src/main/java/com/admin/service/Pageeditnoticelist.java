@@ -34,7 +34,8 @@ public class Pageeditnoticelist implements PageeditService {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("npDTO", npDTO);
 		map.put("sfDTO", sfDTO);
-		
+		//
+		System.out.println(npDTO);
 		npDTO.init(db, map);
 		
 		ServiceNotiListDTO res= new ServiceNotiListDTO();
