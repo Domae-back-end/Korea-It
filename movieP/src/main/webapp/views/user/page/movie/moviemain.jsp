@@ -44,15 +44,13 @@ $(function(){
 	.wrapper{
 		width: 1000px;
 		height: 100%;
-		margin-left: 150px;
 	}
 
 	.pp{
 		background: #a0a;
 		color: white;
 		width: 800px;
-		margin-left: 200px;
-
+		margin-left: 150px;
 	}
 	
 	.pp>div{
