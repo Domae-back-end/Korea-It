@@ -41,9 +41,6 @@ public class ServiceCserviceNoticeDetail implements ServiceCservice {//빈 창�
 		res.setNext(next);
 		res.setNpDTO(npDTO);
 		
-//		if (next == null) {
-//			System.out.println("next가 널이다.");
-//		}
 		
 		return res;
 	}
