@@ -105,7 +105,8 @@
 <div class="notice_tb">
 	<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
-	
+		<input type="hidden" name="noticeindex" id="detailId" />
+		
 			<!-- 구분 시스템, 영화관, 기타 -->
 			<table class="td1">
 				<tr>
