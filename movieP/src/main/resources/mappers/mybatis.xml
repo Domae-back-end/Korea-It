@@ -432,62 +432,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <select id="getsales" resultType="SalesDTO" parameterType="HashMap" >
    select * from salestest   
 </select>
-<!--
-<<<<<<< HEAD
-	where date_format(sales_time, '%Y-%m')
-	
-	between #{sym} and #{eym}	
-	 </select>
-	 -->
-	 
-	
-	 
-	
-	
-	<!--자찾질  가져오기   -->
-	<select id="faqtotalCnt" resultType="java.lang.Integer"   parameterType="HashMap">
-		select count(*) from basicqna
-			<choose>			
-			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
-				<where>
-				${sfDTO.kind2} like '%${sfDTO.sch}%'				
-				</where>
-			</when>
-		</choose>
-	</select>
-	<select id="getfaq" resultType="ServiceFullDTO" parameterType="HashMap"   >
-		select * from basicqna order by bqindex desc limit #{npDTO.start},#{npDTO.limit}
-	
-	</select>
-	
-	<select id="movielist" resultType="MovieInfoDTO"  >
-		select * from movieinfo 
-	
-	</select>
-	
-	
-	<insert id="insertfaq" parameterType="ServiceFullDTO">
-		insert into basicqna (bqcate, bqtitle, bqcont, faqurl1, faqurl2) 
-		values (#{bqcate},#{bqtitle}, #{bqcont}  ,#{faqurl1}, #{faqurl2})
-	
-	</insert>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 <select id="getsalesbyId" resultType="SalesDTO">
 	select * from salestest where userid like concat('%',#{userid},'%')
