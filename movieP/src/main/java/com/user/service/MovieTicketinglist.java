@@ -1,5 +1,6 @@
 package com.user.service;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
@@ -19,6 +20,7 @@ public class MovieTicketinglist implements MovieTicketingService {
 	public Object execute() {
 		HashMap<String, Object> ar = new HashMap<>();
 		ar.put("movielist", db.movielist());
+		ar.put("time", new Date());
 		
 		return ar;
 	}
