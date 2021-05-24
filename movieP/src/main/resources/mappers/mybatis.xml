@@ -398,6 +398,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	<select id="movielist" resultType="MovieInfoDTO"  >
+		select * from movieinfo 
+	
+	</select>
 	
 	
 	<insert id="insertfaq" parameterType="ServiceFullDTO">
