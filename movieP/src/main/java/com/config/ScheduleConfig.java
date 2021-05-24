@@ -27,10 +27,10 @@ public class ScheduleConfig {
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	
-	@Scheduled(cron="0 50 * * * *")
+	@Scheduled(cron="0 0 5 * * *")
 	
 	public void sample1() {
-		logger.info("50분타이머 쉬세요");
+		logger.info("매일 5시 작동");
 		dailysaleAuto.dailysaleDo();
 		
 		
