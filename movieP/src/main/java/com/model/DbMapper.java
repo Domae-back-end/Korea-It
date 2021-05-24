@@ -163,6 +163,6 @@ public interface DbMapper {
 
    int updatepostername(MovieInfoDTO mdto);
    
-   
+   //
 
 }
