@@ -27,7 +27,7 @@ public class ScheduleConfig {
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	
-	@Scheduled(cron="* * */5 * * *")
+	@Scheduled(cron="0 0 5 * * *")
 	//자바 크론식
 	// 초 분 시 일 월 요일 연도
 	public void sample1() {

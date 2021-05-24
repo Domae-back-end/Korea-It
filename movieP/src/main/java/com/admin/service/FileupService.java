@@ -25,8 +25,6 @@ import com.model.MovieInfoDTO;
 
 @Service
 public class FileupService {
-	//@Value("${app.upload.dir:${user.home}}")
-	//private String uploadDir;	
 	
 	Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired private ResourceLoader resourceLoader;
