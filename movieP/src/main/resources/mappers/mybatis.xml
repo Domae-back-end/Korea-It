@@ -495,9 +495,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    
    
    <select id="getMonthlygraph" resultType="SalesDTO" parameterType="TimeVO">
-   select * from salestest 
+   select * from monthsales 
 
-   where date_format(sales_time, '%Y-%m')
+   where monthdate
    
    between #{sym} and #{eym}   
     </select>
