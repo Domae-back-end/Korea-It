@@ -11,6 +11,10 @@ create table movieinfo(
 	movieimg	varchar(100),
 	star	int
 );
+<!-- 좋아요 갯수 칼럼추가 -->
+alter table movieinfo add mlike int;
+
+
 
 drop table actor;
 drop table cate;
@@ -138,11 +142,12 @@ create table review(
 	posttime date
 );	 
 	 
-	 
-	 
-	 
-	 
-	 
+<!-- 유저 좋아요 테이블-->
+create table userlikes(
+g_index int auto_increment primary key,
+userid varchar(200),
+m_index int
+);	 
 	 
 	 
 	 

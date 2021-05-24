@@ -29,12 +29,18 @@ public class ServiceCserviceNoticeDetail implements ServiceCservice {//빈 창�
 		
 		System.out.println("next글:"+next);
 		System.out.println("before글:"+before);
-		
+
+
+//		next글:null
+//		before글:ServiceFullDTO(kind2=null, schkey=null, noticeindex=107, noticecate=movie, noticetitle=번호는 107번이지롱, noticecont=107번 글이다?
+
 		
 		ServiceNoticeBNDTO res = new ServiceNoticeBNDTO();
 		res.setNow(db.noticedetail(sfDTO));
 		res.setBefore(before);
 		res.setNext(next);
+		res.setNpDTO(npDTO);
+		
 		
 		return res;
 	}

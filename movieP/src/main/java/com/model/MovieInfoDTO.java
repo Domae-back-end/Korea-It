@@ -94,6 +94,7 @@ public class MovieInfoDTO {
 	Date mdate;
 	String mdate_s;
 	int length;
+	Integer mlike;
 	
 	MultipartFile file;
 	MultipartFile[] infoimg;

@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
 import com.model.ServiceFullDTO;
+import com.model.ServiceNoticeBNDTO;
 import com.model.ServiceNoticePageDTO;
 
 //Service단
 @Service
-public class Pageeditnoticelist implements PageeditService {
+public class Pageeditnoticedetail implements PageeditService {
 	
 
 	@Resource
@@ -23,25 +24,21 @@ public class Pageeditnoticelist implements PageeditService {
 	@Override
 	public Object execute(Object obj) {//map
 		HashMap<String, Object> orimap = (HashMap)obj;
-		
 		ServiceNoticePageDTO npDTO=   (ServiceNoticePageDTO)orimap.get("npDTO");
 		ServiceFullDTO sfDTO = (ServiceFullDTO)orimap.get("sfDTO");
 		
-		System.out.println("빈 이름 Pageeditnoticelist 소환됨");
-		//service라는 이름의 키로 >  table 이름을 담는 클래스 dto? 
+		ServiceFullDTO next = db.noticeNext(sfDTO);
+		ServiceFullDTO before = db.noticeBefore(sfDTO);
 		
-
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("npDTO", npDTO);
-		map.put("sfDTO", sfDTO);
+		System.out.println(next+", "+before);
+//		
+//		ServiceNoticeBNDTO res = new ServiceNoticeBNDTO();
+//		res.setNow(db.noticedetail(sfDTO));
+//		res.setBefore(before);
+//		res.setNext(next);
+//		res.setNpDTO(npDTO);
 		
-		npDTO.init(db, map);
-		
-		ServiceNotiListDTO res= new ServiceNotiListDTO();
-		res.setSfdto(db.noticelist(map));
-		res.setSnpdto(npDTO);
-		
-		return res;
+		return null;
 	}
 	
 	

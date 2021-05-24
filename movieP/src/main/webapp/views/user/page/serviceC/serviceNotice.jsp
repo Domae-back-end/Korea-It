@@ -82,11 +82,37 @@
 		<div class="search">
 			<select name="kind">
 				<option value="title" >제목</option>
-				<option value="pname" >내용</option>
+				<option value="cont" >내용</option>
 			</select>
-			<input type="text" />
+			<input type="text" name="search" value=""/>
 			<input type="submit" value="검색" />
 		</div>
+		
+		
+		
+<%-- 		
+			<select name="kind">
+				<option value="title" <c:if test="${data.bdto.kind =='title'}"> selected="selected"</c:if> >제목</option>
+				<option value="pname" <c:if test="${data.bdto.kind =='pname'}"> selected="selected"</c:if> >작성자</option>
+			</select>
+			<input type="text" name="sch" value="${data.bdto.sch }" /><br>
+			
+			조회수: <input type="text" name="cnt" value="${data.bdto.cnt }" />
+			<input type="submit" value="검색" />
+ --%>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		<div class="notice_tb">
 			<!-- 구분 시스템, 영화관, 기타 -->

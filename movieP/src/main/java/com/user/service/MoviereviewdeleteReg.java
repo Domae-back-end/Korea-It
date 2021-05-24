@@ -22,8 +22,16 @@ public class MoviereviewdeleteReg implements MovieAction4{
 		AlterDTO alt = new AlterDTO();
 		alt.setMsg(dto.getUserid()+"님 관람평 삭제 완료.");
 		alt.setUrl( "moviedetail?sub=review&ind="+dto.getCate());
+		if(dto.getUserid()==null) {
+			alt.setMsg("로그인이 필요한 기능입니다.");
+			alt.setUrl("/member/login/loginForm");
+			return alt;
+		}
 		
-		mm.reviewdelete(dto);
+		Integer ss = mm.reviewdelete(dto);
+		if(ss == 0) {
+			alt.setMsg("삭제 실패");
+		}
 		
 		return alt;
 	}

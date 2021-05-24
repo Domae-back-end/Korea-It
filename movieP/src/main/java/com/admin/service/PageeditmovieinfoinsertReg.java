@@ -42,23 +42,12 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		db.movieinfoinsert(mdto);// 일단 집어넣고.	
 		int m_index =db.getIndexByTitle(mdto.getMovietitle());
 		HashSet<String> imgnames= new HashSet<>();
-		if(mdto.getInfoimg()!=null) {			
-			System.out.println("이미지가 있다.");
-			//FileupService fservice = new FileupService();//용량이 초과할 경우 > 바로 alter 리턴.
-			try {
-				fservice.fileup(mdto.getInfoimg(), request,  mdto.getMovietitle(),m_index);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			for (MultipartFile mf : mdto.getInfoimg()) {
-				imgnames.add(mf.getOriginalFilename());
-			}			
-		}		
+	
 	
 		ArrayList<ActorDTO> adto = new ArrayList<>();
 		for (int i = 0; i < mdto.getMactrs().split(",").length; i++) {
 			ActorDTO actor = new ActorDTO();
+			actor.setActorname(mdto.getMactrs().split(",")[i]);
 			actor.setActorid(mdto.getMactrs().split(",")[i]);
 			actor.setM_index(m_index);;			
 			adto.add(i, actor);			
@@ -80,7 +69,19 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 			db.catemovieinsert(cate);
 		}
 		System.out.println("카테정보 in");
-	
+		if(mdto.getInfoimg()!=null) {			
+			System.out.println("이미지가 있다.");
+			//FileupService fservice = new FileupService();//용량이 초과할 경우 > 바로 alter 리턴.
+			try {
+				fservice.fileup(mdto.getInfoimg(), request,  mdto.getMovietitle(),m_index);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			for (MultipartFile mf : mdto.getInfoimg()) {
+				imgnames.add(mf.getOriginalFilename());
+			}			
+		}		
 		
 		
 		
@@ -94,7 +95,7 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		
 		AlterDTO al = new AlterDTO();	
 		
-
+//
 		al.setMsg("인서트 성공");
 		al.setUrl("/admin/pageedit/movieinfolist");
 

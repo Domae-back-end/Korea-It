@@ -11,11 +11,6 @@ import com.model.ServiceFullDTO;
 import com.model.ServiceNoticePageDTO;
 @Service
 public class Pageeditfaqlist implements SalesService, PageeditService {
-	
-	
-	
-
-
 	@Resource
 	DbMapper db;
 

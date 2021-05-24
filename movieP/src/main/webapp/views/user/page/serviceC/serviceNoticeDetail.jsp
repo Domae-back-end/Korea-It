@@ -73,17 +73,25 @@
 			<table>
 				<tr>
 					<td>이전글</td>
-					<td><a href="serviceNoticeDetail?page=1&noticeindex=${data.next.noticeindex }&kind=title">${data.next.noticetitle }</a></td>
+					<c:if test="${data.next.noticetitle eq null}">
+						<td><a href="#">이전글이 없습니다.</a></td>
+					</c:if>
+					<c:if test="${data.next.noticetitle != null}">
+						<td><a href="serviceNoticeDetail?page=${data.npDTO.page }&noticeindex=${data.next.noticeindex }&kind=title">${data.next.noticetitle }</a></td>
+					</c:if>
 				</tr>
 				<tr>
 					<td>다음글</td>
-					<td><a href="serviceNoticeDetail?page=1&noticeindex=${data.before.noticeindex }&kind=title">${data.before.noticetitle }</a></td>
+					<c:if test="${data.before.noticetitle eq null}">
+						<td><a href="#">다음글이 없습니다.</a></td>
+					</c:if>
+					<c:if test="${data.before.noticetitle != null}">
+						<td><a href="serviceNoticeDetail?page=${data.npDTO.page }&noticeindex=${data.before.noticeindex }&kind=title">${data.before.noticetitle }</a></td>
+					</c:if>
 				</tr>
 			</table>
 			<div class="back_list">
-				<a href="serviceNotice">목록</a>
-				<%-- <a href="serviceNotice?page=${npDTO.page }">목록</a> --%>
-				
+				<a href="serviceNotice?page=${data.npDTO.page }">목록</a>
 			</div>
 		</div>
 	</div>

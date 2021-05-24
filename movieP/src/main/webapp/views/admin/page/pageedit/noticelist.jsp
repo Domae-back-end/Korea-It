@@ -12,31 +12,90 @@
 	ul, li {text-decoration: none; list-style: none; }
 	a {text-decoration: none; }
 	
-	
+	/* 나의속성 어디에..? */
 	
 	/* 공지테이블 */
 	.td1 {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
 	.td1 tr:nth-of-type(2)>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
-	.td1 tr:nth-of-type(2)>td:nth-of-type(1) {width: 50px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(1) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(2) {width: 100px;  }
-	.td1 tr:nth-of-type(2)>td:nth-of-type(3) {width: 430px;  }
-	.td1 tr:nth-of-type(2)>td:nth-of-type(4) {width: 120px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(3) {width: 400px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(4) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(5) {width: 100px;  }
 	
 </style>
 
 <title>공지뉴스/리스트</title>
 </head>
-<script src="../../../../my_js/jquery-3.6.0.js"></script>
+
 <script>
 	$(function() {
-		//alert("안녕");
-		$(".btn").click(function(){
+		$(".btnnn").click(function(){ //페이지번호
 			//alert("눌렀냐?"+$(this).attr("dd"))
 			$("#pageIN").val($(this).attr("dd"))
 			frm.submit()
 		})
+		
+		
+		$("#allChk").click(function() {
+			//alert("전체선택");
+			var chk = $("#allChk").prop("checked");
+
+			if (chk) {
+				$(".postno").prop("checked", true);
+			} else {
+				$(".postno").prop("checked", false);
+			}
+
+		})
+		
+		$(".postno").click(function(){
+			$("#allChk").prop("checked", false);
+		});
+		
+
+		$(".deleteGo").click(function() {
+			var confirm_val = confirm("정말 삭제하시겠습니까?");
+			
+			if (confirm_val) {
+				var checkArr = new Array();
+	
+				$("input[class='postno']:checked").each(function() {
+					checkArr.push($(this).attr("value"));
+					alert($(this).attr("value"))
+				});
+	
+				$.ajax({
+					url : "noticedeleteReg",
+					type : "post",
+					data : {
+						checkArr : checkArr
+						},
+					success : function(res) {
+							/* text.indexOf(findString)
+							console.log(res) */ 
+						if (res.indexOf("삭제 성공") != -1) {
+							alert(checkArr+"번 삭제성공!");
+							location.href = "noticelist";
+						} else {
+							alert("체크박스를 선택하세요!");
+						}
+					}
+				});
+			}
+		});
 	})
+	
+	
+	function detailGo(aa) { //디테일페이지꺼
+		alert("detailGo 눌렀냐?"+aa)
+		frm.action = "noticedetail"
+		
+		$("#detailId").val(aa)
+		
+		alert(aa+"번으로 이동")
+		frm.submit()
+	}
 	
 </script>
 
@@ -44,20 +103,20 @@
 <h2>공지/뉴스 게시판 리스트</h2>
 
 <div class="notice_tb">
-	<form action="" method="post" name="frm">
+	<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
 	
 			<!-- 구분 시스템, 영화관, 기타 -->
 			<table class="td1">
 				<tr>
 					<td colspan="5" style="text-align: right; ">
-						<a href="noticeinsert">글쓰기</a>
+						<a href="noticeinsert?page=${data.snpdto.page }">글쓰기</a>
 						<a href="">수정</a>
-						<a href="">삭제</a>
+						<button type="button" class="deleteGo" >삭제</button>
 					</td>
 				</tr>
 				<tr>
-					<td>번호</td>
+					<td><input type="checkbox" name="allChk" id="allChk"/> 번호</td>
 					<td>구분</td>
 					<td>제목</td>
 					<td>등록일</td>
@@ -65,9 +124,9 @@
 				</tr>
 			<c:forEach items="${data.sfdto }" var="nDTO" varStatus="no" >
 				<tr>
-					<td><input type="checkbox" /> ${nDTO.noticeindex }</td>
+					<td><input type="checkbox" name="postno" class="postno" value="${nDTO.noticeindex }"/> ${nDTO.noticeindex }</td>
 					<td>${nDTO.noticecate }</td>
-					<td>${nDTO.noticetitle }</td>
+					<td><a href="javascript:detailGo(${nDTO.noticeindex })">${nDTO.noticetitle }</a></td>
 					<td>
 						<fmt:formatDate value="${nDTO.noticetime}" type="both" pattern="yyy.MM.dd"/>					
 					</td>
@@ -82,7 +141,7 @@
 					<td colspan="5" align="center">
 					
 						<c:if test="${data.snpdto.startPage > 1 }">
-							<input type="button" class="btn" dd="${data.snpdto.startPage-1 }" value="&lt" />	
+							<input type="button" class="btnnn btn btn-warning" dd="${data.snpdto.startPage-1 }" value="&lt" />	
 						</c:if>
 						
 						<c:forEach begin="${data.snpdto.startPage }" end="${data.snpdto.endPage }" step="1" var="i">
@@ -91,13 +150,13 @@
 									[${i }]
 								</c:when>
 								<c:otherwise>
-									<input type="button" class="btn" dd="${i }" value="${i }" />
+									<input type="button" class="btnnn btn btn-warning" dd="${i }" value="${i }" />
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						
 						<c:if test="${data.snpdto.endPage < data.snpdto.total }">
-							<input type="button" class="btn" dd="${data.snpdto.endPage+1 }" value="&gt" />
+							<input type="button" class="btnnn btn btn-warning" dd="${data.snpdto.endPage+1 }" value="&gt" />
 						</c:if>
 					
 					

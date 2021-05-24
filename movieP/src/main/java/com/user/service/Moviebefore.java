@@ -27,6 +27,11 @@ public class Moviebefore implements MovieAction3{
 	@Override
 	public Object execute(String str) {
 		List<MovieInfoDTO> list = mm.movieInfoBefore(str);
+		Iterator<MovieInfoDTO> it = list.iterator();
+		while(it.hasNext()) {
+			MovieInfoDTO aa = it.next();
+			aa.setMlike(mm.selectlike(aa.getM_index()));
+		}
 		return list;
 	}
 	
