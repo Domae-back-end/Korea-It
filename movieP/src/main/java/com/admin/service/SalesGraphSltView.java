@@ -52,7 +52,7 @@ public class SalesGraphSltView implements SalesService {
 			SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM");
 			
 			
-			
+		//	
 			for (SalesDTO ss : res) {
 				result.put(sdf.format(ss.getMonthdate()), sdf);
 			}
