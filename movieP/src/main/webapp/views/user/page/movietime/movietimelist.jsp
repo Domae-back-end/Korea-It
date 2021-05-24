@@ -12,6 +12,7 @@
 		clear: both;
 	}
 	.lay1_1{
+		overflow:auto;
 		width: 250px;
 		height: 500px;
 		margin: 5px;
@@ -19,6 +20,7 @@
 		float: left;
 	}
 	.lay1_2{
+		overflow:scroll;
 		width: 150px;
 		height: 500px;
 		margin: 5px;
@@ -26,7 +28,7 @@
 		float: left;
 	}
 	.movietitle{
-		width: 250px;
+		width: 248px;
 		height: 50px;
 		color: white;
 		border: 1px solid #000;
@@ -35,7 +37,7 @@
 		background: black;
 	}
 	.movietitle2{
-		width: 150px;
+		width: 130px;
 		height: 50px;
 		color: white;
 		border: 1px solid #000;
@@ -44,8 +46,9 @@
 		background: black;
 	}
 	.movietitlelay{
-		width: 100%;
+		width: 248px;
 		height: 50px;
+		text-align: center;
 		font-weight: bold;
 	}
 	.totaltiketing{
@@ -54,6 +57,13 @@
 		background: gray;
 		color: black;
 		text-align: center;
+		font-weight: bold;
+		font-size: 20px;
+	}
+	.buttonticket{
+		width: 100px;
+		height: 50px;
+		float: right;
 	}
 </style>
 <form action="">
@@ -74,12 +84,20 @@
 			<div class="movietitle2">날짜</div>
 		</div>
 		<div class="lay1_1">
-			<div class="movietitle">시간</div>
+			<div class="movietitle">선택</div>
 		</div>
 		<div class="both"></div>
 		<div class="totaltiketing">
+<<<<<<< master
 			영화 : <%=request.getParameter("movietitle") %><br>
 			
+=======
+			영화 : <%=request.getParameter("movietitle") %>   /
+			관 : <%=request.getParameter("sectorno") %>   /
+			시간 : <%=request.getParameter("sectorno") %>   /
+			선택 : <%=request.getParameter("sectorno") %><br>
+			<input class="buttonticket" type="submit" value="예약" />
+>>>>>>> e28bf42 유저단 예매
 		</div>
 	</div> 
 </form>
