@@ -86,6 +86,13 @@ h4{
 	height: 150px;
 	border-bottom: 1px solid #ccc;
 }
+.puchaseinner{
+	height: 50px;
+	float: left;	
+	width: 185px;
+	border: 1px solid #ccc;
+	line-height: 50px;
+}
 .purchouter{
 	margin:20px;
 	width: 740px;

@@ -3,6 +3,10 @@
  */
  $(function() {
 
+	var now = new Date(); 
+	$("#moiverecord").options.add(now);
+	document.getElementById("moiverecord").options.add(now);
+	
 	$('#check').click(function(){
 		
 		$.ajax({
@@ -31,7 +35,5 @@
 			frm.action = "/member/mypage/mypageMain"
 			frm.submit();
 	});
-	
-	
 	
 });

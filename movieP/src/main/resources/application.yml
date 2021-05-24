@@ -24,7 +24,6 @@ spring  :
     view  :
       prefix  : /views/
       suffix  : .jsp
-    static-path-pattern : /resources/**
 
 logging:
   config: classpath:log/log-setting.xml
