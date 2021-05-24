@@ -9,16 +9,27 @@
 		background: pink;
 	}
 </style>
+
+<%
+	int cnt =0;
+%>
+<c:forEach items="${movieactor }" var="n">
+	<% cnt = cnt+1; %>
+</c:forEach>
 <div id="plot">${moviedetail.mplot }</div><hr>
 <div id="dirc">
 감독: ${moviedetail.mdir }
 개봉일: ${moviedetail.mdate_s }
 </div>
 <div id="actor">
+	<%
+		if(cnt > 0){
+	%>
 	배우: 
-	<c:forEach items="${movieactor }" var="aa" varStatus="no">
-		${ aa.actorname}
-	</c:forEach>
+		<c:forEach items="${movieactor }" var="aa" varStatus="no">
+			${ aa.actorname}
+		</c:forEach>
+<%} %>
 </div>
 <div id="cate">
 	장르: 

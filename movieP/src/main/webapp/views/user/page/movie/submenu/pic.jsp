@@ -37,7 +37,9 @@
 </style>
 
 <div id="p">${moviedetail.movietitle } 영화에 대한 <%=cnt %>개의 스틸컷이 있어요!</div>
-<c:if test="cnt > 0">
+<%
+	if(cnt > 0){
+%>
 <div class="container">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -60,12 +62,12 @@
   <c:forEach items="${movieimage }" var="i" varStatus="no">
       <c:if test="${no.index == 0 }">
 	      <div class="item active">
-	       <img src="/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="${i.imgname }">
+	       <img src="/moviedata/${i.imgname}" alt="${i.imgname }">
       </div>
       </c:if>
       <c:if test="${no.index != 0 }">
       <div class="item">
-        <img src="/moviedata/${moviedetail.movietitle }/${i.imgname}" alt="${i.imgname }">
+        <img src="/moviedata/${i.imgname}" alt="${i.imgname }">
       </div>
       </c:if>
   	</c:forEach>
@@ -83,4 +85,4 @@
     </a>
   </div>
 </div>
-</c:if>
+<%}%>

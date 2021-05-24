@@ -96,7 +96,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    <select id="pullTInfo" parameterType="MovieReviewDTO" resultType="EndTimeDTO">
    		select userid, m_index, moviesector
    		from salestest
-   		where sales_type='현금' and
+   		where sales_type != '환불' and
    		userid = '${userid}' and
    		m_index= '${cate}'
    </select>

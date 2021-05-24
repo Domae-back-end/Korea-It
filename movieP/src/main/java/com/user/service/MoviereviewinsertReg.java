@@ -37,15 +37,19 @@ public class MoviereviewinsertReg implements MovieAction4{
 		}
 		
 		int cnt =0;
-		//System.out.println("영화 관람 검사");
+		System.out.println("영화 관람 검사");
 		//해당 영화를 관람했는지 검사해야 함. userid=아이디 cate=영화코드
-		List<EndTimeDTO> list = mm.pullTInfo(dto);
+		System.out.println("id: "+dto.getUserid() +" m_index: "+dto.getCate());
+		List<EndTimeDTO> list = mm.pullTInfo(dto);		
 		
 		Iterator<EndTimeDTO> it = list.iterator();
 		while(it.hasNext()) {
 			EndTimeDTO etd = it.next();
+			
 			DateDTO da = mm.pullEndTime(etd);
 			da.setEnd_time();
+			System.out.println("id: "+etd.getUserid()+" sector: "+etd.getMoviesector()+" endtime: "+etd.getEndtime());
+			
 			if(da.getEnd_time() ==null) {
 				continue;
 			}
@@ -55,11 +59,11 @@ public class MoviereviewinsertReg implements MovieAction4{
 				cnt++;
 			}
 		
-		//System.out.println("id: "+etd.getUserid()+" sector: "+etd.getMoviesector()+" endtime: "+etd.getEndtime());
+		System.out.println("id: "+etd.getUserid()+" sector: "+etd.getMoviesector()+" endtime: "+etd.getEndtime());
 
 		}
 		
-		//System.out.println("현재 이 영화를 본 상태인 것: "+cnt);
+		System.out.println("현재 이 영화를 본 상태인 것: "+cnt);
 		
 		if(cnt <= 0) {
 			alt.setMsg("영화를 관람하신 후 작성하세요");
