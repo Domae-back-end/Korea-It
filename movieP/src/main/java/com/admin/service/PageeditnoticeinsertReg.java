@@ -4,15 +4,20 @@ import java.util.HashMap;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.model.AlterDTO;
 import com.model.DbMapper;
 import com.model.ServiceFullDTO;
+import com.model.ServiceNoticePageDTO;
 
 //Service단
 @Service
 public class PageeditnoticeinsertReg implements PageeditService {
+	
+	Logger logger = LoggerFactory.getLogger(getClass());
 	
 
 	@Resource

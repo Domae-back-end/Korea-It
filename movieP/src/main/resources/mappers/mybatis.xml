@@ -4,21 +4,22 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.model.DbMapper">
 
-	<select id="movieTime" resultType="MovieTimeDTO">
-			select * from movietime 
-			order by m_index desc 
-	</select>
-
-	
-	<select id="movieInfo" resultType="MovieInfoDTO">
-			select * from movieinfo
-			order by m_index desc 
-	</select>
-		
-	<select id="movieTimeCheck" resultType="MovieTimeDTO" parameterType="java.lang.String">
-			select * from movietime where movietitle = #{movietitle}
-	</select>
-	
+   <select id="movieTime" resultType="MovieTimeDTO">
+         select * from movietime 
+         order by m_index desc 
+   </select>
+   
+   
+   
+   <select id="movieInfo" resultType="MovieInfoDTO">
+         select * from movieinfo
+         order by m_index desc 
+   </select>
+      
+   <select id="movieTimeCheck" resultType="MovieTimeDTO" parameterType="java.lang.String">
+         select * from movietime where movietitle = #{movietitle}
+   </select>
+   
 <!-- 영화 리스트 검색기능 구현한 부분!!! -->
   <select id="movieInfoBefore" resultType="MovieInfoDTO" parameterType="java.lang.String">
          select * from movieinfo
@@ -67,265 +68,266 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
          order by m_index asc 
    </select>
 
-	
-	<select id="movieDetail" resultType="MovieInfoDTO">
-	  select * from movieinfo where m_index =#{m_index}
-	 </select>
-	
-	<!-- 리뷰 -->
-	<select id = "review" resultType="MovieReviewDTO">
-	 	select * from review
-	 	where cate = #{cate}
-	 	order by posttime desc
-	</select>
-	
-	<select id="reviewinsert" parameterType="MovieReviewDTO">
-		insert into review (cate, userid, postcontent, posttime) values (#{cate}, #{userid}, #{postcontent},sysdate())
-	</select>
-	
-	<select id="reviewdelete" parameterType="MovieReviewDTO">
-		delete from review where cnt = #{cnt}
-	</select>
-	
-	<!-- 좋아요 -->
-	<select id="likeupdate" parameterType="LikeDTO">
-		INSERT INTO userlikes (userid, m_index) 
-		SELECT userid, m_index FROM userlikes
-		WHERE NOT EXISTS ( SELECT userid FROM userlikes WHERE userid=#{userid} and m_index=${m_index})
-	</select>
-	
-	
-	<select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">
-			select * from movieinfo where movietitle = #{movietitle}
-	</select>
-	
-	<select id="findMovieTime" resultType="MovieTimeDTO" parameterType="java.lang.String">
-			select * from movietime where movietitle = #{movietitle}
-	</select>
-	
-	<insert id="insertMovieTime" parameterType="MovieTimeDTO" >
-		insert into movietime (movietitle,sectorno,starttime,endtime,reg_date) 
-		values 
-		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
-	</insert>
-	
-	<update id="updatemovielist"  parameterType="MovieTimeDTO">
-		update movietime set 
-		sectorno=#{sectorno},starttime=#{starttime},endtime=#{endtime},
-		reg_date=#{reg_date}
-		where m_index=#{m_index} and movietitle = #{movietitle}
-	</update>
-	
-	<delete id="deletemovie" parameterType="MovieTimeDTO" >
-		delete from movietime where m_index = #{m_index} and movietitle = #{movietitle}
-	</delete>
-	
-	<select id="findactor" resultType="ActorDTO" parameterType="java.lang.String">
-		select * from actor where actorname = #{actorname}
-	</select>
-	<!-- 이름이 같으면서 ,생일 다른 동명이인 가져오게 한다.   -->
-	
-	<!-- 영화정보 등록 시1 ... 영화기본정보 -->
-	<insert id="movieinfoinsert"  parameterType="MovieInfoDTO">
-		insert into movieinfo (movietitle, mdir, mdate, mplaytime, mplot)
-		values
-		(#{movietitle}, #{mdir}, #{mdate}, #{mplaytime}, #{mplot} )
-		
-	</insert>
-	
-	
-	
-	<!-- 제목으로 영화 인덱스번호 찾기.  -->
-	<select id="getIndexByTitle" resultType="int">
-		select m_index from movieinfo where  movietitle= #{movietitle}
-	</select>
-	
-	
-	
-	<!-- 영화정보 등록 시2 ... 배우들 -->
-	<insert id="actormovieinsert" parameterType="ActorDTO">
-		insert into actor (actorid, m_index )
-		values
-		(#{actorid}, #{m_index}    )
-	</insert>
-	<!-- 영화정보 등록 시3 ... 카테고리 -->
-	<insert id="catemovieinsert" parameterType="CateDTO">
-		insert into cate (m_index, cate) 
-		values
-		( #{m_index}  ,#{cate})		
-	</insert>
-	
-	<insert id="movieimgin" parameterType="MimgDTO">
-	<!-- String 배열은 어렵.. -->
-		insert into movieimg (m_index, imgname)
-		values
-		(#{m_index}, #{imgname})
-		
-	</insert>
-	
-	<!--==========영화정보 불러올 때1  from  movieinfo ====================-->
-	 <select id="pullmovieinfo">
-	  select * from movieinfo where m_index =#{m_index}
-	 </select>
-	<!-- 이걸 일단 끊어서 가져올 꺼고. 가져온 애들 각각 movietitle 확인해서  -->
-	<!--영화정보 불러올 때2  배우들-->
-	
-	 <select id="pullactor" resultType="ActorDTO" >
-	 	 select * from actor where m_index =#{m_index}
-	 </select>
-
-	
-	<!--영화정보 불러올 때3  -->
-	
-	 <select id="pullcate" resultType="CateDTO">
-	  select * from cate where m_index =#{m_index}
-	 </select>			
-			
-	<!--영화정보 불러올 때4 > 영화 이미지들 싹다불러 (m_index , "영화명/이미지이름.확장자" 리스트로 날라옴   -->
-	
-	 <select id="pullimg" resultType="MimgDTO" parameterType="java.lang.Integer">
-	  select * from movieimg where m_index =#{m_index}
-	 </select>	
-	 
-	 
-	 
-	 <!--movieInfoList 열 떄 .
-	 	<if test="newpw != null and newpw != ''">
-			PW=#{newpw},
-		</if>	 
-	  -->
-	  
-	  <select id="movieinfolist" resultType="MovieinfoDTO" parameterType="HashMap">	  
-	  select * from movieinfo 
-	  
-	  order by m_index desc
-	  
-	   limit #{pdto.start},#{pdto.limit}
-	  
-	  </select>
-	 
-	
-
-	<insert id="insertBanner" parameterType="BannerDTO">
-	<!-- 조건문을 달고 싶은데..  -->
-		insert into bannerimg (#{bannerindex}, #{imgurl})
-	</insert>	
-	
-	<update id="changeBanner"   parameterType="BannerDTO"  >
-		update bannerimg  set imgurl= #{imgurl} where bannerindex= #{bannerindex}
-	</update>
-	
-	<delete id="deleteBanner" parameterType="BannerDTO" >
-	<!--삭제버튼 누르면 히든으로 삭제할 인덱스가 생긴다.  -->
-		delete from bannerimg where bannerindex= #{delindex}
-	
-	</delete>
-	
-	<select id="selectBanner" resultType="BannerDTO">
-		select * from bannerimg		
-	</select>
-	
-	
-	
-	
-	
-	
-	<!--박현준 ServiceC  -->
-	<!-- 1대1문의넣기 -->
-	<insert id="insertPersQna" parameterType="ServiceFullDTO" >
-		insert into personalqna 
-		(perscate, persid, perstitle, perscont, persimg, persqtime, persatime, persstate) 
-		values 
-		(#{perscate}, #{persid}, #{perstitle}, #{perscont}, #{persimg}, sysdate(), null, '미답변' )
-	</insert>
-	
-	
-	<!-- 공지사항 리스트 -->
-	<select id="noticelist" resultType="ServiceFullDTO" parameterType="HashMap">
-		select * from noticeboard 
-		<!-- <include refid="noticesearch" /> -->
-		order by noticeindex desc
-		limit #{npDTO.start}, #{npDTO.limit}
-	</select>	
-	
-	
-	<!-- 공지사항 다음 글 -->
-	<select id="noticeNext" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
-		select * from noticeboard where<![CDATA[ noticeindex > #{noticeindex}  ]]>
-		order by noticeindex
-		limit 0, 1
-	</select>
-	
-	<!-- 공지사항 다음 글 -->
-	<select id="noticeBefore" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
-		select * from noticeboard where <![CDATA[noticeindex < #{noticeindex} ]]>
-		order by noticeindex desc
-		limit 0, 1
-	</select>
-	
-	<!-- 공지사항검색(미완) -->
-<!-- 	<sql id="noticesearch">
-		<choose>
-			<when test="sfDTO.schkey != null and sfDTO.schkey != ''">
-				<where>
-					${sfDTO.kind} like '%${sfDTO.schkey}%'
-				</where>
-			</when>
-		</choose>
-	</sql> -->
-	
-	<!-- 어드민에 공지사항 추가하기 -->
-	<insert id="insertNotice" parameterType="ServiceFullDTO" > 
-			insert into noticeboard 
-		(noticecate, noticetitle, noticecont, noticetime, noticeview) 
-		values 
-		(#{noticecate}, #{noticetitle}, #{noticecont}, sysdate(), 0)
-	</insert>
-	
-	
-	<!-- 게시글수 구하기 -->
-	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
-		select count(*) from noticeboard
-		<!-- <include refid="noticesearch" /> -->
-	</select>
-	
-	
-	<!-- 공지사항 디테일 -->
-	<select id="noticedetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
-		select * from noticeboard where noticeindex = ${noticeindex}
-	</select>
-	
-
-	<!-- 공지사항 조회수 -->
-	<update id="addCount" parameterType="ServiceFullDTO">
-		update noticeboard set 
-		noticeview = noticeview +1
-		where noticeindex = #{noticeindex}
-	</update>
-	
-	
-	<!-- 공지사항 삭제 -->
-	<delete id="noticedelete" parameterType="ServiceFullDTO">
-		delete from noticeboard where noticeindex = #{noticeindex}
-	</delete>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-   <select id="movieTimefind" resultType="MovieTimeDTO" parameterType="MovieTimeDTO">
-   		select * from movietime <include refid="searchmovietime" />
+   
+   <select id="movieDetail" resultType="MovieInfoDTO">
+     select * from movieinfo where m_index =#{m_index}
+    </select>
+   
+   <!-- 리뷰 -->
+   <select id = "review" resultType="MovieReviewDTO">
+       select * from review
+       where cate = #{cate}
+       order by posttime desc
    </select>
-	
-	<sql id="searchmovietime">
+   
+   <select id="reviewinsert" parameterType="MovieReviewDTO">
+      insert into review (cate, userid, postcontent, posttime) values (#{cate}, #{userid}, #{postcontent},sysdate())
+   </select>
+   
+   <delete id="reviewdelete" parameterType="MovieReviewDTO">
+      delete from review where cnt = #{cnt} and userid=#{userid}
+   </delete>
+   
+      <!-- 좋아요 -->
+   <insert id="likeupdate" parameterType="LikeDTO">
+      insert into userlikes(userid, m_index)
+      select '${userid}', ${m_index} from dual
+      where not exists
+      (
+       select userid, m_index
+       from userlikes
+       where userid='${userid}' and
+       m_index=${m_index}
+      )
+   </insert>
+   
+   <!-- 좋아요 수 가져오기 -->
+   <select id="selectlike" parameterType="MovieinfoDTO" resultType="java.lang.Integer">
+      select count(*) from userlikes where m_index=#{m_index}
+   </select>
+   <!-- 좋아요 +1 -->
+   <select id="updatemlike" parameterType="LikeDTO">
+      update movieinfo set mlike =#{now_like}
+      where m_index=#{m_index}
+   </select>
+   
+   
+   <select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">
+         select * from movieinfo where movietitle = #{movietitle}
+   </select>
+   
+   <select id="findMovieTime" resultType="MovieTimeDTO" parameterType="java.lang.String">
+         select * from movietime where movietitle = #{movietitle}
+   </select>
+   
+   <insert id="insertMovieTime" parameterType="MovieTimeDTO" >
+      insert into movietime (movietitle,sectorno,starttime,endtime,reg_date) 
+      values 
+      (#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
+   </insert>
+   
+   <update id="updatemovielist"  parameterType="MovieTimeDTO">
+      update movietime set 
+      sectorno=#{sectorno},starttime=#{starttime},endtime=#{endtime},
+      reg_date=#{reg_date}
+      where m_index=#{m_index} and movietitle = #{movietitle}
+   </update>
+   
+   
+   
+   
+   
+   <delete id="deletemovie" parameterType="MovieTimeDTO" >
+      delete from movietime where m_index = #{m_index} and movietitle = #{movietitle}
+   </delete>
+   
+   <select id="findactor" resultType="ActorDTO" parameterType="java.lang.String">
+      select * from actor where actorname = #{actorname}
+   </select>
+   <!-- 이름이 같으면서 ,생일 다른 동명이인 가져오게 한다.   -->
+   
+   <!-- 영화정보 등록 시1 ... 영화기본정보 -->
+   <insert id="movieinfoinsert"  parameterType="MovieInfoDTO">
+      insert into movieinfo (movietitle, mdir, mdate, mplaytime, mplot)
+      values
+      (#{movietitle}, #{mdir}, #{mdate}, #{mplaytime}, #{mplot} )
+      
+   </insert>
+   <!-- 영화정보 등록시 포스터이름도 update -->
+   <update id="updatepostername"  parameterType="MovieInfoDTO">
+      update movieinfo set movieimg=#{movieimg} where movietitle=#{movietitle}
+   
+   </update>
+   
+   
+   
+   <!-- 제목으로 영화 인덱스번호 찾기.  -->
+   <select id="getIndexByTitle" resultType="int">
+      select m_index from movieinfo where  movietitle= #{movietitle}
+   </select>
+   
+   
+   
+   <!-- 영화정보 등록 시2 ... 배우들 -->
+   <insert id="actormovieinsert" parameterType="ActorDTO">
+      insert into actor (actorname, m_index )
+      values
+      (#{actorname}, #{m_index}    )
+   </insert>
+   <!-- 영화정보 등록 시3 ... 카테고리 -->
+   <insert id="catemovieinsert" parameterType="CateDTO">
+      insert into cate (m_index, cate) 
+      values
+      ( #{m_index}  ,#{cate})      
+   </insert>
+   
+   <insert id="movieimgin" parameterType="MimgDTO">
+   <!-- String 배열은 어렵.. -->
+      insert into movieimg (m_index, imgname)
+      values
+      (#{m_index}, #{imgname})
+      
+   </insert>
+   
+   <!--==========영화정보 불러올 때1  from  movieinfo ====================-->
+    <select id="pullmovieinfo">
+     select * from movieinfo where m_index =#{m_index}
+    </select>
+   <!-- 이걸 일단 끊어서 가져올 꺼고. 가져온 애들 각각 movietitle 확인해서  -->
+   <!--영화정보 불러올 때2  배우들-->
+   
+    <select id="pullactor" resultType="ActorDTO" >
+        select * from actor where m_index =#{m_index}
+    </select>
+
+   
+   <!--영화정보 불러올 때3  -->
+   
+    <select id="pullcate" resultType="CateDTO">
+     select * from cate where m_index =#{m_index}
+    </select>         
+         
+   <!--영화정보 불러올 때4 > 영화 이미지들 싹다불러 (m_index , "영화명/이미지이름.확장자" 리스트로 날라옴   -->
+   
+    <select id="pullimg" resultType="MimgDTO" parameterType="java.lang.Integer">
+     select * from movieimg where m_index =#{m_index}
+    </select>   
+    
+    
+    
+    <!--movieInfoList 열 떄 .
+       <if test="newpw != null and newpw != ''">
+         PW=#{newpw},
+      </if>    
+     -->
+     
+     <select id="movieinfolist" resultType="MovieinfoDTO" parameterType="HashMap">     
+     select * from movieinfo 
+     
+     order by m_index desc
+     
+      limit #{pdto.start},#{pdto.limit}
+     
+     </select>
+    
+   
+
+   <insert id="insertBanner" parameterType="BannerDTO">
+   <!-- 조건문을 달고 싶은데..  -->
+      insert into bannerimg (#{bannerindex}, #{imgurl})
+   </insert>   
+   
+   <update id="changeBanner"   parameterType="BannerDTO"  >
+      update bannerimg  set imgurl= #{imgurl} where bannerindex= #{bannerindex}
+   </update>
+   
+   <delete id="deleteBanner" parameterType="BannerDTO" >
+   <!--삭제버튼 누르면 히든으로 삭제할 인덱스가 생긴다.  -->
+      delete from bannerimg where bannerindex= #{delindex}
+   
+   </delete>
+   
+   <select id="selectBanner" resultType="BannerDTO">
+      select * from bannerimg      
+   </select>
+   
+   
+   
+   
+   
+   
+   <!--박현준 ServiceC  -->
+   <!-- 1대1문의넣기 -->
+   <insert id="insertPersQna" parameterType="ServiceFullDTO" >
+      insert into personalqna 
+      (perscate, persid, perstitle, perscont, persimg, persqtime, persatime, persstate) 
+      values 
+      (#{perscate}, #{persid}, #{perstitle}, #{perscont}, #{persimg}, sysdate(), null, '미답변' )
+   </insert>
+   
+   
+   <!-- 공지사항 리스트 -->
+   <select id="noticelist" resultType="ServiceFullDTO" parameterType="HashMap">
+      select * from noticeboard order by noticeindex desc
+      limit #{npDTO.start}, #{npDTO.limit}
+   </select>   
+   
+   
+   <!-- 공지사항 다음 글 -->
+   <select id="noticeNext" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
+      select * from noticeboard where<![CDATA[ noticeindex > #{noticeindex}  ]]>
+      order by noticeindex
+      limit 0, 1
+   </select>
+   
+   <!-- 공지사항 다음 글 -->
+   <select id="noticeBefore" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
+      select * from noticeboard where <![CDATA[noticeindex < #{noticeindex} ]]>
+      order by noticeindex desc
+      limit 0, 1
+   </select>
+   
+   <!-- 공지사항검색(미완) -->
+   <select id="noticesearch" resultType="ServiceFullDTO">
+      select * from noticeboard
+   </select>   
+   
+   
+   <!-- 어드민에 공지사항 추가하기 -->
+   <insert id="insertNotice" parameterType="ServiceFullDTO" > 
+         insert into noticeboard 
+      (noticecate, noticetitle, noticecont, noticetime, noticeview) 
+      values 
+      (#{noticecate}, #{noticetitle}, #{noticecont}, sysdate(), 0)
+   </insert>
+   
+   
+   <!-- 게시글수 구하기 -->
+   <select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
+      select count(*) from noticeboard
+   </select>
+   
+   
+   
+   <!-- 공지사항 디테일 -->
+   <select id="noticedetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
+      select * from noticeboard where noticeindex = ${noticeindex}
+   </select>
+   
+
+   <!-- 공지사항 조회수 -->
+   <update id="addCount" parameterType="ServiceFullDTO">
+      update noticeboard set 
+      noticeview = noticeview +1
+      where noticeindex = #{noticeindex}
+   </update>
+   
+   
+   <select id="movieTimefind" resultType="MovieTimeDTO" parameterType="MovieTimeDTO">
+         select * from movietime <include refid="searchmovietime" />
+   </select>
+   
+   <sql id="searchmovietime">
       <choose>
          <when test="m_index == 1">
             <where>movietitle = #{search}</where>
@@ -348,10 +350,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
          
       </choose>
          
-	</sql>
-	
-	
-	<sql id="checkform">
+   </sql>
+   
+   
+   <sql id="checkform">
    
       <choose>
          <when test="userpw != null or userpw == ''">
@@ -375,77 +377,113 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    </sql>   
     
     <select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO" >
-      select * from memberinfo <include refid="checkform" />
+       select * from memberinfo <include refid="checkform" />
    </select>
    
    <insert id="memjoin" parameterType="MemberDTO" >
-      insert into memberinfo 
-      (userid, userpw, username, userbirth, userpnum, useremail, joinday) 
-      values 
-      (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
+       insert into memberinfo 
+       (userid, userpw, username, userbirth, userpnum, useremail, joinday) 
+       values 
+       (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
    </insert>
-	
-	
-	
+    
+   <select id="mempurchase" resultType="SalesDTO" parameterType="MemberDTO" >
+      select * from salestest where userid=#{userid}
+   </select>
+
+    <select id="memcomment" resultType="map" parameterType="MemberDTO" >
+       select movietitle, imgname, postcontent, posttime from review
+      left outer join movieinfo on movieinfo.m_index = review.cate
+      left outer join movieimg on movieinfo.m_index = movieimg.m_index
+      where movieinfo.m_index in (select cate from review where userid=#{userid});
+     </select>
+
+    <select id="memlikeinfor" resultType="map" parameterType="MemberDTO" >
+       select movietitle, imgname, mlike from movieinfo
+      left outer join movieimg on movieinfo.m_index = movieimg.m_index
+      where movieinfo.m_index in (select m_index from userlikes where userid=#{userid});
+     </select>
+    
+   <select id="memfna" resultType="ServiceFullDTO" parameterType="MemberDTO" >
+         select * from personalqna where persid=#{userid}
+   </select>
+   
+   
+   
+   
+   
+   
+   
 <!-- 매출관련 정보(테스트용) salestest -->
 
 <select id="getsales" resultType="SalesDTO" parameterType="HashMap" >
-	select * from salestest	
+   select * from salestest   
 </select>
-	
-	
-	<select id="getMonthlygraph" resultType="SalesDTO" parameterType="TimeVO">
-	select * from salestest 
+   
+   
+   <select id="getMonthlygraph" resultType="SalesDTO" parameterType="TimeVO">
+   select * from salestest 
 
-	where date_format(sales_time, '%Y-%m')
-	
-	between #{sym} and #{eym}	
-	 </select>
-	 
-	
-	 
-	
-	
-	<!--자찾질  가져오기   -->
-	<select id="faqtotalCnt" resultType="java.lang.Integer"   parameterType="HashMap">
-		select count(*) from basicqna
-			<choose>			
-			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
-				<where>
-				${sfDTO.kind2} like '%${sfDTO.sch}%'				
-				</where>
-			</when>
-		</choose>
-	</select>
-	<select id="getfaq" resultType="ServiceFullDTO" parameterType="HashMap"   >
-		select * from basicqna order by bqindex desc limit #{npDTO.start},#{npDTO.limit}
-	
-	</select>
-	
-	
-	
-	<insert id="insertfaq" parameterType="ServiceFullDTO">
-		insert into basicqna (bqcate, bqtitle, bqcont, faqurl1, faqurl2) 
-		values (#{bqcate},#{bqtitle}, #{bqcont}  ,#{faqurl1}, #{faqurl2})
-	
-	</insert>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+   where date_format(sales_time, '%Y-%m')
+   
+   between #{sym} and #{eym}   
+    </select>
+    
+   
+    
+   
+   
+   <!--자찾질  가져오기   -->
+   <select id="faqtotalCnt" resultType="java.lang.Integer"   parameterType="HashMap">
+      select count(*) from basicqna
+         <choose>         
+         <when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
+            <where>
+            ${sfDTO.kind2} like '%${sfDTO.sch}%'            
+            </where>
+         </when>
+      </choose>
+   </select>
+   <select id="getfaq" resultType="ServiceFullDTO" parameterType="HashMap"   >
+      select * from basicqna order by bqindex desc limit #{npDTO.start},#{npDTO.limit}
+   
+   </select>
+   
+   
+   
+   <insert id="insertfaq" parameterType="ServiceFullDTO">
+      insert into basicqna (bqcate, bqtitle, bqcont, faqurl1, faqurl2) 
+      values (#{bqcate},#{bqtitle}, #{bqcont}  ,#{faqurl1}, #{faqurl2})
+   
+   </insert>
+   
+   <!-- 매출 정산 테스트  -->
+   
+   <insert id="insertdaysale" parameterType="SalesDTO">
+      insert into daysales (daysaletime,sumall,totalsale,totalrefund)
+      values
+      (#{daysaletime} 
+
+      ,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%') 
+      ,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE concat('%',#{daysaletime},'%') and sales_type!='환불')
+      ,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%' and sales_type='환불')
+      )   
+   </insert>
+   <!--concat('%',#{daysaletime},'%') mysql.  -->
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 </mapper>

@@ -2,7 +2,6 @@ package com.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.admin.service.PageeditService;
 import com.admin.service.Provider;
@@ -37,7 +35,6 @@ public class PageeditController {
 	Object data(@PathVariable String service,HttpServletRequest request,HttpServletResponse response, MovieInfoDTO mdto,
 				MinfoPageDTO pdto,BannerDTO banDTO
 				, ServiceFullDTO sfDTO,ServiceNoticePageDTO npDTO
-				//, @RequestParam(value = "checkArr[]") List<String> chArr
 			) {
 		System.out.println("pageedit-"+service+"실행");
 		//System.out.println("Mdto:"+mdto);
@@ -54,7 +51,7 @@ public class PageeditController {
 		obj.put("sfDTO", sfDTO);
 		obj.put("npDTO", npDTO);
 		
-		//System.out.println("chArr: "+chArr);
+		
 		
 		return sr.execute(obj);	// has > servie,mdto,req, imgnames,pdto	
 	}

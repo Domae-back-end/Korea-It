@@ -17,10 +17,10 @@
 	/* 공지테이블 */
 	.td1 {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
 	.td1 tr:nth-of-type(2)>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
-	.td1 tr:nth-of-type(2)>td:nth-of-type(1) {width: 50px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(1) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(2) {width: 100px;  }
-	.td1 tr:nth-of-type(2)>td:nth-of-type(3) {width: 430px;  }
-	.td1 tr:nth-of-type(2)>td:nth-of-type(4) {width: 120px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(3) {width: 400px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(4) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(5) {width: 100px;  }
 	
 </style>
@@ -30,7 +30,7 @@
 
 <script>
 	$(function() {
-		$(".btn").click(function(){
+		$(".btn").click(function(){ //페이지번호
 			//alert("눌렀냐?"+$(this).attr("dd"))
 			$("#pageIN").val($(this).attr("dd"))
 			frm.submit()
@@ -66,18 +66,37 @@
 				});
 	
 				$.ajax({
-					url : "noticedeleteGo",
+					url : "noticedeleteReg",
 					type : "post",
 					data : {
 						checkArr : checkArr
 						},
-					success : function() {
-						location.href = "noticelist";
+					success : function(res) {
+							/* text.indexOf(findString)
+							console.log(res) */ 
+						if (res.indexOf("삭제 성공") != -1) {
+							alert(checkArr+"번 삭제성공!");
+							location.href = "noticelist";
+						} else {
+							alert("체크박스를 선택하세요!");
+						}
 					}
 				});
 			}
 		});
 	})
+	
+	
+	function detailGo(aa) { //디테일페이지꺼
+		alert("detailGo 눌렀냐?"+aa)
+		frm.action = "serviceNoticeDetail"
+		
+		$("#detailId").val(aa)
+		
+		alert(aa+"번으로 이동")
+		frm.submit()
+	}
+	
 </script>
 
 <body>
@@ -91,7 +110,7 @@
 			<table class="td1">
 				<tr>
 					<td colspan="5" style="text-align: right; ">
-						<a href="noticeinsert">글쓰기</a>
+						<a href="noticeinsert?page=${data.snpdto.page }">글쓰기</a>
 						<a href="">수정</a>
 						<button type="button" class="deleteGo" >삭제</button>
 					</td>
@@ -107,7 +126,7 @@
 				<tr>
 					<td><input type="checkbox" name="postno" class="postno" value="${nDTO.noticeindex }"/> ${nDTO.noticeindex }</td>
 					<td>${nDTO.noticecate }</td>
-					<td>${nDTO.noticetitle }</td>
+					<td><a href="javascript:detailGo(${nDTO.noticeindex })">${nDTO.noticetitle }</a></td>
 					<td>
 						<fmt:formatDate value="${nDTO.noticetime}" type="both" pattern="yyy.MM.dd"/>					
 					</td>
