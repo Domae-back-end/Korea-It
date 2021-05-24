@@ -9,7 +9,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
          order by m_index desc 
    </select>
    
-   
+   <select id="movielist" resultType="MovieInfoDTO">
+         select * from movieinfo 
+   </select>
    
    <select id="movieInfo" resultType="MovieInfoDTO">
          select * from movieinfo
@@ -132,6 +134,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
       update movieinfo set mlike =#{now_like}
       where m_index=#{m_index}
    </select>
+   <delete id="deletelike" parameterType="LikeDTO">
+   		delete from userlikes 
+   		where userid='${userid}' and 
+   		m_index='${m_index}' 
+   </delete>
    
    
    <select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">

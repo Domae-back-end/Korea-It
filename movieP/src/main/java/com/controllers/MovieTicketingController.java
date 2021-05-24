@@ -27,9 +27,9 @@ public class MovieTicketingController {
 	}
 
 	@ModelAttribute("data")
-	Object data(@PathVariable String cate,String msg) {
+	Object data(@PathVariable String cate) {
 		MovieTicketingService sr = pr.getContext().getBean("MovieTicketing" + cate, MovieTicketingService.class);
-		return sr.execute(msg);
+		return sr.execute();
 	}
 	
 	@RequestMapping
