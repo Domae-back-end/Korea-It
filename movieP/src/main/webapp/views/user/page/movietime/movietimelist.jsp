@@ -48,26 +48,37 @@
 		height: 50px;
 		font-weight: bold;
 	}
+	.totaltiketing{
+		width: 100%;
+		height: 100px;
+		background: gray;
+		color: black;
+		text-align: center;
+	}
 </style>
-
-<div class="ticketinglay1">
-	<div class="lay1_1">
-	<div class="movietitle">영화</div>
-		<c:forEach var="a" items="${data.movielist}">
-			<div class="movietitlelay"><a href="?movietitle=${a.movietitle }">${a.movietitle }</a></div>
-		</c:forEach>
-	</div>
-	<div class="lay1_1">
-		<div class="movietitle">극장</div>
-			<div class="movietitlelay"><a href="?sectorno=기존관">기존관</a></div>
-			<div class="movietitlelay"><a href="?sectorno=3D">3D</a></div>
-			<div class="movietitlelay"><a href="?sectorno=작은관">작은관</a></div>
-	</div>
-	<div class="lay1_2">
-		<div class="movietitle2">날짜</div>
-	</div>
-	<div class="lay1_1">
-		<div class="movietitle">시간</div>
-	</div>
-	<div class="both"></div>
-</div> 
+<form action="">
+	<div class="ticketinglay1">
+		<div class="lay1_1">
+		<div class="movietitle">영화</div>
+			<c:forEach var="a" items="${data.movielist}">
+				<div class="movietitlelay"><a href="?movietitle=${a.movietitle }">${a.movietitle }</a></div>
+			</c:forEach>
+		</div>
+		<div class="lay1_1">
+			<div class="movietitle">극장</div>
+				<div class="movietitlelay"><a href="?movietitle=<%=request.getParameter("movietitle") %>&sectorno=기존관">기존관</a></div>
+				<div class="movietitlelay"><a href="?movietitle=<%=request.getParameter("movietitle") %>&sectorno=3D관">3D</a></div>
+				<div class="movietitlelay"><a href="?movietitle=<%=request.getParameter("movietitle") %>&sectorno=작은관">작은관</a></div>
+		</div>
+		<div class="lay1_2">
+			<div class="movietitle2">날짜</div>
+		</div>
+		<div class="lay1_1">
+			<div class="movietitle">시간</div>
+		</div>
+		<div class="both"></div>
+		<div class="totaltiketing">
+			영화 : <%=request.getParameter("movietitle") %>
+		</div>
+	</div> 
+</form>

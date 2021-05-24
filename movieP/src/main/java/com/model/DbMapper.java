@@ -16,7 +16,7 @@ public interface DbMapper {
    List<MovieInfoDTO> movieInfoBefore(String str);
 
    List<MovieInfoDTO> movieInfoAfter(String str);
-   // List<MovieInfoDTO> moviebeforsearch(String str);
+   List<MovieInfoDTO> moviebeforsearch(String str);
 
    // 영화 시간표
    MovieInfoDTO movieDetail(Integer m_index);
