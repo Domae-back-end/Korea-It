@@ -37,7 +37,7 @@ public class LoginController {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		System.out.println("네이버:" + naverAuthUrl);
 		model.addAttribute("url", naverAuthUrl);
-		return "/user/page/member/login/naverLogin";
+		return "/user/page/login/naverLogin";
 	}
 
 	@RequestMapping(value = "/user/member/login/callback", method = { RequestMethod.GET, RequestMethod.POST })

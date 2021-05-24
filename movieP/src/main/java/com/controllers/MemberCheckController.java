@@ -28,7 +28,7 @@ public class MemberCheckController {
 		
 		MemberAction res = pr.getContext().getBean("memberCheck", MemberAction.class);
 		
-		return res.execute(dto);
+		return res.execute(dto,null);
 	}
 	
 	@ResponseBody

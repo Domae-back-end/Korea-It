@@ -58,6 +58,7 @@ public interface DbMapper {
 
    void movieimgin(MimgDTO dto);
 
+<<<<<<< HEAD
    // 영화당 review
    List<MovieReviewDTO> review(Integer num);
    
@@ -76,6 +77,24 @@ public interface DbMapper {
    MovieInfoDTO pullmovieinfo(String movietitle);
 
    List<ActorDTO> pullactor(Integer m_index);
+=======
+	// 영화당 review
+	List<MovieReviewDTO> review(Integer num);
+	
+	
+	//리뷰 저장하기
+	void reviewinsert(MovieReviewDTO dto);
+	//리뷰 삭제하기
+	Integer reviewdelete(MovieReviewDTO dto);
+	//좋아요 업데이트하기
+	Integer likeupdate(LikeDTO dto);
+	//영화별 좋아요 수 가져오기
+	Integer selectlike(Integer m_index);
+	//movieinfo mlike에 +1
+	void updatemlike(LikeDTO dto);
+	
+	MovieInfoDTO pullmovieinfo(String movietitle);
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 
    List<CateDTO> pullcate(Integer m_index);
 
@@ -86,7 +105,14 @@ public interface DbMapper {
    
    void memjoin(MemberDTO mdto);
 
+<<<<<<< HEAD
    MemberDTO memlogin(MemberDTO mdto);
+=======
+	
+	
+	
+	void memjoin(MemberDTO mdto);
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 
    int memModify(MemberDTO mdto);
    
@@ -101,8 +127,23 @@ public interface DbMapper {
    
    
 
+<<<<<<< HEAD
    // 유저메인화면 베너 관리용.
    int deleteBanner(BannerDTO bannerdto);
+=======
+	int memModify(MemberDTO mdto);
+	
+	List<Map<String, String>> memlikeinfor(MemberDTO mdto);
+	List<Map<String, String>> memcomment(MemberDTO mdto);
+	
+	List<ServiceFullDTO> memfna(MemberDTO mdto);
+	
+	List<SalesDTO> mempurchase(MemberDTO mdto);
+	
+	
+	
+	
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 
    void insertBanner(BannerDTO bannerdto);
 
@@ -150,7 +191,49 @@ public interface DbMapper {
    //매출관련기능 of 관리자. 
    List<SalesDTO> getsales();
 
+<<<<<<< HEAD
    List<SalesDTO> getMonthlygraph(TimeVO timeVO);
+=======
+	//매출 관련 
+	
+	void insertdaysale(SalesDTO saleDTO);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//현준 Service C
+	
+	void insertPersQna(ServiceFullDTO sfDTO); //1대1문의넣기
+	
+	List<ServiceFullDTO> noticelist(HashMap<String, Object> map); //공지사항보기
+	
+	void insertNotice(ServiceFullDTO sfDTO); //어드민딴에서 공지 추가하기
+	
+	ServiceFullDTO noticedetail(ServiceFullDTO sfDTO); //공지사항 디테일보기
+	
+	void addCount(ServiceFullDTO sfDTO); //주회수 증가
+	
+	ServiceFullDTO noticeNext(ServiceFullDTO sfDTO); //공지사항 다음글
+	
+	ServiceFullDTO noticeBefore(ServiceFullDTO sfDTO); //공지사항 이전글
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//매출관련기능 of 관리자. 
+	List<SalesDTO> getsales();
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 
    List<ServiceFullDTO> getfaq(HashMap<String, Object> map);
 
@@ -158,8 +241,18 @@ public interface DbMapper {
    void insertfaq(ServiceFullDTO sfDTO);
    ServiceFullDTO detailfaq(ServiceFullDTO sfDTO);
 
+<<<<<<< HEAD
    int updatepostername(MovieInfoDTO mdto);
    
    
+=======
+	int faqtotalCnt(HashMap<String, Object> map);
+	void insertfaq(ServiceFullDTO sfDTO);
+	ServiceFullDTO detailfaq(ServiceFullDTO sfDTO);
+
+	int updatepostername(MovieInfoDTO mdto);
+	
+	
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 
 }

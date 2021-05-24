@@ -86,12 +86,15 @@
 </script>
 
 <div id="bannercontainer">
+<h2>${contextPath}</h2>
+<h1>ddd</h1>
 <form name="saveform" method="post" enctype="multipart/form-data" >
 <c:forEach var="i" items="${data}" >
 
 		<div id="bancontainer${i.bannerindex }">
 		<div id="banner${i.bannerindex }">${i.bannerindex }</div>
 		<input type="hidden" value="${i.bannerindex }" name="still"/>
+		<!-- /resources/css/${PPPData.cate}/${PPPData.service}.css -->
 		<img id="img${i.bannerindex }"  src='<c:url value="/banner/${i.imgurl}"/>'  style="width:300px;height:180px"  alt="이;미지내놔" />
 	 	<button class="changeBtn" value="${i.bannerindex }" type="button">수정하기</button>
 		</div>
