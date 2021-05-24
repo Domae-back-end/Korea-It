@@ -518,6 +518,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
       ,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%' and sales_type='환불')
       )   
    </insert>
+   
+   <update id="updateSSdaily" parameterType="SalesDTO">
+   	 update monthsales (sumall,totalsale,totalrefund)
+      values
+      (
+      (SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%') 
+      ,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE concat('%',#{daysaletime},'%') and sales_type!='환불')
+      ,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%' and sales_type='환불')
+      )   
+      where monthdate = #{monthdate}
+   </update>
    <!--concat('%',#{daysaletime},'%') mysql.  -->
    
    

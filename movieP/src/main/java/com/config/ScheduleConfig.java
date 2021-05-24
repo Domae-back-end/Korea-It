@@ -27,11 +27,16 @@ public class ScheduleConfig {
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	
-	@Scheduled(cron="0 0 5 * * *")
-	//자바 크론식
-	// 초 분 시 일 월 요일 연도
+	@Scheduled(cron="0 50 * * * *")
+	
 	public void sample1() {
-		logger.info("매일 5시");
+		logger.info("50분타이머 쉬세요");
 		dailysaleAuto.dailysaleDo();
+		
+		
+		
+		
+		
+		
 	}
 }

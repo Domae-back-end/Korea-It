@@ -6,6 +6,8 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
@@ -13,6 +15,10 @@ import com.model.SalesDTO;
 
 @Service
 public class DailysaleAuto {
+	
+
+	Logger logger = LoggerFactory.getLogger(getClass());
+	
 	
 	@Resource
 	DbMapper db;
@@ -22,14 +28,20 @@ public class DailysaleAuto {
 		//Date calcdate = new Date();
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateForm2 = new SimpleDateFormat("yyyy-MM-01");
+		// 일일체크
 		String day = dateForm.format(cal.getTime());
-		cal.add(Calendar.DATE, -1);
+		cal.add(Calendar.DATE, -1);// 어제의 것을.
 		day = dateForm.format(cal.getTime());
-		
+		// 월체크
+		String monthdate = dateForm2.format(cal.getTime());
+		logger.info("월정산가게될날짜"+monthdate);
 		
 		SalesDTO salesDTO = new SalesDTO();
 		salesDTO.setDaysaletime(day);
-		db.insertdaysale(salesDTO);
+		
+		//db.insertdaysale(salesDTO);
+		//db.updateSSdaily(salesDTO);
 		
 //		String calcday = calcdate.getYear()+"-";
 //		String monthz = "0";

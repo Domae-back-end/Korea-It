@@ -154,7 +154,7 @@ public interface DbMapper {
    //매출 관련 
    
    void insertdaysale(SalesDTO saleDTO);
-   
+   int updateSSdaily(SalesDTO salesDTO);
    
    
    //매출관련기능 of 관리자. 
