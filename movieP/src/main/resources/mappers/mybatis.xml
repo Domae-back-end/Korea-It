@@ -110,7 +110,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
       delete from review where cnt = #{cnt} and userid=#{userid}
    </delete>
    
-      <!-- 좋아요 -->
+   <!-- 좋아요 -->
    <insert id="likeupdate" parameterType="LikeDTO">
       insert into userlikes(userid, m_index)
       select '${userid}', ${m_index} from dual
@@ -127,11 +127,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    <select id="selectlike" parameterType="MovieinfoDTO" resultType="java.lang.Integer">
       select count(*) from userlikes where m_index=#{m_index}
    </select>
-   <!-- 좋아요 +1 -->
+   
+   <!-- 좋아요 mlike 값 변경 -->
    <select id="updatemlike" parameterType="LikeDTO">
       update movieinfo set mlike =#{now_like}
       where m_index=#{m_index}
    </select>
+   <!-- 좋아요 userlikes 에서 삭제 -->
    <delete id="deletelike" parameterType="LikeDTO">
    		delete from userlikes 
    		where userid='${userid}' and 

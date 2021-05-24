@@ -58,7 +58,6 @@ public class MovieController {
 	@ModelAttribute("moviedata")
 	Object mm(@PathVariable String service) {
 
-		
 		MovieAction res = pr.getContext().getBean("movielist", MovieAction.class);
 		return res.execute();
 	}
@@ -134,8 +133,6 @@ public class MovieController {
 		System.out.println("현재 로그인된 ID: "+req.getSession().getAttribute("sessionId"));
 		
 		if(service.equals("likeReg")) {
-			//MovieAction2 res = pr.getContext().getBean("movie"+service, MovieAction2.class);
-			System.out.println("좋아요해서 넘어온 m_index값: "+req.getParameter("m_index"));
 			
 			InfoDTO info = new InfoDTO();
 			info.setCg(req.getParameter("cg"));
@@ -153,7 +150,6 @@ public class MovieController {
 			if (dto.getPostcontent() != "") {
 				dto.setUserid((String) req.getSession().getAttribute("sessionId"));
 				MovieAction4 res = pr.getContext().getBean("movie" + service, MovieAction4.class);
-				System.out.println(service + "클래스실행.");
 				return res.execute(dto);
 
 			}
