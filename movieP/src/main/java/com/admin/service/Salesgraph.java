@@ -25,7 +25,7 @@ public class Salesgraph implements SalesService {
 	@Override
 	public Object execute(Object obj) {
 	
-	
+	// session 체크용
 	
 	
 	HashMap<String, Object> map = new HashMap<String, Object>();
