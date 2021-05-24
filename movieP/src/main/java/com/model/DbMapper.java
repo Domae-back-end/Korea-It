@@ -1,6 +1,5 @@
 package com.model;
 
-import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,49 +109,50 @@ public interface DbMapper {
 
    List<BannerDTO> selectBanner();
 
+   
+   
+   
+   
+   
+
+   //현준 Service C
+   
+   void insertPersQna(ServiceFullDTO sfDTO); //1대1문의넣기
+   
+   List<ServiceFullDTO> noticelist(HashMap<String, Object> map); //공지사항보기
+   
+   void insertNotice(ServiceFullDTO sfDTO); //어드민딴에서 공지 추가하기
+   
+   ServiceFullDTO noticedetail(ServiceFullDTO sfDTO); //공지사항 디테일보기
+   
+   void addCount(ServiceFullDTO sfDTO); //주회수 증가
+   
+   ServiceFullDTO noticeNext(ServiceFullDTO sfDTO); //공지사항 다음글
+   
+   ServiceFullDTO noticeBefore(ServiceFullDTO sfDTO); //공지사항 이전글
+   
+   int noticedelete(ServiceFullDTO sfDTO); //공지사항 삭제
+   
+////   int bbModify (BoardDTO bDTO);
+   
+   
+   
+   
+   
+   
+   
+   
+   
    //매출 관련 
    
    void insertdaysale(SalesDTO saleDTO);
    
    
    
-   
-   
-   
-   
-   
-
-	//현준 Service C
-	
-	void insertPersQna(ServiceFullDTO sfDTO); //1대1문의넣기
-	
-	List<ServiceFullDTO> noticelist(HashMap<String, Object> map); //공지사항보기
-	
-	void insertNotice(ServiceFullDTO sfDTO); //어드민딴에서 공지 추가하기
-	
-	ServiceFullDTO noticedetail(ServiceFullDTO sfDTO); //공지사항 디테일보기
-	
-	void addCount(ServiceFullDTO sfDTO); //주회수 증가
-	
-	ServiceFullDTO noticeNext(ServiceFullDTO sfDTO); //공지사항 다음글
-	
-	ServiceFullDTO noticeBefore(ServiceFullDTO sfDTO); //공지사항 이전글
-	
-	int noticedelete(ServiceFullDTO sfDTO); //공지사항 삭제
-	
-////	int bbModify (BoardDTO bDTO);
-	
-   
-   
-   
-   
-   
-   
-   
-   
    //매출관련기능 of 관리자. 
    List<SalesDTO> getsales();
 
+	List<SalesDTO> getsales(HashMap<String, Object> map);
    List<SalesDTO> getMonthlygraph(TimeVO timeVO);
 
    List<ServiceFullDTO> getfaq(HashMap<String, Object> map);
