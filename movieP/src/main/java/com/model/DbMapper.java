@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +63,7 @@ public interface DbMapper {
    
    
    //리뷰 저장하기
-   void reviewinsert(MovieReviewDTO dto);
+   Integer reviewinsert(MovieReviewDTO dto);
    //리뷰 삭제하기
    Integer reviewdelete(MovieReviewDTO dto);
    //좋아요 업데이트하기
@@ -71,6 +72,10 @@ public interface DbMapper {
    Integer selectlike(Integer m_index);
    //movieinfo mlike에 +1
    void updatemlike(LikeDTO dto);
+   //매출테이블에서 예매인 정보만 가져옴
+   List<EndTimeDTO> pullTInfo(MovieReviewDTO dto);
+   //관, m_index 가지고 각영화의 끝나는 시간 저장함
+   DateDTO pullEndTime(EndTimeDTO dto);
    
    MovieInfoDTO pullmovieinfo(String movietitle);
 
@@ -88,13 +93,13 @@ public interface DbMapper {
    MemberDTO memlogin(MemberDTO mdto);
 
    int memModify(MemberDTO mdto);
-   
+	
    List<Map<String, String>> memlikeinfor(MemberDTO mdto);
    List<Map<String, String>> memcomment(MemberDTO mdto);
-   
+	
    List<ServiceFullDTO> memfna(MemberDTO mdto);
-   
-   List<SalesDTO> mempurchase(MemberDTO mdto);
+	
+   List<SalesDTO> mempurchase(HashMap<String, Object> pur);
    
    
    

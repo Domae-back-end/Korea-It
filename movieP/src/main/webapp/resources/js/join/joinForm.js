@@ -106,7 +106,7 @@ $(function() {
 		}
 	});
 		
-	$("select[name=emailSe]").on("change", function(){
+	$("select[name=emailSe]").on("click", function(){
 	    var em = $(this).closest('#email_Ch').find("input[name=emailAd]");
 	    if ($(this).val() == "직접입력") {
 	        em.val('');
