@@ -273,7 +273,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    </select>   
    
    
-   <!-- 공지사항 다음 글 -->
+   <!-- 공지사항 이전 글 -->
    <select id="noticeNext" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
       select * from noticeboard where<![CDATA[ noticeindex > #{noticeindex}  ]]>
       order by noticeindex

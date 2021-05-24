@@ -46,7 +46,7 @@
 			<tr>
 				<td colspan="2" style="text-align: center;">
 					<input type="submit" value="등록" class="sbm"/>
-					<a href="noticelist?page=${data.snpdto.page }">뒤로가기</a>
+					<a href="noticelist?page=${data}">뒤로가기</a>
 				</td>
 			</tr>
 		</table>
