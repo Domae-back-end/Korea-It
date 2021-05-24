@@ -423,7 +423,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    </insert>
     
    <select id="mempurchase" resultType="SalesDTO" parameterType="MemberDTO" >
-      select * from salestest where userid=#{userid}
+      select * from salestest where userid=#{userid} and date_format(sales_time,'%Y-%m')=#{date}
    </select>
 
     <select id="memcomment" resultType="map" parameterType="MemberDTO" >

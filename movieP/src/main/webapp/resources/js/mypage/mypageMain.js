@@ -3,9 +3,33 @@
  */
  $(function() {
 
-	var now = new Date(); 
-	$("#moiverecord").options.add(now);
-	document.getElementById("moiverecord").options.add(now);
+	var date = new Date();
+	var changeChars; 
+	var currMonth = date.getMonth()+1;
+	var currYear = date.getFullYear();
+	var option;
+	 
+	for(var i = 0;i <=6 ;i++){
+		
+		var changeMonth = currMonth--;
+		var changeYear = currYear;
+		
+		if(changeMonth <= 1){
+			currMonth = 12;
+			currYear--;
+		}
+		
+		if(changeMonth < 10)
+			changeChars = "0"+changeMonth;
+		else
+			changeChars = changeMonth;
+		 
+		option = new Option();
+		option.value = changeYear + "-" + changeChars;
+		option.text = changeYear + "년" + changeChars+ "월" ;
+		document.getElementById("moiverecord").options.add(option);
+	}
+		
 	
 	$('#check').click(function(){
 		
@@ -32,8 +56,28 @@
 	});
 	
 	$('#mainGo').click(function(){
-			frm.action = "/member/mypage/mypageMain"
-			frm.submit();
+		frm.action = "/member/mypage/mypageMain"
+		frm.submit();
 	});
 	
+	$("input:radio[name=moivepur]").click(function(){
+ 
+        if($("input[name=moivepur]:checked").val() == "now"){
+            $("#moiverecord").attr("disabled",true);
+            $("#moiveButt").attr("disabled",true);
+ 
+        }else{
+              $("#moiverecord").attr("disabled",false);          
+              $("#moiveButt").attr("disabled",false);  
+        }
+    });
+    
+  
+    $("#moiveButt").click(function(){
+    	console.log($('#userid').val())
+ 		
+		
+    });
+    
+ 
 });

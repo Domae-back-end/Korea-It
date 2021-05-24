@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <div>
 	<h3>나의 문의내역</h3>
 	<small>
@@ -9,7 +11,7 @@
 	</small>
 	<input type="button" class="changeButt" value="1:1문의하기" />
 	<div>
-		<select id="moiverecord" name="moiverecord">
+		<select id="fnarecord" name="moiverecord">
 			<option value="전체">전체</option>
 			<option value="답변">답변</option>
 			<option value="미답변">미답변</option>
@@ -19,6 +21,13 @@
 	</div>
 
 	<div class="cimeminfor">
-		
+		<c:forEach items="${memdata.fna }" var ="pp"> 
+			<div>
+				<div class="puchaseinner">${pp.persid }</div>
+				<div class="puchaseinner">${pp.perstitle }</div>
+				<div class="puchaseinner"><fmt:formatDate value="${pp.persqtime }" pattern="yyyy년 MM월 dd일"/></div>
+				<div class="puchaseinner"><fmt:formatDate value="${pp.persatime }" pattern="yyyy년 MM월 dd일"/>(${pp.persstate })</div>
+			</div>
+		</c:forEach>
 	</div>
 </div>

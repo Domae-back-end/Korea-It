@@ -93,13 +93,13 @@ public interface DbMapper {
    MemberDTO memlogin(MemberDTO mdto);
 
    int memModify(MemberDTO mdto);
-   
+	
    List<Map<String, String>> memlikeinfor(MemberDTO mdto);
    List<Map<String, String>> memcomment(MemberDTO mdto);
-   
+	
    List<ServiceFullDTO> memfna(MemberDTO mdto);
-   
-   List<SalesDTO> mempurchase(MemberDTO mdto);
+	
+   List<SalesDTO> mempurchase(HashMap<String, Object> pur);
    
    
    

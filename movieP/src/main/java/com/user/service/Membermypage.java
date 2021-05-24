@@ -1,5 +1,6 @@
 package com.user.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -13,7 +14,7 @@ import com.model.MemberAction;
 import com.model.MemberDTO;
 
 @Service
-public class membermypage implements MemberAction {
+public class Membermypage implements MemberAction {
 
 	@Resource
 	DbMapper dm;
@@ -23,15 +24,19 @@ public class membermypage implements MemberAction {
 		
 		String userid = (String) session.getAttribute("sessionId");
 		mdto.setUserid(userid);
+		
+		HashMap<String, Object> pur = new HashMap<>();
+		pur.put("mdto", mdto);
+		pur.put("date", new SimpleDateFormat("yyyy-MM").format(new Date()));
 
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("dto", dm.memlogin(mdto));
-		map.put("purchase", dm.mempurchase(mdto));
+		map.put("purchase", dm.mempurchase(pur));
 		map.put("comment", dm.memcomment(mdto));
 		map.put("like", dm.memlikeinfor(mdto));
 		map.put("fna", dm.memfna(mdto));
-		
+		System.out.println(map.get("purchase"));
 		return map;
 	}
 
