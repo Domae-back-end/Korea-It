@@ -35,13 +35,13 @@ public class TimeVO {
 		
 		
 		if(month<10)
-		this.sym=year+"-0"+month;
+		this.sym=year+"-0"+month+"-01";
 		else {
-			this.sym=year+"-"+month;
+			this.sym=year+"-"+month+"-01";
 		}
 		if(month2<10) {
-		this.eym=year2+"-0"+month2;}else {
-			this.eym=year2+"-"+month2;
+		this.eym=year2+"-0"+month2+"-01";}else {
+			this.eym=year2+"-"+month2+"-01";
 		}
 	}
 	

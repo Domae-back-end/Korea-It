@@ -12,7 +12,7 @@
 	ul, li {text-decoration: none; list-style: none; }
 	a {text-decoration: none; }
 	
-	
+	/* 나의속성 어디에..? */
 	
 	/* 공지테이블 */
 	.td1 {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
@@ -30,7 +30,7 @@
 
 <script>
 	$(function() {
-		$(".btn").click(function(){ //페이지번호
+		$(".btnnn").click(function(){ //페이지번호
 			//alert("눌렀냐?"+$(this).attr("dd"))
 			$("#pageIN").val($(this).attr("dd"))
 			frm.submit()
@@ -89,7 +89,7 @@
 	
 	function detailGo(aa) { //디테일페이지꺼
 		alert("detailGo 눌렀냐?"+aa)
-		frm.action = "serviceNoticeDetail"
+		frm.action = "noticedetail"
 		
 		$("#detailId").val(aa)
 		
@@ -105,7 +105,8 @@
 <div class="notice_tb">
 	<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
-	
+		<input type="hidden" name="noticeindex" id="detailId" />
+		
 			<!-- 구분 시스템, 영화관, 기타 -->
 			<table class="td1">
 				<tr>
@@ -141,7 +142,7 @@
 					<td colspan="5" align="center">
 					
 						<c:if test="${data.snpdto.startPage > 1 }">
-							<input type="button" class="btn" dd="${data.snpdto.startPage-1 }" value="&lt" />	
+							<input type="button" class="btnnn btn btn-warning" dd="${data.snpdto.startPage-1 }" value="&lt" />	
 						</c:if>
 						
 						<c:forEach begin="${data.snpdto.startPage }" end="${data.snpdto.endPage }" step="1" var="i">
@@ -150,13 +151,13 @@
 									[${i }]
 								</c:when>
 								<c:otherwise>
-									<input type="button" class="btn" dd="${i }" value="${i }" />
+									<input type="button" class="btnnn btn btn-warning" dd="${i }" value="${i }" />
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						
 						<c:if test="${data.snpdto.endPage < data.snpdto.total }">
-							<input type="button" class="btn" dd="${data.snpdto.endPage+1 }" value="&gt" />
+							<input type="button" class="btnnn btn btn-warning" dd="${data.snpdto.endPage+1 }" value="&gt" />
 						</c:if>
 					
 					

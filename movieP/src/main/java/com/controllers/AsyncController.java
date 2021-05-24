@@ -28,16 +28,6 @@ import com.model.TimeVO;
  */
 @Controller
 public class AsyncController {
-//
-//	@Autowired
-//	private memService memServiceIm;
-//
-//	@Autowired
-//	private prodService prodServiceIm;
-//
-//	@Autowired
-//	private userService userServiceIm;
-	
 	@Resource
 	Provider pr;
 
@@ -71,6 +61,9 @@ public class AsyncController {
 		return (HashMap<String, Object>)sr.execute(map);
 	
 	}
+	
+	
+	
 	///faqdetail.do
 	@RequestMapping(value = "faqdetail.do", method = RequestMethod.POST)
 	@ResponseBody
@@ -80,8 +73,9 @@ public class AsyncController {
 		
 		SalesService sr = pr.getContext().getBean("faqdetail",SalesService.class);	
 		
+		HashMap<String, Object> mapres =(HashMap<String, Object>)sr.execute(map);
 		
-		return (HashMap<String, Object>)sr.execute(map);
+		return mapres;
 	
 	}
 	

@@ -295,7 +295,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    </select>   
    
    
-   <!-- 공지사항 다음 글 -->
+   <!-- 공지사항 이전 글 -->
    <select id="noticeNext" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
       select * from noticeboard where<![CDATA[ noticeindex > #{noticeindex}  ]]>
       order by noticeindex
@@ -350,22 +350,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		delete from noticeboard where noticeindex = #{noticeindex}
 	</delete>
 	
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    
    
    
@@ -470,12 +454,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <select id="getsales" resultType="SalesDTO" parameterType="HashMap" >
    select * from salestest   
 </select>
+
+	
+<select id="getsalesbyId" resultType="SalesDTO">
+	select * from salestest where userid like concat('%',#{userid},'%')
+</select>
    
    
    <select id="getMonthlygraph" resultType="SalesDTO" parameterType="TimeVO">
-   select * from salestest 
+   select * from monthsales 
 
-   where date_format(sales_time, '%Y-%m')
+   where monthdate
    
    between #{sym} and #{eym}   
     </select>
@@ -523,18 +512,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    <!--concat('%',#{daysaletime},'%') mysql.  -->
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+<!-- >>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
+-->
 </mapper>

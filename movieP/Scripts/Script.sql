@@ -208,7 +208,13 @@ values('영화/예매가입영화관기타','테스트1','테스트글2','/user/
 ('영화/예매가입영화관기타','테스트6','테스트글2','/user/main','/user/main'),
 ('영화/예매가입영화관기타','테스트제목7','테스트글2','/user/main','/user/main');
 
-
-
+<!-- 월정산 매출액 테이블(시간xxx년 xx월 1일 ,    ) -->
+CREATE TABLE monthsales (
+	monthdate DATE,
+	sumall bigint,
+	totalsale BIGINT,
+	totalrefund bigint,
+	sectorCode VARCHAR(100)	
+	);
 
 

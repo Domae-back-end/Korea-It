@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import lombok.Data;
 
@@ -22,6 +23,14 @@ public class SalesDTO {
 	//daysaletime,sumall,totalsale,totalrefund)
 	
 	String daysaletime;
+	
+	//월별정보 추출용
+	int sumall;
+	int totalsale;
+	int totalrefund;
+	Date monthdate;
+	String sectorCode;
+	
 	
 	
 }

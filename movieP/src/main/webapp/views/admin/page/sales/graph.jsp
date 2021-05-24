@@ -135,16 +135,16 @@ $(document).ready(function(){
 
 </form>
 <div id="salesGraphWrapper" >
+<c:if test="${not empty data}">
 <c:forEach  items="${data}"  var= "i">
-
 <div> ${i.movietitle } </div>
 <div> ${i.salesprice } </div>
 <div> ${i.sales_time } </div>
 <hr /> 
-
-
-
 </c:forEach>
+
+</c:if>
+
 </div>
 
 </body>
