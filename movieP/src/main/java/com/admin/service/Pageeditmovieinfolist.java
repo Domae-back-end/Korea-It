@@ -35,9 +35,7 @@ public class Pageeditmovieinfolist implements PageeditService {
 	@Override// movieinfolist Service
 	public Object execute(Object obj) {
 		HashMap<String, Object> map = (HashMap) obj;		
-		//MinfoPageDTO pdto=(MinfoPageDTO)map.get("pdto");
-		//System.out.println("p:"+pdto);
-		//pdto.setStart(0);		
+		
 		MovieInfoDTO mdto=(MovieInfoDTO)map.get("mdto");
 		ServiceNoticePageDTO npDTO=   (ServiceNoticePageDTO)map.get("npDTO");
 		npDTO.setTablename("movieinfo");// 영화테이블에서 자료갯수 가져올거니깐.
@@ -58,7 +56,7 @@ public class Pageeditmovieinfolist implements PageeditService {
 		
 		List<MovieInfoDTO> answer= db.movieinfolist(totalmap);	//검색어는mDTO에,
 		//페이지정보 pDTO에 .		
-		System.out.println("갯수 : "+ db.movieinfolist(totalmap).size());
+		System.out.println("검색된갯수 : "+ db.movieinfolist(totalmap).size());
 		
 		for (MovieInfoDTO each : answer) {
 			String mactrs="",mcate="",movieimg="";

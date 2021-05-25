@@ -14,7 +14,7 @@ public class AdminListDTO {
 	MovieInfoDTO midto;
 	//MinfoPageDTO mpdto; 삭제예정 .
 	ServiceNoticePageDTO pdto;
-	String posterurl;
 	ServiceNoticePageDTO snpdto;// 페이지정보.
-
+	String posterurl;
+	ServiceFullDTO sfuldto;
 }
