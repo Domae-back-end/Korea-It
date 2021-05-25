@@ -8,9 +8,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.model.ActorDTO;
+import com.model.AdminListDTO;
 import com.model.CateDTO;
 import com.model.DbMapper;
 import com.model.MimgDTO;
@@ -27,6 +30,7 @@ public class Pageeditmovieinfolist implements PageeditService {
 
 	@Resource
 	DbMapper db;
+	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Override// movieinfolist Service
 	public Object execute(Object obj) {
@@ -40,8 +44,8 @@ public class Pageeditmovieinfolist implements PageeditService {
 		
 		System.out.println("m:"+mdto);
 		
-		MinfListDTO res= new MinfListDTO();	// 최종 반환형태.	
-		
+		//MinfListDTO res= new MinfListDTO();	// 최종 반환형태.	
+		AdminListDTO res= new AdminListDTO();
 		HashMap<String, Object> totalmap = new HashMap<>();
 		totalmap.put("pDTO", npDTO);
 		

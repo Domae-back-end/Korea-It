@@ -25,9 +25,10 @@ $(function() {
 
 function detailGo(aa) { //디테일페이지꺼
 	alert("detailGo 눌렀냐?"+aa)
-	frm.action = "noticedetail"
+	frm.action = "midetail"
 	
 	$("#detailId").val(aa)
+	//m_index로 이
 	
 	alert(aa+"번으로 이동")
 	frm.submit()
@@ -41,7 +42,7 @@ function detailGo(aa) { //디테일페이지꺼
 영화정보관리리스트${data.pdto.ttt}</h2>
     <form action="" name="frm">
     <input type="hidden" name="page" id="pageIN" value="${data.pdto.page}" />
-		<input type="hidden" name="noticeindex" id="detailId" />
+		<input type="hidden" name="m_index" id="detailId" />
     
   <table class="table table-striped">
   

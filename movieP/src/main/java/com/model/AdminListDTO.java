@@ -10,7 +10,11 @@ public class AdminListDTO {
 	
 	//SearchDTO sdto;
 	// 검색어, 카테고리정보.  >> 어느 유형 검색이니? 정보 있고.  검색어 무엇? 정보있고.
-	
+	List<MovieInfoDTO> movielist;
+	MovieInfoDTO midto;
+	//MinfoPageDTO mpdto; 삭제예정 .
+	ServiceNoticePageDTO pdto;
+	String posterurl;
 	ServiceNoticePageDTO snpdto;// 페이지정보.
 
 }
