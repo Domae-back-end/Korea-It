@@ -8,13 +8,14 @@ import lombok.Data;
 
 @Data
 public class MinfoPageDTO {
-	
+	// 삭제 해야함.
 	
 
 	Integer page = 1;
 	Integer start, limit = 5, pageLimit = 4, total, startPage, endPage;
 	Integer cnt=0;
 	Integer ttt;
+	String tablename;
 	
 	public void setCnt(Integer cnt) {
 		this.cnt=cnt;
@@ -23,11 +24,11 @@ public class MinfoPageDTO {
 		}
 	}
 	
-	public void init(DbMapper dbmap, HashMap<String, Object> map) {
+	public void init(DbMapper db, HashMap<String, Object> map) {
 		start = (page-1) * limit;
 		
 		
-		int ttt = dbmap.totalCnt(map);
+		int ttt = db.aaatotalCnt(map);
 		
 	// map>> 에는 pDTO  movieDTO 들어있음.
 		this.total = ttt/limit;

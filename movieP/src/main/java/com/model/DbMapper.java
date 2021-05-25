@@ -39,7 +39,7 @@ public interface DbMapper {
    
    
    // 게시판 page 이동.
-   int totalCnt(HashMap<String, Object> map);
+   int noticetotalCnt(HashMap<String, Object> map);
 
    // 영화정보 list
    List<MovieInfoDTO> movieinfolist(HashMap<String, Object> map);
@@ -164,7 +164,7 @@ public interface DbMapper {
 
    List<ServiceFullDTO> getfaq(HashMap<String, Object> map);
 
-   int faqtotalCnt(HashMap<String, Object> map);
+   int aaatotalCnt(HashMap<String, Object> map);
    void insertfaq(ServiceFullDTO sfDTO);
    ServiceFullDTO detailfaq(ServiceFullDTO sfDTO);
 

@@ -257,7 +257,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
      
      order by m_index desc
      
-      limit #{pdto.start},#{pdto.limit}
+      limit #{pDTO.start}, #{pDTO.limit}
      
      </select>
     
@@ -334,7 +334,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    
    
 	<!-- 게시글수 구하기 -->
-	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
+	<select id="noticetotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from noticeboard
 		<!-- <include refid="noticesearch" /> -->
 	</select>
@@ -494,6 +494,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
          </when>
       </choose>
    </select>
+   <!--aaatotalCnt  map 받아서 .테이블 이름을 바꾼다. resultType="java.lang.Integer"   parameterType="HashMap"  -->
+   <select  id="aaatotalCnt" resultType="java.lang.Integer"   parameterType="HashMap"  >
+   	select count(*) from ${pDTO.tablename} 
+    
+   </select>
+   
+   
+   
    <select id="getfaq" resultType="ServiceFullDTO" parameterType="HashMap"   >
       select * from basicqna order by bqindex desc limit #{npDTO.start},#{npDTO.limit}
    
