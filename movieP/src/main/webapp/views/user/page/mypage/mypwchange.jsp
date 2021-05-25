@@ -24,6 +24,6 @@
 	
 	<div>
 		<input type="button" id="mainGo" value="취소"/>
-		<input type="button" id="modifyGo" value="수정"/>
+		<input type="button" id="pwmodifyGo" value="수정"/>
 	</div>
 </form>

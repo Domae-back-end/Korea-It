@@ -32,21 +32,16 @@ public class Membermypage implements MemberAction {
 		
 		if(mdto.getQnastate()==null)
 			mdto.setQnastate("전체");
-			
-		
-		HashMap<String, Object> pur = new HashMap<>();
-		pur.put("mdto", mdto);
-		pur.put("date", mdto.getDate());
 
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("dto", dm.memlogin(mdto));
-		map.put("purchase", dm.mempurchase(pur));
+		map.put("purchase", dm.mempurchase(mdto));
 		map.put("comment", dm.memcomment(mdto));
 		map.put("like", dm.memlikeinfor(mdto));
 		map.put("qna", dm.memqna(mdto));
 		
-		System.out.println(map.get("purchase"));
+		System.out.println(map.get("qna"));
 		
 		return map;
 	}
