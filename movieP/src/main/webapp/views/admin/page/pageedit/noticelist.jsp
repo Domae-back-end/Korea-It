@@ -62,7 +62,7 @@
 	
 				$("input[class='postno']:checked").each(function() {
 					checkArr.push($(this).attr("value"));
-					alert($(this).attr("value"))
+					/* alert($(this).attr("value")) */
 				});
 	
 				$.ajax({
@@ -84,6 +84,31 @@
 				});
 			}
 		});
+		
+		
+		$(".modifyGo").click(function() {
+			var modArr = new Array();
+			
+			$("input[class='postno']:checked").each(function() {
+				modArr.push($(this).attr("value"));
+			});
+			
+			
+			if (modArr.length == 1) {
+				confirm(modArr+"번을 수정하시겠습니까?");
+				location.href = "noticemodify?page="+${data.snpdto.page }+"&noticeindex="+modArr;
+				
+				
+			}else if (modArr.length > 1) {
+				alert("하나만 선택해주세요~");
+				location.href = "noticelist?page="+${data.snpdto.page }
+			}else {
+				alert("선택먼저 하시죠?");
+				location.href = "noticelist?page="+${data.snpdto.page }
+			}
+			
+			
+		})
 	})
 	
 	
@@ -112,7 +137,7 @@
 				<tr>
 					<td colspan="5" style="text-align: right; ">
 						<a href="noticeinsert?page=${data.snpdto.page }">글쓰기</a>
-						<a href="">수정</a>
+						<button type="button" class="modifyGo">수정</button>
 						<button type="button" class="deleteGo" >삭제</button>
 					</td>
 				</tr>
