@@ -107,6 +107,7 @@ INSERT INTO bannerimg (bannerindex,imgurl) VALUES
  salesprice int,
  userid varchar(100),
  movietitle	varchar(100)	,
+ m_index int,
  moviesector	varchar(100)	,
  sales_type	varchar(100),
  sales_time datetime

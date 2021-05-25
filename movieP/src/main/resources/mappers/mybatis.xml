@@ -9,7 +9,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
          order by m_index desc 
    </select>
    
-   
+   <select id="movielist" resultType="MovieInfoDTO">
+         select * from movieinfo 
+   </select>
    
    <select id="movieInfo" resultType="MovieInfoDTO">
          select * from movieinfo
@@ -80,15 +82,37 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
        order by posttime desc
    </select>
    
-   <select id="reviewinsert" parameterType="MovieReviewDTO">
-      insert into review (cate, userid, postcontent, posttime) values (#{cate}, #{userid}, #{postcontent},sysdate())
+   <insert id="reviewinsert" parameterType="MovieReviewDTO">
+   	insert into review (cate, userid, postcontent, posttime)
+   	select '${cate}', '${userid}', '${postcontent}', sysdate() from dual
+   	where not exists
+   	(
+   		select cate, userid, postcontent, posttime
+   		from review
+   		where cate='${cate}' and userid='${userid}'
+   	)	
+   </insert>
+   <!-- 예매인 애들만 list로 -->
+   <select id="pullTInfo" parameterType="MovieReviewDTO" resultType="EndTimeDTO">
+   		select userid, m_index, moviesector
+   		from salestest
+   		where sales_type != '환불' and
+   		userid = '${userid}' and
+   		m_index= '${cate}'
    </select>
+   <!-- 예매인 애들의 endTime만 -->
+   <select id="pullEndTime" parameterType="EndTimeDTO" resultType="DateDTO">
+   	select endtime, reg_date
+   	from movietime
+   	where m_index='${m_index}'
+   </select>
+   
    
    <delete id="reviewdelete" parameterType="MovieReviewDTO">
       delete from review where cnt = #{cnt} and userid=#{userid}
    </delete>
    
-      <!-- 좋아요 -->
+   <!-- 좋아요 -->
    <insert id="likeupdate" parameterType="LikeDTO">
       insert into userlikes(userid, m_index)
       select '${userid}', ${m_index} from dual
@@ -105,11 +129,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    <select id="selectlike" parameterType="MovieinfoDTO" resultType="java.lang.Integer">
       select count(*) from userlikes where m_index=#{m_index}
    </select>
-   <!-- 좋아요 +1 -->
+   
+   <!-- 좋아요 mlike 값 변경 -->
    <select id="updatemlike" parameterType="LikeDTO">
       update movieinfo set mlike =#{now_like}
       where m_index=#{m_index}
    </select>
+   <!-- 좋아요 userlikes 에서 삭제 -->
+   <delete id="deletelike" parameterType="LikeDTO">
+   		delete from userlikes 
+   		where userid='${userid}' and 
+   		m_index='${m_index}' 
+   </delete>
    
    
    <select id="findMovie" resultType="MovieInfoDTO" parameterType="java.lang.String">
@@ -226,7 +257,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
      
      order by m_index desc
      
-      limit #{pdto.start},#{pdto.limit}
+      limit #{pDTO.start}, #{pDTO.limit}
      
      </select>
     
@@ -303,7 +334,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    
    
 	<!-- 게시글수 구하기 -->
-	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
+	<select id="noticetotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from noticeboard
 		<!-- <include refid="noticesearch" /> -->
 	</select>
@@ -336,22 +367,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		noticecont = #{noticecont}
 		where noticeindex = #{noticeindex}
 	</update>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    
    
    
@@ -417,26 +432,27 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    
    <insert id="memjoin" parameterType="MemberDTO" >
        insert into memberinfo 
-       (userid, userpw, username, userbirth, userpnum, useremail, joinday) 
+       (userid, userpw, username, userbirth, userpnum, useremail, joinday, kind) 
        values 
-       (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
+       (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate(), #{kind})
    </insert>
     
-   <select id="mempurchase" resultType="SalesDTO" parameterType="MemberDTO" >
-      select * from salestest where userid=#{userid}
+   <select id="mempurchase" resultType="SalesDTO" parameterType="HashMap" >
+      select * from salestest where userid=#{mdto.userid} and date_format(sales_time,'%Y-%m')=#{date} 
    </select>
 
     <select id="memcomment" resultType="map" parameterType="MemberDTO" >
-       select movietitle, imgname, postcontent, posttime from review
-      left outer join movieinfo on movieinfo.m_index = review.cate
-      left outer join movieimg on movieinfo.m_index = movieimg.m_index
-      where movieinfo.m_index in (select cate from review where userid=#{userid});
+       select movietitle, imgname, postcontent, posttime, cate, mlike from review
+       left outer join movieinfo on movieinfo.m_index = review.cate
+       left outer join movieimg on movieinfo.m_index = movieimg.m_index
+       where movieinfo.m_index in (select cate from review where userid=#{userid});
      </select>
 
     <select id="memlikeinfor" resultType="map" parameterType="MemberDTO" >
-       select movietitle, imgname, mlike from movieinfo
-      left outer join movieimg on movieinfo.m_index = movieimg.m_index
-      where movieinfo.m_index in (select m_index from userlikes where userid=#{userid});
+       select movietitle, imgname, mlike, cate from movieinfo
+       left outer join review on movieinfo.m_index = review.cate
+       left outer join movieimg on movieinfo.m_index = movieimg.m_index
+       where movieinfo.m_index in (select m_index from userlikes where userid=#{userid});
      </select>
     
    <select id="memfna" resultType="ServiceFullDTO" parameterType="MemberDTO" >
@@ -455,15 +471,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    select * from salestest   
 </select>
 
+	
 <select id="getsalesbyId" resultType="SalesDTO">
 	select * from salestest where userid like concat('%',#{userid},'%')
 </select>
    
    
    <select id="getMonthlygraph" resultType="SalesDTO" parameterType="TimeVO">
-   select * from salestest 
+   select * from monthsales 
 
-   where date_format(sales_time, '%Y-%m')
+   where monthdate
    
    between #{sym} and #{eym}   
     </select>
@@ -483,6 +500,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
          </when>
       </choose>
    </select>
+   <!--aaatotalCnt  map 받아서 .테이블 이름을 바꾼다. resultType="java.lang.Integer"   parameterType="HashMap"  -->
+   <select  id="aaatotalCnt" resultType="java.lang.Integer"   parameterType="HashMap"  >
+   	select count(*) from ${pDTO.tablename} 
+    
+   </select>
+   
+   
+   
    <select id="getfaq" resultType="ServiceFullDTO" parameterType="HashMap"   >
       select * from basicqna order by bqindex desc limit #{npDTO.start},#{npDTO.limit}
    
@@ -508,21 +533,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
       ,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%' and sales_type='환불')
       )   
    </insert>
+   
+   <update id="updateSSdaily" parameterType="SalesDTO">
+   	 update monthsales (sumall,totalsale,totalrefund)
+      values
+      (
+      (SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%') 
+      ,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE concat('%',#{daysaletime},'%') and sales_type!='환불')
+      ,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE '%${daysaletime}%' and sales_type='환불')
+      )   
+      where monthdate = #{monthdate}
+   </update>
    <!--concat('%',#{daysaletime},'%') mysql.  -->
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+<!-- >>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
+-->
 </mapper>

@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ public interface DbMapper {
    List<MovieInfoDTO> movieInfoBefore(String str);
 
    List<MovieInfoDTO> movieInfoAfter(String str);
-   // List<MovieInfoDTO> moviebeforsearch(String str);
+   List<MovieInfoDTO> moviebeforsearch(String str);
 
    // 영화 시간표
    MovieInfoDTO movieDetail(Integer m_index);
@@ -38,7 +39,7 @@ public interface DbMapper {
    
    
    // 게시판 page 이동.
-   int totalCnt(HashMap<String, Object> map);
+   int noticetotalCnt(HashMap<String, Object> map);
 
    // 영화정보 list
    List<MovieInfoDTO> movieinfolist(HashMap<String, Object> map);
@@ -62,15 +63,22 @@ public interface DbMapper {
    
    
    //리뷰 저장하기
-   void reviewinsert(MovieReviewDTO dto);
+   Integer reviewinsert(MovieReviewDTO dto);
    //리뷰 삭제하기
    Integer reviewdelete(MovieReviewDTO dto);
    //좋아요 업데이트하기
    Integer likeupdate(LikeDTO dto);
-   //영화별 좋아요 수 가져오기
+   //영화별 좋아요 수 가져오기(userlikes에서 컬럼 세서 가져옴)
    Integer selectlike(Integer m_index);
-   //movieinfo mlike에 +1
+   //movieinfo mlike의 값을 변경
    void updatemlike(LikeDTO dto);
+   //userlikes에서 해당하는 id의 like 정보 지운다
+   void deletelike(LikeDTO dto);
+  
+   //매출테이블에서 예매인 정보만 가져옴
+   List<EndTimeDTO> pullTInfo(MovieReviewDTO dto);
+   //관, m_index 가지고 각영화의 끝나는 시간 저장함
+   DateDTO pullEndTime(EndTimeDTO dto);
    
    MovieInfoDTO pullmovieinfo(String movietitle);
 
@@ -88,13 +96,13 @@ public interface DbMapper {
    MemberDTO memlogin(MemberDTO mdto);
 
    int memModify(MemberDTO mdto);
-   
+	
    List<Map<String, String>> memlikeinfor(MemberDTO mdto);
    List<Map<String, String>> memcomment(MemberDTO mdto);
-   
+	
    List<ServiceFullDTO> memfna(MemberDTO mdto);
-   
-   List<SalesDTO> mempurchase(MemberDTO mdto);
+	
+   List<SalesDTO> mempurchase(HashMap<String, Object> pur);
    
    
    
@@ -146,7 +154,7 @@ public interface DbMapper {
    //매출 관련 
    
    void insertdaysale(SalesDTO saleDTO);
-   
+   int updateSSdaily(SalesDTO salesDTO);
    
    
    //매출관련기능 of 관리자. 
@@ -156,7 +164,7 @@ public interface DbMapper {
 
    List<ServiceFullDTO> getfaq(HashMap<String, Object> map);
 
-   int faqtotalCnt(HashMap<String, Object> map);
+   int aaatotalCnt(HashMap<String, Object> map);
    void insertfaq(ServiceFullDTO sfDTO);
    ServiceFullDTO detailfaq(ServiceFullDTO sfDTO);
 

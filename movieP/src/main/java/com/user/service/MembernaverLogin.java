@@ -34,6 +34,8 @@ public class MembernaverLogin implements MemberNaverAction {
 		dto.setUserpnum(userphone);
 		dto.setUseremail(useremail);
 		dto.setUserbirth(birthday, birthYear);
+		dto.setKind("네이버");
+		
 		Optional<MemberDTO> dtoo = Optional.ofNullable(dm.memlogin(dto));
 		
 		MemberDTO mdCh = dm.memlogin(dto);	

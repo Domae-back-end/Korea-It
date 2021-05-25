@@ -23,7 +23,8 @@ public class ServiceNoticePageDTO {
 	Integer total; // 걍 총글의 갯수
 	Integer startPage; // pagelimit에 다다르고 그담페이지번호 계산 (1일땐 1~4) (2일땐 5~8)
 	Integer endPage; // pagelimit에 다다르고 그담페이지번호 계산 (1일땐 1~4) (2일땐 5~8)
-
+	Integer ttt;
+	String tablename;
 	
 	
 	
@@ -31,10 +32,12 @@ public class ServiceNoticePageDTO {
 	
 	
 	public void init(DbMapper dm, HashMap<String, Object> map) {
+		// 게시판페이지계산.
 		start = (page - 1) * limit;
 
-		int ttt = dm.totalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
-
+		ttt = dm.noticetotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
+		//
+		System.out.println("토탈cnt"+ttt);
 		this.total = ttt / limit;
 
 		if (ttt % limit > 0) {
@@ -58,8 +61,15 @@ public class ServiceNoticePageDTO {
 
 	public void initfaq(DbMapper dm, HashMap<String, Object> map) {
 		start = (page - 1) * limit;
-		int ttt = dm.faqtotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
+		int ttt = dm.aaatotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
+		// 이 맵에 들어오는거.totalmap // tablename도 먹여줄수있음.
+		/*
+		 * 	totalmap.put("pDTO", npDTO);
+		totalmap.put("mDTO", mdto);
+		 * 
+		 * */
 		this.total = ttt / limit;
+		System.out.println("ttt 몇개"+ttt);
 		if (ttt % limit > 0) {
 			total++;
 		}
@@ -69,7 +79,10 @@ public class ServiceNoticePageDTO {
 		if (endPage > total) {
 			endPage = total;
 		}
-		System.out.println("faqINIT"+page + ",검색된첫 " + start + ", " + limit + ", " + pageLimit + ",총검색결과수 " + total + ", "
+		System.out.println("faqINIT현재페이지:"+page + ",검색된첫 " + start + ", " + limit + ", " + pageLimit +
+				",총페이지수:"  + total + ", "
 				+ startPage + ", " + endPage);
 	}
+	
+	
 }

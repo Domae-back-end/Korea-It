@@ -9,7 +9,7 @@ $(document).ready(function(){
 		picture_slider();
 
 		function switch_picture() { 
-			bild.src = "/resources/banner/poster"+ ((i++ % 5)+1) +".jpg";
+			bild.src = "/banner/poster"+ ((i++ % 5)+1) +".jpg";
 			
 		}
 		

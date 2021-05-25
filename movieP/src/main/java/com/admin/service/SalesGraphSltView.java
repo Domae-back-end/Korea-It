@@ -1,7 +1,9 @@
 package com.admin.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,15 +42,23 @@ public class SalesGraphSltView implements SalesService {
 		List<SalesDTO> res  =  db.getMonthlygraph(timevo);
 		
 		System.out.println("몇개나오는가"+res.size());
-		while(res.iterator().hasNext() ) {
-			logger.info(res.iterator().next().toString());
-		}
 		
 		//반환
-		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("message", 500);
-		result.put("message2", "문자열열");
+		LinkedHashMap<String, Object> result = new LinkedHashMap<String, Object>();
+		
 		result.put("answer", "no");
+		if(res.size()>0) {
+			result.put("answer","yes");
+			SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM");
+			
+			
+		//	
+			for (SalesDTO ss : res) {
+				result.put(sdf.format(ss.getMonthdate())+"-"+ss.getSectorCode(), ss.getSumall());
+				System.out.println(res.indexOf(ss)+","+sdf.format(ss.getMonthdate())+"-"+ss.getSectorCode());
+			}
+		}
+		
 		
 		
 		

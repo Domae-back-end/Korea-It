@@ -26,6 +26,7 @@ public class MemberjoinReg implements MemberAction {
 		dto.setUseremail(mdto.getUseremail());
 		dto.setUserbirth(mdto.getBirthDay(), mdto.getBirthYear());
 		dto.setUserpw(mdto.getUserpw());
+		dto.setKind(mdto.getKind());
 
 		//dm.memjoin(dto);
 	
