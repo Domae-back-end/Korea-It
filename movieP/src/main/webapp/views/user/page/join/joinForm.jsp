@@ -21,6 +21,8 @@
 	<input type="hidden" name="useremail" id="useremail">
     <input type="hidden" name="birthYear" id="birthYear">
     <input type="hidden" name="birthDay" id="birthDay">
+    <input type="hidden" name="kind" id="kind" value="일반" >
+	
 	<div>
 		<div class = "boxF">
 			<div><span>√</span>이름</div>
