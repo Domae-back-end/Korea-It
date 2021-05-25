@@ -436,16 +436,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    </select>
 
     <select id="memcomment" resultType="map" parameterType="MemberDTO" >
-       select movietitle, imgname, postcontent, posttime from review
-      left outer join movieinfo on movieinfo.m_index = review.cate
-      left outer join movieimg on movieinfo.m_index = movieimg.m_index
-      where movieinfo.m_index in (select cate from review where userid=#{userid});
+       select movietitle, imgname, postcontent, posttime, cate from review
+       left outer join movieinfo on movieinfo.m_index = review.cate
+       left outer join movieimg on movieinfo.m_index = movieimg.m_index
+       where movieinfo.m_index in (select cate from review where userid=#{userid});
      </select>
 
     <select id="memlikeinfor" resultType="map" parameterType="MemberDTO" >
-       select movietitle, imgname, mlike from movieinfo
-      left outer join movieimg on movieinfo.m_index = movieimg.m_index
-      where movieinfo.m_index in (select m_index from userlikes where userid=#{userid});
+       select movietitle, imgname, mlike, cate from movieinfo
+       left outer join review on movieinfo.m_index = review.cate
+       left outer join movieimg on movieinfo.m_index = movieimg.m_index
+       where movieinfo.m_index in (select m_index from userlikes where userid=#{userid});
      </select>
     
    <select id="memfna" resultType="ServiceFullDTO" parameterType="MemberDTO" >
