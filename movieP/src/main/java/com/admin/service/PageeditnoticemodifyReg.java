@@ -32,12 +32,7 @@ public class PageeditnoticemodifyReg implements PageeditService {
 		ServiceNoticePageDTO npDTO=   (ServiceNoticePageDTO)orimap.get("npDTO");
 		ServiceFullDTO sfDTO = (ServiceFullDTO)orimap.get("sfDTO");
 		
-		
-		int res = db.noticemodify(sfDTO);
-		
-		
-		
-		
+		db.noticemodify(sfDTO);
 		
 		
 		AlterDTO al = new AlterDTO();

@@ -141,7 +141,7 @@ public interface DbMapper {
    
    int noticedelete(ServiceFullDTO sfDTO); //공지사항 삭제
    
-   int noticemodify (ServiceFullDTO sfDTO);
+   int noticemodify (ServiceFullDTO sfDTO); //공지사항 수정
    
    
    

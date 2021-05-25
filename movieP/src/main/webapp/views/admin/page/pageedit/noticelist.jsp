@@ -98,18 +98,6 @@
 				confirm(modArr+"번을 수정하시겠습니까?");
 				location.href = "noticemodify?page="+${data.snpdto.page }+"&noticeindex="+modArr;
 				
-				/*$.ajax({
-					url : "noticemodify", //얘없으면 데이터가안감
-					type : "post",
-					data : {
-						modArr : modArr
-					},
-					success : function() {//인덱스따오기전에 이게인덱슨데 두번돌아서 null로가서 안불러와짐
-						location.href = "noticemodify?page="+${data.snpdto.page };
-						//이거 한번 동작한다는 말인데.. 지금 ajax 과정에서 꼬이는거같은데요
-						//ajax 결과는 http body 단으로 하는 용으로 쓰는거라서 페이지 넘어갈때는 디테일고처럼 해야..
-					}
-				})*/
 				
 			}else if (modArr.length > 1) {
 				alert("하나만 선택해주세요~");
