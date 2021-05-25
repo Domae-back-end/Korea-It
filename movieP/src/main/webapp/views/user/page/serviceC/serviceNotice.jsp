@@ -34,7 +34,7 @@
 	.td1 tr:first-of-type>td:nth-of-type(5) {width: 100px;  }
 	
 	/* 검색 search */
-	.search {width: 400px; height: 50px; background: lime; margin-left: 400px; }
+	.search {width: 500px; height: 50px; background: lime; margin-left: 300px; }
 	.search>select {font-size: 16px; width: 100px; height: 40px;   }
 	.search>input[type="text"] {font-size: 16px; width: 200px; height: 38px; }
 	.search>input[type="submit"] {font-size: 16px; width: 50px; height: 38px; }
@@ -85,6 +85,7 @@
 		<input type="hidden" name="noticeindex" id="detailId" />
 	
 		<div class="search">
+		<a href="serviceNotice">초기화</a>
 			<select name="kind2">
 				<option value="noticetitle" <c:if test="${data.onesfdto.kind2 == 'noticetitle' }"> selected="selected"</c:if>>제목</option>
 				<option value="noticecont" <c:if test="${data.onesfdto.kind2 == 'noticecont' }"> selected="selected"</c:if>>내용</option>

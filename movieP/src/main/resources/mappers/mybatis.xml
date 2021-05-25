@@ -307,9 +307,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<!-- 1대1문의넣기 -->
 	<insert id="insertPersQna" parameterType="ServiceFullDTO">
 		insert into personalqna
-		(perscate, persid, perstitle, perscont, persimg, persqtime, persatime, persstate)
+		(perscate, persid, perstitle, perscont, persimg, persqtime, persacont, persatime, persstate)
 		values
-		(#{perscate}, #{persid}, #{perstitle}, #{perscont}, #{persimg}, sysdate(), null, '미답변' )
+		(#{perscate}, #{persid}, #{perstitle}, #{perscont}, #{persimg}, sysdate(),null, null, '미답변' )
 	</insert>
 
 
@@ -324,14 +324,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<!-- 공지사항 이전 글 -->
 	<select id="noticeNext" resultType="ServiceFullDTO"	parameterType="ServiceFullDTO">
-		select * from noticeboard where<![CDATA[ noticeindex > #{noticeindex}  ]]>
+		select * from noticeboard 
+		where<![CDATA[ noticeindex > #{noticeindex}  ]]>
 		order by noticeindex
 		limit 0, 1
 	</select>
 
 	<!-- 공지사항 다음 글 -->
 	<select id="noticeBefore" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
-		select * from noticeboard where <![CDATA[noticeindex < #{noticeindex} ]]>
+		select * from noticeboard 
+		where <![CDATA[noticeindex < #{noticeindex} ]]>
 		order by noticeindex desc
 		limit 0, 1
 	</select>
@@ -360,7 +362,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<!-- 공지사항 디테일 -->
 	<select id="noticedetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
-		select * from noticeboard where noticeindex = ${noticeindex}
+		select * from noticeboard 
+		where noticeindex = ${noticeindex}
 	</select>
 
 

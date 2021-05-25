@@ -52,6 +52,7 @@ public class ServiceFullDTO {
 	String persimg; //사진
 	MultipartFile file; //사진실제데이터
 	Date persqtime; //등록일
+	String persacont; //답변칸
 	Date persatime; //답변시간
 	String persstate; //답변상태
 	

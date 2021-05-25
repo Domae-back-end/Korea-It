@@ -17,4 +17,12 @@ public class ServiceNotiListDTO {
 	
 	ServiceNoticePageDTO snpdto;// 페이지정보.
 
+	
+	//serviceNoticeBNDTO
+	ServiceFullDTO next;
+	ServiceFullDTO before;
+	ServiceFullDTO now;
+	ServiceNoticePageDTO npDTO;
+	
+	
 }
