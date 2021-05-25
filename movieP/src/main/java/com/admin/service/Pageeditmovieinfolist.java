@@ -18,6 +18,7 @@ import com.model.MinfListDTO;
 import com.model.MinfoPageDTO;
 import com.model.MovieInfoDTO;
 import com.model.MovieTimeDTO;
+import com.model.ServiceNoticePageDTO;
 
 //Service단
 @Service
@@ -27,20 +28,34 @@ public class Pageeditmovieinfolist implements PageeditService {
 	@Resource
 	DbMapper db;
 	
-	@Override// list Service
+	@Override// movieinfolist Service
 	public Object execute(Object obj) {
 		HashMap<String, Object> map = (HashMap) obj;		
-		MinfoPageDTO pdto=(MinfoPageDTO)map.get("pdto");
+		//MinfoPageDTO pdto=(MinfoPageDTO)map.get("pdto");
+		//System.out.println("p:"+pdto);
+		//pdto.setStart(0);		
 		MovieInfoDTO mdto=(MovieInfoDTO)map.get("mdto");
+		ServiceNoticePageDTO npDTO=   (ServiceNoticePageDTO)map.get("npDTO");
+		npDTO.setTablename("movieinfo");// 영화테이블에서 자료갯수 가져올거니깐.
 		
-		System.out.println("p:"+pdto);
 		System.out.println("m:"+mdto);
-		pdto.setStart(0);		
 		
-		MinfListDTO res= new MinfListDTO();		
-		List<MovieInfoDTO> answer= db.movieinfolist(map);		
-
-		System.out.println("갯수 : "+ db.movieinfolist(map).size());
+		MinfListDTO res= new MinfListDTO();	// 최종 반환형태.	
+		
+		HashMap<String, Object> totalmap = new HashMap<>();
+		totalmap.put("pDTO", npDTO);
+		
+		totalmap.put("mDTO", mdto);
+		//
+		System.out.println(npDTO+"\n테이블:"+npDTO.getTablename());
+		System.out.println("pagedto init");
+		npDTO.initfaq(db, totalmap);		
+		
+		
+		List<MovieInfoDTO> answer= db.movieinfolist(totalmap);	//검색어는mDTO에,
+		//페이지정보 pDTO에 .		
+		System.out.println("갯수 : "+ db.movieinfolist(totalmap).size());
+		
 		for (MovieInfoDTO each : answer) {
 			String mactrs="",mcate="",movieimg="";
 			String movietitle= each.getMovietitle();
@@ -69,10 +84,20 @@ public class Pageeditmovieinfolist implements PageeditService {
 			each.setMactrs(mactrs);
 			each.setMcate(mcate);
 			each.setMovieimg(movieimg);			
-		}		
+		}		// 가공하여서 리스트화면에 출력.
+		
+		
+		
+		//페이지 정리과정 
+
+	
 		
 		res.setMovielist(answer);
-		return res;
+		res.setPdto(npDTO);// pdto>jsp에서쓰고 ,
+		
+		
+		
+		return res; // map 형태가 아닌 클래스들 담은 클래스 형태로 외부전달
 	}
 	
 }
