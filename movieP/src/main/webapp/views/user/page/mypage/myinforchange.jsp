@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
 <h2>개인정보 수정</h2>
 	<div class = "idouter">
