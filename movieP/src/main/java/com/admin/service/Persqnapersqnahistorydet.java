@@ -11,27 +11,25 @@ import com.model.ServiceFullDTO;
 import com.model.ServiceNoticePageDTO;
 
 @Service
-public class Persqnapersqnanew implements PageeditService {
+public class Persqnapersqnahistorydet implements PageeditService {
 	@Resource
 	DbMapper db;
 
 	@Override
 	public Object execute(Object obj) {// map
-		HashMap<String, Object> orimap = (HashMap) obj;
+		HashMap<String, Object> orimap = (HashMap)obj;
 		ServiceNoticePageDTO snpdto = (ServiceNoticePageDTO) orimap.get("snpdto");
 		ServiceFullDTO sfdto = (ServiceFullDTO) orimap.get("sfdto");
-
 		
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("snpdto", snpdto);
-		map.put("sfdto", sfdto);
 		
-		snpdto.initpers(db, map);
-
+		
 		ServiceNotiListDTO res = new ServiceNotiListDTO();
-		res.setSfdto(db.perslist(map));
-		res.setSnpdto(snpdto);
+		res.setNow(db.persdetail(sfdto));
+		res.setNpDTO(snpdto);
 
+
+		
+		
 		return res;
 	}
 
