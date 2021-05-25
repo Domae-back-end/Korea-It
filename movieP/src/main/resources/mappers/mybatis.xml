@@ -360,6 +360,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
    
+   <!-- 공지사항 수정 -->
+	<update id="noticemodify" parameterType="ServiceFullDTO">
+		update noticeboard set 
+		noticecate = #{noticecate}, noticetitle = #{noticetitle}, 
+		noticecont = #{noticecont}
+		where noticeindex = #{noticeindex}
+	</update>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    
    

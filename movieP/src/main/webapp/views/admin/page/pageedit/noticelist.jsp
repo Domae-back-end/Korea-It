@@ -62,7 +62,7 @@
 	
 				$("input[class='postno']:checked").each(function() {
 					checkArr.push($(this).attr("value"));
-					alert($(this).attr("value"))
+					/* alert($(this).attr("value")) */
 				});
 	
 				$.ajax({
@@ -84,6 +84,43 @@
 				});
 			}
 		});
+		
+		
+		$(".modifyGo").click(function() {
+			var modArr = new Array();
+			
+			$("input[class='postno']:checked").each(function() {
+				modArr.push($(this).attr("value"));
+			});
+			
+			
+			if (modArr.length == 1) {
+				confirm(modArr+"번을 수정하시겠습니까?");
+				location.href = "noticemodify?page="+${data.snpdto.page }+"&noticeindex="+modArr;
+				
+				/*$.ajax({
+					url : "noticemodify", //얘없으면 데이터가안감
+					type : "post",
+					data : {
+						modArr : modArr
+					},
+					success : function() {//인덱스따오기전에 이게인덱슨데 두번돌아서 null로가서 안불러와짐
+						location.href = "noticemodify?page="+${data.snpdto.page };
+						//이거 한번 동작한다는 말인데.. 지금 ajax 과정에서 꼬이는거같은데요
+						//ajax 결과는 http body 단으로 하는 용으로 쓰는거라서 페이지 넘어갈때는 디테일고처럼 해야..
+					}
+				})*/
+				
+			}else if (modArr.length > 1) {
+				alert("하나만 선택해주세요~");
+				location.href = "noticelist?page="+${data.snpdto.page }
+			}else {
+				alert("선택먼저 하시죠?");
+				location.href = "noticelist?page="+${data.snpdto.page }
+			}
+			
+			
+		})
 	})
 	
 	
@@ -112,7 +149,7 @@
 				<tr>
 					<td colspan="5" style="text-align: right; ">
 						<a href="noticeinsert?page=${data.snpdto.page }">글쓰기</a>
-						<a href="">수정</a>
+						<button type="button" class="modifyGo">수정</button>
 						<button type="button" class="deleteGo" >삭제</button>
 					</td>
 				</tr>

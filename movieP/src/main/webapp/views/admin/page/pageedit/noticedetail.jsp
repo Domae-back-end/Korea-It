@@ -74,7 +74,19 @@
 			}
 		});
 		
-		
+		$(".modifyGo").click(function() {
+			var modArr = new Array();
+			
+			modArr.push($(this).attr("value"));
+			
+			
+			if (modArr.length == 1) {
+				confirm(modArr+"번을 수정하시겠습니까?");
+				location.href = "noticemodify?page="+${data.npDTO.page }+"&noticeindex="+modArr;
+			}
+			
+			
+		})
 	})
 	
 	
@@ -92,7 +104,7 @@
 			<tr>
 				<td colspan="5" style="text-align: right; ">
 					<a href="noticeinsert?page=${data.npDTO.page }">글쓰기</a>
-					<a href="">수정</a>
+					<button type="button" class="modifyGo" value="${data.now.noticeindex }">수정</button>
 					<button type="button" class="deleteGo" value="${data.now.noticeindex }">삭제</button>
 				</td>
 			</tr>
