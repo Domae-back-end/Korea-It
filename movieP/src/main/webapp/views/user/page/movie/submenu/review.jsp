@@ -81,6 +81,7 @@
 <input type="hidden" name="cnt" id="cnt"  />
 <input type="submit" value="관람평 작성" id="b">
 </form>
+
 <div id= "myr">
 <c:if test="${myreview != null}">
 <div id = "aa" style="border: 3px dotted #f00">
