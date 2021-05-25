@@ -89,5 +89,17 @@
     	
 		
 	});
+     
+	$("#ticketGo").click(function(){
+    	frm.action = "/user/movietime/list"
+		frm.submit();
+	});
+ 
+     
+	$("#serviceGo").click(function(){
+    	frm.action = "/user/serviceC/servicePersonal"
+		frm.submit();
+	});
+ 
  	
 });

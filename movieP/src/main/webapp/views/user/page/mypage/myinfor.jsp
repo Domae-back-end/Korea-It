@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
-<h2>회원정보</h2>
+<h3>회원정보</h3>
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
 	<input type="hidden" id="userid" value="${sessionId } " />
 	<div class = "inforouter">

@@ -436,7 +436,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    </select>
 
     <select id="memcomment" resultType="map" parameterType="MemberDTO" >
-       select movietitle, imgname, postcontent, posttime, cate from review
+       select movietitle, imgname, postcontent, posttime, cate, mlike from review
        left outer join movieinfo on movieinfo.m_index = review.cate
        left outer join movieimg on movieinfo.m_index = movieimg.m_index
        where movieinfo.m_index in (select cate from review where userid=#{userid});

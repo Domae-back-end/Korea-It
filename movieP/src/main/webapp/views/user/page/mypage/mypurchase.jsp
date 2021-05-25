@@ -16,7 +16,13 @@
 	</div>
 	<h3>예매 취소내역</h3>
 	<div class="cimeminfor">
-		<c:forEach items="${memdata.purchase }" var ="pp"> 
+		<div id="titleinner">
+			<div class="puchaseinner">영화제목</div>
+			<div class="puchaseinner">티켓개수</div>
+			<div class="puchaseinner">취소금액</div>
+			<div class="puchaseinner">결제일</div>
+		</div> 
+		<c:forEach items="${memdata.purchase }" var ="pp">
 			<c:if test="${pp.salesprice < 0}">
 				<div>
 					<div class="puchaseinner">${pp.movietitle }</div>

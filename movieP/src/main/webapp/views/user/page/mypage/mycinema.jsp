@@ -45,6 +45,12 @@
 	</div>
 
 	<div class="cimeminfor">
+		<div id="titleinner">
+			<div class="puchaseinner">영화제목</div>
+			<div class="puchaseinner">티켓개수</div>
+			<div class="puchaseinner">결제금액</div>
+			<div class="puchaseinner">결제일</div>
+		</div>
 		<c:forEach items="${memdata.purchase }" var ="pp" > 
 			<c:if test="${pp.salesprice > 0}">
 				<div>
@@ -65,6 +71,12 @@
 	</div>
 
 	<div class="cimeminfor">
+		<div id="titleinner">
+			<div class="puchaseinner">작성자</div>
+			<div class="puchaseinner">제목</div>
+			<div class="puchaseinner">작성일</div>
+			<div class="puchaseinner">답변일(답변상태)</div>
+		</div>
 		<c:forEach items="${memdata.fna }" var ="pp"> 
 			<div>
 				<div class="puchaseinner">${pp.persid }</div>
