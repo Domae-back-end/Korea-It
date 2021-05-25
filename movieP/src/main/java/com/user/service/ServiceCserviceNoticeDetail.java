@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.admin.service.ServiceNotiListDTO;
 import com.model.DbMapper;
 import com.model.ServiceFullDTO;
 import com.model.ServiceNoticeBNDTO;
@@ -35,12 +36,12 @@ public class ServiceCserviceNoticeDetail implements ServiceCservice {//빈 창�
 //		before글:ServiceFullDTO(kind2=null, schkey=null, noticeindex=107, noticecate=movie, noticetitle=번호는 107번이지롱, noticecont=107번 글이다?
 
 		
-		ServiceNoticeBNDTO res = new ServiceNoticeBNDTO();
+		ServiceNotiListDTO res = new ServiceNotiListDTO();
 		res.setNow(db.noticedetail(sfDTO));
 		res.setBefore(before);
 		res.setNext(next);
 		res.setNpDTO(npDTO);
-		
+		res.setOnesfdto(sfDTO);
 		
 		return res;
 	}

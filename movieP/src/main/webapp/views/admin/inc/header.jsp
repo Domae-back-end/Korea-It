@@ -37,7 +37,7 @@
 	<button  id="movietime" value="movietime/list" type="button"
 		class="btn btn-success menugobtn">상영시간표관리</button>
 
-	<button  id="qna" value="qna" type="button"
+	<button  id="persqna" value="persqna/persqnanew" type="button"
 		class="btn btn-success menugobtn">고객문의처리</button>
 
 
