@@ -300,33 +300,30 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<!-- 1대1문의넣기 -->
 	<insert id="insertPersQna" parameterType="ServiceFullDTO">
 		insert into personalqna
-		(perscate, persid, perstitle, perscont, persimg, persqtime, persatime,
-		persstate)
+		(perscate, persid, perstitle, perscont, persimg, persqtime, persatime, persstate)
 		values
-		(#{perscate}, #{persid}, #{perstitle}, #{perscont}, #{persimg}, sysdate(), null,
-		'미답변' )
+		(#{perscate}, #{persid}, #{perstitle}, #{perscont}, #{persimg}, sysdate(), null, '미답변' )
 	</insert>
 
 
 	<!-- 공지사항 리스트 -->
-	<select id="noticelist" resultType="ServiceFullDTO"
-		parameterType="HashMap">
-		select * from noticeboard order by noticeindex desc
+	<select id="noticelist" resultType="ServiceFullDTO"	parameterType="HashMap">
+		select * from noticeboard 
+		<include refid="searchGo"/>
+		order by noticeindex desc
 		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
 
 
 	<!-- 공지사항 이전 글 -->
-	<select id="noticeNext" resultType="ServiceFullDTO"
-		parameterType="ServiceFullDTO">
+	<select id="noticeNext" resultType="ServiceFullDTO"	parameterType="ServiceFullDTO">
 		select * from noticeboard where<![CDATA[ noticeindex > #{noticeindex}  ]]>
 		order by noticeindex
 		limit 0, 1
 	</select>
 
 	<!-- 공지사항 다음 글 -->
-	<select id="noticeBefore" resultType="ServiceFullDTO"
-		parameterType="ServiceFullDTO">
+	<select id="noticeBefore" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
 		select * from noticeboard where <![CDATA[noticeindex < #{noticeindex} ]]>
 		order by noticeindex desc
 		limit 0, 1
@@ -348,18 +345,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 
 	<!-- 게시글수 구하기 -->
-	<select id="noticetotalCnt" resultType="java.lang.Integer"
-		parameterType="HashMap">
+	<select id="noticetotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from noticeboard
-		<!-- <include refid="noticesearch" /> -->
+		<include refid="searchGo"/>
 	</select>
 
 
 	<!-- 공지사항 디테일 -->
-	<select id="noticedetail" resultType="ServiceFullDTO"
-		parameterType="ServiceFullDTO">
-		select * from noticeboard where noticeindex =
-		${noticeindex}
+	<select id="noticedetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
+		select * from noticeboard where noticeindex = ${noticeindex}
 	</select>
 
 
@@ -381,14 +375,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<!-- 공지사항 수정 -->
 	<update id="noticemodify" parameterType="ServiceFullDTO">
 		update noticeboard set
-		noticecate = #{noticecate}, noticetitle = #{noticetitle},
-		noticecont = #{noticecont}
+		noticecate = #{noticecate}, noticetitle = #{noticetitle}, noticecont = #{noticecont}
 		where noticeindex = #{noticeindex}
 	</update>
 
-
+	
 	<sql id="searchGo">
-		
+		<choose>
+			<when test="sfDTO.schkey != null and sfDTO.schkey != '' ">
+				<where>
+					${sfDTO.kind2} like concat('%',#{sfDTO.schkey},'%')
+				</where>
+			</when>
+		</choose>
 	</sql>
 
 

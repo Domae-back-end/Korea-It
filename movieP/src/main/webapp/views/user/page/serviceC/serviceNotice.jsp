@@ -40,7 +40,6 @@
 	.search>input[type="submit"] {font-size: 16px; width: 50px; height: 38px; }
 	
 </style>
-<script src="../../../../my_js/jquery-3.6.0.js"></script>
 <script>
 	$(function() {
 		//alert("안녕");
@@ -49,6 +48,12 @@
 			$("#pageIN").val($(this).attr("dd"))
 			frm.submit()
 		})
+		
+	
+		$(".smtGo").click(function(){
+	        $("#pageIN").val("1")
+	        frm.submit()
+	     })
 	})
 	
 	function detailGo(aa) {
@@ -80,33 +85,13 @@
 		<input type="hidden" name="noticeindex" id="detailId" />
 	
 		<div class="search">
-			<select name="kind">
-				<option value="title" >제목</option>
-				<option value="cont" >내용</option>
+			<select name="kind2">
+				<option value="noticetitle" <c:if test="${data.onesfdto.kind2 == 'noticetitle' }"> selected="selected"</c:if>>제목</option>
+				<option value="noticecont" <c:if test="${data.onesfdto.kind2 == 'noticecont' }"> selected="selected"</c:if>>내용</option>
 			</select>
-			<input type="text" name="search" value=""/>
-			<input type="submit" value="검색" />
+			<input type="text" name="schkey" value="${data.onesfdto.schkey }"/> <!-- 요놈이문제 -->
+			<input type="submit" value="검색" class="smtGo" />
 		</div>
-		
-		
-		
-<%-- 		
-			<select name="kind">
-				<option value="title" <c:if test="${data.bdto.kind =='title'}"> selected="selected"</c:if> >제목</option>
-				<option value="pname" <c:if test="${data.bdto.kind =='pname'}"> selected="selected"</c:if> >작성자</option>
-			</select>
-			<input type="text" name="sch" value="${data.bdto.sch }" /><br>
-			
-			조회수: <input type="text" name="cnt" value="${data.bdto.cnt }" />
-			<input type="submit" value="검색" />
- --%>
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -129,7 +114,6 @@
 					<td>${sfDTO.noticeindex }</td>
 					<td>${sfDTO.noticecateKr }</td>
 					<td>
-<%-- 						<a href="serviceNoticeDetail?id=${sfDTO.noticeindex }&page=${data.snpdto.page}">${sfDTO.noticetitle }</a> --%>
 						<a href="javascript:detailGo(${sfDTO.noticeindex })">${sfDTO.noticetitle }</a>
 					</td>
 					<td>					
