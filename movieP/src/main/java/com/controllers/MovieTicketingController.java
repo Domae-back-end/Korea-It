@@ -22,14 +22,13 @@ public class MovieTicketingController {
 
 	@ModelAttribute("PPPData")
 	PPPData pppData(@PathVariable("cate") String cate) {
-		System.out.println("?");
 		return new PPPData("movietime","movietime"+cate);
 	}
 
 	@ModelAttribute("data")
-	Object data(@PathVariable String cate) {
+	Object data(@PathVariable String cate,MovieTimeDTO dto) {
 		MovieTicketingService sr = pr.getContext().getBean("MovieTicketing" + cate, MovieTicketingService.class);
-		return sr.execute();
+		return sr.execute(dto);
 	}
 	
 	@RequestMapping

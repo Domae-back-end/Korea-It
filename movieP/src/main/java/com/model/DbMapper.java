@@ -91,18 +91,16 @@ public interface DbMapper {
    
    
    
-   void memjoin(MemberDTO mdto);
+   	void memjoin(MemberDTO mdto);
 
-   MemberDTO memlogin(MemberDTO mdto);
+   	MemberDTO memlogin(MemberDTO mdto);
 
-   int memModify(MemberDTO mdto);
+   	int memModify(MemberDTO mdto);
 	
-   List<Map<String, String>> memlikeinfor(MemberDTO mdto);
-   List<Map<String, String>> memcomment(MemberDTO mdto);
-	
-   List<ServiceFullDTO> memfna(MemberDTO mdto);
-	
-   List<SalesDTO> mempurchase(HashMap<String, Object> pur);
+   	List<Map<String, String>> memlikeinfor(MemberDTO mdto);
+   	List<Map<String, String>> memcomment(MemberDTO mdto);
+	List<Map<String, String>> memfna(MemberDTO mdto);
+	List<SalesDTO> mempurchase(HashMap<String, Object> pur);
    
    
    

@@ -1,0 +1,49 @@
+package com.user.service;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Service;
+
+import com.model.DbMapper;
+import com.model.MemberAction;
+import com.model.MemberDTO;
+
+@Service
+public class Membermypage implements MemberAction {
+
+	@Resource
+	DbMapper dm;
+	
+	@Override
+	public Object execute(MemberDTO mdto, HttpSession session) {
+		
+		if(session!=null) {
+		String userid = (String) session.getAttribute("sessionId");
+		mdto.setUserid(userid);
+		}
+		if(mdto.getDate()==null)
+			mdto.setDate(new SimpleDateFormat("yyyy-MM").format(new Date()));
+			
+		System.out.println(mdto.getDate());
+		
+		HashMap<String, Object> pur = new HashMap<>();
+		pur.put("mdto", mdto);
+		pur.put("date", mdto.getDate());
+
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("dto", dm.memlogin(mdto));
+		map.put("purchase", dm.mempurchase(pur));
+		map.put("comment", dm.memcomment(mdto));
+		map.put("like", dm.memlikeinfor(mdto));
+		map.put("fna", dm.memfna(mdto));
+		
+		return map;
+	}
+
+}

@@ -4,16 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div>
 	<h3>예매내역</h3>
+	<form action="" method="post" enctype="multipart/form-data" name="frm" >
+	<input type="hidden" name="userid" id="userid" value="${sessionId }" />
 	<div class="purchouter">
 		<input type="radio" name="moivepur" id="now" value="now" checked="checked" />예매내역
 		<input type="radio" name="moivepur" id="past" value="past"/>지난내역
 		<select id="moiverecord" name="moiverecord" disabled="disabled" ></select>
 		<input type="button" class="changeButt"  id="moiveButt" value="조회" disabled="disabled"  />
 	</div>
-	<input type="hidden" id="userid" value="${sessionId }" />
 	<div class="cimeminfor" id="recordpurchase">
 		
 	</div>
+	</form>
 	<h3>예매 취소내역</h3>
 	<div class="cimeminfor">
 		<div id="titleinner">
