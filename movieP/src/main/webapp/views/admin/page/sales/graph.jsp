@@ -20,6 +20,10 @@ $(document).ready(function(){
 		let ssggSmonth= document.getElementById("ssggstartmonth");	
 		let ssggEyear= document.getElementById("ssggendyear");
 		let ssggEmonth= document.getElementById("ssggendmonth");
+		
+	var myChart 	
+		
+		
 	ssggbutton.addEventListener("click",function(){
 		
 	
@@ -61,13 +65,20 @@ $(document).ready(function(){
 					
 
 					// 우선 컨텍스트를 가져옵니다. 
+					
+					var cnvs= document.getElementById("myChart")
 					var ctx = document.getElementById("myChart").getContext('2d');
+					ctx.clearRect(0, 0, cnvs.width, cnvs.height);
+					ctx.beginPath();
 					/*
 					- Chart를 생성하면서, 
 					- ctx를 첫번째 argument로 넘겨주고, 
 					- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
 					*/
-					var myChart = new Chart(ctx, {
+					if(myChart!=null){
+					myChart.destroy();
+					}
+					myChart  = new Chart(ctx, {
 					    type: 'bar',
 					    data: {
 					        //labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -206,6 +217,9 @@ $(document).ready(function(){
 
 <br>
 <button id="graphdateGoBtn"  type="button">조회하기</button> <hr />
+
+
+
 
 <div style="width:800px">
     <canvas id="myChart"></canvas>
