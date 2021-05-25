@@ -36,7 +36,7 @@ public class AsyncController {
 
 	
 
-	@RequestMapping(value = "/salesTableSltView.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/salesTableSltView.do")
 	@ResponseBody
 	public Map<String, String> asynclogin(String id, String pw, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
 																													// JSON.stringify(sample),
@@ -49,7 +49,7 @@ public class AsyncController {
 	
 	
 	
-	@RequestMapping(value = "/salesGraphSltView.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/salesGraphSltView.do")
 	@ResponseBody
 	public Map<String, Object> ajaxtest(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
 		
@@ -58,7 +58,7 @@ public class AsyncController {
 		SalesService sr = pr.getContext().getBean("salesGraphSltView",SalesService.class);	
 		//SalesGraphSltView , 
 		
-		return (HashMap<String, Object>)sr.execute(map);
+		return (LinkedHashMap<String, Object>)sr.execute(map);
 	
 	}
 	

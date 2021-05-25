@@ -130,7 +130,7 @@ $(document).ready(function(){
 				);
 				var data= JSON.stringify({"startyear":startyear,"startmonth":startmonth,
 					"endyear":endyear, "endmonth":endmonth });
-				console.log(data)
+				console.log("cccccc:"+data)
 				
 				xhttp.send(data);//sfy해서 서버에보냄	
 				})
