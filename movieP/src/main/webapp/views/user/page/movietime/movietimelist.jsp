@@ -129,7 +129,7 @@ dal2.set(Calendar.MONTH, dal1.get(Calendar.MONTH)+1);
 			</c:forEach>
 		</div>
 		<div class="timelist1">
-			<a href="/user/movietime/listReg?movietitle=<%=request.getParameter("movietitle") %>&dal=<%=request.getParameter("dal") %>&el=<%=request.getParameter("el") %>&sectorno=${a.sectorno}">
+			<a href="/user/movietime/listReg?movietitle=<%=request.getParameter("movietitle") %>&dal=<%=request.getParameter("dal") %>&el=<%=request.getParameter("el") %>&sectorno=<%=request.getParameter("sectorno") %>">
 				예매하기
 			</a>
 		</div>
