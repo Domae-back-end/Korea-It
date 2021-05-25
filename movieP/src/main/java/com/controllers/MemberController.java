@@ -57,6 +57,8 @@ public class MemberController {
 		map.put("myinfor", new Menu("myinfor", null));
 		map.put("mypurchase", new Menu("mypurchase", null));
 		map.put("myinforchange", new Menu("myinforchange", null));
+		map.put("mypwchange", new Menu("mypwchange", null));
+		map.put("mymoviestroy", new Menu("mymoviestroy", null));
 		
 		return map.get(service);
 	}

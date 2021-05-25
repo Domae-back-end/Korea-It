@@ -426,13 +426,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    
    <insert id="memjoin" parameterType="MemberDTO" >
        insert into memberinfo 
-       (userid, userpw, username, userbirth, userpnum, useremail, joinday) 
+       (userid, userpw, username, userbirth, userpnum, useremail, joinday, kind) 
        values 
-       (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate())
+       (#{userid}, #{userpw}, #{username}, #{userbirth}, #{userpnum}, #{useremail}, sysdate(), #{kind})
    </insert>
     
-   <select id="mempurchase" resultType="SalesDTO" parameterType="MemberDTO" >
-      select * from salestest where userid=#{userid}
+   <select id="mempurchase" resultType="SalesDTO" parameterType="HashMap" >
+      select * from salestest where userid=#{mdto.userid} and date_format(sales_time,'%Y-%m')=#{date} 
    </select>
 
     <select id="memcomment" resultType="map" parameterType="MemberDTO" >

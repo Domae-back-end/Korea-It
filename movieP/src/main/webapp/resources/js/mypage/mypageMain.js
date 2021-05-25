@@ -2,34 +2,36 @@
  * 
  */
  $(function() {
-
-	var date = new Date();
-	var changeChars; 
-	var currMonth = date.getMonth()+1;
-	var currYear = date.getFullYear();
-	var option;
-	 
-	for(var i = 0;i <=6 ;i++){
+ 
+	if(document.getElementById("moiverecord") !=null){
 		
-		var changeMonth = currMonth--;
-		var changeYear = currYear;
-		
-		if(changeMonth <= 1){
-			currMonth = 12;
-			currYear--;
-		}
-		
-		if(changeMonth < 10)
-			changeChars = "0"+changeMonth;
-		else
-			changeChars = changeMonth;
+		var date = new Date();
+		var changeChars; 
+		var currMonth = date.getMonth()+1;
+		var currYear = date.getFullYear();
+		var option;
 		 
-		option = new Option();
-		option.value = changeYear + "-" + changeChars;
-		option.text = changeYear + "년" + changeChars+ "월" ;
-		document.getElementById("moiverecord").options.add(option);
-	}
-		
+		for(var i = 0;i <=6 ;i++){
+			
+			var changeMonth = currMonth--;
+			var changeYear = currYear;
+			
+			if(changeMonth <= 1){
+				currMonth = 12;
+				currYear--;
+			}
+			
+			if(changeMonth < 10)
+				changeChars = "0"+changeMonth;
+			else
+				changeChars = changeMonth;
+			 
+			option = new Option();
+			option.value = changeYear + "-" + changeChars;
+			option.text = changeYear + "년" + changeChars+ "월" ;
+			document.getElementById("moiverecord").options.add(option);
+		}
+	}	
 	
 	$('#check').click(function(){
 		
@@ -75,9 +77,17 @@
   
     $("#moiveButt").click(function(){
     	console.log($('#userid').val())
- 		
-		
     });
     
- 
+    $("#changepw").click(function(){
+    	
+		frm.action = "/member/mypage/mypwchange"
+		frm.submit();
+	});
+     
+	$("#modifyGo").click(function(){
+    	
+		
+	});
+ 	
 });

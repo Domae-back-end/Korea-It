@@ -22,7 +22,7 @@
 		<div class = "mideouter">
 			<div class = "nameouter">생년월일</div>
 			<div>
-				<div class = "dataouter">${memdata.dto.birth }</div>
+				<div class = "dataouter">${memdata.dto.userbirth }</div>
 			</div>
 		</div>
 		
