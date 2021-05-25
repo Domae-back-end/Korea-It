@@ -445,27 +445,28 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</sql>
 
 
+
+
+
+
+
 	<sql id="checkform">
 
 		<choose>
 			<when test="userpw != null or userpw == ''">
-				<where> <![CDATA[userid = #{userid} and userpw = #{userpw}]]>
-				</where>
+				<where> <![CDATA[userid = #{userid} and userpw = #{userpw}]]></where>
 			</when>
 
 			<when test="userpnum != null or userpnum == ''">
-				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} ]]>
-				</where>
+				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} ]]></where>
 			</when>
 
 			<when test="userid == null">
-				<where> <![CDATA[username = #{username} and userbirth = #{userbirth} and userpnum = #{userpnum} ]]>
-				</where>
+				<where> <![CDATA[username = #{username} and userbirth = #{userbirth} and userpnum = #{userpnum} ]]></where>
 			</when>
 
 			<otherwise>
-				<where> <![CDATA[userid = #{userid}]]>
-				</where>
+				<where> <![CDATA[userid = #{userid}]]></where>
 			</otherwise>
 
 		</choose>
@@ -476,13 +477,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 		<choose>
 			<when test="qnastate != '전체'">
-				<where> <![CDATA[ persid=#{userid} and persstate =#{qnastate}]]>
-				</where>
+				<where> <![CDATA[ persid=#{userid} and persstate =#{qnastate}]]></where>
 			</when>
-
+			
+			<when test="qnastate == '전체' and qnacontent !=null and qnacontent !=''">
+				<where> <![CDATA[perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%') and persid=#{userid} ]]></where>
+			</when>
+	
+			<when test="qnastate != '전체' and qnacontent !=null and qnacontent !=''">
+				<where> <![CDATA[perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%') and persid=#{userid} and persstate =#{qnastate} ]]></where>
+			</when>
+	
 			<otherwise>
-				<where> <![CDATA[persid=#{userid}]]>
-				</where>
+				<where> <![CDATA[persid=#{userid}]]></where>
 			</otherwise>
 
 		</choose>
@@ -491,8 +498,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<select id="memlogin" resultType="MemberDTO"
 		parameterType="MemberDTO">
-		select * from memberinfo
-		<include refid="checkform" />
+		select * from memberinfo <include refid="checkform" />
 	</select>
 
 	<insert id="memjoin" parameterType="MemberDTO">
@@ -504,9 +510,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 
 	<select id="mempurchase" resultType="SalesDTO"
-		parameterType="HashMap">
+		parameterType="MemberDTO">
 		select * from salestest where userid=#{mdto.userid} and
-		date_format(sales_time,'%Y-%m')=#{date}
+		date_format(sales_time,'%Y-%m')=#{mdto.date}
 	</select>
 
 	<select id="memcomment" resultType="map"
@@ -532,6 +538,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from personalqna <include refid="qnacheck" />
 	</select>
 
+	<update id="memModify" parameterType="MemberDTO">
+		update memberinfo set
+		userpw=#{userpw},userpnum=#{userpnum},useremail=#{useremail} 
+		where userid=#{userid}
+	</update>
+
+
+
+
+		
+		
+		
 
 
 

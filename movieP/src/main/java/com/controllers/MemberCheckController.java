@@ -44,6 +44,15 @@ public class MemberCheckController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "/membermodify", method = RequestMethod.POST)
+	public Object modify(@RequestBody MemberDTO dto) {
+		
+		MemberAction res = pr.getContext().getBean("membermodify", MemberAction.class);
+		
+		return res.execute(dto,null);
+	}
+	
+	@ResponseBody
 	@RequestMapping("/memberpnumCheckSNS")
 	public String pnumchek(@RequestBody String userpnum) {
 		
