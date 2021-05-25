@@ -6,5 +6,5 @@ import lombok.Data;
 public class InfoDTO {
 	String cg, sub;
 	Integer ind;
-	
+	String userid;
 }

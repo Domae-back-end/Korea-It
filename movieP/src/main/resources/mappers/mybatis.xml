@@ -84,6 +84,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where cate = #{cate}
 		order by posttime desc
 	</select>
+	
+	<!-- 내 리뷰만 -->
+	<select id="myReview" parameterType="InfoDTO" resultType="MovieReviewDTO">
+		select * from review
+		where userid='${userid}' and
+		cate='${ind}'
+	</select>
 
 	<insert id="reviewinsert" parameterType="MovieReviewDTO">
 		insert into review (cate, userid, postcontent, posttime)

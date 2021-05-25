@@ -8,20 +8,22 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 	.container{
-		width: 500px;	
-		height:400px;
+
+	}
+	.carousel-inner{
+
 	}
 	.item{
 		width: 500px;
-		height:100%;
+
 		vertical-align: center;	
-		object-fit: cover;
+		object-fit: contain;
 	}
 	.item active{
 		width: 500px;
-		height:100%;
+		
 		vertical-align: center;	
-		object-fit: cover;
+		object-fit: contain;
 	}
 </style>
 <script>

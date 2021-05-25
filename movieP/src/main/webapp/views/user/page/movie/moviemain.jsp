@@ -44,6 +44,7 @@ $(function(){
 	.wrapper{
 		width: 1000px;
 		height: 100%;
+		text-align: left;
 	}
 
 	.pp{
@@ -61,13 +62,14 @@ $(function(){
 	.pp>div>a{
 		text-decoration: none;
 	}
-	.wrapper>table{
+	#movieinfomation{
 		display: inline-block;
 		margin: 35px;
+		text-align: cetner;
 	}
-	.wrapper>table>tr{
+	td{
 		width: 200px;
-		
+		text-align: center;
 	}
 	#pos>a>img{
 		width:250px;
@@ -77,7 +79,23 @@ $(function(){
 		width:1000px;
 		float: right;
 	}
-	
+	#searchbutton{
+		display:inline-block;
+		width:1000px;
+		text-align: center;
+	}
+	form{
+		width: 1000px;
+		hegith: 50px;
+		margin-top: 10px;
+		text-align: right;
+	}
+	.search{
+		display:inline-block;
+	}
+	.sbtn{
+	display:inline-block;
+	}
 
 </style>
 
@@ -87,11 +105,12 @@ $(function(){
 	<div class ="btn1"><a href = "?cg=boxoffice">박스오피스</a></div>
 	<div class ="btn2"><a href = "?cg=expect">상영예정작</a></div>
 </div>
-<form action="" name = "frm">
-	<input class="search" type = "text"/>
-</form>
-<input class="sbtn" type="button" value="검색" />
-
+<div id="searchbutton">
+	<form action="" name = "frm">
+		<input class="search" type = "text"/>
+	<input class="sbtn" type="button" value="검색" />
+	</form>
+</div>
 <div class = "wrapper">
 	<jsp:include page = "<%=cgUrl %>"/>
 </div>

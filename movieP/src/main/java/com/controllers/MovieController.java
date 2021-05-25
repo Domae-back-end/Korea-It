@@ -21,6 +21,7 @@ import com.model.MovieAction2;
 import com.model.MovieAction3;
 import com.model.MovieAction4;
 import com.model.MovieAction5;
+import com.model.MovieAction6;
 import com.model.MovieInfoDTO;
 import com.model.MovieReviewDTO;
 import com.model.PPPData;
@@ -116,9 +117,28 @@ public class MovieController {
 		return res.execute(req.getParameter("sch"));
 
 	}
+	
+	@ModelAttribute("myreview")
+	Object myReview(HttpServletRequest req) {
+
+		//현재 request session으로 아이디 받아와서 내 review만 가져오
+		InfoDTO info = new InfoDTO();
+		
+		
+		if (req.getParameter("ind") != null) {
+			
+			MovieAction6 res = pr.getContext().getBean("myreview", MovieAction6.class);
+			info.setUserid((String) req.getSession().getAttribute("sessionId"));
+			info.setInd(Integer.parseInt(req.getParameter("ind")));
+			return res.execute(info);
+		}
+		return null;
+	}
 
 	@ModelAttribute("moviereview")
 	Object rr(HttpServletRequest req) {
+
+		//현재 request session으로 아이디 받아와서 내 review만 가져오
 
 		if (req.getParameter("ind") != null) {
 			MovieAction2 res = pr.getContext().getBean("moviereview", MovieAction2.class);

@@ -15,7 +15,7 @@
 </style>
 
 <c:forEach items="${moviedatabefore }" var="mm" varStatus="no">
-   <table border="">
+   <table border="" id="movieinfomation">
       <tr><td>${no.index +1}</td></tr>
       <tr>
       <td id="pos">

@@ -41,6 +41,9 @@
 		width: 100px;
 		height:50px;
 	}
+	#myr>#aa{
+		background: "red";
+	}
 
 </style>
 
@@ -77,8 +80,20 @@
 <input type="hidden" name="cate" id="cate" value="${param.ind}" />
 <input type="hidden" name="cnt" id="cnt"  />
 <input type="submit" value="관람평 작성" id="b">
-
-
+</form>
+<div id= "myr">
+<c:if test="${myreview != null}">
+<div id = "aa" style="border: 3px dotted #f00">
+	<div id= "userinfo">
+		<div id="id">${myreview.userid }</div>
+		<div id="time">${myreview.posttime_s }</div>
+	</div>
+	<div id= "content">${myreview.postcontent }</div>
+	<div id="del"> <a href="javascript:deleteGo(${myreview.cnt})">삭제하기</a></div>
+</div>
+<hr>
+</c:if>
+</div>
 <c:forEach items="${moviereview }" var="r" varStatus="no">
 <div id = "aa">
 	<div id= "userinfo">
@@ -86,11 +101,10 @@
 		<div id="time">${r.posttime_s }</div>
 	</div>
 	<div id= "content">${r.postcontent }</div>
-	<c:if test=""></c:if>
 	<div id="del"> <a href="javascript:deleteGo(${r.cnt})">삭제하기</a></div>
 </div>
 </c:forEach>
 
 
-</form>
+
 </div>

@@ -60,7 +60,8 @@ public interface DbMapper {
 
    // 영화당 review
    List<MovieReviewDTO> review(Integer num);
-   
+   //해당 영화의 내 리뷰
+   MovieReviewDTO myReview(InfoDTO info);
    
    //리뷰 저장하기
    Integer reviewinsert(MovieReviewDTO dto);

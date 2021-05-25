@@ -8,12 +8,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
  <c:forEach items="${moviedataafter }" var="mm" varStatus="no">
-   <table border="">
+   <table border="" id="movieinfomation">
       <tr><td>${no.index +1}</td></tr>
       <tr>
       <td id="pos">
       <a href = "/user/movie/moviedetail?sub=info&ind=${mm.m_index}">
-      <img alt ="" src= "/resources/moviedata/${mm.movieimg}">
+      <img alt ="" src= "/moviedata/${mm.movieimg}">
       </a>
       </td></tr>
       <tr><td>${mm.movietitle }</td></tr>
