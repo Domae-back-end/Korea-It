@@ -133,7 +133,7 @@ public interface DbMapper {
    
    int noticedelete(ServiceFullDTO sfDTO); //공지사항 삭제
    
-////   int bbModify (BoardDTO bDTO);
+   int noticemodify (ServiceFullDTO sfDTO);
    
    
    
