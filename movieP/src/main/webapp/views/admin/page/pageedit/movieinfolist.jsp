@@ -61,8 +61,8 @@ function detailGo(aa) { //디테일페이지꺼
 <c:forEach var="i" items="${data.movielist }" >
       <tr>
         <%-- <td>${i }체크박스</td> --%>
-        <td><a href="midetail?mid=${i.m_index}">${i.movietitle }</a>
-        <a href="javascript:detailGo(${i.m_index})">제목클릭.<%-- ${nDTO.noticetitle } --%></a>
+        <td>
+        <a href="javascript:detailGo(${i.m_index})">${i.movietitle }<%-- ${nDTO.noticetitle } --%></a>
         </td>
         <td>${i.mdir }&nbsp; </td>
          <td>${i.mdate }</td>
