@@ -47,7 +47,7 @@ public class Pageeditmovieinfolist implements PageeditService {
 			System.out.println(each);
 			Integer m_index =db.getIndexByTitle(movietitle);
 			for (ActorDTO ee : db.pullactor(m_index)) {
-				mactrs+=ee.getActorid()+",";
+				mactrs+=ee.getActorname()+",";
 			}
 			if(mactrs.length()>1)
 			mactrs=mactrs.substring(0, mactrs.length()-1);

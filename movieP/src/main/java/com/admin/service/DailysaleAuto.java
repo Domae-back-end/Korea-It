@@ -40,7 +40,7 @@ public class DailysaleAuto {
 		SalesDTO salesDTO = new SalesDTO();
 		salesDTO.setDaysaletime(day);
 		
-		//db.insertdaysale(salesDTO);
+		//db.insertdaysale(salesDTO);// 사용안함.
 		//db.updateSSdaily(salesDTO);
 		
 //		String calcday = calcdate.getYear()+"-";
