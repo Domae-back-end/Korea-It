@@ -472,6 +472,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	</sql>
 
+	<sql id="qnacheck">
+
+		<choose>
+			<when test="qnastate != '전체'">
+				<where> <![CDATA[ persid=#{userid} and persstate =#{qnastate}]]>
+				</where>
+			</when>
+
+			<otherwise>
+				<where> <![CDATA[persid=#{userid}]]>
+				</where>
+			</otherwise>
+
+		</choose>
+
+	</sql>
+
 	<select id="memlogin" resultType="MemberDTO"
 		parameterType="MemberDTO">
 		select * from memberinfo
@@ -510,9 +527,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		userid=#{userid});
 	</select>
 
-	<select id="memqna" resultType="ServiceFullDTO"
+	<select id="memqna" resultType="map"
 		parameterType="MemberDTO">
-		select * from personalqna where persid=#{userid} and persstate =#{qnastate}
+		select * from personalqna <include refid="qnacheck" />
 	</select>
 
 

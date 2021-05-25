@@ -33,7 +33,7 @@
 		}
 	}	
 	
-	$('#check').click(function(){//inforchangeGo
+	$('#check').click(function(){
 		
 		$.ajax({
 	    	async : true,
@@ -102,8 +102,8 @@
 							tt+="<div class='puchaseinner'>"+ data.purchase[i].movietitle + "</div>"
 							tt+="<div class='puchaseinner'>" +data.purchase[i].ticket_pcount+ "</div>"
 							tt+="<div class='puchaseinner'>" +data.purchase[i].salesprice+ "</div>"
-							tt+="<div class='puchaseinner'> <fmt:formatDate value=" +data.purchase[i].sales_time+ " pattern= 'yyyy년 MM월 dd일'/>"
-							tt+="</div>"+"</div>"
+							tt+="<div class='puchaseinner'><fmt:formatDate value='"+data.purchase[i].sales_time +" pattern= \"yyyy년 MM월 dd일\" '/></div>"
+							tt+="</div>"
 							
 							$("#recordpurchase").append(tt)	
 						}

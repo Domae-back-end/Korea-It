@@ -77,7 +77,7 @@
 			<div class="puchaseinner">작성일</div>
 			<div class="puchaseinner">답변일(답변상태)</div>
 		</div>
-		<c:forEach items="${memdata.fna }" var ="pp"> 
+		<c:forEach items="${memdata.qna }" var ="pp"> 
 			<div>
 				<div class="puchaseinner">${pp.persid }</div>
 				<div class="puchaseinner">${pp.perstitle }</div>
