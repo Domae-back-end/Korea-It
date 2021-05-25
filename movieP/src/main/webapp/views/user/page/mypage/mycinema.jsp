@@ -67,7 +67,7 @@
 <div>
 	<div>
 		<h4>나의 문의내역</h4>
-		<div class = "seemore"><a href="/member/mypage/myfna">더보기 ></a></div>
+		<div class = "seemore"><a href="/member/mypage/myqna">더보기 ></a></div>
 	</div>
 
 	<div class="cimeminfor">

@@ -33,7 +33,7 @@
 		}
 	}	
 	
-	$('#check').click(function(){
+	$('#check').click(function(){//inforchangeGo
 		
 		$.ajax({
 	    	async : true,
@@ -76,7 +76,6 @@
     
   
     $("#moiveButt").click(function(){
-    	console.log($('#moiverecord').val())
     	
     	var list = {
     		userid : document.getElementById('userid').value,
@@ -91,14 +90,27 @@
 	        dataType : "json",
 			contentType : "application/json; charset=UTF-8",
 			success : function(data) {
+			
+				$(".ppp").remove()
 				
-				alert(data.purchase)
-				
-	     	},error:function(request,status,error){
-       			 alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-       		}
-
-
+				if(data.purchase!=null){
+										
+					for(i in data.purchase ){
+						
+						if(data.purchase[i].salesprice > 0) {
+							var tt ="<div class='ppp'>"
+							tt+="<div class='puchaseinner'>"+ data.purchase[i].movietitle + "</div>"
+							tt+="<div class='puchaseinner'>" +data.purchase[i].ticket_pcount+ "</div>"
+							tt+="<div class='puchaseinner'>" +data.purchase[i].salesprice+ "</div>"
+							tt+="<div class='puchaseinner'> <fmt:formatDate value=" +data.purchase[i].sales_time+ " pattern= 'yyyy년 MM월 dd일'/>"
+							tt+="</div>"+"</div>"
+							
+							$("#recordpurchase").append(tt)	
+						}
+					}
+				}
+					
+	     	}
 		});
     });
     
@@ -110,6 +122,14 @@
      
 	$("#modifyGo").click(function(){
     	
+		if($("#nowpw").val() == $("#userpw").val()){
+			
+			frm.action = "/member/mypage/mypageMain"
+			frm.submit();
+		
+		}else{
+			alert("비밀번호를 다시 확인해주세요.")
+		}
 		
 	});
      
@@ -124,5 +144,41 @@
 		frm.submit();
 	});
  
- 	
+ 	$("#fnafind").click(function(){
+    	//수정
+    	$.ajax({
+	    	async : false,
+	        type : 'POST',
+	        data : JSON.stringify(list),
+	        url : "/memberpurchase",
+	        dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+			
+				$(".ppp").remove()
+				
+				if(data.purchase!=null){
+										
+					for(i in data.fna ){
+						
+						if(data.purchase[i].salesprice > 0) {
+							var tt ="<div class='ppp'>"
+							tt+="<div class='puchaseinner'>"+ data.purchase[i].movietitle + "</div>"
+							tt+="<div class='puchaseinner'>" +data.purchase[i].ticket_pcount+ "</div>"
+							tt+="<div class='puchaseinner'>" +data.purchase[i].salesprice+ "</div>"
+							tt+="<div class='puchaseinner'> <fmt:formatDate value=" +data.purchase[i].sales_time+ " pattern= 'yyyy년 MM월 dd일'/>"
+							tt+="</div>"+"</div>"
+							
+							$("#recordpurchase").append(tt)	
+						}
+					}
+				}
+					
+	     	}
+		});
+	});
+	
+	
+	
+	
 });

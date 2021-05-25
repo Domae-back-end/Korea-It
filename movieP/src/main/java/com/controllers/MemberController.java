@@ -53,7 +53,7 @@ public class MemberController {
 
 		map.put("mypageMain", new Menu("mycinema", null));
 		map.put("mycinema", new Menu("mycinema", null));
-		map.put("myfna", new Menu("myfna", null));
+		map.put("myqna", new Menu("myqna", null));
 		map.put("myinfor", new Menu("myinfor", null));
 		map.put("mypurchase", new Menu("mypurchase", null));
 		map.put("myinforchange", new Menu("myinforchange", null));

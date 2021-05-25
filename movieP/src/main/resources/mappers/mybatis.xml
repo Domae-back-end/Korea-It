@@ -510,9 +510,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		userid=#{userid});
 	</select>
 
-	<select id="memfna" resultType="ServiceFullDTO"
+	<select id="memqna" resultType="ServiceFullDTO"
 		parameterType="MemberDTO">
-		select * from personalqna where persid=#{userid}
+		select * from personalqna where persid=#{userid} and persstate =#{qnastate}
 	</select>
 
 

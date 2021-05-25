@@ -41,7 +41,7 @@ public class Membermypage implements MemberAction {
 		map.put("purchase", dm.mempurchase(pur));
 		map.put("comment", dm.memcomment(mdto));
 		map.put("like", dm.memlikeinfor(mdto));
-		map.put("fna", dm.memfna(mdto));
+		map.put("qna", dm.memqna(mdto));
 		
 		return map;
 	}

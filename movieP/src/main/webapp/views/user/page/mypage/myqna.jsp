@@ -12,13 +12,13 @@
 	</small>
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />
 	<div>
-		<select id="fnarecord" name="moiverecord">
+		<select id="qnarecord" name="moiverecord">
 			<option value="전체">전체</option>
 			<option value="답변">답변</option>
 			<option value="미답변">미답변</option>
 		</select>
 		<input type="text" />
-		<button class="changeButt">검색</button>
+		<button class="changeButt" id="fnafind">검색</button>
 	</div>
 
 	<div class="cimeminfor">
@@ -28,7 +28,7 @@
 			<div class="puchaseinner">작성일</div>
 			<div class="puchaseinner">답변일(답변상태)</div>
 		</div>
-		<c:forEach items="${memdata.fna }" var ="pp"> 
+		<c:forEach items="${memdata.qna }" var ="pp"> 
 			<div>
 				<div class="puchaseinner">${pp.persid }</div>
 				<div class="puchaseinner">${pp.perstitle }</div>
