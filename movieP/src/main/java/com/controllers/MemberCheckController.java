@@ -3,6 +3,7 @@ package com.controllers;
 import java.util.Random;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,17 @@ public class MemberCheckController {
 	public Object loginchek(@RequestBody MemberDTO dto) {
 		
 		MemberAction res = pr.getContext().getBean("memberCheck", MemberAction.class);
+		
+		return res.execute(dto,null);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/memberpurchase", method = RequestMethod.POST)
+	public Object purchasechek(@RequestBody MemberDTO dto) {
+		
+		MemberAction res = pr.getContext().getBean("membermypage", MemberAction.class);
+
+		System.out.println(res.execute(dto,null));
 		
 		return res.execute(dto,null);
 	}

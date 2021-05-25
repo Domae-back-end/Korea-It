@@ -22,12 +22,18 @@ public class Membermypage implements MemberAction {
 	@Override
 	public Object execute(MemberDTO mdto, HttpSession session) {
 		
+		if(session!=null) {
 		String userid = (String) session.getAttribute("sessionId");
 		mdto.setUserid(userid);
+		}
+		if(mdto.getDate()==null)
+			mdto.setDate(new SimpleDateFormat("yyyy-MM").format(new Date()));
+			
+		System.out.println(mdto.getDate());
 		
 		HashMap<String, Object> pur = new HashMap<>();
 		pur.put("mdto", mdto);
-		pur.put("date", new SimpleDateFormat("yyyy-MM").format(new Date()));
+		pur.put("date", mdto.getDate());
 
 		HashMap<String, Object> map = new HashMap<>();
 		
@@ -36,7 +42,7 @@ public class Membermypage implements MemberAction {
 		map.put("comment", dm.memcomment(mdto));
 		map.put("like", dm.memlikeinfor(mdto));
 		map.put("fna", dm.memfna(mdto));
-		System.out.println(map.get("like"));
+		
 		return map;
 	}
 

@@ -100,7 +100,7 @@ public interface DbMapper {
    List<Map<String, String>> memlikeinfor(MemberDTO mdto);
    List<Map<String, String>> memcomment(MemberDTO mdto);
 	
-   List<ServiceFullDTO> memfna(MemberDTO mdto);
+   List<Map<String, String>> memfna(MemberDTO mdto);
 	
    List<SalesDTO> mempurchase(HashMap<String, Object> pur);
    

@@ -76,7 +76,30 @@
     
   
     $("#moiveButt").click(function(){
-    	console.log($('#userid').val())
+    	console.log($('#moiverecord').val())
+    	
+    	var list = {
+    		userid : document.getElementById('userid').value,
+    		date :  document.getElementById('moiverecord').value
+    	};
+    	
+    	$.ajax({
+	    	async : false,
+	        type : 'POST',
+	        data : JSON.stringify(list),
+	        url : "/memberpurchase",
+	        dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+				
+				alert(data.purchase)
+				
+	     	},error:function(request,status,error){
+       			 alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+       		}
+
+
+		});
     });
     
     $("#changepw").click(function(){
