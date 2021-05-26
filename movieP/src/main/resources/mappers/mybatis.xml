@@ -623,7 +623,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
-		select ticket_pcount,salesprice, movietitle, sales_type, sales_time, imgname from salestest 
+		select ticket_pcount,salesprice, movietitle, sales_type, sales_time,salestest.m_index, imgname from salestest 
 		left outer join movieimg on salestest.m_index = movieimg.m_index
 		where salestest.userid=#{userid} and date_format(salestest.sales_time,'%Y-%m')=#{date} 
 		order by salestest.sales_time desc

@@ -174,6 +174,94 @@
 	});
      
     
+        
+    $("#informodifyGo").click(function(){
+    	
+    	var list = {
+    		useremail : document.getElementById('useremail').value,
+    		userpnum :  document.getElementById('userpnum').value,
+    		userid :  document.getElementById('userid').value
+    	};
+    	
+    	$.ajax({
+	    	async : false,
+	        type : 'POST',
+	        data : JSON.stringify(list),
+	        url : "/membermodify",
+	        dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+			
+				if(data.cnt >0){
+							
+					alert("회원정보가 수정되었습니다")
+					frm.action = "/member/mypage/mypageMain"
+					frm.submit();
+				}
+	
+	     	}
+		});
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    $("#writedelteGo").click(function(){
+    	
+    	var list = {
+    		userid : document.getElementById('userid').value,
+    		content :  document.getElementById('moiverecord').value,
+    		index :  document.getElementById('index').value
+    	};
+    	
+    	$.ajax({
+	    	async : false,
+	        type : 'POST',
+	        data : JSON.stringify(list),
+	        url : "/memberdelete",
+	        dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+			
+				if(data.dcnt >0){
+							
+					alert("관람평이 삭제되었습니다.")
+					frm.action = "/member/mypage/mymoviestroy?kind=writemovie"
+					frm.submit();
+				}
+	
+	     	}
+		});
+    });
+    
+      
+	$("#writemodifyGo").click(function(){
+		
+		console.log($(this).index())
+		
+		$("#writetnow").css('display','none')
+		$("#writeArea").css('display','block')
+		
+		$(".writeButtouter").remove()
+		
+		var tt ="<span class='writetitleouter' id='writemodifyfinish'>"
+		tt+="<div><button class='changeButt' id='writemodifyfinish'>" +'완료'+"</button></div>"
+		tt+="<div><button class='changeButt' id='writemodifyNo'>" +'취소'+"</button></div>"
+		tt+="</span>"
+		
+		$(".writetitleouter").append(tt)	
+	});     
+    
+    
+    
+    
+    
+    
     
     
     
@@ -239,6 +327,8 @@
 		frm.submit();
 	});
  
+     
+     
      
      
      
