@@ -59,9 +59,11 @@ public interface DbMapper {
    void movieimgin(MimgDTO dto);
 
    // 영화당 review
-   List<MovieReviewDTO> review(Integer num);
+   List<MovieReviewDTO> review(HashMap<String, Object> map);
    //해당 영화의 내 리뷰
    MovieReviewDTO myReview(InfoDTO info);
+   Integer totalCnt(HashMap<String, Object> map);
+   
    
    //리뷰 저장하기
    Integer reviewinsert(MovieReviewDTO dto);

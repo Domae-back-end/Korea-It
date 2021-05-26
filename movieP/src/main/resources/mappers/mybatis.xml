@@ -79,10 +79,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 리뷰 -->
-	<select id="review" resultType="MovieReviewDTO">
+	<select id="review" resultType="MovieReviewDTO" parameterType="HashMap">
 		select * from review
-		where cate = #{cate}
+		where cate = #{rDTO.cate}
 		order by posttime desc
+		limit #{pDTO.start}, #{pDTO.limit}
+	</select>
+	
+	<!-- 리뷰개수 -->
+	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
+		select count(*) from review 
 	</select>
 	
 	<!-- 내 리뷰만 -->
