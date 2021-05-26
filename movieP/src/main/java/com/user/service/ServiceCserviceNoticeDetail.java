@@ -1,6 +1,7 @@
 package com.user.service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class ServiceCserviceNoticeDetail implements ServiceCservice {//빈 창�
 	
 
 	@Override
-	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO) {
+	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO, HttpSession session) {
 		
 		db.addCount(sfDTO);
 		

@@ -21,19 +21,28 @@ public class ServiceCserviceHistory implements ServiceCservice {//빈 창고에 
 
 
 	@Override
-	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO) {
+	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO, HttpSession session) {
 
-		System.out.println("빈 이름 ServiceCserviceHistory 소환됨");
+//		System.out.println("빈 이름 ServiceCserviceHistory 소환됨");
 //		HashMap<String, Object> map = new HashMap<String, Object>();
 //		HttpServletRequest request = (HttpServletRequest)map.get("request");
 //		
-//		HttpSession session = request.getSession();
+//		
+//		
+//		session.getAttribute("sessionId");
+//		
+//		System.out.println(session.getAttribute("sessionId"));
+//		
+//		
 //		
 //		if (session.getAttribute("sessionId") == null) {
-//			
-//			return "member/login/loginForm";
+//			System.out.println("널이군");
+//			return "/member/login/loginForm";
 //		}
 //		
+//		
+//		
+//		System.out.println("찐이다");
 //		
 //		
 //		map.put("npDTO", npDTO);
@@ -45,35 +54,20 @@ public class ServiceCserviceHistory implements ServiceCservice {//빈 창고에 
 //		ServiceNotiListDTO res= new ServiceNotiListDTO();
 //		res.setSfdto(db.pershistory(map));
 //		res.setSnpdto(npDTO);
-//		
-//		sfDTO.setPersid((String)session.getAttribute("id"));
-		
-		
-		
-		
-		
-		
-//		HttpServletRequest request = (HttpServletRequest)map.get("request");
-//		//상상 .
-//		HttpSession session = request.getSession();
-//		// 가짜..
-//		session.setAttribute("id", "bbb111");
+////		
+////		sfDTO.setPersid((String)session.getAttribute("id"));
+////
+////		
+////		//진짜.
+////		persDTO.setPersid((String)session.getAttribute("id"));
+////		persDTO.setPersimg(persDTO.getFile().getOriginalFilename());
+////		
 //		
 //		
-//		//진짜.
-//		persDTO.setPersid((String)session.getAttribute("id"));
-//		persDTO.setPersimg(persDTO.getFile().getOriginalFilename());
 //		
-//		System.out.println("1:1문의등록내용:" +persDTO);
-//		System.out.println("파일이름:"+persDTO.getFile().getOriginalFilename());
-		
-		
-		
-		
-		
-		
-		
-		
+//		
+//		
+//		
 //		return res;
 		return null;
 	}
