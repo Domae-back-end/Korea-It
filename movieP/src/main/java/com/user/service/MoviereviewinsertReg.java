@@ -48,13 +48,14 @@ public class MoviereviewinsertReg implements MovieAction4{
 			
 			DateDTO da = mm.pullEndTime(etd);
 			da.setEnd_time();
-			System.out.println("id: "+etd.getUserid()+" sector: "+etd.getMoviesector()+" endtime: "+etd.getEndtime());
+			
+			//System.out.println("id: "+etd.getUserid()+" sector: "+etd.getMoviesector()+" endtime: "+etd.getEndtime());
 			
 			if(da.getEnd_time() ==null) {
 				continue;
 			}
 			if(da.getEnd_time().before( new Date() ) ) {
-				//현재날짜보다 뒤 
+				//현재날짜보다 전
 				etd.setEndtime(da.getEnd_time());
 				cnt++;
 			}
