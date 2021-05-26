@@ -127,7 +127,7 @@
     	
     	var list = {
     		userid : document.getElementById('userid').value,
-    		userpw :  document.getElementById('userpw').value
+    		userpw :  document.getElementById('nowpw').value
     	};
     	
     	$.ajax({
@@ -140,7 +140,7 @@
 			success : function(data) {
 				
     	
-				if(data.dto!=null && $('#newpw').val() == $('#"newpwch"').val()){
+				if(data.dto!=null && $('#newpw').val() == $('#newpwch').val()){
 					
 					var inlist = {
 			    		userid : document.getElementById('userid').value,
@@ -203,8 +203,6 @@
     		qnastate :  document.getElementById('qnastate').value,
     		qnacontent :  $('#qnacontent').val()
     	};
-    	
-    	console.log($('#qnacontent').val())
     	
     	$.ajax({
 	    	async : false,
