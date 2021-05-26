@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
 	<c:forEach items="${memdata.like }" var ="pp">
+	
 	<form action="" method="post" enctype="multipart/form-data" name="frm">
 		<input type="hidden" id="like" value="취소"/>
 		<input type="hidden" id="userid" value="${sessionId }"/>
@@ -22,5 +23,6 @@
 			<div><button class="changeButt" id="ticketGo">예매하기</button></div>
 		</div>
 	</form>
+	
 	</c:forEach>
 </div>
