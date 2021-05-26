@@ -86,6 +86,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		limit #{pDTO.start}, #{pDTO.limit}
 	</select>
 	
+	
 	<!-- 리뷰개수 -->
 	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from review 
