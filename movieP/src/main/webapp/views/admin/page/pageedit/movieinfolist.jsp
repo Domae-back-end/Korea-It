@@ -40,9 +40,14 @@ function detailGo(aa) { //디테일페이지꺼
 
 
 영화정보관리리스트${data.pdto.ttt}</h2>
+
+
+
     <form action="" name="frm">
     <input type="hidden" name="page" id="pageIN" value="${data.pdto.page}" />
 		<input type="hidden" name="m_index" id="detailId" />
+	<br>	<input type="text" /> <button type="button"  id="moviessbtn" >검색</button>
+    
     
   <table class="table table-striped">
   
