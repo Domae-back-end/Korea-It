@@ -460,12 +460,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<!-- 상담내역확인 -->
 	<select id="pershistory" resultType="ServiceFullDTO" parameterType="HashMap">
 		select * from personalqna 
+		where persid = #{sfDTO.persid}
 		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
 
 	<!-- 상담내역확인(갯수확인) -->
 	<select id="pershistoryCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from personalqna
+		where persid = #{sfDTO.persid}
 	</select>
 
 

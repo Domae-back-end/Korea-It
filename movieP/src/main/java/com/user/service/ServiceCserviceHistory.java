@@ -23,53 +23,57 @@ public class ServiceCserviceHistory implements ServiceCservice {//빈 창고에 
 	@Override
 	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO, HttpSession session) {
 
-//		System.out.println("빈 이름 ServiceCserviceHistory 소환됨");
-//		HashMap<String, Object> map = new HashMap<String, Object>();
-//		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		System.out.println("빈 이름 ServiceCserviceHistory 소환됨");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		
+		
+		System.out.println(session.getAttribute("sessionId"));
+		
+		
+		
+		if (session.getAttribute("sessionId") == null) {
+			sfDTO.setPersid(null);
+
+		}else {
+			sfDTO.setPersid((String)session.getAttribute("sessionId"));
+		}
+		
+		
+		
+		map.put("npDTO", npDTO);
+		map.put("sfDTO", sfDTO);
+		map.put("request", request);
+		
+		npDTO.initpershistory(db, map);
+		
+		ServiceNotiListDTO res= new ServiceNotiListDTO();
+		res.setSfdto(db.pershistory(map));
+		res.setSnpdto(npDTO);
+		res.setOnesfdto(sfDTO);
+		System.out.println(sfDTO);
+		
+		
+		
+		
+		
+		
+		
+//		sfDTO.setPersid((String)session.getAttribute("id"));
+//
 //		
+//		//진짜.
+//		persDTO.setPersid((String)session.getAttribute("id"));
+//		persDTO.setPersimg(persDTO.getFile().getOriginalFilename());
 //		
-//		
-//		session.getAttribute("sessionId");
-//		
-//		System.out.println(session.getAttribute("sessionId"));
-//		
-//		
-//		
-//		if (session.getAttribute("sessionId") == null) {
-//			System.out.println("널이군");
-//			return "/member/login/loginForm";
-//		}
-//		
-//		
-//		
-//		System.out.println("찐이다");
-//		
-//		
-//		map.put("npDTO", npDTO);
-//		map.put("sfDTO", sfDTO);
-//		map.put("request", request);
-//		
-//		npDTO.initpershistory(db, map);
-//		
-//		ServiceNotiListDTO res= new ServiceNotiListDTO();
-//		res.setSfdto(db.pershistory(map));
-//		res.setSnpdto(npDTO);
-////		
-////		sfDTO.setPersid((String)session.getAttribute("id"));
-////
-////		
-////		//진짜.
-////		persDTO.setPersid((String)session.getAttribute("id"));
-////		persDTO.setPersimg(persDTO.getFile().getOriginalFilename());
-////		
-//		
-//		
-//		
-//		
-//		
-//		
-//		return res;
-		return null;
+		
+		
+		
+		
+		
+		
+		return res;
+//		return null;
 	}
 
 
