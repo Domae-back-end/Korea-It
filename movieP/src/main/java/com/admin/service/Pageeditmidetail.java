@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 
 import com.model.ActorDTO;
+import com.model.AdminListDTO;
 import com.model.CateDTO;
 import com.model.DbMapper;
 import com.model.MimgDTO;
@@ -19,6 +20,7 @@ import com.model.MinfListDTO;
 import com.model.MinfoPageDTO;
 import com.model.MovieInfoDTO;
 import com.model.MovieTimeDTO;
+import com.model.ServiceNoticePageDTO;
 
 //Service단
 @Service
@@ -33,7 +35,8 @@ public class Pageeditmidetail implements PageeditService {
 		System.out.println("영화정보디테일서비스");
 		HashMap<String, Object> map = (HashMap) obj;		
 		System.out.println("들어온pdto:"+map.get("pdto"));
-		MinfoPageDTO pdto=(MinfoPageDTO)map.get("pdto");
+		ServiceNoticePageDTO pdto= (ServiceNoticePageDTO)map.get("npDTO");
+		//MinfoPageDTO pdto=(MinfoPageDTO)map.get("pdto");
 		HttpServletRequest request= (HttpServletRequest)map.get("request");
 		//pdto.setStart(1);		//임의설정값.
 		Integer m_index= Integer.parseInt(request.getParameter("m_index"));		
@@ -69,9 +72,16 @@ public class Pageeditmidetail implements PageeditService {
 			res.setMactrs(mactrs);
 			res.setMcate(mcate);
 			res.setMovieimg(movieimg);			
+			
+			AdminListDTO result = new AdminListDTO();
+			
+			result.setMidto(res);
+			result.setPdto(pdto);
+			
+			
 				
-		System.out.println("Detail 끗. ");
-		return res;
+	
+		return result;
 	}
 	
 }
