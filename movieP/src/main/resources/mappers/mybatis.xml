@@ -556,11 +556,58 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	</sql>
 
-	<select id="memlogin" resultType="MemberDTO"
-		parameterType="MemberDTO">
+	<sql id="modify">
+		
+		<choose>
+			<when test=" userpw !=null">
+				<![CDATA[memberinfo]]>
+				<set><![CDATA[userpw=#{userpw}]]></set>
+				<where> <![CDATA[userid=#{userid}]]></where>
+			</when>
+			<when test=" content !=null">
+				<![CDATA[review]]>
+				<set><![CDATA[postcontent=#{content}]]></set>
+				<where> <![CDATA[userid=#{userid} and cate=#{index}]]></where>
+			</when>
+			<when test=" like !=null">
+				<![CDATA[movieinfo]]>
+				<set><![CDATA[mlike= mlike-1]]></set>
+				<where> <![CDATA[userid=#{userid} and m_index=#{index}]]></where>
+			</when>
+			<otherwise>
+				<![CDATA[memberinfo]]>
+				<set><![CDATA[userpnum=#{userpnum},useremail=#{useremail}]]></set>
+				<where> <![CDATA[userid=#{userid}]]></where>
+			</otherwise>
+		</choose>
+
+	</sql>
+
+	<sql id="delete">
+
+		<choose>
+			<when test=" content !=null">
+				<![CDATA[review]]>
+				<where> <![CDATA[userid=#{userid} and cate=#{index}]]></where>
+			</when>
+			<when test=" like !=null">
+				<![CDATA[userlikes]]>
+				<where> <![CDATA[userid=#{userid} and m_index=#{index}]]></where>
+			</when>
+			<otherwise>
+				<![CDATA[memberinfo]]>
+				<where> <![CDATA[userid=#{userid} and userpw=#{userpw}]]></where>
+			</otherwise>
+		</choose>
+
+	</sql>
+
+	
+	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
 		select * from memberinfo <include refid="checkform" />
 	</select>
 
+	
 	<insert id="memjoin" parameterType="MemberDTO">
 		insert into memberinfo
 		(userid, userpw, username, userbirth, userpnum, useremail, joinday, kind)
@@ -569,14 +616,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		sysdate(), #{kind})
 	</insert>
 
-	<select id="mempurchase" resultType="SalesDTO"
-		parameterType="MemberDTO">
-		select * from salestest where userid=#{userid} and
-		date_format(sales_time,'%Y-%m')=#{date}
+	
+	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
+		select ticket_pcount,salesprice, movietitle, sales_type, sales_time, imgname from salestest 
+		left outer join movieimg on salestest.m_index = movieimg.m_index
+		where salestest.userid=#{userid} and date_format(salestest.sales_time,'%Y-%m')=#{date}
 	</select>
 
-	<select id="memcomment" resultType="map"
-		parameterType="MemberDTO">
+	
+	<select id="memcomment" resultType="map" parameterType="MemberDTO">
 		select movietitle, imgname, postcontent, posttime, cate, mlike from review
 		left outer join movieinfo on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
@@ -584,8 +632,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		userid=#{userid});
 	</select>
 
-	<select id="memlikeinfor" resultType="map"
-		parameterType="MemberDTO">
+	
+	<select id="memlikeinfor" resultType="map" parameterType="MemberDTO">
 		select movietitle, imgname, mlike, cate from movieinfo
 		left outer join review on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
@@ -593,22 +641,22 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		userid=#{userid});
 	</select>
 
-	<select id="memqna" resultType="map"
-		parameterType="MemberDTO">
+	
+	<select id="memqna" resultType="map" parameterType="MemberDTO">
 		select * from personalqna <include refid="qnacheck" />
 	</select>
 
+	
 	<update id="memModify" parameterType="MemberDTO">
-		update memberinfo set
-		<if test=" userpw !=null">
-			userpw=#{userpw}
-		</if>
-		<if test=" userpw == null or userpw == '' ">
-			userpnum=#{userpnum},useremail=#{useremail}
-		</if>
-		where userid=#{userid}
+		update <include refid="modify" />
 	</update>
+	
+	
+	<delete id="memDelete" parameterType="MemberDTO">
+		delete from <include refid="delete" />
+	</delete>
 
+	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
 		(select COUNT(*) sc from salestest  where userid=#{userid} and salesprice > 0) a, 
@@ -616,8 +664,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(select COUNT(*) uc from userlikes where userid=#{userid}) c
 	</select>
 	
+	
 
-
+		
+		
 		
 		
 

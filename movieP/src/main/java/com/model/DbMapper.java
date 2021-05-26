@@ -99,11 +99,12 @@ public interface DbMapper {
    	MemberDTO memlogin(MemberDTO mdto);
 
    	int memModify(MemberDTO mdto);
+   	int memDelete(MemberDTO mdto);
 	
    	List<Map<String, String>> memlikeinfor(MemberDTO mdto);
    	List<Map<String, String>> memcomment(MemberDTO mdto);
 	List<Map<String, String>> memqna(MemberDTO mdto);
-	List<SalesDTO> mempurchase(MemberDTO mdto);
+	List<Map<String, String>> mempurchase(MemberDTO mdto);
 	Map<String, Integer> memcount(MemberDTO mdto);
    
    
