@@ -67,7 +67,7 @@ public class MemberCheckController {
         
         System.out.println("수신자 번호 : " + userpnum);
         System.out.println("인증번호 : " + chknum);
-        //certifiedPnum.mempnumCheck(userpnum,chknum);
+        certifiedPnum.mempnumCheck(userpnum,chknum);
         
         return chknum;
 	}
