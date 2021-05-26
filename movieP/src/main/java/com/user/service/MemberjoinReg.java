@@ -28,7 +28,7 @@ public class MemberjoinReg implements MemberAction {
 		dto.setUserpw(mdto.getUserpw());
 		dto.setKind(mdto.getKind());
 
-		//dm.memjoin(dto);
+		dm.memjoin(dto);
 	
 		return null;
 	}

@@ -49,6 +49,6 @@
 	
 	<div>
 		<input type="button" id="mainGo" value="취소"/>
-		<input type="button" id="check" value="등록"/>
+		<input type="button" id="modifyGo" value="등록"/>
 	</div>
 </form>

@@ -131,7 +131,7 @@ h4{
 	border :none;
 	border-radius: 10px;
 }
-#check,#modifyGo{
+#check,#modifyGo, #pwmodifyGo{
 	height: 50px;
 	width: 90px;
 	border :none;

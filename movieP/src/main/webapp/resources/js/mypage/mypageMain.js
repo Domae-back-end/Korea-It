@@ -118,23 +118,8 @@
     
     $("#changepw").click(function(){
     	
-    	$.ajax({
-	    	async : false,
-	        type : 'POST',
-	        data : JSON.stringify(list),
-	        url : "/memberCheck",
-	        dataType : "json",
-			contentType : "application/json; charset=UTF-8",
-			success : function(data) {
-							
-				if(data.dto!=null){
-										
-					frm.action = "/member/mypage/mypwchange"
-					frm.submit();
-					
-				}
-	     	}
-		});
+    	frm.action = "/member/mypage/mypwchange"
+		frm.submit();
     	
 	});
      
