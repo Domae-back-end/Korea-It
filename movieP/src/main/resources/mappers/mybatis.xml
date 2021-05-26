@@ -717,6 +717,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		)
 		where monthdate = #{monthdate}
 	</update>
+	
+	<!--김인호수정  -->
+	
+	<select id="getmovieinfobyidx" resultType="MovieInfoDTO">
+		select * from movieinfo where m_index = #{index}
+	
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
 	<!--concat('%',#{daysaletime},'%') mysql. -->
 
 

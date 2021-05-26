@@ -194,6 +194,8 @@ public interface DbMapper {
 
    int updatepostername(MovieInfoDTO mdto);
    
-   //
+   //김인호추가
+   MovieInfoDTO getmovieinfobyidx(int indexnum);
+   
 
 }

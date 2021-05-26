@@ -15,7 +15,7 @@ $(function() {
 		frm.submit()
 	}
 	
-	$(".movinfodelete").click(function() {
+	$("#movinfodelete").click(function() {
 		var confirm_val = confirm("정말 삭제하시겠습니까?");
 		
 		if (confirm_val) {
@@ -43,7 +43,7 @@ $(function() {
 		}
 	});
 	
-	$(".movinfomodify").click(function() {
+	$("#movinfomodify").click(function() {
 		var modArr = new Array();
 		
 		modArr.push($(this).attr("value"));
@@ -51,7 +51,7 @@ $(function() {
 		
 		if (modArr.length == 1) {
 			confirm(modArr+"번을 수정하시겠습니까?");
-			location.href = "movieinfodelReg?page="+${data.pdto.page }+"&m_index="+${data.midto.m_index };
+			location.href = "movieinfomodify?page="+${data.pdto.page }+"&m_index="+${data.midto.m_index };
 		}
 		
 		
@@ -72,7 +72,7 @@ $(function() {
 
 </style>
 
-<body>영화제목 : ${data.midto.movietitle} 디테일 <br>
+<body>영화제목 : ${data.midto} 디테일 <br>
 
 <div  id="detailwrapper">
 
