@@ -3,7 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
 	<c:forEach items="${memdata.like }" var ="pp">
+	
 	<form action="" method="post" enctype="multipart/form-data" name="frm">
+		<input type="hidden" id="like" value="취소"/>
+		<input type="hidden" id="userid" value="${sessionId }"/>
+		<input type="hidden" id="index" value="${pp.cate }"/>
+		
 		<div class="likeouter">
 			<c:choose>
 				<c:when test="${pp.imgname!=null }">
@@ -17,6 +22,7 @@
 			<div><button class="likeButt" id="likeButt">${pp.mlike }</button></div>
 			<div><button class="changeButt" id="ticketGo">예매하기</button></div>
 		</div>
-	</form> 	
+	</form>
+	
 	</c:forEach>
 </div>

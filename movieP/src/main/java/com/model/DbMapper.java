@@ -59,9 +59,11 @@ public interface DbMapper {
    void movieimgin(MimgDTO dto);
 
    // 영화당 review
-   List<MovieReviewDTO> review(Integer num);
+   List<MovieReviewDTO> review(HashMap<String, Object> map);
    //해당 영화의 내 리뷰
    MovieReviewDTO myReview(InfoDTO info);
+   Integer totalCnt(HashMap<String, Object> map);
+   
    
    //리뷰 저장하기
    Integer reviewinsert(MovieReviewDTO dto);
@@ -97,11 +99,12 @@ public interface DbMapper {
    	MemberDTO memlogin(MemberDTO mdto);
 
    	int memModify(MemberDTO mdto);
+   	int memDelete(MemberDTO mdto);
 	
    	List<Map<String, String>> memlikeinfor(MemberDTO mdto);
    	List<Map<String, String>> memcomment(MemberDTO mdto);
 	List<Map<String, String>> memqna(MemberDTO mdto);
-	List<SalesDTO> mempurchase(MemberDTO mdto);
+	List<Map<String, String>> mempurchase(MemberDTO mdto);
 	Map<String, Integer> memcount(MemberDTO mdto);
    
    
@@ -196,6 +199,8 @@ public interface DbMapper {
 
    int updatepostername(MovieInfoDTO mdto);
    
-   //
+   //김인호추가
+   MovieInfoDTO getmovieinfobyidx(int indexnum);
+   
 
 }

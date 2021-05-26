@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
+<input type="hidden" id="userid" value="${sessionId }"/>
+
 <h2>개인정보 수정</h2>
 	<div class = "idouter">
 		<div class = "nameouter">아이디</div>
@@ -34,7 +36,7 @@
 			<div class = "nameouter">휴대폰</div>
 			<div>
 				<div class = "dataouter" id="pnumouter">${memdata.dto.userpnum }</div>
-				<input type="button" class="changeButt" value="휴대폰번호 변경"/>
+				<input type="button" class="changeButt" id="inforDeleteGo" value="휴대폰번호 변경"/>
 			</div>
 		</div>
 		
@@ -63,6 +65,6 @@
 	
 	<div>
 		<input type="button" id="mainGo" value="취소"/>
-		<input type="button" id="modifyGo" value="등록"/>
+		<input type="button" id="informodifyGo" value="등록"/>
 	</div>
 </form>

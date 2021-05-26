@@ -33,7 +33,7 @@ public class MemberCheckController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/memberpurchase", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberRecord", method = RequestMethod.POST)
 	public Object purchasechek(@RequestBody MemberDTO dto) {
 		
 		MemberAction res = pr.getContext().getBean("membermypage", MemberAction.class);
@@ -48,6 +48,14 @@ public class MemberCheckController {
 	public Object modify(@RequestBody MemberDTO dto) {
 		
 		MemberAction res = pr.getContext().getBean("membermodify", MemberAction.class);
+		
+		return res.execute(dto,null);
+	}
+	@ResponseBody
+	@RequestMapping(value = "/memberdelete", method = RequestMethod.POST)
+	public Object delete(@RequestBody MemberDTO dto) {
+		
+		MemberAction res = pr.getContext().getBean("memberdelete", MemberAction.class);
 		
 		return res.execute(dto,null);
 	}
