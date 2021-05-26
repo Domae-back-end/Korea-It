@@ -540,7 +540,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<update id="memModify" parameterType="MemberDTO">
 		update memberinfo set
-		userpw=#{userpw},userpnum=#{userpnum},useremail=#{useremail} 
+		<if test=" userpw !=null">
+			userpw=#{userpw}
+		</if>
+		<if test=" userpw == null or userpw == '' ">
+			userpnum=#{userpnum},useremail=#{useremail}
+		</if>
 		where userid=#{userid}
 	</update>
 
