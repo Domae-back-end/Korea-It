@@ -24,7 +24,7 @@ public class MembernaverLogin implements MemberNaverAction {
 		String birthday = (String) response_obj.get("birthday");
 		String birthYear = (String) response_obj.get("birthyear");
 		String useremail = (String) response_obj.get("email");
-		String userphone = (String) response_obj.get("phone");
+		String userphone = (String) response_obj.get("mobile");
 		String username = (String) response_obj.get("name");
 
 		MemberDTO dto = new MemberDTO();
