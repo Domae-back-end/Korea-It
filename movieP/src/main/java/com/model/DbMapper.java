@@ -104,6 +104,7 @@ public interface DbMapper {
    	List<Map<String, String>> memcomment(MemberDTO mdto);
 	List<Map<String, String>> memqna(MemberDTO mdto);
 	List<SalesDTO> mempurchase(MemberDTO mdto);
+	Map<String, Integer> memcount(MemberDTO mdto);
    
    
    
@@ -144,6 +145,27 @@ public interface DbMapper {
    
    int noticemodify (ServiceFullDTO sfDTO); //공지사항 수정
    
+   ////////////////////////////////////////////////1대1
+   List<ServiceFullDTO> perslist(HashMap<String, Object> map); //1대1문의(미답변보기)
+   
+   int perstotalCnt(HashMap<String, Object> map); //1대1총갯수(미답변)
+
+   ServiceFullDTO persdetail(ServiceFullDTO sfDTO); //1대1 디테일보기(미답변)
+
+   int persans (ServiceFullDTO sfDTO); //1대1 답변하기 (답변완료)
+   
+   List<ServiceFullDTO> perslistans(HashMap<String, Object> map); //1대1문의(답변완료보기)
+   
+   List<ServiceFullDTO> perslistanscate(HashMap<String, Object> map); //1대1문의(답변완료보기)
+   
+   int perstotalansCnt(HashMap<String, Object> map); //1대1총갯수(미답변)
+
+
+   
+   
+   
+   
+   
    
    
    
@@ -161,6 +183,7 @@ public interface DbMapper {
    //매출관련기능 of 관리자. 
    List<SalesDTO> getsalesbyId(String userid);
    List<SalesDTO> getsales(HashMap<String, Object> map);
+   List<SalesDTO> getyesterdaysales(HashMap<String, Object> map);
    List<SalesDTO> getMonthlygraph(TimeVO timeVO);
 
    List<ServiceFullDTO> getfaq(HashMap<String, Object> map);

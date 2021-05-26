@@ -48,6 +48,7 @@
 <div id="sideBar">
 	<ul>
 		<li><a href="serviceHome">고객센터 홈</a></li>
+		<!-- <li><a href="../../member/login/loginForm">상담내역 확인</a></li> -->
 		<li><a href="serviceHistory">상담내역 확인</a></li>
 		<li><a href="serviceQna">자주 묻는 질문</a></li>
 		<li><a href="servicePersonal">1대1 문의</a></li>

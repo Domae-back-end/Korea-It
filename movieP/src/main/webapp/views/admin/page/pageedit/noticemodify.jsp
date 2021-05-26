@@ -16,17 +16,9 @@
 	.notice_modi {background: yellow; }
 	
 </style>
-
 <title>asdf</title>
 </head>
 
-<script>
-	
-	
-	
-	
-	
-</script>
 
 <body>
 <h2>수정페이지</h2>

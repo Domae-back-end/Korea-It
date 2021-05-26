@@ -20,6 +20,7 @@ public class Membermodify implements MemberAction{
 	@Override
 	public Object execute(MemberDTO mdto, HttpSession session) {
 
+		System.out.println(dm.memModify(mdto));
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("cnt", dm.memModify(mdto));

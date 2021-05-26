@@ -192,18 +192,8 @@
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			</table>
-			</form>
-		</div>
-		
+		</table>
+	</form>
+</div>
 </body>
 </html>

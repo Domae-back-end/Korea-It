@@ -93,7 +93,7 @@ public class Pageeditmovieinfolist implements PageeditService {
 		//페이지 정리과정 
 
 	
-		
+		res.setMidto(mdto);
 		res.setMovielist(answer);
 		res.setPdto(npDTO);// pdto>jsp에서쓰고 ,
 		

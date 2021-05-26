@@ -343,12 +343,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		order by noticeindex desc
 		limit 0, 1
 	</select>
-
-	<!-- 공지사항검색(미완) -->
-	<select id="noticesearch" resultType="ServiceFullDTO">
-		select * from noticeboard
-	</select>
-
+	
 
 	<!-- 어드민에 공지사항 추가하기 -->
 	<insert id="insertNotice" parameterType="ServiceFullDTO">
@@ -395,7 +390,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where noticeindex = #{noticeindex}
 	</update>
 
-	
+	<!-- 검색 where추가 -->
 	<sql id="searchGo">
 		<choose>
 			<when test="sfDTO.schkey != null and sfDTO.schkey != '' ">
@@ -405,6 +400,62 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 		</choose>
 	</sql>
+
+
+	<!-- 어드민 1대1질문 (미답변리스트) -->
+	<select id="perslist" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from personalqna 
+		where persstate = '미답변'
+		limit #{snpdto.start}, #{snpdto.limit}
+	</select>
+
+	<!-- 어드민 1대1질문 (미답변총갯수) -->
+	<select id="perstotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
+		select count(*) from personalqna
+		where persstate = '미답변'
+	</select>
+
+	<!-- 어드민 1대1질문 (미답변) -->
+	<select id="persdetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
+		select * from personalqna 
+		where persindex = ${persindex}
+	</select>
+
+	<!-- 어드민 1대1질문 (미답변->답변완료) -->
+	<update id="persans" parameterType="ServiceFullDTO">
+		update personalqna set
+		persindex = #{persindex}, persacont = #{persacont}, persatime = sysdate(), persstate = '답변완료'
+		where persindex = #{persindex}
+	</update>
+
+	<!-- 어드민 1대1질문 (답변리스트) -->
+	<select id="perslistans" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from personalqna 
+		where persstate = '답변완료'
+		limit #{snpdto.start}, #{snpdto.limit}
+	</select>
+	
+	
+	
+	
+	
+<!-- ///////////////////////// -->
+	<!-- 어드민 1대1질문 (답변총갯수) -->
+	<select id="perstotalansCnt" resultType="java.lang.Integer" parameterType="HashMap">
+		select count(*) from personalqna
+		where persstate = '답변완료' and	perscate like concat('%',#{sfdto.perscate},'%')
+	</select>
+
+	
+	<!-- 어드민 1대1질문 (답변리스트, 문의유형별) -->
+	<select id="perslistanscate" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from personalqna 
+		where persstate = '답변완료' and perscate = #{sfdto.perscate}
+		limit #{snpdto.start}, #{snpdto.limit}
+	</select>
+
+
+
 
 
 
@@ -449,6 +500,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		</choose>
 
 	</sql>
+
+
 
 
 
@@ -546,9 +599,22 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<update id="memModify" parameterType="MemberDTO">
 		update memberinfo set
-		userpw=#{userpw},userpnum=#{userpnum},useremail=#{useremail} 
+		<if test=" userpw !=null">
+			userpw=#{userpw}
+		</if>
+		<if test=" userpw == null or userpw == '' ">
+			userpnum=#{userpnum},useremail=#{useremail}
+		</if>
 		where userid=#{userid}
 	</update>
+
+	<select id="memcount" resultType="map" parameterType="MemberDTO">
+		select * from 
+		(select COUNT(*) sc from salestest  where userid=#{userid} and salesprice > 0) a, 
+		(select COUNT(*) rc from review where userid=#{userid}) b,
+		(select COUNT(*) uc from userlikes where userid=#{userid}) c
+	</select>
+	
 
 
 		
@@ -561,9 +627,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<!-- 매출관련 정보(테스트용) salestest -->
 
-	<select id="getsales" resultType="SalesDTO"
+	<select id="getyesterdaysales" resultType="SalesDTO"
 		parameterType="HashMap">
-		select * from salestest
+		select * from salestest WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
 	</select>
 
 
