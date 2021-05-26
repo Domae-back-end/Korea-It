@@ -23,7 +23,7 @@ public class ServiceCserviceHistory implements ServiceCservice {//빈 창고에 
 	@Override
 	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO) {
 
-//		System.out.println("빈 이름 ServiceCserviceHistory 소환됨");
+		System.out.println("빈 이름 ServiceCserviceHistory 소환됨");
 //		HashMap<String, Object> map = new HashMap<String, Object>();
 //		HttpServletRequest request = (HttpServletRequest)map.get("request");
 //		
