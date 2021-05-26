@@ -99,6 +99,7 @@ public interface DbMapper {
    	MemberDTO memlogin(MemberDTO mdto);
 
    	int memModify(MemberDTO mdto);
+   	int memDelete(MemberDTO mdto);
 	
    	List<Map<String, String>> memlikeinfor(MemberDTO mdto);
    	List<Map<String, String>> memcomment(MemberDTO mdto);
