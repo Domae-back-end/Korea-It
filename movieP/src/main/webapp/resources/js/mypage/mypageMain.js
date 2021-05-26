@@ -86,7 +86,7 @@
 	    	async : false,
 	        type : 'POST',
 	        data : JSON.stringify(list),
-	        url : "/memberpurchase",
+	        url : "/memberRecord",
 	        dataType : "json",
 			contentType : "application/json; charset=UTF-8",
 			success : function(data) {
@@ -178,9 +178,59 @@
     
     
      
+	$("#writeGo").click(function(){
+		frm.action = "/user/movietime/list"
+		frm.submit();
+	});     
+
+
+     
 	$("#likeButt").click(function(){
 	
-	
+		var list = {
+    		userid : document.getElementById('userid').value,
+    		like : document.getElementById('like').value,
+    		index : document.getElementById('index').value
+    	};
+    
+    	
+    	$.ajax({
+	    	async : false,
+	        type : 'POST',
+	        data : JSON.stringify(list),
+	        url : "/membermodify",
+	        dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+				
+				if(data.cnt >0){
+								
+					var list = {
+			    		userid : document.getElementById('userid').value,
+			    		like : document.getElementById('like').value,
+			    		index : document.getElementById('index').value
+			    	};
+			    	
+					$.ajax({
+				    	async : false,
+				        type : 'POST',
+				        data : JSON.stringify(list),
+				        url : "/memberdelete",
+				        dataType : "json",
+						contentType : "application/json; charset=UTF-8",
+						success : function(data) {
+							
+							if(data.dcnt >0){
+							
+								alert("좋아요가 취소되었습니다.")
+								frm.action = "/member/mypage/mymoviestroy?kind=likemovie"
+								frm.submit();
+							}
+				     	}
+					});
+				}
+	     	}
+		});
 	
 	});     
       
@@ -209,7 +259,7 @@
 	    	async : false,
 	        type : 'POST',
 	        data : JSON.stringify(list),
-	        url : "/memberpurchase",
+	        url : "/memberRecord",
 	        dataType : "json",
 			contentType : "application/json; charset=UTF-8",
 			success : function(data) {

@@ -559,26 +559,31 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<sql id="modify">
 		
 		<choose>
+			
 			<when test=" userpw !=null">
 				<![CDATA[memberinfo]]>
 				<set><![CDATA[userpw=#{userpw}]]></set>
 				<where> <![CDATA[userid=#{userid}]]></where>
 			</when>
+			
 			<when test=" content !=null">
 				<![CDATA[review]]>
 				<set><![CDATA[postcontent=#{content}]]></set>
 				<where> <![CDATA[userid=#{userid} and cate=#{index}]]></where>
 			</when>
+			
 			<when test=" like !=null">
 				<![CDATA[movieinfo]]>
 				<set><![CDATA[mlike= mlike-1]]></set>
-				<where> <![CDATA[userid=#{userid} and m_index=#{index}]]></where>
+				<where> <![CDATA[m_index=#{index}]]> </where>
 			</when>
+			
 			<otherwise>
 				<![CDATA[memberinfo]]>
 				<set><![CDATA[userpnum=#{userpnum},useremail=#{useremail}]]></set>
 				<where> <![CDATA[userid=#{userid}]]></where>
 			</otherwise>
+		
 		</choose>
 
 	</sql>
@@ -620,7 +625,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
 		select ticket_pcount,salesprice, movietitle, sales_type, sales_time, imgname from salestest 
 		left outer join movieimg on salestest.m_index = movieimg.m_index
-		where salestest.userid=#{userid} and date_format(salestest.sales_time,'%Y-%m')=#{date}
+		where salestest.userid=#{userid} and date_format(salestest.sales_time,'%Y-%m')=#{date} 
+		order by salestest.sales_time desc
 	</select>
 
 	
@@ -628,8 +634,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select movietitle, imgname, postcontent, posttime, cate, mlike from review
 		left outer join movieinfo on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
-		where movieinfo.m_index in (select cate from review where
-		userid=#{userid});
+		where movieinfo.m_index in (select cate from review where userid=#{userid})
+		order by review.posttime desc
 	</select>
 
 	
@@ -637,13 +643,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select movietitle, imgname, mlike, cate from movieinfo
 		left outer join review on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
-		where movieinfo.m_index in (select m_index from userlikes where
-		userid=#{userid});
+		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid})
 	</select>
 
 	
 	<select id="memqna" resultType="map" parameterType="MemberDTO">
-		select * from personalqna <include refid="qnacheck" />
+		select * from personalqna <include refid="qnacheck" /> order by persqtime desc
 	</select>
 
 	

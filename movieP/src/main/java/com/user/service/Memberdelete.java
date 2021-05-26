@@ -12,21 +12,19 @@ import com.model.MemberAction;
 import com.model.MemberDTO;
 
 @Service
-public class Membermodify implements MemberAction{
+public class Memberdelete implements MemberAction {
 
 	@Resource
 	DbMapper dm;
-
+	
 	@Override
 	public Object execute(MemberDTO mdto, HttpSession session) {
-
+		
 		HashMap<String, Object> map = new HashMap<>();
 		
-		map.put("cnt", dm.memModify(mdto));
+		map.put("dcnt", dm.memDelete(mdto));
 		
 		System.out.println(map);
 		return map;
 	}
-	
-	
 }
