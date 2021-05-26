@@ -555,9 +555,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<!-- 매출관련 정보(테스트용) salestest -->
 
-	<select id="getsales" resultType="SalesDTO"
+	<select id="getyesterdaysales" resultType="SalesDTO"
 		parameterType="HashMap">
-		select * from salestest
+		select * from salestest WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
 	</select>
 
 

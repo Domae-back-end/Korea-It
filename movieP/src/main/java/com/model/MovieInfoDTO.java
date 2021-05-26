@@ -78,6 +78,12 @@ import lombok.Data;
 
 @Data
 public class MovieInfoDTO {
+	
+	
+	
+	
+	
+	
 	Integer m_index;
 	Integer mplaytime;
 	Integer star;
@@ -95,6 +101,11 @@ public class MovieInfoDTO {
 	String mdate_s;
 	int length;
 	Integer mlike;
+	
+	
+	String mis_kind;
+	String mis_key;
+	
 	
 	MultipartFile file;
 	MultipartFile[] infoimg;
