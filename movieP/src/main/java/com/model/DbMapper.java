@@ -104,7 +104,7 @@ public interface DbMapper {
    	List<Map<String, String>> memlikeinfor(MemberDTO mdto);
    	List<Map<String, String>> memcomment(MemberDTO mdto);
 	List<Map<String, String>> memqna(MemberDTO mdto);
-	List<SalesDTO> mempurchase(MemberDTO mdto);
+	List<Map<String, String>> mempurchase(MemberDTO mdto);
 	Map<String, Integer> memcount(MemberDTO mdto);
    
    

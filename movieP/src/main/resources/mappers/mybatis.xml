@@ -603,8 +603,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</sql>
 
 	
-	<select id="memlogin" resultType="MemberDTO"
-		parameterType="MemberDTO">
+	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
 		select * from memberinfo <include refid="checkform" />
 	</select>
 
@@ -618,15 +617,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 
 	
-	<select id="mempurchase" resultType="SalesDTO"
-		parameterType="MemberDTO">
-		select * from salestest where userid=#{userid} and
-		date_format(sales_time,'%Y-%m')=#{date}
+	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
+		select ticket_pcount,salesprice, movietitle, sales_type, sales_time, imgname from salestest 
+		left outer join movieimg on salestest.m_index = movieimg.m_index
+		where salestest.userid=#{userid} and date_format(salestest.sales_time,'%Y-%m')=#{date}
 	</select>
 
 	
-	<select id="memcomment" resultType="map"
-		parameterType="MemberDTO">
+	<select id="memcomment" resultType="map" parameterType="MemberDTO">
 		select movietitle, imgname, postcontent, posttime, cate, mlike from review
 		left outer join movieinfo on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
@@ -635,8 +633,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 	
-	<select id="memlikeinfor" resultType="map"
-		parameterType="MemberDTO">
+	<select id="memlikeinfor" resultType="map" parameterType="MemberDTO">
 		select movietitle, imgname, mlike, cate from movieinfo
 		left outer join review on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
@@ -645,8 +642,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 	
-	<select id="memqna" resultType="map"
-		parameterType="MemberDTO">
+	<select id="memqna" resultType="map" parameterType="MemberDTO">
 		select * from personalqna <include refid="qnacheck" />
 	</select>
 
