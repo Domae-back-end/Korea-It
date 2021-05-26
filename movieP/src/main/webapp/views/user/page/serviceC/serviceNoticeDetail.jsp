@@ -54,7 +54,14 @@
 			</c:otherwise>
 		</c:choose>
 		<li><a href="serviceQna">자주 묻는 질문</a></li>
-		<li><a href="servicePersonal">1대1 문의</a></li>
+		<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm">1대1 문의</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="servicePersonal">1대1 문의</a></li>
+			</c:otherwise>
+		</c:choose>
 		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>

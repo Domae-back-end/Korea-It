@@ -316,7 +316,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		insert into personalqna
 		(perscate, persid, perstitle, perscont, persimg, persqtime, persacont, persatime, persstate)
 		values
-		(#{perscate}, #{persid}, #{perstitle}, #{perscont}, #{persimg}, sysdate(),null, null, '미답변' )
+		(#{perscate}, #{persid}, #{perstitle}, #{perscont}, #{persimg}, sysdate(),'', null, '미답변' )
 	</insert>
 
 

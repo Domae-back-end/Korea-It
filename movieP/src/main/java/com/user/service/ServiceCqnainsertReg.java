@@ -21,7 +21,7 @@ public class ServiceCqnainsertReg implements ServiceCservice {//빈 창고에 �
 	@Override
 	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO, HttpSession session) {
 		System.out.println("빈 이름 serviceCqnainsertReg 소환됨dddddddddd");
-		
+		sfDTO.setPersid((String)session.getAttribute("sessionId"));
 		db.insertPersQna(sfDTO);
 		
 

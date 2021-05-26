@@ -28,7 +28,7 @@
 	
 	/* content2 속지 */
 	.content2 {padding-bottom: 50px; width: 800px; background: yellow; height: 200px; border-bottom: 1px solid gray; margin-bottom: 50px; }
-	.qna2 {width: 250px; height: 200px; background: blue; float: left; margin-right: 25px;  }
+	.qna2 {width: 250px; height: 200px;  float: left; margin-right: 25px;  }
 	.history {width: 250px; height: 200px; background: blue; float: left;  margin-right: 25px; }
 	.personal {width: 250px; height: 200px; background: blue; float: left;}
 	
@@ -58,7 +58,14 @@
 			</c:otherwise>
 		</c:choose>
 		<li><a href="serviceQna">자주 묻는 질문</a></li>
-		<li><a href="servicePersonal">1대1 문의</a></li>
+		<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm">1대1 문의</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="servicePersonal">1대1 문의</a></li>
+			</c:otherwise>
+		</c:choose>
 		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>
@@ -77,6 +84,7 @@
 	<div class="content2">
 		<div class="qna2">
 			<p>자주묻는 질문</p>
+			<img src="../../img/service/pic1.png" alt="" />
 		</div>
 		<div class="history">
 			<p>상담내역 확인</p>

@@ -35,7 +35,9 @@ public class ServiceCserviceHistoryDetail implements ServiceCservice {//빈 창�
 		
 		
 		ServiceNotiListDTO res= new ServiceNotiListDTO();
+		res.setNow(db.persdetail(sfDTO));
 		res.setOnesfdto(sfDTO);
+		res.setNpDTO(npDTO);
 		
 		
 		
