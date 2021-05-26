@@ -428,17 +428,25 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where persstate = '답변완료'
 		limit #{snpdto.start}, #{snpdto.limit}
 	</select>
+	
+	
+	
+	
+	
+<!-- ///////////////////////// -->
+	<!-- 어드민 1대1질문 (답변총갯수) -->
+	<select id="perstotalansCnt" resultType="java.lang.Integer" parameterType="HashMap">
+		select count(*) from personalqna
+		where persstate = '답변완료' and	perscate like concat('%',#{sfdto.perscate},'%')
+	</select>
 
-
-
-
-
-
-
-
-
-
-
+	
+	<!-- 어드민 1대1질문 (답변리스트, 문의유형별) -->
+	<select id="perslistanscate" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from personalqna 
+		where persstate = '답변완료' and perscate = #{sfdto.perscate}
+		limit #{snpdto.start}, #{snpdto.limit}
+	</select>
 
 
 

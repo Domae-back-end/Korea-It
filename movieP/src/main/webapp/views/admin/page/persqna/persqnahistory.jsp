@@ -16,13 +16,14 @@
 	
 	/* 공지테이블 */
 	.td1 {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
-	.td1 tr:nth-of-type(1)>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
-	.td1 tr:nth-of-type(1)>td:nth-of-type(1) {width: 50px;  }
-	.td1 tr:nth-of-type(1)>td:nth-of-type(2) {width: 100px;  }
-	.td1 tr:nth-of-type(1)>td:nth-of-type(3) {width: 350px;  }
-	.td1 tr:nth-of-type(1)>td:nth-of-type(4) {width: 100px;  }
-	.td1 tr:nth-of-type(1)>td:nth-of-type(5) {width: 100px;  }
-	.td1 tr:nth-of-type(1)>td:nth-of-type(6) {width: 100px;  }
+	.td1 tr:nth-of-type(1)>td {height: 50px; }
+	.td1 tr:nth-of-type(2)>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(1) {width: 50px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(2) {width: 100px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(3) {width: 350px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(4) {width: 100px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(5) {width: 100px;  }
+	.td1 tr:nth-of-type(2)>td:nth-of-type(6) {width: 100px;  }
 </style>
 </head>
 <script>
@@ -32,6 +33,7 @@
 			$("#pageIN").val($(this).attr("dd"))
 			frm.submit()
 		})
+		
 		
 	})
 	
@@ -58,6 +60,17 @@
 		
 		<table class="td1">
 		<!-- 번호, 문의유형(일반문의, 영화정보, 회원, 예매, 분실물, 제안/건의), 아이디, 제목, 내용, 사진, 등록일, 답변칸, 답변시간, 답변상태*/ -->
+			<tr>
+				<td colspan="6" style="text-align: left; ">
+					<a href="persqnahistory">전체</a>
+					<a href="?perscate=basic">일반문의</a>
+					<a href="?perscate=movinfo">영화정보</a>
+					<a href="?perscate=member">회원</a>
+					<a href="?perscate=ticket">예매</a>
+					<a href="?perscate=lost">분실물</a>
+					<a href="?perscate=suggest">제안/건의</a>
+				</td>
+			</tr>
 			<tr>
 				<td>번호</td>
 				<td>문의유형</td>
