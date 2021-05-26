@@ -41,7 +41,7 @@ public class MembernaverLogin implements MemberNaverAction {
 		MemberDTO mdCh = dm.memlogin(dto);	
 		
 		if(mdCh==null) {
-			//dm.memjoin(dto);
+			dm.memjoin(dto);
 		}
 		return userid;
 	}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
 <h2>개인정보 수정</h2>
 	<div class = "idouter">
@@ -43,7 +44,18 @@
 			
 		<div class = "mideouter">
 			<div class = "nameouter">비밀번호</div>	
-			<div class="emailouter"><input type="button" class="changeButt" id="changepw" value="비밀번호 변경" /></div>
+			<div class="emailouter">
+			<c:choose>
+					<c:when test="${memdata.dto.kind == '일반' }">
+						<input type="button" class="changeButt" id="changepw" value="비밀번호 변경" />
+					</c:when>
+					<c:when test="${memdata.dto.kind == '네이버' }">
+						<input type="button" class="changeButt" id="changepw" disabled="disabled" value="비밀번호 변경" />
+						<small>네이버로그인 비밀번호 변경 불가.</small>
+					</c:when>
+				</c:choose>
+			
+			</div>
 		</div>
 	</div>
 	

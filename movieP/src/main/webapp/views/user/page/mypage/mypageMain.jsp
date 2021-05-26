@@ -11,7 +11,14 @@
 				<a href="/member/mypage/mypurchase"><li>예매내역</li></a>
 				<a href="/member/mypage/mymoviestroy?kind=seemovie"><li>나의 무비스토리</li></a>
 				<a href="/member/mypage/myqna"><li>문의내역</li></a>
-				<a href="/member/mypage/myinfor"><li>내 정보수정</li></a>
+				<c:choose>
+					<c:when test="${memdata.dto.kind == '일반' }">
+						<a href="/member/mypage/myinfor"><li>내 정보수정</li></a>
+					</c:when>
+					<c:when test="${memdata.dto.kind == '네이버' }">
+						<a href="/member/mypage/myinforchange"><li>내 정보수정</li></a>
+					</c:when>
+				</c:choose>
 			</ul>
 			</nav>
 		<div class="outer">
