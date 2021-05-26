@@ -26,25 +26,33 @@ public class ServiceCserviceHistory implements ServiceCservice {//빈 창고에 
 //		System.out.println("빈 이름 ServiceCserviceHistory 소환됨");
 //		HashMap<String, Object> map = new HashMap<String, Object>();
 //		HttpServletRequest request = (HttpServletRequest)map.get("request");
+//		
 //		HttpSession session = request.getSession();
-//		session.getAttribute("id");
-//		System.out.println(session.getAttribute("id"));
+//		
+//		if (session.getAttribute("sessionId") == null) {
+//			
+//			return "member/login/loginForm";
+//		}
+//		
 //		
 //		
 //		map.put("npDTO", npDTO);
 //		map.put("sfDTO", sfDTO);
 //		map.put("request", request);
 //		
-//		npDTO.init(db, map);
+//		npDTO.initpershistory(db, map);
 //		
 //		ServiceNotiListDTO res= new ServiceNotiListDTO();
-//		
-//		res.setSfdto(db.noticelist(map));// sfdto 는 리스트.. 흠?
-//		res.setOnesfdto(sfDTO);
+//		res.setSfdto(db.pershistory(map));
 //		res.setSnpdto(npDTO);
-
-
 //		
+//		sfDTO.setPersid((String)session.getAttribute("id"));
+		
+		
+		
+		
+		
+		
 //		HttpServletRequest request = (HttpServletRequest)map.get("request");
 //		//상상 .
 //		HttpSession session = request.getSession();
