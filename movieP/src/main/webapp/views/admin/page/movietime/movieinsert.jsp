@@ -59,10 +59,8 @@ $(function() {
 			success : function(data) {
 				if(data == 1){
 					$("#msgto").text("사용가능한 시간대 입니다.");
-					$("#starttime1").attr("disabled",true);
 				}else{
 					$("#msgto").text("사용중인 시간대 입니다.");
-					$("#starttime1").attr("disabled",false);
 				}
 			}, error : function() {
 				console.log("실패");
