@@ -85,11 +85,12 @@ $(function() {
 		if (pwCh.test($('#userpw').val())) {
 			$('#pw_check').text('사용가능한 비밀번호입니다.'); 
 			$('#pw_check').css('color', 'blue');
-			$('#userpwchk').prop("readonly",true);
+			$('#userpwchk').prop("readonly",false);
 		}else{
 			$('#pw_check').text('8~16자 영문 대 소문자, 숫자, 특수문자를 사용하십시오.'); 
 			$('#pw_check').css('color', 'red');
 			$("#userpw").val("");
+			$('#userpwchk').prop("readonly",true);
 		}
 	});
 
@@ -161,31 +162,45 @@ $(function() {
 	$('#pnumcheck').click(function(){
 		
 		var phoneNumber = document.getElementById('userpnum').value;
-		
-        alert("인증번호 발송 완료")
+
+		alert("인증번호 발송 완료")
+        
         $('#pchecknum').prop("type", 'text');
 		$('#checkBtn').prop("type", 'button');
 		$('#pnumcheck').attr("disabled", true);
+		$('#pnumM').attr("disabled", true);
+        $('#pnumL').attr("disabled", true);
+        $('#pnumF').attr("disabled", true);
 		
         $.ajax({
             type: "POST",
             url: "/memberpnumCheckSNS",
-            data: phoneNumber,
+            data: {phoneNumber : phoneNumber},
             success: function(res){
             	
                 $('#checkBtn').click(function(){
                     if($.trim(res) == $('#pchecknum').val()){
-                        
+                        alert(phoneNumber)
+                        $('#pnum_check').text('휴대폰 인증완료'); 
+                        $('#pchecknum').prop("type", 'hidden');
+                    	$('#checkBtn').prop("type", 'hidden');
+                    	$('#pnumcheck').attr("disabled", true);
+                 
                     }else{
-                        
+                          alert("휴대폰 인증을 다시 해주세요.")
+						  $('#pchecknum').val("") 
+                          $('#pnumcheck').attr("disabled", true);
+                          $('#pnumM').attr("disabled", false);
+					      $('#pnumL').attr("disabled", false);
+					      $('#pnumF').attr("disabled", false);
+					      $('#pnumM').val("");
+					      $('#pnumL').val("");
+					      $('#pnumF').val("");
                     }
-                })
-
-
+                });
             }
-        })
+        });
     });
-	
 	document.addEventListener('keydown', function(event) {
 		
 		if (event.keyCode === 13) {
@@ -195,7 +210,11 @@ $(function() {
 	
 	$('form').on('submit',function(){
 	
-		/*var inval_Arr = new Array(8).fill(false); 
+	 	$('#pnumM').attr("disabled", false);
+		$('#pnumL').attr("disabled", false);
+		$('#pnumF').attr("disabled", false);
+		
+		var inval_Arr = new Array(8).fill(false); 
 		
 		if (nameCh.test($('#username').val())) { 
 			inval_Arr[0] = true; 
@@ -239,7 +258,7 @@ $(function() {
 		}
 			
 		document.getElementById('birthYear').value = $('#birthY').val();
-	    document.getElementById('birthDay').value = $('#birthM').val() + '-' + $('#birthD').val();*/
+	    document.getElementById('birthDay').value = $('#birthM').val() + '-' + $('#birthD').val();
 		
 	    alert("회원가입이 완료되었습니다")	
 	});

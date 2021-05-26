@@ -16,8 +16,9 @@
 				
 				if(data.dto!=null){
 					
-					/* frm.action = "/user/main"
-					frm.submit(); */
+					alert(data.dto.userid)
+					frm.action = "/user/main"
+					frm.submit();
 			
 				}else{ 
 					alert("해당 정보의 아이디가 존재하지않습니다.")

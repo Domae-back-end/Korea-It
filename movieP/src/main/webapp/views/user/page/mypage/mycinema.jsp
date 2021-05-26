@@ -6,8 +6,16 @@
 <div>
 	<div class = "cimemaouter">
 		<div>
-			<div>${sessionId }${memdata.dto.username }님의 마이페이지 입니다</div>
-			<a href="/member/mypage/myinfor">개인정보수정 ></a>
+			<div>${memdata.dto.username }님의 마이페이지 입니다</div>
+			<c:choose>
+				<c:when test="${memdata.dto.kind == '일반' }">
+					<a href="/member/mypage/myinfor">개인정보수정 ></a>
+				</c:when>
+				<c:when test="${memdata.dto.kind == '네이버' }">
+					<a href="/member/mypage/myinforchange">개인정보수정 ></a>
+				</c:when>
+			</c:choose>
+			
 		</div>
 	</div>
 

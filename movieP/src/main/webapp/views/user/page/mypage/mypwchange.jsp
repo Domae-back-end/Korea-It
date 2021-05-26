@@ -3,7 +3,6 @@
 <h2>비밀번호 변경</h2>
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
 	<input type="hidden" id="userid" value="${sessionId } " />
-	<input type="hidden" id="userpw" value="${memdate.dto.userpw } " />
 	<p><small>현재 비밀번호를 입력한 후 새로 사용할 비밀번호를 입력하세요.</small></p>
 	<div class = "changeouter" id="changeouter">
 		<div class = "mideouter">

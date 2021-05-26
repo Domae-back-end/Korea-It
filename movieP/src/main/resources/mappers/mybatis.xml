@@ -501,6 +501,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 
 
+
+
 	<sql id="checkform">
 
 		<choose>
@@ -562,8 +564,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<select id="mempurchase" resultType="SalesDTO"
 		parameterType="MemberDTO">
-		select * from salestest where userid=#{mdto.userid} and
-		date_format(sales_time,'%Y-%m')=#{mdto.date}
+		select * from salestest where userid=#{userid} and
+		date_format(sales_time,'%Y-%m')=#{date}
 	</select>
 
 	<select id="memcomment" resultType="map"
@@ -591,14 +593,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<update id="memModify" parameterType="MemberDTO">
 		update memberinfo set
-		userpw=#{userpw},userpnum=#{userpnum},useremail=#{useremail} 
+		<if test=" userpw !=null">
+			userpw=#{userpw}
+		</if>
+		<if test=" userpw == null or userpw == '' ">
+			userpnum=#{userpnum},useremail=#{useremail}
+		</if>
 		where userid=#{userid}
 	</update>
 
 
 
 
-		
+
 		
 		
 
@@ -609,9 +616,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<!-- 매출관련 정보(테스트용) salestest -->
 
-	<select id="getsales" resultType="SalesDTO"
+	<select id="getyesterdaysales" resultType="SalesDTO"
 		parameterType="HashMap">
-		select * from salestest
+		select * from salestest WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
 	</select>
 
 

@@ -17,7 +17,7 @@ public class DateDTO {
 		dd.setYear(this.reg_date.getYear());
 		dd.setMonth(this.reg_date.getMonth());
 		dd.setDate(this.reg_date.getDate());
-		dd.setDate(this.endtime.getHours());
+		dd.setHours(this.endtime.getHours());
 		dd.setMinutes(this.endtime.getMinutes());
 		dd.setSeconds(this.endtime.getSeconds());
 		

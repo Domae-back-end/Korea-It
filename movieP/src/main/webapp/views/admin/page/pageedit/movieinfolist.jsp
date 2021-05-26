@@ -40,9 +40,24 @@ function detailGo(aa) { //디테일페이지꺼
 
 
 영화정보관리리스트${data.pdto.ttt}</h2>
+
+
+
     <form action="" name="frm">
     <input type="hidden" name="page" id="pageIN" value="${data.pdto.page}" />
 		<input type="hidden" name="m_index" id="detailId" />
+	<br>
+	
+		<div class="search">
+		<a href="serviceNotice">초기화</a>
+			<select name="mis_kind">
+				<option value="movietitle" <c:if test="${data.midto.mis_kind == 'movietitle' }"> selected="selected"</c:if>>제목</option>
+				<option value="mdir" <c:if test="${data.midto.mis_kind == 'mdir' }"> selected="selected"</c:if>>감독</option>
+			</select>
+			<input type="text" name="mis_key" value="${data.midto.mis_key }"/> <!-- 요놈이문제 -->
+			<input type="submit" value="검색" class="smtGo" />
+		</div>
+		
     
   <table class="table table-striped">
   
@@ -53,7 +68,7 @@ function detailGo(aa) { //디테일페이지꺼
             <th>개봉일</th>
         <th>배우</th>
             <th>카테고리</th>
-                <th>포스터</th>
+                <th>메인포스터</th>
       </tr>
     </thead>
     <tbody>

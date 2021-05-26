@@ -7,13 +7,13 @@
 		<div class="likeouter">
 			<c:choose>
 				<c:when test="${pp.imgname!=null }">
-					<a href="moviedetail?sub=info&ind=${pp.cate }"><div class="likeimg"><img src="/resources/moviedata/${pp.imgname }.jpg" alt="${pp.movietitle } 이미지" /></div></a>
+					<a href="/movie/moviedetail?sub=info&ind=${pp.cate }"><div class="likeimg"><img src="/resources/moviedata/${pp.imgname }.jpg" alt="${pp.movietitle } 이미지" /></div></a>
 				</c:when>
 				<c:otherwise>
-					<a href="moviedetail?sub=info&ind=${pp.cate }">이미지 없음</a>
+					<a href="/movie/moviedetail?sub=info&ind=${pp.cate }">이미지 없음</a>
 				</c:otherwise>
 			</c:choose>
-			<a href="moviedetail?sub=info&ind=${pp.cate }"><div>${pp.movietitle }</div></a>
+			<a href="/movie/moviedetail?sub=info&ind=${pp.cate }"><div>${pp.movietitle }</div></a>
 			<div><button class="likeButt" id="likeButt">${pp.mlike }</button></div>
 			<div><button class="changeButt" id="ticketGo">예매하기</button></div>
 		</div>

@@ -11,7 +11,9 @@
 			고객센터를 통해 남기신 1:1 문의내역을 확인하실 수 있습니다.
 		</p>
 	</small>
+	<form action ="" method="post" enctype="multipart/form-data" name="frm">
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />
+	</form>
 	<div>
 		<select id="qnastate" name="moiverecord">
 			<option value="전체">전체</option>
