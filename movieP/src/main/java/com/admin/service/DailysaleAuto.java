@@ -3,6 +3,8 @@ package com.admin.service;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import javax.annotation.Resource;
 
@@ -36,17 +38,34 @@ public class DailysaleAuto {
 		// 월체크
 		String monthdate = dateForm2.format(cal.getTime());
 		logger.info("월정산가게될날짜"+monthdate);
+		logger.info("검색해서 뽑아올 날짜:"+ day);
 		
 		SalesDTO salesDTO = new SalesDTO();
 		salesDTO.setDaysaletime(day);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("day", day);
 		
-		//db.insertdaysale(salesDTO);// 사용안함.
-		//db.updateSSdaily(salesDTO);
+		logger.info("몇개 오냐"+
+		db.getyesterdaysales(map).size());
+		HashSet<String> aa= new HashSet<String>();
+		if(db.getyesterdaysales(map).size()>0)
+		for (SalesDTO ss : db.getsales(map)) {
+			
+		}
 		
-//		String calcday = calcdate.getYear()+"-";
-//		String monthz = "0";
-//		if(calcdate.getMonth()<10) {
-//			calcday=monthz+calcdate.getMonth();
+
+		
+		
+		
+
+
+		
+		
+		
+		
+		
+		
+		
 //		}
 		
 	}
