@@ -157,6 +157,7 @@
 						success : function(data) {
 							
 							if(data.cnt>0){
+								alert("비밀번호 변경이 완료되었습니다.")
 								frm.action = "/member/mypage/mypageMain"
 								frm.submit();
 							}

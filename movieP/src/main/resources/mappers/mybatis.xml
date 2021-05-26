@@ -551,8 +551,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where userid=#{userid}
 	</update>
 
-
-
+	<select id="memcount" resultType="map" parameterType="MemberDTO">
+		select * from 
+		(select COUNT(*) sc from salestest  where userid=#{userid} and salesprice > 0) a, 
+		(select COUNT(*) rc from review where userid=#{userid}) b,
+		(select COUNT(*) uc from userlikes where userid=#{userid}) c
+	</select>
+	
 
 
 		
