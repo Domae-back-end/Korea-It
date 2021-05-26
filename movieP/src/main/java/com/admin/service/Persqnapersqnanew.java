@@ -26,7 +26,7 @@ public class Persqnapersqnanew implements PageeditService {
 		map.put("snpdto", snpdto);
 		map.put("sfdto", sfdto);
 		
-		snpdto.initpers(db, map);
+		snpdto.initpers2(db, map);
 
 		ServiceNotiListDTO res = new ServiceNotiListDTO();
 		res.setSfdto(db.perslist(map));
