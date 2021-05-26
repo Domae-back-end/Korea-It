@@ -23,8 +23,7 @@ import com.model.ServiceNoticePageDTO;
 @Service
 public class PageeditmovieinfomodifyReg implements PageeditService {
 	
-	
-	
+	//
 	Logger logger= LoggerFactory.getLogger(getClass());
 	
 
