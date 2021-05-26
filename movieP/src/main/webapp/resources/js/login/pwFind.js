@@ -44,7 +44,7 @@
         $.ajax({
             type: "POST",
             url: "/memberpnumCheckSNS",
-            data: phoneNumber,
+            data: {phoneNumber : phoneNumber},
             success: function(res){
             	
                 $('#checkBtn').click(function(){
@@ -65,10 +65,10 @@
                     	  $('#userpnum').attr("disabled", false);
                     	  $('#pnumcheck').attr("disabled", false);
                     }
-                })
+                });
 
 
             }
-        })
+        });
     });
 });	

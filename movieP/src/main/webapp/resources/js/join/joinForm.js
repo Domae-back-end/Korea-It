@@ -162,8 +162,9 @@ $(function() {
 	$('#pnumcheck').click(function(){
 		
 		var phoneNumber = document.getElementById('userpnum').value;
-		
-        alert("인증번호 발송 완료")
+
+		alert("인증번호 발송 완료")
+        
         $('#pchecknum').prop("type", 'text');
 		$('#checkBtn').prop("type", 'button');
 		$('#pnumcheck').attr("disabled", true);
@@ -174,12 +175,12 @@ $(function() {
         $.ajax({
             type: "POST",
             url: "/memberpnumCheckSNS",
-            data: phoneNumber,
+            data: {phoneNumber : phoneNumber},
             success: function(res){
             	
                 $('#checkBtn').click(function(){
                     if($.trim(res) == $('#pchecknum').val()){
-                        alert("휴대폰 인증완료")
+                        alert(phoneNumber)
                         $('#pnum_check').text('휴대폰 인증완료'); 
                         $('#pchecknum').prop("type", 'hidden');
                     	$('#checkBtn').prop("type", 'hidden');
@@ -196,13 +197,10 @@ $(function() {
 					      $('#pnumL').val("");
 					      $('#pnumF').val("");
                     }
-                })
-
-
+                });
             }
-        })
+        });
     });
-	
 	document.addEventListener('keydown', function(event) {
 		
 		if (event.keyCode === 13) {

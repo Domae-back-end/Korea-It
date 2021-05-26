@@ -41,7 +41,7 @@ public class Membermypage implements MemberAction {
 		map.put("like", dm.memlikeinfor(mdto));
 		map.put("qna", dm.memqna(mdto));
 		
-		System.out.println(map.get("qna"));
+		System.out.println(map);
 		
 		return map;
 	}

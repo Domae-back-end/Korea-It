@@ -54,7 +54,7 @@ public class MemberCheckController {
 	
 	@ResponseBody
 	@RequestMapping("/memberpnumCheckSNS")
-	public String pnumchek(@RequestBody String userpnum) {
+	public String pnumchek(String phoneNumber) {
 		
 		Random rand  = new Random();
         String chknum = "";
@@ -65,9 +65,9 @@ public class MemberCheckController {
         
     	MemberCertifiedPnum certifiedPnum = new MemberCertifiedPnum();
         
-        System.out.println("수신자 번호 : " + userpnum);
+        System.out.println("수신자 번호 : " + phoneNumber);
         System.out.println("인증번호 : " + chknum);
-        certifiedPnum.mempnumCheck(userpnum,chknum);
+        certifiedPnum.mempnumCheck(phoneNumber,chknum);
         
         return chknum;
 	}
