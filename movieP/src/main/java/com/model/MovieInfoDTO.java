@@ -80,11 +80,6 @@ import lombok.Data;
 @Data
 public class MovieInfoDTO {
 	
-	
-	
-	
-	
-	
 	Integer m_index;
 	Integer mplaytime;
 	Integer star;
