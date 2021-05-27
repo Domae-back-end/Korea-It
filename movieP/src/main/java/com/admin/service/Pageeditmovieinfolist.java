@@ -45,6 +45,7 @@ public class Pageeditmovieinfolist implements PageeditService {
 		//MinfListDTO res= new MinfListDTO();	// 최종 반환형태.	
 		AdminListDTO res= new AdminListDTO();
 		HashMap<String, Object> totalmap = new HashMap<>();
+		npDTO.setLimit(2);
 		totalmap.put("pDTO", npDTO);
 		
 		totalmap.put("mDTO", mdto);

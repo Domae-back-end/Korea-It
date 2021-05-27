@@ -81,17 +81,22 @@
 		</div>
 		<!-- //  movieactors   moviecategory
 		 -->
+		 <input type="hidden" name="m_index" value="${data.midto.m_index }" />
 		영화제목 <input type="text" name="movietitle" value="${data.midto.movietitle}"  /><br>
 		 감독 <input type="text" name="mdir" value="${data.midto.mdir}" /><br>
 <hr />
 		<div id="actor">
 			<button type="button" id="addactor">배우추가</button>
 			
+
+<c:if test="${not empty data.midto.allactors }">
+			
 			<c:forEach var = "i" items="${data.midto.allactors}" varStatus="no"  >
 		배우 <input type="text" name="mactrs" id="mactrs" value="${i}"/>	<button type="button" class="actorsearch" data-popup-open="${no.index+1} " id="actorsearch">배우찾기</button><br>
 		<!--각 actorsearch 와  mactrs value를 엮어주는 방법..  -->
 	</c:forEach>
 
+</c:if>
 			
 	
 
@@ -99,10 +104,12 @@
 <hr />
 		<div id="cate">
 			<button type="button" id="addcate">카테고리추가</button>
+			<c:if test="${not empty data.midto.allcates }">
 				<c:forEach var = "i" items="${data.midto.allcates}" varStatus="no"  >
 			카테고리 <input type="text" name="mcate" value="${i}" /><br>
 			</c:forEach>
 			
+</c:if>
 		</div>
 		<hr />
 		개봉일 <input type="date" name="moviedate" value="${data.midto.moviedate}" /><br> <!--setMoviedate  -->

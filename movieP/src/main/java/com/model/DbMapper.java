@@ -202,7 +202,7 @@ public interface DbMapper {
    //김인호추가
    MovieInfoDTO getmovieinfobyidx(int indexnum);
    void deleteMovieinfo(int m_index);
-
+   int updateMovieinfo(MovieInfoDTO mdto);
    
    
    

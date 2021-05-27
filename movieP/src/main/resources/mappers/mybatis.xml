@@ -794,7 +794,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<delete id="deleteMovieinfo">
 		delete from movieinfo where m_index =#{m_index}
 	</delete>
+	<update id="updateMovieinfo" parameterType="MovieInfoDTO">
 	
+
+UPDATE movieinfo      
+
+SET movietitle = #{movietitle},
+		mdir= #{mdir},
+		mactrs= #{mactrs},
+		mcate=#{mcate},
+		mplaytime= #{mplaytime},
+		mplot = #{mplot}		 
+WHERE m_index = #{m_index};
+	
+	</update>
 	
 	
 	

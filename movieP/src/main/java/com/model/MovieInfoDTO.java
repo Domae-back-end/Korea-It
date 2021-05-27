@@ -86,8 +86,8 @@ public class MovieInfoDTO {
 	String movietitle;
 	String  mdir;
 	String mimg;
-	String  mactrs;
-	String  mcate;
+	String  mactrs=",";
+	String  mcate=",";
 	String  mplot;
 	String movieimg;
 	String imgurl;
@@ -123,11 +123,16 @@ public class MovieInfoDTO {
 		return mplot.replaceAll("\n", "<br>");
 	}
 	public  String[] getAllactors() {
+		if(!mactrs.equals(""))
 		return mactrs.split(",");
+		return null;
+		
 	}
 	
 	public  String[] getAllcates() {
+		if(!mcate.equals(""))
 		return mcate.split(",");
+		return null;
 	}
 	
 	
