@@ -122,8 +122,10 @@ public class MovieInfoDTO {
 		System.out.println(sdf.format(mdate));
 		return sdf.format(mdate);
 		
+	}//
+	public String getmplotBr() {
+		return mplot.replaceAll("\n", "<br>");
 	}
-	
 	
 	
 }

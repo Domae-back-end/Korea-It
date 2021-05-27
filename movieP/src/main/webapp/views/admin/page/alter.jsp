@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>경고창</title>
+<title>경고창  ajax답장이거로한다.(~Reg는)</title>
 </head>
 <body>
 

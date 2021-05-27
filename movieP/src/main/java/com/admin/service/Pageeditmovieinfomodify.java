@@ -44,6 +44,13 @@ public class Pageeditmovieinfomodify implements PageeditService {
 		
 		result.setMidto(db.getmovieinfobyidx(midto.getM_index()));
 		
+		logger.info(db.getmovieinfobyidx(midto.getM_index()).toString());
+		
+		
+		
+		
+		
+		
 		
 		
 		

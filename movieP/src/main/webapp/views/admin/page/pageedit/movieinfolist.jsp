@@ -24,7 +24,7 @@ $(function() {
 
 
 function detailGo(aa) { //디테일페이지꺼
-	alert("detailGo 눌렀냐?"+aa)
+	
 	frm.action = "midetail"
 	
 	$("#detailId").val(aa)
@@ -63,7 +63,7 @@ function detailGo(aa) { //디테일페이지꺼
   
     <thead>
       <tr>
-        <th>영화제목</th>
+        <th>고유번호/영화제목</th>
         <th>감독명</th>
             <th>개봉일</th>
         <th>배우</th>
@@ -77,7 +77,7 @@ function detailGo(aa) { //디테일페이지꺼
       <tr>
         <%-- <td>${i }체크박스</td> --%>
         <td>
-        <a href="javascript:detailGo(${i.m_index})">${i.movietitle }<%-- ${nDTO.noticetitle } --%></a>
+        <a href="javascript:detailGo(${i.m_index})">${i.m_index}/${i.movietitle }<%-- ${nDTO.noticetitle } --%></a>
         </td>
         <td>${i.mdir }&nbsp; </td>
          <td>${i.mdate }</td>
@@ -121,7 +121,7 @@ function detailGo(aa) { //디테일페이지꺼
 
   <tr>
         <td colspan="5"> 
-        <a href="movieinfoinsert">글쓰기</a>
+        <button class="btn btn-light" type="button"><a href="movieinfoinsert">영화 등록하기</a></button>
         
         </td>
        

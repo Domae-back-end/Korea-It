@@ -30,25 +30,6 @@ public class PageeditnoticeinsertReg implements PageeditService {
 		HashMap<String, Object> map= (HashMap)obj;
 		ServiceFullDTO sfDTO = (ServiceFullDTO)map.get("sfDTO");
 		
-//		HttpServletRequest request = (HttpServletRequest)map.get("request");
-//		//상상 .
-//		HttpSession session = request.getSession();
-//		// 가짜..
-//		session.setAttribute("id", "bbb111");
-//		
-//		
-//		//진짜.
-//		persDTO.setPersid((String)session.getAttribute("id"));
-//		persDTO.setPersimg(persDTO.getFile().getOriginalFilename());
-//		
-//		System.out.println("1:1문의등록내용:" +persDTO);
-//		System.out.println("파일이름:"+persDTO.getFile().getOriginalFilename());
-		
-		
-		//재료완성 > 재료 넣어서 메서드.
-		
-		
-		
 		
 		db.insertNotice(sfDTO);
 

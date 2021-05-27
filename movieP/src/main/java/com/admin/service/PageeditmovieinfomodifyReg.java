@@ -36,9 +36,9 @@ public class PageeditmovieinfomodifyReg implements PageeditService {
 		
 		//ServiceFullDTO sfDTO = (ServiceFullDTO)orimap.get("sfDTO");
 		MovieInfoDTO midto= (MovieInfoDTO)orimap.get("mdto");
-		
+		ServiceNoticePageDTO pagedto =(ServiceNoticePageDTO)orimap.get("npDTO");
 		//logger.info("수정하는 번호:"+midto.getM_index());
-		
+		logger.info("페이지"+pagedto.getPage());
 		
 		AdminListDTO result= new AdminListDTO();
 		
@@ -50,7 +50,7 @@ public class PageeditmovieinfomodifyReg implements PageeditService {
 		AlterDTO al = new AlterDTO();
 		
 		al.setMsg("만드는 중이지만 수정되었습니다.");
-		al.setUrl("movieinfolist");
+		al.setUrl("movieinfolist?page="+pagedto.getPage());
 		
 		
 		

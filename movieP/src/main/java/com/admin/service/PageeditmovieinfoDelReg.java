@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.model.AlterDTO;
 import com.model.DbMapper;
+import com.model.MovieInfoDTO;
 import com.model.ServiceFullDTO;
 import com.model.ServiceNoticePageDTO;
 
@@ -16,7 +17,7 @@ import edu.emory.mathcs.backport.java.util.Arrays;
 
 //Service단
 @Service
-public class PageeditnoticedeleteReg implements PageeditService {
+public class PageeditmovieinfoDelReg implements PageeditService {
 	
 
 	@Resource
@@ -24,19 +25,17 @@ public class PageeditnoticedeleteReg implements PageeditService {
 	
 	@Override
 	public Object execute(Object obj) {
-		System.out.println("빈 이름 PageeditnoticedeleteGo 소환됨");
-		
 		HashMap<String, Object> orimap = (HashMap)obj;
 		ServiceNoticePageDTO npDTO = (ServiceNoticePageDTO)orimap.get("npDTO");
-		ServiceFullDTO sfDTO = (ServiceFullDTO)orimap.get("sfDTO");
+		MovieInfoDTO mdto=  (MovieInfoDTO)orimap.get("mdto");
 		HttpServletRequest request = (HttpServletRequest)orimap.get("request");
 		
 		
 		
+		String deleteNo = request.getParameter("deleteNo");
 		
-		
-		String delNo = request.getParameter("deleteNo");
-		System.out.println("삭제할 것: "+delNo);
+		String [] arr = request.getParameterValues("checkArr[]");
+		System.out.println("삭제할 것: "+deleteNo);
 		
 		
 		AlterDTO al = new AlterDTO();	
@@ -46,8 +45,8 @@ public class PageeditnoticedeleteReg implements PageeditService {
 		int noId = 0;
 		
 		
-			al.setMsg("삭제 성공");
-		
+		db.deleteMovieinfo(Integer.parseInt(deleteNo));
+		al.setMsg("삭제 성공");
 		
 		System.out.println("결과: "+res);
 		

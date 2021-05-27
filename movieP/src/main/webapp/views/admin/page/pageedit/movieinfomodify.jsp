@@ -8,6 +8,16 @@
 </head>
 <body>
 
+<%  
+
+	
+	String data= "dd";
+	
+
+
+
+%>
+
 
 	<script>
 		$(document).ready(function() {
@@ -68,14 +78,14 @@
 			${data.midto }
 		
 		</div>
-		
-		
+		<!-- //  movieactors   moviecategory
+		 -->
 		영화제목 <input type="text" name="movietitle" /><br> 감독 <input
 			type="text" name="mdir" /><br>
 <hr />
 		<div id="actor">
 			<button type="button" id="addactor">배우추가</button>
-			배우 <input type="text" name="mactrs" id="mactrs1" />	<button type="button" class="actorsearch" data-popup-open="1" id="actorsearch">배우찾기</button><br>
+			배우 <input type="text" name="mactrs" id="mactrs1" value="<%=data %>"/>	<button type="button" class="actorsearch" data-popup-open="1" id="actorsearch">배우찾기</button><br>
 		<!--각 actorsearch 와  mactrs value를 엮어주는 방법..  -->
 			배우 <input type="text" name="mactrs" id="mactrs2" /><button type="button"  class="actorsearch" data-popup-open="2" id="actorsearch">배우찾기</button><br>	
 			
@@ -84,8 +94,8 @@
 <hr />
 		<div id="cate">
 			<button type="button" id="addcate">카테고리추가</button>
-			카테고리 <input type="text" name="mcate" /><br>
-			카테고리 <input type="text" name="mcate" /><br>
+			카테고리 <input type="text" name="mcate" value="" /><br>
+			카테고리 <input type="text" name="mcate" value="" /><br>
 			
 		</div>
 		<hr />

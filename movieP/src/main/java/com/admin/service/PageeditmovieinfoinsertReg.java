@@ -10,6 +10,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -26,7 +28,10 @@ import com.model.MovieTimeDTO;
 //Service단
 @Service
 public class PageeditmovieinfoinsertReg implements PageeditService {
-
+	
+	Logger logger = LoggerFactory.getLogger(getClass());
+	
+	
 	@Resource
 	DbMapper db;
 	
@@ -43,7 +48,8 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		int m_index =db.getIndexByTitle(mdto.getMovietitle());
 		HashSet<String> imgnames= new HashSet<>();
 	
-	
+		logger.info(""+mdto.getMactrs());
+		logger.info(""+mdto.getMcate());
 		ArrayList<ActorDTO> adto = new ArrayList<>();
 		for (int i = 0; i < mdto.getMactrs().split(",").length; i++) {
 			ActorDTO actor = new ActorDTO();

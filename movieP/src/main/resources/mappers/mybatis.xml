@@ -203,9 +203,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<!-- 영화정보 등록 시1 ... 영화기본정보 -->
 	<insert id="movieinfoinsert" parameterType="MovieInfoDTO">
-		insert into movieinfo (movietitle, mdir, mdate, mplaytime, mplot)
+		insert into movieinfo (movietitle, mdir, mdate,mactrs,mcate, mplaytime, mplot)
 		values
-		(#{movietitle}, #{mdir}, #{mdate}, #{mplaytime}, #{mplot} )
+		(#{movietitle}, #{mdir}, #{mdate}, #{mactrs}  ,#{mcate},     #{mplaytime}, #{mplot} )
 
 	</insert>
 	<!-- 영화정보 등록시 포스터이름도 update -->
@@ -791,7 +791,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from movieinfo where m_index = #{index}
 	
 	</select>
-	
+	<delete id="deleteMovieinfo">
+		delete from movieinfo where m_index =#{m_index}
+	</delete>
 	
 	
 	

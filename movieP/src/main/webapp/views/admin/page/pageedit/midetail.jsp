@@ -19,22 +19,21 @@ $(function() {
 		var confirm_val = confirm("정말 삭제하시겠습니까?");
 		
 		if (confirm_val) {
-			var checkArr = new Array();
-			checkArr.push($(this).attr("value"));
-
+			var deleteno;
+			deleteNo= ($(this).attr("value"));
+			alert(deleteNo);
 			$.ajax({
 				url : "movieinfoDelReg",
 				type : "post",
 				data : {
-					checkArr : checkArr
+					deleteNo : deleteNo
 					},
 				success : function(res) {
-						/* text.indexOf(findString)
-						console.log(res) */ 
+						
 						console.log(res)
 					if (res.indexOf("삭제 성공") != -1) {
-						alert(checkArr+"번 삭제성공!");
-						location.href = "noticelist";
+						alert(deleteNo+"번 삭제성공!");
+						location.href = "movieinfolist";
 					} else {
 						alert("삭제가 취소되었습니다!");
 					}
@@ -84,8 +83,15 @@ $(function() {
 <button type="button" id="modechange" class="btn btn-info">비활성화</button>
 </div>
 
+
+<div  id="mtitlepart">
+<h1>제목 :  ${data.midto.movietitle} }</h1>
+</div>
+
+
 <div id="contentpart">
-${data.midto.mplot}
+<h2>줄거리</h2>
+${data.midto.mplotBr}
 
 </div>
 
