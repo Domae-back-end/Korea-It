@@ -175,6 +175,36 @@
      
     
         
+    $("#inforDelete").click(function(){
+    	
+    	var list = {
+    		userpw : document.getElementById('userpw').value,
+    		userid :  document.getElementById('userid').value
+    	};
+    	
+    	$.ajax({
+	    	async : false,
+	        type : 'POST',
+	        data : JSON.stringify(list),
+	        url : "/memberdelete",
+	        dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+			
+				if(data.dcnt >0){
+							
+					alert("탈퇴처리되었습니다")
+					frm.action = "/member/mypage/mypageMain"
+					frm.submit();
+				}
+	
+	     	}
+		});
+    });
+    
+    
+    
+        
     $("#informodifyGo").click(function(){
     	
     	var list = {

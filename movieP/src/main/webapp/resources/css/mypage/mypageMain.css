@@ -224,7 +224,14 @@ h4{
 	width: 10px;
 	float:left;
 }
-
+.pnumDes{
+	width: 80px;
+}
+.chButt {
+	width:90px ;
+	height: 30px;
+	border :none;
+}
 
 
 
