@@ -18,7 +18,7 @@ public class ServiceNoticePageDTO {
 
 	Integer page = 1; // 내가누른 페이지번호
 	Integer start; // 1일때 3(limit), 2일때 6(limit*2)
-	Integer limit = 5; // 한페이지에 게시글 갯수
+	Integer limit = 10; // 한페이지에 게시글 갯수
 	Integer pageLimit = 4; // 밑에페이지번호 갯수 (1창에 4개만)
 	Integer total; // 걍 총글의 갯수
 	Integer startPage; // pagelimit에 다다르고 그담페이지번호 계산 (1일땐 1~4) (2일땐 5~8)

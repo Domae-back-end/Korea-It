@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,11 +40,22 @@
 	.often {width: 300px; height: 300px; background: blue; float: left;}
 	.notice {width: 470px; height: 300px; background: blue; float: left; margin-left: 30px; }
 	
-	
-	
+	/* 공지사항바로가기 */
+	.notice {text-align: left; }
+	.shotcut li { }
+	.shotcut span:nth-of-type(1) {width: 370px; display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
 </style>
 
-
+<script>
+	function detailGo(aa) {
+		//alert("detailGo 눌렀냐?"+aa)
+		frm.action = "serviceNoticeDetail"
+		$("#detailId").val(aa)
+		alert(aa+"번으로 이동")
+		frm.submit()
+	}
+	
+</script>
 </head>
 
 <body>
@@ -73,12 +86,14 @@
 <div id="content">
 	<h2>고객센터 메인</h2>
 	
+	<form action="" name="frm">
+	<input type="hidden" name="noticeindex" id="detailId" />
+	
+	
 	<div class="qna1">
-		<form action="">
 			<label for="name">자주 묻는 질문</label>
 			<input type="text" id="name" class="inputText" >
 			<input type="submit" value="검색" class="inputButton">
-		</form>
 	</div>
 	
 	<div class="content2">
@@ -116,9 +131,22 @@
 			<p>자주찾는 서비스</p>
 		</div>
 		<div class="notice">
-			<p>공지사항</p>
+			<p><span>공지사항</span><span><a href="serviceNotice">더보기</a></span></p>
+			<ul class="shotcut">
+			<c:forEach items="${data.sfdto}" var="sfDTO" begin="0" end="5">
+				<li>
+					<p>
+						<a href="javascript:detailGo(${sfDTO.noticeindex })">
+							<span>${sfDTO.noticetitle }</span>
+							<span><fmt:formatDate value="${sfDTO.noticetime }" type="both" pattern="yyy.MM.dd"/></span>
+						</a>
+					</p>
+				</li>
+			</c:forEach>
+			</ul>
 		</div>
 	</div>
+	</form>
 </div>
 
 <div class="clear"></div>
