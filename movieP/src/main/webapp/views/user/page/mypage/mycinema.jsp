@@ -59,7 +59,7 @@
 			<div class="puchaseinner">결제금액</div>
 			<div class="puchaseinner">결제일</div>
 		</div>
-		<c:forEach items="${memdata.purchase }" var ="pp" > 
+		<c:forEach items="${memdata.purchase }" var ="pp" end="1" varStatus="no"> 
 			<c:if test="${pp.salesprice > 0}">
 				<div>
 					<div class="puchaseinner">${pp.movietitle }</div>
@@ -85,7 +85,7 @@
 			<div class="puchaseinner">작성일</div>
 			<div class="puchaseinner">답변일(답변상태)</div>
 		</div>
-		<c:forEach items="${memdata.qna }" var ="pp"> 
+		<c:forEach items="${memdata.qna }" var ="pp" end="1" > 
 			<div>
 				<div class="puchaseinner">${pp.persid }</div>
 				<div class="puchaseinner">${pp.perstitle }</div>

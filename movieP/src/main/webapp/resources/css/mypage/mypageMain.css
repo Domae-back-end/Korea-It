@@ -113,6 +113,7 @@ h4{
 
 
 
+
 .inforouter{
 	margin: 20px;
 	border-top: 1px solid #000;
@@ -187,7 +188,7 @@ h4{
 	margin-left: 10px;
 }
 #pnumouter{
-	width: 450px;
+	width: 150px;
 }
 .emailouter{
 	text-align:left;
@@ -208,7 +209,7 @@ h4{
 }
 .changeouter{
 	border-top: 1px solid #000;
-	height: 300px;
+	height: 320px;
 	width: 700px;
 	margin-left: 20px;
 }
@@ -224,16 +225,9 @@ h4{
 	width: 10px;
 	float:left;
 }
-.pnumDes{
+#checknum{
 	width: 80px;
 }
-.chButt {
-	width:90px ;
-	height: 30px;
-	border :none;
-}
-
-
 
 .buttouter{
 	width:450px;
@@ -255,6 +249,12 @@ h4{
 	border: 1px solid #ccc;
 	overflow-y: auto;
 }
+
+
+
+
+
+
 
 
 
