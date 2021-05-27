@@ -98,11 +98,11 @@ ${data.midto.mplotBr}
 
 <div id="bottompart">
 	
-	<button type="button" id="golist" class="btn btn-info">목록</button>
+	<button type="button" id="golist" class="btn btn-warning">	<a href="movieinfolist?page=${data.pdto.page }">목록${data.pdto.page }</a></button>
 	
 </div>
 <div class="back_list">
-				<a href="movieinfolist?page=${data.pdto.page }">목록${data.pdto.page }</a>
+			
 			</div>
 
 

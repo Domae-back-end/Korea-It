@@ -88,7 +88,7 @@ public class MovieInfoDTO {
 	String mimg;
 	String  mactrs=",";
 	String  mcate=",";
-	String  mplot;
+	String  mplot="";
 	String movieimg;
 	String imgurl;
 	String posterUrl;

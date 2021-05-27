@@ -38,8 +38,13 @@ public class Pageeditmovieinfomodify implements PageeditService {
 		MovieInfoDTO midto= (MovieInfoDTO)orimap.get("mdto");
 		
 		AdminListDTO result= new AdminListDTO();
+		MovieInfoDTO gomidto = db.getmovieinfobyidx(midto.getM_index());
+		if(gomidto.getMdate()==null) {
+			gomidto.setMdate(new Date());
+		}
 		
-		result.setMidto(db.getmovieinfobyidx(midto.getM_index()));
+		
+		result.setMidto(gomidto);
 		
 		logger.info(db.getmovieinfobyidx(midto.getM_index()).getMovietitle());
 		
