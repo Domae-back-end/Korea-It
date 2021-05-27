@@ -100,11 +100,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="reviewinsert" parameterType="MovieReviewDTO">
-		insert into review (cate, userid, postcontent, posttime)
-		select '${cate}', '${userid}', '${postcontent}', sysdate() from dual
+		insert into review (cate, userid, postcontent, posttime, gpa)
+		select '${cate}', '${userid}', '${postcontent}', sysdate(), '${gpa}' from dual
 		where not exists
 		(
-		select cate, userid, postcontent, posttime
+		select cate, userid, postcontent, posttime, gpa
 		from review
 		where cate='${cate}' and userid='${userid}'
 		)

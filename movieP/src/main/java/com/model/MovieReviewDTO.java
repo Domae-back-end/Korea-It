@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class MovieReviewDTO {
-	Integer cnt;
+	Integer cnt, gpa;
 	String cate, userid, postcontent;
 	Date posttime;
 	String posttime_s;

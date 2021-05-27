@@ -167,6 +167,8 @@ public class MovieController {
 		
 		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg") || service.equals("likeReg")) {
 			
+			System.out.println("라디오버튼으로부터 받은 값"+dto.getGpa());
+			
 			if (dto.getPostcontent() != "") {
 				dto.setUserid((String) req.getSession().getAttribute("sessionId"));
 				MovieAction4 res = pr.getContext().getBean("movie" + service, MovieAction4.class);

@@ -144,7 +144,8 @@ create table review(
 	cate varchar(100),
 	userid varchar(100),
 	postcontent varchar(2000),
-	posttime date
+	posttime date,
+	gpa int
 );	 
 	 
 <!-- 유저 좋아요 테이블-->
