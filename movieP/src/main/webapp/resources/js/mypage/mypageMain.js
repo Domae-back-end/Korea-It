@@ -194,7 +194,7 @@
 				if(data.dcnt >0){
 							
 					alert("탈퇴처리되었습니다")
-					frm.action = "/member/mypage/mypageMain"
+					frm.action = "/user/main"
 					frm.submit();
 				}
 	
