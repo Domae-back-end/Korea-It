@@ -10,16 +10,16 @@
 	<div class = "changeouter" id="changeouter">
 		<div class = "mideouter">
 			<div class = "pwnameouter">현재 비밀번호</div>
-			<div class="emailouter"><input type="text" id="nowpw" class="pwinner" maxlength="16" /></div>
+			<div class="emailouter"><input type="password" id="nowpw" class="pwinner" maxlength="16" /></div>
 		</div>
 		<div class = "mideouter">
 			<div class = "pwnameouter">새 비밀번호</div>
-			<div class="emailouter"><input type="text" id="newpw" class="pwinner" maxlength="16"/></div>
+			<div class="emailouter"><input type="password" id="newpw" class="pwinner" maxlength="16"/></div>
 			<p><small>※ 영문, 숫자, 특수문자 중 2가지 이상 조합하여 8~16자리 사이로 입력 해 주세요.</small></p>
 		</div>
 		<div class = "mideouter">
 			<div class = "pwnameouter">새 비밀번호 재입력</div>
-			<div class="emailouter"><input type="text" id="newpwch" class="pwinner" maxlength="16"/></div>
+			<div class="emailouter"><input type="password" id="newpwch" class="pwinner" maxlength="16"/></div>
 			<p><small>※ 비밀번호 확인을 위해 한 번 더 입력해 주시기 바랍니다.</small><p>
 		</div>
 	</div>

@@ -120,7 +120,7 @@
     	
     	frm.action = "/member/mypage/mypwchange"
 		frm.submit();
-    	
+
 	});
      
 	$("#pwmodifyGo").click(function(){
@@ -204,124 +204,9 @@
     });
     
     
-    
-    
-    
-    
-    
-    
-    
-    $("#writedelteGo").click(function(){
-    	
-    	var list = {
-    		userid : document.getElementById('userid').value,
-    		content :  document.getElementById('moiverecord').value,
-    		index :  document.getElementById('index').value
-    	};
-    	
-    	$.ajax({
-	    	async : false,
-	        type : 'POST',
-	        data : JSON.stringify(list),
-	        url : "/memberdelete",
-	        dataType : "json",
-			contentType : "application/json; charset=UTF-8",
-			success : function(data) {
-			
-				if(data.dcnt >0){
-							
-					alert("관람평이 삭제되었습니다.")
-					frm.action = "/member/mypage/mymoviestroy?kind=writemovie"
-					frm.submit();
-				}
-	
-	     	}
-		});
-    });
-    
-      
-	$("#writemodifyGo").click(function(){
-		
-		console.log($(this).index())
-		
-		$("#writetnow").css('display','none')
-		$("#writeArea").css('display','block')
-		
-		$(".writeButtouter").remove()
-		
-		var tt ="<span class='writetitleouter' id='writemodifyfinish'>"
-		tt+="<div><button class='changeButt' id='writemodifyfinish'>" +'완료'+"</button></div>"
-		tt+="<div><button class='changeButt' id='writemodifyNo'>" +'취소'+"</button></div>"
-		tt+="</span>"
-		
-		$(".writetitleouter").append(tt)	
-	});     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     
-	$("#writeGo").click(function(){
-		frm.action = "/user/movietime/list"
-		frm.submit();
-	});     
-
-
-     
-	$("#likeButt").click(function(){
-	
-		var list = {
-    		userid : document.getElementById('userid').value,
-    		like : document.getElementById('like').value,
-    		index : document.getElementById('index').value
-    	};
-    
-    	
-    	$.ajax({
-	    	async : false,
-	        type : 'POST',
-	        data : JSON.stringify(list),
-	        url : "/membermodify",
-	        dataType : "json",
-			contentType : "application/json; charset=UTF-8",
-			success : function(data) {
-				
-				if(data.cnt >0){
-								
-					var list = {
-			    		userid : document.getElementById('userid').value,
-			    		like : document.getElementById('like').value,
-			    		index : document.getElementById('index').value
-			    	};
-			    	
-					$.ajax({
-				    	async : false,
-				        type : 'POST',
-				        data : JSON.stringify(list),
-				        url : "/memberdelete",
-				        dataType : "json",
-						contentType : "application/json; charset=UTF-8",
-						success : function(data) {
-							
-							if(data.dcnt >0){
-							
-								alert("좋아요가 취소되었습니다.")
-								frm.action = "/member/mypage/mymoviestroy?kind=likemovie"
-								frm.submit();
-							}
-				     	}
-					});
-				}
-	     	}
-		});
-	
-	});     
-      
+ 
+ 
+ 
 	$("#ticketGo").click(function(){
     	frm.action = "/user/movietime/list"
 		frm.submit();
@@ -375,11 +260,165 @@
 		});
 	});
 	
-	
-	
-	
-	
-	
-	
-	
 });
+
+function likeButt(data){
+		
+	var list = {
+    	userid : document.getElementById('userid').value,
+    	like : document.getElementById('like').value,
+    	index : data
+    };
+   
+	$(this).click(function(){
+		
+		$.ajax({
+		    async : false,
+		    type : 'POST',
+		  	data : JSON.stringify(list),
+			url : "/membermodify",
+		    dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+					
+				if(data.cnt >0){
+				    	
+					$.ajax({
+						async : false,
+					    type : 'POST',
+					    data : JSON.stringify(list),
+					    url : "/memberdelete",
+					    dataType : "json",
+						contentType : "application/json; charset=UTF-8",
+						success : function(data) {
+								
+							if(data.dcnt >0){
+								
+								alert("좋아요가 취소되었습니다.")
+								frm.action = "/member/mypage/mymoviestroy?kind=likemovie"
+								frm.submit();
+							}
+					     }
+					});
+				}
+		     }
+		});
+		
+	})
+}
+
+function writemodifyGo(data,no){
+    	
+	$(".writetnow").eq(no).css('display','none')
+	$(".writeArea").eq(no).css('display','block')
+		
+	$(".writeButtouter").eq(no).remove()
+		
+	var tt ="<span class='writeButtouter'>"
+	tt+="<button class='changeButt' onclick='writemodifyfinish(" + data + ',' + no + ")'>" +"완료"
+	tt+="</button>"
+	tt+="<button class='changeButt' onclick='writemodifyNo(" + data + ',' + no + ")'>" +'취소'
+	tt+="</button>"
+	tt+="</span>"
+		
+	$(".writetitleouter").eq(no).append(tt)	
+		
+}
+
+function writedelteGo(data,no){
+	
+	var list = {
+		userid : document.getElementById('userid').value,
+		content : $('.writeArea').eq(no).val(),
+		index : data
+    };
+    
+    if(confirm("작성하신 관람평을 삭제하시겠습니까?")){
+        	
+		$.ajax({
+			
+			async : false,
+			type : 'POST',
+			data : JSON.stringify(list),
+		    url : "/memberdelete",
+		    dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(res) {
+				
+				if(res.dcnt >0){
+								
+					alert("관람평이 삭제되었습니다.")
+					location.href = "/member/mypage/mymoviestroy?kind=writemovie"
+				}
+		
+		     }
+		});
+	}	
+}
+
+
+function writemodifyNo(data,no){
+    	
+	$(".writetnow").eq(no).css('display','block')
+	$(".writeArea").eq(no).css('display','none')
+		
+	$(".writeButtouter").eq(no).remove()
+		
+	var tt ="<span class='writeButtouter'>"
+	tt+="<button class='changeButt' onclick='writemodifyGo(" + data + ',' + no + ")'>" +"수정"
+	tt+="</button>"
+	tt+="<button class='changeButt' onclick='writedelteGo(" + data + ',' + no + ")'>" +'삭제'
+	tt+="</button>"
+	tt+="</span>"
+		
+	$(".writetitleouter").eq(no).append(tt)	
+		
+}
+
+function writemodifyfinish(data,no){
+	
+	var list = {
+		userid : document.getElementById('userid').value,
+		content : $('.writeArea').eq(no).val(),
+		index : data
+    };
+    
+    
+	$.ajax({
+		
+		async : false,
+		type : 'POST',
+		data : JSON.stringify(list),
+	    url : "/membermodify",
+	    dataType : "json",
+		contentType : "application/json; charset=UTF-8",
+		success : function(res) {
+			
+			if(res.cnt >0){
+							
+				alert("관람평이 수정되었습니다.")
+				
+				$(".writetnow").eq(no).text($('.writeArea').eq(no).val())
+				
+				$(".writetnow").eq(no).css('display','block')
+				$(".writeArea").eq(no).css('display','none')
+				
+				$(".writeButtouter").eq(no).remove()
+		
+				var tt ="<span class='writeButtouter'>"
+				tt+="<button class='changeButt' onclick='writemodifyGo(" + data + ',' + no + ")'>" +"수정"
+				tt+="</button>"
+				tt+="<button class='changeButt' onclick='writedelteGo(" + data + ',' + no + ")'>" +'삭제'
+				tt+="</button>"
+				tt+="</span>"
+					
+				$(".writetitleouter").eq(no).append(tt)	
+				
+			}
+	
+	     }
+	});
+		
+}
+
+

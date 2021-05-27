@@ -16,7 +16,7 @@
 				<a href="/movie/moviedetail?sub=info&ind=${pp.m_index }"><div class="writetitle">${pp.movietitle }</div></a>
 				<div>상영시간</div>
 				<a href="/movie/moviedetail?sub=review&ind=${pp.m_index }">
-					<button class="changeButt" id="writeGo">괸람평쓰기</button>
+					<button class="changeButt" id="seewriteGo">괸람평쓰기</button>
 				</a>
 			</div>
 		</form> 	
