@@ -6,8 +6,16 @@
 <div>
 	<div class = "cimemaouter">
 		<div>
-			<div>${sessionId }${memdata.dto.username }님의 마이페이지 입니다</div>
-			<a href="/member/mypage/myinfor">개인정보수정 ></a>
+			<div>${memdata.dto.username }님의 마이페이지 입니다</div>
+			<c:choose>
+				<c:when test="${memdata.dto.kind == '일반' }">
+					<a href="/member/mypage/myinfor">개인정보수정 ></a>
+				</c:when>
+				<c:when test="${memdata.dto.kind == '네이버' }">
+					<a href="/member/mypage/myinforchange">개인정보수정 ></a>
+				</c:when>
+			</c:choose>
+			
 		</div>
 	</div>
 
@@ -19,19 +27,19 @@
 		<div class="cimemastory">
 			<a href="/member/mypage/mymoviestroy?kind=seemovie">
 				<div class="myrecord">
-					<div class="recordinner">끝</div>
+					<div class="recordinner">${memdata.cnt.sc }</div>
 					<div class="recordinner">본 영화</div>
 				</div>
 			</a>
 			<a href="/member/mypage/mymoviestroy?kind=writemovie">
 				<div class="myrecord">
-					<div class="recordinner">끝</div>
+					<div class="recordinner">${memdata.cnt.rc }</div>
 					<div class="recordinner">관람평</div>
 				</div>
 			</a>
 			<a href="/member/mypage/mymoviestroy?kind=likemovie">
 				<div class="myrecord">
-					<div class="recordinner">끝</div>
+					<div class="recordinner">${memdata.cnt.uc }</div>
 					<div class="recordinner">좋아요</div>
 				</div>		
 			</a>

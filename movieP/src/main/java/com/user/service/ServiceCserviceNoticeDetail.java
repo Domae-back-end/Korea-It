@@ -1,6 +1,7 @@
 package com.user.service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,16 @@ public class ServiceCserviceNoticeDetail implements ServiceCservice {//빈 창�
 	
 
 	@Override
-	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO) {
+	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO, HttpSession session) {
 		
 		db.addCount(sfDTO);
 		
+		if (session.getAttribute("sessionId") == null) {
+			sfDTO.setPersid(null);
+
+		}else {
+			sfDTO.setPersid((String)session.getAttribute("sessionId"));
+		}
 		
 		ServiceFullDTO next = db.noticeNext(sfDTO);
 		ServiceFullDTO before = db.noticeBefore(sfDTO);
@@ -32,17 +39,13 @@ public class ServiceCserviceNoticeDetail implements ServiceCservice {//빈 창�
 		System.out.println("before글:"+before);
 
 
-//		next글:null
-//		before글:ServiceFullDTO(kind2=null, schkey=null, noticeindex=107, noticecate=movie, noticetitle=번호는 107번이지롱, noticecont=107번 글이다?
-
-		
 		ServiceNotiListDTO res = new ServiceNotiListDTO();
 		res.setNow(db.noticedetail(sfDTO));
 		res.setBefore(before);
 		res.setNext(next);
 		res.setNpDTO(npDTO);
 		res.setOnesfdto(sfDTO);
-		
+
 		return res;
 	}
 	

@@ -48,6 +48,15 @@
 </style>
 
 <script>
+
+	$(function(){
+		
+		$(".btn").click(function(){
+			$("#pageIN").val( $(this).attr("dd") )
+			reviewpage.submit()
+		})
+	})
+	
 	function deleteGo(idx){
 		//console.log(idx)
 		// cate영화의, idx 번 글 삭제. 
@@ -74,6 +83,11 @@
 	});
 	
 </script>
+<form name = "reviewpage">
+	<input type="hidden" name="page" id="pageIN" value="${data.pdto.page}" />
+	<input type="hidden" name="ind" id="cate" value="${param.ind}" />
+	<input type="hidden" name="sub" id="review" value="review" />
+</form>
 <div id="reviewwrapper">
 <form id="reviewForm" action="reviewinsertReg" method="post" name="reviewgo">
 <textarea name="postcontent" id="p" rows="1" cols="200" onKeyUp="javascript:fnChkByte(this,'500')"></textarea>
@@ -95,7 +109,7 @@
 <hr>
 </c:if>
 </div>
-<c:forEach items="${moviereview }" var="r" varStatus="no">
+<c:forEach items="${moviereview.mrd }" var="r" varStatus="no">
 <div id = "aa">
 	<div id= "userinfo">
 		<div id="id">${r.userid }</div>
@@ -105,7 +119,26 @@
 	<div id="del"> <a href="javascript:deleteGo(${r.cnt})">삭제하기</a></div>
 </div>
 </c:forEach>
-
+<c:if test="${moviereview.pdto.startPage > 1}">
+		    	
+   <input type="button" class="btn" dd="${moviereview.pdto.startPage-1}" value="&lt" />
+    	
+    </c:if>	
+	<c:forEach begin="${moviereview.pdto.startPage}" end="${moviereview.pdto.endPage }" step="1" var="i">
+		<c:choose>
+			<c:when test="${i==moviereview.pdto.page }">
+				[${i }]
+			</c:when>
+			<c:otherwise>
+				<input type="button" class="btn" dd="${i }" value="${i }" />	
+			</c:otherwise>
+		</c:choose>
+		
+	</c:forEach>
+	<c:if test="${moviereview.pdto.endPage < moviereview.pdto.total}">
+		
+		<input type="button" class="btn" dd="${moviereview.pdto.endPage+1}" value="&gt" />	
+	</c:if>	
 
 
 </div>

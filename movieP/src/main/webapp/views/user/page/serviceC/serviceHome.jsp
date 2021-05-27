@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,9 +28,9 @@
 	
 	/* content2 속지 */
 	.content2 {padding-bottom: 50px; width: 800px; background: yellow; height: 200px; border-bottom: 1px solid gray; margin-bottom: 50px; }
-	.qna2 {width: 250px; height: 200px; background: blue; float: left; margin-right: 25px;  }
-	.history {width: 250px; height: 200px; background: blue; float: left;  margin-right: 25px; }
-	.personal {width: 250px; height: 200px; background: blue; float: left;}
+	.qna2 {width: 250px; height: 200px; float: left; margin-right: 25px;  }
+	.history {width: 250px; height: 200px; float: left;  margin-right: 25px; }
+	.personal {width: 250px; height: 200px; float: left;}
 	
 	
 	/* content3 속지 */
@@ -48,9 +49,23 @@
 <div id="sideBar">
 	<ul>
 		<li><a href="serviceHome">고객센터 홈</a></li>
-		<li><a href="serviceHistory">상담내역 확인</a></li>
+		<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm">상담내역 확인</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="serviceHistory">상담내역 확인</a></li>
+			</c:otherwise>
+		</c:choose>
 		<li><a href="serviceQna">자주 묻는 질문</a></li>
-		<li><a href="servicePersonal">1대1 문의</a></li>
+		<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm">1대1 문의</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="servicePersonal">1대1 문의</a></li>
+			</c:otherwise>
+		</c:choose>
 		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>
@@ -68,13 +83,31 @@
 	
 	<div class="content2">
 		<div class="qna2">
-			<p>자주묻는 질문</p>
+			<a href="serviceQna"><img src="../../views/user/img/service/pic1.png" alt="" /></a>
 		</div>
 		<div class="history">
-			<p>상담내역 확인</p>
+			<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm"><img src="../../views/user/img/service/pic2.png" alt="" /></a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="serviceHistory"><img src="../../views/user/img/service/pic2.png" alt="" /></a></li>
+			</c:otherwise>
+			</c:choose>
+			
 		</div>
 		<div class="personal">
-			<p>1대1 문의</p>
+			<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm"><img src="../../views/user/img/service/pic3.png" alt="" /></a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="servicePersonal"><img src="../../views/user/img/service/pic3.png" alt="" /></a></li>
+			</c:otherwise>
+			</c:choose>
+			
+			
+			
 		</div>
 	</div>
 	

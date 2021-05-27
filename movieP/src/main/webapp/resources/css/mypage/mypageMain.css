@@ -131,7 +131,7 @@ h4{
 	border :none;
 	border-radius: 10px;
 }
-#check,#modifyGo{
+#check,#informodifyGo, #pwmodifyGo{
 	height: 50px;
 	width: 90px;
 	border :none;
@@ -326,4 +326,17 @@ h4{
 	float: left;
 	margin-bottom: 10px;
 	margin: 22px;
+}
+#writedelteGo, #writemodifyGo, #writemodifyfinish, #writemodifyfinish{
+	margin-left: 15px;
+	float: left;
+}
+#writeArea{
+	display: none;
+	margin-top: 15px;
+}
+#writeGo{
+	position:relative;
+	top:20px;
+	left:30px;
 }

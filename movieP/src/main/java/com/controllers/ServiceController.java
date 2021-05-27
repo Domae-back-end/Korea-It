@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,6 +30,7 @@ public class ServiceController {
 	public Object data(@PathVariable String service, HttpServletRequest request
 			, ServiceNoticePageDTO npDTO
 			, ServiceFullDTO sfDTO
+			, HttpSession session
 			) {
 		//service = qnainsertReg (1대1문의 jsp에서 따옴)
 
@@ -43,7 +45,7 @@ public class ServiceController {
 		map.put("sfDTO", sfDTO);
 		
 		
-		return sr.execute(npDTO, sfDTO);
+		return sr.execute(npDTO, sfDTO, session);
 	}
 	
 	

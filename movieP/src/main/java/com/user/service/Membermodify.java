@@ -24,6 +24,7 @@ public class Membermodify implements MemberAction{
 		
 		map.put("cnt", dm.memModify(mdto));
 		
+		System.out.println(map);
 		return map;
 	}
 	

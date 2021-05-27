@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
+<input type="hidden" id="userid" value="${sessionId }"/>
+
 <h2>개인정보 수정</h2>
 	<div class = "idouter">
 		<div class = "nameouter">아이디</div>
@@ -22,7 +27,7 @@
 		<div class = "mideouter">
 			<div class = "nameouter">생년월일</div>
 			<div>
-				<div class = "dataouter">${memdata.dto.userbirth }</div>
+				<div class = "dataouter"><fmt:formatDate value="${memdata.dto.userbirth }" pattern="yyyy년 MM월 dd일"/></div>
 			</div>
 		</div>
 		
@@ -31,7 +36,7 @@
 			<div class = "nameouter">휴대폰</div>
 			<div>
 				<div class = "dataouter" id="pnumouter">${memdata.dto.userpnum }</div>
-				<input type="button" class="changeButt" value="휴대폰번호 변경"/>
+				<input type="button" class="changeButt" id="inforDeleteGo" value="휴대폰번호 변경"/>
 			</div>
 		</div>
 		
@@ -43,12 +48,23 @@
 			
 		<div class = "mideouter">
 			<div class = "nameouter">비밀번호</div>	
-			<div class="emailouter"><input type="button" class="changeButt" id="changepw" value="비밀번호 변경" /></div>
+			<div class="emailouter">
+			<c:choose>
+					<c:when test="${memdata.dto.kind == '일반' }">
+						<input type="button" class="changeButt" id="changepw" value="비밀번호 변경" />
+					</c:when>
+					<c:when test="${memdata.dto.kind == '네이버' }">
+						<input type="button" class="changeButt" id="changepw" disabled="disabled" value="비밀번호 변경" />
+						<small>네이버로그인 비밀번호 변경 불가.</small>
+					</c:when>
+				</c:choose>
+			
+			</div>
 		</div>
 	</div>
 	
 	<div>
 		<input type="button" id="mainGo" value="취소"/>
-		<input type="button" id="check" value="등록"/>
+		<input type="button" id="informodifyGo" value="등록"/>
 	</div>
 </form>

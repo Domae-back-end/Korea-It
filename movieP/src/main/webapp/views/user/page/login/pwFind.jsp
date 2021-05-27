@@ -26,13 +26,15 @@
 			</div>
 			<div class="outF">
 				<div class="outD" >휴대폰 번호</div>
-				<div class="outT"><input type="text" id="userpnum" name="userpnum" maxlength="20" placeholder="'-'없이 입력" autocomplete="off" /></div>
+				<div class="outT"><input type="text" id="userpnum" name="userpnum" maxlength="20" placeholder="'-'포함해서 입력" autocomplete="off" /></div>
+				<input type="button" class="chButt" id="pnumcheck" value="인증번호 발송"/>
 			</div>
 			<div class="outF">
 				<div class="outD" >인증번호</div>
-				<div class="outT"><input type="text" id="userpnumchk" name="userpnumchk" maxlength="20" autocomplete="off" /></div>
+				<div class="outT"><input type="text" id="userpnumchk" name="userpnumchk" disabled="disabled" maxlength="20" autocomplete="off" /></div>
+				<input type="button" class="chButt" id="checkBtn" disabled="disabled" value="확인"/>
 			</div>
-				<input type="button" id="check" value="비밀번호 찾기" />
+				<input type="button" id="check" disabled="disabled" value="비밀번호 찾기" />
 		</div>
 	</form>
 </body>

@@ -1,9 +1,14 @@
 package com.user.service;
 
+import java.util.HashMap;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
+import com.admin.service.ServiceNotiListDTO;
 import com.model.DbMapper;
 import com.model.ServiceFullDTO;
 import com.model.ServiceNoticePageDTO;
@@ -17,9 +22,27 @@ public class ServiceCserviceHome implements ServiceCservice {//빈 창고에 등
 	
 
 	@Override
-	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO, HttpSession session) {
+
+		
+		System.out.println(session.getAttribute("sessionId"));
+
+		
+		if (session.getAttribute("sessionId") == null) {
+			sfDTO.setPersid(null);
+
+		}else {
+			sfDTO.setPersid((String)session.getAttribute("sessionId"));
+		}
+		
+		
+		
+		ServiceNotiListDTO res= new ServiceNotiListDTO();
+		res.setOnesfdto(sfDTO);
+		
+		
+		
+		return res;
 	}
 
 

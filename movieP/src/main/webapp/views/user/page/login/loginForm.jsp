@@ -11,8 +11,8 @@
 		<input type="button" id="check" value="로그인"/>
 	</div>
 	<div class="secondD">
-		<a href="idFind">ID 찾기</a>112qwq``1234`wq``w111111
-		<a href="/member/join/joinForm">회원가입</a>`
+		<a href="idFind">ID 찾기</a>
+		<a href="/member/join/joinForm">회원가입</a>
 		<a href="pwFind">PW 찾기</a>
 	</div>
 	<div>

@@ -33,7 +33,7 @@ public class MemberCheckController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/memberpurchase", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberRecord", method = RequestMethod.POST)
 	public Object purchasechek(@RequestBody MemberDTO dto) {
 		
 		MemberAction res = pr.getContext().getBean("membermypage", MemberAction.class);
@@ -51,10 +51,18 @@ public class MemberCheckController {
 		
 		return res.execute(dto,null);
 	}
+	@ResponseBody
+	@RequestMapping(value = "/memberdelete", method = RequestMethod.POST)
+	public Object delete(@RequestBody MemberDTO dto) {
+		
+		MemberAction res = pr.getContext().getBean("memberdelete", MemberAction.class);
+		
+		return res.execute(dto,null);
+	}
 	
 	@ResponseBody
 	@RequestMapping("/memberpnumCheckSNS")
-	public String pnumchek(@RequestBody String userpnum) {
+	public String pnumchek(String phoneNumber) {
 		
 		Random rand  = new Random();
         String chknum = "";
@@ -65,9 +73,9 @@ public class MemberCheckController {
         
     	MemberCertifiedPnum certifiedPnum = new MemberCertifiedPnum();
         
-        System.out.println("수신자 번호 : " + userpnum);
+        System.out.println("수신자 번호 : " + phoneNumber);
         System.out.println("인증번호 : " + chknum);
-        //certifiedPnum.mempnumCheck(userpnum,chknum);
+        certifiedPnum.mempnumCheck(phoneNumber,chknum);
         
         return chknum;
 	}

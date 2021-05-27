@@ -30,7 +30,10 @@
          </td>
       </tr>
       <tr>
-      <td><input id = "tBtn" type="button" value="예매하기"></td>
+      <td>
+      <a href ="/user/movietime/list?movietitle=${mm.movietitle }" /> 예매하기
+      </a>
+      </td>
       </tr>
    </table>
  </c:forEach>

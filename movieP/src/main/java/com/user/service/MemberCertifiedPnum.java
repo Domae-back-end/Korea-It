@@ -13,12 +13,12 @@ public class MemberCertifiedPnum {
 	        String api_key = "NCSH1SZDOPUMQAWJ";
 	        String api_secret = "8NETIXNPJJGGAHMJXB9HXUKJNDPWJSBE";
 	        Message coolsms = new Message(api_key, api_secret);
-
+	        System.out.println(phoneNumber);
 	        HashMap<String, String> params = new HashMap<String, String>();
 	        params.put("to", phoneNumber);
 	        params.put("from", "010-2075-4220");
 	        params.put("type", "SMS");
-	        params.put("text", "영화관 회원가입 본인인증 메시지 : 인증번호는" + "["+cerNum+"]" + "입니다.");
+	        params.put("text", "영화관 본인인증 메시지 : 인증번호는" + "["+cerNum+"]" + "입니다.");
 	        params.put("app_version", "test app 1.2"); 
 
 	        try {

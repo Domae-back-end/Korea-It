@@ -33,7 +33,8 @@
 		width: 300px;
 	}
 	
-	#btn1{
+	#link{
+
 		margin-left: 750px;
 		font-size:30px;
 	}
@@ -50,7 +51,9 @@
 	<div id="detail">
 		<p id="title">${moviedetail.movietitle }</p>
 		<p id="poster"><img src="/resources/moviedata/${moviedetail.movieimg }"></p>	
-		<input id="btn1" type="button" value="예매하기"/>
+		<div id="link">
+			<a href ="/user/movietime/list?movietitle=${moviedetail.movietitle }" /> 예매하기</a>
+		</div>
 	</div>
 </div>
 <div id="sub1">

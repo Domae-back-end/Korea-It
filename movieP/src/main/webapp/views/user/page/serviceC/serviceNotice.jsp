@@ -39,6 +39,8 @@
 	.search>input[type="text"] {font-size: 16px; width: 200px; height: 38px; }
 	.search>input[type="submit"] {font-size: 16px; width: 50px; height: 38px; }
 	
+	/* 검색 (총갯수) */
+	.search_result {text-align: left; }
 </style>
 <script>
 	$(function() {
@@ -71,9 +73,23 @@
 <div id="sideBar">
 	<ul>
 		<li><a href="serviceHome">고객센터 홈</a></li>
-		<li><a href="serviceHistory">상담내역 확인</a></li>
+		<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm">상담내역 확인</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="serviceHistory">상담내역 확인</a></li>
+			</c:otherwise>
+		</c:choose>
 		<li><a href="serviceQna">자주 묻는 질문</a></li>
-		<li><a href="servicePersonal">1대1 문의</a></li>
+		<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm">1대1 문의</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="servicePersonal">1대1 문의</a></li>
+			</c:otherwise>
+		</c:choose>
 		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>
@@ -96,7 +112,9 @@
 		
 		
 		
-		
+		<div class="search_result">
+			<p>총 ${data.snpdto.ttt }건이 검색되었습니다.</p>
+		</div>
 		
 		
 		

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,18 +30,52 @@
 	.td1 tr>td:nth-of-type(3) {text-align: left; }
 	.td1 tr:first-of-type>td:nth-of-type(4) {width: 120px;  }
 	.td1 tr:first-of-type>td:nth-of-type(5) {width: 100px;  }
-	.pp {margin: 5px 0;  }
+	p {margin: 5px 0;  }
 	
 </style>
+<script>
+	$(function() {
+		//alert("안녕");
+		$(".btn").click(function(){
+			//alert("눌렀냐?"+$(this).attr("dd"))
+			$("#pageIN").val($(this).attr("dd"))
+			frm.submit()
+		})
+		
+	})
+	
+	function detailGo(aa) {
+		//alert("detailGo 눌렀냐?"+aa)
+		frm.action = "serviceHistoryDetail"
+		$("#detailId").val(aa)
+		alert(aa+"번으로 이동")
+		frm.submit()
+	}
+	
+</script>
 </head>
 
 <body>
 <div id="sideBar">
 	<ul>
 		<li><a href="serviceHome">고객센터 홈</a></li>
-		<li><a href="serviceHistory">상담내역 확인</a></li>
+		<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm">상담내역 확인</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="serviceHistory">상담내역 확인</a></li>
+			</c:otherwise>
+		</c:choose>
 		<li><a href="serviceQna">자주 묻는 질문</a></li>
-		<li><a href="servicePersonal">1대1 문의</a></li>
+		<c:choose>
+			<c:when test="${empty data.onesfdto.persid }">
+				<li><a href="../../member/login/loginForm">1대1 문의</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="servicePersonal">1대1 문의</a></li>
+			</c:otherwise>
+		</c:choose>
 		<li><a href="serviceNotice">공지사항</a></li>
 	</ul>
 </div>
@@ -47,35 +84,73 @@
 	<h2>상담내역 확인</h2>
 	
 	<div>
-	<table class="td1" >
-		<tr>
-			<td>번호</td>
-			<td>카테고리</td>
-			<td>제목</td>
-			<td>등록일</td>
-			<td>상태</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>가입</td>
-			<td><a href="serviceHistoryDetail">ㅇ안된다고</a></td>
-			<td>2020/05/17</td>
-			<td>
-				<p class="pp">2020/05/18</p>
-				<p class="pp">답변완료</p>
-			</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>가입</td>
-			<td>가입이안되요</td>
-			<td>2020/05/17</td>
-			<td>
-				<p></p>
-				<p>미답변</p>
-			</td>
-		</tr>
-	</table>
+		<form action="" name="frm">
+		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
+		<input type="hidden" name="persindex" id="detailId" />
+		<table class="td1" >
+			<tr>
+				<td>번호</td>
+				<td>카테고리</td>
+				<td>제목</td>
+				<td>등록일</td>
+				<td>상태</td>
+			</tr>
+		<c:forEach items="${data.sfdto }" var="sfDTO" varStatus="no" >
+			<tr>
+				<td>${sfDTO.persindex }</td>
+				<td>${sfDTO.perscateKr }</td>
+				<td>
+					<a href="javascript:detailGo(${sfDTO.persindex })">${sfDTO.perstitle }</a>
+				</td>
+				<td>					
+					<fmt:formatDate value="${sfDTO.persqtime}" type="both" pattern="yyy.MM.dd"/>					
+				</td>
+				<td>
+					<p><fmt:formatDate value="${sfDTO.persatime }" type="both" pattern="yyy.MM.dd"/></p>
+					<p>${sfDTO.persstate }</p>
+				</td>
+			</tr>
+		</c:forEach>
+		
+		
+		
+			<tr>
+				<td colspan="5" align="center">
+				
+					<c:if test="${data.snpdto.startPage > 1 }">
+						<input type="button" class="btn" dd="${data.snpdto.startPage-1 }" value="&lt" />	
+					</c:if>
+					
+					<c:forEach begin="${data.snpdto.startPage }" end="${data.snpdto.endPage }" step="1" var="i">
+						<c:choose>
+							<c:when test="${i==data.snpdto.page }">
+								[${i }]
+							</c:when>
+							<c:otherwise>
+								<input type="button" class="btn" dd="${i }" value="${i }" />
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:if test="${data.snpdto.endPage < data.snpdto.total }">
+						<input type="button" class="btn" dd="${data.snpdto.endPage+1 }" value="&gt" />
+					</c:if>
+				
+				
+				
+				</td>
+			</tr>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</table>
+		</form>
 	</div>
 </div>
 

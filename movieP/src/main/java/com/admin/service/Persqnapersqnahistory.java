@@ -3,12 +3,15 @@ package com.admin.service;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
 import com.model.ServiceFullDTO;
 import com.model.ServiceNoticePageDTO;
+
+import edu.emory.mathcs.backport.java.util.Arrays;
 
 @Service
 public class Persqnapersqnahistory implements PageeditService {
@@ -17,29 +20,36 @@ public class Persqnapersqnahistory implements PageeditService {
 
 	@Override
 	public Object execute(Object obj) {// map
-//		HashMap<String, Object> orimap = (HashMap) obj;
-//
-//		ServiceNoticePageDTO npDTO = (ServiceNoticePageDTO) orimap.get("npDTO");
-//		ServiceFullDTO sfDTO = (ServiceFullDTO) orimap.get("sfDTO");
-//
-//		System.out.println("빈 이름 Pageeditnoticelist 소환됨 page:" + npDTO.getPage());
-//		// service라는 이름의 키로 > table 이름을 담는 클래스 dto?
-//
-//		HashMap<String, Object> map = new HashMap<>();
-//		map.put("npDTO", npDTO);
-//		map.put("sfDTO", sfDTO);
-//		//
-//		System.out.println(npDTO + "\n start:" + npDTO.getStart());
-//
-//		npDTO.init(db, map);
-//		System.out.println("init");
-//		System.out.println(npDTO + "\n start:" + npDTO.getStart());
-//
-//		ServiceNotiListDTO res = new ServiceNotiListDTO();
-//		res.setSfdto(db.noticelist(map));
-//		res.setSnpdto(npDTO);
+		HashMap<String, Object> orimap = (HashMap) obj;
+		ServiceNoticePageDTO snpdto = (ServiceNoticePageDTO) orimap.get("snpdto");
+		ServiceFullDTO sfdto = (ServiceFullDTO) orimap.get("sfdto");
+		HttpServletRequest request = (HttpServletRequest)orimap.get("request");
 
-		return null;
+		
+		
+	
+		
+		
+		
+		HashMap<String, Object> map = new HashMap<>();
+		ServiceNotiListDTO res = new ServiceNotiListDTO();
+		map.put("snpdto", snpdto);
+		map.put("sfdto", sfdto);
+		
+		if (sfdto.getPerscate() == null) {
+
+			snpdto.initpers2(db, map);
+			res.setSfdto(db.perslistans(map));
+			res.setSnpdto(snpdto);
+			return res;
+		}
+		
+
+		snpdto.initpers(db, map);
+		res.setSfdto(db.perslistanscate(map));
+		res.setSnpdto(snpdto);
+
+		return res;
 	}
 
 }

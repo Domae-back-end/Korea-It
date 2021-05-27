@@ -24,6 +24,7 @@ import com.model.MovieAction5;
 import com.model.MovieAction6;
 import com.model.MovieInfoDTO;
 import com.model.MovieReviewDTO;
+import com.model.MoviepageDTO;
 import com.model.PPPData;
 
 @Controller
@@ -136,13 +137,12 @@ public class MovieController {
 	}
 
 	@ModelAttribute("moviereview")
-	Object rr(HttpServletRequest req) {
-
-		//현재 request session으로 아이디 받아와서 내 review만 가져오
+	Object rr(HttpServletRequest req, MoviepageDTO pageDTO, MovieReviewDTO reviewDTO) {
 
 		if (req.getParameter("ind") != null) {
-			MovieAction2 res = pr.getContext().getBean("moviereview", MovieAction2.class);
-			return res.execute(Integer.parseInt(req.getParameter("ind")));
+			reviewDTO.setCate(req.getParameter("ind"));
+			MovieAction5 res = pr.getContext().getBean("moviereview", MovieAction5.class);
+			return res.execute(reviewDTO, pageDTO);
 		}
 		return null;
 	}
