@@ -13,7 +13,7 @@ public class MovieTicketinglistReg implements MovieTicketingService {
 	@Override
 	public Object execute(MovieTimeDTO dto) {
 		HashMap<String, Object> ar = new HashMap<>();
-		System.out.println(dto);
+	
 		return ar;
 	}
 	
