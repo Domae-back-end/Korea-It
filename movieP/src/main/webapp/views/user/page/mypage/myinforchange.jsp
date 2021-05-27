@@ -12,7 +12,16 @@
 		<div class = "nameouter">아이디</div>
 		<div>
 			<div class = "dataouter">${sessionId }</div>
-			<input type="button" class="changeButt" id="inforDelete" value="회원탈퇴"/>
+	
+			<c:choose>
+				<c:when test="${memdata.dto.kind == '일반' }">
+					<input type="button" class="changeButt" id="inforDelete" value="회원탈퇴"/>
+				</c:when>
+				<c:when test="${memdata.dto.kind == '네이버' }">
+					<input type="button" class="changeButt" id="inforNaverDelete" value="회원탈퇴"/>
+				</c:when>
+			</c:choose>
+	
 		</div>
 	</div>
 	
@@ -51,7 +60,7 @@
 		<div class = "mideouter">
 			<div class = "nameouter">비밀번호</div>	
 			<div class="emailouter">
-			<c:choose>
+				<c:choose>
 					<c:when test="${memdata.dto.kind == '일반' }">
 						<input type="button" class="changeButt" id="changepw" value="비밀번호 변경" />
 					</c:when>

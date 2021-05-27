@@ -526,19 +526,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 		<choose>
 			<when test="userpw != null or userpw == ''">
-				<where> <![CDATA[userid = #{userid} and userpw = #{userpw}]]></where>
+				<where> <![CDATA[userid = #{userid} and userpw = #{userpw} and kind !='탈퇴']]></where>
 			</when>
 
 			<when test="userpnum != null or userpnum == ''">
-				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} ]]></where>
+				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} and kind !='탈퇴' ]]></where>
 			</when>
 
 			<when test="userid == null">
-				<where> <![CDATA[username = #{username} and userbirth = #{userbirth} and userpnum = #{userpnum} ]]></where>
+				<where> <![CDATA[username = #{username} and userbirth = #{userbirth} and userpnum = #{userpnum} and kind !='탈퇴']]></where>
 			</when>
 
 			<otherwise>
-				<where> <![CDATA[userid = #{userid}]]></where>
+				<where> <![CDATA[userid = #{userid} and kind !='탈퇴']]></where>
 			</otherwise>
 
 		</choose>
@@ -572,16 +572,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 		<choose>
 			
-			<when test=" userpw !=null">
-				<![CDATA[memberinfo]]>
-				<set><![CDATA[userpw=#{userpw}]]></set>
-				<where> <![CDATA[userid=#{userid}]]></where>
-			</when>
-			
 			<when test=" kind !=null">
 				<![CDATA[memberinfo]]>
 				<set><![CDATA[kind=#{kind}]]></set>
-				<where> <![CDATA[userid=#{userid} and userpw=#{userpw}]]></where>
+				<where> <![CDATA[userid=#{userid} and userpw=#{userpw} and kind !='탈퇴']]></where>
 			</when>
 			
 			<when test=" content !=null">
@@ -596,10 +590,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<where> <![CDATA[m_index=#{index}]]> </where>
 			</when>
 			
+			<when test=" userpw !=null">
+				<![CDATA[memberinfo]]>
+				<set><![CDATA[userpw=#{userpw}]]></set>
+				<where> <![CDATA[userid=#{userid} and kind !='탈퇴']]></where>
+			</when>
+			
 			<otherwise>
 				<![CDATA[memberinfo]]>
 				<set><![CDATA[userpnum=#{userpnum},useremail=#{useremail}]]></set>
-				<where> <![CDATA[userid=#{userid}]]></where>
+				<where> <![CDATA[userid=#{userid} and kind !='탈퇴' ]]></where>
 			</otherwise>
 		
 		</choose>
@@ -616,6 +616,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			<when test=" like !=null">
 				<![CDATA[userlikes]]>
 				<where> <![CDATA[userid=#{userid} and m_index=#{index}]]></where>
+			</when>
+			<when test=" kind !=null">
+				<![CDATA[memberinfo]]>
+				<where> <![CDATA[userid=#{userid} and kind ='네이버']]></where>
 			</when>
 		</choose>
 
