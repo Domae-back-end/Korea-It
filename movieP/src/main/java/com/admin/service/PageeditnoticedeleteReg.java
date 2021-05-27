@@ -57,7 +57,7 @@ public class PageeditnoticedeleteReg implements PageeditService {
       
       System.out.println("결과: "+res);
       
-
+//
       al.setUrl("/admin/pageedit/noticelist");
 
       return al;
