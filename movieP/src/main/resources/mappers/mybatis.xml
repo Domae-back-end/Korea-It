@@ -578,6 +578,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<where> <![CDATA[userid=#{userid}]]></where>
 			</when>
 			
+			<when test=" kind !=null">
+				<![CDATA[memberinfo]]>
+				<set><![CDATA[kind="탈퇴"]]></set>
+				<where> <![CDATA[userid=#{userid} and userpw=#{userpw}]]></where>
+			</when>
+			
 			<when test=" content !=null">
 				<![CDATA[review]]>
 				<set><![CDATA[postcontent=#{content}]]></set>
@@ -611,10 +617,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<![CDATA[userlikes]]>
 				<where> <![CDATA[userid=#{userid} and m_index=#{index}]]></where>
 			</when>
-			<otherwise>
-				<![CDATA[memberinfo]]>
-				<where> <![CDATA[userid=#{userid} and userpw=#{userpw}]]></where>
-			</otherwise>
 		</choose>
 
 	</sql>
