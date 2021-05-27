@@ -30,6 +30,8 @@
 	.td1 tr:first-of-type>td:nth-of-type(1) {width: 50px;  }
 	.td1 tr:first-of-type>td:nth-of-type(2) {width: 100px;  }
 	.td1 tr:first-of-type>td:nth-of-type(3) {width: 430px;  }
+	.shotcut span {width: 430px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; display: inline-block; text-align: left;  }
+	
 	.td1 tr:first-of-type>td:nth-of-type(4) {width: 120px;  }
 	.td1 tr:first-of-type>td:nth-of-type(5) {width: 100px;  }
 	
@@ -132,8 +134,8 @@
 				<tr>
 					<td>${sfDTO.noticeindex }</td>
 					<td>${sfDTO.noticecateKr }</td>
-					<td>
-						<a href="javascript:detailGo(${sfDTO.noticeindex })">${sfDTO.noticetitle }</a>
+					<td class="shotcut">
+						<a href="javascript:detailGo(${sfDTO.noticeindex })"><span>${sfDTO.noticetitle }</span></a>
 					</td>
 					<td>					
 						<fmt:formatDate value="${sfDTO.noticetime}" type="both" pattern="yyy.MM.dd"/>					
