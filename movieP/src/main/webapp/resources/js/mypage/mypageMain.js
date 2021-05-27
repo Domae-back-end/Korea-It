@@ -179,14 +179,15 @@
     	
     	var list = {
     		userpw : document.getElementById('userpw').value,
-    		userid :  document.getElementById('userid').value
+    		userid :  document.getElementById('userid').value,
+    		kind:'탈퇴'
     	};
     	
     	$.ajax({
 	    	async : false,
 	        type : 'POST',
 	        data : JSON.stringify(list),
-	        url : "/memberdelete",
+	        url : "/modify",
 	        dataType : "json",
 			contentType : "application/json; charset=UTF-8",
 			success : function(data) {

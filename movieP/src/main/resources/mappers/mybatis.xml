@@ -580,7 +580,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			
 			<when test=" kind !=null">
 				<![CDATA[memberinfo]]>
-				<set><![CDATA[kind="탈퇴"]]></set>
+				<set><![CDATA[kind=#{kind}]]></set>
 				<where> <![CDATA[userid=#{userid} and userpw=#{userpw}]]></where>
 			</when>
 			
