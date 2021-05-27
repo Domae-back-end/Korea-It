@@ -35,8 +35,8 @@ public class PageeditnoticedeleteReg implements PageeditService {
 		
 		
 		
-		String delNo = request.getParameter("deleteNo");
-		System.out.println("삭제할 것: "+delNo);
+		String [] arr = request.getParameterValues("checkArr[]");
+		System.out.println("삭제할 것: "+Arrays.toString(arr));
 		
 		
 		AlterDTO al = new AlterDTO();	
@@ -45,14 +45,20 @@ public class PageeditnoticedeleteReg implements PageeditService {
 		int res = 0;
 		int noId = 0;
 		
-		
+		if (arr != null) {				
+			for (String i : arr) {
+				noId = Integer.parseInt(i);
+				sfDTO.setNoticeindex(noId);
+				db.noticedelete(sfDTO);
+			}
+			res = 1;
 			al.setMsg("삭제 성공");
-		
+		}
 		
 		System.out.println("결과: "+res);
 		
 
-		al.setUrl("/admin/pageedit/movieinfolist");
+		al.setUrl("/admin/pageedit/noticelist");
 
 		return al;
 	}
