@@ -26,7 +26,7 @@ public class PageeditmovieinfomodifyReg implements PageeditService {
 	//
 	Logger logger= LoggerFactory.getLogger(getClass());
 	
-
+	//movieinfomodifyReg
 	@Resource
 	DbMapper db;
 	

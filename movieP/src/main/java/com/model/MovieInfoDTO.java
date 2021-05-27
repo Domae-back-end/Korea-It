@@ -118,9 +118,18 @@ public class MovieInfoDTO {
 		return sdf.format(mdate);
 		
 	}//
-	public String getmplotBr() {
+	public String getMplotBr() {
+		
 		return mplot.replaceAll("\n", "<br>");
 	}
+	public  String[] getAllactors() {
+		return mactrs.split(",");
+	}
+	
+	public  String[] getAllcates() {
+		return mcate.split(",");
+	}
+	
 	
 	
 }

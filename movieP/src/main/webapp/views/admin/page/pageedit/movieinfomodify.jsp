@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,35 +78,38 @@
 	<form action="movieinfomodifyReg" method="post"
 		enctype="multipart/form-data">
 		<div>
-			${data.midto }
-		
 		</div>
 		<!-- //  movieactors   moviecategory
 		 -->
-		영화제목 <input type="text" name="movietitle" /><br> 감독 <input
-			type="text" name="mdir" /><br>
+		영화제목 <input type="text" name="movietitle" value="${data.midto.movietitle}"  /><br>
+		 감독 <input type="text" name="mdir" value="${data.midto.mdir}" /><br>
 <hr />
 		<div id="actor">
 			<button type="button" id="addactor">배우추가</button>
-			배우 <input type="text" name="mactrs" id="mactrs1" value="<%=data %>"/>	<button type="button" class="actorsearch" data-popup-open="1" id="actorsearch">배우찾기</button><br>
-		<!--각 actorsearch 와  mactrs value를 엮어주는 방법..  -->
-			배우 <input type="text" name="mactrs" id="mactrs2" /><button type="button"  class="actorsearch" data-popup-open="2" id="actorsearch">배우찾기</button><br>	
 			
+			<c:forEach var = "i" items="${data.midto.allactors}" varStatus="no"  >
+		배우 <input type="text" name="mactrs" id="mactrs" value="${i}"/>	<button type="button" class="actorsearch" data-popup-open="${no.index+1} " id="actorsearch">배우찾기</button><br>
+		<!--각 actorsearch 와  mactrs value를 엮어주는 방법..  -->
+	</c:forEach>
+
+			
+	
 
 		</div>
 <hr />
 		<div id="cate">
 			<button type="button" id="addcate">카테고리추가</button>
-			카테고리 <input type="text" name="mcate" value="" /><br>
-			카테고리 <input type="text" name="mcate" value="" /><br>
+				<c:forEach var = "i" items="${data.midto.allcates}" varStatus="no"  >
+			카테고리 <input type="text" name="mcate" value="${i}" /><br>
+			</c:forEach>
 			
 		</div>
 		<hr />
 		개봉일 <input type="date" name="moviedate" value="${data.midto.moviedate}" /><br> <!--setMoviedate  -->
 		<hr />
-		상영시간(숫자!) <input	type="text" name="mplaytime" /><br>
+		상영시간(숫자!) <input	type="text" name="mplaytime"  value="${data.midto.mplaytime}"/><br>
 		<hr />
-		 줄거리<br><textarea name="mplot" rows="5" cols="30"></textarea>
+		 줄거리<br><textarea name="mplot" rows="5" cols="30"  value="">${data.midto.mplot}</textarea>
 		<br>
 		<hr />
 		<div id="image">
