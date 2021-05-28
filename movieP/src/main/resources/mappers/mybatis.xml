@@ -209,9 +209,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<!-- 영화정보 등록 시1 ... 영화기본정보 -->
 	<insert id="movieinfoinsert" parameterType="MovieInfoDTO">
-		insert into movieinfo (movietitle, mdir, mdate,mactrs,mcate, mplaytime, mplot)
+		insert into movieinfo (movietitle, mdir, mdate,mactrs,mcate, mplaytime, mplot, viewcnt)
 		values
-		(#{movietitle}, #{mdir}, #{mdate}, #{mactrs}  ,#{mcate},     #{mplaytime}, #{mplot} )
+		(#{movietitle}, #{mdir}, #{mdate}, #{mactrs}  ,#{mcate},     #{mplaytime}, #{mplot}, 0 )
 
 	</insert>
 	<!-- 영화정보 등록시 포스터이름도 update -->
