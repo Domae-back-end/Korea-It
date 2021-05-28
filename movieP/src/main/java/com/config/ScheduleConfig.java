@@ -30,7 +30,7 @@ public class ScheduleConfig {
 	@Scheduled(cron="0 0 5 * * *")
 	
 	public void sample1() {
-		logger.info("매일 5시 작동");
+		//logger.info("월매출표 update");
 		dailysaleAuto.dailysaleDo();
 		
 		

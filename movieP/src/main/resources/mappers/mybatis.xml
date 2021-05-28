@@ -277,10 +277,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="movieinfolist" resultType="MovieinfoDTO"
 		parameterType="HashMap">
 		select * from movieinfo
+		
+		<choose>
+			<when test="mDTO.msearchkind!=null and mDTO.msearchkind!='' ">
+				<where>
+					${mDTO.msearchkind} like '%${mDTO.msearchkey}%'
+				</where>
+			</when>
+			
+		</choose>
 
-		order by m_index desc
+		order by mdate desc
 
-		limit #{pDTO.start}, #{pDTO.limit}
+		limit #{npDTO.start}, #{npDTO.limit}
 
 	</select>
 
@@ -722,7 +731,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 
-
+	
+	<select id="getsales" resultType="SalesDTO" parameterType="HashMap">
+		select * from salestest order by sales_time desc;
+	</select>
+	
 
 
 	<!--자찾질 가져오기 -->
@@ -737,10 +750,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 		</choose>
 	</select>
+	
 	<!--aaatotalCnt map 받아서 .테이블 이름을 바꾼다. resultType="java.lang.Integer" parameterType="HashMap" -->
 	<select id="aaatotalCnt" resultType="java.lang.Integer"
 		parameterType="HashMap">
-		select count(*) from ${pDTO.tablename}
+		select count(*) from ${npDTO.tablename}		
+			<choose>
+			<when test="mDTO.msearchkind!=null and mDTO.msearchkind!='' ">
+				<where>
+					${mDTO.msearchkind} like '%${mDTO.msearchkey}%'
+				</where>
+			</when>
+			
+		</choose>
+		order by mdate desc
 
 	</select>
 

@@ -36,18 +36,17 @@ public class Pageeditmovieinfolist implements PageeditService {
 	public Object execute(Object obj) {
 		HashMap<String, Object> map = (HashMap) obj;		
 		
-		MovieInfoDTO mdto=(MovieInfoDTO)map.get("mdto");
+		MovieInfoDTO mdto=(MovieInfoDTO)map.get("mdto");// 이안에 검색어 들어있다. 
 		ServiceNoticePageDTO npDTO=   (ServiceNoticePageDTO)map.get("npDTO");
-		npDTO.setTablename("movieinfo");// 영화테이블에서 자료갯수 가져올거니깐.
 		
 		System.out.println("m:"+mdto);
 		
 		//MinfListDTO res= new MinfListDTO();	// 최종 반환형태.	
 		AdminListDTO res= new AdminListDTO();
 		HashMap<String, Object> totalmap = new HashMap<>();
-		npDTO.setLimit(2);
-		totalmap.put("pDTO", npDTO);
-		
+		npDTO.setLimit(4);// 몇개씩 보여줄건지.
+		npDTO.setTablename("movieinfo");//이서비스에선 영화테이블에서 자료갯수 가져올거니깐.
+		totalmap.put("npDTO", npDTO);		// 이름 정해놨어.
 		totalmap.put("mDTO", mdto);
 		//
 		System.out.println(npDTO+"\n테이블:"+npDTO.getTablename());

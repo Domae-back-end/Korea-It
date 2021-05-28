@@ -99,8 +99,8 @@ public class MovieInfoDTO {
 	Integer mlike;
 	
 	
-	String mis_kind;
-	String mis_key;
+	String msearchkind;
+	String msearchkey;
 	
 	
 	MultipartFile file;
