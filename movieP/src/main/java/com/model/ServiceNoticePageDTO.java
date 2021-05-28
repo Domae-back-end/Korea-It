@@ -143,7 +143,7 @@ public class ServiceNoticePageDTO {
 	
 	
 	public void initpershistory(DbMapper dm, HashMap<String, Object> map) {//내역확인
-		limit = 1; 
+		limit = 5; 
 		start = (page - 1) * limit;
 		
 		ttt = dm.pershistoryCnt(map); // 총갯수정함. 페이지나눠야하니깐.

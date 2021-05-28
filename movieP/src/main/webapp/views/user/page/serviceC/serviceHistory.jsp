@@ -44,6 +44,10 @@
 	
 	.td1 tr:last-child td{border-bottom: none;   }
 	
+	/* 검색 (총갯수) */
+	.search_result {text-align: left; }
+	.search_result p {font-size: 14px; }
+	.search_result span {font-weight: bold; }
 	
 	/* 페이지버튼 */
 	.pagebtn {width: 32px; height: 32px; box-sizing: border-box; border-radius: 4px; border: 1px solid #dbdbdb; background: white;   }
@@ -103,7 +107,11 @@
 
 <div id="content">
 	<h2>상담내역 확인</h2>
-	
+		
+	<div class="search_result">
+		<p>총 <span>${data.snpdto.ttt }</span> 건이 검색되었습니다.</p>
+	</div>
+		
 	<div>
 		<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
