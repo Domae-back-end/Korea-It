@@ -119,7 +119,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="pullTInfo" parameterType="MovieReviewDTO"
 		resultType="EndTimeDTO">
 		select userid, m_index, moviesector
-		from salestest
+		from sales
 		where sales_type != '환불' and
 		userid = '${userid}' and
 		m_index= '${cate}'
@@ -656,10 +656,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
-		select moviesector, ticket_pcount, salesprice, movietitle, sales_type, date_format(sales_time,'%Y-%m-%d') as sales_time, salestest.m_index, imgname from salestest 
-		left outer join movieimg on salestest.m_index = movieimg.m_index
-		where salestest.userid=#{userid} and date_format(salestest.sales_time,'%Y-%m')=#{date} 
-		order by salestest.sales_time desc
+		select moviesector, ticket_pcount, salesprice, movietitle, sales_type, date_format(sales_time,'%Y-%m-%d') as sales_time, sales.m_index, imgname from sales 
+		left outer join movieimg on sales.m_index = movieimg.m_index
+		where sales.userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} 
+		order by sales.sales_time desc
 	</select>
 
 	
@@ -700,7 +700,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
-		(select COUNT(*) sc from salestest  where userid=#{userid} and salesprice > 0) a, 
+		(select COUNT(*) sc from sales  where userid=#{userid} and salesprice > 0) a, 
 		(select COUNT(*) rc from review where userid=#{userid}) b,
 		(select COUNT(*) uc from userlikes where userid=#{userid}) c
 	</select>
@@ -717,16 +717,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 
 
-	<!-- 매출관련 정보(테스트용) salestest -->
+	<!-- 매출관련 정보(테스트용) sales -->
 
 	<select id="getyesterdaysales" resultType="SalesDTO"
 		parameterType="HashMap">
-		select * from salestest WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
+		select * from sales WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
 	</select>
 
 
 	<select id="getsalesbyId" resultType="SalesDTO">
-		select * from salestest where userid like concat('%',#{userid},'%')
+		select * from sales where userid like concat('%',#{userid},'%')
 	</select>
 
 
@@ -742,7 +742,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="getsales" resultType="SalesDTO" parameterType="HashMap">
-		select * from salestest order by sales_time desc;
+		select * from sales order by sales_time desc;
 	</select>
 	
 
@@ -800,11 +800,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		values
 		(#{daysaletime}
 
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		'%${daysaletime}%')
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		concat('%',#{daysaletime},'%') and sales_type!='환불')
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		'%${daysaletime}%' and sales_type='환불')
 		)
 	</insert>
@@ -813,11 +813,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		update monthsales (sumall,totalsale,totalrefund)
 		values
 		(
-		(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		'%${daysaletime}%')
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		concat('%',#{daysaletime},'%') and sales_type!='환불')
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		'%${daysaletime}%' and sales_type='환불')
 		)
 		where monthdate = #{monthdate}
