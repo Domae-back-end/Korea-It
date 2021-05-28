@@ -538,12 +538,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<where> <![CDATA[userid = #{userid} and userpw = #{userpw} and kind !='탈퇴']]></where>
 			</when>
 
-			<when test="userpnum != null or userpnum == ''">
-				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} and kind !='탈퇴' ]]></where>
+			<when test="userid == null">
+				<where> <![CDATA[username = #{username} and userbirth = date_format(#{userbirth},'%Y-%m-%d') and userpnum = #{userpnum} and kind !='탈퇴']]></where>
 			</when>
 
-			<when test="userid == null">
-				<where> <![CDATA[username = #{username} and userbirth = #{userbirth} and userpnum = #{userpnum} and kind !='탈퇴']]></where>
+			<when test="userpnum != null or userpnum == ''">
+				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} and kind !='탈퇴' ]]></where>
 			</when>
 
 			<otherwise>
