@@ -27,29 +27,33 @@
 	#sideBar ul li:last-child {border-radius: 0 0 10px 10px; }
 	#sideBar ul li:nth-of-type(5) {background: white; }
 	
+	.must_cont {text-align: right; color: red; font-weight: bold; margin-bottom: 10px; }
+	.must_star {color: red; font-weight: bold; }
 	
+	.subtitle { margin-bottom: 30px; text-align: left; }
 	.qna_form table {width: 800px; box-sizing: border-box; }
 	.qna_form tr {height: 50px; }
 	.qna_form tr>td {padding: 10px; }
-	.qna_form tr>td:nth-of-type(1) {font-size: 18px; background: blue; width: 150px; }
+	.qna_form tr>td:nth-of-type(1) {background: #F2F4F5; width: 150px; text-align: left; border-top: 1px solid black; font-weight: bold;  }
 	.qna_form tr>td:nth-of-type(1) label {cursor: pointer;  }
-	.qna_form tr>td:nth-of-type(2) {font-size: 16px; background: teal; width: 650px; }
+	.qna_form tr>td:nth-of-type(2) {width: 650px;text-align: left; border-top: 1px solid black; }
 	
-	.qna_form select {font-size: 16px; height: 30px; width: 200px; }
+	.qna_form select {font-size: 16px; height: 30px; width: 200px; text-align: left;  border: 1px solid #d8d9db; outline: none; }
 	.qna_form .sub {font-size: 16px; height: 30px; width: 200px; }
-	.qna_form .title {width: 620px; font-size: 16px; height: 30px} 
-	.qna_form textarea {width: 620px; font-size: 16px; height: 300px; resize: vertical; }
+	.qna_form .title {width: 620px; font-size: 16px; height: 30px;  border: 1px solid #d8d9db; } 
+	.qna_form textarea {width: 620px; font-size: 16px; height: 300px; resize: vertical; border: 1px solid #d8d9db; }
+	.qna_form textarea:focus, .sub:focus, .title:focus, select:focus {border: 1px solid black; outline: none; }
 	
-	.qna_form_tb td {border-bottom: 1px solid black; }
+	.qna_form_tb td {border-bottom: 1px solid #d8d9db; }
 	
 	
 	.upload_box p {display: inline-block; margin-bottom: 10px; }
 	.upload_box input[type="file"] { font-size: 16px; width: 1px; height: 1px; margin: -1px; overflow: hidden;}
-	.upload_box .upfile_class {padding: 5px 10px; font-size: 16px; background-color: lime; margin-left: 10px; 
-							cursor: pointer; border-radius: 5px; }
-	.upload_box .upload_name { display: inline-block; padding: 5px 10px; border-radius: 5px; background: yellow; width: 250px;  }
+	.upload_box .upfile_class {padding: 5px 10px; font-size: 16px; background-color: #666; margin-left: 10px; 
+							cursor: pointer; border-radius: 5px; color: white; font-weight: bold;}
+	.upload_box .upload_name { display: inline-block; padding: 5px 10px; border-radius: 5px; width: 250px;  }
 	
-	.sbm {width: 100px; height: 40px; font-size: 16px; background: yellow; margin: 20px 0; }
+	.sbm {width: 100px; height: 50px; font-size: 16px; background: #dbdbdb; margin: 50px 0; text-align: center; border: none; border-radius: 5px; }
 
 </style>
 
@@ -101,12 +105,17 @@
 <div id="content">
 	<h2>1대1 문의</h2>
 	
+	<div class="subtitle">
+		<p>- 문의하시기 전 자주묻는 질문을 확인하시면 궁금증을 더욱 빠르게 해결하실 수 있습니다.</p>
+	</div>
+	
 	<div class="qna_form">
 		<form action="/user/serviceC/qnainsertReg" method="post" enctype="multipart/form-data">
-		<!--  입력 성공했습니다!// 또는 등록 실패했습니다! >> alert 를 주는 페이지를 띄우고 싶다면.>그리고 유저메인이든,  serviceC메인이든.>index.. -->
+		
+			<div class="must_cont">* 필수</div>
 			<table class="qna_form_tb">
 				<tr>
-					<td>문의유형*</td>
+					<td>문의유형 <span class="must_star">*</span></td>
 					<td>
 						<select name="perscate">
 							<option value="basic">일반문의</option>
@@ -119,11 +128,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td><label for="titleG">제목*</label></td>
+					<td><label for="titleG">제목 <span class="must_star">*</span></label></td>
 					<td><input type="text" name="perstitle" id="titleG" class="title" /></td>
 				</tr>
 				<tr>
-					<td><label for="contG">내용*</label></td>
+					<td><label for="contG">내용 <span class="must_star">*</span></label></td>
 					<td><textarea name="perscont" cols="30" rows="5" id="contG"></textarea></td>
 				</tr>
 				<tr>
@@ -139,7 +148,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" style="text-align: center;">
+					<td colspan="2" style="text-align: center; background: none; ">
 						<input type="submit" value="등록" class="sbm"/>
 					</td>
 				</tr>
