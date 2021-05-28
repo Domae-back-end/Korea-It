@@ -27,6 +27,6 @@ public class Membermodify implements MemberAction{
 		System.out.println(map);
 		return map;
 	}
-	
+	//
 	
 }

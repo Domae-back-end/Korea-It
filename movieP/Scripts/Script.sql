@@ -9,7 +9,8 @@ create table movieinfo(
 	mplot	varchar(1000),
 	mplaytime	int,
 	movieimg	varchar(100),
-	star	int
+	star	int,
+	mlike int
 );
 <!-- 좋아요 갯수 칼럼추가 -->
 alter table movieinfo add mlike int;
