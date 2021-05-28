@@ -28,7 +28,7 @@ public class Pageeditfaqlist implements SalesService, PageeditService {
 		npDTO.setTablename("basicqna");
 		
 		//// 여기서는 서비스풀dto >> sfuldto 임!
-		
+		//
 		HashMap<String,Object> map= new HashMap<String, Object>();
 		
 		//최종결과
@@ -37,7 +37,7 @@ public class Pageeditfaqlist implements SalesService, PageeditService {
 		System.out.println("전"+npDTO);
 		
 		totalmap.put("sfDTO", sfDTO);
-		totalmap.put("pDTO", npDTO);		
+		totalmap.put("npDTO", npDTO);		
 		npDTO.initfaq(db, totalmap);
 		System.out.println("후"+npDTO);
 	
@@ -46,7 +46,7 @@ public class Pageeditfaqlist implements SalesService, PageeditService {
 		map.put("npDTO", npDTO);//init 돌린뒤의 npDTO/	
 		map.put("sfDTO",sfDTO);
 		result.put("sfDTO", db.getfaq(map));		
-		result.put("pdto", npDTO);
+		result.put("npdto", npDTO);
 		
 		System.out.println("이번에나올게시물수:"+db.getfaq(map).size());
 		
