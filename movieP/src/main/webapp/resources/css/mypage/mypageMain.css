@@ -296,16 +296,18 @@ h4{
 	background: #F2F4F5;
 }
 
-
+.firstwritouter{
+	width:695px;
+	height:600px;
+	border-top: 1px solid #000;
+}
 .writeouter{
 	width:690px;
 	height:150px;
-	border-top: 1px solid #000;
 	border-bottom: 1px solid #ccc;
 	float: left;
-	margin-bottom: 10px;
+	margin-left: 5px;
 	text-align: left;
-	overflow-y:auto; 
 }
 .writeimg{
 	margin: 10px;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div>
+<div class ="firstwritouter">
 	<input type="hidden" id="userid" value="${sessionId }"/>
 	
 	<c:forEach items="${memdata.comment }" var ="pp" varStatus="no">
