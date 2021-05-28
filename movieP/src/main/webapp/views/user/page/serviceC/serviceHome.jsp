@@ -33,8 +33,8 @@
 	.search_Box {width: 800px; height: 80px; background: #c5f7f5; border-radius: 10px; margin-bottom: 50px; padding-top: 20px; }
 	.qna1 {width: 700px; height: 40px;}
 	.qna1 label {font-weight: bold; }
-	.qna1>.inputText {width: 370px; border: 0px; border-bottom: 3px solid black; outline: none; padding: 5px; height: 40px;}
-	.qna1>.inputButton {font-size: 20px; width: 70px; height: 40px;  border: 0px; border-bottom: 3px solid black; margin-left: -5px;  
+	.qna1>.inputText {width: 370px; border: 0px; border-bottom: 3px solid #5467dc; outline: none; padding: 5px; height: 40px;}
+	.qna1>.inputButton {font-size: 20px; width: 70px; height: 40px;  border: 0px; border-bottom: 3px solid #5467dc; margin-left: -5px;  
 						position: absolute; left: 590px;}
 	
 	
@@ -47,14 +47,35 @@
 	
 	
 	/* content3 속지 */
-	.content3 {background: gren; width: 800px; height: 300px; margin-bottom: 100px; }
-	.often {width: 300px; height: 300px; background: blue; float: left;}
-	.notice {width: 470px; height: 300px; background: blue; float: left; margin-left: 30px; }
+	.content3 {background: gren; width: 800px; height: 300px; margin-bottom: 100px; text-align: left; }
+	.often {width: 300px; height: 300px; float: left;}
+	.often_sctop {border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 15px; }
+	.often_tx {font-size: 20px; font-weight: bold; }
+	.often_scmain ul li {width: 145px; height: 75px; float: left; box-sizing: border-box;
+						background-image: url("../../views/user/img/service/shotcut1.png");
+						border-radius: 5px; padding-left: 10px; padding-top: 10px; display: inline-block; }
+	.often_scmain ul li a {display: inline-block;width: 145px; height: 75px;  } 
+	.often_scmain:after {content:""; display: block; clear: both;}
+	
+/* 			<div class="often_sctop">
+				<span class="often_tx">자주 찾는 서비스</span>
+			</div>
+			<div class="ofter_scmain"> */
+	
+	
+	.notice {width: 470px; height: 300px; float: left; margin-left: 30px; text-align: left; border-bottom: 1px solid #444; }
 	
 	/* 공지사항바로가기 */
-	.notice {text-align: left; }
-	.shotcut li { }
-	.shotcut span:nth-of-type(1) {width: 370px; display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+	.notice_sctop {border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 15px; }
+	.notice .notice_tx {font-size: 20px; font-weight: bold; }
+	.notice .notice_mr>a {font-size: 16px; color: #222; margin-left: 300px;}
+	.notice .notice_mr>a>i { background-image: url("../../views/user/img/service/more.png"); background-repeat: no-repeat; width: 20px; height: 22px; display: inline-block; }
+	.shotcut p{margin: 0px; line-height: 30px; display: inline-block;  }
+	
+	.shotcut span:nth-of-type(1) {display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+	.shotcut span:nth-of-type(2) {width: 310px; display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+	.shotcut span:nth-of-type(3) {display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+	.shotcut_hover:hover {font-weight: bold; color: #444; }
 </style>
 
 <script>
@@ -72,7 +93,7 @@
 <body>
 <div id="sideBar">
 	<ul>
-		<li><a href="serviceHome">고객센터 홈</a></li>
+		<li><a href="serviceHome">고객센터</a></li>
 		<li><a href="serviceHome">고객센터 홈</a></li>
 		<c:choose>
 			<c:when test="${empty data.onesfdto.persid }">
@@ -140,15 +161,31 @@
 	
 	<div class="content3">
 		<div class="often">
-			<p>자주찾는 서비스</p>
+			<div class="often_sctop">
+				<span class="often_tx">자주 찾는 서비스</span>
+			</div>
+			<div class="often_scmain">
+				<ul>
+					<li style="margin-right: 10px; margin-bottom: 10px; "><a href="">아이디/<br>비밀번호 찾기</a></li>
+					<li><a href="">영화<br>예매하기</a></li>
+					<li style="margin-right: 10px; margin-bottom: 10px;  "><a href="">예매내역<br>확인</a></li>
+					<li><a href="">나의<br>무비스토리</a></li>
+					<li style="margin-right: 10px; "><a href="">분실물<br>문의</a></li>
+					<li><a href="">예매취소<br>문의</a></li>
+				</ul>
+			</div>
 		</div>
 		<div class="notice">
-			<p><span>공지사항</span><span><a href="serviceNotice">더보기</a></span></p>
+			<div class="notice_sctop">
+				<span class="notice_tx">공지사항</span>
+				<span class="notice_mr"><a href="serviceNotice">더보기<i></i></a></span>
+			</div>
 			<ul class="shotcut">
 			<c:forEach items="${data.sfdto}" var="sfDTO" begin="0" end="5">
 				<li>
 					<p>
-						<a href="javascript:detailGo(${sfDTO.noticeindex })">
+						<a href="javascript:detailGo(${sfDTO.noticeindex })" class="shotcut_hover">
+							<span>[${sfDTO.noticecateKr }]</span>
 							<span>${sfDTO.noticetitle }</span>
 							<span><fmt:formatDate value="${sfDTO.noticetime }" type="both" pattern="yyy.MM.dd"/></span>
 						</a>
