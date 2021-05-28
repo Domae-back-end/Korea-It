@@ -49,9 +49,11 @@
 	}
 	 #star{
 		 height: 60px;
-		 line-height:60px;
+		 line-height:60px; 
 	 }
-
+	 #star>i{
+	 	color:gold;
+	 }
 
 
 </style>
