@@ -7,7 +7,7 @@ create table noticeboard (
 	noticetime datetime,
 	noticeview int
 );
-
+ 
 INSERT INTO unoestellar.personalqna (perscate,persid,perstitle,perscont,persimg,persqtime,persacont,persatime,persstate) VALUES
 	 ('movinfo','aaaa11','안녕','ㅁㅁㅁㅁㅁㅁ','','2021-05-25 22:03:32.0','다음부턴 잘해줄게
 다음부턴 잘해줄게
