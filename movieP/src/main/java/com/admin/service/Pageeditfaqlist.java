@@ -28,7 +28,7 @@ public class Pageeditfaqlist implements SalesService, PageeditService {
 		npDTO.setTablename("basicqna");
 		
 		//// 여기서는 서비스풀dto >> sfuldto 임!
-		//
+		
 		HashMap<String,Object> map= new HashMap<String, Object>();
 		
 		//최종결과
