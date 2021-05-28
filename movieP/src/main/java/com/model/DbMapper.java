@@ -77,6 +77,8 @@ public interface DbMapper {
    void updatemlike(LikeDTO dto);
    //userlikes에서 해당하는 id의 like 정보 지운다
    void deletelike(LikeDTO dto);
+   //review에서 평점 calc하기
+   Integer calcGPA(Integer m_index);
   
    //매출테이블에서 예매인 정보만 가져옴
    List<EndTimeDTO> pullTInfo(MovieReviewDTO dto);

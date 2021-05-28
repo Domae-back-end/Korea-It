@@ -97,7 +97,7 @@ public class MovieInfoDTO {
 	String mdate_s;
 	int length;
 	Integer mlike;
-	
+	Integer gpa;
 	
 	String msearchkind;
 	String msearchkey;
