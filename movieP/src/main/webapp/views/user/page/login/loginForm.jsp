@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
 <form action ="" method="post" enctype="multipart/form-data" name="frm">
+
 <h1>로그인</h1>
 	<div>
 		<input type="text" id="userid" name="userid" maxlength="20" placeholder="아이디" autocomplete="off" />
@@ -18,4 +19,5 @@
 	<div>
 		<a href="/member/naverLogin"><img src="/resources/img/ico-naver.png" alt="네이버 로그인" /></a>
 	</div>
+
 </form>
