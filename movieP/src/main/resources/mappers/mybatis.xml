@@ -656,7 +656,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
-		select ticket_pcount,salesprice, movietitle, sales_type, sales_time,salestest.m_index, imgname from salestest 
+		select moviesector, ticket_pcount, salesprice, movietitle, sales_type, date_format(sales_time,'%Y-%m-%d') as sales_time, salestest.m_index, imgname from salestest 
 		left outer join movieimg on salestest.m_index = movieimg.m_index
 		where salestest.userid=#{userid} and date_format(salestest.sales_time,'%Y-%m')=#{date} 
 		order by salestest.sales_time desc
@@ -664,7 +664,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="memcomment" resultType="map" parameterType="MemberDTO">
-		select movietitle, imgname, postcontent, posttime, cate, mlike from review
+		select movietitle, imgname, postcontent,  date_format(posttime,'%Y-%m-%d') as posttime, cate, mlike from review
 		left outer join movieinfo on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
 		where movieinfo.m_index in (select cate from review where userid=#{userid})
@@ -673,15 +673,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="memlikeinfor" resultType="map" parameterType="MemberDTO">
-		select movietitle, imgname, mlike, cate from movieinfo
-		left outer join review on movieinfo.m_index = review.cate
+		select movietitle, imgname, mlike, movieinfo.m_index, g_index from movieinfo
+		left outer join userlikes on movieinfo.m_index = userlikes.m_index
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
 		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid})
+		order by userlikes.g_index desc;
 	</select>
 
 	
 	<select id="memqna" resultType="map" parameterType="MemberDTO">
-		select * from personalqna <include refid="qnacheck" /> order by persqtime desc
+		select perscate, persindex, persid , perstitle, perscont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
+		from personalqna <include refid="qnacheck" /> 
+		order by persqtime desc
 	</select>
 
 	
