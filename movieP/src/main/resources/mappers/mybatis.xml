@@ -98,6 +98,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where userid='${userid}' and
 		cate='${ind}'
 	</select>
+	<!-- 평점 가져오기 -->
+	<select id="calcGPA" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select avg(gpa)
+		from review
+		where cate = '${m_index}'
+	</select>
 
 	<insert id="reviewinsert" parameterType="MovieReviewDTO">
 		insert into review (cate, userid, postcontent, posttime, gpa)
