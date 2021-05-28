@@ -667,7 +667,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select movietitle, imgname, postcontent,  date_format(posttime,'%Y-%m-%d') as posttime, cate, mlike from review
 		left outer join movieinfo on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
-		where movieinfo.m_index in (select cate from review where userid=#{userid})
+		where movieinfo.m_index in (select cate from review where userid=#{userid}) and imgname like '%poster.jpg'
 		order by review.posttime desc
 	</select>
 
@@ -676,7 +676,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select movietitle, imgname, mlike, movieinfo.m_index, g_index from movieinfo
 		left outer join userlikes on movieinfo.m_index = userlikes.m_index
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
-		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid})
+		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid}) and imgname like '%poster.jpg'
 		order by userlikes.g_index desc
 	</select>
 

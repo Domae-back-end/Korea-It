@@ -7,7 +7,7 @@
 			<div class="seeouter">
 				<c:choose>
 					<c:when test="${pp.imgname!=null }">
-						<a href="/movie/moviedetail?sub=info&ind=${pp.m_index }"><div class="writeimg"><img src="/resources/moviedata/${pp.imgname }.jpg" alt="${pp.movietitle } 이미지" /></div></a>
+						<a href="/movie/moviedetail?sub=info&ind=${pp.m_index }"><div class="writeimg"><img src="/moviedata/${pp.imgname }" alt="${pp.movietitle } 이미지" /></div></a>
 					</c:when>
 					<c:otherwise>
 						<a href="/movie/moviedetail?sub=info&ind=${pp.m_index }"><div class="writeimg">이미지 없음</div></a>
