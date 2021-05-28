@@ -19,7 +19,7 @@
 	</div>
 
 	<div>
-		<div>
+		<div class="mycinemaRecordouter">
 			<h4>나의 무비스토리</h4>
 		</div>
 	
@@ -46,8 +46,8 @@
 	</div>
 
 <div>
-	<div>
-		<h4>나의 예매내역</h4>
+	<div class="mycinemaRecordouter">
+		<h4>나의 예매내역</h4>	
 		<div class = "seemore"><a href="/member/mypage/mypurchase">더보기 ></a></div>
 	</div>
 
@@ -72,7 +72,7 @@
 </div>
 
 <div>
-	<div>
+	<div class="mycinemaRecordouter">
 		<h4>나의 문의내역</h4>
 		<div class = "seemore"><a href="/member/mypage/myqna">더보기 ></a></div>
 	</div>
