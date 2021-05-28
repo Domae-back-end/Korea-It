@@ -1,6 +1,6 @@
 
-
-
+<!-- 초기화하기  -->
+drop table memberinfo;
 
 create table memberinfo(
    userid varchar(100),
