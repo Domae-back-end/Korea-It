@@ -38,7 +38,7 @@ h3 {
 .rate-area > input:checked ~ label {
     color: gold;
     text-shadow:1px 1px #c60;
-    font-size:250% !important;
+    font-size:200% !important;
 }
 
 .rate-area:not(:checked) > label:hover,

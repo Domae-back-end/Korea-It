@@ -26,10 +26,6 @@ function likeGo(idx){
 
 $(function(){
 	
-	$("#tBtn").click(function(){
-		alert("예매창으로");
-		location.href("/user/movietime/list?movietitle="+)
-	})
 
 	$(".sbtn").click(function(){
 		var value = $(".search").val();
