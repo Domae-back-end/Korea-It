@@ -1,4 +1,7 @@
 
+
+
+
 create table memberinfo(
    userid varchar(100),
    userpw varchar(100),

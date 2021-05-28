@@ -78,7 +78,7 @@
 <hr />
 		<div id="cate">
 			<button type="button" id="addcate">카테고리추가</button>
-			카테고리 <input type="text" name="mcate" /><br>
+		
 			카테고리 <input type="text" name="mcate" /><br>
 			
 		</div>
