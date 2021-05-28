@@ -658,7 +658,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
 		select moviesector, ticket_pcount, salesprice, movietitle, sales_type, date_format(sales_time,'%Y-%m-%d') as sales_time, sales.m_index, imgname from sales 
 		left outer join movieimg on sales.m_index = movieimg.m_index
-		where sales.userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} 
+		where sales.userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and imgname like '%poster.jpg'
 		order by sales.sales_time desc
 	</select>
 
