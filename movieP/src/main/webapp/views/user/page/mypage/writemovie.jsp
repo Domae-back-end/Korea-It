@@ -7,15 +7,18 @@
 	<c:forEach items="${memdata.comment }" var ="pp" varStatus="no">
 		
 		<div class="writeouter">
-			<c:choose>
-				<c:when test="${pp.imgname!=null }">
-					<a href="/movie/moviedetail?sub=review&ind=${pp.cate }"><div class="writeimg"><img src="/moviedata/${pp.imgname }" alt="${pp.movietitle } 이미지" /></div></a>
-				</c:when>
-				<c:otherwise>
-					<a href="/movie/moviedetail?sub=review&ind=${pp.cate }"><div class="writeimg">이미지 없음</div></a>
-				</c:otherwise>
-			</c:choose>
-			
+			<a href="/movie/moviedetail?sub=review&ind=${pp.cate }">
+				<div class="writeimg">
+					<c:choose>
+						<c:when test="${pp.imgname!=null }">
+							<img src="/moviedata/${pp.imgname }" alt="${pp.movietitle } 이미지" />
+						</c:when>
+						<c:otherwise>
+							이미지 없음
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</a>
 			<a href="/movie/moviedetail?sub=review&ind=${pp.cate }"><div class="writetitle">${pp.movietitle } | 좋아요: ${pp.mlike }</div></a>
 			
 			<div class="writetnow">${pp.postcontent }</div>

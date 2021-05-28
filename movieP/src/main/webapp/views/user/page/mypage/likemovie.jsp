@@ -11,14 +11,16 @@
 			
 			<div class="likeouter">
 				<a href="/movie/moviedetail?sub=info&ind=${pp.m_index }">
-				<c:choose>
-					<c:when test="${pp.imgname!=null }">
-						<div class="likeimg"><img src="/moviedata/${pp.imgname }" alt="${pp.movietitle } 이미지" /></div>
-					</c:when>
-					<c:otherwise>
-						이미지 없음
-					</c:otherwise>
-				</c:choose>
+					<div class="likeimg">
+						<c:choose>
+							<c:when test="${pp.imgname!=null }">
+								<img src="/moviedata/${pp.imgname }" alt="${pp.movietitle } 이미지" />
+							</c:when>
+							<c:otherwise>
+								이미지 없음
+							</c:otherwise>
+						</c:choose>
+					</div>
 				</a>
 				<a href="/movie/moviedetail?sub=info&ind=${pp.m_index }"><div>${pp.movietitle }</div></a>
 				<div><button class="likeButt" onclick="likeButt(${pp.m_index })" >${pp.mlike }</button></div>
