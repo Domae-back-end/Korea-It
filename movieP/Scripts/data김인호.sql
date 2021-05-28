@@ -58,7 +58,7 @@ create table basicqna (
 	viewcnt  int
 );
 <!-- salestest ver 1.   -->
-CREATE TABLE salestest (
+CREATE TABLE sales (
  sales_index int auto_increment primary key,
  ticket_index int,
  ticket_pcount int,
