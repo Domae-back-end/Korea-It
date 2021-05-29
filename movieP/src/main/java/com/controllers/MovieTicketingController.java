@@ -33,7 +33,10 @@ public class MovieTicketingController {
 	}
 	
 	@RequestMapping
-	String url() {
+	String url(@PathVariable String cate) {
+		if(cate.endsWith("finish")) {
+			return "user/page/alert";
+		}
 		return "user/page/index";
 	}
 }

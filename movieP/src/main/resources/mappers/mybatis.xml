@@ -8,7 +8,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from movietime
 		order by m_index desc
 	</select>
-
+	
+	<select id="moviesit" resultType="UserSitDTO" parameterType="java.lang.Integer">
+		select * from ticketing where time_index = #{index}
+	</select>
 	<select id="movielist" resultType="MovieInfoDTO">
 		select * from movieinfo
 	</select>
@@ -184,7 +187,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		values
 		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
 	</insert>
-
+	<insert id="insertSit" parameterType="UserSitDTO">
+		insert into ticketing (time_index,seatNo,userid) values (#{time_index},#{seatNo},#{userid})
+	</insert>
 	<update id="updatemovielist" parameterType="MovieTimeDTO">
 		update movietime set
 		sectorno=#{sectorno},starttime=#{starttime},endtime=#{endtime},
