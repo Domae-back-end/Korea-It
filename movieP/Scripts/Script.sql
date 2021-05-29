@@ -51,6 +51,13 @@ create table movietime (
 	endtime time,
 	reg_date date
 );
+
+create table ticketing(
+	m_index int auto_increment primary key,
+	time_index int,
+	seatNo varchar(30),
+	userid varchar(100)
+);
 <!-- movietimetable > testdata -->
 
 insert into movietime (movietitle, sectorNo, starttime, endtime, reg_date)

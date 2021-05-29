@@ -118,18 +118,18 @@ dal2.set(Calendar.MONTH, dal1.get(Calendar.MONTH)+1);
 			<div class="movietitle">선택</div>
 			<c:forEach var="a" items="${data.movietimelist}">
 			<div class="timelist">
-				<div class="timelist1"><a href="?movietitle=<%=request.getParameter("movietitle") %>&dal=<%=request.getParameter("dal") %>&el=<%=request.getParameter("el") %>&m_index=${a.m_index}">${a.sectorno }</a></div>
+				<div class="timelist1"><a href="?movietitle=<%=request.getParameter("movietitle") %>&dal=<%=request.getParameter("dal") %>&el=<%=request.getParameter("el") %>&m_index=${a.m_index}&sectorno=${a.sectorno}">${a.sectorno }</a></div>
 				<div class="timelist2">
 					시작 : <fmt:formatDate value="${a.starttime }" type="both"
 						pattern="hh:mm:ss" /></div>
 				<div class="timelist2">
 					종료 : <fmt:formatDate value="${a.endtime }" type="both"
 						pattern="hh:mm:ss" /></div>
-			</div>
+				</div>
 			</c:forEach>
 		</div>
 		<div class="timelist1">
-			<a href="/user/movietime/listReg?movietitle=<%=request.getParameter("movietitle") %>&dal=<%=request.getParameter("dal") %>&el=<%=request.getParameter("el") %>&m_index=<%=request.getParameter("m_index") %>">
+			<a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&sectorno=<%=request.getParameter("sectorno")%>">
 				예매하기
 			</a>
 		</div>

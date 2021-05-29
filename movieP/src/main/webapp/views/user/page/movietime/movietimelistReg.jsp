@@ -90,21 +90,29 @@ if(request.getParameter("cnt3") != null){
 
 String sit = "A B C D E F G H I J";
 %>
+<script>
+
+$(function() {
+	
+	$("#testbutton").click(function() {
+	}
+}
+</script>
 <div class="t1_lay1">
 	<div class="t1_lay1_1">어린이</div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?movietitle=${movietitle }&dal=${dal }&el=${el }&m_index=${m_index}&cnt1=<%=cnt1-1 %>&cnt2=<%=cnt2%>&cnt3=<%=cnt3%>">-</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt1=<%=cnt1-1 %>&cnt2=<%=cnt2%>&cnt3=<%=cnt3%>">-</a></div>
 	<div class="t1_lay1_2"><%=cnt1 %></div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?movietitle=${movietitle }&dal=${dal }&el=${el }&m_index=${m_index}&cnt1=<%=cnt1+1 %>&cnt2=<%=cnt2%>&cnt3=<%=cnt3%>">+</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt1=<%=cnt1+1 %>&cnt2=<%=cnt2%>&cnt3=<%=cnt3%>">+</a></div>
 	<div class="both"></div>
 	<div class="t1_lay1_1">청소년</div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?movietitle=${movietitle }&dal=${dal }&el=${el }&m_index=${m_index}&cnt2=<%=cnt2-1 %>&cnt1=<%=cnt1%>&cnt3=<%=cnt3%>">-</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt2=<%=cnt2-1 %>&cnt1=<%=cnt1%>&cnt3=<%=cnt3%>">-</a></div>
 	<div class="t1_lay1_2"><%=cnt2 %></div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?movietitle=${movietitle }&dal=${dal }&el=${el }&m_index=${m_index}&cnt2=<%=cnt2+1 %>&cnt1=<%=cnt1%>&cnt3=<%=cnt3%>">+</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt2=<%=cnt2+1 %>&cnt1=<%=cnt1%>&cnt3=<%=cnt3%>">+</a></div>
 	<div class="both"></div>
 	<div class="t1_lay1_1">어른</div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?movietitle=${movietitle }&dal=${dal }&el=${el }&m_index=${m_index}&cnt3=<%=cnt3-1 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">-</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt3=<%=cnt3-1 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">-</a></div>
 	<div class="t1_lay1_2"><%=cnt3 %></div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?movietitle=${movietitle }&dal=${dal }&el=${el }&m_index=${m_index}&cnt3=<%=cnt3+1 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">+</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt3=<%=cnt3+1 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">+</a></div>
 	<div class="both"></div>
 	<div class="t2_lay1">어린이 : <%=cnt1 %></div>
 	<div class="t2_lay1">청소년 : <%=cnt2 %></div>
@@ -116,15 +124,22 @@ String sit = "A B C D E F G H I J";
 			<c:when test="<%= cnt1 > 0 || cnt2 > 0 || cnt3 > 0 %>">
 				<div class="screen">스크린</div>
 				<div class="sittinglay">
-				<% for(int i = 0; i< 10; i++){ %>
-						<c:forEach begin="1" var="a" end="10">
-							<div class="sitting"><%=sit.split(" ")[i] %>${a }</div>
-						</c:forEach>
-						<div class="gill">통로</div>
-						<c:forEach begin="11" var="a" end="20">
-							<div class="sitting"><%=sit.split(" ")[i] %>${a }</div>
-						</c:forEach>
-				<%} %>
+				<c:choose>
+					<c:when test="${param.sectorno eq '작은관' }">
+						<!-- 작은관 할것. -->
+					</c:when>
+					<c:otherwise>
+						<% for(int i = 0; i< 10; i++){ %>
+							<c:forEach begin="1" var="a" end="10">
+								<div class="sitting"><input id="testbutton" type="button" value="<%=sit.split(" ")[i] %>${a }" /></div>
+							</c:forEach>
+							<div class="gill">통로</div>
+							<c:forEach begin="11" var="a" end="20">
+								<div class="sitting"><input id="testbutton" type="button" value="<%=sit.split(" ")[i] %>${a }" /></div>
+							</c:forEach>
+						<%} %>
+					</c:otherwise>
+				</c:choose>
 				</div>
 			</c:when>
 			<c:otherwise>

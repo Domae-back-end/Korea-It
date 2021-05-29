@@ -12,6 +12,7 @@ import com.admin.service.Provider;
 import com.model.MovieTicketingService;
 import com.model.MovieTimeDTO;
 import com.model.PPPData;
+import com.model.UserSitDTO;
 
 @Controller
 @RequestMapping("user/movietime/{cate}")
@@ -26,9 +27,9 @@ public class MovieTicketingController {
 	}
 
 	@ModelAttribute("data")
-	Object data(@PathVariable String cate,MovieTimeDTO dto) {
+	Object data(@PathVariable String cate,MovieTimeDTO dto,UserSitDTO udto) {
 		MovieTicketingService sr = pr.getContext().getBean("MovieTicketing" + cate, MovieTicketingService.class);
-		return sr.execute(dto);
+		return sr.execute(dto,udto);
 	}
 	
 	@RequestMapping
