@@ -89,7 +89,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<!-- 리뷰개수 -->
 	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
-		select count(*) from review 
+		select count(*) from review where cate = #{rDTO.cate}
 	</select>
 	
 	<!-- 내 리뷰만 -->

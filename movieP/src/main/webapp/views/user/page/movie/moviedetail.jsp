@@ -51,12 +51,12 @@
 	#sub1>a{
 		font-size: 30px;
 	}
-	#star{
+	#gpa{
 		width: 1000px;
 		display: inline-block;
 		font-size:30px;
 	}
-	#star>div>i{
+	#gpa>div>i{
 		color:gold;
 		font-size:30px;
 	}
@@ -67,7 +67,7 @@
 	<div id="detail">
 		<p id="title">${moviedetail.movietitle }</p>
 		<div id="poster"><img src="/moviedata/${moviedetail.movieimg }"></div>	
-	    <div id="star">
+	    <div id="gpa">
 	    <div  style="float: left;">
 	    	평점:
 			<c:forEach begin="1" end="${moviedetail.gpa }" var="st" varStatus="no">

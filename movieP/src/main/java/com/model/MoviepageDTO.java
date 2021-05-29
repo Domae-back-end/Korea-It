@@ -14,7 +14,7 @@ public class MoviepageDTO {
 	DbMapper mm;
 	
 	Integer page=1, cnt=0;
-	Integer start, limit =10, pageLimit=4, total, startPage, endPage;
+	Integer start, limit =3, pageLimit=4, total, startPage, endPage;
 	
 	
 	public void setCnt(Integer cnt) {
