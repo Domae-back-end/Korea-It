@@ -31,6 +31,7 @@ public class Moviereview implements MovieAction5{
 		MovieReviewDTO rDTO = (MovieReviewDTO)rdto1;
 		MoviepageDTO pdto = (MoviepageDTO)pdto1;
 		
+		System.out.println("전달되는 영화 코드: "+rDTO.getCate());
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("rDTO", rDTO);
 		map.put("pDTO", pdto);

@@ -30,6 +30,7 @@ public class Moviebefore implements MovieAction3{
 		Iterator<MovieInfoDTO> it = list.iterator();
 		while(it.hasNext()) {
 			MovieInfoDTO aa = it.next();
+			aa.setGpa(mm.calcGPA(aa.getM_index()));
 			aa.setMlike(mm.selectlike(aa.getM_index()));
 		}
 		return list;

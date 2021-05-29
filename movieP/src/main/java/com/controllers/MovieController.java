@@ -125,7 +125,6 @@ public class MovieController {
 		//현재 request session으로 아이디 받아와서 내 review만 가져오
 		InfoDTO info = new InfoDTO();
 		
-		
 		if (req.getParameter("ind") != null) {
 			
 			MovieAction6 res = pr.getContext().getBean("myreview", MovieAction6.class);

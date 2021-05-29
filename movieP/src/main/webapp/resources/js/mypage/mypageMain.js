@@ -403,8 +403,8 @@
 						tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
 						tt+="<div class='puchaseinner'>" +data.qna[i].perstitle+ "</div>"
 						tt+="<div class='puchaseinner'>" +data.qna[i].persqtime+ "</div>"
-						tt+="<div class='puchaseinner'> <fmt:formatDate value=" +data.qna[i].persatime+ " pattern= 'yyyy년 MM월 dd일'/>"
-						tt+=data.qna[i].persstate +"</div>"+"</div>"
+						tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'
+						tt+="</div>"+"</div>"
 
 						$("#qnarecord").append(tt)	
 					}

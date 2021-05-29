@@ -89,7 +89,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<!-- 리뷰개수 -->
 	<select id="totalCnt" resultType="java.lang.Integer" parameterType="HashMap">
-		select count(*) from review 
+		select count(*) from review where cate = #{rDTO.cate}
 	</select>
 	
 	<!-- 내 리뷰만 -->
@@ -97,6 +97,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from review
 		where userid='${userid}' and
 		cate='${ind}'
+	</select>
+	<!-- 평점 가져오기 -->
+	<select id="calcGPA" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select avg(gpa)
+		from review
+		where cate = '${m_index}'
 	</select>
 
 	<insert id="reviewinsert" parameterType="MovieReviewDTO">
@@ -113,7 +119,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="pullTInfo" parameterType="MovieReviewDTO"
 		resultType="EndTimeDTO">
 		select userid, m_index, moviesector
-		from salestest
+		from sales
 		where sales_type != '환불' and
 		userid = '${userid}' and
 		m_index= '${cate}'
@@ -203,9 +209,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<!-- 영화정보 등록 시1 ... 영화기본정보 -->
 	<insert id="movieinfoinsert" parameterType="MovieInfoDTO">
-		insert into movieinfo (movietitle, mdir, mdate,mactrs,mcate, mplaytime, mplot)
+		insert into movieinfo (movietitle, mdir, mdate,mactrs,mcate, mplaytime, mplot, viewcnt)
 		values
-		(#{movietitle}, #{mdir}, #{mdate}, #{mactrs}  ,#{mcate},     #{mplaytime}, #{mplot} )
+		(#{movietitle}, #{mdir}, #{mdate}, #{mactrs}  ,#{mcate},     #{mplaytime}, #{mplot}, 0 )
 
 	</insert>
 	<!-- 영화정보 등록시 포스터이름도 update -->
@@ -557,10 +563,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<sql id="qnacheck">
 
 		<choose>
-			<when test="qnastate != '전체'">
-				<where> <![CDATA[ persid=#{userid} and persstate =#{qnastate}]]></where>
-			</when>
-			
 			<when test="qnastate == '전체' and qnacontent !=null and qnacontent !=''">
 				<where> <![CDATA[perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%') and persid=#{userid} ]]></where>
 			</when>
@@ -569,6 +571,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<where> <![CDATA[perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%') and persid=#{userid} and persstate =#{qnastate} ]]></where>
 			</when>
 	
+			<when test="qnastate != '전체'">
+				<where> <![CDATA[ persid=#{userid} and persstate =#{qnastate}]]></where>
+			</when>
+			
 			<otherwise>
 				<where> <![CDATA[persid=#{userid}]]></where>
 			</otherwise>
@@ -650,32 +656,35 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
-		select ticket_pcount,salesprice, movietitle, sales_type, sales_time,salestest.m_index, imgname from salestest 
-		left outer join movieimg on salestest.m_index = movieimg.m_index
-		where salestest.userid=#{userid} and date_format(salestest.sales_time,'%Y-%m')=#{date} 
-		order by salestest.sales_time desc
+		select moviesector, ticket_pcount, salesprice, movietitle, sales_type, date_format(sales_time,'%Y-%m-%d') as sales_time, sales.m_index, imgname from sales 
+		left outer join movieimg on sales.m_index = movieimg.m_index
+		where sales.userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and imgname like '%poster.jpg'
+		order by sales.sales_time desc
 	</select>
 
 	
 	<select id="memcomment" resultType="map" parameterType="MemberDTO">
-		select movietitle, imgname, postcontent, posttime, cate, mlike from review
+		select movietitle, imgname, postcontent,  date_format(posttime,'%Y-%m-%d') as posttime, cate, mlike from review
 		left outer join movieinfo on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
-		where movieinfo.m_index in (select cate from review where userid=#{userid})
+		where movieinfo.m_index in (select cate from review where userid=#{userid}) and imgname like '%poster.jpg'
 		order by review.posttime desc
 	</select>
 
 	
 	<select id="memlikeinfor" resultType="map" parameterType="MemberDTO">
-		select movietitle, imgname, mlike, cate from movieinfo
-		left outer join review on movieinfo.m_index = review.cate
+		select movietitle, imgname, mlike, movieinfo.m_index, g_index from movieinfo
+		left outer join userlikes on movieinfo.m_index = userlikes.m_index
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
-		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid})
+		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid}) and imgname like '%poster.jpg'
+		order by userlikes.g_index desc
 	</select>
 
 	
 	<select id="memqna" resultType="map" parameterType="MemberDTO">
-		select * from personalqna <include refid="qnacheck" /> order by persqtime desc
+		select perscate, persindex, persid , perstitle, perscont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
+		from personalqna <include refid="qnacheck" /> 
+		order by persqtime desc
 	</select>
 
 	
@@ -691,7 +700,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
-		(select COUNT(*) sc from salestest  where userid=#{userid} and salesprice > 0) a, 
+		(select COUNT(*) sc from sales  where userid=#{userid} and salesprice > 0) a, 
 		(select COUNT(*) rc from review where userid=#{userid}) b,
 		(select COUNT(*) uc from userlikes where userid=#{userid}) c
 	</select>
@@ -708,16 +717,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 
 
-	<!-- 매출관련 정보(테스트용) salestest -->
+	<!-- 매출관련 정보(테스트용) sales -->
 
 	<select id="getyesterdaysales" resultType="SalesDTO"
 		parameterType="HashMap">
-		select * from salestest WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
+		select * from sales WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
 	</select>
 
 
 	<select id="getsalesbyId" resultType="SalesDTO">
-		select * from salestest where userid like concat('%',#{userid},'%')
+		select * from sales where userid like concat('%',#{userid},'%')
 	</select>
 
 
@@ -733,7 +742,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="getsales" resultType="SalesDTO" parameterType="HashMap">
-		select * from salestest order by sales_time desc;
+		select * from sales order by sales_time desc;
 	</select>
 	
 
@@ -791,11 +800,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		values
 		(#{daysaletime}
 
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		'%${daysaletime}%')
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		concat('%',#{daysaletime},'%') and sales_type!='환불')
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		'%${daysaletime}%' and sales_type='환불')
 		)
 	</insert>
@@ -804,11 +813,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		update monthsales (sumall,totalsale,totalrefund)
 		values
 		(
-		(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		'%${daysaletime}%')
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		concat('%',#{daysaletime},'%') and sales_type!='환불')
-		,(SELECT SUM(salesprice) FROM salestest WHERE sales_time LIKE
+		,(SELECT SUM(salesprice) FROM sales WHERE sales_time LIKE
 		'%${daysaletime}%' and sales_type='환불')
 		)
 		where monthdate = #{monthdate}

@@ -40,19 +40,21 @@
 		height: 70px;
 	}
 	#b{
-		text-align:center;
-		width: 100px;
-		height:50px;
+		height: 60px;
 	}
 	#myr>#aa{
 		background: "red";
 	}
 	 #star{
 		 height: 60px;
-		 line-height:60px;
+		 line-height:60px; 
 	 }
-
-
+	 #star>i{
+	 	color:gold;
+	 }
+	#del{
+		float: right;
+	}
 
 </style>
 
@@ -187,7 +189,6 @@
 		
 	</c:forEach>
 	<c:if test="${moviereview.pdto.endPage < moviereview.pdto.total}">
-		
 		<input type="button" class="btn" dd="${moviereview.pdto.endPage+1}" value="&gt" />	
 	</c:if>	
 
