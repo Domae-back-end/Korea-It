@@ -26,7 +26,7 @@
 	<div id="pageRecord">
 		<div class="fff">
 			<c:if test="${memdata.pdto.startPage > 1}">
-	    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="pageChange(${memdata.pdto.startPage-1})" value="&lt" />
+	    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.pdto.startPage-1})" value="&lt" />
 			</c:if>
 	            
 			<c:forEach begin="${memdata.pdto.startPage}" end="${memdata.pdto.endPage}" step="1" var="i">
@@ -35,13 +35,13 @@
 						<input type="text" class="pagebtn_sel" value="${i }" readonly/>
 					</c:when>
 					<c:otherwise>
-						<input type="button" class="btnnn pagebtn" onclick="pageChange(${i})" value="${i}" />
+						<input type="button" class="btnnn pagebtn" onclick="purchasepageChange(${i})" value="${i}" />
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 	            
 			<c:if test="${memdata.pdto.endPage < memdata.pdto.total}">
-	    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="pageChange(${memdata.pdto.endPage+1})" value="&gt" />
+	    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.pdto.endPage+1})" value="&gt" />
 			</c:if>
 		</div>
 	</div>

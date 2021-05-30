@@ -23,10 +23,10 @@ public class Membermypage implements MemberAction {
 	
 	@Override
 	public Object execute(MemberDTO mdto, HttpSession session, HttpServletRequest request) {
-
-		if(request!=null)
+		System.out.println(mdto.getPageKind());
+		if(mdto.getPageKind()==null && request!=null)
 			mdto.setPageKind(request.getParameter("kind"));
-		
+
 		if(session!=null) {
 			String userid = (String) session.getAttribute("sessionId");
 			mdto.setUserid(userid);

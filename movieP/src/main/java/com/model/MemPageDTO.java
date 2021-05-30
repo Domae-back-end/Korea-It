@@ -14,7 +14,7 @@ public class MemPageDTO {
 	String pageKind;
 	
 	public void init(MemberDTO mdto, Map<String, Integer> map) {
-		
+
 		if(mdto.getPageKind()!=null) {
 			
 			pageKind = mdto.getPageKind().substring(0,1) +"c";

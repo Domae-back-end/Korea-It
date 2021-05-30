@@ -83,12 +83,39 @@
     	
     	var list = {
     		userid : document.getElementById('userid').value,
-    		date :  document.getElementById('moiverecord').value,
-    		pageKind : 'seemovie'
+    		date :  document.getElementById('moiverecord').value
     	};
     	
-    	purchaselistChange(list);
-    	
+    	$.ajax({
+	    	async : false,
+	        type : 'POST',
+	        data : JSON.stringify(list),
+	        url : "/memberRecord",
+	        dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+			
+				$(".ppp").remove()
+				
+				if(data.purchase!=null){
+										
+					for(i in data.purchase ){
+						
+						if(data.purchase[i].salesprice > 0) {
+							var tt ="<div class='ppp'>"
+							tt+="<div class='puchaseinner'>"+ data.purchase[i].movietitle + "</div>"
+							tt+="<div class='puchaseinner'>" +data.purchase[i].ticket_pcount+ "</div>"
+							tt+="<div class='puchaseinner'>" +data.purchase[i].salesprice+ "</div>"
+							tt+="<div class='puchaseinner'><fmt:formatDate value='"+data.purchase[i].sales_time +" pattern= \"yyyy년 MM월 dd일\" '/></div>"
+							tt+="</div>"
+							
+							$("#recordpurchase").append(tt)	
+						}
+					}
+				}
+					
+	     	}
+		});
     });
     
     
@@ -332,6 +359,18 @@
  
  
  
+ 
+	$("#ticketGo").click(function(){
+    	frm.action = "/user/movietime/list"
+		frm.submit();
+	});
+ 
+     
+     
+     
+     
+     
+     
 	$("#serviceGo").click(function(){
     	frm.action = "/user/serviceC/servicePersonal"
 		frm.submit();
@@ -340,16 +379,40 @@
  	$("#qnafind").click(function(){
     	
     	var list = {
-	    	userid : document.getElementById('userid').value,
-	    	qnastate :  document.getElementById('qnastate').value,
-	    	qnacontent :  $('#qnacontent').val()
+    		userid : document.getElementById('userid').value,
+    		qnastate :  document.getElementById('qnastate').value,
+    		qnacontent :  $('#qnacontent').val()
     	};
-    	qnalistChange(list);
     	
+    	$.ajax({
+	    	async : false,
+	        type : 'POST',
+	        data : JSON.stringify(list),
+	        url : "/memberRecord",
+	        dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			success : function(data) {
+			
+				$(".fff").remove()
+				
+				if(data.qna!=null){
+										
+					for(i in data.qna ){
+						
+						var tt ="<div class='fff'>"
+						tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
+						tt+="<div class='puchaseinner'>" +data.qna[i].perstitle+ "</div>"
+						tt+="<div class='puchaseinner'>" +data.qna[i].persqtime+ "</div>"
+						tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'
+						tt+="</div>"+"</div>"
+
+						$("#qnarecord").append(tt)	
+					}
+				}
+					
+	     	}
+		});
 	});
-	
-	
-	
 	
 });
 
@@ -388,8 +451,8 @@ function likeButt(data){
 							if(data.dcnt >0){
 								
 								alert("좋아요가 취소되었습니다.")
-								location.reload();
-								
+								frm.action = "/member/mypage/mymoviestroy?kind=likemovie"
+								frm.submit();
 							}
 					     }
 					});
@@ -441,8 +504,9 @@ function writedelteGo(data,no){
 				if(res.dcnt >0){
 								
 					alert("관람평이 삭제되었습니다.")
-					location.reload();
+					location.href = "/member/mypage/mymoviestroy?kind=writemovie"
 				}
+		
 		     }
 		});
 	}	
@@ -513,164 +577,4 @@ function writemodifyfinish(data,no){
 		
 }
 
-function qnalistChange(list){
-    	
-    $.ajax({
-	    async : false,
-	    type : 'POST',
-		data : JSON.stringify(list),
-	    url : "/memberRecord",
-	    dataType : "json",
-		contentType : "application/json; charset=UTF-8",
-		success : function(data) {
-			
-			$(".fff").remove()
-				
-			if(data.qna!=null){
-										
-				for(i in data.qna ){
-					
-					if(data.qna[i].persatime==null)
-						data.qna[i].persatime =""
-						
-					var tt ="<div class='fff'>"
-					tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
-					tt+="<div class='puchaseinner'>" +data.qna[i].perstitle+ "</div>"
-					tt+="<div class='puchaseinner'>" +data.qna[i].persqtime+ "</div>"
-					tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'
-					tt+="</div>"+"</div>"
-
-					$("#qnaRecord").append(tt)	
-					
-				}
-					
-			var pp = "<div class='fff'>"
-				
-			if(data.pdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
-							
-			for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
-								
-				if(i == data.pdto.page){
-					pp += "<input type='button' class='pagebtn_sel' readonly value="+i+ ">"
-				}else{
-					pp += "<input type='button' class='btnnn pagebtn' onclick='qnapageChange("+i+ ")' value="+i+ ">"
-				}
-			}			
-	     	
-	     	if(data.pdto.endPage < data.pdto.total)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
-	     		
-	     		pp+="</div>"
-	     		
-	     		$("#pageRecord").append(pp)
-				
-			}
-	     }
-	});
-}
-
-function qnapageChange(i){
-	
-	var list = {
-    	userid : document.getElementById('userid').value,
-    	qnastate :  document.getElementById('qnastate').value,
-    	qnacontent :  $('#qnacontent').val(),
-    	page : i
-    };
-	
-	qnalistChange(list);
-}
-
-function purchaselistChange(list){
-
-	$.ajax({
-	    async : false,
-	    type : 'POST',
-		data : JSON.stringify(list),
-	    url : "/memberRecord",
-	    dataType : "json",
-		contentType : "application/json; charset=UTF-8",
-		success : function(data) {
-			
-			$(".fff").remove()
-				
-			if(data.purchase!=null){
-										
-				for(i in data.purchase ){
-					
-					if(data.purchase[i].salesprice > 0) {
-						var tt ="<div class='fff'>"
-						tt+="<div class='puchaseinner'>"+ data.purchase[i].movietitle + "</div>"
-						tt+="<div class='puchaseinner'>" +data.purchase[i].ticket_pcount+ "</div>"
-						tt+="<div class='puchaseinner'>" +data.purchase[i].salesprice+ "</div>"
-						tt+="<div class='puchaseinner'>"+data.purchase[i].sales_time + "</div>"
-						tt+="</div>"
-							
-						$("#recordpurchase").append(tt)	
-					}
-					
-				}
-					
-			var pp = "<div class='fff'>"
-				
-			if(data.pdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasepageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
-							
-			for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
-								
-				if(i == data.pdto.page){
-					pp += "<input type='button' class='pagebtn_sel' readonly value="+i+ ">"
-				}else{
-					pp += "<input type='button' class='btnnn pagebtn' onclick='purchasepageChange("+i+ ")' value="+i+ ">"
-				}
-			}			
-	     	
-	     	if(data.pdto.endPage < data.pdto.total)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasepageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
-	     		
-	     		pp+="</div>"
-	     		
-	     		$("#pageRecord").append(pp)
-				
-			}
-	     }
-	});
-	
-    	
-}
-
-function purchasepageChange(i){
-	
-	var list = {
-    	userid : document.getElementById('userid').value,
-    	date :  document.getElementById('moiverecord').value,
-    	pageKind : 'seemovie',
-    	page : i
-    };
-	
-	purchaselistChange(list);
-}
-
-function pageChange(i){
-	
-	var list = {
-    	page : i
-    };
-	
-	$.ajax({
-	   	async : false,
-	    type : 'POST',
-	    data : JSON.stringify(list),
-	    url : "/membermodify",
-	    dataType : "json",
-		contentType : "application/json; charset=UTF-8",
-		success : function(data) {
-			
-			if(data.pdto.page >1)
-				location.reload();
-	
-	     }
-	});
-}
 
