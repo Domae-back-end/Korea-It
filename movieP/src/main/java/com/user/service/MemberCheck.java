@@ -3,6 +3,7 @@ package com.user.service;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -20,7 +21,7 @@ public class MemberCheck implements MemberAction {
 	DbMapper dm;
 	
 	@Override
-	public Object execute(MemberDTO mdto, HttpSession session) {
+	public Object execute(MemberDTO mdto, HttpSession session, HttpServletRequest request) {
 		
 		HashMap<String, MemberDTO> map = new HashMap<>();
 		logger.info(mdto.toString());

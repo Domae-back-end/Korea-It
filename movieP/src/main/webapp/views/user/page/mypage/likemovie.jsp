@@ -10,7 +10,7 @@
 		<form action="" method="post" enctype="multipart/form-data" name="frm">
 			
 			<div class="likeouter">
-				<a href="/movie/moviedetail?sub=info&ind=${pp.m_index }">
+				<a href="/user/movie/moviedetail?sub=info&ind=${pp.m_index }">
 					<div class="likeimg">
 						<c:choose>
 							<c:when test="${pp.imgname!=null }">
@@ -22,9 +22,11 @@
 						</c:choose>
 					</div>
 				</a>
-				<a href="/movie/moviedetail?sub=info&ind=${pp.m_index }"><div class="liketitle">${pp.movietitle }</div></a>
+				<a href="/user/movie/moviedetail?sub=info&ind=${pp.m_index }"><div class="liketitle">${pp.movietitle }</div></a>
 				<div><button class="likeButt" onclick="likeButt(${pp.m_index })" >${pp.mlike }</button></div>
-				<div><button class="changeButt" id="ticketGo">예매하기</button></div>
+				<a href="/user/movietime/list?movietitle=${pp.movietitle }">
+					<input type="button" class="changeButt" value="예매하기" />
+				</a>
 			</div>
 		</form>
 	

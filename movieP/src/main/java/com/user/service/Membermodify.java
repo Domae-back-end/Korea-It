@@ -3,6 +3,7 @@ package com.user.service;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class Membermodify implements MemberAction{
 	DbMapper dm;
 
 	@Override
-	public Object execute(MemberDTO mdto, HttpSession session) {
+	public Object execute(MemberDTO mdto, HttpSession session, HttpServletRequest request) {
 		
 		HashMap<String, Object> map = new HashMap<>();
 		

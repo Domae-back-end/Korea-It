@@ -5,11 +5,13 @@ import java.util.Date;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
+import com.model.MemPageDTO;
 import com.model.MemberAction;
 import com.model.MemberDTO;
 
@@ -20,7 +22,10 @@ public class Membermypage implements MemberAction {
 	DbMapper dm;
 	
 	@Override
-	public Object execute(MemberDTO mdto, HttpSession session) {
+	public Object execute(MemberDTO mdto, HttpSession session, HttpServletRequest request) {
+		
+		if(request!=null)
+			mdto.setPageKind(request.getParameter("kind"));
 		
 		if(session!=null) {
 			String userid = (String) session.getAttribute("sessionId");
@@ -33,6 +38,10 @@ public class Membermypage implements MemberAction {
 		if(mdto.getQnastate()==null)
 			mdto.setQnastate("전체");
 
+		MemPageDTO pdto = new MemPageDTO();
+		pdto.init(mdto, dm.memcount(mdto));
+		mdto.setStart(pdto.getStart());
+		
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("dto", dm.memlogin(mdto));
@@ -41,6 +50,7 @@ public class Membermypage implements MemberAction {
 		map.put("like", dm.memlikeinfor(mdto));
 		map.put("qna", dm.memqna(mdto));
 		map.put("cnt", dm.memcount(mdto));
+		map.put("pdto", pdto);
 		
 		System.out.println(map);
 		

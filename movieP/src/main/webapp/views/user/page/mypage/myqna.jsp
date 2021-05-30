@@ -24,7 +24,7 @@
 		<button class="changeButt" id="qnafind">검색</button>
 	</div>
 
-	<div class="cimeminfor" id="qnarecord">
+	<div class="cimeminfor" id="qnaRecord">
 		<div id="titleinner">
 			<div class="puchaseinner">작성자</div>
 			<div class="puchaseinner">제목</div>

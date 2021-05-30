@@ -1,6 +1,7 @@
 package com.user.service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class MemberjoinReg implements MemberAction {
 	DbMapper dm;
 	
 	@Override
-	public Object execute(MemberDTO mdto, HttpSession session) {
+	public Object execute(MemberDTO mdto, HttpSession session, HttpServletRequest request) {
 		
 		MemberDTO dto = new MemberDTO();
 		

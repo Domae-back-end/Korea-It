@@ -665,6 +665,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		left outer join movieimg on sales.m_index = movieimg.m_index
 		where sales.userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and imgname like '%poster.jpg'
 		order by sales.sales_time desc
+		limit #{start},8
 	</select>
 
 	
@@ -674,6 +675,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
 		where movieinfo.m_index in (select cate from review where userid=#{userid}) and imgname like '%poster.jpg'
 		order by review.posttime desc
+		limit #{start},5
 	</select>
 
 	
@@ -682,7 +684,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		left outer join userlikes on movieinfo.m_index = userlikes.m_index
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
 		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid}) and imgname like '%poster.jpg'
-		order by userlikes.g_index desc
+		order by userlikes.g_index desc 
+		limit #{start},6
 	</select>
 
 	
@@ -706,8 +709,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
 		(select COUNT(*) sc from sales  where userid=#{userid} and salesprice > 0) a, 
-		(select COUNT(*) rc from review where userid=#{userid}) b,
-		(select COUNT(*) uc from userlikes where userid=#{userid}) c
+		(select COUNT(*) wc from review where userid=#{userid}) b,
+		(select COUNT(*) lc from userlikes where userid=#{userid}) c
 	</select>
 	
 	

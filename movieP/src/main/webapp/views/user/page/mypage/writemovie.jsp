@@ -7,7 +7,7 @@
 	<c:forEach items="${memdata.comment }" var ="pp" varStatus="no">
 		
 		<div class="writeouter">
-			<a href="/movie/moviedetail?sub=review&ind=${pp.cate }">
+			<a href="/user/movie/moviedetail?sub=review&ind=${pp.cate }">
 				<div class="writeimg">
 					<c:choose>
 						<c:when test="${pp.imgname!=null }">
@@ -19,7 +19,7 @@
 					</c:choose>
 				</div>
 			</a>
-			<a href="/movie/moviedetail?sub=review&ind=${pp.cate }"><div class="writetitle">${pp.movietitle } | 좋아요: ${pp.mlike }</div></a>
+			<a href="/user/movie/moviedetail?sub=review&ind=${pp.cate }"><div class="writetitle">${pp.movietitle } | 좋아요: ${pp.mlike }</div></a>
 			
 			<div class="writetnow">${pp.postcontent }</div>
 			<textarea class="writeArea" rows="1" cols="40">${pp.postcontent }</textarea>

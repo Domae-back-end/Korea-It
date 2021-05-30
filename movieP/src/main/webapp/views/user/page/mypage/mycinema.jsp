@@ -32,13 +32,13 @@
 			</a>
 			<a href="/member/mypage/mymoviestroy?kind=writemovie">
 				<div class="myrecord">
-					<div class="recordinner">${memdata.cnt.rc }</div>
+					<div class="recordinner">${memdata.cnt.wc }</div>
 					<div class="recordinner">관람평</div>
 				</div>
 			</a>
 			<a href="/member/mypage/mymoviestroy?kind=likemovie">
 				<div class="myrecord">
-					<div class="recordinner">${memdata.cnt.uc }</div>
+					<div class="recordinner">${memdata.cnt.lc }</div>
 					<div class="recordinner">좋아요</div>
 				</div>		
 			</a>

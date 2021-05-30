@@ -360,10 +360,7 @@
  
  
  
-	$("#ticketGo").click(function(){
-    	frm.action = "/user/movietime/list"
-		frm.submit();
-	});
+
  
      
      
@@ -398,6 +395,9 @@
 				if(data.qna!=null){
 										
 					for(i in data.qna ){
+					
+						if(data.qna[i].persatime==null)
+							data.qna[i].persatime =""
 						
 						var tt ="<div class='fff'>"
 						tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
@@ -406,7 +406,7 @@
 						tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'
 						tt+="</div>"+"</div>"
 
-						$("#qnarecord").append(tt)	
+						$("#qnaRecord").append(tt)	
 					}
 				}
 					
