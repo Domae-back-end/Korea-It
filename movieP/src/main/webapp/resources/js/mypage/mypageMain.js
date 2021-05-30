@@ -380,7 +380,7 @@
 	    	qnastate :  document.getElementById('qnastate').value,
 	    	qnacontent :  $('#qnacontent').val()
     	};
-    	listChange(list);
+    	qnalistChange(list);
     	
 	});
 	
@@ -549,7 +549,7 @@ function writemodifyfinish(data,no){
 		
 }
 
-function listChange(list){
+function qnalistChange(list){
     	
     $.ajax({
 	    async : false,
@@ -583,30 +583,30 @@ function listChange(list){
 			var pp = "<div class='fff'>"
 				
 			if(data.pdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' value='&lt' />"
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
 							
 			for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
 								
 				if(i == data.pdto.page){
 					pp += "<input type='button' class='pagebtn_sel' readonly value="+i+ ">"
 				}else{
-					pp += "<input type='button' class='btnnn pagebtn' onclick='pageChange("+i+ ")' value="+i+ ">"
+					pp += "<input type='button' class='btnnn pagebtn' onclick='qnapageChange("+i+ ")' value="+i+ ">"
 				}
 			}			
 	     	
-	     	if(data.pdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' value='&gt' />"
+	     	if(data.pdto.endPage < data.pdto.total)
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
 	     		
 	     		pp+="</div>"
 	     		
-	     		$("#qnaRecord").append(pp)
+	     		$("#pageRecord").append(pp)
 				
 			}
 	     }
 	});
 }
 
-function pageChange(i){
+function qnapageChange(i){
 	
 	var list = {
     	userid : document.getElementById('userid').value,
@@ -615,5 +615,28 @@ function pageChange(i){
     	page : i
     };
 	
-	listChange(list);
+	qnalistChange(list);
 }
+
+function pageChange(i){
+	
+	var list = {
+    	page : i
+    };
+	
+	$.ajax({
+	   	async : false,
+	    type : 'POST',
+	    data : JSON.stringify(list),
+	    url : "/membermodify",
+	    dataType : "json",
+		contentType : "application/json; charset=UTF-8",
+		success : function(data) {
+			
+			if(data.pdto.page >1)
+				location.reload();
+	
+	     }
+	});
+}
+

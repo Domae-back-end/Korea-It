@@ -23,7 +23,7 @@ public class Membermypage implements MemberAction {
 	
 	@Override
 	public Object execute(MemberDTO mdto, HttpSession session, HttpServletRequest request) {
-		
+
 		if(request!=null)
 			mdto.setPageKind(request.getParameter("kind"));
 		

@@ -360,10 +360,12 @@ h4{
 
 
 
-#qnaRecord{
+#qnaRecord, #recordpurchase{
 	height: 450px;	
 }
-
+#pageRecord{
+	clear: both;
+}
 
 
 

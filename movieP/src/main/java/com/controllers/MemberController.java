@@ -32,6 +32,9 @@ public class MemberController {
 		
 		if(service.startsWith("my"))
 			service = "mypage";
+		
+		if(service.endsWith("mypurchase"))
+			mdto.setPageKind("seemovie");
 
 		MemberAction res = pr.getContext().getBean("member" + service, MemberAction.class);
 
