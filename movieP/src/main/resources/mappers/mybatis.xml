@@ -693,6 +693,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select perscate, persindex, persid , perstitle, perscont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
 		from personalqna <include refid="qnacheck" /> 
 		order by persqtime desc
+		limit #{start},8
 	</select>
 
 	
@@ -710,7 +711,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from 
 		(select COUNT(*) sc from sales  where userid=#{userid} and salesprice > 0) a, 
 		(select COUNT(*) wc from review where userid=#{userid}) b,
-		(select COUNT(*) lc from userlikes where userid=#{userid}) c
+		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
+		(select COUNT(*) qc from personalqna where persid=#{userid}) d
 	</select>
 	
 	
