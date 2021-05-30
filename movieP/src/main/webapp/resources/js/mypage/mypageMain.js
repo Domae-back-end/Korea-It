@@ -376,43 +376,16 @@
  	$("#qnafind").click(function(){
     	
     	var list = {
-    		userid : document.getElementById('userid').value,
-    		qnastate :  document.getElementById('qnastate').value,
-    		qnacontent :  $('#qnacontent').val()
+	    	userid : document.getElementById('userid').value,
+	    	qnastate :  document.getElementById('qnastate').value,
+	    	qnacontent :  $('#qnacontent').val()
     	};
+    	listChange(list);
     	
-    	$.ajax({
-	    	async : false,
-	        type : 'POST',
-	        data : JSON.stringify(list),
-	        url : "/memberRecord",
-	        dataType : "json",
-			contentType : "application/json; charset=UTF-8",
-			success : function(data) {
-			
-				$(".fff").remove()
-				
-				if(data.qna!=null){
-										
-					for(i in data.qna ){
-					
-						if(data.qna[i].persatime==null)
-							data.qna[i].persatime =""
-						
-						var tt ="<div class='fff'>"
-						tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
-						tt+="<div class='puchaseinner'>" +data.qna[i].perstitle+ "</div>"
-						tt+="<div class='puchaseinner'>" +data.qna[i].persqtime+ "</div>"
-						tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'
-						tt+="</div>"+"</div>"
-
-						$("#qnaRecord").append(tt)	
-					}
-				}
-					
-	     	}
-		});
 	});
+	
+	
+	
 	
 });
 
@@ -451,8 +424,8 @@ function likeButt(data){
 							if(data.dcnt >0){
 								
 								alert("좋아요가 취소되었습니다.")
-								frm.action = "/member/mypage/mymoviestroy?kind=likemovie"
-								frm.submit();
+								location.reload();
+								
 							}
 					     }
 					});
@@ -504,9 +477,8 @@ function writedelteGo(data,no){
 				if(res.dcnt >0){
 								
 					alert("관람평이 삭제되었습니다.")
-					location.href = "/member/mypage/mymoviestroy?kind=writemovie"
+					location.reload();
 				}
-		
 		     }
 		});
 	}	
@@ -577,4 +549,71 @@ function writemodifyfinish(data,no){
 		
 }
 
+function listChange(list){
+    	
+    $.ajax({
+	    async : false,
+	    type : 'POST',
+		data : JSON.stringify(list),
+	    url : "/memberRecord",
+	    dataType : "json",
+		contentType : "application/json; charset=UTF-8",
+		success : function(data) {
+			
+			$(".fff").remove()
+				
+			if(data.qna!=null){
+										
+				for(i in data.qna ){
+					
+					if(data.qna[i].persatime==null)
+						data.qna[i].persatime =""
+						
+					var tt ="<div class='fff'>"
+					tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
+					tt+="<div class='puchaseinner'>" +data.qna[i].perstitle+ "</div>"
+					tt+="<div class='puchaseinner'>" +data.qna[i].persqtime+ "</div>"
+					tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'
+					tt+="</div>"+"</div>"
 
+					$("#qnaRecord").append(tt)	
+					
+				}
+					
+			var pp = "<div class='fff'>"
+				
+			if(data.pdto.startPage > 1)
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' value='&lt' />"
+							
+			for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
+								
+				if(i == data.pdto.page){
+					pp += "<input type='button' class='pagebtn_sel' readonly value="+i+ ">"
+				}else{
+					pp += "<input type='button' class='btnnn pagebtn' onclick='pageChange("+i+ ")' value="+i+ ">"
+				}
+			}			
+	     	
+	     	if(data.pdto.startPage > 1)
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' value='&gt' />"
+	     		
+	     		pp+="</div>"
+	     		
+	     		$("#qnaRecord").append(pp)
+				
+			}
+	     }
+	});
+}
+
+function pageChange(i){
+	
+	var list = {
+    	userid : document.getElementById('userid').value,
+    	qnastate :  document.getElementById('qnastate').value,
+    	qnacontent :  $('#qnacontent').val(),
+    	page : i
+    };
+	
+	listChange(list);
+}

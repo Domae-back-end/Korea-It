@@ -47,7 +47,7 @@ public class MemPageDTO {
 		if (endPage > total) {
 			endPage = total;
 		}
-
+		System.out.println(pageKind+","+ttt+","+endPage+","+total);
 	}
 
 }

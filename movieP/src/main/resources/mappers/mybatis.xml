@@ -647,7 +647,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
-		select * from memberinfo <include refid="checkform" />
+		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userpnum, useremail, joinday, kind 
+		from memberinfo <include refid="checkform" />
 	</select>
 
 	
@@ -709,10 +710,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
-		(select COUNT(*) sc from sales  where userid=#{userid} and salesprice > 0) a, 
+		(select COUNT(*) sc from sales  where userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and salesprice > 0) a, 
 		(select COUNT(*) wc from review where userid=#{userid}) b,
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
-		(select COUNT(*) qc from personalqna where persid=#{userid}) d
+		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d
 	</select>
 	
 	
