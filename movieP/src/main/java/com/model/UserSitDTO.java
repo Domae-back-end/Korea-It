@@ -14,6 +14,5 @@ public class UserSitDTO {
 	
 	
 	public UserSitDTO() {
-		// TODO Auto-generated constructor stub
 	}
 }
