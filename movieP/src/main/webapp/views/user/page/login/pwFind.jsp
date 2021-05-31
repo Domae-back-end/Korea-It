@@ -6,9 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>find</title>
-<script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
-<link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
-<script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
 
 </head>
 <body>
