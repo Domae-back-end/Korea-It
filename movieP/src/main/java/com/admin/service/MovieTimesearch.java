@@ -22,10 +22,10 @@ public class MovieTimesearch implements MovieTimeService {
 	public Object execute(String dal, String el, MovieTimeDTO dto) {
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
-		if(dto.getM_index() != null) {
-			if(dto.getM_index() == 3 || dto.getM_index() == 4) {
+		if(dto.getTime_index() != null) {
+			if(dto.getTime_index() == 3 || dto.getTime_index() == 4) {
 				
-			}else if(dto.getM_index() == 2) {
+			}else if(dto.getTime_index() == 2) {
 				//날짜
 			}
 		}
