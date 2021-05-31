@@ -18,7 +18,7 @@ public class MovieTimeDTO {
 	String m_indexlist;
 	String sectornolist;
 
-	String search;
+	String search;//
 	
 	public ArrayList<MovieTimeDTO> getList(){
 
