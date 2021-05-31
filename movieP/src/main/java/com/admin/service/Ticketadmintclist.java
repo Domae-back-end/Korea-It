@@ -9,6 +9,15 @@ public class Ticketadmintclist implements TicketAdminAction {
 	@Override
 	public Object execute(Object obj) {
 		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		return "데이터임.";
 	}
 

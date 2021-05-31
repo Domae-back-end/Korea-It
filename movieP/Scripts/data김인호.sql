@@ -408,7 +408,7 @@ INSERT INTO movieimg (m_index,imgname) VALUES
 	 
 	 <!-- sales    테이블 들어갈 내용들   -->
 	 
-	 
+	 <!--  -->
 	 
 	 
 INSERT INTO sales (t_index, ticket_pcount, salesprice ,userid,movietitle, m_index,moviesector, sales_type,sales_time) VALUES	 
