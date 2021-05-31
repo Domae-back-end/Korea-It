@@ -22,8 +22,25 @@ public class MovieTicketingfinish implements MovieTicketingService{
 	@Override
 	public Object execute(MovieTimeDTO dto, UserSitDTO udto) {
 		String[] buf = udto.getSeatNo().split(",");
+		//udto.time_index
+		
+		//C -> 어린이
+		//T -> 청소년
+		//A -> 어른
+		String people="";
+		for (int i = 0; i < udto.getCnt1(); i++) {
+			people+="C";
+		}
+		for (int i = 0; i < udto.getCnt2(); i++) {
+			people+="T";
+		}
+		for (int i = 0; i < udto.getCnt3(); i++) {
+			people+="A";
+		}
+		udto.setPeople(people);
+		System.out.println(udto);
 		for (int i = 1; i < buf.length; i++) {
-			db.insertSit(new UserSitDTO(udto.getM_index(),buf[i],udto.getUserid()));
+			db.insertSit(new UserSitDTO(udto.getTime_index(),buf[i],udto.getUserid(),udto.getPeople()));
 		}
 		HashMap<String, String> ar = new HashMap<>();
 		ar.put("msg", "예매가 완료되었습니다.");

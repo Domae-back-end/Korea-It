@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class MovieTimeDTO {
 	//movieTimeDTO
-	Integer m_index;
+	Integer time_index;
 	String movietitle, sectorno, starttime1,dal,el;
 	Date starttime, endtime, reg_date;
 	
@@ -31,7 +31,7 @@ public class MovieTimeDTO {
 
 		for (int i = 0; i < buf3.length; i++) {
 			MovieTimeDTO buf = new MovieTimeDTO();
-			buf.setM_index(Integer.parseInt(buf3[i]));
+			buf.setTime_index(Integer.parseInt(buf3[i]));
 			Calendar day = Calendar.getInstance();
 			day.set(Calendar.HOUR, Integer.parseInt(buf1[i].split(":")[0]));
 			day.set(Calendar.MINUTE, Integer.parseInt(buf1[i].split(":")[1]));
@@ -43,7 +43,7 @@ public class MovieTimeDTO {
 			buf.setSectorno(buf4[i]);
 			buf.setReg_date(day.getTime());
 			buf.setStarttime(day.getTime());
-			buf.setM_index(Integer.parseInt(buf3[i]));
+			buf.setTime_index(Integer.parseInt(buf3[i]));
 			ar.add(buf);
 		}
 		
