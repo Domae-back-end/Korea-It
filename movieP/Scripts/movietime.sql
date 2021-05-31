@@ -35,5 +35,17 @@ INSERT INTO unoestellar.ticketing (time_index,people,seatNo,userid,reg_date) VAL
 	 ('자산어보','기존관','16:46:03','18:52:03','2021-05-31');
 	 
 	
-	
+
+CREATE TABLE sales (
+ sales_index int auto_increment primary key,
+ timetableidx int,
+ people varchar(30),
+ sectorNo   varchar(100)   ,
+ salesprice int,
+ userid varchar(100),
+ m_index int,
+ movietitle   varchar(100), 
+ sales_type   varchar(100),
+ sales_time datetime
+);
 	

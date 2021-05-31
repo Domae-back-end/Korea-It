@@ -26,11 +26,11 @@ public interface DbMapper {
    void insertSit(UserSitDTO dto);
    
    MovieInfoDTO findMovie(String movietitle);
-
+   void insertSales(SalesDTO dto);
    List<MovieTimeDTO> findMovieTime(String movietitle);
 
    List<MovieInfoDTO> movielist();
-
+   MovieTimeDTO movietimefindindex(Integer index);
    int updatemovielist(MovieTimeDTO dto);
 
    int deletemovie(MovieTimeDTO dto);
