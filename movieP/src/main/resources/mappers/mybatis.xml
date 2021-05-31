@@ -181,7 +181,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		parameterType="java.lang.String">
 		select * from movietime where movietitle = #{movietitle}
 	</select>
-
+	<select  id="movietimefindindex" resultType="MovieTimeDTO" parameterType="java.lang.Integer">
+		select * from movietime where time_index = #{time_index}
+	</select>
+	<insert id="insertSales" parameterType="SalesDTO">
+		insert into sales (timetableidx,people,sectorNo,salesprice,userid,
+		m_index,movietitle, sales_type, sales_time)
+		values
+		(#{timetableidx},#{people},#{sectorNo},#{salesprice},#{userid},
+		#{m_index},#{movietitle},#{sales_type},#{sales_time})
+	</insert>
 	<insert id="insertMovieTime" parameterType="MovieTimeDTO">
 		insert into movietime (movietitle,sectorno,starttime,endtime,reg_date)
 		values
