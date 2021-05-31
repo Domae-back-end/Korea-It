@@ -50,7 +50,7 @@
 		class="btn btn-success menugobtn">회원정보관리</button>
 
 
-	<button  id="ticketcontrol" value="ticketcontrol"
+	<button  id="ticketadmin" value="ticketadmin"
 		type="button" class="btn btn-success menugobtn">예매정보관리</button>
       
       </nav>
