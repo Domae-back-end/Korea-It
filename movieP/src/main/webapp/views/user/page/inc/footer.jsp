@@ -6,8 +6,6 @@
 		<div class="footer_top_priv">
 		<h2>사이트 이용안내</h2>
 			<ul>
-				<li><a href="../../admin">★★어드민★★</a></li> <!-- 나중에 지움 -->
-				<li><a href="../../user/main">★★유저★★</a></li> <!-- 나중에 지움 -->
 				<li><a href="#">회사소개</a></li>
 				<li><a href="#">사이트 이용약관</a></li>
 				<li><a href="#">개인정보 처리방침</a></li>
