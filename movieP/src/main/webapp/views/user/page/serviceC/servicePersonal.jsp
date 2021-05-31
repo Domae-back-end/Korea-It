@@ -46,7 +46,6 @@
 	
 	.qna_form_tb td {border-bottom: 1px solid #d8d9db; }
 	
-	
 	.upload_box p {display: inline-block; margin-bottom: 10px; }
 	.upload_box input[type="file"] { font-size: 16px; width: 1px; height: 1px; margin: -1px; overflow: hidden;}
 	.upload_box .upfile_class {padding: 5px 10px; font-size: 16px; background-color: #666; margin-left: 10px; 
@@ -148,7 +147,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" style="text-align: center; background: none; ">
+					<td colspan="2" style="text-align: center; background: none; border-bottom: none;  ">
 						<input type="submit" value="등록" class="sbm"/>
 					</td>
 				</tr>

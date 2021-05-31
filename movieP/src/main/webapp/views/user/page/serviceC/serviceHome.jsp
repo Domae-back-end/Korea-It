@@ -33,9 +33,9 @@
 	.search_Box {width: 800px; height: 80px; background: #c5f7f5; border-radius: 10px; margin-bottom: 50px; padding-top: 20px; }
 	.qna1 {width: 700px; height: 40px;}
 	.qna1 label {font-weight: bold; }
-	.qna1>.inputText {width: 370px; border: 0px; border-bottom: 3px solid #5467dc; outline: none; padding: 5px; height: 40px;}
-	.qna1>.inputButton {font-size: 20px; width: 70px; height: 40px;  border: 0px; border-bottom: 3px solid #5467dc; margin-left: -5px;  
-						position: absolute; left: 590px;}
+	.qna1>.inputText {width: 370px; border: 0px; border-bottom: 3px solid #5467dc; outline: none; padding: 5px; height: 40px; margin-left: 10px; }
+	.qna1>.inputButton {font-size: 20px; width: 40px; height: 40px;  border: 0px; border-bottom: 3px solid #5467dc; margin-left: -5px;  
+						position: absolute; left: 590px; background-image: url("../../views/user/img/service/search.png") }
 	
 	
 	
@@ -57,10 +57,6 @@
 	.often_scmain ul li a {display: inline-block;width: 145px; height: 75px;  } 
 	.often_scmain:after {content:""; display: block; clear: both;}
 	
-/* 			<div class="often_sctop">
-				<span class="often_tx">자주 찾는 서비스</span>
-			</div>
-			<div class="ofter_scmain"> */
 	
 	
 	.notice {width: 470px; height: 300px; float: left; margin-left: 30px; text-align: left; border-bottom: 1px solid #444; }
@@ -126,7 +122,7 @@
 		<div class="qna1">
 			<label for="name">자주 묻는 질문</label>
 			<input type="text" id="name" class="inputText" >
-			<input type="submit" value="검색" class="inputButton">
+			<input type="submit" value="" class="inputButton">
 		</div>
 	</div>
 	<div class="content2">

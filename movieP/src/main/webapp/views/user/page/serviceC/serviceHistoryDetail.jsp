@@ -46,7 +46,7 @@
 	
 	.hdetail_bot  {text-align: left;  }
 
-	.back_list>a {width: 100px; height: 50px; line-height: 50px;  background: orange; display: inline-block; text-align: center; border-radius: 10px;  }
+	.back_list>a {width: 100px; height: 50px; font-size: 16px; line-height: 50px; border: 1.5px solid #1761f5; display: inline-block; text-align: center; border-radius: 5px;  }
 	.back_list {width: 100px; margin: 70px auto; }
 	
 </style>
