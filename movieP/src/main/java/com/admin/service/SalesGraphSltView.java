@@ -54,8 +54,8 @@ public class SalesGraphSltView implements SalesService {
 			
 		//	
 			for (SalesDTO ss : res) {
-				result.put(sdf.format(ss.getMonthdate())+"-"+ss.getSectorCode(), ss.getSumall());
-				System.out.println(res.indexOf(ss)+","+sdf.format(ss.getMonthdate())+"-"+ss.getSectorCode());
+				result.put(sdf.format(ss.getMonthdate())+"-"+ss.getSectorNo(), ss.getSumall());
+				System.out.println(res.indexOf(ss)+","+sdf.format(ss.getMonthdate())+"-"+ss.getSectorNo());
 			}
 		}
 		

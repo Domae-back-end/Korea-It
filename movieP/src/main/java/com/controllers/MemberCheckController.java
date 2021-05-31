@@ -29,7 +29,7 @@ public class MemberCheckController {
 		
 		MemberAction res = pr.getContext().getBean("memberCheck", MemberAction.class);
 		
-		return res.execute(dto,null);
+		return res.execute(dto,null,null);
 	}
 	
 	@ResponseBody
@@ -38,9 +38,7 @@ public class MemberCheckController {
 		
 		MemberAction res = pr.getContext().getBean("membermypage", MemberAction.class);
 
-		System.out.println(res.execute(dto,null));
-		
-		return res.execute(dto,null);
+		return res.execute(dto,null,null);
 	}
 	
 	@ResponseBody
@@ -49,15 +47,16 @@ public class MemberCheckController {
 		
 		MemberAction res = pr.getContext().getBean("membermodify", MemberAction.class);
 		
-		return res.execute(dto,null);
+		return res.execute(dto,null, null);
 	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/memberdelete", method = RequestMethod.POST)
 	public Object delete(@RequestBody MemberDTO dto) {
 		
 		MemberAction res = pr.getContext().getBean("memberdelete", MemberAction.class);
 		
-		return res.execute(dto,null);
+		return res.execute(dto,null, null);
 	}
 	
 	@ResponseBody

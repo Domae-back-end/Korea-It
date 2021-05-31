@@ -17,7 +17,7 @@
 				$(".pagego").click(function() { //페이지번호
 					//alert("눌렀냐?"+$(this).attr("dd"))
 					$("#pageIN").val($(this).attr("dd"))
-					frm.submit()
+					movieinfolistform.submit()
 				})
 			
 				
@@ -41,13 +41,13 @@
 
 			function detailGo(aa) { //디테일페이지꺼
 
-				frm.action = "midetail"
+				movieinfolistform.action = "midetail"
 
 				$("#detailId").val(aa)
 				//m_index로 이
 
-				alert(aa + "번으로 이동")
-				frm.submit()
+				//alert(aa + "번으로 이동")
+				movieinfolistform.submit()
 			}
 		</script>
 

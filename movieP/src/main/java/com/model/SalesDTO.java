@@ -15,22 +15,26 @@ public class SalesDTO {
 	int salesprice; // 구매금액
 
 	// 포인트개념.. x
-	String userid;
+	String userid="";
 	String movietitle;
 	String moviesector;
 	String sales_type; // 현금, 카드 내지 환불
 	Date sales_time;
+	
+	String salesckind="";// ticket_index, userid, movietitle, sectorNo 
+	String salescword=""; 
+	
 
 	// daysaletime,sumall,totalsale,totalrefund)
 
 	String daysaletime;
 	// 월별정보 추출용
 
-	int sumall;
-	int totalsale;
-	int totalrefund;
+	int sumall=0;
+	int totalsale=0;
+	int totalrefund=0;
 	Date monthdate;
-	String sectorCode;
+	String sectorNo;
 	String firstday;
 
 }

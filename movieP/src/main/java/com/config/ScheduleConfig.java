@@ -33,7 +33,7 @@ public class ScheduleConfig {
 		//logger.info("월매출표 update");
 		dailysaleAuto.dailysaleDo();
 		
-		
+			
 		
 		
 		

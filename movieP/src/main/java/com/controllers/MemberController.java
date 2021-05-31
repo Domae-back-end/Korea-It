@@ -3,6 +3,7 @@ package com.controllers;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -24,17 +25,21 @@ public class MemberController {
 	Provider pr;
 
 	@ModelAttribute("memdata")
-	Object ddd(@PathVariable String service, MemberDTO mdto, HttpSession session) {
+	Object ddd(@PathVariable String service, MemberDTO mdto, HttpSession session, HttpServletRequest request) {
 
 		if (service.endsWith("Form") || service.endsWith("Find"))
 			return null;
 		
+		if(service.endsWith("mypurchase"))
+			mdto.setPageKind("seemovie");
+
 		if(service.startsWith("my"))
 			service = "mypage";
+		
 
 		MemberAction res = pr.getContext().getBean("member" + service, MemberAction.class);
 
-		return res.execute(mdto, session);
+		return res.execute(mdto, session, request);
 	}
 
 	@ModelAttribute
@@ -69,9 +74,9 @@ public class MemberController {
 		if(service.endsWith("Reg"))
 			return "/user/home";
 		
-		if (service.endsWith("loginForm") || cate.endsWith("mypage"))
-			return "user/page/index";
+		if (service.endsWith("joinForm"))
+			return "user/page/" + cate + "/" + service;
 
-		return "user/page/" + cate + "/" + service;
+		return "user/page/index";
 	}
 }

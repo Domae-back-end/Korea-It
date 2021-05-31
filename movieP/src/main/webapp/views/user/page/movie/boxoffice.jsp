@@ -12,11 +12,18 @@
 <style>
  #like{
  	background: pink;
+ 	
+ }
+ 
+ #movieinfomation{
+ 	border: 1px solid #aaa;
+ 	border-radius: 20px;
+ 	box-shadow: 10px 10px 10px 10px gray;
  }
 </style>
 
 <c:forEach items="${moviedatabefore }" var="mm" varStatus="no">
-   <table border="" id="movieinfomation">
+   <table id="movieinfomation">
       <tr><td>${no.index +1}</td></tr>
       <tr>
       <td id="pos">
@@ -41,7 +48,10 @@
       </tr>   
       <tr>
          <td>
-         	<div id="like"> <a href="javascript:likeGo(${mm.m_index})">좋아요 ${mm.mlike }</a></div>
+         	<div id="like">
+         		<div id = "heart" style="display:inline-block;">♥</div>
+         		<a href="javascript:likeGo(${mm.m_index})">좋아요 ${mm.mlike }</a>
+         	</div>
          </td>
       <tr>
 

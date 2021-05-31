@@ -6,14 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>find</title>
-<script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
-<link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
-<script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
 
 </head>
 <body>
-<h1>아이디/비밀번호 찾기</h1>
-
+<div id="pwfind_main">
+	<h1>아이디/비밀번호 찾기</h1>
 	<form action="" method="post" enctype="multipart/form-data" name="frm">
 		<div class="main">
 			<div class="outF">
@@ -37,5 +34,6 @@
 				<input type="button" id="check" disabled="disabled" value="비밀번호 찾기" />
 		</div>
 	</form>
+</div>
 </body>
 </html>

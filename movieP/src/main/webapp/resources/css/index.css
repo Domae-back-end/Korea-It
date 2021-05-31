@@ -1,22 +1,57 @@
 @charset "UTF-8";
 
-	*{
-		padding: 0;
-		margin: 0;
-	}
-	body{
-		text-align: center;
-		width: 1000px;
-		height: 100%;
-		margin: 0 auto;
-	}
-	header{
-		width: 1000px;
-		height: 100px;
-	}
-	footer{
-		text-align: center;
-		width: 1000px;
-		height: 100px;
-		background: red;
-	}
+* {padding: 0px; margin: 0px; }
+ul, li {text-decoration: none; list-style: none; }
+body {text-align: center; margin: 0 auto; height: 100%; }
+
+
+
+
+
+/* 헤더. 메인메뉴바 */
+.index_mainheader {width: 1000px; height: 100px; margin: 0 auto 30px; position: relative; }
+
+.header_top {width: 130px; position: absolute; right: 0px; height: 25px; }
+.header_top ul li {float: left; margin-right: 10px; }
+.header_top a {text-decoration: none; font-size: 12px; color: black; }
+.header_top a:hover {text-decoration: underline; }
+
+.header_gnb {width: 1000px; height: 72px; border-bottom: 2px solid #ccc; position: relative; top: 25px;  }
+.header_gnb ul {width: 850px; margin: auto; }
+.header_gnb ul li {width: 170px; height: 70px; float: left; }
+.header_gnb ul li:nth-of-type(3) {background: url("../../views/user/img/mainpage/logo.png") no-repeat; text-indent: -9999px; }
+.header_gnb a {display: block; line-height: 70px; font-size: 20px; font-weight: bold; text-decoration: none; color: black; }
+
+
+
+
+
+
+
+
+
+
+/* 전체바디 (가로1000px. body컨텐츠만적용)*/
+.index_maincont {width: 1000px; text-align: center;  margin: 0 auto; }
+
+
+
+
+
+
+
+
+
+
+/* 푸터. footer */
+#footer {background: #eaeaea; font-size: 12px; height: 210px; }
+.footer_top {width: 1000px; margin: auto; position: relative; height: 60px;}
+#footer h2 {width: 160px; height: 60px; text-indent: -9999px; position: absolute; left: 20px; top: 86px; background: url("../../views/user/img/mainpage/footer.png") no-repeat; }
+.footer_top_priv li {float: left; margin: 20px; height: 20px; line-height: 20px; }
+.footer_top_priv a {text-decoration: none; color: black; }
+.footer_top_priv a:hover {text-decoration: underline; color: black; }
+
+.footer_bottom {border-top: 1px solid #626262; text-align: left;  }
+.footer_bottom_cont {width: 1000px; margin: auto; padding: 20px 0 20px 270px; box-sizing: border-box; }
+.mid_mgn{margin:3px 0; }
+

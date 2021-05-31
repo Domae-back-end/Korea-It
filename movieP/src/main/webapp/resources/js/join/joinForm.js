@@ -9,7 +9,8 @@ $(function() {
 	
 	var chCnt = 0;
 	
-	$("#userid").blur(function() { 
+	 
+    $("#userid").on("propertychange change keyup paste input", function(){
 		
 		if($('#userid').val() ==''){ 
 			$('#id_check').text('아이디를 입력하세요.'); 
@@ -70,7 +71,7 @@ $(function() {
 	}
 });
 	
-	$('#username').blur(function() {
+	$("#username").on("propertychange change keyup paste input", function(){
 		
 		if (nameCh.test($('#username').val())) {
 	
@@ -80,7 +81,7 @@ $(function() {
 		}
 	});
 
-	$('#userpw').blur(function() {
+	$("#userpw").on("propertychange change keyup paste input", function(){
 		
 		if (pwCh.test($('#userpw').val())) {
 			$('#pw_check').text('사용가능한 비밀번호입니다.'); 
@@ -94,7 +95,7 @@ $(function() {
 		}
 	});
 
-	$('#userpwchk').blur(function() {
+	$("#userpwchk").on("propertychange change keyup paste input", function(){
 		
 		if ($('#userpw').val() != $(this).val()) {
 			$('#pw_check2').text('비밀번호가 일치하지 않습니다.'); 
@@ -127,8 +128,8 @@ $(function() {
 			}
 	    }
 	});
-		
-	$('#emailAd').blur(function() {
+	
+	$("#emailAd").on("propertychange change keyup paste input", function(){	
 		 
 		if (emailCh.test($('#emailId').val()+'@'+$('#emailAd').val())) {
 			
@@ -141,7 +142,7 @@ $(function() {
 		}
 	});
 	
-	$('#pnumL').blur(function() {
+	$("#pnumL").on("propertychange change keyup paste input", function(){
 		
 		if (pnumCh.test($('#pnumF').val()+$('#pnumM').val()+$('#pnumL').val())) {
 			
@@ -158,7 +159,7 @@ $(function() {
 			$('#pnumL').val('');
 		}
 	});
-		
+	
 	$('#pnumcheck').click(function(){
 		
 		var phoneNumber = document.getElementById('userpnum').value;
@@ -201,12 +202,14 @@ $(function() {
             }
         });
     });
+	
 	document.addEventListener('keydown', function(event) {
 		
 		if (event.keyCode === 13) {
 		    event.preventDefault();
 		};
 	}, true);
+	
 	
 	$('form').on('submit',function(){
 	

@@ -1,5 +1,5 @@
 create table movietime (
-	m_index int auto_increment primary key,
+	time_index int auto_increment primary key,
 	movietitle varchar(100),
 	sectorNo varchar(100),
 	starttime time,

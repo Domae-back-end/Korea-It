@@ -39,10 +39,12 @@
 	.td1 tr>td:nth-of-type(3) {text-align: left; }
 	.td1 tr:first-of-type>td:nth-of-type(4) {width: 120px;  }
 	.td1 tr:first-of-type>td:nth-of-type(5) {width: 100px;  }
-	p {margin: 5px 0;  }
-	.td1 a:hover {text-decoration: underline; color: #8a8a8a; }
+	.td1 tr>td span {width: 425px; display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; height: 20px; }
+	.td1 tr>td span:hover {text-decoration: underline; color: #8a8a8a; }
 	
-	.td1 tr:last-child td{border-bottom: none;   }
+	p {margin: 5px 0;  }
+	
+	.td1 tr:last-child td{border-bottom: none;  height: 150px;  }
 	
 	/* 검색 (총갯수) */
 	.search_result {text-align: left; }
@@ -52,9 +54,8 @@
 	/* 페이지버튼 */
 	.pagebtn {width: 32px; height: 32px; box-sizing: border-box; border-radius: 4px; border: 1px solid #dbdbdb; background: white;   }
 	.pagebtn:hover {border: 1px solid black; background: white; }
-	.pagebtn_sel {background: rgb(220,220,220); width: 32px; height: 32px; box-sizing: border-box; border-radius: 4px; border: none;  }
+	.pagebtn_sel {background: rgb(220,220,220); width: 32px; height: 32px; box-sizing: border-box; border-radius: 4px; border: none; text-align: center; }
 	.pagebtn_lr {background: rgb(241,240,245)}
-	
 	
 </style>
 <script>
@@ -129,7 +130,7 @@
 				<td>${sfDTO.persindex }</td>
 				<td>${sfDTO.perscateKr }</td>
 				<td>
-					<a href="javascript:detailGo(${sfDTO.persindex })">${sfDTO.perstitle }</a>
+					<a href="javascript:detailGo(${sfDTO.persindex })"><span>${sfDTO.perstitle }</span></a>
 				</td>
 				<td>					
 					<fmt:formatDate value="${sfDTO.persqtime}" type="both" pattern="yyy.MM.dd"/>					
@@ -153,7 +154,7 @@
 					<c:forEach begin="${data.snpdto.startPage }" end="${data.snpdto.endPage }" step="1" var="i">
 						<c:choose>
 							<c:when test="${i==data.snpdto.page }">
-								<input type="button" class="btnnn pagebtn_sel" dd="${i }" value="${i }" />
+								<input type="text" class="pagebtn_sel" dd="${i }" value="${i }" readonly/>
 							</c:when>
 							<c:otherwise>
 								<input type="button" class="btnnn pagebtn" dd="${i }" value="${i }" />

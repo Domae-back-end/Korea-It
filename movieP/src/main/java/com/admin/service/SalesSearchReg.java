@@ -41,7 +41,10 @@ public class SalesSearchReg implements SalesService{
 		AlterDTO al = new AlterDTO();	
 		
 				al.setMsg("매출리스트 검색합니다 -id:"+sadto.getUserid());
+				al.setUrl("/admin/sales/main");
+				if(sadto.getUserid()!=null&&!sadto.getUserid().equals("")) {
 				al.setUrl("/admin/sales/main?userid="+sadto.getUserid());
+				}
 
 	
 	return al;

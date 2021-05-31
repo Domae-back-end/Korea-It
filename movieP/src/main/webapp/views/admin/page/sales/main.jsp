@@ -6,10 +6,22 @@
 매출
 데이터 출력화면
 
-데이터 있냐:${not empty data} 
+데이터 있냐:${not empty data.salist}  ${data.sadto.salesckind} 
 
-<form action="SearchReg">
-	아이디 <input type="text" name="userid" />
+<form action="">
+	<select name="salesckind">
+		<option value=""   >전체  </option>
+		<option value="userid"   >아이디별  </option>
+		<option value="movietitle"> 제목별 </option>
+		<option value="sectorNo"> 관별</option>
+	
+	</select>
+	
+	<input type="text" name="salescword" />
+	
+	
+	
+	
 	<input type="submit" value="검색" />
 </form>
 
@@ -29,19 +41,52 @@
       </tr>
     </thead>
     <tbody>
-<c:forEach var="i"   items="${data }">
+<c:forEach var="i"   items="${data.salist }">
       <tr>
         <td>${i.sales_index }</td>
           <td>${i.userid }</td>
         <td>${i.ticket_index }</td>
         <td>${i.salesprice }</td>
          <td>${i.movietitle }</td>
-         <td>${i.moviesector }</td>
-       
+         <td>${i.sectorNo }</td>       
          <td>${i.sales_type }</td>
           <td>${i.sales_time }</td>
       </tr>
-   
 </c:forEach>
-    </tbody>
+
+	<tr>
+	
+	
+	
+	
+	
+	</tr>
+
+
+    </tbody>    
+   
+    
+    
+    
   </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -3,7 +3,11 @@
 	margin: 0;
 	padding: 0;
 }
-div{	
+#login_div {
+	padding: 200px 0;
+}
+
+.firstD{	
 	margin: 0 auto;
 	width: 320px;
 	height: 200px;
@@ -12,7 +16,7 @@ div{
 	height: 40px;
 	text-align: center;
 }
-a{
+.secondD>a{
 	margin-left:10px;
 	text-decoration:none;
 	color: #000;

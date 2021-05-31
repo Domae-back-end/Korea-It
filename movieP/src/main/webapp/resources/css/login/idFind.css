@@ -5,7 +5,7 @@
 }
 .main{
 	margin: 0 auto;
-	height: 150px;
+	height: 300px;
 	width: 500px;
 	border-top: 1px solid rgb(192, 192, 192);
 	background: #fff;
@@ -50,3 +50,15 @@ input{
 	border : 1px solid rgb(192, 192, 192);
 	margin-top: 10px;
 }
+
+
+
+
+
+
+
+
+#idfind_main {width: 1000px; padding: 100px 0; }
+#idfind_main:after {content:""; display: block; clear: both;}
+
+

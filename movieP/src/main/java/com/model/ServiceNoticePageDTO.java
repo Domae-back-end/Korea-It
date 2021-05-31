@@ -33,6 +33,7 @@ public class ServiceNoticePageDTO {
 	
 	public void init(DbMapper dm, HashMap<String, Object> map) {
 		// 게시판페이지계산.
+		limit = 20; 
 		start = (page - 1) * limit;
 
 		ttt = dm.noticetotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.

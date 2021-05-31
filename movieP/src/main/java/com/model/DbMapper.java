@@ -207,6 +207,12 @@ public interface DbMapper {
    MovieInfoDTO getmovieinfobyidx(int indexnum);
    void deleteMovieinfo(int m_index);
    int updateMovieinfo(MovieInfoDTO mdto);
+// 스케쥴러작동월매출
+   List<SalesDTO> getyesterdaysalesdistinct(HashMap<String, Object> map);
+void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
+	int updatemonthsales(SalesDTO sdto);
+
+	Integer salestotalCnt(HashMap<String, Object> map);
    
    
    

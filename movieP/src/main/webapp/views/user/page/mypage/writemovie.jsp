@@ -7,7 +7,7 @@
 	<c:forEach items="${memdata.comment }" var ="pp" varStatus="no">
 		
 		<div class="writeouter">
-			<a href="/movie/moviedetail?sub=review&ind=${pp.cate }">
+			<a href="/user/movie/moviedetail?sub=review&ind=${pp.cate }">
 				<div class="writeimg">
 					<c:choose>
 						<c:when test="${pp.imgname!=null }">
@@ -19,7 +19,7 @@
 					</c:choose>
 				</div>
 			</a>
-			<a href="/movie/moviedetail?sub=review&ind=${pp.cate }"><div class="writetitle">${pp.movietitle } | 좋아요: ${pp.mlike }</div></a>
+			<a href="/user/movie/moviedetail?sub=review&ind=${pp.cate }"><div class="writetitle">${pp.movietitle } | 좋아요: ${pp.mlike }</div></a>
 			
 			<div class="writetnow">${pp.postcontent }</div>
 			<textarea class="writeArea" rows="1" cols="40">${pp.postcontent }</textarea>
@@ -34,4 +34,27 @@
 			</div>
 		</div>
 	</c:forEach>
+	
+	<div id="pageRecord">
+		<div class="fff">
+			<c:if test="${memdata.pdto.startPage > 1}">
+	    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="pageChange(${memdata.pdto.startPage-1})" value="&lt" />
+			</c:if>
+	            
+			<c:forEach begin="${memdata.pdto.startPage}" end="${memdata.pdto.endPage}" step="1" var="i">
+				<c:choose>
+					<c:when test="${i == memdata.pdto.page}">
+						<input type="text" class="pagebtn_sel" value="${i }" readonly/>
+					</c:when>
+					<c:otherwise>
+						<input type="button" class="btnnn pagebtn" onclick="pageChange(${i})" value="${i}" />
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+	            
+			<c:if test="${memdata.pdto.endPage < memdata.pdto.total}">
+	    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="pageChange(${memdata.pdto.endPage+1})" value="&gt" />
+			</c:if>
+		</div>
+	</div>
 </div>
