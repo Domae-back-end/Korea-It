@@ -16,11 +16,11 @@ create table ticketing(
 );
 
 INSERT INTO unoestellar.ticketing (time_index,people,seatNo,userid) VALUES
-	 (18,NULL,'B4','dddd44'),
-	 (18,NULL,'C5','dddd44'),
-	 (28,NULL,'A1','dddd44'),
-	 (28,NULL,'A2','dddd44'),
-	 (28,NULL,'A3','dddd44');
+	 (9,NULL,'B4','dddd44'),
+	 (9,NULL,'C5','dddd44'),
+	 (1,NULL,'A1','dddd44'),
+	 (1,NULL,'A2','dddd44'),
+	 (1,NULL,'A3','dddd44');
 	 
 	INSERT INTO unoestellar.movietime (movietitle,sectorNo,starttime,endtime,reg_date) VALUES
 	 ('자산어보','작은관','06:32:22','08:38:22','2021-05-31'),
