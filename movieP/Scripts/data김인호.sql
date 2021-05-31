@@ -60,13 +60,24 @@ create table basicqna (
 
 
 <!-- sales     ver 2    t_index int 삭제!!   ticket_pcount int, 삭제 people varchar(100   -->
+
+<!--3개씩 정리 SALES
+매출/환불시마다 1씩증가 // 무비타임테이블에서의 고유번호 (한마디로 상품과 같음. )//
+ 관명칭  //        건당매출액(+값) or 건당환불액(-값)  //     유저아이디 
+ 영화제목    //        카드냐 환불이냐      //      건수 등록된 시간 (datetime)
+
+-->
 CREATE TABLE sales (
  sales_index int auto_increment primary key,
  timetableidx int,
  people varchar(30),
+ 
+ 
  sectorNo	varchar(100)	,
  salesprice int,
  userid varchar(100),
+ 
+ 
  movietitle	varchar(100), 
  sales_type	varchar(100),
  sales_time datetime
