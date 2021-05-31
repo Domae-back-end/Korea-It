@@ -64,7 +64,7 @@ create table basicqna (
 <!--3개씩 정리 SALES
 매출/환불시마다 1씩증가 // 무비타임테이블에서의 고유번호 (한마디로 상품과 같음. )//
  관명칭  //        건당매출액(+값) or 건당환불액(-값)  //     유저아이디 
- 영화제목    //        카드냐 환불이냐      //      건수 등록된 시간 (datetime)
+ 영화정보테이블index //영화제목    //        카드냐 환불이냐      //      건수 등록된 시간 (datetime)
 
 -->
 CREATE TABLE sales (
@@ -72,12 +72,12 @@ CREATE TABLE sales (
  timetableidx int,
  people varchar(30),
  
- 
+  
  sectorNo	varchar(100)	,
  salesprice int,
  userid varchar(100),
  
- 
+ m_index int,
  movietitle	varchar(100), 
  sales_type	varchar(100),
  sales_time datetime
@@ -425,7 +425,7 @@ INSERT INTO movieimg (m_index,imgname) VALUES
 <!--매출  데이터 준비 중. ..   -->	 
 
 <!-- 예시!! -->
-INSERT INTO sales (timetableidx, people, salesprice ,userid,movietitle, ,sectorNo, sales_type,sales_time) VALUES	 
+INSERT INTO sales (timetableidx, people, salesprice ,userid,  m_index,movietitle, ,sectorNo, sales_type,sales_time) VALUES	 
 (1, CCAA, 40000, dddd44, 자산어보, 기존관1, 카드,  2021-05-21 10:11:11  );
 	 
 <!-- 일단 관 종류 확정이 나야 함..   -->
