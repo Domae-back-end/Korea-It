@@ -6,7 +6,6 @@
 <style>
 
 	#reviewwrapper{
-		border: 3px solid #000;
 		width: 1000px;
 		display: inline-block;
 		text-align: left;
@@ -17,13 +16,13 @@
 	}
 	
 	#aa{
-	text-align:left;
-		border: 1px solid #a0a;
 		height: 60px;
+		border : 1px solid #ccc;
+		border-radius: 10px;
+		margin-bottom: 10px;
 	}
 	#userinfo{
 		display: inline-block;
-		border: 1px solid #ccc;
 		text-align: left;
 		width: 300px;
 		height: 60px;
@@ -41,8 +40,9 @@
 	#p{
 		margin-left: 50px;
 		text-align:center;
-		width: 530px;
+		width: 540px;
 		height: 60px;
+		resize:none;
 	}
 	#b{
 		height: 60px;
@@ -51,7 +51,7 @@
 		margin-bottom: 50px;
 	}
 	#myr>#aa{
-		background: "red";
+		
 	}
 	 #star{
 		 height: 60px;
@@ -61,7 +61,9 @@
 	 	color:gold;
 	 }
 	#del{
+	margin-top:30px;
 		float: right;
+		background: none;
 	}
 	#num{
 		text-align: center;
@@ -70,7 +72,6 @@
 		display:inline-block;
 		float:left;
 		font-size: 30px;
-		border: 1px solid #ccc;
 		height: 60px;
 	}
 
@@ -134,30 +135,30 @@
 	<input type="hidden" name="ind" id="cate" value="${param.ind}" />
 	<input type="hidden" name="sub" id="review" value="review" />
 </form>
+
 <div id="reviewwrapper">
-<form id="reviewForm" action="reviewinsertReg" method="post" name="reviewgo" onsubmit="return checkstar()">
-<div id="formset" style="text-aglin: left; height:60px;">
-<c:if test="${sessionId !=null}">
-<div id = "sid">${sessionId }</div>
-</c:if>
-<ul class="rate-area" style="margin-left: 20px;">
-  <input type="radio" id="5-star" id = "gpa" name="gpa" value="5" /><label for="5-star" title="Amazing" checked>5 stars</label>
-  <input type="radio" id="4-star" id = "gpa" name="gpa" value="4" /><label for="4-star" title="Good">4 stars</label>
-  <input type="radio" id="3-star" id = "gpa" name="gpa" value="3" /><label for="3-star" title="Average">3 stars</label>
-  <input type="radio" id="2-star" id = "gpa" name="gpa" value="2" /><label for="2-star" title="Not Good">2 stars</label>
-  <input type="radio" id="1-star" id = "gpa" name="gpa" value="1" /><label for="1-star" title="Bad">1 star</label>
-</ul>
-<textarea name="postcontent" id="p" rows="1" cols="200" onKeyUp="javascript:fnChkByte(this,'500')"></textarea>
-<input type="hidden" name="cate" id="cate" value="${param.ind}" />
-<input type="hidden" name="cnt" id="cnt"  />
+	<form id="reviewForm" action="reviewinsertReg" method="post" name="reviewgo" onsubmit="return checkstar()">
+		<div id="formset" style="text-aglin: left; height:60px;">
+			<c:if test="${sessionId !=null}">
+				<div id = "sid">${sessionId }</div>
+			</c:if>
+			<ul class="rate-area" style="margin-left: 20px;">
+			  <input type="radio" id="5-star" id = "gpa" name="gpa" value="5" /><label for="5-star" title="Amazing" checked>5 stars</label>
+			  <input type="radio" id="4-star" id = "gpa" name="gpa" value="4" /><label for="4-star" title="Good">4 stars</label>
+			  <input type="radio" id="3-star" id = "gpa" name="gpa" value="3" /><label for="3-star" title="Average">3 stars</label>
+			  <input type="radio" id="2-star" id = "gpa" name="gpa" value="2" /><label for="2-star" title="Not Good">2 stars</label>
+			  <input type="radio" id="1-star" id = "gpa" name="gpa" value="1" /><label for="1-star" title="Bad">1 star</label>
+			</ul>
+			<textarea name="postcontent" id="p" rows="1" cols="200" onKeyUp="javascript:fnChkByte(this,'500')" placeholder="관람평을 입력 해 주세요. 최대 200글자까지 가능합니다."></textarea>
+			<input type="hidden" name="cate" id="cate" value="${param.ind}" />
+			<input type="hidden" name="cnt" id="cnt"  />
+			<input type="submit" value="관람평 작성" id="b">
+		</div>
+	</form>
 
-<input type="submit" value="관람평 작성" id="b">
-</div>
-</form>
-
-<c:if test="${myreview != null} || ${myreview =''}">
+<c:if test="${myreview !=null }">
 <div id= "myr">
-<div id = "aa" style="border: 3px dotted #f00">
+<div id = "aa" style="border: 3px dotted #f00;">
 	<div id= "userinfo">
 		<div id="id">${myreview.userid }</div>
 		<div id="time">${myreview.posttime_s }</div>
@@ -171,13 +172,16 @@
 		</c:forEach>
 	</div>
 	<div id= "content">${myreview.postcontent }</div>
-	<div id="del"> <a href="javascript:deleteGo(${myreview.cnt})">삭제하기</a></div>
+	<div id="del"> <a href="javascript:deleteGo(${myreview.cnt})">
+	<i class="far fa-trash-alt"></i>
+	</a></div>
 </div>
 </div>
 </c:if>
 
+<div style="color:white">dldkdkkdkd</div>
 <c:forEach items="${moviereview.mrd }" var="r" varStatus="no">
-<div id = "aa">
+<div id = "aa" style="text-align: left;">
 	<div id= "userinfo">
 		<div id="id">${r.userid }</div>
 		<div id="time">${r.posttime_s }</div>
@@ -192,7 +196,9 @@
 		</c:forEach>
 	</div>
 	<div id= "content">${r.postcontent }</div>
-	<div id="del"> <a href="javascript:deleteGo(${r.cnt})">삭제하기</a></div>
+	<div id="del"> <a href="javascript:deleteGo(${r.cnt})">
+	<i class="far fa-trash-alt"></i>
+	</a></div>
 </div>
 </c:forEach>
 <div id ="num">
