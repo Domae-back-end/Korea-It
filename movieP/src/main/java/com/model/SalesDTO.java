@@ -17,6 +17,7 @@ public class SalesDTO {
 	// 포인트개념.. x
 	String userid="";
 	String movietitle;
+	String people;
 	String moviesector;
 	String sales_type; // 현금, 카드 내지 환불
 	Date sales_time;

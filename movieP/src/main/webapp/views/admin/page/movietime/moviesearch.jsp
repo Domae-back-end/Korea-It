@@ -40,7 +40,7 @@ table {
 </style>
 <div class="layouttime">
 	<form action="">
-		<select name="m_index">
+		<select name="time_index">
 			<option value="1">영화제목</option>
 			<option value="2">날짜</option>
 			<option value="3">시작시간</option>

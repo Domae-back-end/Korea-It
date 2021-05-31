@@ -188,7 +188,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
 	</insert>
 	<insert id="insertSit" parameterType="UserSitDTO">
-		insert into ticketing (time_index,seatNo,userid,people) values (#{time_index},#{seatNo},#{userid},#{people})
+		insert into ticketing (time_index,seatNo,userid,people,reg_date) values (#{time_index},#{seatNo},#{userid},#{people},#{reg_date})
 	</insert>
 	<update id="updatemovielist" parameterType="MovieTimeDTO">
 		update movietime set

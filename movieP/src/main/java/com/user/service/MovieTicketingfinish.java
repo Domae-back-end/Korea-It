@@ -1,5 +1,6 @@
 package com.user.service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.model.DbMapper;
 import com.model.MovieTicketingService;
 import com.model.MovieTimeDTO;
+import com.model.SalesDTO;
 import com.model.UserSitDTO;
 
 @Service("MovieTicketingfinish")
@@ -22,7 +24,7 @@ public class MovieTicketingfinish implements MovieTicketingService{
 	public Object execute(MovieTimeDTO dto, UserSitDTO udto) {
 		String[] buf = udto.getSeatNo().split(",");
 		//udto.time_index
-		
+		System.out.println(udto);
 		//C -> 어린이
 		//T -> 청소년
 		//A -> 어른
@@ -38,8 +40,14 @@ public class MovieTicketingfinish implements MovieTicketingService{
 		}
 		udto.setPeople(people);
 		for (int i = 1; i < buf.length; i++) {
-			db.insertSit(new UserSitDTO(udto.getTime_index(),buf[i],udto.getUserid(),udto.getPeople()));
+			db.insertSit(new UserSitDTO(udto.getTime_index(),buf[i],udto.getUserid(),udto.getPeople(), new Date()));
 		}
+		
+		//결제
+		SalesDTO data = new SalesDTO();
+		
+		
+		
 		HashMap<String, String> ar = new HashMap<>();
 		ar.put("msg", "예매가 완료되었습니다.");
 		ar.put("url", "/user/mainpage/main");

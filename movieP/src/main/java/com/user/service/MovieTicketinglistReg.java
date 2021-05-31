@@ -21,6 +21,7 @@ public class MovieTicketinglistReg implements MovieTicketingService {
 	public Object execute(MovieTimeDTO dto,UserSitDTO udto) {
 		HashMap<String, Object> ar = new HashMap<>();
 		ar.put("sit", db.moviesit(dto.getTime_index()));
+		ar.put("no", dto.getSectorno());
 		return ar;
 	}
 	
