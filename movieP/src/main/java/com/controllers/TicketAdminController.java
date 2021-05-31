@@ -19,7 +19,7 @@ import com.model.Menu;
 import com.model.SalesDTO;
 import com.model.SalesPageDTO;
 
-@Controller
+@Controller("/admin/ticketadmin/{service}")
 public class TicketAdminController {
 
 	@Resource
