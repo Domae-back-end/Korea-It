@@ -17,7 +17,7 @@
 				$(".pagego").click(function() { //페이지번호
 					//alert("눌렀냐?"+$(this).attr("dd"))
 					$("#pageIN").val($(this).attr("dd"))
-					frm.submit()
+					movieinfolistform.submit()
 				})
 			
 				

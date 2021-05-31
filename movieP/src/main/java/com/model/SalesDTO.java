@@ -15,11 +15,15 @@ public class SalesDTO {
 	int salesprice; // 구매금액
 
 	// 포인트개념.. x
-	String userid;
+	String userid="";
 	String movietitle;
 	String moviesector;
 	String sales_type; // 현금, 카드 내지 환불
 	Date sales_time;
+	
+	String salesckind="전체";// ticket_index, userid, movietitle, sectorNo 
+	String salescword=""; 
+	
 
 	// daysaletime,sumall,totalsale,totalrefund)
 

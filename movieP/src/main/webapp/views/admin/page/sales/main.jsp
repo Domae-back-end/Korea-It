@@ -9,7 +9,19 @@
 데이터 있냐:${not empty data} 
 
 <form action="SearchReg">
-	아이디 <input type="text" name="userid" />
+	<select name="salesckind">
+		<option value="none"   >전체  </option>
+		<option value="userid"   >아이디별  </option>
+		<option value="movietitle"> 제목별 </option>
+		<option value="sectorNo"> 관별</option>
+	
+	</select>
+	
+	<input type="text" name="salescword" />
+	
+	
+	
+	
 	<input type="submit" value="검색" />
 </form>
 
@@ -36,12 +48,45 @@
         <td>${i.ticket_index }</td>
         <td>${i.salesprice }</td>
          <td>${i.movietitle }</td>
-         <td>${i.moviesector }</td>
-       
+         <td>${i.sectorNo }</td>       
          <td>${i.sales_type }</td>
           <td>${i.sales_time }</td>
       </tr>
-   
 </c:forEach>
-    </tbody>
+
+	<tr>
+	
+	
+	
+	
+	
+	</tr>
+
+
+    </tbody>    
+   
+    
+    
+    
   </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
