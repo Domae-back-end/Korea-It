@@ -72,7 +72,7 @@ CREATE TABLE sales (
  sales_time datetime
 );
 <!-- sales의 salestime 은  ticketing 의 reg_date 와 동일함.   -->
-
+<!--  -->
 <!-- 긴급수정 !!  sales 테이블  -->
 
 alter table sales change moviesector sectorNo varchar(100);
