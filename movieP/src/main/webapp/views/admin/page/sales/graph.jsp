@@ -26,8 +26,11 @@ $(document).ready(function(){
 		
 	ssggbutton.addEventListener("click",function(){
 		
+		
+			
+		
 	
-			alert("버튼 눌름. ajax 가동.")
+		
 			
 			// 월값, 금액정보 배열 
 			var coldata = new Array();
@@ -39,6 +42,17 @@ $(document).ready(function(){
 			startmonth= ssggSmonth.value
 			endyear= ssggEyear.value			
 			endmonth=ssggEmonth.value
+			
+			
+			if(startyear==='연'||startmonth==='월'||endyear==='연'||endmonth==='월'){
+				alert("박스를 모두 선택하세요!");				
+				
+				
+				
+				
+				
+			}else{
+			
 			
 			console.log(ssggSyear+","+ssggSmonth+"~"+ssggEyear+","+ssggEmonth)			
 			xhttp.onreadystatechange =function(){					
@@ -54,7 +68,7 @@ $(document).ready(function(){
 					for(var rr in parsed){
 						console.log(rr)
 						coldata.push(rr)
-						console.log(parsed[rr])
+						console.log("대답:"+parsed[rr])
 						moneydata.push(parsed[rr])
 						if(rr==='answer'){
 							coldata.pop()
@@ -81,8 +95,7 @@ $(document).ready(function(){
 					myChart  = new Chart(ctx, {
 					    type: 'bar',
 					    data: {
-					        //labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-					        labels: coldata,
+					       labels: coldata,//배열
 					        datasets: [{
 					            label: '매출액 현황',
 					            data: moneydata,
@@ -130,7 +143,9 @@ $(document).ready(function(){
 					
 					
 					
-					}									
+						
+
+				}
 				}};
 				//
 				xhttp.open("POST","/salesGraphSltView.do",true);
@@ -144,7 +159,7 @@ $(document).ready(function(){
 				console.log("cccccc:"+data)
 				
 				xhttp.send(data);//sfy해서 서버에보냄	
-				})
+				}})
 	
 	
 	
@@ -216,7 +231,10 @@ $(document).ready(function(){
 
 
 <br>
-<button id="graphdateGoBtn"  type="button">조회하기</button> <hr />
+<button id="graphdateGoBtn"  type="button">조회하기</button> 
+<button id="graphdateGoBtn2"  type="button">관별로보기</button> 
+<button id="graphdateGoBtn3"  type="button">통합보기</button> 
+<hr />
 
 
 

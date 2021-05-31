@@ -28,7 +28,9 @@
 
 </head>
 <body>
-
+    <div class="d-flex flex-column flex-md-row align-items-center px-20 px-md-10 mb-6 bg-white border-bottom box-shadow">
+     
+      <nav class="mx-auto">
 
 	<button  id="pageedit" value="pageedit/banner" type="button"
 		class="btn btn-success menugobtn">홈페이지설정</button>
@@ -50,6 +52,14 @@
 
 	<button  id="ticketcontrol" value="ticketcontrol"
 		type="button" class="btn btn-success menugobtn">예매정보관리</button>
+      
+      </nav>
+     
+      <a class="btn btn-outline-primary" href="#">로그아웃</a>
+     
+     
+    </div>
+
 
 </body>
 </html>

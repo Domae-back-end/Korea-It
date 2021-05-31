@@ -734,7 +734,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		parameterType="HashMap">
 		select * from sales WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
 	</select>
-
+	<select id="getyesterdaysalesdistinct" resultType="SalesDTO"
+		parameterType="HashMap">
+		select distinct sectorNo from sales WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
+	</select>
 
 	<select id="getsalesbyId" resultType="SalesDTO">
 		select * from sales where userid like concat('%',#{userid},'%')
@@ -859,6 +862,22 @@ WHERE m_index = #{m_index};
 	</update>
 	
 	
+	<!-- scheduler.  X월 2일 새벽 한번 만 돎  -->
+	<insert id="insertmonthsales" parameterType="SalesDTO">
+		insert into monthsales (monthdate,sumall,totalsale,totalrefund,sectorNo)
+		
+		values(#{firstday},0,0,0 , #{sectorNo} )
+	
+	</insert>
+	
+	
+	<update id="updatemonthsales" parameterType="SalesDTO">
+		update monthsales set
+		sumall=sumall+#{sumall},totalsale=totalsale+#{totalsale},
+		totalrefund=totalrefund+#{totalrefund}
+		where sectorNo=#{sectorNo}
+	
+	</update>
 	
 	
 	

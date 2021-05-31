@@ -26,11 +26,11 @@ public class SalesDTO {
 	String daysaletime;
 	// 월별정보 추출용
 
-	int sumall;
-	int totalsale;
-	int totalrefund;
+	int sumall=0;
+	int totalsale=0;
+	int totalrefund=0;
 	Date monthdate;
-	String sectorCode;
+	String sectorNo;
 	String firstday;
 
 }
