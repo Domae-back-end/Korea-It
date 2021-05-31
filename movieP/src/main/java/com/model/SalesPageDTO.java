@@ -16,7 +16,7 @@ public class SalesPageDTO {// SalesPageDTO 의 init 주의.
 	
 	
 	
-	
+	//
 	
 	public void init(DbMapper dm, HashMap<String, Object> map) {
 		// 게시판페이지계산.
