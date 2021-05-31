@@ -13,7 +13,7 @@
 	* {padding: 0px; margin: 0px; font-size: 16px;  }
 	ul, li {text-decoration: none; list-style: none; }
 	a {text-decoration: none; color: black; }
-	a:hover {text-decoration: none; }
+	a:hover {text-decoration: none; color: black; }
 	
 	#sideBar {width: 170px; height: 500px; float: left; position: relative; }
 	#content {width: 800px; position: relative; float: left; left: 30px;  }
@@ -47,9 +47,16 @@
 	.td1 a:hover {text-decoration: underline; color: #8a8a8a; }
 	.td1 tr:last-child td{border-bottom: none; height: 150px;   }
 
+	/* 카테고리 */
+	.notice_cate {width: 800px; height: 40px; text-align: left; margin-bottom: 20px; border-bottom: 1px solid #d8d9db; }
+	.notice_cate ul li {float: left; margin-left: -1px; }
+	.notice_cate a {width: 120px; height: 40px; display: inline-block; line-height: 40px; text-align: center;
+					border: 1px solid #d8d9db; box-sizing: border-box;}
+	.notice_cate_sel {background: #d8d9db; font-weight: bold; }
+	
 	
 	/* 검색 search */
-	.search {width: 500px; height: 50px;  margin-left: 300px; position: relative;}
+	.search {width: 500px; height: 40px;  margin-left: 300px; position: relative;}
 	.search>.search_reset {width: 60px; height: 38px; display: inline-block; position: absolute; left: 90px; line-height: 38px; border-radius: 5px; 
 							border: 1px solid #d8d9db;  }
 	.search>select {font-size: 16px; width: 80px; height: 38px; text-align: left;  border: 1px solid #d8d9db; outline: none; margin-left: 130px; border-radius: 5px;  }
@@ -73,27 +80,25 @@
 <script>
 	$(function() {
 		//alert("안녕");
-		$(".btnnn").click(function(){
+		$(".btnnn").click(function() {
 			//alert("눌렀냐?"+$(this).attr("dd"))
 			$("#pageIN").val($(this).attr("dd"))
 			frm.submit()
 		})
-		
-	
-		$(".smtGo").click(function(){
-	        $("#pageIN").val("1")
-	        frm.submit()
-	     })
+
+		$(".smtGo").click(function() {
+			$("#pageIN").val("1")
+			frm.submit()
+		})
 	})
-	
+
 	function detailGo(aa) {
 		//alert("detailGo 눌렀냐?"+aa)
 		frm.action = "serviceNoticeDetail"
 		$("#detailId").val(aa)
-		alert(aa+"번으로 이동")
+		alert(aa + "번으로 이동")
 		frm.submit()
 	}
-	
 </script>
 </head>
 
@@ -128,7 +133,27 @@
 	<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
 		<input type="hidden" name="noticeindex" id="detailId" />
-	
+		
+		
+		
+		
+		<div class="notice_cate">
+			<ul>
+				<li><a href="serviceNotice" class="
+					<c:if test="${empty data.onesfdto.noticecate }">notice_cate_sel</c:if>
+				">전체</a></li>
+				<li><a href="?noticecate=system" class="
+					<c:if test="${data.onesfdto.noticecate =='system' }">notice_cate_sel</c:if>
+				">시스템</a></li>
+				<li><a href="?noticecate=movie" class="
+					<c:if test="${data.onesfdto.noticecate =='movie' }">notice_cate_sel</c:if>
+				">영화관</a></li>
+				<li><a href="?noticecate=etc" class="
+					<c:if test="${data.onesfdto.noticecate =='etc' }">notice_cate_sel</c:if>
+				">기타</a></li>
+			</ul>
+		</div>
+		
 		<div class="search">
 		<a href="serviceNotice" class="search_reset">초기화</a>
 			<select name="kind2" >

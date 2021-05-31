@@ -21,16 +21,32 @@ public class ServiceCqnainsertReg implements ServiceCservice {//빈 창고에 �
 	@Override
 	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO, HttpSession session) {
 		System.out.println("빈 이름 serviceCqnainsertReg 소환됨dddddddddd");
+		
+		AlterDTO ad = new  AlterDTO();
+
+		
+		
+		
+		if (sfDTO.getPerstitle().isEmpty()) {
+			
+			ad.setMsg("ㅂㅂ");
+			ad.setUrl("/user/serviceC/servicePersonal");
+			return ad;
+		}
+		
+		
+		System.out.println("성공이야");
+		
 		sfDTO.setPersid((String)session.getAttribute("sessionId"));
 		db.insertPersQna(sfDTO);
 		
 
-		AlterDTO ad = new  AlterDTO();
 		
 		ad.setMsg("1대1 문의가 등록되었습니다!");
 		ad.setUrl("/user/serviceC/servicePersonal");
 		
 		return ad;
+		
 	}
 
 	

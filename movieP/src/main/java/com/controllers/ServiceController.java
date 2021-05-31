@@ -37,13 +37,14 @@ public class ServiceController {
 		ServiceCservice sr = pr.getContext().getBean("serviceC"+service, ServiceCservice.class);	
 		// "serviceC"+service  서비스@  놈을 데려와라. serviceCqnainsertReg >   ServiceCqnainsertReg.java 이렇게만들면.
 		
+		/*
 		HashMap<String, Object> map = new  HashMap<>();
 		
 		map.put("request", request);
 		map.put("service", service);
 		map.put("npDTO", npDTO);
 		map.put("sfDTO", sfDTO);
-		
+		*/
 		
 		return sr.execute(npDTO, sfDTO, session);
 	}

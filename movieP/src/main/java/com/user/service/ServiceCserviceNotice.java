@@ -33,19 +33,28 @@ public class ServiceCserviceNotice implements ServiceCservice {//빈 창고에 �
 		}
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		ServiceNotiListDTO res= new ServiceNotiListDTO();
 		map.put("npDTO", npDTO);
 		map.put("sfDTO", sfDTO);
+
+		System.out.println(sfDTO.getNoticecate());
 		
-		npDTO.init(db, map);
+		if (sfDTO.getNoticecate() == null) {
+			npDTO.init(db, map);
+			res.setSfdto(db.noticelist(map));// sfdto 는 리스트.. 흠?
+			res.setOnesfdto(sfDTO);
+			res.setSnpdto(npDTO);
+			
+			
+			return res;// 이 res 안에 있는 sfdto
+		}
 		
-		ServiceNotiListDTO res= new ServiceNotiListDTO();
-		
-		res.setSfdto(db.noticelist(map));// sfdto 는 리스트.. 흠?
+		npDTO.initnoticecate(db, map);
+		res.setSfdto(db.noticelistcate(map));// sfdto 는 리스트.. 흠?
 		res.setOnesfdto(sfDTO);
 		res.setSnpdto(npDTO);
-
+		return res;
 		
-		return res;// 이 res 안에 있는 sfdto
 	}
 
 
