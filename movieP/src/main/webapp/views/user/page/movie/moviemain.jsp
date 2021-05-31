@@ -21,6 +21,7 @@
 
 
 function likeGo(idx){
+	
 	location.href = "/user/movie/likeReg?m_index="+idx+"&cg=${param.cg}"
 }
 
@@ -45,10 +46,9 @@ $(function(){
 	}
 
 	.pp{
-		background: #a0a;
+		background: #c5f7f5;
 		color: white;
-		width: 800px;
-		margin-left: 150px;
+		width: 1000px;
 	}
 	
 	.pp>div{
@@ -59,6 +59,11 @@ $(function(){
 	.pp>div>a{
 		text-decoration: none;
 	}
+	.pp>div>a:hover{
+		border: 1px solid #a00;
+		
+	}
+	
 	#movieinfomation{
 		display: inline-block;
 		margin: 35px;
