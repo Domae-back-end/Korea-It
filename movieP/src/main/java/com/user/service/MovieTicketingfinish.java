@@ -15,7 +15,6 @@ import com.model.UserSitDTO;
 @Service("MovieTicketingfinish")
 public class MovieTicketingfinish implements MovieTicketingService{
 	
-
 	@Resource
 	DbMapper db;
 	
@@ -38,7 +37,6 @@ public class MovieTicketingfinish implements MovieTicketingService{
 			people+="A";
 		}
 		udto.setPeople(people);
-		System.out.println(udto);
 		for (int i = 1; i < buf.length; i++) {
 			db.insertSit(new UserSitDTO(udto.getTime_index(),buf[i],udto.getUserid(),udto.getPeople()));
 		}
