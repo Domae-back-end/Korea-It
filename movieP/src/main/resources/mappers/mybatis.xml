@@ -558,7 +558,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 
 			<otherwise>
-				<where> <![CDATA[userid = #{userid} and kind !='탈퇴']]></where>
+				<where> <![CDATA[userid = #{userid}]]></where>
 			</otherwise>
 
 		</choose>
@@ -644,7 +644,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		</choose>
 
 	</sql>
-
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
 		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userpnum, useremail, joinday, kind 
@@ -662,13 +661,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
-		select moviesector, ticket_pcount, salesprice, movietitle, sales_type, date_format(sales_time,'%Y-%m-%d') as sales_time, sales.m_index, imgname from sales 
+		select sales_index, ticket_index, sales_type, moviesector, ticket_pcount, salesprice, movietitle, sales_type, 
+		date_format(sales_time,'%Y-%m-%d(%a) %H:%m') as sales_time, sales.m_index, imgname from sales 
 		left outer join movieimg on sales.m_index = movieimg.m_index
 		where sales.userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and imgname like '%poster.jpg'
 		order by sales.sales_time desc
 		limit #{start},8
 	</select>
-
+	
+	<select id="memcancelpurchase" resultType="map" parameterType="MemberDTO">
+		select sales_index, ticket_index, sales_type, moviesector, ticket_pcount, salesprice, movietitle, sales_type, 
+		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time, sales.m_index from sales 
+		where sales.userid=#{userid} and sales_time > (sysdate() - INTERVAL 7 DAY)
+		order by sales.sales_time desc
+		limit #{start},2
+	</select>
 	
 	<select id="memcomment" resultType="map" parameterType="MemberDTO">
 		select movietitle, imgname, postcontent,  date_format(posttime,'%Y-%m-%d') as posttime, cate, mlike from review
@@ -713,7 +720,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(select COUNT(*) sc from sales  where userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and salesprice > 0) a, 
 		(select COUNT(*) wc from review where userid=#{userid}) b,
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
-		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d
+		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d,
+		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0) e
 	</select>
 	
 	
