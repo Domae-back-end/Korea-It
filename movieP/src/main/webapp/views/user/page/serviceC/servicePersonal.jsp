@@ -72,6 +72,30 @@
 			$(this).siblings('.upload_name').val(filename);
 		});
 	});
+	
+	
+	function emptychk() {
+		if (document.getElementById("titleG").value == "") {
+			alert("제목을 입력해주세요");
+			return false;
+		}else if(document.getElementById("contG").value == "") {
+			alert("내용을 입력해주세요");
+			return false;
+		}else {
+			document.fff.submit();
+		}
+	}
+	
+	function checksize(input) {
+		
+		if (input.files && input.files[0].size > (5 * 1024 * 1024)) {
+	        alert("파일 사이즈가 5mb 를 넘습니다.");
+	        
+	        $('.upload_name').val('파일선택')
+	        input.value = null;
+	    }
+	}
+	
 </script>
 </head>
 
@@ -109,7 +133,7 @@
 	</div>
 	
 	<div class="qna_form">
-		<form action="/user/serviceC/qnainsertReg" method="post" enctype="multipart/form-data">
+		<form action="/user/serviceC/qnainsertReg" method="post" enctype="multipart/form-data" name="fff"> 
 		
 			<div class="must_cont">* 필수</div>
 			<table class="qna_form_tb">
@@ -141,14 +165,14 @@
 						<div class="upload_box">
 							<p>* JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다.</p>
 							<label for="upfileG" class="upfile_class">파일선택</label>
-							<input type="file" name="file" id="upfileG" class="upload_hidden" />
+							<input type="file" name="file" id="upfileG" class="upload_hidden" onchange="checksize(this)"/>
 							<input class="upload_name" value="파일선택" disabled="disabled">
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" style="text-align: center; background: none; border-bottom: none;  ">
-						<input type="submit" value="등록" class="sbm"/>
+					<td colspan="2" style="text-align: center; background: none; border-bottom: none; ">
+						<input type="button" value="등록" class="sbm" onclick="emptychk()"/>
 					</td>
 				</tr>
 			</table>

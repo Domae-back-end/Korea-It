@@ -43,6 +43,7 @@ body {text-align: center; margin: 0 auto; height: 100%; }
 
 
 /* 푸터. footer */
+#footer * {font-size: 14px; }
 #footer {background: #eaeaea; font-size: 12px; height: 210px; }
 .footer_top {width: 1000px; margin: auto; position: relative; height: 60px;}
 #footer h2 {width: 160px; height: 60px; text-indent: -9999px; position: absolute; left: 20px; top: 86px; background: url("../../views/user/img/mainpage/footer.png") no-repeat; }

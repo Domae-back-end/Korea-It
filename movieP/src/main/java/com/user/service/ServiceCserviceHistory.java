@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.admin.service.ServiceNotiListDTO;
 import com.model.DbMapper;
@@ -21,14 +22,13 @@ public class ServiceCserviceHistory implements ServiceCservice {//빈 창고에 
 
 
 	@Override
-	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO, HttpSession session) {
+	public Object execute(ServiceNoticePageDTO npDTO, ServiceFullDTO sfDTO, HttpSession session, HttpServletRequest request, MultipartFile file) {
 
 		System.out.println("빈 이름 ServiceCserviceHistory 소환됨");
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
 		
-		System.out.println(session.getAttribute("sessionId"));
+		System.out.println("id는? -> "+session.getAttribute("sessionId"));
 		
 		
 		

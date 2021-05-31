@@ -86,6 +86,7 @@ public class ServiceNoticePageDTO {
 	}
 	
 	public void initpers(DbMapper dm, HashMap<String, Object> map) { //심화(카테고리별)
+		limit = 20;
 		// 게시판페이지계산.
 		start = (page - 1) * limit;
 
@@ -115,6 +116,7 @@ public class ServiceNoticePageDTO {
 	
 	public void initpers2(DbMapper dm, HashMap<String, Object> map) { //기본
 		// 게시판페이지계산.
+		limit = 20; 
 		start = (page - 1) * limit;
 
 		ttt = dm.perstotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
