@@ -10,6 +10,7 @@ create table movietime (
 create table ticketing(
 	m_index int auto_increment primary key,
 	time_index int,
+	people varchar(30),
 	seatNo varchar(30),
 	userid varchar(100)
 );
