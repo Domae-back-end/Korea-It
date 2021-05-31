@@ -74,9 +74,9 @@ public class MemberController {
 		if(service.endsWith("Reg"))
 			return "/user/home";
 		
-		if (service.endsWith("loginForm") || cate.endsWith("mypage"))
-			return "user/page/index";
+		if (service.endsWith("joinForm"))
+			return "user/page/" + cate + "/" + service;
 
-		return "user/page/" + cate + "/" + service;
+		return "user/page/index";
 	}
 }
