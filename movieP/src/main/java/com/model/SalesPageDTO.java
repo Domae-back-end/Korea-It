@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.HashMap;
 
+import lombok.Data;
+@Data
 public class SalesPageDTO {// SalesPageDTO 의 init 주의.
 	Integer page = 1; // 내가누른 페이지번호
 	Integer start; // 1일때 3(limit), 2일때 6(limit*2)
@@ -20,12 +22,13 @@ public class SalesPageDTO {// SalesPageDTO 의 init 주의.
 	
 	public void init(DbMapper dm, HashMap<String, Object> map) {
 		// 게시판페이지계산.
-		limit = 20; 
+		limit = 10; 
 		start = (page - 1) * limit;
-
+		
+		
 		ttt = dm.salestotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
 		//
-		System.out.println("토탈cnt"+ttt);
+		System.out.println("Sales ttt:"+ttt);
 		this.total = ttt / limit;
 
 		if (ttt % limit > 0) {

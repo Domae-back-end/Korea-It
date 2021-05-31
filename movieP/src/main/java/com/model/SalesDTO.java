@@ -21,7 +21,7 @@ public class SalesDTO {
 	String sales_type; // 현금, 카드 내지 환불
 	Date sales_time;
 	
-	String salesckind="전체";// ticket_index, userid, movietitle, sectorNo 
+	String salesckind="";// ticket_index, userid, movietitle, sectorNo 
 	String salescword=""; 
 	
 

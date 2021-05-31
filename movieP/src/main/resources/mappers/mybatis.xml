@@ -756,7 +756,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="getsales" resultType="SalesDTO" parameterType="HashMap">
-		select * from sales order by sales_time desc;
+		select * from sales
+		
+		<choose>
+			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
+				<where>
+					${sadto.salesckind} like '%${sadto.salescword}%'
+				</where>
+			</when>			
+		</choose>
+		
+		 order by sales_time desc
+		 
+		 
+		limit #{pdto.start}, #{pdto.limit}
+		 
 	</select>
 	
 
@@ -879,7 +893,20 @@ WHERE m_index = #{m_index};
 	
 	</update>
 	
-	
+	<select id="salestotalCnt" resultType="Integer"
+		parameterType="HashMap">
+		select count(*) from sales
+		
+		<choose>
+			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
+				<where>
+					${sadto.salesckind} like '%${sadto.salescword}%'
+				</where>
+			</when>			
+		</choose>
+		order by sales_time desc
+		
+	</select>
 	
 	
 	<!--concat('%',#{daysaletime},'%') mysql. -->

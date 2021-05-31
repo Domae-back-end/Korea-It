@@ -8,9 +8,9 @@
 
 데이터 있냐:${not empty data} 
 
-<form action="SearchReg">
+<form action="">
 	<select name="salesckind">
-		<option value="none"   >전체  </option>
+		<option value=""   >전체  </option>
 		<option value="userid"   >아이디별  </option>
 		<option value="movietitle"> 제목별 </option>
 		<option value="sectorNo"> 관별</option>
@@ -41,7 +41,7 @@
       </tr>
     </thead>
     <tbody>
-<c:forEach var="i"   items="${data }">
+<c:forEach var="i"   items="${data.salist }">
       <tr>
         <td>${i.sales_index }</td>
           <td>${i.userid }</td>
