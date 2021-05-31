@@ -60,7 +60,7 @@ create table basicqna (
 <!-- sales     ver 1.   -->
 CREATE TABLE sales (
  sales_index int auto_increment primary key,
- ticket_index int,
+ t_index int,
  ticket_pcount int,
  salesprice int,
  userid varchar(100),
@@ -76,8 +76,8 @@ CREATE TABLE sales (
 
 alter table sales change moviesector sectorNo varchar(100);
 alter table monthsales change sectorCode sectorNo varchar(100);
-
-
+<!-- 긴급수정 ! 5월 31일 오후5시  윗부분 create  이미 수정함. -->
+alter table sales change ticket_index t_index varchar(100);
 
 <!-- 월정산 매출액 테이블(시간xxx년 xx월 1일 ,    ) -->
 CREATE TABLE monthsales (
@@ -411,7 +411,7 @@ INSERT INTO movieimg (m_index,imgname) VALUES
 	 
 	 
 	 
-INSERT INTO sales (ticket_index, ticket_pcount, salesprice ,userid,movietitle, m_index,moviesector, sales_type,sales_time) VALUES	 
+INSERT INTO sales (t_index, ticket_pcount, salesprice ,userid,movietitle, m_index,moviesector, sales_type,sales_time) VALUES	 
 (1, 2,20000,'cccc33','자산어보',5,'3D관','카드','2021-01-01 05:12:04'),
 (2, 1,10000,'eeee55','자산어보',5,'기존관','카드','2021-01-02 01:48:04'),
 (3, 4,40000,'eeee55','자산어보',5,'3D관','카드','2021-01-04 02:35:04'),
