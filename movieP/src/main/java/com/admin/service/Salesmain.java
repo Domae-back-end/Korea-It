@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import com.model.DbMapper;
 import com.model.MovieSect;
 import com.model.SalesDTO;
+import com.model.SalesListDTO;
+import com.model.SalesPageDTO;
 
 @Service
 public class Salesmain implements SalesService{
@@ -31,8 +33,11 @@ public class Salesmain implements SalesService{
 		HashMap<String, Object> orimap = (HashMap)obj;
 		HttpServletRequest request= (HttpServletRequest)orimap.get("request");
 		SalesDTO sadto = (SalesDTO)orimap.get("sadto");
+		SalesPageDTO pdto = (SalesPageDTO)orimap.get("pdto");
 		
-		logger.info("검색유저id"+sadto.getUserid());	
+		
+		
+		logger.info("검색유저id"+sadto.getUserid()+"페이지넘버:"+pdto.getPage());	
 		
 		if(MovieSect.NORM1.equals("기존1관")){
 			System.out.println("true");
@@ -44,9 +49,22 @@ public class Salesmain implements SalesService{
 		}
 	}
 	HashMap<String, Object> map = new HashMap<String, Object>();
+	map.put("sadto",sadto);
+	map.put("pdto", pdto);
+	
+	pdto.init(db, map); //pdto의 내용물 변화가온다.
+	
+	
+	
+	SalesListDTO result = new SalesListDTO();
+	// salist;sadto;pdto;
+	result.setSalist(db.getsales(map));
+	result.setPdto(pdto);// 제대로된걸 넣어준다.
+	result.setSadto(sadto);
+	
 		
 	
-	return db.getsales(map);
+	return result;
 }
 	
 	

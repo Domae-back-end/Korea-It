@@ -212,6 +212,8 @@ public interface DbMapper {
    List<SalesDTO> getyesterdaysalesdistinct(HashMap<String, Object> map);
 void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 	int updatemonthsales(SalesDTO sdto);
+
+	Integer salestotalCnt(HashMap<String, Object> map);
    
    
    

@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<select id="movieTime" resultType="MovieTimeDTO">
 		select * from movietime
-		order by m_index desc
+		order by time_index desc
 	</select>
 	
 	<select id="moviesit" resultType="UserSitDTO" parameterType="java.lang.Integer">
@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		resultType="DateDTO">
 		select endtime, reg_date
 		from movietime
-		where m_index='${m_index}'
+		where time_index='${time_index}'
 	</select>
 
 
@@ -188,13 +188,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
 	</insert>
 	<insert id="insertSit" parameterType="UserSitDTO">
-		insert into ticketing (time_index,seatNo,userid) values (#{time_index},#{seatNo},#{userid})
+		insert into ticketing (time_index,seatNo,userid,people) values (#{time_index},#{seatNo},#{userid},#{people})
 	</insert>
 	<update id="updatemovielist" parameterType="MovieTimeDTO">
 		update movietime set
 		sectorno=#{sectorno},starttime=#{starttime},endtime=#{endtime},
 		reg_date=#{reg_date}
-		where m_index=#{m_index} and movietitle = #{movietitle}
+		where time_index=#{time_index} and movietitle = #{movietitle}
 	</update>
 
 
@@ -767,7 +767,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="getsales" resultType="SalesDTO" parameterType="HashMap">
-		select * from sales order by sales_time desc;
+		select * from sales
+		
+		<choose>
+			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
+				<where>
+					${sadto.salesckind} like '%${sadto.salescword}%'
+				</where>
+			</when>			
+		</choose>
+		
+		 order by sales_time desc
+		 
+		 
+		limit #{pdto.start}, #{pdto.limit}
+		 
 	</select>
 	
 
@@ -890,7 +904,20 @@ WHERE m_index = #{m_index};
 	
 	</update>
 	
-	
+	<select id="salestotalCnt" resultType="Integer"
+		parameterType="HashMap">
+		select count(*) from sales
+		
+		<choose>
+			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
+				<where>
+					${sadto.salesckind} like '%${sadto.salescword}%'
+				</where>
+			</when>			
+		</choose>
+		order by sales_time desc
+		
+	</select>
 	
 	
 	<!--concat('%',#{daysaletime},'%') mysql. -->

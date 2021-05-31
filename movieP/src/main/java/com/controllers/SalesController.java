@@ -18,6 +18,7 @@ import com.admin.service.SalesService;
 import com.model.InitData;
 import com.model.Menu;
 import com.model.SalesDTO;
+import com.model.SalesPageDTO;
 
 
 @Controller
@@ -29,7 +30,7 @@ public class SalesController {
 	Provider pr;
 	
 	@ModelAttribute("data")
-	Object data(@PathVariable String service, SalesDTO sadto,HttpServletRequest request) {
+	Object data(@PathVariable String service, SalesDTO sadto,SalesPageDTO pdto,HttpServletRequest request) {
 		System.out.println("sales/"+service+"를 실행합니다:");
 		SalesService sr = pr.getContext().getBean("sales"+service,SalesService.class);
 		//일단 검색 가능하도록.
@@ -37,7 +38,8 @@ public class SalesController {
 		Map<String, Object> obj= new HashMap<>();
 		obj.put("request",request);
 		obj.put("sadto", sadto);
-		
+		obj.put("pdto", pdto);
+	
 		
 		return sr.execute(obj);//execute결과물 map으로해주면 ,jsp에서 알아서뽑아올수있음.
 	}

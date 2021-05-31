@@ -40,19 +40,19 @@ if(request.getParameter("seatNo") != null){
 %>
 <div class="t1_lay1">
 	<div class="t1_lay1_1">어린이</div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt1=<%=cnt1-1 %>&cnt2=<%=cnt2%>&cnt3=<%=cnt3%>">-</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt1=<%=cnt1-1 %>&cnt2=<%=cnt2%>&cnt3=<%=cnt3%>">-</a></div>
 	<div class="t1_lay1_2"><%=cnt1 %></div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt1=<%=cnt1+1 %>&cnt2=<%=cnt2%>&cnt3=<%=cnt3%>">+</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt1=<%=cnt1+1 %>&cnt2=<%=cnt2%>&cnt3=<%=cnt3%>">+</a></div>
 	<div class="both"></div>
 	<div class="t1_lay1_1">청소년</div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt2=<%=cnt2-1 %>&cnt1=<%=cnt1%>&cnt3=<%=cnt3%>">-</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt2=<%=cnt2-1 %>&cnt1=<%=cnt1%>&cnt3=<%=cnt3%>">-</a></div>
 	<div class="t1_lay1_2"><%=cnt2 %></div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt2=<%=cnt2+1 %>&cnt1=<%=cnt1%>&cnt3=<%=cnt3%>">+</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt2=<%=cnt2+1 %>&cnt1=<%=cnt1%>&cnt3=<%=cnt3%>">+</a></div>
 	<div class="both"></div>
 	<div class="t1_lay1_1">어른</div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt3=<%=cnt3-1 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">-</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3-1 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">-</a></div>
 	<div class="t1_lay1_2"><%=cnt3 %></div>
-	<div class="t1_lay1_2"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt3=<%=cnt3+1 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">+</a></div>
+	<div class="t1_lay1_2"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3+1 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">+</a></div>
 	<div class="both"></div>
 	<div class="t2_lay1">어린이 : <%=cnt1 %></div>
 	<div class="t2_lay1">청소년 : <%=cnt2 %></div>
@@ -74,11 +74,11 @@ if(request.getParameter("seatNo") != null){
 								<c:set var="buf" value="${fn:split(sit,' ')[i] }" />
 									<c:forEach begin="1" var="a" end="10">
 										
-											<div class="sitting"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>&seatNo=<%=seatno %>,${buf }${a }">${buf }${a }</a></div>
+											<div class="sitting"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>&seatNo=<%=seatno %>,${buf }${a }">${buf }${a }</a></div>
 									</c:forEach>
 								<div class="gill">통로</div>
 								<c:forEach begin="11" var="a" end="20">
-									<div class="sitting"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>&seatNo=<%=seatno %>,${buf }${a }">${buf }${a }</a></div>
+									<div class="sitting"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>&seatNo=<%=seatno %>,${buf }${a }">${buf }${a }</a></div>
 								</c:forEach>
 							</c:forEach>
 						</c:otherwise>
@@ -90,9 +90,9 @@ if(request.getParameter("seatNo") != null){
 	</div>
 	<div class="t1_lay3">
 		<c:if test="<%=!(check) %>">
-			<div class="clickontike"><a href="/user/movietime/finish?m_index=<%=request.getParameter("m_index") %>&seatNo=<%=seatno %>">예약하기</a></div>
+			<div class="clickontike"><a href="/user/movietime/finish?time_index=<%=request.getParameter("time_index") %>&seatNo=<%=seatno %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">예약하기</a></div>
 		</c:if>
-		<div class="clickontike"><a href="/user/movietime/listReg?m_index=<%=request.getParameter("m_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">다시 좌석 선택하기</a></div>
+		<div class="clickontike"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">다시 좌석 선택하기</a></div>
 		<div class="clickontike">좌석 : <%=sitting %></div>
 		<div class="clickontike">가격 : </div>
 	</div>

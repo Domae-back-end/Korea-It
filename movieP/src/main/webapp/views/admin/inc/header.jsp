@@ -45,11 +45,11 @@
 
 	<button  id="sales" value="sales/main" type="button"
 		class="btn btn-success menugobtn">매출/정산</button>
-
+<!-- 
 	<button  id="userinfo" value="userinfo" type="button"
 		class="btn btn-success menugobtn">회원정보관리</button>
 
-
+ -->
 	<button  id="ticketadmin" value="ticketadmin"
 		type="button" class="btn btn-success menugobtn">예매정보관리</button>
       

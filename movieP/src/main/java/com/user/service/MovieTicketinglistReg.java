@@ -20,7 +20,7 @@ public class MovieTicketinglistReg implements MovieTicketingService {
 	@Override
 	public Object execute(MovieTimeDTO dto,UserSitDTO udto) {
 		HashMap<String, Object> ar = new HashMap<>();
-		ar.put("sit", db.moviesit(dto.getM_index()));
+		ar.put("sit", db.moviesit(dto.getTime_index()));
 		return ar;
 	}
 	
