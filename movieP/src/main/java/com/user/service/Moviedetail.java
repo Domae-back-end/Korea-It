@@ -26,6 +26,7 @@ public class Moviedetail implements MovieAction2{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년M월dd일");
 		String date = sdf.format(res.getMdate());
 		res.setMdate_s(date);
+		res.setMplot(res.getMplotBr()); 
 		res.setGpa(mm.calcGPA(res.getM_index()));
 		return res;
 	}

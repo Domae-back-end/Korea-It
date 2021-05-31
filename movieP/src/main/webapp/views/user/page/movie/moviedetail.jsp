@@ -15,17 +15,19 @@
 <title>Insert title here</title>
 <style>
 	#detail{
-		background: pink;
+		background: #c5f7f5;
 		width: 1000px;
 		height: 560px;
 		display:inline-block;
 	}
 	
 	#title{
-		width: 100px;
+		width: 1000px;
 		height: 50px;
 		font-size: 30px;
-		color:white;
+		color:black;
+		text-align: left;
+		
 	}
 	
 	#poster{
@@ -41,12 +43,16 @@
 	}
 	
 	#link{
-		width: 300px;
+		background: #f00;
 		font-size:30px;
 		display: inline-block;
+		margin-right: 130px;
+		border: 1px solid #f00;
+		border-radius: 10px;
 	}
-	#sub{
-	
+	#link>a{
+		color: white;
+		text-decoration: none;
 	}
 	#sub1>a{
 		font-size: 30px;

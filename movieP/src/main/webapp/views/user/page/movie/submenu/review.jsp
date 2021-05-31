@@ -11,14 +11,19 @@
 		display: inline-block;
 		text-align: left;
 	}
+	#reviewForm{
+		
+		height:60px;
+	}
 	
 	#aa{
+	text-align:left;
 		border: 1px solid #a0a;
 		height: 60px;
 	}
 	#userinfo{
 		display: inline-block;
-		border: 2px solid #ccc;
+		border: 1px solid #ccc;
 		text-align: left;
 		width: 300px;
 		height: 60px;
@@ -37,10 +42,13 @@
 		margin-left: 50px;
 		text-align:center;
 		width: 530px;
-		height: 70px;
+		height: 60px;
 	}
 	#b{
 		height: 60px;
+		text-align: center;
+		vertical-align: middle;
+		margin-bottom: 50px;
 	}
 	#myr>#aa{
 		background: "red";
@@ -54,6 +62,16 @@
 	 }
 	#del{
 		float: right;
+	}
+	#num{
+		text-align: center;
+	}
+	#sid{
+		display:inline-block;
+		float:left;
+		font-size: 30px;
+		border: 1px solid #ccc;
+		height: 60px;
 	}
 
 </style>
@@ -118,7 +136,11 @@
 </form>
 <div id="reviewwrapper">
 <form id="reviewForm" action="reviewinsertReg" method="post" name="reviewgo" onsubmit="return checkstar()">
-<ul class="rate-area">
+<div id="formset" style="text-aglin: left; height:60px;">
+<c:if test="${sessionId !=null}">
+<div id = "sid">${sessionId }</div>
+</c:if>
+<ul class="rate-area" style="margin-left: 20px;">
   <input type="radio" id="5-star" id = "gpa" name="gpa" value="5" /><label for="5-star" title="Amazing" checked>5 stars</label>
   <input type="radio" id="4-star" id = "gpa" name="gpa" value="4" /><label for="4-star" title="Good">4 stars</label>
   <input type="radio" id="3-star" id = "gpa" name="gpa" value="3" /><label for="3-star" title="Average">3 stars</label>
@@ -130,10 +152,11 @@
 <input type="hidden" name="cnt" id="cnt"  />
 
 <input type="submit" value="관람평 작성" id="b">
+</div>
 </form>
 
+<c:if test="${myreview != null} || ${myreview =''}">
 <div id= "myr">
-<c:if test="${myreview != null}">
 <div id = "aa" style="border: 3px dotted #f00">
 	<div id= "userinfo">
 		<div id="id">${myreview.userid }</div>
@@ -150,9 +173,9 @@
 	<div id= "content">${myreview.postcontent }</div>
 	<div id="del"> <a href="javascript:deleteGo(${myreview.cnt})">삭제하기</a></div>
 </div>
-<hr>
-</c:if>
 </div>
+</c:if>
+
 <c:forEach items="${moviereview.mrd }" var="r" varStatus="no">
 <div id = "aa">
 	<div id= "userinfo">
@@ -172,6 +195,7 @@
 	<div id="del"> <a href="javascript:deleteGo(${r.cnt})">삭제하기</a></div>
 </div>
 </c:forEach>
+<div id ="num">
 <c:if test="${moviereview.pdto.startPage > 1}">
 		    	
    <input type="button" class="btn" dd="${moviereview.pdto.startPage-1}" value="&lt" />
@@ -191,6 +215,6 @@
 	<c:if test="${moviereview.pdto.endPage < moviereview.pdto.total}">
 		<input type="button" class="btn" dd="${moviereview.pdto.endPage+1}" value="&gt" />	
 	</c:if>	
-
+</div>
 
 </div>
