@@ -13,8 +13,8 @@
 
 </head>
 <body>
-<h1>아이디/비밀번호 찾기</h1>
-
+<div id="idfind_main">
+	<h1>아이디/비밀번호 찾기</h1>
 	<form action="" method="post" enctype="multipart/form-data" name="frm">
 		<div class="main">
 			<div class="outF">
@@ -32,5 +32,6 @@
 				<input type="button" id="check" value="아이디 찾기"/>
 		</div>
 	</form>
+</div>
 </body>
 </html>

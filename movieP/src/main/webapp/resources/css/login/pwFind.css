@@ -5,7 +5,7 @@
 }
 .main{
 	margin: 0 auto;
-	height: 150px;
+	height: 300px;
 	width: 500px;
 	border-top: 1px solid rgb(192, 192, 192);
 	background: #fff;
@@ -51,7 +51,23 @@ input{
 	margin-top: 10px;
 }
 .chButt {
-	width:90px ;
+	width:100px ;
 	height: 30px;
+	line-height: 30px; 
 	border :none;
+	font-size: 14px; 
+	text-align: center;
 }
+
+
+
+
+
+
+
+
+
+#pwfind_main {width: 1000px; padding: 100px 0; }
+#pwfind_main:after {content:""; display: block; clear: both;}
+
+
