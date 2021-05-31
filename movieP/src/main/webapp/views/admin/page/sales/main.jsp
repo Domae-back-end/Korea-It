@@ -6,7 +6,7 @@
 매출
 데이터 출력화면
 
-데이터 있냐:${not empty data} 
+데이터 있냐:${not empty data.salist}  ${data.sadto.salesckind} 
 
 <form action="">
 	<select name="salesckind">

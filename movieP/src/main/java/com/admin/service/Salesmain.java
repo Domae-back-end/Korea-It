@@ -60,7 +60,7 @@ public class Salesmain implements SalesService{
 	// salist;sadto;pdto;
 	result.setSalist(db.getsales(map));
 	result.setPdto(pdto);// 제대로된걸 넣어준다.
-	
+	result.setSadto(sadto);
 	
 		
 	
