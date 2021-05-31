@@ -16,11 +16,11 @@ create table ticketing(
 	reg_date datetime
 );
 INSERT INTO unoestellar.ticketing (time_index,people,seatNo,userid,reg_date) VALUES
-	 (9,NULL,'B4','dddd44','2021-05-31 17:56:40.0'),
-	 (9,NULL,'C5','dddd44','2021-05-31 17:56:40.0'),
-	 (1,NULL,'A1','dddd44','2021-05-31 17:56:40.0'),
-	 (1,NULL,'A2','dddd44','2021-05-31 17:56:40.0'),
-	 (1,NULL,'A3','dddd44','2021-05-31 17:56:40.0');
+	 (9,NULL,'B4','dddd44','2021-05-31 11:56:40'),
+	 (9,NULL,'C5','dddd44','2021-05-31 11:56:40'),
+	 (1,NULL,'A1','dddd44','2021-05-31 12:56:40'),
+	 (1,NULL,'A2','dddd44','2021-05-31 12:56:40'),
+	 (1,NULL,'A3','dddd44','2021-05-31 12:56:40');
 	
 	INSERT INTO unoestellar.movietime (movietitle,sectorNo,starttime,endtime,reg_date) VALUES
 	 ('자산어보','작은관','06:32:22','08:38:22','2021-05-31'),

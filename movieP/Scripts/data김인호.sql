@@ -66,7 +66,7 @@ CREATE TABLE sales (
  userid varchar(100),
  movietitle	varchar(100)	,
  m_index int,
- moviesector	varchar(100)	,
+ sectorNo	varchar(100)	,
  sales_type	varchar(100),
  sales_time datetime
 );
@@ -411,7 +411,7 @@ INSERT INTO movieimg (m_index,imgname) VALUES
 	 <!--  -->
 	 
 	 
-INSERT INTO sales (t_index, ticket_pcount, salesprice ,userid,movietitle, m_index,moviesector, sales_type,sales_time) VALUES	 
+INSERT INTO sales (t_index, ticket_pcount, salesprice ,userid,movietitle, m_index,sectorNo, sales_type,sales_time) VALUES	 
 (1, 2,20000,'cccc33','자산어보',5,'3D관','카드','2021-01-01 05:12:04'),
 (2, 1,10000,'eeee55','자산어보',5,'기존관','카드','2021-01-02 01:48:04'),
 (3, 4,40000,'eeee55','자산어보',5,'3D관','카드','2021-01-04 02:35:04'),
