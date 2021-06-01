@@ -97,7 +97,7 @@ CREATE TABLE monthsales (
 	sumall bigint,
 	totalsale BIGINT,
 	totalrefund bigint,
-	sectorCode VARCHAR(100)	
+	sectorNo VARCHAR(100)	
 	);
 
 	
