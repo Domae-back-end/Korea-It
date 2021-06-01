@@ -14,7 +14,7 @@
 	.movieImg{
 		float: left;
 		width: 200px;
-		height: 300px;
+		height: 100%;
 	}
 	.movieImg > img{
 		width: 200px;
@@ -101,7 +101,7 @@
 							pattern="hh:mm:ss" /></div>
 			<c:if test="${i.index == 0  }">			
 			</c:if>	
-			<div class="removemenu"><a href="deleteReg?movietitle=${a.movietitle}&m_index=${a.m_index}">삭제하기</a></div>
+			<div class="removemenu"><a href="deleteReg?movietitle=${a.time_index}&m_index=${a.time_index}">삭제하기</a></div>
 			<div class="both"></div>
 		</c:forEach>
 	</div>

@@ -91,13 +91,14 @@
 Calendar today = Calendar.getInstance();
 boolean check = false;
 if (request.getParameter("dal") != null) {
-	today.set(Calendar.MONTH, Integer.parseInt(request.getParameter("dal")));
-	today.set(Calendar.MONTH, today.get(Calendar.MONTH)-1);
+	System.out.println(request.getParameter("dal"));
+	today.set(Calendar.MONTH, Integer.parseInt(request.getParameter("dal"))-1);
 }
 today.set(Calendar.DATE, 1);
 if(request.getParameter("dal") != null && request.getParameter("el") != null) {
 	check = true;
 }
+System.out.println(today.get(Calendar.MONTH));
 %>
 <c:set var="now" value="<%=new Date()%>" />
 <h2>
@@ -129,24 +130,24 @@ if(request.getParameter("dal") != null && request.getParameter("el") != null) {
 	<c:forEach var="a" begin="1"
 		end="<%=today.getActualMaximum(Calendar.DATE)%>">
 		<c:choose>
-			<c:when test="<%=today.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH) %>">
+			<c:when test="<%=today.get(Calendar.MONTH)+1 == Calendar.getInstance().get(Calendar.MONTH)+1 %>">
 				<c:choose>
 					<c:when test="${a == now.date }">
 						<div class="el">
 							<a
-								href="?dal=<%=(Calendar.getInstance().get(Calendar.MONTH))+1 %>&el=${a}">[ ${a } ] 일</a>
+								href="?dal=<%=today.get(Calendar.MONTH)+1 %>&el=${a}">[ ${a } ] 일</a>
 						</div>
 					</c:when>
 					<c:when test="${a <= now.date }">
 						<div class="el">
 							<a
-								href="?dal=<%=(Calendar.getInstance().get(Calendar.MONTH))+1 %>&el=${a}">x ${a } 일</a>
+								href="?dal=<%=today.get(Calendar.MONTH)+1 %>&el=${a}">x ${a } 일</a>
 						</div>
 					</c:when>
 					<c:otherwise>
 						<div class="el">
 							<a
-								href="?dal=<%=(Calendar.getInstance().get(Calendar.MONTH))+1 %>&el=${a}">${a }일</a>
+								href="?dal=<%=today.get(Calendar.MONTH)+1 %>&el=${a}">${a }일</a>
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -154,7 +155,7 @@ if(request.getParameter("dal") != null && request.getParameter("el") != null) {
 			<c:otherwise>
 						<div class="el">
 							<a
-								href="?dal=<%=(Calendar.getInstance().get(Calendar.MONTH))+1 %>&el=${a}">${a }일</a>
+								href="?dal=<%=today.get(Calendar.MONTH)+1 %>&el=${a}">${a }일</a>
 						</div>
 			</c:otherwise>
 		</c:choose>
@@ -166,7 +167,7 @@ if(request.getParameter("dal") != null && request.getParameter("el") != null) {
 <c:choose>
 	<c:when test="<%=check%>">
 		<div class="menu1">
-			<a href="/admin/movietime/insert?dal=<%=request.getParameter("dal")%>&el=<%=request.getParameter("el")%>">등록하기</a>
+			<a href="/admin/movietime/insert?dal=<%=request.getParameter("dal")+1%>&el=<%=request.getParameter("el")%>">등록하기</a>
 		</div>
 		<div class="menu1">
 			<a href="/admin/movietime/search">검색</a>
