@@ -45,6 +45,7 @@ $(function() {
 		var time = $('#starttime1').val();
 		var el = $('#el').val();
 		var dal = $('#dal').val();
+		var sectorno = $('#sectorno').val();
 		var movie
 	    const moviechek = document.getElementsByName('movietitle');
 		  moviechek.forEach((node) => {
@@ -53,7 +54,7 @@ $(function() {
 		    }
 		  }) 
 		$.ajax({
-			url : '${pageContext.request.contextPath}/admin/movietime/check?time='+time+'&movietitle='+movie+'&el='+
+			url : '${pageContext.request.contextPath}/admin/movietime/check?time='+time+'&movietitle='+movie+'&sectorno='+sectorno+'&el='+
 					el+'&dal='+dal,
 			type : 'get',
 			success : function(data) {
@@ -74,9 +75,13 @@ $(function() {
 	<input type="hidden" id="dal" value="<%=request.getParameter("dal")%>" name="dal">
 	<input type="hidden" id="el" value="<%=request.getParameter("el")%>" name="el">
 	<div class="inputbox">
-		<select name="sectorno">
-			<option value="작은관">작은관</option>
-			<option value="기존관">기존관</option>
+		<select name="sectorno" id="sectorno">
+			<option value="작은관1">작은관1</option>
+			<option value="작은관2">작은관2</option>
+			<option value="작은관3">작은관3</option>
+			<option value="기존관1">기존관1</option>
+			<option value="기존관2">기존관2</option>
+			<option value="기존관3">기존관3</option>
 			<option value="3D관">3D관</option>
 		</select>
 		시작 시간 :
