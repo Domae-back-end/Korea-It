@@ -933,7 +933,7 @@ WHERE m_index = #{m_index};
 	</select>
 	
 	
-	
+	<!--  tickting 과정에서  sales 테이블과 연결고리 심어주기.  -->
 	<update id="salesindexlink"  parameterType="UserSitDTO">
  UPDATE ticketing SET  saleslink = (select count(sales_index)+1 from sales )
  WHERE  userid= #{userid} AND reg_date= #{reg_time}
@@ -975,14 +975,11 @@ WHERE m_index = #{m_index};
 	
 	
 	
-	<!-- FAQ    -->
-	
-	<!--  -->
-	
+	<!-- FAQ    -->	
 	<!--자찾질 가져오기 -->
 	<select id="faqtotalCnt" resultType="java.lang.Integer"
 		parameterType="HashMap">
-		select count(*) from basicqna
+		select count(*) from basicqna 
 		<choose>
 			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
 				<where>
@@ -990,6 +987,7 @@ WHERE m_index = #{m_index};
 				</where>
 			</when>
 		</choose>
+		order by bqindex asc
 	</select>
 	
 	
