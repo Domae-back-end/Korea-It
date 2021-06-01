@@ -688,7 +688,7 @@ function pageChange(i){
 		pagekind : $('#pageKind').val(),
     	page : i
     };
-    console.log(i)
+    
 	$.ajax({
 	   	async : false,
 	    type : 'POST',
@@ -739,7 +739,7 @@ function pageChange(i){
 					}
 					
 				}else if($('#pageKind').val() == 'likemovie'){
-				console.log(data.like)
+				
 				
 					for(j in data.like){
 					
