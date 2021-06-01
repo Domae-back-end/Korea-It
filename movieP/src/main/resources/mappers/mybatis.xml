@@ -952,7 +952,6 @@ WHERE m_index = #{m_index};
 	
 	
 	
-	<!-- FAQ    -->
 	<!-- FAQ    -->	
 	<!--자찾질 가져오기 -->
 	<select id="faqtotalCnt" resultType="java.lang.Integer"
