@@ -42,30 +42,37 @@ public class MoviereviewinsertReg implements MovieAction4{
 		//해당 영화를 관람했는지 검사해야 함. userid=아이디 cate=영화코드
 		System.out.println("id: "+dto.getUserid() +" m_index: "+dto.getCate());
 		
-		//해당 영화의 제목 불러오기
-		//List<MovieInfoDTO> title = (List<MovieInfoDTO>) mm.movieDetail(Integer.parseInt(dto.getCate()));
+		//해당 영화의 제목 불러오기		
 		
 		List<EndTimeDTO> list = mm.pullTInfo(dto);		
+		//현재 여기에는 index만 들어있음
 		
+		//iterator 시작
 		Iterator<EndTimeDTO> it = list.iterator();
 		while(it.hasNext()) {
+			//현재 저장된 값: index값만 저장되어 있음
 			EndTimeDTO etd = it.next();
+			//이 index 값 이용하여 영화 이름 찾기
+			etd.setMovietitle(mm.searchmovietitle(etd.getM_index()) );
 			
-			DateDTO da = mm.pullEndTime(etd);
-			da.setEnd_time();
+			//찾은 영화이름가지고 영화 끝나는 시간 list로 받아오기
+			List<DateDTO> da = mm.pullEndTime(etd);
+			
+			//현재 da에는 끝나는 시간들이 저장되어 있음. 이 중에서 하나라도 현재시간 이후면 리뷰 쓰기 가능.
+			Iterator it2 = da.iterator();
+			while(it2.hasNext()) {
+				DateDTO dk = (DateDTO)it2.next();
+				dk.setEnd_time();
+				if(dk.getEnd_time().before( new Date() ) ) {
+					//현재날짜보다 전
+					etd.setEndtime(dk.getEnd_time());
+					cnt++;
+				}
+			}
 			
 			//System.out.println("id: "+etd.getUserid()+" sector: "+etd.getMoviesector()+" endtime: "+etd.getEndtime());
-			
-			if(da.getEnd_time() ==null) {
-				continue;
-			}
-			if(da.getEnd_time().before( new Date() ) ) {
-				//현재날짜보다 전
-				etd.setEndtime(da.getEnd_time());
-				cnt++;
-			}
 		
-		System.out.println("id: "+etd.getUserid()+" sector: "+etd.getSectorno()+" endtime: "+etd.getEndtime());
+		//System.out.println("id: "+etd.getUserid()+" sector: "+etd.getSectorno()+" endtime: "+etd.getEndtime());
 
 		}
 		

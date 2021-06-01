@@ -132,9 +132,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		resultType="DateDTO">
 		select endtime, reg_date
 		from movietime
-		where m_index='${m_index}'
+		where movietitle='${movietitle}'
 	</select>
 
+	<select id="searchmovietitle" resultType="java.lang.String">
+		select movietitle from movieinfo where m_index='${m_index}'
+	</select>
 
 	<delete id="reviewdelete" parameterType="MovieReviewDTO">
 		delete from review where cnt = #{cnt} and userid=#{userid}
