@@ -7,7 +7,7 @@ $(document).ready(function() {
         slide = document.querySelectorAll('.slides li'),
         currentIndex = 0;
     slideCnt = slide.length,
-        slideWidth = 600,
+        slideWidth = 1000,
         slideMargin = 30,
         prevBtn = document.querySelector('.prev'),
         proBtn = document.querySelector('.next');
