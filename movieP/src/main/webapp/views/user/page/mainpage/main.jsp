@@ -2,9 +2,18 @@
     pageEncoding="UTF-8"%>
 
 <div class="maincont_banner">
-	<img id="bannerimg" src="" alt="" />
-</div>
-
+	<ul class="slides ulss" style="width:420px; transform: translateX(-600px);">
+            <li><img src="/banner/poster1.jpg" alt="이미지내놔4"></li>
+            <li><img src="/banner/poster2.jpg" alt="이미지내놔4"></li>
+            <li><img src="/banner/poster3.jpg" alt="이미지내놔4"></li>
+            <li><img src="/banner/poster4.jpg" alt="이미지내놔4"></li>
+            <li><img src="/banner/poster5.jpg"  alt="이미지내놔5"></li>
+        </ul>
+</div><!--  -->
+ <p class="controls">
+        <span class="prev">prev</span>
+        <span class="next">next</span>
+    </p>
 <div class="maincont_center">
 	<div class="center_top">
 		<h2>인기영화</h2>
