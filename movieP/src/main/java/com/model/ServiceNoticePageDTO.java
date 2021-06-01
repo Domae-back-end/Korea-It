@@ -62,11 +62,17 @@ public class ServiceNoticePageDTO {
 
 	public void initfaq(DbMapper dm, HashMap<String, Object> map) {
 		start = (page - 1) * limit;
-		int ttt = dm.aaatotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
+		int ttt = dm.faqtotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
 		// 이 맵에 들어오는거.totalmap // tablename도 먹여줄수있음.
 		/*
 		 * 	totalmap.put("pDTO", npDTO);
 		totalmap.put("mDTO", mdto);
+		 * 
+		 *  totalCnt 함수 >> sql문 select  ()count
+		 *  
+		 *  제목  ㄱㄱ  >>  검색 .
+		 *  selet count(*) from 테이블명;
+		 * 
 		 * 
 		 * */
 		this.total = ttt / limit;

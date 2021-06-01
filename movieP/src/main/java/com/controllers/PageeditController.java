@@ -32,7 +32,8 @@ public class PageeditController {
 	Provider pr;
 	
 	@ModelAttribute("data")
-	Object data(@PathVariable String service,HttpServletRequest request,HttpServletResponse response, MovieInfoDTO mdto,
+	Object data(@PathVariable String service,HttpServletRequest request,HttpServletResponse response, 
+					MovieInfoDTO mdto,
 				MinfoPageDTO pdto,BannerDTO banDTO
 				, ServiceFullDTO sfDTO,ServiceNoticePageDTO npDTO
 			) {

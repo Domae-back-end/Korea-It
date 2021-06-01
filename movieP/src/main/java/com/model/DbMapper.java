@@ -221,6 +221,8 @@ void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 	Integer salestotalCnt(HashMap<String, Object> map);
 
 	int salesindexlink(UserSitDTO userSitDTO);
+
+	int faqtotalCnt(HashMap<String, Object> map);
    
    
    
