@@ -9,7 +9,7 @@
             <li><img src="/banner/poster4.jpg" alt="이미지내놔4"></li>
             <li><img src="/banner/poster5.jpg"  alt="이미지내놔5"></li>
         </ul>
-</div>
+</div><!--  -->
  <p class="controls">
         <span class="prev">prev</span>
         <span class="next">next</span>
