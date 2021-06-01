@@ -41,6 +41,7 @@ public class Membermypage implements MemberAction {
 		MemPageDTO pdto = new MemPageDTO();
 		pdto.init(mdto, dm.memcount(mdto));
 		mdto.setStart(pdto.getStart());
+		mdto.setLimit(pdto.getLimit());
 		
 		MemPageDTO cpdto = new MemPageDTO();
 		cpdto.cancelinit(mdto, dm.memcount(mdto));
