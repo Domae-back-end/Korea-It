@@ -51,6 +51,7 @@
          </td>
       <tr>
 
+
       <tr>
       <td>
       <a href ="/user/movietime/list?movietitle=${mm.movietitle }"> 예매하기</a>
