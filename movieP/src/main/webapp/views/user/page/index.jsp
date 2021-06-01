@@ -19,14 +19,18 @@
 <title>유저 메인 화면</title>
 </head>
 <body>
-	<div class="index_mainheader">
-		<jsp:include page="inc/header.jsp" />
-	</div>
-	<div class="index_maincont">
-		<jsp:include page="${PPPData.cate}/${PPPData.service}.jsp" />
-	</div>
-	<div class="index_mainfooter">
-		<jsp:include page="inc/footer.jsp" />
-	</div>
+
+<div class="index_mainheader">
+	<jsp:include page="inc/header.jsp" />
+</div>
+
+<div class="index_maincont">
+	<jsp:include page="${PPPData.cate}/${PPPData.service}.jsp" />
+</div>
+
+<div class="index_mainfooter">
+	<jsp:include page="inc/footer.jsp" />
+</div>
+
 </body>
 </html>
