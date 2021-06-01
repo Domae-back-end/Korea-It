@@ -527,7 +527,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 
-
 	<select id="movieTimefind" resultType="MovieTimeDTO"
 		parameterType="MovieTimeDTO">
 		select * from movietime
