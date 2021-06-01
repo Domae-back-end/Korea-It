@@ -47,7 +47,7 @@
             <div class="card-body d-flex flex-column align-items-start">
               <strong class="d-inline-block mb-2 text-primary">자주 본 FAQ</strong>
               <h3 class="mb-0">
-                <a class="text-dark" href="#">새로운 고객문의</a>
+                <a class="text-dark" href="#">view젤높은거</a>
               </h3>
               
            <!--    <div class="mb-1 text-muted">Nov 12</div>
