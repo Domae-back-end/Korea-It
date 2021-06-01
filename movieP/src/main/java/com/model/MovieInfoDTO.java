@@ -102,6 +102,7 @@ public class MovieInfoDTO {
 	String msearchkind;
 	String msearchkey;
 	
+	Double res_rate;
 	
 	MultipartFile file;
 	MultipartFile[] infoimg;

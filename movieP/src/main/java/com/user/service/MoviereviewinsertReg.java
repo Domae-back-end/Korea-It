@@ -13,6 +13,7 @@ import com.model.DateDTO;
 import com.model.DbMapper;
 import com.model.EndTimeDTO;
 import com.model.MovieAction4;
+import com.model.MovieInfoDTO;
 import com.model.MovieReviewDTO;
 
 @Service
@@ -40,6 +41,10 @@ public class MoviereviewinsertReg implements MovieAction4{
 		System.out.println("영화 관람 검사");
 		//해당 영화를 관람했는지 검사해야 함. userid=아이디 cate=영화코드
 		System.out.println("id: "+dto.getUserid() +" m_index: "+dto.getCate());
+		
+		//해당 영화의 제목 불러오기
+		//List<MovieInfoDTO> title = (List<MovieInfoDTO>) mm.movieDetail(Integer.parseInt(dto.getCate()));
+		
 		List<EndTimeDTO> list = mm.pullTInfo(dto);		
 		
 		Iterator<EndTimeDTO> it = list.iterator();
@@ -60,7 +65,7 @@ public class MoviereviewinsertReg implements MovieAction4{
 				cnt++;
 			}
 		
-		System.out.println("id: "+etd.getUserid()+" sector: "+etd.getMoviesector()+" endtime: "+etd.getEndtime());
+		System.out.println("id: "+etd.getUserid()+" sector: "+etd.getSectorno()+" endtime: "+etd.getEndtime());
 
 		}
 		
