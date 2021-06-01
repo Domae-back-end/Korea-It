@@ -51,7 +51,7 @@ public class AsyncController {
 	
 	@RequestMapping(value = "/salesGraphSltView.do")
 	@ResponseBody
-	public Map<String, Object> ajaxtest(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
+	public Map<String, Object> salesGraphSltView(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
 		
 		
 		
@@ -62,6 +62,30 @@ public class AsyncController {
 	
 	}
 	
+	@RequestMapping(value = "/salesGraphRefunds")
+	@ResponseBody
+	public Map<String, Object> salesGraphRefunds(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
+		
+		
+		
+		SalesService sr = pr.getContext().getBean("salesGraphRefunds",SalesService.class);	
+		//SalesGraphSltView , 
+		
+		return (LinkedHashMap<String, Object>)sr.execute(map);
+	
+	}
+	@RequestMapping(value = "/salesGraphSales")
+	@ResponseBody
+	public Map<String, Object> salesGraphSales(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
+		
+		
+		
+		SalesService sr = pr.getContext().getBean("salesGraphSales",SalesService.class);	
+		//SalesGraphSltView , 
+		
+		return (LinkedHashMap<String, Object>)sr.execute(map);
+	
+	}
 	
 	
 	///faqdetail.do
