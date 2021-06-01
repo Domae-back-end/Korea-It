@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		resultType="DateDTO">
 		select endtime, reg_date
 		from movietime
-		where movietitle='${movietitle}'
+		where movietitle='${movietitle}' 
 	</select>
 
 	<select id="searchmovietitle" resultType="java.lang.String">
