@@ -3,7 +3,7 @@
 
 .index_maincont {width: 1000px; text-align: center;  margin: 0 auto; }
 .maincont_banner {width: 1000px; height: 600px; margin: 0 auto; left: 0px; position: relative; overflow:hidden;}
-.maincont_banner img {width: 200px; height: 150px; }
+.maincont_banner li img {width: 1000px; height: 600px; }
 
 
 .slides {position: absolute;    left: 0;top: 0;    }
