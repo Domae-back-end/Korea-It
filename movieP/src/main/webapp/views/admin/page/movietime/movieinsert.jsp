@@ -75,8 +75,12 @@ $(function() {
 	<input type="hidden" id="el" value="<%=request.getParameter("el")%>" name="el">
 	<div class="inputbox">
 		<select name="sectorno">
-			<option value="작은관">작은관</option>
-			<option value="기존관">기존관</option>
+			<option value="작은관1">작은관1</option>
+			<option value="작은관2">작은관2</option>
+			<option value="작은관3">작은관3</option>
+			<option value="기존관1">기존관1</option>
+			<option value="기존관2">기존관2</option>
+			<option value="기존관3">기존관3</option>
 			<option value="3D관">3D관</option>
 		</select>
 		시작 시간 :
