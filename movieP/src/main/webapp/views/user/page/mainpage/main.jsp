@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <div class="maincont_banner">
-	<ul class="slides ulss" style="width:420px; transform: translateX(-600px);">
+	<ul class="slides ulss" style="width:420px; transform: translateX(-1050px);">
             <li><img src="/banner/poster1.jpg" alt="이미지내놔4"></li>
             <li><img src="/banner/poster2.jpg" alt="이미지내놔4"></li>
             <li><img src="/banner/poster3.jpg" alt="이미지내놔4"></li>
