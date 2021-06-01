@@ -39,7 +39,3 @@
 		</ul>
 	</div>
 </div>
-
-<div class="maincont_bottom">
-	광고 등
-</div>
