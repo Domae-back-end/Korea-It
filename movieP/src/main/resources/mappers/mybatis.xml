@@ -121,7 +121,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<!-- 예매인 애들만 list로 -->
 	<select id="pullTInfo" parameterType="MovieReviewDTO"
 		resultType="EndTimeDTO">
-		select userid, m_index, moviesector
+		select userid, m_index, sectorno
 		from sales
 		where sales_type != '환불' and
 		userid = '${userid}' and
@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		resultType="DateDTO">
 		select endtime, reg_date
 		from movietime
-		where time_index='${time_index}'
+		where m_index='${m_index}'
 	</select>
 
 
@@ -170,7 +170,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where userid='${userid}' and
 		m_index='${m_index}'
 	</delete>
-
+	
+	<!-- sales 테이블 환불 빼고 전체 개수 -->
+	<select id="allcount" resultType="java.lang.Integer">
+		select count(*) from sales where sales_type!='환불'
+	</select>
+	<!-- sales 테이블에서 해당영화의 개수만 가져오기 -->
+	<select id="detailCount" resultType="java.lang.Integer">
+		select count(*) from sales where sales_type!='환불' and m_index='${m_index}'
+	</select>
 
 	<select id="findMovie" resultType="MovieInfoDTO"
 		parameterType="java.lang.String">

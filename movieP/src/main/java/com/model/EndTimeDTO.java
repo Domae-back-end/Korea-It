@@ -8,7 +8,8 @@ import lombok.Data;
 public class EndTimeDTO {
 	String userid;
 	Integer m_index;
-	String moviesector;
+	String movietitle;
+	String sectorno;
 	Date endtime=null;
 
 }

@@ -45,7 +45,12 @@
 		</div>
          
          </td>
-      </tr>   
+      </tr> 
+      <tr>
+      	<td>
+      		예매율: ${mm.res_rate }%
+      	</td>
+      </tr>  
       <tr>
          <td>
          	<div id="like">
