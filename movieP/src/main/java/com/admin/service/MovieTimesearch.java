@@ -20,15 +20,6 @@ public class MovieTimesearch implements MovieTimeService {
 	
 	@Override
 	public Object execute(String dal, String el, MovieTimeDTO dto) {
-		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
-		if(dto.getTime_index() != null) {
-			if(dto.getTime_index() == 3 || dto.getTime_index() == 4) {
-				
-			}else if(dto.getTime_index() == 2) {
-				//날짜
-			}
-		}
 		return db.movieTimefind(dto);
 	}
 }
