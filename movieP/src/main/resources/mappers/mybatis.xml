@@ -690,7 +690,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
 		select imgname, movietime.movietitle, movietime.sectorNo,
 		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m'))as starttime,
-		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) as checktime
+		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) as checktime,
 		saleslink, sales_type, salesprice, GROUP_CONCAT(DISTINCT seatNo) as seatNo,
 		(length(ticketing.people)-length(replace(ticketing.people,'C',''))) as C,
 		(length(ticketing.people)-length(replace(ticketing.people,'T',''))) as T,
