@@ -11,7 +11,7 @@ public class MemberDTO {
 	
 	String date, qnastate, qnacontent, like, content, pageKind;
 	int index, start, cstart;
-	Integer page, cpage, ticket;
+	Integer page, cpage, ticket, limit;
 	
 	String birthDay, birthYear;
 	String userid, userpw , username , userpnum, useremail, kind;
