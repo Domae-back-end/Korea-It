@@ -2,13 +2,22 @@
 
 
 .index_maincont {width: 1000px; text-align: center;  margin: 0 auto; }
-
-
-
-.maincont_banner {width: 10000px; height: 600px; background: blue; margin: auto; left: -4500px; position: relative;}
+.maincont_banner {width: 1000px; height: 600px; margin: 0 auto; left: 0px; position: relative; overflow:hidden;}
 .maincont_banner img {width: 200px; height: 150px; }
 
 
+.slides {position: absolute;    left: 0;top: 0;    }
+.slides.animated {        transition: 0.3s ease-out;
+        }
+.slides li {width: 1000px;height: 600px;background: #ccc;float: left;
+        }
+.slides li:not(:last-child) { margin-right: 30px;
+        }
+.controls {text-align: center;margin-top: 50px;
+        }
+.controls span {background: #333;color: #fff;padding: 10px 20px;margin: 0 10px;   }
+.ulss {   display: block;   list-style-type: disc;margin-block-start: 1em;margin-block-end: 1em;
+            margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;}
 
 
 
