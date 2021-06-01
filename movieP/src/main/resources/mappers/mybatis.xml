@@ -925,7 +925,7 @@ WHERE m_index = #{m_index};
 	</select>
 	
 	
-	
+	<!--  tickting 과정에서  sales 테이블과 연결고리 심어주기.  -->
 	<update id="salesindexlink"  parameterType="UserSitDTO">
  UPDATE ticketing SET  saleslink = (select count(sales_index)+1 from sales )
  WHERE  userid= #{userid} AND reg_date= #{reg_time}
