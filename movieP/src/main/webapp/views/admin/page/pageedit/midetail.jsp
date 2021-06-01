@@ -71,7 +71,7 @@ $(function() {
 
 </style>
 
-<body>영화제목 : ${data.midto} 디테일 <br>
+<body>영화제목 : ${data.midto.movietitle} :: 디테일 <br>
 
 <div  id="detailwrapper">
 

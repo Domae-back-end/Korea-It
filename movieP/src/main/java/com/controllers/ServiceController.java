@@ -1,7 +1,5 @@
 package com.controllers;
 
-import java.util.HashMap;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.admin.service.Provider;
 import com.model.PPPData;
@@ -27,25 +26,18 @@ public class ServiceController {
 	
 	
 	@ModelAttribute("data")
-	public Object data(@PathVariable String service, HttpServletRequest request
+	public Object data(@PathVariable String service
+			, HttpServletRequest request
 			, ServiceNoticePageDTO npDTO
 			, ServiceFullDTO sfDTO
 			, HttpSession session
+			, MultipartFile file
 			) {
 		//service = qnainsertReg (1대1문의 jsp에서 따옴)
 
-		ServiceCservice sr = pr.getContext().getBean("serviceC"+service, ServiceCservice.class);	
-		// "serviceC"+service  서비스@  놈을 데려와라. serviceCqnainsertReg >   ServiceCqnainsertReg.java 이렇게만들면.
+		ServiceCservice sr = pr.getContext().getBean("serviceC"+service, ServiceCservice.class);
 		
-		HashMap<String, Object> map = new  HashMap<>();
-		
-		map.put("request", request);
-		map.put("service", service);
-		map.put("npDTO", npDTO);
-		map.put("sfDTO", sfDTO);
-		
-		
-		return sr.execute(npDTO, sfDTO, session);
+		return sr.execute(npDTO, sfDTO, session, request, file);
 	}
 	
 	

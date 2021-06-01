@@ -27,15 +27,16 @@
 
 .main {
 	text-align: center;
-	width: 80%; height : 100%;
+	width: 60%;
+	height: 100%;
 	margin: 0 auto;
 	height: 100%;
 }
 
-.header {
-	width: 80%;
+.adminheader {
+	width: 104.3%;
 	height: 100px;
-	border: 1px dashed #ccc;
+
 }
 
 .container {
@@ -55,7 +56,7 @@
 
 .body {
 	display: inline-block;
-	width: 110%;
+	width: 80%;
 	height: 100%;
 	border: 1px solid;
 }
@@ -70,20 +71,39 @@
 </head>
 <body>
 	<div class="main">
-		<div class="header"><jsp:include page="inc/header.jsp" />
+		<div class="adminheader"><jsp:include page="inc/header.jsp" />
 		</div>
 
 		<div class="container">
 
-			<div class="aside"><jsp:include page="inc/submenu.jsp" /></div>
+			<c:choose>
+				<c:when test="${not empty submenu}">
+					<div class="aside"><jsp:include page="inc/submenu.jsp" /></div>
 
-			<div class="body"><jsp:include page="page/${bodyurl }.jsp" /></div>
+				</c:when>
+
+			</c:choose>
+
+
+			<div class="body" style="
+			<c:choose>
+				<c:when test="${not empty submenu}">
+					width:900px;
+
+				</c:when>
+
+			</c:choose>
 			
+			
+			
+			
+			"><jsp:include page="page/${bodyurl }.jsp" /></div>
+
 			<!--  page/   pageedit/banner .jsp 를 열어줘.  -->
 
 
 		</div>
-		
+
 		<div class="footer"><jsp:include page="inc/footer.jsp" /></div>
 
 

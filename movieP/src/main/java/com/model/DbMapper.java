@@ -81,6 +81,11 @@ public interface DbMapper {
    void deletelike(LikeDTO dto);
    //review에서 평점 calc하기
    Integer calcGPA(Integer m_index);
+   
+   //예매 테이블 전체개수 가져옴
+   Integer allcount();
+   //예매 테이블에서 해당 영화 예매된 개수만 가져옴
+   Integer detailCount(Integer m_index);
   
    //매출테이블에서 예매인 정보만 가져옴
    List<EndTimeDTO> pullTInfo(MovieReviewDTO dto);
@@ -169,7 +174,8 @@ public interface DbMapper {
    
    int pershistoryCnt(HashMap<String, Object> map); //상담내역화깅ㄴ갯수
 
-
+   List<ServiceFullDTO> noticelistcate(HashMap<String, Object> map); //공지 카테별
+   int noticecatetotalCnt(HashMap<String, Object> map); //1대1총갯수(미답변)
    
    
    
@@ -213,6 +219,10 @@ void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 	int updatemonthsales(SalesDTO sdto);
 
 	Integer salestotalCnt(HashMap<String, Object> map);
+
+	int salesindexlink(UserSitDTO userSitDTO);
+
+	int faqtotalCnt(HashMap<String, Object> map);
    
    
    

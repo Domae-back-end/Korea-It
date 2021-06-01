@@ -12,7 +12,7 @@
 	* {padding: 0px; margin: 0px; font-size: 16px;  }
 	ul, li {text-decoration: none; list-style: none; }
 	a {text-decoration: none; color: black; }
-	a:hover {text-decoration: none; }
+	a:hover {text-decoration: none; color: black; }
 	
 	#sideBar {width: 170px; height: 500px; float: left; position: relative; }
 	#content {width: 800px; position: relative; float: left; left: 30px;  }
@@ -39,6 +39,9 @@
 	
 	.hdetail_cont {text-align: left; margin: 20px 0 0 0;   }
 	.hdetail_cont_ques {padding-bottom: 50px; padding-left: 5px;  }
+	.hdetail_cont_pic {margin-bottom: 50px; padding-left: 5px; }
+	.hdetail_cont_pic img {border-left: 3px solid #ccc;  padding: 20px; }
+	
 	.hdetail_cont_status {font-size: 20px ; font-weight: bold; width: 800px; height: 100px; background: #f7f8f9; 
 							line-height: 100px; border-top: 1px solid #d8d9db;  padding-left: 5px; }
 	.hdetail_cont_status span {font-size: 20px ; font-weight: bold;  }
@@ -93,6 +96,11 @@
 		<div class="hdetail_cont">
 			<p class="hdetail_cont_ques">
 				${data.now.perscontBr }
+			</p>
+			<p class="hdetail_cont_pic">
+				<c:if test="${data.now.persimg != null}">
+					<img src='<c:url value="../../views/user/img/persupload/${data.now.persimg }" />' alt="" />
+				</c:if>
 			</p>
 			<p class="hdetail_cont_status">
 				<span> <fmt:formatDate value="${data.now.persatime }" type="both" pattern="yyy.MM.dd"/></span> ${data.now.persstate }

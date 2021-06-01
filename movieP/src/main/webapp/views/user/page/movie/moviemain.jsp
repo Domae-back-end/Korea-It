@@ -61,7 +61,6 @@ $(function(){
 	}
 	.pp>div>a:hover{
 		border: 1px solid #a00;
-		
 	}
 	
 	#movieinfomation{

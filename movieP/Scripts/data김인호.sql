@@ -27,6 +27,11 @@ create table movieinfo(
 	viewcnt int
 );
 
+<!-- 배너관련 -->
+create table bannerimg(
+	bannerindex int,
+	imgurl varchar(1000)
+);
 
 create table actor(
 	actorid varchar(100) ,
@@ -97,7 +102,7 @@ CREATE TABLE monthsales (
 	sumall bigint,
 	totalsale BIGINT,
 	totalrefund bigint,
-	sectorCode VARCHAR(100)	
+	sectorNo VARCHAR(100)	
 	);
 
 	

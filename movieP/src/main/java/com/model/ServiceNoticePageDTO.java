@@ -62,11 +62,17 @@ public class ServiceNoticePageDTO {
 
 	public void initfaq(DbMapper dm, HashMap<String, Object> map) {
 		start = (page - 1) * limit;
-		int ttt = dm.aaatotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
+		int ttt = dm.faqtotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
 		// 이 맵에 들어오는거.totalmap // tablename도 먹여줄수있음.
 		/*
 		 * 	totalmap.put("pDTO", npDTO);
 		totalmap.put("mDTO", mdto);
+		 * 
+		 *  totalCnt 함수 >> sql문 select  ()count
+		 *  
+		 *  제목  ㄱㄱ  >>  검색 .
+		 *  selet count(*) from 테이블명;
+		 * 
 		 * 
 		 * */
 		this.total = ttt / limit;
@@ -86,6 +92,7 @@ public class ServiceNoticePageDTO {
 	}
 	
 	public void initpers(DbMapper dm, HashMap<String, Object> map) { //심화(카테고리별)
+		limit = 20;
 		// 게시판페이지계산.
 		start = (page - 1) * limit;
 
@@ -115,6 +122,7 @@ public class ServiceNoticePageDTO {
 	
 	public void initpers2(DbMapper dm, HashMap<String, Object> map) { //기본
 		// 게시판페이지계산.
+		limit = 20; 
 		start = (page - 1) * limit;
 
 		ttt = dm.perstotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
@@ -165,6 +173,36 @@ public class ServiceNoticePageDTO {
 			endPage = total;
 		}
 		
+		System.out.println(page + ", " + start + ", " + limit + ", " + pageLimit + ", " + total + ", " + startPage
+				+ ", " + endPage);
+	}
+	
+	
+	
+	public void initnoticecate(DbMapper dm, HashMap<String, Object> map) { //심화(공지사항 카테고리)
+		limit = 20; 
+		start = (page - 1) * limit;
+
+//		ttt = dm.perstotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
+		ttt = dm.noticecatetotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
+		//
+		System.out.println("토탈cnt"+ttt);
+		this.total = ttt / limit;
+
+		if (ttt % limit > 0) {
+			total++;
+		}
+
+//		페이지가정해지면 스타트가정해짐
+		start = (page - 1) * limit;
+
+		startPage = (page - 1) / pageLimit * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
+
+		if (endPage > total) {
+			endPage = total;
+		}
+
 		System.out.println(page + ", " + start + ", " + limit + ", " + pageLimit + ", " + total + ", " + startPage
 				+ ", " + endPage);
 	}

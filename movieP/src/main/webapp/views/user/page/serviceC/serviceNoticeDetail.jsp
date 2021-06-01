@@ -11,7 +11,7 @@
 	* {padding: 0px; margin: 0px; font-size: 16px;  }
 	ul, li {text-decoration: none; list-style: none; }
 	a {text-decoration: none; color: black; }
-	a:hover {text-decoration: none; }
+	a:hover {text-decoration: none; color: black; }
 	
 	#sideBar {width: 170px; height: 500px; float: left; position: relative; }
 	#content {width: 800px; position: relative; float: left; left: 30px;  }

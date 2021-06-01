@@ -66,7 +66,9 @@
 				${data.now.perscontBr }
 			</p>
 			<div class="detail_pic"> <!-- 사진 불러오기(미완) -->
-				${data.now.persimg }
+				<c:if test="${data.now.persimg != null}">
+					<img src='<c:url value="../../views/user/img/persupload/${data.now.persimg }" />' alt="" />
+				</c:if>
 			</div>
 			
 			<div class="detail_answer"> <!-- 사진 불러오기(미완) -->

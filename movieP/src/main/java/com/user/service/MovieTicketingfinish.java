@@ -1,5 +1,6 @@
 package com.user.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,6 +25,13 @@ public class MovieTicketingfinish implements MovieTicketingService{
 	@Override
 	public Object execute(MovieTimeDTO dto, UserSitDTO udto) {
 		String[] buf = udto.getSeatNo().split(",");
+		
+		// 이거 execute 에서 http servletrequest 받아서 session에서 아이디 가져와야 함.
+		udto.setUserid("aaa");
+		
+		
+		
+		
 		int c = 2000;
 		int t = 5000;
 		int a = 10000;
@@ -43,9 +51,19 @@ public class MovieTicketingfinish implements MovieTicketingService{
 			people+="A";
 		}
 		udto.setPeople(people);
+		
+		Date dateset = new Date();
+		SimpleDateFormat sdf= new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+		System.out.println("여기맞냐 .\n\n\n\n\n\n");
 		for (int i = 1; i < buf.length; i++) {
-			db.insertSit(new UserSitDTO(udto.getTime_index(),buf[i],udto.getUserid(),udto.getPeople(), new Date()));
+			db.insertSit(new UserSitDTO(udto.getTime_index(),buf[i],udto.getUserid(),udto.getPeople(), sdf.format(dateset)));
 		}
+		
+		UserSitDTO usdto= new UserSitDTO();
+		usdto.setUserid("aaa");		
+		usdto.setReg_time(sdf.format(dateset));
+		System.out.println(sdf.format(dateset));
+		db.salesindexlink(usdto);
 		
 		//결제
 		SalesDTO data = new SalesDTO();
@@ -61,7 +79,7 @@ public class MovieTicketingfinish implements MovieTicketingService{
 		}else {
 			data.setSales_type("현금");
 		}
-		data.setSales_time(new Date());
+		data.setSales_time(dateset);
 		data.setM_index(ibuf.getM_index());
 		
 		db.insertSales(data);

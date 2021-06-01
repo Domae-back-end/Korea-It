@@ -121,7 +121,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<!-- 예매인 애들만 list로 -->
 	<select id="pullTInfo" parameterType="MovieReviewDTO"
 		resultType="EndTimeDTO">
-		select userid, m_index, moviesector
+		select userid, m_index, sectorno
 		from sales
 		where sales_type != '환불' and
 		userid = '${userid}' and
@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		resultType="DateDTO">
 		select endtime, reg_date
 		from movietime
-		where time_index='${time_index}'
+		where m_index='${m_index}'
 	</select>
 
 
@@ -170,7 +170,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where userid='${userid}' and
 		m_index='${m_index}'
 	</delete>
-
+	
+	<!-- sales 테이블 환불 빼고 전체 개수 -->
+	<select id="allcount" resultType="java.lang.Integer">
+		select count(*) from sales where sales_type!='환불'
+	</select>
+	<!-- sales 테이블에서 해당영화의 개수만 가져오기 -->
+	<select id="detailCount" resultType="java.lang.Integer">
+		select count(*) from sales where sales_type!='환불' and m_index='${m_index}'
+	</select>
 
 	<select id="findMovie" resultType="MovieInfoDTO"
 		parameterType="java.lang.String">
@@ -197,7 +205,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
 	</insert>
 	<insert id="insertSit" parameterType="UserSitDTO">
-		insert into ticketing (time_index,seatNo,userid,people,reg_date) values (#{time_index},#{seatNo},#{userid},#{people},#{reg_date})
+		insert into ticketing (time_index,seatNo,userid,people,reg_date) values (#{time_index},#{seatNo},#{userid},#{people},#{reg_time})
 	</insert>
 	<update id="updatemovielist" parameterType="MovieTimeDTO">
 		update movietime set
@@ -499,10 +507,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where persid = #{sfDTO.persid}
 	</select>
 
+<!-- ////////////////////////////// -->
+	<!-- 공지사항 리스트 카테 -->
+	<select id="noticelistcate" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from noticeboard 
+		where noticecate = #{sfDTO.noticecate}
+		order by noticeindex desc
+		limit #{npDTO.start}, #{npDTO.limit}
+	</select>
 
-
-
-
+	<!-- 공지사항 카테 -->
+	<select id="noticecatetotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
+		select count(*) from noticeboard
+		where noticecate like concat('%',#{sfDTO.noticecate},'%')
+		limit #{npDTO.start}, #{npDTO.limit}
+	</select>
 
 
 
@@ -792,18 +811,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 
 
-	<!--자찾질 가져오기 -->
-	<select id="faqtotalCnt" resultType="java.lang.Integer"
-		parameterType="HashMap">
-		select count(*) from basicqna
-		<choose>
-			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
-				<where>
-					${sfDTO.kind2} like '%${sfDTO.sch}%'
-				</where>
-			</when>
-		</choose>
-	</select>
 	
 	<!--aaatotalCnt map 받아서 .테이블 이름을 바꾼다. resultType="java.lang.Integer" parameterType="HashMap" -->
 	<select id="aaatotalCnt" resultType="java.lang.Integer"
@@ -924,6 +931,77 @@ WHERE m_index = #{m_index};
 		order by sales_time desc
 		
 	</select>
+	
+	
+	
+	<update id="salesindexlink"  parameterType="UserSitDTO">
+ UPDATE ticketing SET  saleslink = (select count(sales_index)+1 from sales )
+ WHERE  userid= #{userid} AND reg_date= #{reg_time}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- FAQ    -->
+	
+	<!--  -->
+	
+	<!--자찾질 가져오기 -->
+	<select id="faqtotalCnt" resultType="java.lang.Integer"
+		parameterType="HashMap">
+		select count(*) from basicqna
+		<choose>
+			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
+				<where>
+					${sfDTO.kind2} like '%${sfDTO.sch}%'
+				</where>
+			</when>
+		</choose>
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	<!--concat('%',#{daysaletime},'%') mysql. -->
