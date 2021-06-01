@@ -4,9 +4,11 @@
 <div>
 	<input type="hidden" id="like" value="취소"/>
 	<input type="hidden" id="userid" value="${sessionId }"/>
+	<input type="hidden" id="pageKind" value="likemovie"/>
 	
+	<div id="add">
+	<div class="fff">
 	<c:forEach items="${memdata.like }" var ="pp">
-	
 		<div class="likeouter">
 			<a href="/user/movie/moviedetail?sub=info&ind=${pp.m_index }">
 				<div class="likeimg">
@@ -27,6 +29,8 @@
 			</a>
 		</div>
 	</c:forEach>
+	</div>
+	</div>
 	
 	<div id="pageRecord">
 		<div class="fff">

@@ -50,24 +50,41 @@
 		<h4>나의 예매내역</h4>	
 		<div class = "seemore"><a href="/member/mypage/mypurchase">더보기 ></a></div>
 	</div>
-
-	<div class="cimeminfor">
-		<div id="titleinner">
-			<div class="puchaseinner">영화제목</div>
-			<div class="puchaseinner">티켓개수</div>
-			<div class="puchaseinner">결제금액</div>
-			<div class="puchaseinner">결제일</div>
-		</div>
+	<div class="mycinemapuouter">
 		<c:forEach items="${memdata.purchase }" var ="pp" end="1" varStatus="no"> 
-			<c:if test="${pp.salesprice > 0}">
-				<div>
-					<div class="puchaseinner">${pp.movietitle }</div>
-					<div class="puchaseinner">${pp.ticket_pcount }</div>
-					<div class="puchaseinner">${pp.salesprice }</div>
-					<div class="puchaseinner">${pp.sales_time }</div>
+				<div class="writeouter" id="writeouter">
+					<a href="/user/movie/moviedetail?sub=review&ind=${pp.m_index }">
+						<div class="writeimg">
+							<c:choose>
+								<c:when test="${pp.imgname!=null }">
+									<img src="/moviedata/${pp.imgname }" alt="${pp.movietitle } 이미지" />
+								</c:when>
+								<c:otherwise>
+									이미지 없음
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</a>
+					<div class="puinfor">
+						<div class="sales_time">
+							결제일시 : ${pp.sales_time }
+						</div>
+						<div>
+							<span class="saleslink">${pp.saleslink }</span> | ${pp.movietitle }
+						</div>
+						<div>
+							${pp.sectorNo }
+						</div>
+						<div>
+							${pp.starttime }
+						</div>
+					</div>
+					<c:if test="${pp.checktime > memdata.dto.nowDate }">
+						<div class="cancelOuter"><button class="changeButt" onclick="">예매취소</button></div>			
+					</c:if>
 				</div>
-			</c:if>
 		</c:forEach>
+	</div>	
 	</div>
 </div>
 

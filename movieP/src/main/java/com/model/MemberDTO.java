@@ -12,11 +12,11 @@ public class MemberDTO {
 	String date, qnastate, qnacontent, like, content, pageKind;
 	int index, start, cstart;
 	Integer page, cpage, ticket, limit;
+	String nowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 	
 	String birthDay, birthYear;
 	String userid, userpw , username , userpnum, useremail, kind;
 	Date userbirth, joinday;
-	
 	
 	public void setUserbirth(String birthDay, String birthYear) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

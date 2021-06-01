@@ -706,7 +706,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="memcancelpurchase" resultType="map" parameterType="MemberDTO">
-		select sales_type, SUBSTRING(salesprice, 2) as salesprice, sales.movietitle,
+		select sales_type, SUBSTRING(salesprice, 2) as salesprice, sales.movietitle, movietime.sectorNo,
 		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m'))as starttime,
 		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time from sales 
 		left outer join movietime on sales.timetableidx = movietime.time_index
@@ -755,7 +755,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
-		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid}) a, 
+		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid} and date_format(ticketing.reg_date,'%Y-%m')=#{date}) a, 
 		(select COUNT(*) wc from review where userid=#{userid}) b,
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
 		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d,

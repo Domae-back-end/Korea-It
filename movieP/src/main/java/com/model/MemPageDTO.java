@@ -14,13 +14,8 @@ public class MemPageDTO {
 	String pageKind;
 	
 	public void init(MemberDTO mdto, Map<String, Integer> map) {
-
-		if(mdto.getPageKind().equals("mypurchase")) {
-			
-			pageKind ="sc";
-			limit=2;
 		
-		}else if(mdto.getPageKind()!=null) {
+		if(mdto.getPageKind()!=null && mdto.getPageKind()!="mypurchase") {
 			
 			pageKind = mdto.getPageKind().substring(0,1) +"c";
 			
@@ -29,10 +24,14 @@ public class MemPageDTO {
 			if(pageKind.equals("lc"))
 				limit = 6;
 		
+		}else if(mdto.getPageKind()== "mypurchase") {
+			
+			pageKind ="sc";
+			limit=2;
+		
 		}else
 			pageKind = "qc";
-		
-		
+
 		if(mdto.getPage()!=null)
 			this.page = mdto.getPage();
 		
