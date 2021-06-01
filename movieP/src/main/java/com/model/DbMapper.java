@@ -90,7 +90,9 @@ public interface DbMapper {
    //매출테이블에서 예매인 정보만 가져옴
    List<EndTimeDTO> pullTInfo(MovieReviewDTO dto);
    //관, m_index 가지고 각영화의 끝나는 시간 저장함
-   DateDTO pullEndTime(EndTimeDTO dto);
+   List<DateDTO> pullEndTime(EndTimeDTO dto);
+   //index로 movietitle검색
+   String searchmovietitle(Integer m_index);
    
    MovieInfoDTO pullmovieinfo(String movietitle);
 

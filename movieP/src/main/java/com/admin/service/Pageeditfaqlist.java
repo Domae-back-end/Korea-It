@@ -35,18 +35,18 @@ public class Pageeditfaqlist implements SalesService, PageeditService {
 		AdminListDTO res= new AdminListDTO();
 		HashMap<String, Object> totalmap = new HashMap<>();
 		System.out.println("전				"+npDTO);
-		
+		npDTO.setLimit(3);
 		totalmap.put("sfDTO", sfDTO);
 		totalmap.put("npDTO", npDTO);		
 		npDTO.initfaq(db, totalmap);
 		System.out.println("후			"+npDTO);
 	
-		
+		//
 		HashMap<String, Object> result = new HashMap<String, Object>();	
 		map.put("npDTO", npDTO);//init 돌린뒤의 npDTO/	
 		map.put("sfDTO",sfDTO);
 		result.put("sfDTO", db.getfaq(map));		
-		result.put("npdto", npDTO);
+		result.put("pdto", npDTO);
 		
 		System.out.println("이번에나올게시물수:"+db.getfaq(map).size());
 		

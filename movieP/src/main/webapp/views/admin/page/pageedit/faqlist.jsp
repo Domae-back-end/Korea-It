@@ -151,7 +151,7 @@ $(function() {
 				
 				</tr>
 			<c:forEach items="${data.sfDTO }" var="faqDTO" varStatus="no" >
-				<tr id="row${faqDTO.bqindex }">
+				<tr id="${faqDTO.bqindex }">
 					
 					<td><input type="checkbox" name="ggno" class="ggno" value="${faqDTO.bqindex }"/>${faqDTO.bqindex }</td>
 					<td>${faqDTO.bqcate }</td>
