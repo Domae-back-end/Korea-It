@@ -34,12 +34,12 @@ public class Pageeditfaqlist implements SalesService, PageeditService {
 		//최종결과
 		AdminListDTO res= new AdminListDTO();
 		HashMap<String, Object> totalmap = new HashMap<>();
-		System.out.println("전"+npDTO);
+		System.out.println("전				"+npDTO);
 		
 		totalmap.put("sfDTO", sfDTO);
 		totalmap.put("npDTO", npDTO);		
 		npDTO.initfaq(db, totalmap);
-		System.out.println("후"+npDTO);
+		System.out.println("후			"+npDTO);
 	
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();	

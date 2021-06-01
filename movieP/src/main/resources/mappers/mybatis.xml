@@ -795,18 +795,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 
 
-	<!--자찾질 가져오기 -->
-	<select id="faqtotalCnt" resultType="java.lang.Integer"
-		parameterType="HashMap">
-		select count(*) from basicqna
-		<choose>
-			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
-				<where>
-					${sfDTO.kind2} like '%${sfDTO.sch}%'
-				</where>
-			</when>
-		</choose>
-	</select>
 	
 	<!--aaatotalCnt map 받아서 .테이블 이름을 바꾼다. resultType="java.lang.Integer" parameterType="HashMap" -->
 	<select id="aaatotalCnt" resultType="java.lang.Integer"
@@ -975,6 +963,18 @@ WHERE m_index = #{m_index};
 	
 	
 	
+	<!--자찾질 가져오기 -->
+	<select id="faqtotalCnt" resultType="java.lang.Integer"
+		parameterType="HashMap">
+		select count(*) from basicqna
+		<choose>
+			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
+				<where>
+					${sfDTO.kind2} like '%${sfDTO.sch}%'
+				</where>
+			</when>
+		</choose>
+	</select>
 	
 	
 	

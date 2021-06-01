@@ -87,7 +87,7 @@ public class ServiceFullDTO {
 	String bqcont; //내용
 	String faqurl1;
 	String faqurl2;
-	
+	int faqview;
 	
 	
 	
