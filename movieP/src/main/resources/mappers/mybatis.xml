@@ -666,7 +666,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</sql>
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
-		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userpnum, useremail, joinday, kind 
+		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, replace(userpnum,'-','') as userpnum, useremail, joinday, kind 
 		from memberinfo <include refid="checkform" />
 	</select>
 
@@ -760,7 +760,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
 		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d,
 		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0) e,
-		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} and ticketing.time_index in (select time_index from movietime where CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) <![CDATA[<]]> sysdate())) f;
+		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} 
+		and ticketing.time_index in (select time_index from movietime where 
+		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) <![CDATA[<]]> sysdate())) f;
 	</select>
 	
 	
