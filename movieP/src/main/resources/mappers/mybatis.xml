@@ -657,6 +657,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<![CDATA[memberinfo]]>
 				<where> <![CDATA[userid=#{userid} and kind ='네이버']]></where>
 			</when>
+			<when test=" ticket !=null">
+				<![CDATA[ticketing]]>
+				<where> <![CDATA[userid=#{userid} and saleslink =#{ticket}]]></where>
+			</when>
 		</choose>
 
 	</sql>
@@ -676,19 +680,37 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 
 	
+	<insert id="memcancelinsert" parameterType="MemberDTO">
+		insert into sales (timetableidx, people, salesprice, userid, m_index, movietitle, sectorNo, sales_type, sales_time) 
+		select timetableidx, people, salesprice*-1 , userid, m_index, movietitle, sectorNo, sales_type, sysdate() 
+		from sales where userid=#{userid} and sales_index =#{ticket}
+	</insert>
+
+	
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
-		select sales_index, ticket_index, sales_type, moviesector, ticket_pcount, salesprice, movietitle, sales_type, 
-		date_format(sales_time,'%Y-%m-%d(%a) %H:%m') as sales_time, sales.m_index, imgname from sales 
+		select imgname, movietime.movietitle, movietime.sectorNo,
+		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m'))as starttime,
+		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) as checktime
+		saleslink, sales_type, salesprice, GROUP_CONCAT(DISTINCT seatNo) as seatNo,
+		(length(ticketing.people)-length(replace(ticketing.people,'C',''))) as C,
+		(length(ticketing.people)-length(replace(ticketing.people,'T',''))) as T,
+		(length(ticketing.people)-length(replace(ticketing.people,'A',''))) as A,
+		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time from ticketing 
+		left outer join sales on sales.sales_index = saleslink 
 		left outer join movieimg on sales.m_index = movieimg.m_index
-		where sales.userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and imgname like '%poster.jpg'
-		order by sales.sales_time desc
+		left outer join movietime on ticketing.time_index = movietime.time_index
+		where ticketing.userid=#{userid} and imgname like '%poster.jpg' 
+		and date_format(ticketing.reg_date,'%Y-%m')=#{date} GROUP BY saleslink
+		order by sales.sales_time desc;
 		limit #{start},#{limit}
 	</select>
 	
 	<select id="memcancelpurchase" resultType="map" parameterType="MemberDTO">
-		select sales_index, ticket_index, sales_type, moviesector, ticket_pcount, salesprice, movietitle, sales_type, 
-		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time, sales.m_index from sales 
-		where sales.userid=#{userid} and sales_time > (sysdate() - INTERVAL 7 DAY)
+		select sales_type, SUBSTRING(salesprice, 2) as salesprice, sales.movietitle,
+		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m'))as starttime,
+		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time from sales 
+		left outer join movietime on sales.timetableidx = movietime.time_index
+		where sales.userid=#{userid} and sales_time > (movietime.reg_date - INTERVAL 7 DAY) and sales.salesprice <![CDATA[<]]> 0
 		order by sales.sales_time desc
 		limit #{start},2
 	</select>
@@ -733,11 +755,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
-		(select COUNT(*) sc from sales  where userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and salesprice > 0) a, 
+		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid}) a, 
 		(select COUNT(*) wc from review where userid=#{userid}) b,
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
 		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d,
-		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0) e
+		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0) e,
+		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} and ticketing.time_index in (select time_index from movietime where CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) <![CDATA[<]]> sysdate())) f;
 	</select>
 	
 	

@@ -106,6 +106,7 @@ public interface DbMapper {
    
    
    	void memjoin(MemberDTO mdto);
+   	int memcancelinsert(MemberDTO mdto);
 
    	MemberDTO memlogin(MemberDTO mdto);
 
@@ -116,6 +117,7 @@ public interface DbMapper {
    	List<Map<String, String>> memcomment(MemberDTO mdto);
 	List<Map<String, String>> memqna(MemberDTO mdto);
 	List<Map<String, String>> mempurchase(MemberDTO mdto);
+	List<Map<String, String>> memcancelpurchase(MemberDTO mdto);
 	Map<String, Integer> memcount(MemberDTO mdto);
    
    

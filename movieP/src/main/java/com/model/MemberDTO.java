@@ -10,8 +10,8 @@ import lombok.Data;
 public class MemberDTO {
 	
 	String date, qnastate, qnacontent, like, content, pageKind;
-	int index, start;
-	Integer page;
+	int index, start, cstart;
+	Integer page, cpage, ticket;
 	
 	String birthDay, birthYear;
 	String userid, userpw , username , userpnum, useremail, kind;
