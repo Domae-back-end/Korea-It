@@ -820,23 +820,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	</select>
 
-
-
-	<select id="getfaq" resultType="ServiceFullDTO"
-		parameterType="HashMap">
-		select * from basicqna order by bqindex desc limit
-		#{npDTO.start},#{npDTO.limit}
-
-	</select>
-
-
-
-	<insert id="insertfaq" parameterType="ServiceFullDTO">
-		insert into basicqna (bqcate, bqtitle, bqcont, faqurl1, faqurl2)
-		values (#{bqcate},#{bqtitle}, #{bqcont} ,#{faqurl1}, #{faqurl2})
-
-	</insert>
-
 	<!-- 매출 정산 테스트 -->
 
 	<insert id="insertdaysale" parameterType="SalesDTO">
@@ -966,12 +949,12 @@ WHERE m_index = #{m_index};
 	
 	
 	
-	
+	<!-- FAQ    -->
 	<!-- FAQ    -->	
 	<!--자찾질 가져오기 -->
 	<select id="faqtotalCnt" resultType="java.lang.Integer"
 		parameterType="HashMap">
-		select count(*) from basicqna 
+		select count(*) from basicqna
 		<choose>
 			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
 				<where>
@@ -979,10 +962,29 @@ WHERE m_index = #{m_index};
 				</where>
 			</when>
 		</choose>
-		order by bqindex asc
+		 
 	</select>
 	
+	<select id="getfaq" resultType="ServiceFullDTO"
+		parameterType="HashMap">
+		select * from basicqna order by bqindex asc
+		limit #{npDTO.start},#{npDTO.limit}
+
+	</select>
+
 	
+
+	<insert id="insertfaq" parameterType="ServiceFullDTO">
+		insert into basicqna (bqcate, bqtitle, bqcont, faqurl1, faqurl2)
+		values (#{bqcate},#{bqtitle}, #{bqcont} ,#{faqurl1}, #{faqurl2})
+
+	</insert>
+
+	<update id="modifyfaq" parameterType="ServiceFullDTO">
+		update basicqna set bqcate = #{bqcate}, bqtitle= #{bqtitle}, 
+		bqcont = #{bqcont} , faqurl1 = #{faqurl1}, faqur2 = #{faqurl2}
+		where bqindex = #{bqindex}
+	</update>
 	
 	
 	
