@@ -675,7 +675,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		left outer join movieimg on sales.m_index = movieimg.m_index
 		where sales.userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and imgname like '%poster.jpg'
 		order by sales.sales_time desc
-		limit #{start},8
+		limit #{start},#{limit}
 	</select>
 	
 	<select id="memcancelpurchase" resultType="map" parameterType="MemberDTO">
