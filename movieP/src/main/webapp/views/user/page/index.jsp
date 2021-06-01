@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <link rel="stylesheet" href='<c:url value="/resources/css/index.css" />'>
+<script src="<c:url value="/resources/js/index.js" />" ></script>
 <link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
 <script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
 
@@ -24,6 +25,29 @@
 <div class="index_mainheader">
 	<jsp:include page="inc/header.jsp" />
 </div>
+
+
+
+
+<c:if test="${PPPData.cate eq 'mainpage'}">
+<div id="main_cover">
+<div class="banner_bg">
+	<img src="/banner/poster_bg.jpg" alt="">
+</div>
+
+<div class="maincont_banner">
+	<ul class="slides ulss" style="width: 420px; transform: translateX(-5210px);">
+		<li><img src="/banner/poster1.png" alt=""></li>
+		<li><img src="/banner/poster2.png" alt=""></li>
+		<li><img src="/banner/poster3.png" alt=""></li>
+		<li><img src="/banner/poster4.jpg" alt=""></li>
+		<li><img src="/banner/poster5.jpg" alt=""></li>
+	</ul>
+	<span class="prev"><img src="/banner/p_left.png" alt="" /></span>
+	<span class="next"><img src="/banner/p_right.png" alt="" /></span>
+</div>
+</div>
+</c:if>
 
 <div class="index_maincont">
 	<jsp:include page="${PPPData.cate}/${PPPData.service}.jsp" />
