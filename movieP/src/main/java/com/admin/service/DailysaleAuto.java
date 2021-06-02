@@ -75,14 +75,14 @@ public class DailysaleAuto {
 		daytotal.setSumall(0);
 		dayres.put("total", daytotal);//완성본으로 갈아끼우기.
 		// db insert작업.
-		if(day.split("-")[2].equals("01")) {// 첫날이면딱 한번 돌아감.
+		if(day.split("-")[2].equals("02")) {// 첫날이면딱 한번 돌아감.
 			sectorlist= sectors.iterator();//마지막 한바퀴 돌 이터레이터 재소환
 			sectorlist2= sectors.iterator();
 			while(sectorlist.hasNext()) {
 				SalesDTO forfirstday = new SalesDTO();
 				forfirstday.setFirstday(day);
 				forfirstday.setSectorNo(sectorlist.next());
-				System.out.println("2일새벽에 insert 한다.");
+				System.out.println("2일새벽에 insert 한다."+forfirstday.getSectorNo());
 				db.insertmonthsales(forfirstday);
 			}
 		}
@@ -98,15 +98,13 @@ public class DailysaleAuto {
 				logger.info("db에서 잡아온애들:"+ss.getSalesprice());
 				if(dayres.containsKey(ss.getSectorNo())) {
 					SalesDTO ggg= (SalesDTO)dayres.get(ss.getSectorNo());
-					if(ss.getSalesprice()>0)
+					if(ss.getSalesprice()>0)// +라면
 					ggg.setTotalsale(ss.getSalesprice()+ggg.getTotalsale());
 					if(ss.getSalesprice()<0)
 					ggg.setTotalrefund(-ss.getSalesprice()+ggg.getTotalrefund());
-					if(ss.getSalesprice()>0) {
-					ggg.setSumall( ggg.getSumall() +ss.getSalesprice());
-					}else {
-						ggg.setSumall(ggg.getSumall()-ss.getSalesprice());
-					}
+					
+					ggg.setSumall( ggg.getSumall() +ss.getSalesprice());// 환불이든 매출이든 + 해주면 sumall 순액은 그냥 계산됨.
+					
 					
 					
 					ggg.setFirstday(firstday);
