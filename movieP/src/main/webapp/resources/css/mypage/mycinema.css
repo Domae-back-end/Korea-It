@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+.cimemaouter{
+	width: 740px;
+	height: 150px;
+	background: #F2F4F5;
+	border-radius: 10px;
+	margin:20px;
+	text-align: center;
+	padding: 50px;
+	line-height: 30px;
+}
+.cimemastory{
+	clear:both;
+	margin: 30px;
+	width: 300px;
+	height: 100px;
+	border-radius: 10px;
+	background: #fff;
+	border: 1px solid #ccc;
+}
+.myrecord{
+	float: left;
+	width: 99px;
+	height: 100px;
+	line-height: 70px;
+}
+.recordinner{
+	width: 99px;
+	height: 30px;
+}
+.seemore{
+	width: 300px;
+	margin-left:450px;
+	text-align: right;
+}
+.mycinemaRecordouter{
+	margin-top: 35px;
+}
+.mycinemapuouter{
+	margin:20px;
+	border-top: 1px solid #000;
+	width: 740px;
+	height: 300px;
+}
+.puinfor{
+	margin-left:10px;
+	width: 300px;
+	height: 150px;
+	float: left;
+}
+.sales_time{
+	margin-top:15px;
+	margin-bottom:20px;
+}
+.saleslink{
+	color: #00f;
+}
+#writeouter{
+	width: 740px;
+}
+.cancelOuter{
+	text-align: right;
+	margin-top: 55px; 
+}
+.seeContent{
+	text-align: left;
+	margin-left: 10px;
+}
+.seeContentitle{
+	margin: 10px;
+}
+.puchaseinner{
+	height: 50px;
+	float: left;	
+	width: 185px;
+	border: 1px solid #ccc;
+	line-height: 50px;
+}
+#titleinner>div{
+	background: #F2F4F5;
+}
+.writeouter{
+	width:690px;
+	height:150px;
+	border-bottom: 1px solid #ccc;
+	float: left;
+	margin-left: 5px;
+	text-align: left;
+}
+.writeimg{
+	margin: 9px;
+}
+.writeimg, .writeimg>img{
+	width:100px;
+	height:130px;
+	border: 1px solid #ccc;
+	float: left;
+}

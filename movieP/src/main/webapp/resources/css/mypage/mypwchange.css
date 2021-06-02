@@ -1,0 +1,37 @@
+@charset "UTF-8";
+.changeouter{
+	border-top: 1px solid #000;
+	height: 320px;
+	width: 700px;
+	margin-left: 20px;
+}
+.mideouter{
+	width: 700px;
+	height: 50px;
+	border-bottom: 1px solid #ccc;
+}
+.emailouter{
+	text-align:left;
+}
+
+.pwnameouter{
+	clear: both;
+	width: 180px;
+	height: 50px;
+	line-height:50px;
+	text-align:center;
+	float:left;
+	background: #F2F4F5;
+	border-bottom: 1px solid #ccc;
+}
+
+.pwinner{
+	width: 150px;
+	margin-top: 10px;
+	margin-left: 10px;
+	float: left;
+}
+
+#changeouter{
+	height: 180px;
+}
