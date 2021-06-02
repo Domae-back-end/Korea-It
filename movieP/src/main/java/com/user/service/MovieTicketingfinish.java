@@ -34,7 +34,7 @@ public class MovieTicketingfinish implements MovieTicketingService{
 		//C -> 어린이
 		//T -> 청소년
 		//A -> 어른
-		String people="";
+		String people="";//
 		for (int i = 0; i < udto.getCnt1(); i++) {
 			people+="C";
 		}
