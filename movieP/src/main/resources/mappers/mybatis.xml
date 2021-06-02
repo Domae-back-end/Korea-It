@@ -208,7 +208,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
 	</insert>
 	<insert id="insertSit" parameterType="UserSitDTO">
-		insert into ticketing (time_index,seatNo,userid,people,reg_date) values (#{time_index},#{seatNo},#{userid},#{people},#{reg_time})
+		insert into ticketing (time_index,seatNo,userid,people,reg_date,saleslink) values (#{time_index},#{seatNo},#{userid},#{people},#{reg_time},${saleslink})
 	</insert>
 	<update id="updatemovielist" parameterType="MovieTimeDTO">
 		update movietime set
@@ -526,7 +526,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
 
-
+	
 	<select id="movieTimefind" resultType="MovieTimeDTO"
 		parameterType="MovieTimeDTO">
 		select * from movietime
@@ -719,7 +719,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select movietitle, imgname, postcontent,  date_format(posttime,'%Y-%m-%d') as posttime, cate, mlike from review
 		left outer join movieinfo on movieinfo.m_index = review.cate
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
-		where movieinfo.m_index in (select cate from review where userid=#{userid}) and imgname like '%poster.jpg'
+		where movieinfo.m_index in (select cate from review where userid=#{userid}) and imgname like '%poster.jpg' and userid=#{userid}
 		order by review.posttime desc
 		limit #{start},5
 	</select>
@@ -729,7 +729,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select movietitle, imgname, mlike, movieinfo.m_index, g_index from movieinfo
 		left outer join userlikes on movieinfo.m_index = userlikes.m_index
 		left outer join movieimg on movieinfo.m_index = movieimg.m_index
-		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid}) and imgname like '%poster.jpg'
+		where movieinfo.m_index in (select m_index from userlikes where userid=#{userid}) and imgname like '%poster.jpg' and userid=#{userid}
 		order by userlikes.g_index desc 
 		limit #{start},6
 	</select>
@@ -927,13 +927,10 @@ WHERE m_index = #{m_index};
 		order by sales_time desc
 		
 	</select>
+	<select id="newSelectIndex" resultType="Integer">
+		select max(sales_index) from sales
+	</select>
 	
-	
-	<!--  tickting 과정에서  sales 테이블과 연결고리 심어주기.  -->
-	<update id="salesindexlink"  parameterType="UserSitDTO">
- UPDATE ticketing SET  saleslink = (select count(sales_index)+1 from sales )
- WHERE  userid= #{userid} AND reg_date= #{reg_time}
-	</update>
 	
 	
 	

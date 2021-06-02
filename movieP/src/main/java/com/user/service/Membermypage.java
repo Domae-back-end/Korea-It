@@ -59,7 +59,7 @@ public class Membermypage implements MemberAction {
 		map.put("pdto", pdto);
 		map.put("cpdto", cpdto);
 		
-		System.out.println(map.get("like"));
+		System.out.println(map.get("comment"));
 		
 		return map;
 	}

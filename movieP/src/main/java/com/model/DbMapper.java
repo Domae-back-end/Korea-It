@@ -28,7 +28,9 @@ public interface DbMapper {
    MovieInfoDTO findMovie(String movietitle);
    void insertSales(SalesDTO dto);
    List<MovieTimeDTO> findMovieTime(String movietitle);
-
+   
+   int newSelectIndex();
+   
    List<MovieInfoDTO> movielist();
    MovieTimeDTO movietimefindindex(Integer index);
    int updatemovielist(MovieTimeDTO dto);
@@ -38,7 +40,6 @@ public interface DbMapper {
    List<MovieTimeDTO> movieTimeCheck(String movietitle);
    List<MovieTimeDTO> movieTimefind(MovieTimeDTO dto);
    List<UserSitDTO> moviesit(Integer index);
-   
    
    // 게시판 page 이동.
    int noticetotalCnt(HashMap<String, Object> map);

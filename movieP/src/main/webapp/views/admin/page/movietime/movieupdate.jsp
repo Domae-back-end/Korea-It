@@ -112,7 +112,7 @@
 				</div>
 				<div class="to1">
 					<input type="text" name="starttime1" value="<fmt:formatDate value="${a.starttime }" type="both"
-								pattern="hh:mm:ss" />" />
+								pattern="HH:mm:ss" />" />
 								</div>
 				<div class="both"></div>
 			</c:forEach>

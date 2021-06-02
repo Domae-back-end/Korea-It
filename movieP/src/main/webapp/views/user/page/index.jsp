@@ -56,6 +56,6 @@
 <div class="index_mainfooter">
 	<jsp:include page="inc/footer.jsp" />
 </div>
-
+<h3>${sessionScope.sessionId }</h3>
 </body>
 </html>

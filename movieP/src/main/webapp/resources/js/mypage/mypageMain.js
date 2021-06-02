@@ -685,10 +685,10 @@ function pageChange(i){
 	
 	var list = {
 		userid : document.getElementById('userid').value,
-		pagekind : $('#pageKind').val(),
+		pageKind : document.getElementById('pagekind').value,
     	page : i
     };
-    
+   
 	$.ajax({
 	   	async : false,
 	    type : 'POST',
@@ -699,10 +699,40 @@ function pageChange(i){
 		success : function(data) {
 			
 			$(".fff").remove()
-			
-			if(data.pdto.page > 1){
 				
-				if($('#pageKind').val() == 'writemovie' ){
+			if(data.pdto.page > 0){
+				
+				if(document.getElementById('pagekind').value == "likemovie"){
+					
+					for(j in data.like){
+						
+							var tt ="<div class='fff'><div class = 'likeouter'>"
+						
+							tt+= "<a href='/user/movie/moviedetail?sub=info&ind="+data.like[j].m_index+"'>"
+							tt+="<div class='likeimg'>"
+							
+							if(data.like[j].imgname!=null){
+								tt+= "<img src='/moviedata/"+data.like[j].imgname + "' alt=' +data.like[j].movietitle+ '이미지' />"
+							
+							}else{
+								tt+='이미지없음'
+							}
+								
+							tt+="</div></a>"
+							tt+="<a href='/user/movie/moviedetail?sub=info&ind="+data.like[j].m_index+"'>"
+							tt+="<div class='liketitle'>"+data.like[j].movietitle+"</div></a>"
+							tt+="<div><button class='likeButt' onclick='likeButt("+data.like[j].m_index+"') >"
+							tt+=data.like[j].mlike+"</button></div>"
+							tt+="<a href='/user/movietime/list?movietitle="+data.like[j].movietitle +"'>"
+							tt+="<input type='button' class='changeButt' value='예매하기' />"
+							tt+="</a></div>"
+							
+							$("#add").append(tt)
+							
+						}
+					}
+			
+				if(document.getElementById('pagekind').value == "writemovie"){
 					
 					var no = 0;
 					
@@ -728,8 +758,10 @@ function pageChange(i){
 						tt+="<textarea class='writeArea' rows='1' cols='40'>"+data.comment[j].postcontent+"</textarea>"
 						tt+="<div class='writetitleouter'>"
 						tt+="<div class='writetitle2'>"+ '작성일 : '+ data.comment[j].posttime+"</div>"
-						tt+="<span class= 'writeButtouter'><button class='changeButt' onclick='writemodifyGo("+data.comment[j].cate +','+ no +"')>"
-						tt+='수정'+"</button><button class='changeButt' onclick='writedelteGo("+data.comment[j].cate }+','+no+"')>"
+						tt+="<span class= 'writeButtouter'>"
+						tt+="<button class='changeButt' onclick='writemodifyGo("+data.comment[j].cate +','+ no +")'>"
+						tt+='수정'+"</button>"
+						tt+="<button class='changeButt' onclick='writedelteGo("+data.comment[j].cate +','+no+")'>"
 						tt+='삭제'+"</button></span></div></div>"
 						
 						no++
@@ -738,39 +770,11 @@ function pageChange(i){
 						
 					}
 					
-				}else if($('#pageKind').val() == 'likemovie'){
+				}
 				
+				if(document.getElementById('pagekind').value == "seemovie"){
 				
-					for(j in data.like){
 					
-						var tt ="<div class='fff'><div class = 'likeouter'>"
-					
-						tt+= "<a href='/user/movie/moviedetail?sub=info&ind="+data.like[j].m_index+"'>"
-						tt+="<div class='likeimg'>"
-						
-						if(data.like[j].imgname!=null){
-							tt+= "<img src='/moviedata/"+data.like[j].imgname + "' alt=' +data.like[j].movietitle+ '이미지' />"
-						
-						}else{
-							tt+='이미지없음'
-						}
-							
-						tt+="</div></a>"
-						tt+="<a href='/user/movie/moviedetail?sub=info&ind="+data.like[j].m_index+"'>"
-						tt+="<div class='liketitle'>"+data.like[j].movietitle+"</div></a>"
-						tt+="<div><button class='likeButt' onclick='likeButt("+data.like[j].m_index+"') >"
-						tt+=data.like[j].mlike+"</button></div>"
-						tt+="<a href='/user/movietime/list?movietitle="+data.like[j].movietitle +"'>"
-						tt+="<input type='button' class='changeButt' value='예매하기' />"
-						tt+="</a></div>"
-						
-						$("#add").append(tt)
-						
-
-					}
-				
-				}else{
-				
 					for(j in data.purchase){
 					
 						if(data.like[j].checktime < data.dto.nowDate){
@@ -800,33 +804,40 @@ function pageChange(i){
 							$("#add").append(tt)
 					
 						}
-	
+				
 					}
-				
+
 				}
-			
-			
-			var pp = "<div class='fff'>"
 				
-			if(data.pdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
-							
-			for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
+				
+				
+				
+				
+				var pp = "<div class='fff'>"
+					
+				if(data.pdto.startPage > 1)
+					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
 								
-				if(i == data.pdto.page){
-					pp += "<input type='button' class='pagebtn_sel' readonly value="+i+ ">"
-				}else{
-					pp += "<input type='button' class='btnnn pagebtn' onclick='pageChange("+i+ ")' value="+i+ ">"
+				for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
+									
+					if(i == data.pdto.page){
+						pp += "<input type='button' class='pagebtn_sel' readonly value="+i+ ">"
+					}else{
+						pp += "<input type='button' class='btnnn pagebtn' onclick='pageChange("+i+ ")' value="+i+ ">"
+					}
+				}			
+		     	
+		     	if(data.pdto.endPage < data.pdto.total)
+					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
+		     		
+		     		pp+="</div>"
+		     		
+		     		$("#pageRecord").append(pp)
 				}
-			}			
+			
+			
 	     	
-	     	if(data.pdto.endPage < data.pdto.total)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
-	     		
-	     		pp+="</div>"
-	     		
-	     		$("#pageRecord").append(pp)
-	     	
+	     
 	     }
 	});
 }
