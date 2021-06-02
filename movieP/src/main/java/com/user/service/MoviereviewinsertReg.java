@@ -54,7 +54,6 @@ public class MoviereviewinsertReg implements MovieAction4{
 			EndTimeDTO etd = it.next();
 			//이 index 값 이용하여 영화 이름 찾기
 			etd.setMovietitle(mm.searchmovietitle(etd.getM_index()) );
-			
 			//찾은 영화이름가지고 영화 끝나는 시간 list로 받아오기
 			List<DateDTO> da = mm.pullEndTime(etd);
 			
@@ -62,9 +61,13 @@ public class MoviereviewinsertReg implements MovieAction4{
 			Iterator it2 = da.iterator();
 			while(it2.hasNext()) {
 				DateDTO dk = (DateDTO)it2.next();
-				dk.setEnd_time();
 				
-				if(dk.getEnd_time().before( new Date() ) ) {
+				dk.setEnd_time(); //조합하기
+				//System.out.println("현재 저장된 시간");
+				//System.out.println(dk.getEnd_time()+"\n");
+				System.out.println("티켓 팔린 시간: "+etd.getSales_time()+" 영화 끝나는 시간: "+dk.getEnd_time());
+
+				if(dk.getEnd_time().before( new Date() ) && etd.getSales_time().before(dk.getEnd_time()) ) {
 					//현재날짜보다 전
 					etd.setEndtime(dk.getEnd_time());
 					cnt++;

@@ -10,6 +10,7 @@ public class EndTimeDTO {
 	Integer m_index;
 	String movietitle;
 	String sectorno;
+	Date sales_time;
 	Date endtime=null;
 
 }
