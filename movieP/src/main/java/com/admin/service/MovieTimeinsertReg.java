@@ -40,9 +40,9 @@ public class MovieTimeinsertReg implements MovieTimeService {
 			date= now.getTime();
 			dto.setReg_date(date);
 			
-			now.set(Calendar.HOUR, Integer.parseInt(dto.getStarttime1().split(":")[0]));
 			now.set(Calendar.MINUTE, Integer.parseInt(dto.getStarttime1().split(":")[1]));
 			date= now.getTime();
+			date.setHours(Integer.parseInt(dto.getStarttime1().split(":")[0]));
 			dto.setStarttime(date);
 			now.add(Calendar.MINUTE, mdto.getMplaytime());
 			date= now.getTime();
