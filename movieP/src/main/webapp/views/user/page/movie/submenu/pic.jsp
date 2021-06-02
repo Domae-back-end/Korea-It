@@ -8,20 +8,40 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 .container{
-	width: 500px;
+	width: 470px;
+	height: 600px;
 }
 	.item{
-		width: 500px;
-
+		width: 470px;
+		height: 600px;
 		vertical-align: center;	
 		object-fit: contain;
 	}
 	.item active{
-		width: 500px;
-		
+		width: 470px;
+		height: 600px;
 		vertical-align: center;	
 		object-fit: contain;
 	}
+	.item>img{
+		width: 470px;
+		height: 600px;
+	}
+	.item active>img{
+		width: 470px;
+		height: 600px;
+	}
+	.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    display: block;
+    max-width: none;
+    height: 100%;
+    object-fit: contain;
+}
+.carousel-control{
+	width: auto;
+}
+
+	
 </style>
 <script>
 <% int cnt =0;%>
@@ -60,7 +80,7 @@
  <div class="carousel-inner">
   <c:forEach items="${movieimage }" var="i" varStatus="no">
       <c:if test="${no.index == 0 }">
-	      <div class="item active">
+	   <div class="item active">
 	       <img src="/moviedata/${i.imgname}" alt="${i.imgname }">
       </div>
       </c:if>
