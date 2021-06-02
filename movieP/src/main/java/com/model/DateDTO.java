@@ -9,6 +9,7 @@ import lombok.Data;
 public class DateDTO {
 	Date reg_date;
 	Date endtime;
+	String movietitle;
 	
 	Date end_time;
 	
@@ -24,7 +25,6 @@ public class DateDTO {
 		end_time = dd;
 		System.out.println("red_date: "+reg_date);
 		System.out.println("endtime: "+endtime);
-		System.out.println("끝나는 시각 날짜 저장한 것 확인: "+end_time);
 	}
 	
 	

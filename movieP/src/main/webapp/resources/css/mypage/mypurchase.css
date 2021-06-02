@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.purchouter{
+	margin:20px;
+	width: 740px;
+	height: 100px;
+	background: #F2F4F5;
+	text-align: left;
+	padding: 30px;
+}
+.purchaseMainouter{
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	width: 740px;
+	height: 220px;
+	margin-bottom: 10px;
+	float: left;
+	text-align: left;
+	line-height: 30px;
+}
+#recordpurchase{
+	height: 440px;
+	border: 0px;
+}
+.purchaseimg , .purchaseimg>img{
+	width:120px;
+	height:180px;
+	border: 1px solid #ccc;
+	float: left;
+}
+.purchaseimg{
+	margin: 18px;
+}
+.puinfor{
+	margin-left:10px;
+	width: 300px;
+	height: 150px;
+	float: left;
+}
+#puinfor{
+	margin-top: 10px;
+	width: 570px;
+}
+.purchasespace{
+	clear:both;
+	width: 250px;
+	float: left;
+}
+.purchasespaceButt{
+	clear:both;
+	text-align: right;
+}
+.saleslink{
+	color: #00f;
+}
+

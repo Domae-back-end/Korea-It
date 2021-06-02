@@ -26,7 +26,7 @@
 					<a href="/user/movie/moviedetail?sub=info&ind=${pp.m_index }"><div class="seeContentitle">${pp.movietitle }</div></a>
 					<div>${pp.starttime }</div>
 					<div>${pp.sectorNo }</div>
-					<a href="/user/movie/moviedetail?sub=info&ind=${pp.m_index }">
+					<a href="/user/movie/moviedetail?sub=review&ind=${pp.m_index }">
 						<button class="changeButt" id="seewriteGo">관람평쓰기</button>
 					</a>
 				</div>	

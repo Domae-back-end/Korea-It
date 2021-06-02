@@ -24,7 +24,7 @@ public class MemberCheck implements MemberAction {
 	public Object execute(MemberDTO mdto, HttpSession session, HttpServletRequest request) {
 		
 		HashMap<String, MemberDTO> map = new HashMap<>();
-		logger.info(mdto.toString());
+		
 		map.put("dto", dm.memlogin(mdto));
 		
 		System.out.println(map);

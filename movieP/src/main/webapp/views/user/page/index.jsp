@@ -16,7 +16,14 @@
 <link rel="stylesheet" href='<c:url value="/resources/css/index.css" />'>
 <script src="<c:url value="/resources/js/index.js" />" ></script>
 <link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
+<c:if test="${subMenu.url !=null }">
+	<link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${subMenu.url}.css" />'>
+</c:if>
 <script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
+<c:if test="${subMenu.url !=null }">
+	<script src="<c:url value="/resources/js/${PPPData.cate}/${subMenu.url}.js" />" ></script>
+</c:if>
+
 
 <title>유저 메인 화면</title>
 </head>
@@ -36,12 +43,13 @@
 </div>
 
 <div class="maincont_banner">
-	<ul class="slides ulss" style="width: 420px; transform: translateX(-5210px);">
-		<li><img src="/banner/poster1.png" alt=""></li>
-		<li><img src="/banner/poster2.png" alt=""></li>
-		<li><img src="/banner/poster3.png" alt=""></li>
-		<li><img src="/banner/poster4.jpg" alt=""></li>
-		<li><img src="/banner/poster5.jpg" alt=""></li>
+	<ul class="slides ulss" style="width: 420px; transform: translateX(-5180px);">
+	
+			<c:forEach items="${bannerimgs}" var="aaa" varStatus="no" >
+				<li><img src="../../banner/${aaa.imgurl}" alt="sss"></li>
+				
+			</c:forEach>
+	
 	</ul>
 	<span class="prev"><img src="/banner/p_left.png" alt="" /></span>
 	<span class="next"><img src="/banner/p_right.png" alt="" /></span>

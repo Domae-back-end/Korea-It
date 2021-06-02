@@ -118,23 +118,22 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where cate='${cate}' and userid='${userid}'
 		)
 	</insert>
-	<!-- 예매인 애들만 list로 -->
-	<select id="pullTInfo" parameterType="MovieReviewDTO"
-		resultType="EndTimeDTO">
-		select userid, m_index, sectorno, sales_time
-		from sales
-		where sales_type != '환불' and
-		userid = '${userid}' and
-		m_index= '${cate}'
+	
+	<select id="foundmoviename" resultType="java.lang.String">
+		select movietitle from movieinfo
+		where m_index='${m_index}'
 	</select>
-	<!-- 예매인 애들의 endTime만 -->
-	<select id="pullEndTime" parameterType="EndTimeDTO"
-		resultType="DateDTO">
-		select endtime, reg_date
-		from movietime
-		where movietitle='${movietitle}'
+	
+	<select id="watched" resultType="MoviewatchInfo">
+		select userid, time_index, reg_date from ticketing where userid='${userid}'
+	</select>
+	
+	<select id="BringEndTime" parameterType="java.lang.Integer" resultType="DateDTO">
+		select endtime, reg_date,movietitle from movietime 
+		where time_index='${time_index}'
 	</select>
 
+	<!-- 영화 제목 찾기 -->
 	<select id="searchmovietitle" resultType="java.lang.String">
 		select movietitle from movieinfo where m_index='${m_index}'
 	</select>
@@ -174,14 +173,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		m_index='${m_index}'
 	</delete>
 	
+	<!-- 예매율 -->
 	<!-- sales 테이블 환불 빼고 전체 개수 -->
 	<select id="allcount" resultType="java.lang.Integer">
-		select count(*) from sales where sales_type!='환불'
+		select count(*) from ticketing
 	</select>
+	
 	<!-- sales 테이블에서 해당영화의 개수만 가져오기 -->
 	<select id="detailCount" resultType="java.lang.Integer">
-		select count(*) from sales where sales_type!='환불' and m_index='${m_index}'
+		select count(*) from ticketing 
 	</select>
+	
+
+	
 
 	<select id="findMovie" resultType="MovieInfoDTO"
 		parameterType="java.lang.String">
@@ -785,7 +789,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<select id="getyesterdaysalesdistinct" resultType="SalesDTO"
 		parameterType="HashMap">
-		select distinct sectorNo from sales WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
+		select distinct sectorNo from sales;
 	</select>
 
 	<select id="getsalesbyId" resultType="SalesDTO">
@@ -932,7 +936,9 @@ WHERE m_index = #{m_index};
 	</select>
 	
 	
-	
+	<select id="getbannerimgs"  resultType="BannerDTO">
+		select * from bannerimg
+	</select>
 	
 	
 	

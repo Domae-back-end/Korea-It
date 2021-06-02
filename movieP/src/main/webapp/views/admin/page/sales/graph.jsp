@@ -232,8 +232,12 @@ $(document).ready(function(){
 
 <br>
 <button id="graphdateGoBtn"  type="button">조회하기</button> 
+
+
+
+<!-- 
 <button id="graphdateGoBtn2"  type="button">관별로보기</button> 
-<button id="graphdateGoBtn3"  type="button">통합보기</button> 
+<button id="graphdateGoBtn3"  type="button">통합보기</button>  -->
 <hr />
 
 

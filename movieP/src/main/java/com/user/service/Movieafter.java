@@ -1,6 +1,7 @@
 package com.user.service;
 
 import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,20 +16,22 @@ import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
 import com.model.MovieAction;
-import com.model.MovieAction3;
+import com.model.MovieAction6;
 import com.model.MovieInfoDTO;
 
 
 @Service
-public class Movieafter implements MovieAction3{
+public class Movieafter implements MovieAction6{
 	
 	@Resource
 	DbMapper mm;
 	
 
+
+
 	@Override
-	public Object execute(String str) {
-		List<MovieInfoDTO> list = mm.movieInfoAfter(str);
+	public Object execute(Object str) {
+		List<MovieInfoDTO> list = mm.movieInfoAfter((String)str);
 		Iterator<MovieInfoDTO> it = list.iterator();
 		while(it.hasNext()) {
 			MovieInfoDTO aa = it.next();
@@ -73,7 +76,6 @@ public class Movieafter implements MovieAction3{
 		Collections.reverse(list);
 		
 		return list;
-	
 	
 	
 	
