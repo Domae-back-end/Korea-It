@@ -682,7 +682,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<insert id="memcancelinsert" parameterType="MemberDTO">
 		insert into sales (timetableidx, people, salesprice, userid, m_index, movietitle, sectorNo, sales_type, sales_time) 
-		select timetableidx, people, salesprice*-1 , userid, m_index, movietitle, sectorNo, #{sales_type}, sysdate() 
+		select timetableidx, people, salesprice*-1 , userid, m_index, movietitle, sectorNo,'환불', sysdate() 
 		from sales where userid=#{userid} and sales_index =#{ticket}
 	</insert>
 <!--sales_type  에서  #{sales_type}로 변경./  -->
