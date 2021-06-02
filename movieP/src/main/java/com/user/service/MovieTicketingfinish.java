@@ -27,7 +27,7 @@ public class MovieTicketingfinish implements MovieTicketingService{
 		String[] buf = udto.getSeatNo().split(",");
 		
 		// 이거 execute 에서 http servletrequest 받아서 session에서 아이디 가져와야 함.
-		udto.setUserid("aaa");
+		//udto.setUserid("aaa");
 		
 		
 		
