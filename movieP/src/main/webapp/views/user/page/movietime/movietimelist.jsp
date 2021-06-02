@@ -94,6 +94,15 @@
 Calendar dal1 = Calendar.getInstance();
 Calendar dal2 = Calendar.getInstance();
 dal2.set(Calendar.MONTH, dal1.get(Calendar.MONTH)+1);
+
+if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
+%>
+<script>
+	alert("로그인이 필요합니다.")
+	location.href = "/member/login/loginForm"
+</script>
+<%
+}
 %>
 <form action="">
 	<div class="ticketinglay1">
