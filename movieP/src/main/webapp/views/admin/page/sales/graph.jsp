@@ -191,7 +191,7 @@ $(document).ready(function(){
 </head>
 <body>
 
-값이 있는가?ㅣ: ${!empty data }
+<h1  id="saleswarning"> **${nowday}(전일) 까지의 정보만 표현됩니다 **</h1>
 
 <form action="graphView" >
 <!-- let ssggSyear= document.getElementById("ssggstartyear");
