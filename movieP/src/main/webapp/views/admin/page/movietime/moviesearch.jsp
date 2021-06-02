@@ -68,11 +68,11 @@ table {
 		</div>
 		<div class="timebox">
 		<fmt:formatDate value="${a.starttime }" type="both"
-							pattern="HH:mm:ss" />
+							pattern="hh:mm:ss" />
 		</div>
 		<div class="timebox">
 		<fmt:formatDate value="${a.endtime }" type="both"
-							pattern="HH:mm:ss" />
+							pattern="hh:mm:ss" />
 		</div>
 		<div class="both"></div>
 	</c:forEach>

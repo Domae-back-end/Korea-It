@@ -94,11 +94,11 @@
 							pattern="yyyy-MM-dd" /></div>
 			<div class="to1">
 			<fmt:formatDate value="${a.starttime }" type="both"
-							pattern="HH:mm:ss" />
+							pattern="hh:mm:ss" />
 							</div>
 			<div class="to1">
 			<fmt:formatDate value="${a.endtime }" type="both"
-							pattern="HH:mm:ss" /></div>
+							pattern="hh:mm:ss" /></div>
 			<c:if test="${i.index == 0  }">			
 			</c:if>	
 			<div class="removemenu"><a href="deleteReg?movietitle=${a.time_index}&m_index=${a.time_index}">삭제하기</a></div>

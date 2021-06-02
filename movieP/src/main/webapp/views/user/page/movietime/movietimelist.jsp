@@ -121,10 +121,10 @@ dal2.set(Calendar.MONTH, dal1.get(Calendar.MONTH)+1);
 				<div class="timelist1"><a href="?movietitle=<%=request.getParameter("movietitle") %>&dal=<%=request.getParameter("dal") %>&el=<%=request.getParameter("el") %>&time_index=${a.time_index}&sectorno=${a.sectorno}">${a.sectorno }</a></div>
 				<div class="timelist2">
 					시작 : <fmt:formatDate value="${a.starttime }" type="both"
-						pattern="HH:mm:ss" /></div>
+						pattern="hh:mm:ss" /></div>
 				<div class="timelist2">
 					종료 : <fmt:formatDate value="${a.endtime }" type="both"
-						pattern="HH:mm:ss" /></div>
+						pattern="hh:mm:ss" /></div>
 				</div>
 			</c:forEach>
 		</div>

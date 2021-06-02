@@ -186,11 +186,11 @@ System.out.println(today.get(Calendar.MONTH));
 				<div class="timebox2"><a href="/admin/movietime/detail?movietitle=${a.movietitle }">${a.movietitle }</a></div>
 				<div class="timebox2">
 					<fmt:formatDate value="${a.starttime }" type="both"
-						pattern="HH:mm:ss" />
+						pattern="hh:mm:ss" />
 				</div>
 				<div class="timebox2">
 					<fmt:formatDate value="${a.endtime }" type="both"
-						pattern="HH:mm:ss" />
+						pattern="hh:mm:ss" />
 				</div>
 				<div class="timebox2">
 					<fmt:formatDate value="${a.reg_date }" type="both"
