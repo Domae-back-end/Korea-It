@@ -37,7 +37,7 @@
 			<div><span>√</span>아이디</div>
 			<div>
 				<input type="text" id="userid" name="userid" maxlength="20" placeholder="아이디를 입력해주세요"/>
-				<input type="button" class="chButt" id="usercheck" disabled="disabled" value="중복확인"/>
+				<input type="button" class="changeButt" id="usercheck" disabled="disabled" value="중복확인"/>
 				<div class="check_msg" id="id_check"></div>
 			</div>
 		</div>
@@ -88,9 +88,9 @@
 				</select> -
 				<input type="text" class="pnumDes" id="pnumM" name="pnumM" maxlength="4"/> -
 				<input type="text" class="pnumDes" id="pnumL" name="pnumL" maxlength="4"/>
-				<input type="button" class="chButt" id="pnumcheck" disabled="disabled" value="인증번호 발송"/>
-				<input type="hidden" class="pnumDes" id="pchecknum" maxlength="4"/>
-				<input type="hidden" class="chButt" id="checkBtn" value="확인"/>
+				<input type="button" class="changeButt" id="pnumcheck" disabled="disabled" value="인증번호 전송"/>
+				<input type="hidden" class="pnumDes" id="pchecknum" maxlength="4" autocomplete="off" />
+				<input type="hidden" class="changeButt" id="checkBtn" value="확인"/>
 				<div class="check_msg" id="pnum_check"></div>
 			</div>
 		</div>

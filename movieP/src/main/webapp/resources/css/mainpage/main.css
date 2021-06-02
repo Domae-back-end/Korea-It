@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.maincont_center {width: 1000px; height: 100%; background: yellow;  }
+.maincont_center {width: 1000px; height: 100%;  }
 .center_top {width: 1000px; margin-bottom: 50px; }
 .center_top:after {content:""; display: block; clear: both;}
 .center_top>ul {width: 700px; margin: auto; }
@@ -8,21 +8,24 @@
 .center_top>ul>li:nth-of-type(2) {width: 300px; height: 437px; float: left; }
 
 
-.center_mid {width: 1000px; background: #ebebeb; margin-bottom: 50px; }
+.center_mid {width: 1000px; background: #ebebeb; margin-bottom: 50px; border-radius: 10px;  }
 .center_mid:after {content:""; display: block; clear: both;}
 .center_mid>ul {width: 1000px;}
 .center_mid>ul>li:nth-of-type(1) {width: 300px; height: 427px; float: left; margin-right: 20px; }
 .center_mid>ul>li:nth-of-type(2) {width: 680px; height: 427px; float: left; background: gray; }
 
 
-.center_bot {width: 1000px; background: lime; margin-bottom: 50px; }
+.center_bot {width: 1000px;  margin-bottom: 80px; }
 .center_bot:after {content:""; display: block; clear: both;}
 .center_bot>ul {width: 1000px;}
-.center_bot>ul>li:nth-of-type(1) {width: 240px; height: 240px; margin:0 10px 0 5px; background: maroon; float: left; }
-.center_bot>ul>li:nth-of-type(2) {width: 240px; height: 240px; margin:0 10px 0 0; background: maroon; float: left; }
-.center_bot>ul>li:nth-of-type(3) {width: 240px; height: 240px; margin:0 10px 0 0; background: maroon; float: left; }
-.center_bot>ul>li:nth-of-type(4) {width: 240px; height: 240px; margin:0 5px 0 0; background: maroon; float: left; }
-
+.center_bot>ul>li:nth-of-type(1) {width: 240px; height: 240px; margin:0 10px 0 5px; float: left; }
+.center_bot>ul>li:nth-of-type(2) {width: 240px; height: 240px; margin:0 10px 0 0; float: left; }
+.center_bot>ul>li:nth-of-type(3) {width: 240px; height: 240px; margin:0 10px 0 0; float: left; }
+.center_bot>ul>li:nth-of-type(4) {width: 240px; height: 240px; margin:0 5px 0 0; float: left; }
+.center_bot a {width: 240px; height: 240px; display: inline-block;}
+.center_bot a:hover {text-decoration: underline; color: black; }
+.center_bot>ul>li img {width: 60px; height: 60px; margin: 60px 90px 20px 90px; }
+.center_bot>ul>li span {font-size: 20px; color: black;  }
 
 
 

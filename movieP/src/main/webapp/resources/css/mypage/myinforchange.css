@@ -1,0 +1,54 @@
+@charset "UTF-8";
+.idouter{
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #ccc;
+	height: 50px;
+	width: 700px;
+	margin-left: 20px;
+	margin-top:30px;
+}
+.nameouter{
+	clear: both;
+	width: 100px;
+	height: 50px;
+	line-height:50px;
+	text-align:center;
+	float:left;
+	background: #F2F4F5;
+	border-bottom: 1px solid #ccc;
+}
+.dataouter{
+	width: 500px;
+	line-height:50px;
+	text-align:left;
+	float:left;
+	margin-left: 10px;
+}
+#pnumouter{
+	width: 150px;
+}
+.emailouter{
+	text-align:left;
+}
+#useremail{
+	width: 500px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+#checknum{
+	width: 80px;
+}
+.mideouter{
+	width: 700px;
+	height: 50px;
+	border-bottom: 1px solid #ccc;
+}
+.changeouter{
+	border-top: 1px solid #000;
+	height: 320px;
+	width: 700px;
+	margin-left: 20px;
+}
+#changepw{
+	margin-left: 10px;
+}

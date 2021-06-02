@@ -51,9 +51,13 @@
 	.often {width: 300px; height: 300px; float: left;}
 	.often_sctop {border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 15px; }
 	.often_tx {font-size: 20px; font-weight: bold; }
-	.often_scmain ul li {width: 145px; height: 75px; float: left; box-sizing: border-box;
-						background-image: url("../../views/user/img/service/shotcut1.png");
-						border-radius: 5px; padding-left: 10px; padding-top: 10px; display: inline-block; }
+	.often_scmain .scmain_base {width: 145px; height: 75px; float: left; box-sizing: border-box;
+								background-image: url("../../views/user/img/service/shotcut1.png");
+								border-radius: 5px; padding-left: 10px; padding-top: 10px; display: inline-block; }
+	.often_scmain .scmain_spec {width: 145px; height: 75px; float: left; box-sizing: border-box;
+								background-image: url("../../views/user/img/service/shotcut2.png");
+								border-radius: 5px; padding-left: 10px; padding-top: 10px; display: inline-block; }
+	.click_block {pointer-events: none; color: rgba(149, 149, 143, 0.5); }
 	.often_scmain ul li a {display: inline-block;width: 145px; height: 75px;  } 
 	.often_scmain:after {content:""; display: block; clear: both;}
 	
@@ -127,26 +131,25 @@
 	</div>
 	<div class="content2">
 		<div class="qna2">
-			<a href="serviceQna"><img src="../../views/user/img/service/pic1.png" alt="" /></a>
+			<a href="serviceQna" title="자주묻는 질문"><img src="../../views/user/img/service/pic1.png" alt="" /></a>
 		</div>
 		<div class="history">
 			<c:choose>
 			<c:when test="${empty data.onesfdto.persid }">
-				<li><a href="../../member/login/loginForm"><img src="../../views/user/img/service/pic2.png" alt="" /></a></li>
+				<li><a href="../../member/login/loginForm" title="상담내역 조회"><img src="../../views/user/img/service/pic2.png" alt="" /></a></li>
 			</c:when>
 			<c:otherwise>
-				<li><a href="serviceHistory"><img src="../../views/user/img/service/pic2.png" alt="" /></a></li>
+				<li><a href="serviceHistory" title="상담내역 조회"><img src="../../views/user/img/service/pic2.png" alt="" /></a></li>
 			</c:otherwise>
 			</c:choose>
-			
 		</div>
 		<div class="personal">
 			<c:choose>
 			<c:when test="${empty data.onesfdto.persid }">
-				<li><a href="../../member/login/loginForm"><img src="../../views/user/img/service/pic3.png" alt="" /></a></li>
+				<li><a href="../../member/login/loginForm" title="1대1 문의"><img src="../../views/user/img/service/pic3.png" alt="" /></a></li>
 			</c:when>
 			<c:otherwise>
-				<li><a href="servicePersonal"><img src="../../views/user/img/service/pic3.png" alt="" /></a></li>
+				<li><a href="servicePersonal" title="1대1 문의"><img src="../../views/user/img/service/pic3.png" alt="" /></a></li>
 			</c:otherwise>
 			</c:choose>
 			
@@ -162,25 +165,37 @@
 			</div>
 			<div class="often_scmain">
 				<ul>
-					<li style="margin-right: 10px; margin-bottom: 10px; "><a href="">아이디/<br>비밀번호 찾기</a></li>
-					<li><a href="">영화<br>예매하기</a></li>
-					<li style="margin-right: 10px; margin-bottom: 10px;  "><a href="">예매내역<br>확인</a></li>
-					<li><a href="">나의<br>무비스토리</a></li>
-					<li style="margin-right: 10px; "><a href="">분실물<br>문의</a></li>
-					<li><a href="">예매취소<br>문의</a></li>
+			<c:choose>
+				<c:when test="${empty data.onesfdto.persid }">
+					<li class="scmain_base" style="margin-right: 10px; margin-bottom: 10px; "><a href="../../member/login/loginForm" target="_blank" title="아이디 비밀번호 찾기">아이디/<br>비밀번호 찾기</a></li>
+					<li class="scmain_base"><a href="../../member/login/loginForm" title="영화예매">영화<br>예매하기</a></li>
+					<li class="scmain_base" style="margin-right: 10px; margin-bottom: 10px; "><a href="../../member/login/loginForm" title="예매내역 확인">예매내역<br>확인</a></li>
+					<li class="scmain_base"><a href="../../member/login/loginForm" title="나의 무비스토리">나의<br>무비스토리</a></li>
+					<li class="scmain_base" style="margin-right: 10px; "><a href="../../member/login/loginForm" title="분실물 문의">분실물<br>문의</a></li>
+					<li class="scmain_base"><a href="../../member/login/loginForm" title="예매취소 문의">예매취소<br>문의</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="scmain_spec" style="margin-right: 10px; margin-bottom: 10px; "><a href="#" class="click_block">아이디/<br>비밀번호 찾기</a></li>
+					<li class="scmain_base"><a href="../../user/movietime/list" target="_blank" title="영화예매">영화<br>예매하기</a></li>
+					<li class="scmain_base" style="margin-right: 10px; margin-bottom: 10px; "><a href="../../member/mypage/mypurchase" target="_blank" title="예매내역 확인">예매내역<br>확인</a></li>
+					<li class="scmain_base"><a href="../../member/mypage/mymoviestroy?kind=seemovie" target="_blank" title="나의 무비스토리">나의<br>무비스토리</a></li>
+					<li class="scmain_base" style="margin-right: 10px; "><a href="servicePersonal" title="분실물 문의">분실물<br>문의</a></li>
+					<li class="scmain_base"><a href="servicePersonal" title="예매취소 문의">예매취소<br>문의</a></li>
+				</c:otherwise>
+			</c:choose>
 				</ul>
 			</div>
 		</div>
 		<div class="notice">
 			<div class="notice_sctop">
 				<span class="notice_tx">공지사항</span>
-				<span class="notice_mr"><a href="serviceNotice">더보기<i></i></a></span>
+				<span class="notice_mr"><a href="serviceNotice" title="더보기">더보기<i></i></a></span>
 			</div>
 			<ul class="shotcut">
 			<c:forEach items="${data.sfdto}" var="sfDTO" begin="0" end="5">
 				<li>
 					<p>
-						<a href="javascript:detailGo(${sfDTO.noticeindex })" class="shotcut_hover">
+						<a href="javascript:detailGo(${sfDTO.noticeindex })" class="shotcut_hover" title="상세보기">
 							<span>[${sfDTO.noticecateKr }]</span>
 							<span>${sfDTO.noticetitle }</span>
 							<span><fmt:formatDate value="${sfDTO.noticetime }" type="both" pattern="yyy.MM.dd"/></span>

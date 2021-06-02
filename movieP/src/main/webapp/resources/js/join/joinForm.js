@@ -8,33 +8,33 @@ var pnumCh = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 $(function() {
 	
 	var chCnt = 0;
+	var pnumchCnt = 0;
 	
-	 
     $("#userid").on("propertychange change keyup paste input", function(){
 		
 		if($('#userid').val() ==''){ 
 			$('#id_check').text('아이디를 입력하세요.'); 
 			$('#id_check').css('color', 'red'); 
 			$("#usercheck").attr("disabled", true); 
+			chCnt = 0;
 		
 		}else if(idCh.test($('#userid').val())!=true){ 
 			$('#id_check').text('5~20자의 영문 소문자, 숫자와 특수기호_와-만 사용 가능합니다.'); 
 			$('#id_check').css('color', 'red'); 
 			$("#usercheck").attr("disabled", true); 
+			chCnt = 0;
 			
 		} else { 
 			$('#id_check').text('아이디 중복확인을 해주세요.'); 
 			$('#id_check').css('color', 'blue'); 
-			$("#usercheck").attr("disabled", false); 
-			
-			var userid=$('#userid').val(); 
+			$("#usercheck").attr("disabled", false);
 			
 			$("#usercheck").click(function() {
 				
 		        $.ajax({
 		           async : true,
 		           type : 'POST',
-		           data : JSON.stringify({userid}),
+		           data : JSON.stringify({userid : $('#userid').val()}),
 		           url : "/memberCheck",
 		           dataType : "json",
 		           contentType : "application/json; charset=UTF-8",
@@ -42,28 +42,16 @@ $(function() {
 	
 						if(data.dto!=null){
 							
-							$("#userid").val("");
 							$('#id_check').text('중복된 아이디 입니다.'); 
 							$('#id_check').css('color', 'red'); 
 							$("#usercheck").attr("disabled", true); 
+							$("#userid").val("");
+							chCnt = 0;
 				
 						}else{ 
-							if(idCh.test(userid)){ 
-								$('#id_check').text('사용가능한 아이디 입니다.'); 
-								$('#id_check').css('color', 'blue'); 
-								$("#usercheck").attr("disabled", true); 
-								chCnt = 1;
-										
-							} else if(userid==''){ 
-								$('#id_check').text('아이디를 입력해주세요.'); 
-								$('#id_check').css('color', 'red');  
-								$("#usercheck").attr("disabled", true); 
-										
-							} else{ 
-								$('#id_check').text("5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다."); 
-								$('#id_check').css('color', 'red'); 
-								$("#usercheck").attr("disabled", true); 			
-							} 
+							$('#id_check').text('사용가능한 아이디 입니다.'); 
+							$('#id_check').css('color', 'blue'); 
+							chCnt = 1;
 		     			}
 		           }
 			});
@@ -131,7 +119,7 @@ $(function() {
 	$("#emailAd").on("propertychange change keyup paste input", function(){	
 		 
 		if (emailCh.test($('#emailId').val()+'@'+$('#emailAd').val())) {
-			
+			$('#email_check').val('')
 			document.getElementById('useremail').value = $('#emailId').val()+'@'+$('#emailAd').val();	
 		}else{
 			$('#email_check').text('이메일 양식을 확인해주세요.'); 
@@ -159,47 +147,75 @@ $(function() {
 		}
 	});
 	
+	
+	
 	$('#pnumcheck').click(function(){
 		
 		var phoneNumber = document.getElementById('userpnum').value;
-
-		alert("인증번호 발송 완료")
-        
-        $('#pchecknum').prop("type", 'text');
-		$('#checkBtn').prop("type", 'button');
-		$('#pnumcheck').attr("disabled", true);
-		$('#pnumM').attr("disabled", true);
-        $('#pnumL').attr("disabled", true);
-        $('#pnumF').attr("disabled", true);
 		
-        $.ajax({
-            type: "POST",
-            url: "/memberpnumCheckSNS",
-            data: {phoneNumber : phoneNumber},
-            success: function(res){
-            	
-                $('#checkBtn').click(function(){
-                    if($.trim(res) == $('#pchecknum').val()){
-                        alert(phoneNumber)
-                        $('#pnum_check').text('휴대폰 인증완료'); 
-                        $('#pchecknum').prop("type", 'hidden');
-                    	$('#checkBtn').prop("type", 'hidden');
-                    	$('#pnumcheck').attr("disabled", true);
-                 
-                    }else{
-                          alert("휴대폰 인증을 다시 해주세요.")
-						  $('#pchecknum').val("") 
-                          $('#pnumcheck').attr("disabled", true);
-                          $('#pnumM').attr("disabled", false);
-					      $('#pnumL').attr("disabled", false);
-					      $('#pnumF').attr("disabled", false);
-					      $('#pnumM').val("");
-					      $('#pnumL').val("");
-					      $('#pnumF').val("");
-                    }
-                });
-            }
-        });
+		if($('#pnumcheck').val()=='인증번호 전송'){
+			
+			$('#pnumcheck').val('다시 입력')
+			alert("인증번호 발송 완료")
+	        
+	        $('#pchecknum').prop("type", 'text');
+			$('#checkBtn').prop("type", 'button');
+			$('#pnumM').attr("disabled", true);
+	        $('#pnumL').attr("disabled", true);
+	        $('#pnumF').attr("disabled", true);
+			
+	        $.ajax({
+	            type: "POST",
+	            url: "/memberpnumCheckSNS",
+	            data: {phoneNumber : phoneNumber},
+	            success: function(res){
+	            	
+	                $('#checkBtn').click(function(){
+	                    if($.trim(res) == $('#pchecknum').val()){
+	                        alert(phoneNumber)
+	                       
+	                        $('#pnum_check').text('휴대폰 인증완료'); 
+	                        $('#pchecknum').prop("type", 'hidden');
+	                    	$('#checkBtn').prop("type", 'hidden');
+	                 		pnumchCnt = 1;
+	                 
+	                    }else{
+							alert("휴대폰 인증을 다시 해주세요.")
+							$('#pchecknum').val("") 
+	                        $('#pnumcheck').attr("disabled", true);
+	                        $('#pnumM').attr("disabled", false);
+						    $('#pnumL').attr("disabled", false);
+						    $('#pnumF').attr("disabled", false);
+						    $('#pnumM').val("");
+						    $('#pnumL').val("");
+						    $('#pnumF').find('option:first').attr('selected', 'selected');
+			                $('#pchecknum').attr("type", 'hidden');
+			                $('#checkBtn').attr("type", 'hidden');
+	                    	$('#pnumcheck').val('인증번호 전송')
+	                    	document.getElementById('userpnum').value = ""
+	                   		pnumchCnt =0;
+	                    }
+	                });
+	            }
+	        });
+		
+		}else{
+		
+			$('#pchecknum').val("") 
+			$('#pnumcheck').attr("disabled", true);
+			$('#pnumM').attr("disabled", false);
+			$('#pnumL').attr("disabled", false);
+			$('#pnumF').attr("disabled", false);
+			$('#pnumM').val("");
+			$('#pnumL').val("");
+			$('#pnumF').find('option:first').attr('selected', 'selected');
+			$('#pchecknum').attr("type", 'hidden');
+			$('#checkBtn').attr("type", 'hidden');
+			$('#pnumcheck').val('인증번호 전송')
+			document.getElementById('userpnum').value = ""
+			pnumchCnt = 0;
+		}
+		
     });
 	
 	document.addEventListener('keydown', function(event) {
@@ -211,54 +227,42 @@ $(function() {
 	
 	
 	$('form').on('submit',function(){
-	
-	 	$('#pnumM').attr("disabled", false);
-		$('#pnumL').attr("disabled", false);
-		$('#pnumF').attr("disabled", false);
-		
-		var inval_Arr = new Array(8).fill(false); 
-		
-		if (nameCh.test($('#username').val())) { 
-			inval_Arr[0] = true; 
-		} else { 
-			inval_Arr[0] = false; 
+
+		if (!nameCh.test($('#username').val())) { 
 			alert('이름을 확인하세요.'); 
-			return false; 
-		}
-		
-		if (idCh.test($('#userid').val())) { 
-			inval_Arr[1] = true; 
-		} else { 
-			inval_Arr[1] = false; 
+			return false;
+		} 
+		if (!idCh.test($('#userid').val())) { 
+			
 			alert('아이디를 확인하세요.'); 
 			return false; 
 		}
-		
-		if ( pwCh.test($('#userpw').val()) && ($('#userpw').val() == $('#userpwchk').val())){
- 
-			inval_Arr[2] = true; 
-		} else { 
-			inval_Arr[2] = false; 
-			alert('비밀번호를 확인하세요.'); 
+		if(chCnt == 0){
+			alert('아이디를 중복확인을 하세요.'); 
 			return false; 
 		}
-		
-		if (pnumCh.test($('#userpnum').val())) { 
-			inval_Arr[3] = true; 
-		} else { 
-			inval_Arr[3] = false; 
-			alert('휴대폰번호를 확인하세요.'); 
-			return false; 
-		}
-		
-		if (emailCh.test($('#useremail').val())) { 
-			inval_Arr[4] = true; 
-		} else { 
-			inval_Arr[4] = false; 
-			alert('이메일을 확인하세요.'); 
-			return false; 
-		}
+		if (!pwCh.test($('#userpw').val()) || ($('#userpw').val() != $('#userpwchk').val())){
+ 			alert('비밀번호를 확인하세요.'); 
+			return false;
+		} 
+		if (!pnumCh.test($('#userpnum').val())) { 
 			
+			alert('휴대폰번호를 확인하세요.'); 
+			return false;  
+		} 
+		if(pnumchCnt == 0){
+			alert('휴대폰 인증 필요.'); 
+			return false;
+		}
+		if (!emailCh.test($('#useremail').val())) { 
+			
+			alert('이메일을 확인하세요.'); 
+			return false;  
+		} 
+		
+		$('#pnumM').attr("disabled", false);
+		$('#pnumL').attr("disabled", false);
+		$('#pnumF').attr("disabled", false);	
 		document.getElementById('birthYear').value = $('#birthY').val();
 	    document.getElementById('birthDay').value = $('#birthM').val() + '-' + $('#birthD').val();
 		

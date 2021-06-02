@@ -49,40 +49,6 @@ h4{
 	float: left;
 }
 
-.cimemaouter{
-	width: 740px;
-	height: 150px;
-	background: #F2F4F5;
-	border-radius: 10px;
-	margin:20px;
-	text-align: center;
-	padding: 50px;
-	line-height: 30px;
-}
-.cimemastory{
-	clear:both;
-	margin: 30px;
-	width: 300px;
-	height: 100px;
-	border-radius: 10px;
-	background: #fff;
-	border: 1px solid #ccc;
-}
-.myrecord{
-	float: left;
-	width: 99px;
-	height: 100px;
-	line-height: 70px;
-}
-.recordinner{
-	width: 99px;
-	height: 30px;
-}
-.seemore{
-	width: 300px;
-	margin-left:450px;
-	text-align: right;
-}
 .cimeminfor{
 	margin:20px;
 	border-top: 1px solid #000;
@@ -90,50 +56,6 @@ h4{
 	height: 150px;
 	border-bottom: 1px solid #ccc;
 }
-.mycinemaRecordouter{
-	margin-top: 35px;
-}
-.mycinemapuouter{
-	margin:20px;
-	border-top: 1px solid #000;
-	width: 740px;
-	height: 300px;
-}
-.puinfor{
-	margin-left:10px;
-	width: 300px;
-	height: 150px;
-	float: left;
-}
-.sales_time{
-	margin-top:15px;
-	margin-bottom:20px;
-}
-.saleslink{
-	color: #00f;
-}
-#writeouter{
-	width: 740px;
-}
-.cancelOuter{
-	text-align: right;
-	margin-top: 55px; 
-}
-.seeContent{
-	text-align: left;
-	margin-left: 10px;
-}
-.seeContentitle{
-	margin: 10px;
-}
-
-
-
-
-
-
-
-
 .puchaseinner{
 	height: 50px;
 	float: left;	
@@ -141,69 +63,13 @@ h4{
 	border: 1px solid #ccc;
 	line-height: 50px;
 }
-.purchouter{
-	margin:20px;
-	width: 740px;
-	height: 100px;
+#titleinner>div{
 	background: #F2F4F5;
-	text-align: left;
-	padding: 30px;
-}
-.purchaseMainouter{
-	border-radius: 5px;
-	border: 1px solid #ccc;
-	width: 740px;
-	height: 220px;
-	margin-bottom: 10px;
-	float: left;
-	text-align: left;
-	line-height: 30px;
-}
-#recordpurchase{
-	height: 440px;
-	border: 0px;
-}
-.purchaseimg , .purchaseimg>img{
-	width:120px;
-	height:180px;
-	border: 1px solid #ccc;
-	float: left;
-}
-.purchaseimg{
-	margin: 18px;
-}
-#puinfor{
-	margin-top: 10px;
-	width: 570px;
-}
-.purchasespace{
-	clear:both;
-	width: 250px;
-	float: left;
-}
-.purchasespaceButt{
-	clear:both;
-	text-align: right;
 }
 
 
 
 
-
-
-
-.inforouter{
-	margin: 20px;
-	border-top: 1px solid #000;
-	width: 740px;
-	height: 150px;
-	padding: 20px;
-	border-bottom: 1px solid #ccc;
-}
-#userpwchk{
-	width: 300px;
-	padding: 5px;
-}
 #mainGo{
 	height: 50px;
 	width: 90px;
@@ -230,224 +96,10 @@ h4{
 	margin-top: 10px;
 	margin-left: 20px;
 }
-.idouter{
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #ccc;
-	height: 50px;
-	width: 700px;
-	margin-left: 20px;
-	margin-top:30px;
-}
-.nameouter{
-	clear: both;
-	width: 100px;
-	height: 50px;
-	line-height:50px;
-	text-align:center;
-	float:left;
-	background: #F2F4F5;
-	border-bottom: 1px solid #ccc;
-}
-.pwnameouter{
-	clear: both;
-	width: 180px;
-	height: 50px;
-	line-height:50px;
-	text-align:center;
-	float:left;
-	background: #F2F4F5;
-	border-bottom: 1px solid #ccc;
-}
-.dataouter{
-	width: 500px;
-	line-height:50px;
-	text-align:left;
-	float:left;
-	margin-left: 10px;
-}
-#pnumouter{
-	width: 150px;
-}
-.emailouter{
-	text-align:left;
-}
-#useremail{
-	width: 500px;
-	margin-top: 10px;
-	margin-left: 10px;
-}
-.pwinner{
-	width: 150px;
-	margin-top: 10px;
-	margin-left: 10px;
-	float: left;
-}
-#changepw{
-	margin-left: 10px;
-}
-.changeouter{
-	border-top: 1px solid #000;
-	height: 320px;
-	width: 700px;
-	margin-left: 20px;
-}
-#changeouter{
-	height: 180px;
-}
-.mideouter{
-	width: 700px;
-	height: 50px;
-	border-bottom: 1px solid #ccc;
-}
-.nullouter{
-	width: 10px;
-	float:left;
-}
-#checknum{
-	width: 80px;
-}
 
-
-
-
-
-
-
-.buttouter{
-	width:450px;
-	height:30px;
-	margin:30px;
-	margin-left: 40px;
-}
-.butt{
-	border: 1px solid #ccc;
-	width:150px;
-	text-align: center;
-	line-height: 30px;
-	float:left;
-}
-.buttresult{
-	margin: 0 auto;
-	height:800px;
-	width:700px;
-}
-
-
-
-
-
-
-
-
-
-.likeouter{
-	margin-left:1px;
-	height:360px;
-	width:231px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	float: left;
-}
-.likeButt{
-	padding:2px;
-	height:33px;
-	width:50px;
-	background-color:#fff;
-	color: #000;
-	border: 1px solid #000;
-	border-radius: 5px;
-	margin-top: 7px;
-	margin-left: 40px;
-	float: left;
-	position: relative;
-}
-.likeimg, .likeimg>img{
-	height:280px;
-	width:200px;
-	background-color:#fff;
-	border: 1px solid #ccc;
-	margin: 0 auto;
-}
-.liketitle{
-	margin-top : 7px;
-}
-
-
-
-
-
-
-.qnaMemory{
-	overflow-y: auto;
-}
-#titleinner>div{
-	background: #F2F4F5;
-}
-
-.firstwritouter{
-	width:695px;
-	height:600px;
-	border-top: 1px solid #000;
-}
-.writeouter{
-	width:690px;
-	height:150px;
-	border-bottom: 1px solid #ccc;
-	float: left;
-	margin-left: 5px;
-	text-align: left;
-}
-.writeimg{
-	margin: 9px;
-}
-.writeimg, .writeimg>img{
-	width:100px;
-	height:130px;
-	border: 1px solid #ccc;
-	float: left;
-}
-.writetitle{
-	margin-top: 25px;
-}
-.writetitle2{
-	margin-top: 10px;
-	margin-right: 300px;
-}
-.writetnow{
-	margin-top: 10px;
-	margin-right: 300px;
-}
-.writetitleouter>div{
-	float: left;
-}
-.seeouter{
-	width:320px;
-	height:150px;
-	border: 1px solid #ccc;
-	float: left;
-	margin: 14px;
-}
-.writeArea{
-	display: none;
-	margin-top: 15px;
-}
-#writeGo{
-	position:relative;
-	top:20px;
-	left:30px;
-}
-
-
-
-
-
-#qnaRecord{
-	height: 450px;	
-}
 #pageRecord{
 	clear: both;
 }
-
 
 
 .pagebtn {width: 32px; height: 32px; box-sizing: border-box; border-radius: 4px; border: 1px solid #dbdbdb; background: white;   }
@@ -456,17 +108,15 @@ h4{
 .pagebtn_lr {background: rgb(241,240,245)}
 
 
-
-
-
-
-
-
-
-
 #mypage_main {width: 1000px; height: 100%; position: relative;}
 #mypage_main:after {content:""; display: block; clear: both;}
 
+
+/* 
+.qnaMemory{
+	overflow-y: auto;
+}
+ */
 
 
 

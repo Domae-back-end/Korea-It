@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+
+.buttouter{
+	width:450px;
+	height:30px;
+	margin:30px;
+	margin-left: 40px;
+}
+.butt{
+	border: 1px solid #ccc;
+	width:150px;
+	text-align: center;
+	line-height: 30px;
+	float:left;
+}
+.buttresult{
+	margin: 0 auto;
+	height:800px;
+	width:700px;
+}
+
+
+
+
+
+.likeouter{
+	margin-left:1px;
+	height:360px;
+	width:231px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	float: left;
+}
+.likeButt{
+	padding:2px;
+	height:33px;
+	width:50px;
+	background-color:#fff;
+	color: #000;
+	border: 1px solid #000;
+	border-radius: 5px;
+	margin-top: 7px;
+	margin-left: 40px;
+	float: left;
+	position: relative;
+}
+.likeimg, .likeimg>img{
+	height:280px;
+	width:200px;
+	background-color:#fff;
+	border: 1px solid #ccc;
+	margin: 0 auto;
+}
+.liketitle{
+	margin-top : 7px;
+}
+
+
+
+
+
+
+.firstwritouter{
+	width:695px;
+	height:600px;
+	border-top: 1px solid #000;
+}
+.writeouter{
+	width:690px;
+	height:150px;
+	border-bottom: 1px solid #ccc;
+	float: left;
+	margin-left: 5px;
+	text-align: left;
+}
+.writeimg{
+	margin: 9px;
+}
+.writeimg, .writeimg>img{
+	width:100px;
+	height:130px;
+	border: 1px solid #ccc;
+	float: left;
+}
+.writetitle{
+	margin-top: 25px;
+}
+.writetitle2{
+	margin-top: 10px;
+	margin-right: 300px;
+}
+.writetnow{
+	margin-top: 10px;
+	margin-right: 300px;
+}
+.writetitleouter>div{
+	float: left;
+}
+.seeouter{
+	width:320px;
+	height:150px;
+	border: 1px solid #ccc;
+	float: left;
+	margin: 14px;
+}
+.writeArea{
+	display: none;
+	margin-top: 15px;
+}
+#writeGo{
+	position:relative;
+	top:20px;
+	left:30px;
+}

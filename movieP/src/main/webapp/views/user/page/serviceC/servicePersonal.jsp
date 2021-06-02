@@ -86,7 +86,17 @@
 		}
 	}
 	
-	function checksize(input) {
+	function checkfile(input, inputV) {
+		var fileLen = inputV.length; 
+		var fileLas = inputV.lastIndexOf(".");
+		var fileExt = inputV.substring(fileLas+1, fileLen).toLowerCase();
+		
+		if (fileExt != "jpg" && fileExt != "png" && fileExt != "jpeg") {
+			alert("확장자를 확인하세요!");
+			
+			$('.upload_name').val('파일선택')
+	        input.value = null;
+		}
 		
 		if (input.files && input.files[0].size > (5 * 1024 * 1024)) {
 	        alert("파일 사이즈가 5mb 를 넘습니다.");
@@ -94,6 +104,7 @@
 	        $('.upload_name').val('파일선택')
 	        input.value = null;
 	    }
+		
 	}
 	
 </script>
@@ -163,9 +174,9 @@
 					
 					<td>
 						<div class="upload_box">
-							<p>* JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다.</p>
+							<p>* JPG, JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다.</p>
 							<label for="upfileG" class="upfile_class">파일선택</label>
-							<input type="file" name="file" id="upfileG" class="upload_hidden" onchange="checksize(this)"/>
+							<input type="file" name="file" id="upfileG" class="upload_hidden" onchange="checkfile(this, this.value)"/>
 							<input class="upload_name" value="파일선택" disabled="disabled">
 						</div>
 					</td>
