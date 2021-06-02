@@ -41,7 +41,7 @@ public class AdminController {
 		
 		HttpSession sess= request.getSession();
 	
-		if(sess.getAttribute("adminid")!=null) {
+		if(sess.getAttribute("adacDTO")!=null) {
 			return "admin/index";
 		}
 		
