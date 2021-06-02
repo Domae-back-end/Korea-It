@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class ="firstwritouter">
 	<input type="hidden" id="userid" value="${sessionId }"/>
-	<input type="hidden" id="pageKind" value="writemovie"/>
+	<input type="hidden" id="pagekind" value="writemovie"/>
 	
 	<div id="add">
 	<div class="fff">
