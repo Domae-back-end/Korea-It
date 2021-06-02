@@ -41,13 +41,15 @@ public class AdminController {
 		
 		HttpSession sess= request.getSession();
 	
-		if(sess.getAttribute("adminid")!=null) {
-			return "admin/index";
-		}else {
-			return "admin/loginpage";
-		}
+//		if(sess.getAttribute("adminid")!=null) {
+//			return "admin/index";
+//		}
+//		
+//		else {
+//			return "admin/loginpage";
+//		}
 		
-		
+		return "admin/index";
 		
 		
 	}
