@@ -6,9 +6,8 @@
 	
 .timebox {
 	width: 100px;
-	height: 50px;
+	height: 100px;
 	float: left;
-	line-height: 50px;
 	border: 1px solid #000;
 }
 .both {
@@ -61,7 +60,7 @@ table {
 	<div class="both"></div>
 	<c:forEach var="a" items="${data }" varStatus="in">
 		<div class="timebox">${in.index }</div>
-		<div class="timebox">${a.movietitle }</div>
+		<div class="timebox"><a href="/admin/movietime/detail?movietitle=${a.movietitle }">${a.movietitle }</a></div>
 		<div class="timebox">${a.sectorno }</div>
 		<div class="timebox">
 		<fmt:formatDate value="${a.reg_date }" type="both"
@@ -69,11 +68,11 @@ table {
 		</div>
 		<div class="timebox">
 		<fmt:formatDate value="${a.starttime }" type="both"
-							pattern="hh:mm:ss" />
+							pattern="HH:mm:ss" />
 		</div>
 		<div class="timebox">
 		<fmt:formatDate value="${a.endtime }" type="both"
-							pattern="hh:mm:ss" />
+							pattern="HH:mm:ss" />
 		</div>
 		<div class="both"></div>
 	</c:forEach>

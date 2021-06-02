@@ -527,13 +527,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 
-
-
-
-
-
-
-
 	<select id="movieTimefind" resultType="MovieTimeDTO"
 		parameterType="MovieTimeDTO">
 		select * from movietime
@@ -542,23 +535,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<sql id="searchmovietime">
 		<choose>
-			<when test="m_index == 1">
-				<where>movietitle = #{search}</where>
+			<when test="time_index == 1">
+				<where>movietitle LIKE '%${search}%'</where>
 			</when>
 
-			<when test="m_index == 2">
-				<where>reg_date = > str_to_date('#{search}', '%Y-%m-%d')</where>
+			<when test="time_index  == 2">
+				<where>date_format(reg_date,'%Y%m%d') = date_format(#{search},'%Y%m%d')</where>
 			</when>
-
-			<when test="m_index == 3">
-				<where>starttime = str_to_date('#{search}', '%Y-%m-%d') </where>
-			</when>
-
-			<when test="m_index == 4">
-				<where>endtime = str_to_date('#{search}', '%Y-%m-%d')</where>
-			</when>
-			<when test="m_index == 5">
-				<where>sectorno = #{search}</where>
+			<when test="time_index  == 5">
+				<where>sectorno LIKE '%${search}%'</where>
 			</when>
 
 		</choose>
@@ -589,7 +574,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 
 			<otherwise>
-				<where> <![CDATA[userid = #{userid} and kind !='탈퇴']]></where>
+				<where> <![CDATA[userid = #{userid}]]></where>
 			</otherwise>
 
 		</choose>
@@ -672,13 +657,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<![CDATA[memberinfo]]>
 				<where> <![CDATA[userid=#{userid} and kind ='네이버']]></where>
 			</when>
+			<when test=" ticket !=null">
+				<![CDATA[ticketing]]>
+				<where> <![CDATA[userid=#{userid} and saleslink =#{ticket}]]></where>
+			</when>
 		</choose>
 
 	</sql>
-
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
-		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userpnum, useremail, joinday, kind 
+		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, replace(userpnum,'-','') as userpnum, useremail, joinday, kind 
 		from memberinfo <include refid="checkform" />
 	</select>
 
@@ -692,14 +680,40 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 
 	
+	<insert id="memcancelinsert" parameterType="MemberDTO">
+		insert into sales (timetableidx, people, salesprice, userid, m_index, movietitle, sectorNo, sales_type, sales_time) 
+		select timetableidx, people, salesprice*-1 , userid, m_index, movietitle, sectorNo, #{sales_type}, sysdate() 
+		from sales where userid=#{userid} and sales_index =#{ticket}
+	</insert>
+<!--sales_type  에서  #{sales_type}로 변경./  -->
+	
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
-		select moviesector, ticket_pcount, salesprice, movietitle, sales_type, date_format(sales_time,'%Y-%m-%d') as sales_time, sales.m_index, imgname from sales 
+		select imgname, movietime.movietitle, movietime.sectorNo,
+		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m'))as starttime,
+		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) as checktime,
+		sales.m_index, saleslink, sales_type, salesprice, GROUP_CONCAT(DISTINCT seatNo) as seatNo,
+		(length(ticketing.people)-length(replace(ticketing.people,'C',''))) as C,
+		(length(ticketing.people)-length(replace(ticketing.people,'T',''))) as T,
+		(length(ticketing.people)-length(replace(ticketing.people,'A',''))) as A,
+		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time from ticketing 
+		left outer join sales on sales.sales_index = saleslink 
 		left outer join movieimg on sales.m_index = movieimg.m_index
-		where sales.userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and imgname like '%poster.jpg'
+		left outer join movietime on ticketing.time_index = movietime.time_index
+		where ticketing.userid=#{userid} and imgname like '%poster.jpg' 
+		and date_format(ticketing.reg_date,'%Y-%m')=#{date} GROUP BY saleslink
 		order by sales.sales_time desc
-		limit #{start},8
+		limit #{start},#{limit}
 	</select>
-
+	
+	<select id="memcancelpurchase" resultType="map" parameterType="MemberDTO">
+		select sales_type, SUBSTRING(salesprice, 2) as salesprice, sales.movietitle, movietime.sectorNo,
+		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m'))as starttime,
+		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time from sales 
+		left outer join movietime on sales.timetableidx = movietime.time_index
+		where sales.userid=#{userid} and sales_time > (movietime.reg_date - INTERVAL 7 DAY) and sales.salesprice <![CDATA[<]]> 0
+		order by sales.sales_time desc
+		limit #{start},2
+	</select>
 	
 	<select id="memcomment" resultType="map" parameterType="MemberDTO">
 		select movietitle, imgname, postcontent,  date_format(posttime,'%Y-%m-%d') as posttime, cate, mlike from review
@@ -741,10 +755,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
-		(select COUNT(*) sc from sales  where userid=#{userid} and date_format(sales.sales_time,'%Y-%m')=#{date} and salesprice > 0) a, 
+		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid} and date_format(ticketing.reg_date,'%Y-%m')=#{date}) a, 
 		(select COUNT(*) wc from review where userid=#{userid}) b,
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
-		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d
+		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d,
+		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0) e,
+		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} 
+		and ticketing.time_index in (select time_index from movietime where 
+		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) <![CDATA[<]]> sysdate())) f;
 	</select>
 	
 	

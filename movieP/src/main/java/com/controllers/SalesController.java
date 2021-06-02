@@ -1,6 +1,8 @@
 package com.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,6 +57,17 @@ public class SalesController {
 		return InitData.getSubmenusbyCateName("sales");
 	}
 	
+	
+	@ModelAttribute("nowday")
+	String gotoday( ) {
+		SimpleDateFormat sdf= new SimpleDateFormat("YYYY월 MM월 dd일");
+		Date today = new Date();
+		today.setDate(today.getDate()-1);
+		
+		
+		
+		return sdf.format(today);
+	}
 	
 	@RequestMapping
 	String viewgo(@PathVariable String service) {

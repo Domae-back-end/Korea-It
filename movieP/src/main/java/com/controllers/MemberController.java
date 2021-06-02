@@ -31,7 +31,7 @@ public class MemberController {
 			return null;
 		
 		if(service.endsWith("mypurchase"))
-			mdto.setPageKind("seemovie");
+			mdto.setPageKind("mypurchase");
 
 		if(service.startsWith("my"))
 			service = "mypage";

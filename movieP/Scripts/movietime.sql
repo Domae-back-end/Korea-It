@@ -27,7 +27,7 @@ INSERT INTO unoestellar.ticketing (time_index,people,seatNo,userid,reg_date) VAL
 	 (1,NULL,'A1','dddd44','2021-05-31 12:56:40'),
 	 (1,NULL,'A2','dddd44','2021-05-31 12:56:40'),
 	 (1,NULL,'A3','dddd44','2021-05-31 12:56:40');
-	
+	 
 	INSERT INTO unoestellar.movietime (movietitle,sectorNo,starttime,endtime,reg_date) VALUES
 	 ('자산어보','작은관','06:32:22','08:38:22','2021-05-31'),
 	 ('크루엘라','기존관','06:34:37','08:47:37','2021-05-31'),

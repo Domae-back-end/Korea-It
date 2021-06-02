@@ -25,6 +25,12 @@ public class Memberdelete implements MemberAction {
 		
 		map.put("dcnt", dm.memDelete(mdto));
 		
+		
+		
+		if(mdto.getTicket()!=null)
+			mdto.setSales_type("환불");//inho
+			map.put("ccnt", dm.memcancelinsert(mdto));
+		
 		System.out.println(map);
 		return map;
 	}

@@ -11,23 +11,54 @@
 		<input type="button" class="changeButt"  id="moiveButt" value="조회" disabled="disabled"  />
 	</div>
 	<div class="cimeminfor" id="recordpurchase">
-		
-		<div id="titleinner">
-			<div class="puchaseinner">영화제목</div>
-			<div class="puchaseinner">티켓개수</div>
-			<div class="puchaseinner">결제금액</div>
-			<div class="puchaseinner">결제일</div>
-		</div>
 		<div class="fff">
 			<c:forEach items="${memdata.purchase }" var ="pp" > 
-				<c:if test="${pp.salesprice > 0}">
-					<div>
-						<div class="puchaseinner">${pp.movietitle }</div>
-						<div class="puchaseinner">${pp.ticket_pcount }</div>
-						<div class="puchaseinner">${pp.salesprice }</div>
-						<div class="puchaseinner">${pp.sales_time }</div>
+				<div class = "purchaseMainouter">
+					<a href="/user/movie/moviedetail?sub=review&ind=${pp.m_index }">
+						<div class="purchaseimg">
+							<c:choose>
+								<c:when test="${pp.imgname!=null }">
+									<img src="/moviedata/${pp.imgname }" alt="${pp.movietitle } 이미지" />
+								</c:when>
+								<c:otherwise>
+									이미지 없음
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</a>
+					<div class="puinfor" id="puinfor">
+						<div>
+							예매번호 : <span class="saleslink">${pp.saleslink }</span>
+						</div>
+						<div>
+							영화명 : ${pp.movietitle }
+						</div>
+						<div>
+							<div class="purchasespace">상영관 : ${pp.sectorNo }</div>
+						<span>
+							관람인원 : 
+							<c:if test="${pp.A != 0 }">성인${pp.A }명</c:if>
+							<c:if test="${pp.T != 0 }">청소년${pp.T }명</c:if>
+							<c:if test="${pp.C != 0 }">어린이${pp.C }명</c:if>
+						</span>
+						</div>
+						<div>
+							<div class="purchasespace">관람일시 ${pp.starttime }</div>
+						<span>
+							관람좌석 : ${pp.seatNo }
+						</span>
+						</div>
+						<div class="purchasespace">
+							결제일시 : ${pp.sales_time }
+						</div>
+						<div class="purchasespaceButt">
+						<button class="changeButt">결제정보</button>
+						<c:if test="${pp.checktime > memdata.dto.nowDate }">
+							<button class="changeButt" onclick="ticketCancel(${pp.saleslink })">예매취소</button>		
+						</c:if>
+						</div>
 					</div>
-				</c:if>
+				</div>
 			</c:forEach>
 		</div> 
 	</div>
@@ -57,21 +88,40 @@
 	<h3>예매 취소내역</h3>
 	<div class="cimeminfor" >
 		<div id="titleinner">
+			<div class="puchaseinner">취소일시</div>
 			<div class="puchaseinner">영화제목</div>
-			<div class="puchaseinner">티켓개수</div>
+			<div class="puchaseinner">상영일시</div>
 			<div class="puchaseinner">취소금액</div>
-			<div class="puchaseinner">결제일</div>
 		</div> 
-		<c:forEach items="${memdata.purchase }" var ="pp">
-			<c:if test="${pp.salesprice < 0}">
+		<c:forEach items="${memdata.cancel }" var ="pp">
 				<div>
-					<div class="puchaseinner">${pp.movietitle }</div>
-					<div class="puchaseinner">${pp.ticket_pcount }</div>
-					<div class="puchaseinner">${pp.salesprice }</div>
 					<div class="puchaseinner">${pp.sales_time }</div>
+					<div class="puchaseinner">${pp.movietitle }</div>
+					<div class="puchaseinner">${pp.starttime }</div>
+					<div class="puchaseinner">${pp.salesprice }</div>
 				</div>
-			</c:if>
 		</c:forEach>
 	</div>
-	
+	<div id="pageRecord">
+		<div class="fff">
+			<c:if test="${memdata.cpdto.cstartPage > 1}">
+		    	<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.cpdto.cstartPage-1})" value="&lt" />
+			</c:if>
+		            
+			<c:forEach begin="${memdata.cpdto.cstartPage}" end="${memdata.cpdto.cendPage}" step="1" var="i">
+				<c:choose>
+					<c:when test="${i == memdata.cpdto.cpage}">
+						<input type="text" class="pagebtn_sel" value="${i }" readonly/>
+					</c:when>
+					<c:otherwise>
+						<input type="button" class="btnnn pagebtn" onclick="purchasepageChange(${i})" value="${i}" />
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		            
+			<c:if test="${memdata.cpdto.cendPage < memdata.cpdto.ctotal}">
+		    	<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.cpdto.cendPage+1})" value="&gt" />
+			</c:if>
+		</div>
+	</div>
 </div>

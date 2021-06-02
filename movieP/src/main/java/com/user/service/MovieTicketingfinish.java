@@ -60,6 +60,7 @@ public class MovieTicketingfinish implements MovieTicketingService{
 		}
 		
 		UserSitDTO usdto= new UserSitDTO();
+		// 아이디  박아주기 요망 from request.getsession()
 		usdto.setUserid("aaa");		
 		usdto.setReg_time(sdf.format(dateset));
 		System.out.println(sdf.format(dateset));

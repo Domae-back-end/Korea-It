@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,7 +103,10 @@
 						<td><a href="javascript:detailGo(${i.m_index})">${i.m_index}/${i.movietitle }<%-- movietitle--%></a>
 						</td>
 						<td>${i.mdir }&nbsp;</td>
-						<td>${i.mdate }</td>
+						<td>
+						  	<fmt:formatDate value="${i.mdate }" type="both"
+							pattern="yyy년MM월dd일" />
+						</td>
 
 						<td>${i.mactrs }</td>
 						<td>${i.mcate }</td>
@@ -122,7 +126,7 @@
 							end="${data.pdto.endPage }" step="1" var="i">
 							<c:choose>
 								<c:when test="${i==data.pdto.page }">
-									[${i }]
+									<span class="btn btn-success">${i }</span>
 								</c:when>
 								<c:otherwise>
 									<input type="button" class="pagego btn btn-warning" dd="${i }"

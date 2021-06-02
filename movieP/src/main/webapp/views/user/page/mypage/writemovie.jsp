@@ -3,7 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class ="firstwritouter">
 	<input type="hidden" id="userid" value="${sessionId }"/>
+	<input type="hidden" id="pageKind" value="writemovie"/>
 	
+	<div id="add">
+	<div class="fff">
 	<c:forEach items="${memdata.comment }" var ="pp" varStatus="no">
 		
 		<div class="writeouter">
@@ -34,7 +37,8 @@
 			</div>
 		</div>
 	</c:forEach>
-	
+	</div>
+	</div>
 	<div id="pageRecord">
 		<div class="fff">
 			<c:if test="${memdata.pdto.startPage > 1}">

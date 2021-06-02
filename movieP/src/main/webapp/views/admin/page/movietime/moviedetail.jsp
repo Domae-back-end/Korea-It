@@ -14,7 +14,7 @@
 	.movieImg{
 		float: left;
 		width: 200px;
-		height: 300px;
+		height: 100%;
 	}
 	.movieImg > img{
 		width: 200px;
@@ -94,14 +94,14 @@
 							pattern="yyyy-MM-dd" /></div>
 			<div class="to1">
 			<fmt:formatDate value="${a.starttime }" type="both"
-							pattern="hh:mm:ss" />
+							pattern="HH:mm:ss" />
 							</div>
 			<div class="to1">
 			<fmt:formatDate value="${a.endtime }" type="both"
-							pattern="hh:mm:ss" /></div>
+							pattern="HH:mm:ss" /></div>
 			<c:if test="${i.index == 0  }">			
 			</c:if>	
-			<div class="removemenu"><a href="deleteReg?movietitle=${a.movietitle}&m_index=${a.m_index}">삭제하기</a></div>
+			<div class="removemenu"><a href="deleteReg?movietitle=${a.time_index}&m_index=${a.time_index}">삭제하기</a></div>
 			<div class="both"></div>
 		</c:forEach>
 	</div>
