@@ -52,6 +52,7 @@
 
 .el > a{
 	color:black;
+	
 }
 
 .timeservice {
