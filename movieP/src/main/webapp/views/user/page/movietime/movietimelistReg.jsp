@@ -100,7 +100,7 @@ if(request.getParameter("seatNo") != null){
 	</div>
 	<div class="t1_lay3">
 		<c:if test="<%=!(check) %>">
-			<div class="clickontike"><a href="/user/movietime/listRegReg?time_index=<%=request.getParameter("time_index") %>&seatNo=<%=seatno %>&cnt3=<%=request.getParameter("cnt3")%>&cnt2=<%=request.getParameter("cnt2")%>&cnt1=<%=request.getParameter("cnt1")%>&userid=${sessionScope.userid}">예약하기</a></div>
+			<div class="clickontike"><a href="/user/movietime/listRegReg?time_index=<%=request.getParameter("time_index") %>&seatNo=<%=seatno %>&cnt3=<%=request.getParameter("cnt3")%>&cnt2=<%=request.getParameter("cnt2")%>&cnt1=<%=request.getParameter("cnt1")%>">예약하기</a></div>
 		</c:if>
 		<div class="clickontike"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">다시 좌석 선택하기</a></div>
 		<div class="clickontike">좌석 : <%=sitting %></div>
