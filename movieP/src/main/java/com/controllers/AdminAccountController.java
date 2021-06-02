@@ -59,7 +59,7 @@ public class AdminAccountController {
 		return sr.execute(obj);	// has > servie,mdto,req, imgnames,pdto	
 	}
 
-
+//
 
 	@RequestMapping
 	String view(@PathVariable String service) {	// 세션체킹 
