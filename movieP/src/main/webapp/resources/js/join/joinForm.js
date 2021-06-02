@@ -74,7 +74,7 @@ $(function() {
 	$("#username").on("propertychange change keyup paste input", function(){
 		
 		if (nameCh.test($('#username').val())) {
-	
+			$('#name_check').text(''); 
 		}else{
 			$('#name_check').text('한글 2~6자 또는 영어 2~10자 이내로 입력하세요. (특수기호, 공백 사용 불가)'); 
 			$('#name_check').css('color', 'red');
@@ -90,7 +90,6 @@ $(function() {
 		}else{
 			$('#pw_check').text('8~16자 영문 대 소문자, 숫자, 특수문자를 사용하십시오.'); 
 			$('#pw_check').css('color', 'red');
-			$("#userpw").val("");
 			$('#userpwchk').prop("readonly",true);
 		}
 	});

@@ -52,7 +52,6 @@ public class MemPageDTO {
 			endPage = total;
 		}
 		
-		System.out.println(start+"/"+page+"/"+limit);
 	}
 	
 	

@@ -3,7 +3,7 @@ nav{
 	position: relative; 
 	margin-top: 20px;
 	float: left;
-	border: 1px solid #000;
+	border: 1px solid #ccc;
 	padding-top: 40px;
 	background: #F2F4F5;
 	border-radius: 10px;
@@ -35,7 +35,7 @@ nav ul{
 	float: left;
 	width: 782px;
 	height: 1000px;
-	border: 1px solid #000;
+	border: 1px solid #ccc;
 }
 
 h2,h3,h4{
@@ -330,8 +330,6 @@ h4{
 	margin: 0 auto;
 	height:800px;
 	width:700px;
-	border: 1px solid #ccc;
-	overflow-y: auto;
 }
 
 

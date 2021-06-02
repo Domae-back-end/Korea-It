@@ -34,7 +34,7 @@
 		<div class="fff">
 			<c:forEach items="${memdata.qna }" var ="pp" > 
 				<div class="puchaseinner">${pp.persid }</div>
-				<div class="puchaseinner">${pp.perstitle }</div>
+				<a href="/user/serviceC/serviceHistoryDetail?page=1&persindex=${pp.persindex }"><div class="puchaseinner">${pp.perstitle }</div></a>
 				<div class="puchaseinner">${pp.persqtime }</div>
 				<div class="puchaseinner">${pp.persatime }(${pp.persstate })</div>
 			</c:forEach>
