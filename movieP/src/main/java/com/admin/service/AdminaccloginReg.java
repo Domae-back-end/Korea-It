@@ -27,7 +27,7 @@ public class AdminaccloginReg implements Adminaccservice {
 		HashMap<String, Object> orimap = (HashMap)obj;
 		HttpServletRequest request=   (HttpServletRequest)orimap.get("request");
 		AdminaccDTO adacDTO=  (AdminaccDTO)orimap.get("adacDTO");
-
+		
 		AdminaccDTO result = db.adminloginCheck(adacDTO);
 		
 
@@ -41,8 +41,9 @@ public class AdminaccloginReg implements Adminaccservice {
 		if(result != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("adminid", adacDTO);
-			al.setMsg(adacDTO.getAdminnick()+" 님 환영합니다 관리자 사이트 로그인성공");	
-		
+			System.out.println(adacDTO);
+			al.setMsg(result.getAdminnick()+" 님 환영합니다 관리자 사이트 로그인성공");	
+			
 			
 			
 		}//
