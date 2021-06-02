@@ -32,13 +32,19 @@ public class Movielist implements MovieAction{
 		Iterator<MovieInfoDTO> it = list.iterator();
 		while(it.hasNext()) {
 			MovieInfoDTO aa = it.next();
+			if(all !=0) {
 			double k = (mm.detailCount(aa.getM_index())* 100 )/all;
 			aa.setRes_rate(k);
+			}
+			else {
+				aa.setRes_rate(0.0);
+			}
 			//System.out.println(mm.detailCount(aa.getM_index()));
 			//System.out.println(aa.getMovietitle()+"의 현재 %: "+aa.getRes_rate());	
 			
 		
 		}
+		
 		
 		Collections.sort(list, new Comparator<MovieInfoDTO>() {
 			@Override
