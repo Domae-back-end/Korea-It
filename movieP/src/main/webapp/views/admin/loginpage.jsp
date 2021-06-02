@@ -297,9 +297,9 @@ input[type=text]:placeholder {
     </div>
 
     <!-- Login Form -->
-    <form action="/admin/member/loginReg" name="adminloginform"  method="post">
-      <input type="text" id="adminid" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="adminpw" class="fadeIn third" name="login" placeholder="password">
+    <form action="/admin/account/loginReg" name="adminloginform"  method="post">
+      <input type="text" id="adminid" class="fadeIn second" name="adminid" placeholder="아이디">
+      <input type="text" id="adminpw" class="fadeIn third" name="adminpw" placeholder="비밀번호">
       <input type="submit" class="fadeIn fourth" value="관리자 로그인">
     </form>
 

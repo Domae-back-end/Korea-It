@@ -227,6 +227,8 @@ void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 	int salesindexlink(UserSitDTO userSitDTO);
 
 	int faqtotalCnt(HashMap<String, Object> map);
+
+
    
    
    
@@ -247,8 +249,8 @@ void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
    
    
    
-   
-   
+   // 어드민 로그인 용 
+	AdminaccDTO adminloginCheck(AdminaccDTO adacDTO);
    
    
    

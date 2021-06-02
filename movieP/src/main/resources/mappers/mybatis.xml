@@ -1054,7 +1054,10 @@ WHERE m_index = #{m_index};
 	
 	
 	
+	<select id="adminloginCheck" resultType="AdminaccDTO"  parameterType="AdminaccDTO" >
+		select * from adminaccount where adminid= #{adminid} and adminpw = #{adminpw}
 	
+	</select>
 	
 	
 	
