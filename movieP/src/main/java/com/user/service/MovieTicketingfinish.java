@@ -55,7 +55,6 @@ public class MovieTicketingfinish implements MovieTicketingService{
 		
 		UserSitDTO usdto= new UserSitDTO();
 		// 아이디  박아주기 요망 from request.getsession()
-		usdto.setUserid("aaa");		
 		usdto.setReg_time(sdf.format(dateset));
 		System.out.println(sdf.format(dateset));
 		db.salesindexlink(usdto);
@@ -69,6 +68,7 @@ public class MovieTicketingfinish implements MovieTicketingService{
 		data.setSalesprice(udto.getCnt1() * c + udto.getCnt2() * t + udto.getCnt3() * a);
 		data.setPeople(people);
 		data.setMovietitle(mbuf.getMovietitle());
+		data.setUserid(udto.getUserid());
 		if(udto.getChoice() == 1) {
 			data.setSales_type("카드");
 		}else {
