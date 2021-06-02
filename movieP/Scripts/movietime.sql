@@ -20,7 +20,6 @@ create table ticketing(
 
 ALTER TABLE ticketing ADD saleslink INT; <!-- 칼럼추가요. salestable 과 엮기 위함. -->
 
-
 INSERT INTO unoestellar.ticketing (time_index,people,seatNo,userid,reg_date) VALUES
 	 (9,NULL,'B4','dddd44','2021-05-31 11:56:40'),
 	 (9,NULL,'C5','dddd44','2021-05-31 11:56:40'),
