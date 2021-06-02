@@ -18,6 +18,8 @@ public class MemberDTO {
 	String userid, userpw , username , userpnum, useremail, kind;
 	Date userbirth, joinday;
 	
+	String sales_type;//byinho
+	
 	public void setUserbirth(String birthDay, String birthYear) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
