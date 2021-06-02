@@ -121,7 +121,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<!-- 예매인 애들만 list로 -->
 	<select id="pullTInfo" parameterType="MovieReviewDTO"
 		resultType="EndTimeDTO">
-		select userid, m_index, sectorno
+		select userid, m_index, sectorno, sales_time
 		from sales
 		where sales_type != '환불' and
 		userid = '${userid}' and
@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		resultType="DateDTO">
 		select endtime, reg_date
 		from movietime
-		where movietitle='${movietitle}' 
+		where movietitle='${movietitle}'
 	</select>
 
 	<select id="searchmovietitle" resultType="java.lang.String">
