@@ -2,6 +2,7 @@ package com.controllers;
 
 import java.util.List;
 
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,9 +18,6 @@ import com.admin.service.Provider;
 import com.model.InfoDTO;
 import com.model.LikeDTO;
 import com.model.MovieAction;
-import com.model.MovieAction2;
-import com.model.MovieAction3;
-import com.model.MovieAction4;
 import com.model.MovieAction5;
 import com.model.MovieAction6;
 import com.model.MovieInfoDTO;
@@ -68,7 +66,7 @@ public class MovieController {
 	Object dd(HttpServletRequest req) {
 
 		if (req.getParameter("ind") != null) {
-			MovieAction2 res = pr.getContext().getBean("moviedetail", MovieAction2.class);
+			MovieAction6 res = pr.getContext().getBean("moviedetail", MovieAction6.class);
 			return res.execute(Integer.parseInt(req.getParameter("ind")));
 		}
 		return null;
@@ -78,7 +76,7 @@ public class MovieController {
 	Object aa(HttpServletRequest req) {
 
 		if (req.getParameter("ind") != null) {
-			MovieAction2 res = pr.getContext().getBean("movieactor", MovieAction2.class);
+			MovieAction6 res = pr.getContext().getBean("movieactor", MovieAction6.class);
 			return res.execute(Integer.parseInt(req.getParameter("ind")));
 		}
 		return null;
@@ -88,7 +86,7 @@ public class MovieController {
 	Object ii(HttpServletRequest req) {
 
 		if (req.getParameter("ind") != null) {
-			MovieAction2 res = pr.getContext().getBean("movieimg", MovieAction2.class);
+			MovieAction6 res = pr.getContext().getBean("movieimg", MovieAction6.class);
 			return res.execute(Integer.parseInt(req.getParameter("ind")));
 		}
 		return null;
@@ -98,7 +96,7 @@ public class MovieController {
 	Object cc(HttpServletRequest req) {
 
 		if (req.getParameter("ind") != null) {
-			MovieAction2 res = pr.getContext().getBean("moviecate", MovieAction2.class);
+			MovieAction6 res = pr.getContext().getBean("moviecate", MovieAction6.class);
 			return res.execute(Integer.parseInt(req.getParameter("ind")));
 		}
 		return null;
@@ -107,14 +105,14 @@ public class MovieController {
 	@ModelAttribute("moviedatabefore")
 	Object mmBefore(HttpServletRequest req) {
 		//박스오피스에서 검색했을 때 or 검색 안했을 때
-		MovieAction3 res = pr.getContext().getBean("moviebefore", MovieAction3.class);
+		MovieAction6 res = pr.getContext().getBean("moviebefore", MovieAction6.class);
 		return res.execute(req.getParameter("sch"));
 	}
 
 	@ModelAttribute("moviedataafter")
 	Object mmAfter(HttpServletRequest req) {
 		//상영예정작에서 검색했을 때
-		MovieAction3 res = pr.getContext().getBean("movieafter", MovieAction3.class);
+		MovieAction6 res = pr.getContext().getBean("movieafter", MovieAction6.class);
 		return res.execute(req.getParameter("sch"));
 
 	}
@@ -170,7 +168,7 @@ public class MovieController {
 			
 			if (dto.getPostcontent() != "") {
 				dto.setUserid((String) req.getSession().getAttribute("sessionId"));
-				MovieAction4 res = pr.getContext().getBean("movie" + service, MovieAction4.class);
+				MovieAction6 res = pr.getContext().getBean("movie" + service, MovieAction6.class);
 				return res.execute(dto);
 
 			}

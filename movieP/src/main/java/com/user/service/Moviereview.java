@@ -1,6 +1,7 @@
 package com.user.service;
 
 import java.text.SimpleDateFormat;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
 import com.model.MovieAction;
-import com.model.MovieAction2;
 import com.model.MovieAction5;
 import com.model.MovieInfoDTO;
 import com.model.MovieReviewDTO;
