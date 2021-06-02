@@ -208,7 +208,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{movietitle},#{sectorno},#{starttime},#{endtime},#{reg_date})
 	</insert>
 	<insert id="insertSit" parameterType="UserSitDTO">
-		insert into ticketing (time_index,seatNo,userid,people,reg_date) values (#{time_index},#{seatNo},#{userid},#{people},#{reg_time})
+		insert into ticketing (time_index,seatNo,userid,people,reg_date,saleslink) values (#{time_index},#{seatNo},#{userid},#{people},#{reg_time},${saleslink})
 	</insert>
 	<update id="updatemovielist" parameterType="MovieTimeDTO">
 		update movietime set
@@ -526,7 +526,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
 
-
+	
 	<select id="movieTimefind" resultType="MovieTimeDTO"
 		parameterType="MovieTimeDTO">
 		select * from movietime
@@ -927,13 +927,10 @@ WHERE m_index = #{m_index};
 		order by sales_time desc
 		
 	</select>
+	<select id="newSelectIndex" resultType="Integer">
+		select max(sales_index) from sales
+	</select>
 	
-	
-	<!--  tickting 과정에서  sales 테이블과 연결고리 심어주기.  -->
-	<update id="salesindexlink"  parameterType="UserSitDTO">
- UPDATE ticketing SET  saleslink = (select count(sales_index)+1 from sales )
- WHERE  userid= #{userid} AND reg_date= #{reg_time}
-	</update>
 	
 	
 	

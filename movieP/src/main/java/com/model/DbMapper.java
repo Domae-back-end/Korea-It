@@ -28,7 +28,9 @@ public interface DbMapper {
    MovieInfoDTO findMovie(String movietitle);
    void insertSales(SalesDTO dto);
    List<MovieTimeDTO> findMovieTime(String movietitle);
-
+   
+   int newSelectIndex();
+   
    List<MovieInfoDTO> movielist();
    MovieTimeDTO movietimefindindex(Integer index);
    int updatemovielist(MovieTimeDTO dto);
