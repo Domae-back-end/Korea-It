@@ -43,8 +43,13 @@ public class Movieafter implements MovieAction3{
 		Iterator<MovieInfoDTO> it3 = list.iterator();
 		while(it3.hasNext()) {
 			MovieInfoDTO aa = it3.next();
-			double k = (mm.detailCount(aa.getM_index())* 100 )/all;
-			aa.setRes_rate(k);
+			if(all != 0) {
+				double k = (mm.detailCount(aa.getM_index())* 100 )/all;
+				aa.setRes_rate(k);
+			}
+			else {
+				aa.setRes_rate(0.0);
+			}
 			//System.out.println(mm.detailCount(aa.getM_index()));
 			//System.out.println(aa.getMovietitle()+"의 현재 %: "+aa.getRes_rate());	
 			
