@@ -36,14 +36,13 @@
 </div>
 
 <div class="maincont_banner">
-	<ul class="slides ulss" style="width: 420px; transform: translateX(-5210px);">
+	<ul class="slides ulss" style="width: 420px; transform: translateX(-5180px);">
 	
+			<c:forEach items="${bannerimgs}" var="aaa" varStatus="no" >
+				<li><img src="../../banner/${aaa.imgurl}" alt="sss"></li>
+				
+			</c:forEach>
 	
-		<li><img src="/banner/poster1.png" alt=""></li>
-		<li><img src="/banner/poster2.png" alt=""></li>
-		<li><img src="/banner/poster3.png" alt=""></li>
-		<li><img src="/banner/poster4.jpg" alt=""></li>
-		<li><img src="/banner/poster5.jpg" alt=""></li>
 	</ul>
 	<span class="prev"><img src="/banner/p_left.png" alt="" /></span>
 	<span class="next"><img src="/banner/p_right.png" alt="" /></span>

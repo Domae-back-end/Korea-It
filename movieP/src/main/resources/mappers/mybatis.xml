@@ -785,7 +785,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<select id="getyesterdaysalesdistinct" resultType="SalesDTO"
 		parameterType="HashMap">
-		select distinct sectorNo from sales WHERE date_format(sales_time,'%Y-%m-%d')= #{day};
+		select distinct sectorNo from sales;
 	</select>
 
 	<select id="getsalesbyId" resultType="SalesDTO">
@@ -932,7 +932,9 @@ WHERE m_index = #{m_index};
 	</select>
 	
 	
-	
+	<select id="getbannerimgs"  resultType="BannerDTO">
+		select * from bannerimg
+	</select>
 	
 	
 	

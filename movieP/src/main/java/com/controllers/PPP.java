@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.admin.service.Provider;
+import com.model.BannerDTO;
 import com.model.PPPData;
+import com.user.service.BannerService;
 
 @Controller
 @RequestMapping("/user/mainpage/{service}")
@@ -29,16 +31,15 @@ public class PPP {
 	
 	
 
-	@ModelAttribute("bannerImgs")
-	ArrayList<String> bannerimgs(@PathVariable String service) {
+	@ModelAttribute("bannerimgs")
+	Object bannerimgs(@PathVariable String service) {
 
-		
-		ArrayList<String> bannerfilenames= new  ArrayList<String>();
-		
-		
+		//bannergetmain
+		BannerService scv =  pr.getContext().getBean( "bannerget"+service, BannerService.class);
 		
 		
-		return  bannerfilenames;
+		
+		return  scv.execute() ;
 	}
 	
 	

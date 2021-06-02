@@ -44,9 +44,21 @@ public class PageeditmovieinfoinsertReg implements PageeditService {
 		HashMap<String, Object> map = (HashMap) obj;		
 		MovieInfoDTO mdto = (MovieInfoDTO) map.get("mdto");
 		HttpServletRequest request = (HttpServletRequest)map.get("request");	
+		
+		//영화제목에 :  있는 경우 파일 오류생김.		
+		if(mdto.getMovietitle().contains(":")) {
+		String[] str=	mdto.getMovietitle().split(":");		
+		mdto.setMovietitle(str[0]+"-"+str[1]);		
+		}
+		
+		
+		
+		
 		db.movieinfoinsert(mdto);// 일단 집어넣고.	
 		int m_index =db.getIndexByTitle(mdto.getMovietitle());
 		HashSet<String> imgnames= new HashSet<>();
+		
+		
 	
 		logger.info(""+mdto.getMactrs());
 		logger.info(""+mdto.getMcate());

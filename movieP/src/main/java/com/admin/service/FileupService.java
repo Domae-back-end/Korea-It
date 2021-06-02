@@ -38,6 +38,10 @@ public class FileupService {
 		logger.debug("fileUp 실행 : {}",multipartFiles.length);
 		//String folderName =request.getsessi;
 		//String foldername= request.getRealPath("moviedata")+"\\"+movietitle;
+		
+		
+		
+		
 	
 	
 		String foldername=request.getSession().getServletContext().getRealPath("/moviedata");

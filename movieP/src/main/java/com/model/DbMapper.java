@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -252,6 +253,8 @@ void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
    
    // 어드민 로그인 용 
 	AdminaccDTO adminloginCheck(AdminaccDTO adacDTO);
+
+	ArrayList<BannerDTO> getbannerimgs();
    
    
    
