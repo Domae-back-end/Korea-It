@@ -1,6 +1,7 @@
 package com.user.service;
 
 import java.util.Date;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,21 +14,22 @@ import com.model.AlterDTO;
 import com.model.DateDTO;
 import com.model.DbMapper;
 import com.model.EndTimeDTO;
-import com.model.MovieAction4;
+import com.model.MovieAction6;
 import com.model.MovieInfoDTO;
 import com.model.MovieReviewDTO;
 import com.model.MoviewatchInfo;
 
+
 @Service
-public class MoviereviewinsertReg implements MovieAction4{
+public class MoviereviewinsertReg implements MovieAction6{
 
 	@Resource
 	DbMapper mm;
 	
 	@Override
-	public Object execute(MovieReviewDTO dto) {
+	public Object execute(Object dto1) {
 		
-		
+		MovieReviewDTO dto = (MovieReviewDTO)dto1;
 		//System.out.println("MovieReviewInsertReg 서비스빈. 영화번호"+dto.getCate());
 		AlterDTO alt = new AlterDTO();
 		alt.setMsg(dto.getUserid()+"님 관람평 작성 완료.");
@@ -63,6 +65,7 @@ public class MoviereviewinsertReg implements MovieAction4{
 		
 		if(cnt <= 0) {
 			alt.setMsg("영화를 관람 후 관람평을 써주세요.");
+			return alt;
 		}
 
 		Integer sk = mm.reviewinsert(dto);
