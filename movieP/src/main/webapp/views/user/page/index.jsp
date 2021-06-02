@@ -16,7 +16,14 @@
 <link rel="stylesheet" href='<c:url value="/resources/css/index.css" />'>
 <script src="<c:url value="/resources/js/index.js" />" ></script>
 <link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
+<c:if test="${subMenu.url !=null }">
+	<link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${subMenu.url}.css" />'>
+</c:if>
 <script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
+<c:if test="${subMenu.url !=null }">
+	<script src="<c:url value="/resources/js/${PPPData.cate}/${subMenu.url}.js" />" ></script>
+</c:if>
+
 
 <title>유저 메인 화면</title>
 </head>
