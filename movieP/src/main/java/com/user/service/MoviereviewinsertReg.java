@@ -61,6 +61,7 @@ public class MoviereviewinsertReg implements MovieAction4{
 			Iterator it2 = da.iterator();
 			while(it2.hasNext()) {
 				DateDTO dk = (DateDTO)it2.next();
+				
 				dk.setEnd_time(); //조합하기
 				//System.out.println("현재 저장된 시간");
 				//System.out.println(dk.getEnd_time()+"\n");
