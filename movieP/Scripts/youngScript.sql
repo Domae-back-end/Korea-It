@@ -35,6 +35,7 @@ insert into review (cate, userid, postcontent, posttime, gpa) values
 (6, 'dddd44', '관람평3', '2021-03-21 11:00:00', 3),
 (6, 'eeee55', '관람평4', '2021-04-21 11:00:00', 3);
 
+
 <!-- 좋아요-->
 create table userlikes(
 g_index int auto_increment primary key,
