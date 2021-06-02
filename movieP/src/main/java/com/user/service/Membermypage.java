@@ -23,7 +23,7 @@ public class Membermypage implements MemberAction {
 	
 	@Override
 	public Object execute(MemberDTO mdto, HttpSession session, HttpServletRequest request) {
-
+		
 		if(mdto.getPageKind()==null && request!=null)
 			mdto.setPageKind(request.getParameter("kind"));
 
@@ -42,10 +42,10 @@ public class Membermypage implements MemberAction {
 		pdto.init(mdto, dm.memcount(mdto));
 		mdto.setStart(pdto.getStart());
 		mdto.setLimit(pdto.getLimit());
-		
+	
 		MemPageDTO cpdto = new MemPageDTO();
 		cpdto.cancelinit(mdto, dm.memcount(mdto));
-		mdto.setStart(cpdto.getCstart());
+		mdto.setCstart(cpdto.getCstart());
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
@@ -59,7 +59,7 @@ public class Membermypage implements MemberAction {
 		map.put("pdto", pdto);
 		map.put("cpdto", cpdto);
 		
-		System.out.println(map);
+		System.out.println(map.get("like"));
 		
 		return map;
 	}
