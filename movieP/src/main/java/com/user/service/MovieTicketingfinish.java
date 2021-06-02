@@ -25,7 +25,7 @@ public class MovieTicketingfinish implements MovieTicketingService{
 	@Override
 	public Object execute(MovieTimeDTO dto, UserSitDTO udto) {
 		String[] buf = udto.getSeatNo().split(",");
-		
+
 		int c = 2000;
 		int t = 5000;
 		int a = 10000;
