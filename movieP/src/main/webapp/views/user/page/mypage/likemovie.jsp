@@ -4,7 +4,7 @@
 <div>
 	<input type="hidden" id="like" value="취소"/>
 	<input type="hidden" id="userid" value="${sessionId }"/>
-	<input type="hidden" id="pageKind" value="likemovie"/>
+	<input type="hidden" id="pagekind" value="likemovie"/>
 	
 	<div id="add">
 	<div class="fff">
