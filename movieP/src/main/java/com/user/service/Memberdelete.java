@@ -28,7 +28,7 @@ public class Memberdelete implements MemberAction {
 		
 		
 		if(mdto.getTicket()!=null)
-			mdto.setSales_type(mdto.getKind()+"환불");//inho
+			mdto.setSales_type("환불");//inho
 			map.put("ccnt", dm.memcancelinsert(mdto));
 		
 		System.out.println(map);
