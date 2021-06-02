@@ -42,7 +42,7 @@
 
 
 
-.containerr{width:80%;margin: 0 auto;border: 1px dashed red;}
+.containerr{width:110%;margin: 0 auto;border: 1px dashed red;}
 
 .aside {
 	display: inline-block;

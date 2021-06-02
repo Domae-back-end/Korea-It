@@ -50,8 +50,8 @@
 		class="btn btn-success menugobtn">회원정보관리</button>
 
  -->
-	<button  id="ticketadmin" value="ticketadmin/tclist"
-		type="button" class="btn btn-success menugobtn">예매정보관리</button>
+	<!-- <button  id="ticketadmin" value="ticketadmin/tclist"
+		type="button" class="btn btn-success menugobtn">예매정보관리</button> -->
       
       </nav>
      
