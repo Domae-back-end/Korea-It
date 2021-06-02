@@ -38,16 +38,20 @@ public class Moviebefore implements MovieAction3{
 		
 		//전체 예매된 양을 가져오기
 		Integer all = mm.allcount();
+
 		//System.out.println("전체 개수: "+all);
 		Iterator<MovieInfoDTO> it3 = list.iterator();
 		while(it3.hasNext()) {
 			MovieInfoDTO aa = it3.next();
-			double k = (mm.detailCount(aa.getM_index())* 100 )/all;
-			aa.setRes_rate(k);
+			if(all != 0) {
+				double k = (mm.detailCount(aa.getM_index())* 100 )/all;
+				aa.setRes_rate(k);
+			}
+			else {
+				aa.setRes_rate(0.0);
+			}
 			//System.out.println(mm.detailCount(aa.getM_index()));
 			//System.out.println(aa.getMovietitle()+"의 현재 %: "+aa.getRes_rate());	
-			
-		
 		}
 		
 		Collections.sort(list, new Comparator<MovieInfoDTO>() {
