@@ -51,7 +51,7 @@ public class Pageeditmovieinfolist implements PageeditService {
 		//
 		System.out.println(npDTO+"\n테이블:"+npDTO.getTablename());
 		System.out.println("pagedto init");
-		npDTO.initfaq(db, totalmap);		
+		npDTO.initmovieinfo(db, totalmap);		
 		
 		
 		List<MovieInfoDTO> answer= db.movieinfolist(totalmap);	//검색어는mDTO에,
