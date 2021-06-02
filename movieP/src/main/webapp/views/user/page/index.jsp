@@ -37,6 +37,8 @@
 
 <div class="maincont_banner">
 	<ul class="slides ulss" style="width: 420px; transform: translateX(-5210px);">
+	
+	
 		<li><img src="/banner/poster1.png" alt=""></li>
 		<li><img src="/banner/poster2.png" alt=""></li>
 		<li><img src="/banner/poster3.png" alt=""></li>

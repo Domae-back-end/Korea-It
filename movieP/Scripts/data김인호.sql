@@ -78,7 +78,7 @@ CREATE TABLE sales (
  people varchar(30),
  
   
- sectorNo	varchar(100)	,
+ sectorNo	varchar(100),
  salesprice int,
  userid varchar(100),
  
@@ -91,10 +91,7 @@ CREATE TABLE sales (
 <!--  -->
 <!-- 긴급수정 !!  sales 테이블  -->
 
-alter table sales change moviesector sectorNo varchar(100);
-alter table monthsales change sectorCode sectorNo varchar(100);
 <!-- 긴급수정 ! 5월 31일 오후5시  윗부분 create  이미 수정함. -->
-alter table sales change ticket_index t_index varchar(100);
 
 <!-- 월정산 매출액 테이블(시간xxx년 xx월 1일 ,    ) -->
 CREATE TABLE monthsales (

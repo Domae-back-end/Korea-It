@@ -19,9 +19,9 @@
 					newinput.setAttribute("type", "text");
 					newinput.setAttribute("name", "mactrs");
 					document.getElementById("actor").appendChild(newinput)
-					var newbtn = document.createElement("button");
-					newbtn.setAttribute("type","button")
-					newbtn.classList.add("actorsearch")
+					//var newbtn = document.createElement("button");
+					//newbtn.setAttribute("type","button")
+					//newbtn.classList.add("actorsearch")
 					alert("배우 추가합니다.");
 				}
 
@@ -69,9 +69,24 @@
 <hr />
 		<div id="actor">
 			<button type="button" id="addactor">배우추가</button>
-			배우 <input type="text" name="mactrs" id="mactrs1" />	<button type="button" class="actorsearch" data-popup-open="1" id="actorsearch">배우찾기</button><br>
+			배우 <input type="text" name="mactrs" id="mactrs1" />	
+			
+			<!-- 
+			<button type="button" class="actorsearch" data-popup-open="1" id="actorsearch">배우찾기</button>
+			
+			 -->
+			
+			
+			<br>
 		<!--각 actorsearch 와  mactrs value를 엮어주는 방법..  -->
-			배우 <input type="text" name="mactrs" id="mactrs2" /><button type="button"  class="actorsearch" data-popup-open="2" id="actorsearch">배우찾기</button><br>	
+			배우 <input type="text" name="mactrs" id="mactrs2" />
+			
+			<!-- 
+			
+			<button type="button"  class="actorsearch" data-popup-open="2" id="actorsearch">배우찾기</button>
+			 -->
+			
+			<br>	
 			
 
 		</div>

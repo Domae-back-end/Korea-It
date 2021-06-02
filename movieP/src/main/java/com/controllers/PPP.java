@@ -1,5 +1,7 @@
 package com.controllers;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,29 @@ public class PPP {
 	PPPData pppData(@PathVariable String service) {
 		return new PPPData("mainpage", service);
 	}
+	
+	
+	
+	
+	
+
+	@ModelAttribute("bannerImgs")
+	ArrayList<String> bannerimgs(@PathVariable String service) {
+
+		
+		ArrayList<String> bannerfilenames= new  ArrayList<String>();
+		
+		
+		
+		
+		return  bannerfilenames;
+	}
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping
 	String view() {
