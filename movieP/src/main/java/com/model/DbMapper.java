@@ -72,6 +72,12 @@ public interface DbMapper {
    Integer reviewinsert(MovieReviewDTO dto);
    //리뷰 삭제하기
    Integer reviewdelete(MovieReviewDTO dto);
+   //endtime 가져오기
+   DateDTO BringEndTime(Integer time_index);
+   //index로 movietitle검색
+   String foundmoviename(Integer m_index);
+   //본 영화 list 가져오기
+   List<MoviewatchInfo> watched(MovieReviewDTO dto);
    //좋아요 업데이트하기
    Integer likeupdate(LikeDTO dto);
    //영화별 좋아요 수 가져오기(userlikes에서 컬럼 세서 가져옴)
@@ -88,12 +94,7 @@ public interface DbMapper {
    //예매 테이블에서 해당 영화 예매된 개수만 가져옴
    Integer detailCount(Integer m_index);
   
-   //매출테이블에서 예매인 정보만 가져옴
-   List<EndTimeDTO> pullTInfo(MovieReviewDTO dto);
-   //관, m_index 가지고 각영화의 끝나는 시간 저장함
-   List<DateDTO> pullEndTime(EndTimeDTO dto);
-   //index로 movietitle검색
-   String searchmovietitle(Integer m_index);
+
    
    MovieInfoDTO pullmovieinfo(String movietitle);
 
