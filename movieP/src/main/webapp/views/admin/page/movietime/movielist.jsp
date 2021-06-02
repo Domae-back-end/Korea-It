@@ -167,7 +167,7 @@ System.out.println(today.get(Calendar.MONTH));
 <c:choose>
 	<c:when test="<%=check%>">
 		<div class="menu1">
-			<a href="/admin/movietime/insert?dal=<%=request.getParameter("dal")+1%>&el=<%=request.getParameter("el")%>">등록하기</a>
+			<a href="/admin/movietime/insert?dal=<%=request.getParameter("dal")%>&el=<%=request.getParameter("el")%>">등록하기</a>
 		</div>
 		<div class="menu1">
 			<a href="/admin/movietime/search">검색</a>
