@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
+import com.model.ServiceFullDTO;
 @Service
-public class Pageeditfaqinsert implements  PageeditService {
+public class Pageeditfaqmodify implements  PageeditService {
 	
 	
 	
@@ -23,11 +24,8 @@ public class Pageeditfaqinsert implements  PageeditService {
 	public Object execute(Object obj) {
 
 		HashMap<String, Object> orimap = (HashMap) obj;		
-		HttpServletResponse write = (HttpServletResponse)orimap.get("response");
-		 PrintWriter out_write;
-		
-		
-		return "자찾질쓰기";
+		ServiceFullDTO sfDTO= (ServiceFullDTO)orimap.get("sfDTO");
+		return db.detailfaq(sfDTO);
 	}
 
 }

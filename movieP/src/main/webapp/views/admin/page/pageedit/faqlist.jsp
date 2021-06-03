@@ -135,12 +135,11 @@ $(function() {
 			<table class="table table-striped">
 				 <thead>
 					<td colspan="5" style="text-align: right; ">
-					
 						
 						<a href="faqinsert">글쓰기</a>
-						<button type="button" class="modifyGo">선택글수정하기</button>
+						<!-- <button type="button" class="modifyGo">선택글수정하기</button>  -->
 						<button type="button" class="deleteGo" >선택글삭제하기</button>
-						<!-- <a href="admin/pageedit/faqmodify">수정하기</a> -->
+						
 					<!-- 	<a href="admin/pageedit/faqdelete">삭제하기</a> -->
 					</td>
 				</thead>
@@ -150,13 +149,15 @@ $(function() {
 					<td>제목</td>
 				
 				</tr>
-			<c:forEach items="${data.sfDTO }" var="faqDTO" varStatus="no" >
+			<c:forEach items="${data.sfDTO }" var="faqDTO">
 				<tr id="${faqDTO.bqindex }">
 					
-					<td><input type="checkbox" name="ggno" class="ggno" value="${faqDTO.bqindex }"/>${faqDTO.bqindex }</td>
+					
 					<td>${faqDTO.bqcate }</td>
 					<td style="border: 1px solid;">
 					<a href="javascript:detailGo(${faqDTO.bqindex })">${faqDTO.bqtitle }</a></td>
+					
+					<td><a href="faqmodify?bqindex=${faqDTO.bqindex }">수정하기</a></td>
 					
 				</tr>
 				<tr><td colspan="3" id="${faqDTO.bqindex }" style="display: none;">${faqDTO.bqcont }</td> </tr>
