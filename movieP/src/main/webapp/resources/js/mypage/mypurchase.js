@@ -54,7 +54,7 @@ $(function() {
     	
     	var list = {
     		userid : document.getElementById('userid').value,
-    		date :  document.getElementById('moiverecord').value,
+    		date : document.getElementById('moiverecord').value,
     		pageKind : 'mypurchase'
     	};
     	
