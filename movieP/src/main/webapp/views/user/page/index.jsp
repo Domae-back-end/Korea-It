@@ -30,7 +30,6 @@
 
 
 <body>
-
 <div class="index_mainheader">
 	<jsp:include page="inc/header.jsp" />
 </div>

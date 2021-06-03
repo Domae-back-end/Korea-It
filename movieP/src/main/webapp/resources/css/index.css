@@ -42,7 +42,6 @@ body {text-align: center; margin: 0 auto; height: 100%; }
 .slides {position: absolute; left: 0; top: 0; }
 .slides.animated {transition: 0.3s ease-out; }
 .slides li {width: 1000px; height: 562px; float: left; }
-.slides li:not(:last-child) { }
 .ulss {display: block; list-style-type: disc; padding-inline-start: 180px; }
 
 .prev {width: 30px; height: 55px; cursor: pointer; display: inline-block; position: absolute; top: 255px; left: 20px; }
