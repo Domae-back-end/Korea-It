@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
@@ -24,10 +23,12 @@
 <c:if test="${subMenu.url !=null }">
 	<script src="<c:url value="/resources/js/${PPPData.cate}/${subMenu.url}.js" />" ></script>
 </c:if>
-
-
 <title>유저 메인 화면</title>
 </head>
+
+
+
+
 <body>
 
 <div class="index_mainheader">
@@ -57,6 +58,7 @@
 </div>
 </div>
 </c:if>
+
 
 <div class="index_maincont">
 	<jsp:include page="${PPPData.cate}/${PPPData.service}.jsp" />
