@@ -160,7 +160,7 @@ public interface DbMapper {
    
    int noticedelete(ServiceFullDTO sfDTO); //공지사항 삭제
    
-   int notiicemodfy (ServiceFullDTO sfDTO); //공지사항 수정
+   int noticemodify (ServiceFullDTO sfDTO); //공지사항 수정
    
    ////////////////////////////////////////////////1대1
    List<ServiceFullDTO> perslist(HashMap<String, Object> map); //1대1문의(미답변보기)
