@@ -10,4 +10,8 @@ public class MovieReviewDTO {
 	String cate, userid, postcontent, movietitle;
 	Date posttime;
 	String posttime_s;
+	
+	public String getContentBr() {
+		return this.postcontent.replaceAll("\n", "<br>");
+	}
 }
