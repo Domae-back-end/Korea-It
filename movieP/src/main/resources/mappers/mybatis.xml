@@ -680,7 +680,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<sql id="date">
 
 		<choose>
-			<when test="pageKind == mypurchase">
+			<when test="pageKind == 'mypurchase'">
 				<![CDATA[and date_format(ticketing.reg_date,'%Y-%m')=#{date}]]>
 			</when>
 
@@ -725,7 +725,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		left outer join movieimg on sales.m_index = movieimg.m_index
 		left outer join movietime on ticketing.time_index = movietime.time_index
 		where ticketing.userid=#{userid} and imgname like '%poster.jpg' 
-		and date_format(ticketing.reg_date,'%Y-%m')=#{date} GROUP BY saleslink
+		<include refid="date" /> GROUP BY saleslink
 		order by sales.sales_time desc
 		limit #{start},#{limit}
 	</select>
