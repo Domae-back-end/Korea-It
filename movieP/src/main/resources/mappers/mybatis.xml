@@ -130,7 +130,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="BringEndTime" parameterType="java.lang.Integer" resultType="DateDTO">
 		select endtime, reg_date,movietitle from movietime 
-		where time_index='${time_index}'
+		where time_index=#{time_index}
 	</select>
 
 	<!-- 영화 제목 찾기 -->
