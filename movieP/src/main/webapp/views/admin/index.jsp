@@ -25,40 +25,37 @@
 	margin: 0;
 }
 
-.main {
-	text-align: center;
-	width: 60%;
-	height: 100%;
-	margin: 0 auto;
-	height: 100%;
-}
-
 .adminheader {
-	width: 104.3%;
+	width: 1000px;
 	height: 100px;
-
+	border: 2px dashed red;
 }
+.main {
+	text-align: center;	width: 1000px;	height: 100%;	margin: 0 auto;	height: 900px;
+}/*  */
 
-.container {
-	width: 150%;
+
+.containerr {
+	width: 1000px;
 	height: 90%;
 	margin: 0px;
 	padding: 0px;
 	display: flex;
+	border: 2px dashed #ddd;
 }
 
 .aside {
 	display: inline-block;
 	width: 150px;
 	height: 900px;
-	border: 1px solid;
+	border: 5px solid blue;
 }
 
 .body {
 	display: inline-block;
-	width: 80%;
+	width: 1000px;
 	height: 100%;
-	border: 1px solid;
+	border: 1px solid red;
 }
 
 </style>
@@ -68,7 +65,7 @@
 		<div class="adminheader"><jsp:include page="inc/header.jsp" />
 		</div>
 
-		<div class="container">
+		<div class="containerr">
 
 			<c:choose>
 				<c:when test="${not empty submenu}">

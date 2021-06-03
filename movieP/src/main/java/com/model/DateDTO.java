@@ -7,14 +7,15 @@ import lombok.Data;
 
 @Data
 public class DateDTO {
-	Date reg_date;
-	Date endtime;
+	Date reg_date=null;
+	Date endtime=null;
 	String movietitle;
 	
 	Date end_time;
 	
 	public void setEnd_time() {
 		Date dd = new Date();
+		if(endtime ==null) return;
 		dd.setYear(this.reg_date.getYear());
 		dd.setMonth(this.reg_date.getMonth());
 		dd.setDate(this.reg_date.getDate());

@@ -38,8 +38,9 @@ insert into review (cate, userid, postcontent, posttime, gpa) values
 
 
 <!-- 좋아요-->
+<!--m_index: 영화코드-->
 create table userlikes(
-g_index int auto_increment primary key,
+g_index int auto_increment primary key, 
 userid varchar(200),
 m_index int
 );	

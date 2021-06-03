@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -36,11 +38,31 @@ public class MovieTimeController {
 	
 
 	@RequestMapping
-	String mainpage(@PathVariable String cate) {
+	String mainpage(@PathVariable String cate,HttpServletRequest request) {
+				
+		HttpSession sess= request.getSession();
+		
 		if(cate.endsWith("Reg")) {
+			
 			return "admin/page/alter";
+			
 		}
-		return "admin/index";
+		
+		if(sess.getAttribute("adacDTO")!=null) {
+			
+				return "admin/index";
+				
+		}
+			
+			else {
+				
+				return "admin/loginpage";
+			}
+			
+		
+		
+		
+		
 	}
 
 }

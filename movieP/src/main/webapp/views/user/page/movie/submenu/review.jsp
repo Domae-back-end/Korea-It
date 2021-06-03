@@ -16,7 +16,7 @@
 	}
 	
 	#aa{
-		height: 60px;
+		height: 80px;
 		border : 1px solid #ccc;
 		border-radius: 10px;
 		margin-bottom: 10px;
@@ -28,6 +28,9 @@
 		height: 60px;
 	}
 	#content{
+	width: 560px;
+	height: 60px;
+	overflow:auto;
 		display: inline-block;
 	}
 	#del{
@@ -149,7 +152,7 @@
 			  <input type="radio" id="2-star" id = "gpa" name="gpa" value="2" /><label for="2-star" title="Not Good">2 stars</label>
 			  <input type="radio" id="1-star" id = "gpa" name="gpa" value="1" /><label for="1-star" title="Bad">1 star</label>
 			</ul>
-			<textarea name="postcontent" id="p" rows="1" cols="200" onKeyUp="javascript:fnChkByte(this,'500')" placeholder="관람평을 입력 해 주세요. 최대 200글자까지 가능합니다."></textarea>
+			<textarea name="postcontent" id="p" rows="1" cols="200" onKeyUp="javascript:fnChkByte(this,'100')" placeholder="관람평을 입력 해 주세요. 최대 100글자까지 가능합니다."></textarea>
 			<input type="hidden" name="cate" id="cate" value="${param.ind}" />
 			<input type="hidden" name="cnt" id="cnt"  />
 			<input type="submit" value="관람평 작성" id="b">

@@ -30,6 +30,7 @@ public class MoviereviewinsertReg implements MovieAction6{
 	public Object execute(Object dto1) {
 		
 		MovieReviewDTO dto = (MovieReviewDTO)dto1;
+		dto.getContentBr();
 		//System.out.println("MovieReviewInsertReg 서비스빈. 영화번호"+dto.getCate());
 		AlterDTO alt = new AlterDTO();
 		alt.setMsg(dto.getUserid()+"님 관람평 작성 완료.");
@@ -51,12 +52,16 @@ public class MoviereviewinsertReg implements MovieAction6{
 		Iterator<MoviewatchInfo> it = watchedList.iterator();
 		while(it.hasNext()) {
 			MoviewatchInfo mwi = it.next();
-			DateDTO dd = (DateDTO) mm.BringEndTime(mwi.getTime_index());
-			dd.setEnd_time();
+			DateDTO dd = new DateDTO();
+			dd = (DateDTO) mm.BringEndTime(mwi.getTime_index());
+			if(dd == null)continue;
+			if(dd.getEndtime() !=null)
+				dd.setEnd_time();
+			
 			//내가 본 영화들의 날짜와 이름을 저장함. 이제 이 영화들 중 현재 선택된 영화를 알아내기
 			if(dto.getMovietitle().equals(dd.getMovietitle())) {
 				//현재 선택된 영화와 영화이름이 같다면
-				if(dd.getEnd_time().before(new Date())) {
+				if(dd.getEnd_time().before(new Date()) && dd.getEndtime() !=null) {
 					cnt++;
 					//System.out.println("관람평을 쓸 수 있는 영화 : "+ dd.getMovietitle()+"끝나는 시간: "+dd.getEnd_time());
 				}
