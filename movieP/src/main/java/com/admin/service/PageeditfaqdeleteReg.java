@@ -34,17 +34,12 @@ public class PageeditfaqdeleteReg implements PageeditService {
 		AlterDTO al = new AlterDTO();	
 		al.setMsg("삭제 실패");
 		
-		int res = 0;
-		
-		db.deletefaq(sfDTO);
+		int res = db.deletefaq(sfDTO);
 		al.setMsg("삭제 성공");
 		
 		System.out.println("결과: "+res);
 		
-
-		//al.setUrl("/admin/pageedit/noticelist");
-		// 여기도 마찬가지로 listdto 가 들어가야 할 것이며. data를 쓸것이다.
-
+		al.setUrl("faqlist");
 		return al;
 	}
 
