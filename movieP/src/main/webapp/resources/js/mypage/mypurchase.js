@@ -146,7 +146,6 @@ function purchaselistChange(list){
 			}
 	     }
 	});
-	
     	
 }
 
