@@ -6,7 +6,7 @@
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
 <input type="hidden" id="userid" value="${sessionId }"/>
 <input type="hidden" id="userpw" value="${memdata.dto.userpw }"/>
-<input type="hidden" id="userpnum" value="${memdata.dto.userpnum }"/>
+<input type="hidden" id="userpnum" value="${memdata.dto.userpnumM }"/>
 
 <h2>개인정보 수정</h2>
 	<div class = "idouter">
@@ -38,7 +38,7 @@
 		<div class = "mideouter">
 			<div class = "nameouter">생년월일</div>
 			<div>
-				<div class = "dataouter"><fmt:formatDate value="${memdata.dto.userbirth }" pattern="yyyy년 MM월 dd일"/></div>
+				<div class = "dataouter"><fmt:formatDate value="${memdata.dto.userbirthM }" pattern="yyyy년 MM월 dd일"/></div>
 			</div>
 		</div>
 		
@@ -46,14 +46,14 @@
 		<div class = "mideouter" id ="pumMidouter">
 			<div class = "nameouter" id ="pumnameouter" >휴대폰</div>
 			<div>
-				<div class = "dataouter" id="pnumouter">${memdata.dto.userpnum }</div>
+				<div class = "dataouter" id="pnumouter">${memdata.dto.userpnumM }</div>
 				<div class="emailouter">
 					<input type="button" class="changeButt" id="pumnchangGo" value="휴대폰번호 변경"/>
 				</div>
 				<div class="emailouter">
-					<input type="hidden" id="newpnum" maxlength="20" autocomplete="off" placeholder="핸드폰 번호를 입력해주세요"/>
-					<input type="hidden" id="checknum" maxlength="4" autocomplete="off" />
+					<input type="hidden" id="newpnum" maxlength="20" autocomplete="off" placeholder="-포함해서 입력"/>
 					<input type="hidden" class="changeButt" id="checknumButt" value="인증번호 전송"/>
+					<input type="hidden" id="checknum" maxlength="4" autocomplete="off" />
 					<input type="hidden" class="changeButt" id="numfinish" value="확인"/>
 				</div>
 			</div>

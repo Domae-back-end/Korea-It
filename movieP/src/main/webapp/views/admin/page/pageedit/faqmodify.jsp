@@ -12,21 +12,22 @@
 <form action="/admin/pageedit/faqmodifyReg" method="post">
 <input type="hidden" name="bqindex" value="${data.bqindex }">
 			질문카테고리 
-			<select name="bqcate" value="${data.bqcate }">
+			<select name="bqcate">
+				<option>${data.bqcate }</option>
 				<option value="영화/예매"> 영화/예매 </option>
 				<option value="가입"> 가입  </option>
 				<option value="영화관"> 영화관 </option>
 				<option value="기타"> 기타   </option>
 			</select>
 			<br>
-			질문 제목 <input type="text" name="bqtitle"/>
+			질문 제목 <input type="text" name="bqtitle" value="${data.bqtitle }"/>
 			<br>
 			질문 내용 <textarea name="bqcont" rows="5" cols="30">${data.bqcont }</textarea>
 			<br>
 			안내 링크 2<input type="text" name="faqurl1" />
 			<br>
 			안내 링크 2<input type="text" name="faqurl2" />
-<input type="submit" value="등록하기"/>
+<input type="submit" value="수정하기"/>
 </form>
 </body>
 </html>

@@ -23,9 +23,8 @@ public class PageeditfaqmodifyReg implements PageeditService {
 		System.out.println("pageeditfaqmodifyReg");
 		HashMap<String, Object> map = (HashMap) obj;		
 		ServiceFullDTO sfDTO = (ServiceFullDTO) map.get("sfDTO");
-		System.out.println(sfDTO);
-		db.modifyfaq(sfDTO);
 		
+		int res = db.modifyfaq(sfDTO);
 
 		AlterDTO al = new AlterDTO();	
 		al.setMsg("FAQ  수정 성공");

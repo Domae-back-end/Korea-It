@@ -1,7 +1,10 @@
 var empCh = /\s/g; 
 var idCh = /^(?=.*[a-zA-Z])(?=.*[0-9_-]).{5,20}$/;
 var pwCh = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
-var nameCh = /^[가-힣]{2,6}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; 
+
+/*var nameCh = /^[가-힣]{2,6}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; */
+
+var nameCh = /^[가-힣a-zA-Z]{2,10}$/; 
 var emailCh = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
 var pnumCh = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/; 
 
@@ -64,7 +67,7 @@ $(function() {
 		if (nameCh.test($('#username').val())) {
 			$('#name_check').text(''); 
 		}else{
-			$('#name_check').text('한글 2~6자 또는 영어 2~10자 이내로 입력하세요. (특수기호, 공백 사용 불가)'); 
+			$('#name_check').text('한글,영어 2~10자 이내로 입력하세요. (특수기호, 공백, 숫자 사용 불가)'); 
 			$('#name_check').css('color', 'red');
 		}
 	});
@@ -105,29 +108,17 @@ $(function() {
 	        em.val($(this).val());
 	        em.prop("readonly",true);
 
+			/*
 			if (emailCh.test($('#emailId').val()+'@'+$(this).val())) {
 				
 				document.getElementById('useremail').value = $('#emailId').val()+'@'+$(this).val();	
 			}else{
 				$('#email_check').text('이메일 아이디를 확인해주세요'); 
 				$('#email_check').css('color', 'red');
-				$('#emailId').val('');
-			}
+			}*/
 	    }
 	});
 	
-	$("#emailAd").on("propertychange change keyup paste input", function(){	
-		 
-		if (emailCh.test($('#emailId').val()+'@'+$('#emailAd').val())) {
-			$('#email_check').val('')
-			document.getElementById('useremail').value = $('#emailId').val()+'@'+$('#emailAd').val();	
-		}else{
-			$('#email_check').text('이메일 양식을 확인해주세요.'); 
-			$('#email_check').css('color', 'red');
-			$('#emailId').val('');
-			$('#emailAd').val('');
-		}
-	});
 	
 	$("#pnumL").on("propertychange change keyup paste input", function(){
 		
@@ -142,11 +133,26 @@ $(function() {
 		}else{
 			$('#pnum_check').text('휴대폰번호를 확인해주세요.(2~4자 숫자만 사용가능)'); 
 			$('#pnum_check').css('color', 'red');
-			$('#pnumM').val('');
-			$('#pnumL').val('');
+			$('#pnumcheck').attr("disabled", true);
 		}
 	});
 	
+	$("#pnumM").on("propertychange change keyup paste input", function(){
+		
+		if (pnumCh.test($('#pnumF').val()+$('#pnumM').val()+$('#pnumL').val())) {
+			
+			document.getElementById('userpnum').value = $('#pnumF').val()+'-'+$('#pnumM').val()+'-'+$('#pnumL').val();		
+			
+			$('#pnum_check').text('문자인증을 해주세요.'); 
+			$('#pnum_check').css('color', 'blue');
+			$('#pnumcheck').attr("disabled", false);
+
+		}else{
+			$('#pnum_check').text('휴대폰번호를 확인해주세요.(2~4자 숫자만 사용가능)'); 
+			$('#pnum_check').css('color', 'red');
+			$('#pnumcheck').attr("disabled", true);
+		}
+	});
 	
 	
 	$('#pnumcheck').click(function(){
@@ -254,15 +260,11 @@ $(function() {
 			alert('휴대폰 인증 필요.'); 
 			return false;
 		}
-		if (!emailCh.test($('#useremail').val())) { 
-			
-			alert('이메일을 확인하세요.'); 
-			return false;  
-		} 
 		
 		$('#pnumM').attr("disabled", false);
 		$('#pnumL').attr("disabled", false);
 		$('#pnumF').attr("disabled", false);	
+		document.getElementById('useremail').value = $('#emailId').val()+'@'+$(emailAd).val();	
 		document.getElementById('birthYear').value = $('#birthY').val();
 	    document.getElementById('birthDay').value = $('#birthM').val() + '-' + $('#birthD').val();
 		
@@ -273,6 +275,6 @@ $(function() {
 });
 
 function mainGo() {
-	frm.action = "/user/main"
+	frm.action = "/user/mainpage/main"
 	frm.submit()
 }

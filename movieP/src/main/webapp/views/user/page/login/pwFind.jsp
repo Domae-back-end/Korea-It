@@ -23,7 +23,7 @@
 			</div>
 			<div class="outF">
 				<div class="outD" >휴대폰 번호</div>
-				<div class="outT"><input type="text" id="userpnum" name="userpnum" maxlength="20" placeholder="'-'포함해서 입력" autocomplete="off" /></div>
+				<div class="outT"><input type="text" id="userpnum" name="userpnum" maxlength="20" placeholder="'-'제외하고 입력" autocomplete="off" /></div>
 				<input type="button" class="chButt" id="pnumcheck" value="인증번호 발송"/>
 			</div>
 			<div class="outF">

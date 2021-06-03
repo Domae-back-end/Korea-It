@@ -148,7 +148,7 @@
     
    	 	$('#newpnum').attr("disabled", false);
     	
-    	if( document.getElementById('newpnum').value == null){
+    	if( document.getElementById('newpnum').value == ""){
     		var num = document.getElementById('userpnum').value
     	
     	}else{
