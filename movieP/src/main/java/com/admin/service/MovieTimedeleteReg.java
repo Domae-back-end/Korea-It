@@ -19,7 +19,7 @@ public class MovieTimedeleteReg implements MovieTimeService {
 
 	@Override
 	public Object execute(String dal, String el, MovieTimeDTO dto) {
-
+		System.out.println(dto);
 		int delete = db.deletemovie(dto);
 
 		AlterDTO at = new AlterDTO();
