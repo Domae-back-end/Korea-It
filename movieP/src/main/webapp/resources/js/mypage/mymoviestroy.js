@@ -1,6 +1,14 @@
 /**
  * 
  */
+ $(function() {
+ 
+	 if(document.getElementById('pagekind').value == "seemovie"){
+
+	 		pageChange(1)
+	 }
+ }); 
+ 
 function likeButt(data){
 		
 	var list = {
@@ -254,8 +262,16 @@ function pageChange(i){
 				
 					
 					for(j in data.purchase){
+						
+						var state = "관람평쓰기"
+						
+						for(t in data.comment){
+							if(data.comment[t].cate ==  data.purchase[j].m_index)
+								state = "관람평보기"
+						}
 					
-						if(data.like[j].checktime < data.dto.nowDate){
+					
+						if(data.purchase[j].checktime < data.dto.nowDate){
 						
 							var tt ="<div class='fff'><div class = 'seeouter'>"
 						
@@ -276,7 +292,7 @@ function pageChange(i){
 							tt+="<div>"+data.purchase[j].starttime +"</div>"
 							tt+="<div>"+data.purchase[j].sectorNo +"</div>"
 							tt+="<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index +"'>"
-							tt+="<button class='changeButt' id='seewriteG'>"+'관람평쓰기'+"</button>"
+							tt+="<button class='changeButt' id='seewriteG'>"+state+"</button>"
 							tt+="</a></div>	</div>"
 							
 							$("#add").append(tt)
@@ -308,10 +324,8 @@ function pageChange(i){
 		     		
 		     		$("#pageRecord").append(pp)
 				}
-			
-			
-	     	
-	     
+	
 	     }
 	});
 }
+
