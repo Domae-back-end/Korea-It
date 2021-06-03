@@ -55,7 +55,7 @@ $(function() {
     	var list = {
     		userid : document.getElementById('userid').value,
     		date :  document.getElementById('moiverecord').value,
-    		pageKind : 'seemovie'
+    		pageKind : 'mypurchase'
     	};
     	
     	purchaselistChange(list);
