@@ -62,6 +62,7 @@ public class Moviebefore implements MovieAction6{
 
 				//System.out.println("실제 좌석 차지하는 수 : "+realCnt);
 				double k = Math.round( ((double)realCnt / totalSeat)*100)/100.0;
+				
 				//System.out.println("--------------------------------------영화제목: "+aa.getMovietitle() + "예매율: "+k);
 				aa.setRes_rate(k);
 			}
