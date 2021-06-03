@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+
 	<br>
 	<c:choose>
 		<c:when test="${not empty submenu}">
@@ -24,5 +24,5 @@
 	</c:choose>
 
 
-</body>
+
 </html>

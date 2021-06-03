@@ -75,6 +75,8 @@
 		</div>
 
 		<div class="containerr">
+		
+		
 
 			<c:choose>
 				<c:when test="${not empty submenu}">
@@ -83,6 +85,9 @@
 				</c:when>
 
 			</c:choose>
+
+
+
 
 
 			<div class="body" style="
@@ -104,9 +109,5 @@
 
 		</div>
 
-		<div class="footer"><jsp:include page="inc/footer.jsp" /></div>
-
-
-	</div>
 </body>
 </html>
