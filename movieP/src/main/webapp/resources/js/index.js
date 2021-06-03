@@ -21,7 +21,7 @@ $(document).ready(function() {
             cloneSlide.classList.add('clone');
             slides.appendChild(cloneSlide);
             //1 2 3 4 5  뒤에 차차 붙여
-        }
+        }//
         for (var i = slideCnt - 1; i >= 0; i--) {
             var cloneSlide = slide[i].cloneNode(true);
             cloneSlide.classList.add('clone');
