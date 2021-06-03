@@ -35,18 +35,18 @@ body {text-align: center; margin: 0 auto; height: 100%; }
 .banner_bg {overflow: hidden; position: absolute; z-index: 2; width: 100%; min-width: 1100px; height: 100%; margin: 0 auto; }
 .banner_bg img {display: block; width: 100%; filter: blur(7px); }
 
-.maincont_banner {width: 1058px; height: 562px; margin: 0 auto; left: 0px; position: relative; overflow:hidden; z-index: 3;}
+.maincont_banner {width: 1000px; height: 562px; margin: 0 auto; left: 0px; position: relative; overflow:hidden; z-index: 3;}
 .maincont_banner li img {width: 1000px; height: 562px; }
 
 .detail_top {overflow: hidden; }
 .slides {position: absolute; left: 0; top: 0; }
 .slides.animated {transition: 0.3s ease-out; }
 .slides li {width: 1000px; height: 562px; float: left; }
-.slides li:not(:last-child) {margin-right: 30px; }
-.ulss {display: block; list-style-type: disc; padding-inline-start: 60px; }
+.slides li:not(:last-child) { }
+.ulss {display: block; list-style-type: disc; padding-inline-start: 180px; }
 
 .prev {width: 30px; height: 55px; cursor: pointer; display: inline-block; position: absolute; top: 255px; left: 20px; }
-.next {width: 30px; height: 55px; cursor: pointer; display: inline-block; position: absolute; top: 255px; right: 40px; }
+.next {width: 30px; height: 55px; cursor: pointer; display: inline-block; position: absolute; top: 255px; right: 20px; }
 
 
 
