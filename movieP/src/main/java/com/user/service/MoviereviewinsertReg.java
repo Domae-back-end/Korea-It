@@ -57,6 +57,7 @@ public class MoviereviewinsertReg implements MovieAction6{
 			if(dd == null)continue;
 			if(dd.getEndtime() !=null)
 				dd.setEnd_time();
+			
 			//내가 본 영화들의 날짜와 이름을 저장함. 이제 이 영화들 중 현재 선택된 영화를 알아내기
 			if(dto.getMovietitle().equals(dd.getMovietitle())) {
 				//현재 선택된 영화와 영화이름이 같다면
