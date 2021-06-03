@@ -275,6 +275,6 @@ $(function() {
 });
 
 function mainGo() {
-	frm.action = "/user/main"
+	frm.action = "/user/mainpage/main"
 	frm.submit()
 }
