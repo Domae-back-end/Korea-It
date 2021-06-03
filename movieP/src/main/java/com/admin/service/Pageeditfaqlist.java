@@ -35,7 +35,7 @@ public class Pageeditfaqlist implements SalesService, PageeditService {
 		AdminListDTO res= new AdminListDTO();
 		HashMap<String, Object> totalmap = new HashMap<>();
 		System.out.println("전				"+npDTO);
-		npDTO.setLimit(3);
+		npDTO.setLimit(10);
 		totalmap.put("sfDTO", sfDTO);
 		totalmap.put("npDTO", npDTO);		
 		npDTO.initfaq(db, totalmap);

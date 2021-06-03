@@ -1,6 +1,5 @@
 package com.admin.service;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
@@ -10,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
-import com.model.ServiceFullDTO;
-import com.model.ServiceNoticePageDTO;
 @Service
 public class Pageeditfaqinsert implements  PageeditService {
 	

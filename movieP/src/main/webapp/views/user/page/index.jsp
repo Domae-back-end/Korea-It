@@ -23,12 +23,13 @@
 <c:if test="${subMenu.url !=null }">
 	<script src="<c:url value="/resources/js/${PPPData.cate}/${subMenu.url}.js" />" ></script>
 </c:if>
-
-
 <title>유저 메인 화면</title>
 </head>
-<body>
 
+
+
+
+<body>
 <div class="index_mainheader">
 	<jsp:include page="inc/header.jsp" />
 </div>
@@ -56,6 +57,7 @@
 </div>
 </div>
 </c:if>
+
 
 <div class="index_maincont">
 	<jsp:include page="${PPPData.cate}/${PPPData.service}.jsp" />

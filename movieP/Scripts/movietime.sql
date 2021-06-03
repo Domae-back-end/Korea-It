@@ -72,4 +72,3 @@ CREATE TABLE sales (
  sales_type   varchar(100),
  sales_time datetime
 );
-	

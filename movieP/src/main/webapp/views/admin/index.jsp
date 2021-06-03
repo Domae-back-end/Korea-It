@@ -39,10 +39,13 @@
 
 }
 
-
-
-
-.containerr{width:110%;margin: 0 auto;border: 1px dashed red;}
+.container {
+	width: 150%;
+	height: 90%;
+	margin: 0px;
+	padding: 0px;
+	display: flex;
+}
 
 .aside {
 	display: inline-block;
@@ -53,20 +56,11 @@
 
 .body {
 	display: inline-block;
-	width: 100%;
-	height: 100%;
-	border: 1px solid blue;
-}
-
-.footer {
-	text-align: center;
 	width: 80%;
-
-	height: 100px;
-	margin: 0 auto;
-	background: white;
-	border: 1px dashed black;
+	height: 100%;
+	border: 1px solid;
 }
+
 </style>
 </head>
 <body>
@@ -74,7 +68,7 @@
 		<div class="adminheader"><jsp:include page="inc/header.jsp" />
 		</div>
 
-		<div class="containerr">
+		<div class="container">
 
 			<c:choose>
 				<c:when test="${not empty submenu}">
@@ -104,9 +98,6 @@
 
 		</div>
 
-		<div class="footer"><jsp:include page="inc/footer.jsp" /></div>
-
-
-	</div>
+		
 </body>
 </html>

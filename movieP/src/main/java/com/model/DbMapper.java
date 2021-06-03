@@ -213,6 +213,8 @@ public interface DbMapper {
 
    int aaatotalCnt(HashMap<String, Object> map);
    void insertfaq(ServiceFullDTO sfDTO);
+   int modifyfaq(ServiceFullDTO sfDTO);
+   int deletefaq(ServiceFullDTO sfDTO);
    ServiceFullDTO detailfaq(ServiceFullDTO sfDTO);
 
    int updatepostername(MovieInfoDTO mdto);
