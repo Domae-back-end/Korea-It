@@ -174,17 +174,25 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
 	<!-- 예매율 -->
-	<!-- sales 테이블 환불 빼고 전체 개수 -->
-	<select id="allcount" resultType="java.lang.Integer">
-		select count(*) from ticketing
+	<!-- sales 테이블 환불 개수 -->
+	<select id="allcount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		select count(*) from sales 
+		where sales_type='환불' and m_index='${m_index}' and
+		sales_time >= date_add(now(), interval -3 day)
 	</select>
 	
 	<!-- sales 테이블에서 해당영화의 개수만 가져오기 -->
 	<select id="detailCount" resultType="java.lang.Integer">
-		select count(*) from ticketing 
+		select count(*) from sales
+		where sales_time >= date_add(now(), interval -3 day)
+		and m_index='${m_index}' and sales_type!='환불'
 	</select>
 	
-
+	<!-- 3일동안 개봉한 영화들의 관 가져오기 -->
+	<select id="pullSeatNum" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(*) from movietime m where reg_date >= date_add(now(), interval -3 day) and
+		sectorNo = '${sectorno}'
+	</select>
 	
 
 	<select id="findMovie" resultType="MovieInfoDTO"

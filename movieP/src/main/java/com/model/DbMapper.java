@@ -91,10 +91,11 @@ public interface DbMapper {
    Integer calcGPA(Integer m_index);
    
    //예매 테이블 전체개수 가져옴
-   Integer allcount();
+   Integer allcount(Integer m_index);
    //예매 테이블에서 해당 영화 예매된 개수만 가져옴
    Integer detailCount(Integer m_index);
-  
+   //관 입력하면 3일동안의 관의 개수 나옴
+   Integer pullSeatNum(String sectorno);
 
    
    MovieInfoDTO pullmovieinfo(String movietitle);
