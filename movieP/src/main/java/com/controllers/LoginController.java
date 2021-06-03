@@ -68,4 +68,13 @@ public class LoginController {
 		session.invalidate();
 		return "user/home";
 	}
+	
+	
+	
+	@RequestMapping(value = "/adminlogout")
+	public String admin(HttpSession session) throws IOException {
+		session.invalidate();
+		return "admin/loginpage";
+	} 	
+	
 }

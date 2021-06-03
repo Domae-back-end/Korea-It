@@ -50,12 +50,12 @@
 		class="btn btn-success menugobtn">회원정보관리</button>
 
  -->
-	<button  id="ticketadmin" value="ticketadmin"
-		type="button" class="btn btn-success menugobtn">예매정보관리</button>
+	<!-- <button  id="ticketadmin" value="ticketadmin/tclist"
+		type="button" class="btn btn-success menugobtn">예매정보관리</button> -->
       
       </nav>
      
-      <a class="btn btn-outline-primary" href="#">로그아웃</a>
+      <a class="btn btn-outline-primary" href="/adminlogout">로그아웃</a>
      
      
     </div>
