@@ -105,29 +105,17 @@ $(function() {
 	        em.val($(this).val());
 	        em.prop("readonly",true);
 
+			/*
 			if (emailCh.test($('#emailId').val()+'@'+$(this).val())) {
 				
 				document.getElementById('useremail').value = $('#emailId').val()+'@'+$(this).val();	
 			}else{
 				$('#email_check').text('이메일 아이디를 확인해주세요'); 
 				$('#email_check').css('color', 'red');
-				$('#emailId').val('');
-			}
+			}*/
 	    }
 	});
 	
-	$("#emailAd").on("propertychange change keyup paste input", function(){	
-		 
-		if (emailCh.test($('#emailId').val()+'@'+$('#emailAd').val())) {
-			$('#email_check').val('')
-			document.getElementById('useremail').value = $('#emailId').val()+'@'+$('#emailAd').val();	
-		}else{
-			$('#email_check').text('이메일 양식을 확인해주세요.'); 
-			$('#email_check').css('color', 'red');
-			$('#emailId').val('');
-			$('#emailAd').val('');
-		}
-	});
 	
 	$("#pnumL").on("propertychange change keyup paste input", function(){
 		
@@ -142,8 +130,7 @@ $(function() {
 		}else{
 			$('#pnum_check').text('휴대폰번호를 확인해주세요.(2~4자 숫자만 사용가능)'); 
 			$('#pnum_check').css('color', 'red');
-			$('#pnumM').val('');
-			$('#pnumL').val('');
+			$('#pnumcheck').attr("disabled", true);
 		}
 	});
 	
@@ -254,15 +241,11 @@ $(function() {
 			alert('휴대폰 인증 필요.'); 
 			return false;
 		}
-		if (!emailCh.test($('#useremail').val())) { 
-			
-			alert('이메일을 확인하세요.'); 
-			return false;  
-		} 
 		
 		$('#pnumM').attr("disabled", false);
 		$('#pnumL').attr("disabled", false);
 		$('#pnumF').attr("disabled", false);	
+		document.getElementById('useremail').value = $('#emailId').val()+'@'+$(emailAd).val();	
 		document.getElementById('birthYear').value = $('#birthY').val();
 	    document.getElementById('birthDay').value = $('#birthM').val() + '-' + $('#birthD').val();
 		
