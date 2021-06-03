@@ -61,12 +61,6 @@
 	border: 1px solid;
 }
 
-.footer {
-	text-align: center;
-	width: 80%;
-	height: 100px;
-	background: red;
-}
 </style>
 </head>
 <body>
@@ -104,9 +98,6 @@
 
 		</div>
 
-		<div class="footer"><jsp:include page="inc/footer.jsp" /></div>
-
-
-	</div>
+		
 </body>
 </html>
