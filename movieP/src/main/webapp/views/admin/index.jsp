@@ -27,14 +27,14 @@
 
 .main {
 	text-align: center;
-	width: 60%;
+	width: 1000px;
 	height: 100%;
 	margin: 0 auto;
 	height: 100%;
 }
 
 .adminheader {
-	width: 104.3%;
+	width: 1000px;
 	height: 100px;
 
 }
@@ -42,7 +42,7 @@
 
 
 
-.containerr{width:110%;margin: 0 auto;border: 1px dashed red;}
+.containerr{width:1200px;margin: 0 auto;border: 1px dashed red; flex: content;}
 
 .aside {
 	display: inline-block;
@@ -53,8 +53,8 @@
 
 .body {
 	display: inline-block;
-	width: 100%;
-	height: 100%;
+	width: 850px;
+	height: 900px;
 	border: 1px solid blue;
 }
 
