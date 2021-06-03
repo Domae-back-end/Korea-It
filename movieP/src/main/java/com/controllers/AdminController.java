@@ -36,6 +36,23 @@ public class AdminController {
 		return null;
 	}
 	
+	
+
+	@ModelAttribute("adminmainpage_sales")
+	String latestsales( ) {
+		System.out.println("메인페이지");
+		
+		
+		return "매출 들어갈 자리임";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping
 	String mainpage(HttpServletRequest request) {
 		

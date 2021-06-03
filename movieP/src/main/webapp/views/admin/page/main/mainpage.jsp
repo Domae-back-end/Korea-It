@@ -32,6 +32,7 @@
               <strong class="d-inline-block mb-2 text-success">최근 매출액</strong>
               <h3 class="mb-0">
                 <a class="text-dark" href="#">Post title</a>
+                <h4> ${   adminmainpage_sales  }</h4>
               </h3>
              <!--  <div class="mb-1 text-muted">Nov 11</div>
               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>

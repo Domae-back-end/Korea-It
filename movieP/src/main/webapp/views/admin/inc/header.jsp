@@ -23,7 +23,17 @@
 	})
 </script>
 
-
+	<script>
+	   $(document).ready(function () { 
+		        $("#admin").click(function() {		       	 
+		       	 alert("관리자페이지 ㄱㄱ")
+		       	location.replace("/admin");
+		       })		           
+		        $("#user").click(function() {		       	 
+		       	 alert("영화관메인페이지 ㄱㄱ.")
+		       	location.replace("/user/main");
+		       })
+	   })	</script>
 
 
 </head>
@@ -31,7 +41,12 @@
     <div class="d-flex flex-column flex-md-row align-items-center px-20 px-md-10 mb-6 bg-white border-bottom box-shadow">
      
       <nav class="mx-auto">
+	
 
+
+<button type="button" id="admin" class="btn-dark" style="display:inline;margin-left:30px;">어드민 페이지로</button>
+<button type="button" id="user" class="btn-dark" style="display:inline;margin-left:30px;">영화메인 페이지로</button>
+	
 	<button  id="pageedit" value="pageedit/banner" type="button"
 		class="btn btn-success menugobtn">홈페이지설정</button>
 
