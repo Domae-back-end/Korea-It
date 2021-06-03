@@ -73,7 +73,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		parameterType="java.lang.String">
 		select * from movieinfo
 		<include refid="whereMovie2"></include>
-		order by m_index asc
+		order by mdate asc
 	</select>
 
 
