@@ -15,10 +15,8 @@ public class MemberDTO {
 	String nowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 	
 	String birthDay, birthYear;
-	String userid, userpw , username , userpnum, useremail, kind;
-	Date userbirth, joinday;
-	
-	String sales_type;//byinho
+	String userid, userpw , username , userpnum, userpnumM, useremail, kind;
+	Date userbirth, joinday, userbirthM;
 	
 	public void setUserbirth(String birthDay, String birthYear) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

@@ -19,11 +19,11 @@
 			</div>
 			<div class="outF">
 				<div class="outD" >생년월일</div>
-				<div class="outT"><input type="text" id="userbirth" name="userbirth" maxlength="20" placeholder="1966-11-22형식" autocomplete="off" /></div>
+				<div class="outT"><input type="text" id="userbirth" name="userbirth" maxlength="20" placeholder="19661122형식" autocomplete="off" /></div>
 			</div>
 			<div class="outF">
 				<div class="outD" >휴대폰 번호</div>
-			<div class="outT"><input type="text" id="userpnum" name="userpnum" maxlength="20" placeholder="'-'포함해서 입력" autocomplete="off" /></div>
+			<div class="outT"><input type="text" id="userpnum" name="userpnum" maxlength="20" placeholder="'-'제외하고 입력" autocomplete="off" /></div>
 			</div>
 				<input type="button" id="check" value="아이디 찾기"/>
 		</div>

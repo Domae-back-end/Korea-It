@@ -67,7 +67,7 @@ $(function() {
 		if (nameCh.test($('#username').val())) {
 			$('#name_check').text(''); 
 		}else{
-			$('#name_check').text('한글 2~6자 또는 영어 2~10자 이내로 입력하세요. (특수기호, 공백 사용 불가)'); 
+			$('#name_check').text('한글,영어 2~10자 이내로 입력하세요. (특수기호, 공백, 숫자 사용 불가)'); 
 			$('#name_check').css('color', 'red');
 		}
 	});
