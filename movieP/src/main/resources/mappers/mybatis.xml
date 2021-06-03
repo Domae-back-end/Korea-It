@@ -1012,11 +1012,13 @@ WHERE m_index = #{m_index};
 
 	<update id="modifyfaq" parameterType="ServiceFullDTO">
 		update basicqna set bqcate = #{bqcate}, bqtitle= #{bqtitle}, 
-		bqcont = #{bqcont} , faqurl1 = #{faqurl1}, faqur2 = #{faqurl2}
+		bqcont = #{bqcont} , faqurl1 = #{faqurl1}, faqurl2 = #{faqurl2}
 		where bqindex = #{bqindex}
 	</update>
 	
-	
+	<delete id="deletefaq" parameterType="ServiceFullDTO">
+		delete from basicqna where bqindex = #{bqindex}
+	</delete>
 	
 	
 	

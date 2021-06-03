@@ -28,33 +28,16 @@ public class PageeditfaqdeleteReg implements PageeditService {
 		
 		HashMap<String, Object> orimap = (HashMap)obj;
 		ServiceNoticePageDTO npDTO = (ServiceNoticePageDTO)orimap.get("npDTO");
-		
 		ServiceFullDTO sfDTO = (ServiceFullDTO)orimap.get("sfDTO");
 		HttpServletRequest request = (HttpServletRequest)orimap.get("request");
-		
-		
-		
-		
-		
-		String [] arr = request.getParameterValues("delArr[]");
-		System.out.println("삭제할 것: "+Arrays.toString(arr));
-		System.out.println(arr.length+"개");
 		
 		AlterDTO al = new AlterDTO();	
 		al.setMsg("삭제 실패");
 		
 		int res = 0;
-		int noId = 0;
 		
-		if (arr != null) {				
-			for (String i : arr) {
-				noId = Integer.parseInt(i);
-				sfDTO.setBqindex(noId);
-				//db.noticedelete(sfDTO);
-			}
-			res = 1;
-			al.setMsg("삭제 성공");
-		}
+		db.deletefaq(sfDTO);
+		al.setMsg("삭제 성공");
 		
 		System.out.println("결과: "+res);
 		
