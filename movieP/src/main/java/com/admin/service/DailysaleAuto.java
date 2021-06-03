@@ -72,10 +72,10 @@ public class DailysaleAuto {
 		daytotal.setSectorNo("total");
 		daytotal.setTotalsale(0);
 		daytotal.setTotalrefund(0);
-		daytotal.setSumall(0);
+		daytotal.setSumall(0);//
 		dayres.put("total", daytotal);//완성본으로 갈아끼우기.
 		// db insert작업.
-		if(day.split("-")[2].equals("02")) {// 첫날이면딱 한번 돌아감.
+		if(day.split("-")[2].equals("01")) {// 첫날이면딱 한번 돌아감. equals 01
 			sectorlist= sectors.iterator();//마지막 한바퀴 돌 이터레이터 재소환
 			sectorlist2= sectors.iterator();
 			while(sectorlist.hasNext()) {

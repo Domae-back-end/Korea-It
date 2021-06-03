@@ -69,7 +69,7 @@
 				});
 				
 				
-		})
+		})/
 	</script>
 
 
@@ -124,12 +124,16 @@
 		 줄거리<br><textarea name="mplot" rows="5" cols="30"  value="">${data.midto.mplot}</textarea>
 		<br>
 		<hr />
-		<div id="image">
+		
+		
+		<!-- <div id="image">
 			<button type="button" id="addimg">이미지추가</button>
 			영화이미지 <input type="file" name="infoimg" /><br>
 			영화이미지 <input type="file" name="infoimg" /><br>
 			
-		</div>
+		</div> -->
+		
+		
 		<hr />
 		<input type="submit" value="영화정보 수정하기" />
 	</form>

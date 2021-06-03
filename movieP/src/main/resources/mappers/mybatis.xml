@@ -678,7 +678,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</sql>
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
-		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, replace(userpnum,'-','') as userpnum, useremail, joinday, kind 
+		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userbirth as userbirthM, replace(userpnum,'-','') as userpnum, userpnum as userpnumM, useremail, joinday, kind 
 		from memberinfo <include refid="checkform" />
 	</select>
 
