@@ -748,7 +748,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		order by review.posttime desc
 		limit #{start},5
 	</select>
-
 	
 	<select id="memlikeinfor" resultType="map" parameterType="MemberDTO">
 		select movietitle, imgname, mlike, movieinfo.m_index, g_index from movieinfo
