@@ -130,6 +130,7 @@ $(function() {
 
 <div class="faqwrap " id="faqwrap">
 			<!-- 구분 시스템, 영화관, 기타 -->
+			<!-- 구분 시스템, 영화관, 기타 -->
 				<form action="faqlist" name="faqform">
 				
 			<table class="table table-striped">
