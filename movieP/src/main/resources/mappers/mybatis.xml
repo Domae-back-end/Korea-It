@@ -649,7 +649,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<set><![CDATA[userpnum=#{userpnum},useremail=#{useremail}]]></set>
 				<where> <![CDATA[userid=#{userid} and kind !='탈퇴' ]]></where>
 			</otherwise>
-		
+			
 		</choose>
 
 	</sql>
@@ -676,6 +676,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		</choose>
 
 	</sql>
+
+	<sql id="date">
+
+		<choose>
+			<when test="pageKind == mypurchase">
+				<![CDATA[and date_format(ticketing.reg_date,'%Y-%m')=#{date}]]>
+			</when>
+
+			<otherwise>
+				<![CDATA[and ticketing.reg_date < sysdate()]]>
+			</otherwise>
+		</choose>
+
+	</sql>
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
 		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userbirth as userbirthM, replace(userpnum,'-','') as userpnum, userpnum as userpnumM, useremail, joinday, kind 
@@ -697,7 +711,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select timetableidx, people, salesprice*-1 , userid, m_index, movietitle, sectorNo,'환불', sysdate() 
 		from sales where userid=#{userid} and sales_index =#{ticket}
 	</insert>
-<!--sales_type  에서  #{sales_type}로 변경./  -->
 	
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
 		select imgname, movietime.movietitle, movietime.sectorNo,
