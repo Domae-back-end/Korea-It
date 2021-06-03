@@ -30,7 +30,7 @@ public class MemberController {
 		if (service.endsWith("Form") || service.endsWith("Find"))
 			return null;
 		
-		if(service.endsWith("mypurchase"))
+		if(service.endsWith("mypurchase") || service.endsWith("mycinema") )
 			mdto.setPageKind("mypurchase");
 
 		if(service.startsWith("my"))

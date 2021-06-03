@@ -49,6 +49,7 @@ public class Moviebefore implements MovieAction6{
 		Integer totalSeat = seatNum[0]*100 + seatNum[1]*200 + seatNum[2]*200;
 		//해당 영화의 예매된 좌석 갯수 가져오기
 		//3일동안 해당영화의 예매된 자석 갯수 가져온다.
+		//System.out.println("___________________________________전체 개수: "+totalSeat);
 
 		//System.out.println("전체 개수: "+all);
 		Iterator<MovieInfoDTO> it3 = list.iterator();
@@ -59,9 +60,10 @@ public class Moviebefore implements MovieAction6{
 				Integer ticCnt = mm.detailCount(aa.getM_index());
 				Integer realCnt = ticCnt - retCnt;
 
-				System.out.println("실제 좌석 차지하는 수 : "+realCnt);
+				//System.out.println("실제 좌석 차지하는 수 : "+realCnt);
 				double k = Math.round( ((double)realCnt / totalSeat)*100)/100.0;
-				System.out.println("영화제목: "+aa.getMovietitle() + "예매율: "+k);
+				
+				//System.out.println("--------------------------------------영화제목: "+aa.getMovietitle() + "예매율: "+k);
 				aa.setRes_rate(k);
 			}
 			else {
