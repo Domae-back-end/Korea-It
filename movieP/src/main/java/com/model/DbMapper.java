@@ -207,7 +207,7 @@ public interface DbMapper {
    List<SalesDTO> getsalesbyId(String userid);
    List<SalesDTO> getsales(HashMap<String, Object> map);
    List<SalesDTO> getyesterdaysales(HashMap<String, Object> map);
-   List<SalesDTO> getMonthlygraph(TimeVO timeVO);List<SalesDTO> getMonthlygraph1(TimeVO timeVO);List<SalesDTO> getMonthlygraph2(TimeVO timeVO);List<SalesDTO> getMonthlygraph3(TimeVO timeVO);List<SalesDTO> getMonthlygraph4(TimeVO timeVO);
+   List<SalesDTO> getMonthlygraph(TimeVO timeVO);List<SalesDTO> getMonthlygraph1(TimeVO timeVO);List<SalesDTO> getMonthlygraph2(TimeVO timeVO);List<SalesDTO> getMonthlygraph3(TimeVO timeVO);List<SalesDTO> getMonthlygraph4(TimeVO timeVO);	List<SalesDTO> getMonthlygraph5(TimeVO timevo);
 
    List<ServiceFullDTO> getfaq(HashMap<String, Object> map);
 
@@ -259,6 +259,8 @@ void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 	AdminaccDTO adminloginCheck(AdminaccDTO adacDTO);
 
 	ArrayList<BannerDTO> getbannerimgs();
+
+
    
    
    

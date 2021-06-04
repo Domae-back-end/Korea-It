@@ -11,8 +11,7 @@
 
 	<script>
 		$(document).ready(function() {
-				var catecount= 0,
-				actorcount=0;
+				var catecount= 0,filecount=0,actorcount=0;
 				var cateselect= document.getElementById("cateselect")			
 					var actortext= document.getElementById("actortext")			
 				//카테삭제버튼정의
@@ -53,7 +52,7 @@
 					    	actorcount++;
 							var newactordiv = document.createElement("div");
 							newactordiv.setAttribute("id","actordiv"+actorcount)
-							
+							newactordiv.classList.add('mb-3')	
 							var newinput = document.createElement("input");
 							newinput.setAttribute("type", "text");
 							newinput.setAttribute("name", "mactrs");
@@ -96,13 +95,13 @@
 					    	catecount++;
 							var newcatediv = document.createElement("div");
 							newcatediv.setAttribute("id","catediv"+catecount)
-							
+								newcatediv.classList.add('mb-3')			
 							var newinput = document.createElement("input");
 							newinput.setAttribute("type", "text");
 							newinput.setAttribute("name", "mcate");
 							newinput.setAttribute("value", cateselect.value)
 							newinput.setAttribute("readonly","readonly")
-							
+								
 							
 							var catedeletebutton = document.createElement("button");
 							catedeletebutton.setAttribute("type", "button");
@@ -131,11 +130,38 @@
 				
 				
 				document.getElementById("addimg").onclick = function() {
+					
+					
+					filecount++;
+					var filediv = document.createElement("div")
+						filediv.setAttribute("id","filediv"+filecount)
+						filediv.classList.add('mb-3')			
+							
 					var newinput = document.createElement("input");
 					newinput.setAttribute("type", "file");
 					newinput.setAttribute("name", "infoimg");
-					document.getElementById("image").appendChild(newinput)			
+					
+					var filedeletebutton = document.createElement("button");
+					filedeletebutton.setAttribute("type", "button");
+					var btntext = document.createTextNode( '삭제하기' );
+					filedeletebutton.appendChild(btntext);
+					filedeletebutton.setAttribute("value",filecount)
+					filedeletebutton.setAttribute("id", filecount);
+					filedeletebutton.addEventListener('click',catedelete)
+					
+					
+					filediv.appendChild(newinput)
+					filediv.appendChild(filedeletebutton)
+					
+					
+					
+					
+					document.getElementById("image").appendChild(filediv)			
 					alert("이미지 추가");
+					
+					
+					
+					
 				}
 				//window.open("URL", "팝업이름", "팝업 옵션");				
 				
@@ -168,7 +194,7 @@
 
 		<div id="actor">
 			 <input type="text" name="insertname" id="actortext" />	
-			<button type="button" id="addactor">배우추가</button>
+			<button type="button" id="addactor"  class="mb-3">배우추가</button>
 			
 			<div   id="actorcont" ></div>
 				</div>
@@ -197,7 +223,7 @@
 			<option value="범죄">범죄</option>
 			
 			</select>
-				<button type="button" id="addcate">카테고리추가</button>
+				<button type="button" id="addcate"  class="mb-3">카테고리추가</button>
 			
 			<div   id="catecont" >
 				
@@ -223,9 +249,9 @@
 		<br>
 		<hr />
 		<div id="image">
-			<button type="button" id="addimg">이미지추가</button>
-			영화이미지 <input type="file" name="infoimg" /><br>
-			영화이미지 <input type="file" name="infoimg" /><br>
+			<button type="button" id="addimg" class="mb-3" >이미지추가</button><br>
+	
+		
 			
 		</div>
 		<hr />

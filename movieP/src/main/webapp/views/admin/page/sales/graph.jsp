@@ -27,11 +27,19 @@ $(document).ready(function(){
 	
 	
 	function graphFunction(){			
+		
+			cleartable()
+			
 			var BtnType= this.value;			
+			
+			
 			
 			// 월값, 금액정보 배열 
 			var coldata = new Array();
 			var moneydata = new Array();						
+			
+			var tabledata = new Array();
+			
 			var xhttp= new XMLHttpRequest();
 			startyear= ssggSyear.value
 			startmonth= ssggSmonth.value
@@ -39,8 +47,6 @@ $(document).ready(function(){
 			endmonth=ssggEmonth.value			
 			
 			console.log(sectorNo.value +"::버튼 타입 :: " + BtnType)
-			
-			
 			
 			if(startyear==='연'||startmonth==='월'||endyear==='연'||endmonth==='월'){
 				alert("박스를 모두 선택하세요!");				
@@ -52,33 +58,25 @@ $(document).ready(function(){
 					if(xhttp.status == 200){
 					console.log("서버랑 통신잘댐."+xhttp.responseText)
 					var parsed= JSON.parse(xhttp.responseText)
-					//console.log(parsed+",,,"+parsed.length)
-					
-					//var iterator = parsed.keys();
-					//for(var keys of iterator){
-					//	console.log(keys)
-					//}
-					
-					console.log(parsed.message2)
 					var cnt=0;
-					for(var rr in parsed){
-					
+					for(var rr in parsed){//var BtnType
+						
+						
+						tabledata.push(rr.split('-')[0]+' 년'+rr.split('-')[1]+'월, '+sectorNo.value+','+ parsed[rr])
+						
+						
 						coldata.push(rr)
 						cnt++;
 						moneydata.push(parsed[rr])
 						if(rr==='answer'){
+							tabledata.pop()
 							coldata.pop()
 							moneydata.pop()
 						}
 						
 					}// 출력 
 					
-					
-					console.log(cnt+"들어온 토탈 머니데이터"+moneydata.length)
-					
-
-					// 우선 컨텍스트를 가져옵니다. 
-					
+					console.log("ddddd   "+ tabledata.length)
 					var cnvs= document.getElementById("myChart")
 					var ctx = document.getElementById("myChart").getContext('2d');
 					ctx.clearRect(0, 0, cnvs.width, cnvs.height);
@@ -91,6 +89,8 @@ $(document).ready(function(){
 					if(myChart!=null){
 					myChart.destroy();
 					}
+					
+					
 					myChart  = new Chart(ctx, {
 					    type: 'bar',
 					    data: {
@@ -142,8 +142,24 @@ $(document).ready(function(){
 					            }]
 					        }
 					    }
-					});// ajax 결과잘 온 경우 행동 끗.
+					});
+				console.log( "동작하냐"+  tabledata.length  )
+				
+				for(var ss of tabledata){
+					var timetd= ss.split(',')[0];
+					var sectorNotd =ss.split(',')[1];
+					var sumsaletd = ss.split(',')[2];
+					inserttr(timetd,sectorNotd,sumsaletd);
+					
+					
+				}//
+				
+				
+				
+				
 				}
+					
+				
 				}};
 				//
 				xhttp.open("POST","/salesGraphSltView",true);
@@ -153,19 +169,45 @@ $(document).ready(function(){
 					"endyear":endyear, "endmonth":endmonth });
 				console.log("cccccc:"+data)				
 				xhttp.send(data);//sfy해서 서버에보냄	
-				}}
-	
-	
-	
-	
-		
+				}}	
 				//이벤트 리스너 설정 
 				for(var i = 0; i< getbuttons.length; i++){
 					getbuttons[i].addEventListener("click",graphFunction);
 				}
 				
+				function cleartable(){
+					var alltr = document.querySelectorAll('#salegraphtablebody tr')
+					console.log(alltr.length)
+					for( var i of alltr){
+						i.remove()
+					}					
+				}
+		
+				function inserttr(str1, str2, str3 ){ //tbody를 넣어야하나  tr을 넣어야하나..
+					var tablebody = document.querySelector('#salegraphtablebody') 
+					var trgroup = document.createElement("tr")
+					var td1 = document.createElement("td")
+					var text = document.createTextNode( str1 );
+					td1.appendChild(text);
+					var td2 = document.createElement("td")
+					var text = document.createTextNode( str2 );
+					td2.appendChild(text);
+					var td3 = document.createElement("td")
+					var text = document.createTextNode( str3 );
+					td3.appendChild(text);
+										
+					trgroup.appendChild(td1)
+					trgroup.appendChild(td2)
+					trgroup.appendChild(td3)				
+					tablebody.appendChild(trgroup)
+					
+					
+				}
 				
-	
+				
+				
+				
+				
 	
 	
 	
@@ -250,81 +292,29 @@ $(document).ready(function(){
 <div style="width:800px">
     <canvas id="myChart"></canvas>
 </div>
-
-
-
-
 </form>
-
-
-
-
-
-
-
 <div id="salesGraphWrapper" >
-
-
-	  <table class="table table-striped">
+	  <table class="table table-striped mb-1"   id="maintable"  >
     <thead>
       <tr>
-        <th>시간</th>
+        <th>기간</th>
         <th>관 종류</th>
-        <th>상품명/영화명</th>
+      
         <th>순매출액</th>
-        <th>매출액</th>
-        <th>환불액</th>
+     <!--  <th>상품명/영화명</th>   
+      <th>매출액</th>
+        <th>환불액</th> -->
 
       </tr>
     </thead>
     <tbody id="salegraphtablebody">
     
     
-<c:forEach var="i"   items="${data.salist }">
+
       <tr>
-        <td>${i.sales_index }</td>
-          <td>${i.userid }</td>
-        <td>${i.ticket_index }</td>
-        <td>${i.salesprice }</td>
-
-         <td>${i.sectorNo }</td>       
-         <td>${i.sales_type }</td>
-          <td>
-          	<fmt:formatDate value="${i.sales_time }" type="both"
-							pattern="yyy년MM월dd일  HH:mm:ss" />
-          
-          </td>
+				<td>dddd</td>       
       </tr>
-</c:forEach>
 
-	<tr>
-	<td colspan="8" align="center">
-					
-						<c:if test="${data.pdto.startPage > 1 }">
-							<input type="button" class="pagebtn btn btn-warning" pageval="${data.pdto.startPage-1 }" value="&lt" />	
-						</c:if>
-						
-						<c:forEach begin="${data.pdto.startPage }" end="${data.pdto.endPage }" step="1" var="i">
-							<c:choose>
-								<c:when test="${i==data.pdto.page }">
-									<span class="btn btn-success">${i }</span>
-								</c:when>
-								<c:otherwise>
-									<input type="button" class="pagebtn btn btn-warning" pageval="${i }" value="${i }" />
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						
-						<c:if test="${data.pdto.endPage < data.pdto.total }">
-							<input type="button" class="pagebtn btn btn-warning" pageval="${data.pdto.endPage+1 }" value="&gt" />
-						</c:if>
-					
-					
-	
-	
-	
-	
-	</tr>
 
 
     </tbody>    

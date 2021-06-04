@@ -55,10 +55,10 @@ public class SalesDTO {
 	
 	
 	// 정산 테이블 관련
-	int sumall=0; 
+	int sumall=0,sumalll=0; 
 	int totalsale=0;
 	int totalrefund=0;
-	Date monthdate;
+	Date monthdate,monthdatee;
 	
 	String firstday;
 	

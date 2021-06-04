@@ -1134,6 +1134,20 @@ WHERE m_index = #{m_index};
 		and  (sectorNo !='total')
 	</select>
 	
+	<select id="getMonthlygraph5" resultType="SalesDTO"
+		parameterType="TimeVO">
+	
+		select monthdate,  sum(sumall) as sumalll from
+		(select * ,
+		date_format(monthdate ,"%Y-%m-%d")
+
+		as monthdatee from monthsales
+			where sectorNo like concat(#{sectorNo},'%') and  (monthdate between #{sym} and  #{eym}  )   ) t1
+		group by monthdate;
+		
+		
+		
+	</select>
 	
 	
 	
