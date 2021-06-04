@@ -120,7 +120,7 @@ public class SalesGraphSltView implements SalesService {
 					}
 			//	}
 
-		}
+		}//
 
 		System.out.println(result.size());
 
