@@ -87,7 +87,8 @@ $(function() {
 		
 		if ($('#userpw').val() != $('#userpwchk').val() &&  pwnum == 1) {
 			
-			$('#pw_check2').text('비밀번호가 일치하지 않습니다.'); 
+			$('#userpwchk').val('')
+			$('#pw_check2').text('비밀번호가 일치하지 않습니다.다시 입력해주세요');  
 			$('#pw_check2').css('color', 'red');	
 			 pwnum = 0;		
 		}

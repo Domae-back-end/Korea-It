@@ -20,7 +20,8 @@
 			$('#newpwch').prop("readonly",true);
 		}
 		if ($('#newpw').val() != $('#newpwch').val() &&  pwnum == 1) {
-			$('#pw_check2').text('비밀번호가 일치하지 않습니다.'); 
+			$('#newpwch').val('')
+			$('#pw_check2').text('비밀번호가 일치하지 않습니다.다시 입력해주세요'); 
 			$('#pw_check2').css('color', 'red');	
 			 pwnum = 0;		
 		}
