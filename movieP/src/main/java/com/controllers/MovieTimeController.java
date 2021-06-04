@@ -47,7 +47,7 @@ public class MovieTimeController {
 			return "admin/page/alter";
 			
 		}
-				return "admin/loginpage";
+				return "admin/index";
 
 			
 	}
