@@ -8,20 +8,18 @@
 <input type="hidden" id="userpw" value="${memdata.dto.userpw }"/>
 <input type="hidden" id="userpnum" value="${memdata.dto.userpnumM }"/>
 
+ <div class="modal fade" data-backdrop="static" data-keyboard="false" id='inforDelete1'>
+      <div class="modal-dialog">
+        <div class="modal-content"></div>
+ </div>
+ </div>
 <h2>개인정보 수정</h2>
 	<div class = "idouter">
 		<div class = "nameouter">아이디</div>
 		<div>
 			<div class = "dataouter">${sessionId }</div>
 	
-			<c:choose>
-				<c:when test="${memdata.dto.kind == '일반' }">
-					<input type="button" class="changeButt" id="inforDelete" value="회원탈퇴"/>
-				</c:when>
-				<c:when test="${memdata.dto.kind == '네이버' }">
-					<input type="button" class="changeButt" id="inforNaverDelete" value="회원탈퇴"/>
-				</c:when>
-			</c:choose>
+			<input type="button" class="changeButt" id="inforDelete" value="회원탈퇴" data-target="#inforDelete1"/>
 	
 		</div>
 	</div>

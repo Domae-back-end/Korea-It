@@ -3,6 +3,15 @@
  */
 $(function() {
 	
+	 $(".qwer").click(function(){
+	 	var ttt= $(this).attr("dd");
+	 
+	 	  $("#inforpurchase1").modal({
+		      	remote: '/views/user/page/modal/purchase.jsp?saleslink=' + ttt
+		   	});
+	 });
+	
+	
 	if(document.getElementById("moiverecord") !=null){
 		
 		var date = new Date();

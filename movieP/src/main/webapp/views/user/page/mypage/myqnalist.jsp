@@ -7,7 +7,13 @@
 			고객센터를 통해 남기신 1:1 문의내역을 확인하실 수 있습니다.
 		</p>
 	</small>
-	<form action ="" method="post" enctype="multipart/form-data" name="frm">
+	<form action ="" method="get" name="qq">
+		<input type="hidden" name="qnastate" id="qnastateGo" />
+		<input type="hidden" name="qnacontent" id="qnacontentGo" />
+		<input type="hidden" name="detail" id="detail" />
+		<input type="hidden" name="page" id="page"/>
+	</form>
+	<form action ="" method="post" name="frm">
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />
 	</form>
 	<div>
@@ -30,7 +36,7 @@
 		<div class="fff">
 			<c:forEach items="${memdata.qna }" var ="pp" > 
 				<div class="puchaseinner">${pp.persid }</div>
-				<a href="?detail=${pp.persindex }"><div class="puchaseinner">${pp.perstitle }</div></a>
+				<a class="qnaDetailGo" value="${pp.persindex }" dd="${pp.persindex }" ><div class="puchaseinner">${pp.perstitle }</div></a>
 				<div class="puchaseinner">${pp.persqtime }</div>
 				<div class="puchaseinner">${pp.persatime }(${pp.persstate })</div>
 			</c:forEach>
@@ -45,7 +51,7 @@
 			<c:forEach begin="${memdata.pdto.startPage}" end="${memdata.pdto.endPage}" step="1" var="i">
 				<c:choose>
 					<c:when test="${i == memdata.pdto.page}">
-						<input type="text" class="pagebtn_sel" value="${i }" readonly/>
+						<input type="text" class="pagebtn_sel" value="${i }" pp="${i }" readonly/>
 					</c:when>
 					<c:otherwise>
 						<input type="button" class="btnnn pagebtn" onclick="qnapageChange(${i})" value="${i}" />
