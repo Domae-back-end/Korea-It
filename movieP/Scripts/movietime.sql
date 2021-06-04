@@ -8,7 +8,6 @@ create table movietime (
 );
 
 
-
 create table ticketing(
 	t_index int auto_increment primary key,
 	time_index int,
