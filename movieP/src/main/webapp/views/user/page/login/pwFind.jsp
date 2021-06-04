@@ -1,16 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>find</title>
-
-</head>
-<body>
 <div id="pwfind_main">
-	<h1>아이디/비밀번호 찾기</h1>
+	<h2>비밀번호 찾기</h2>
 	<form action="" method="post" enctype="multipart/form-data" name="frm">
 		<div class="main">
 			<div class="outF">
@@ -24,7 +16,7 @@
 			<div class="outF">
 				<div class="outD" >휴대폰 번호</div>
 				<div class="outT"><input type="text" id="userpnum" name="userpnum" maxlength="20" placeholder="'-'제외하고 입력" autocomplete="off" /></div>
-				<input type="button" class="chButt" id="pnumcheck" value="인증번호 발송"/>
+				<input type="button" class="chButt" id="pnumcheck" disabled="disabled" value="인증번호 발송"/>
 			</div>
 			<div class="outF">
 				<div class="outD" >인증번호</div>
@@ -35,5 +27,3 @@
 		</div>
 	</form>
 </div>
-</body>
-</html>

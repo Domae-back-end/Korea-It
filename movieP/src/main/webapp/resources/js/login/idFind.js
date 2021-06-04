@@ -3,6 +3,33 @@
  */
  $(function() {
 	
+	$("#username").on("propertychange change keyup paste input", function(){
+	
+		if($('#username').val()!='' && $('#userbirth').val()!='' && $('#userpnum').val()!='' )
+				$('#check').attr('disabled',false)
+		else
+			$('#check').attr('disabled',true)
+	});
+	
+	$("#userbirth").on("propertychange change keyup paste input", function(){
+	
+		if($('#username').val()!='' && $('#userpnum').val()!='' && $('#userbirth').val()!='' )
+				$('#check').attr('disabled',false)
+		else
+			$('#check').attr('disabled',true)
+
+	});
+	
+	$("#userpnum").on("propertychange change keyup paste input", function(){
+	
+		if($('#userbirth').val()!='' && $('#username').val()!='' && $('#userpnum').val()!='')
+				$('#check').attr('disabled',false)
+		else
+			$('#check').attr('disabled',true)		
+	
+	});
+	
+	
 	$('#check').click(function(){
 		
 		$.ajax({

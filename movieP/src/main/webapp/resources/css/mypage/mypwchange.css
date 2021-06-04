@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .changeouter{
 	border-top: 1px solid #000;
-	height: 320px;
+	height: 240px;
 	width: 700px;
 	margin-left: 20px;
 }
@@ -13,7 +13,6 @@
 .emailouter{
 	text-align:left;
 }
-
 .pwnameouter{
 	clear: both;
 	width: 180px;
@@ -26,12 +25,21 @@
 }
 
 .pwinner{
-	width: 150px;
+	width: 200px;
 	margin-top: 10px;
 	margin-left: 10px;
-	float: left;
 }
-
-#changeouter{
-	height: 180px;
+#pwnameouter{
+	height: 70px;
+	line-height:70px;
+}
+#mideouter{
+	height: 70px;
+}
+.check_msg{
+	margin-top: 5px;
+	height :30px;
+	font-size: 15px;
+	text-align: left;
+	margin-left: 190px;
 }

@@ -12,6 +12,7 @@ $(function() {
 	
 	var chCnt = 0;
 	var pnumchCnt = 0;
+	var pwnum = 0;
 	
     $("#userid").on("propertychange change keyup paste input", function(){
 		
@@ -83,18 +84,26 @@ $(function() {
 			$('#pw_check').css('color', 'red');
 			$('#userpwchk').prop("readonly",true);
 		}
+		
+		if ($('#userpw').val() != $('#userpwchk').val() &&  pwnum == 1) {
+			
+			$('#pw_check2').text('비밀번호가 일치하지 않습니다.'); 
+			$('#pw_check2').css('color', 'red');	
+			 pwnum = 0;		
+		}
 	});
 
 	$("#userpwchk").on("propertychange change keyup paste input", function(){
 		
 		if ($('#userpw').val() != $(this).val()) {
 			$('#pw_check2').text('비밀번호가 일치하지 않습니다.'); 
-			$('#pw_check2').css('color', 'red');			
-		}else if($(this).val()==""){
-			
+			$('#pw_check2').css('color', 'red');	
+			pwnum = 0;			
+		
 		}else{
 			$('#pw_check2').text('비밀번호 일치.'); 
 			$('#pw_check2').css('color', 'blue');
+			pwnum = 1;
 		}
 	});
 		
@@ -247,7 +256,7 @@ $(function() {
 			alert('아이디를 중복확인을 하세요.'); 
 			return false; 
 		}
-		if (!pwCh.test($('#userpw').val()) || ($('#userpw').val() != $('#userpwchk').val())){
+		if (!pwCh.test($('#userpw').val()) ||  pwnum == 0){
  			alert('비밀번호를 확인하세요.'); 
 			return false;
 		} 

@@ -49,8 +49,8 @@
 .purchasespaceButt{
 	clear:both;
 	text-align: right;
+	margin-right:5px;
 }
 .saleslink{
 	color: #00f;
 }
-
