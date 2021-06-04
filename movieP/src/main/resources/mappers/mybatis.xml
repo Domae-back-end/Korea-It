@@ -597,11 +597,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 		<choose>
 			<when test="qnastate == '전체' and qnacontent !=null and qnacontent !=''">
-				<where> <![CDATA[perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%') and persid=#{userid} ]]></where>
+				<where> <![CDATA[(perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%')) and persid=#{userid} ]]></where>
 			</when>
 	
 			<when test="qnastate != '전체' and qnacontent !=null and qnacontent !=''">
-				<where> <![CDATA[perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%') and persid=#{userid} and persstate =#{qnastate} ]]></where>
+				<where> <![CDATA[(perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%')) and persid=#{userid} and persstate =#{qnastate} ]]></where>
 			</when>
 	
 			<when test="qnastate != '전체'">
