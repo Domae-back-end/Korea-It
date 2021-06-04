@@ -1091,6 +1091,48 @@ WHERE m_index = #{m_index};
 	
 	</select>
 	
+	<!-- 그래프 뽑아오기  -->
+	<select id="getMonthlygraph1" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where (monthdate
+
+		between #{sym} and #{eym}) 
+		
+		and  (sectorNo  like concat('%','total','%'))
+		
+	</select>
+	<select id="getMonthlygraph2" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where (monthdate
+
+		between #{sym} and #{eym}) 
+		
+		and  (sectorNo  like concat('%',#{sectorNo},'%'))
+	</select>
+	<select id="getMonthlygraph3" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where monthdate
+
+		between #{sym} and #{eym}
+	</select>
+	
+	
+	<select id="getMonthlygraph4" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where (monthdate
+
+		between #{sym} and #{eym}) 
+		
+		and  (sectorNo !='total')
+	</select>
 	
 	
 	
