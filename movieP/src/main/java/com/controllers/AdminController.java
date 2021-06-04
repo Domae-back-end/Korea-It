@@ -58,13 +58,13 @@ public class AdminController {
 		
 		HttpSession sess= request.getSession();
 	
-		if(sess.getAttribute("adacDTO")!=null) {
+		//if(sess.getAttribute("adacDTO")!=null) {
 			return "admin/index";
-		}
-		
-		else {
-			return "admin/loginpage";
-		}
+//		}
+//		
+//		else {
+//			return "admin/loginpage";
+//		}
 		
 		//return "admin/index";
 		

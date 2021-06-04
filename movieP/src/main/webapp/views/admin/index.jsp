@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
 
-<title>관리자 메인 화면</title>
+<jsp:useBean id="currTime" class="java.util.Date" />
+
+
+<title>  <fmt:formatDate value="${currTime}" pattern="dd일 hh-mm실행" />   관리자 메인 화면</title>
 <style>
 * {
 	padding: 0;

@@ -3,3 +3,17 @@
 #qnaRecord{
 	height: 450px;	
 }
+.cimeminfor{	
+	margin:20px;
+	border-top: 1px solid #000;
+	width: 740px;
+	height: 150px;
+	border-bottom: 1px solid #ccc;
+}
+.puchaseinner{
+	height: 50px;
+	float: left;	
+	width: 185px;
+	border: 1px solid #ccc;
+	line-height: 50px;
+}

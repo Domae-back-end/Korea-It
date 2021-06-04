@@ -1,6 +1,5 @@
 package com.model;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import lombok.Data;
@@ -15,7 +14,7 @@ public class MemPageDTO {
 	
 	public void init(MemberDTO mdto, Map<String, Integer> map) {
 		
-		if(mdto.getPageKind()!=null && mdto.getPageKind()!="mypurchase") {
+		if(mdto.getPageKind()!=null && !mdto.getPageKind().equals("mypurchase")) {
 			
 			pageKind = mdto.getPageKind().substring(0,1) +"c";
 			
@@ -24,7 +23,7 @@ public class MemPageDTO {
 			if(pageKind.equals("lc"))
 				limit = 6;
 		
-		}else if(mdto.getPageKind()== "mypurchase") {
+		}else if(mdto.getPageKind()!=null && mdto.getPageKind().equals("mypurchase")) {
 			
 			pageKind ="sc";
 			limit=2;
@@ -77,6 +76,4 @@ public class MemPageDTO {
 			cendPage = ctotal;
 		}
 	}
-	
-	
 }

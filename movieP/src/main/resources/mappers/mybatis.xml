@@ -73,7 +73,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		parameterType="java.lang.String">
 		select * from movieinfo
 		<include refid="whereMovie2"></include>
-		order by m_index asc
+		order by mdate asc
 	</select>
 
 
@@ -649,7 +649,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<set><![CDATA[userpnum=#{userpnum},useremail=#{useremail}]]></set>
 				<where> <![CDATA[userid=#{userid} and kind !='탈퇴' ]]></where>
 			</otherwise>
-		
+			
 		</choose>
 
 	</sql>
@@ -676,6 +676,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		</choose>
 
 	</sql>
+
+	<sql id="date">
+
+		<choose>
+			<when test="pageKind == 'mypurchase'">
+				<![CDATA[and date_format(ticketing.reg_date,'%Y-%m')=#{date}]]>
+			</when>
+
+			<otherwise>
+				<![CDATA[and ticketing.reg_date < sysdate()]]>
+			</otherwise>
+		</choose>
+
+	</sql>
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
 		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userbirth as userbirthM, replace(userpnum,'-','') as userpnum, userpnum as userpnumM, useremail, joinday, kind 
@@ -697,7 +711,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select timetableidx, people, salesprice*-1 , userid, m_index, movietitle, sectorNo,'환불', sysdate() 
 		from sales where userid=#{userid} and sales_index =#{ticket}
 	</insert>
-<!--sales_type  에서  #{sales_type}로 변경./  -->
 	
 	<select id="mempurchase" resultType="map" parameterType="MemberDTO">
 		select imgname, movietime.movietitle, movietime.sectorNo,
@@ -712,7 +725,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		left outer join movieimg on sales.m_index = movieimg.m_index
 		left outer join movietime on ticketing.time_index = movietime.time_index
 		where ticketing.userid=#{userid} and imgname like '%poster.jpg' 
-		and date_format(ticketing.reg_date,'%Y-%m')=#{date} GROUP BY saleslink
+		<include refid="date" /> GROUP BY saleslink
 		order by sales.sales_time desc
 		limit #{start},#{limit}
 	</select>
@@ -735,7 +748,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		order by review.posttime desc
 		limit #{start},5
 	</select>
-
 	
 	<select id="memlikeinfor" resultType="map" parameterType="MemberDTO">
 		select movietitle, imgname, mlike, movieinfo.m_index, g_index from movieinfo
@@ -1079,6 +1091,48 @@ WHERE m_index = #{m_index};
 	
 	</select>
 	
+	<!-- 그래프 뽑아오기  -->
+	<select id="getMonthlygraph1" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where (monthdate
+
+		between #{sym} and #{eym}) 
+		
+		and  (sectorNo  like concat('%','total','%'))
+		
+	</select>
+	<select id="getMonthlygraph2" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where (monthdate
+
+		between #{sym} and #{eym}) 
+		
+		and  (sectorNo  like concat('%',#{sectorNo},'%'))
+	</select>
+	<select id="getMonthlygraph3" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where monthdate
+
+		between #{sym} and #{eym}
+	</select>
+	
+	
+	<select id="getMonthlygraph4" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where (monthdate
+
+		between #{sym} and #{eym}) 
+		
+		and  (sectorNo !='total')
+	</select>
 	
 	
 	

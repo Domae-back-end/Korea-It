@@ -37,7 +37,7 @@ public class Membermypage implements MemberAction {
 		
 		if(mdto.getQnastate()==null)
 			mdto.setQnastate("전체");
-
+		
 		MemPageDTO pdto = new MemPageDTO();
 		pdto.init(mdto, dm.memcount(mdto));
 		mdto.setStart(pdto.getStart());

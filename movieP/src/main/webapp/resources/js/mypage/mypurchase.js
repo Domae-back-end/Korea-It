@@ -54,7 +54,7 @@ $(function() {
     	
     	var list = {
     		userid : document.getElementById('userid').value,
-    		date :  document.getElementById('moiverecord').value,
+    		date : document.getElementById('moiverecord').value,
     		pageKind : 'mypurchase'
     	};
     	
@@ -188,4 +188,65 @@ function ticketCancel(i){
 		     	}
 		});
 	}
+}
+
+function purchasCancelepageChange(i){
+
+	var list = {
+    	userid : document.getElementById('userid').value,
+    	cpage : i
+    };
+    
+	$.ajax({
+	    async : false,
+	    type : 'POST',
+		data : JSON.stringify(list),
+	    url : "/memberRecord",
+	    dataType : "json",
+		contentType : "application/json; charset=UTF-8",
+		success : function(data) {
+			
+			$(".CCC").remove()
+				
+			if(data.cancel!=null){
+										
+				for(j in data.cancel ){
+					
+					var tt ="<div class='CCC'>"
+					tt+="<div><div class = 'puchaseinner'>"+data.cancel[j].sales_time+"</div>"
+					tt+="<div class = 'puchaseinner'>" + data.cancel[j].movietitle +"</div>"
+					tt+"<div class = 'puchaseinner'>"+ data.cancel[j].starttime +"</div>"
+					tt+="<div class = 'puchaseinner'>"+ data.cancel[j].salesprice +"</div>"
+					tt+="</div>"
+					tt+="</div>"
+					
+					$("#recordCpurchase").append(tt)	
+					
+				}
+					
+			var pp = "<div class='CCC'>"
+				
+			if(data.cpdto.startPage > 1)
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasCancelepageChange("+data.pdto.cstartPage-1+ ")' value='&lt' />"
+							
+			for( var i = data.cpdto.cstartPage ; i <= data.cpdto.cendPage ; i++){
+								
+				if(i == data.cpdto.cpage){
+					pp += "<input type='button' class='pagebtn_sel' readonly value="+i+ ">"
+				}else{
+					pp += "<input type='button' class='btnnn pagebtn' onclick='purchasCancelepageChange("+i+ ")' value="+i+ ">"
+				}
+			}			
+	     	
+	     	if(data.cpdto.cendPage < data.cpdto.ctotal)
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasCancelepageChange("+data.cpdto.cendPage+1+ ")' value='&gt' />"
+	     		
+	     		pp+="</div>"
+	     		
+	     		$("#pageCRecord").append(pp)
+				
+			}
+	     }
+	});
+    	
 }

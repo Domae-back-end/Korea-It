@@ -86,13 +86,14 @@
 	</div>
 	
 	<h3>예매 취소내역</h3>
-	<div class="cimeminfor" >
+	<div class="cimeminfor" id="recordCpurchase">
 		<div id="titleinner">
 			<div class="puchaseinner">취소일시</div>
 			<div class="puchaseinner">영화제목</div>
 			<div class="puchaseinner">상영일시</div>
 			<div class="puchaseinner">취소금액</div>
-		</div> 
+		</div>
+		<div class="CCC"> 
 		<c:forEach items="${memdata.cancel }" var ="pp">
 				<div>
 					<div class="puchaseinner">${pp.sales_time }</div>
@@ -101,27 +102,28 @@
 					<div class="puchaseinner">${pp.salesprice }</div>
 				</div>
 		</c:forEach>
-	</div>
-	<div id="pageRecord">
-		<div class="fff">
-			<c:if test="${memdata.cpdto.cstartPage > 1}">
-		    	<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.cpdto.cstartPage-1})" value="&lt" />
-			</c:if>
-		            
-			<c:forEach begin="${memdata.cpdto.cstartPage}" end="${memdata.cpdto.cendPage}" step="1" var="i">
-				<c:choose>
-					<c:when test="${i == memdata.cpdto.cpage}">
-						<input type="text" class="pagebtn_sel" value="${i }" readonly/>
-					</c:when>
-					<c:otherwise>
-						<input type="button" class="btnnn pagebtn" onclick="purchasepageChange(${i})" value="${i}" />
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-		            
-			<c:if test="${memdata.cpdto.cendPage < memdata.cpdto.ctotal}">
-		    	<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.cpdto.cendPage+1})" value="&gt" />
-			</c:if>
 		</div>
+	</div>
+</div>
+<div id="pageCRecord">
+	<div class="CCC">
+		<c:if test="${memdata.cpdto.cstartPage > 1}">
+		    <input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasCancelepageChange(${memdata.cpdto.cstartPage-1})" value="&lt" />
+		</c:if>
+		            
+		<c:forEach begin="${memdata.cpdto.cstartPage}" end="${memdata.cpdto.cendPage}" step="1" var="i">
+			<c:choose>
+				<c:when test="${i == memdata.cpdto.cpage}">
+					<input type="text" class="pagebtn_sel" value="${i }" readonly/>
+				</c:when>
+				<c:otherwise>
+					<input type="button" class="btnnn pagebtn" onclick="purchasCancelepageChange(${i})" value="${i}" />
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		            
+		<c:if test="${memdata.cpdto.cendPage < memdata.cpdto.ctotal}">
+		    <input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasCancelepageChange(${memdata.cpdto.cendPage+1})" value="&gt" />
+		</c:if>
 	</div>
 </div>

@@ -47,22 +47,9 @@ public class MovieTimeController {
 			return "admin/page/alter";
 			
 		}
-		
-		if(sess.getAttribute("adacDTO")!=null) {
-			
 				return "admin/index";
-				
-		}
+
 			
-			else {
-				
-				return "admin/loginpage";
-			}
-			
-		
-		
-		
-		
 	}
 
 }

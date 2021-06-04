@@ -37,7 +37,7 @@ public class MemberCheckController {
 	public Object purchasechek(@RequestBody MemberDTO dto) {
 		
 		MemberAction res = pr.getContext().getBean("membermypage", MemberAction.class);
-
+		
 		return res.execute(dto,null,null);
 	}
 	
