@@ -8,10 +8,10 @@
 		</p>
 	</small>
 	<form action ="" method="get" name="qq">
-		<input type="hidden" name="qnastate" id="qnastateGo" />
-		<input type="hidden" name="qnacontent" id="qnacontentGo" />
+		<input type="hidden" name="qnastate" id="qnastateGo" value="${param.qnastate }" />
+		<input type="hidden" name="qnacontent" id="qnacontentGo" value="${param.qnacontent }" />
 		<input type="hidden" name="detail" id="detail" />
-		<input type="hidden" name="page" id="page"/>
+		<input type="hidden" name="page" id="page" value="${param.page }" />
 	</form>
 	<form action ="" method="post" name="frm">
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />

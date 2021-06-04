@@ -2,6 +2,24 @@
  * 
  */
 $(function() {
+
+	if( document.getElementById('qnastateGo') != null){
+		
+		if(document.getElementById('qnastateGo').value != ''){
+			var list = {
+			    userid : document.getElementById('userid').value,
+			    qnastate :  document.getElementById('qnastateGo').value,
+			    qnacontent :  $('#qnacontentGo').val(),
+			    page : document.getElementById('page').value
+		    };	
+		    
+		     document.getElementById('qnastate').value = document.getElementById('qnastateGo').value
+		     document.getElementById('qnacontent').value = document.getElementById('qnacontentGo').value
+		    
+			qnalistChange(list)
+		}
+	}
+
 	
 	$(document).on("click", ".qnaDetailGo", function(){
 	
@@ -35,12 +53,22 @@ $(function() {
 	
 	if(document.getElementById("content") !=null){
 	
-		var list = {
-	    	userid : document.getElementById('userid').value,
-	    	qnastate :  document.getElementById('qnastate').value,
-	    	qnacontent :  $('#qnacontent').val(),
-	    	page : document.getElementById('page').value
-    	};
+		if(document.getElementById('qnastate').value!= ''){
+			
+			var list = {
+		    	userid : document.getElementById('userid').value,
+		    	qnastate :  document.getElementById('qnastate').value,
+		    	qnacontent :  $('#qnacontent').val(),
+		    	page : document.getElementById('page').value
+	    	};
+		
+		}else{
+			
+			var list = {
+		    	userid : document.getElementById('userid').value
+	    	};
+		
+		}
 		
 		$.ajax({
 	    async : false,
@@ -50,11 +78,11 @@ $(function() {
 	    dataType : "json",
 		contentType : "application/json; charset=UTF-8",
 		success : function(data) {
-			
+			console.log( data.dto )	
 			$(".fff").remove()
 				
 			if(data.qna!=null){
-										
+									
 				for(i in data.qna ){
 					
 					if(data.qna[i].persindex ==  document.getElementById('detail').value){

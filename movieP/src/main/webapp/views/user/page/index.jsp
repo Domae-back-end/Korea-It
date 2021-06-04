@@ -20,7 +20,7 @@
 </c:if>
 <script src="<c:url value="/resources/js/index.js" />" ></script>
 <script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
-<c:if test="${subMenu.url !=null && subMenu.url != 'mycinema' && subMenu.url != 'myinfor' }">
+<c:if test="${subMenu.url !=null && subMenu.url != 'myinfor' }">
 	<script src="<c:url value="/resources/js/${PPPData.cate}/${subMenu.url}.js" />" ></script>
 </c:if>
 

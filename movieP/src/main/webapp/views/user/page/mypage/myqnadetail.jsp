@@ -15,6 +15,7 @@
 </div>
 <div class="hdetail_bot">
 	<div class="back_list">
-		<a id="backQna">목록</a>
+		<c:if test="${param.qnastate!=null }"><a id="backQna">목록</a></c:if>
+		<c:if test="${param.qnastate ==null }"><a href="/member/mypage/mycinema">뒤로</a></c:if>
 	</div>
 </div>

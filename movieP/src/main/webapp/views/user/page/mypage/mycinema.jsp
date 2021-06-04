@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+	<form action ="" method="get" name="qq">
+		<input type="hidden" name="detail" id="detail" />
+	</form>
 <div>
 	<div class = "cimemaouter">
 		<div>
@@ -104,7 +106,7 @@
 		<c:forEach items="${memdata.qna }" var ="pp" end="1" > 
 			<div>
 				<div class="puchaseinner">${pp.persid }</div>
-				<div class="puchaseinner">${pp.perstitle }</div>
+				<a class="qnaDetailGo" value="${pp.persindex }" dd="${pp.persindex }" ><div class="puchaseinner">${pp.perstitle }</div></a>
 				<div class="puchaseinner">${pp.persqtime }</div>
 				<div class="puchaseinner">${pp.persatime }(${pp.persstate })</div>
 			</div>
