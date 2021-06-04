@@ -43,7 +43,7 @@ function qnalistChange(list){
 						
 					var tt ="<div class='fff'>"
 					tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
-					tt+="<a href='/user/serviceC/serviceHistoryDetail?page=1&persindex='"+ data.qna[i].persindex +"'>"
+					tt+="<a href='?detail="+ data.qna[i].persindex +"'>"
 					tt+="<div class='puchaseinner'>"+data.qna[i].perstitle+"</div>"
 					tt+="</a>"
 					tt+="<div class='puchaseinner'>" +data.qna[i].persqtime+ "</div>"
