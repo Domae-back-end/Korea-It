@@ -11,27 +11,125 @@
 
 	<script>
 		$(document).ready(function() {
-
+				var catecount= 0,
+				actorcount=0;
+				var cateselect= document.getElementById("cateselect")			
+					var actortext= document.getElementById("actortext")			
+				//카테삭제버튼정의
+				function catedelete(){
+					number= this.value;
+				    if (!confirm( "카테고리를 삭제하시겠습니까")) {
+				        // 취소(아니오) 버튼 클릭 시 이벤트
+				    } else {
+				        document.querySelector("#catediv"+number).remove()
+				        console.log(this.value)				        
+				    }					
+				}
+				//배우삭제버튼정의
+				function actordelete(){
+					number= this.value;
+				    if (!confirm("배우를 삭제하시겠습니까")) {
+				        // 취소(아니오) 버튼 클릭 시 이벤트
+				    } else {
+				        document.querySelector("#actordiv"+number).remove()
+				        console.log(this.value)				        
+				    }					
+				}
+				
+				
+				
+				
+				
 			//윈도우가 열리면
 				document.getElementById("addactor").onclick = function() {
-
-					var newinput = document.createElement("input");
-					newinput.setAttribute("type", "text");
-					newinput.setAttribute("name", "mactrs");
-					document.getElementById("actor").appendChild(newinput)
-					//var newbtn = document.createElement("button");
-					//newbtn.setAttribute("type","button")
-					//newbtn.classList.add("actorsearch")
-					alert("배우 추가합니다.");
+				     
+					 if (!confirm("배우를 추가하시겠습니까")) {
+					        // 취소(아니오) 버튼 클릭 시 이벤트
+					    } else {
+					    	
+					    	
+						
+							if(actortext.value!='')	{						
+					    	actorcount++;
+							var newactordiv = document.createElement("div");
+							newactordiv.setAttribute("id","actordiv"+actorcount)
+							
+							var newinput = document.createElement("input");
+							newinput.setAttribute("type", "text");
+							newinput.setAttribute("name", "mactrs");
+							newinput.setAttribute("value", actortext.value)
+							newinput.setAttribute("readonly","readonly")
+							
+							
+							var actordeletebutton = document.createElement("button");
+							actordeletebutton.setAttribute("type", "button");
+							var btntext = document.createTextNode( '삭제하기' );
+							actordeletebutton.appendChild(btntext);
+							actordeletebutton.setAttribute("value",actorcount)
+							actordeletebutton.setAttribute("id", actorcount);
+							actordeletebutton.addEventListener('click',actordelete)
+							
+							newactordiv.appendChild(newinput)
+							newactordiv.appendChild(actordeletebutton)
+							document.getElementById("actortext").value=""
+							document.getElementById("actorcont").appendChild(newactordiv)
+							}
+					    }					
+					
+					
+				
+					
+					
+					
+					
 				}
 
 				document.getElementById("addcate").onclick = function() {
-					var newinput = document.createElement("input");
-					newinput.setAttribute("type", "text");
-					newinput.setAttribute("name", "mcate");
-					document.getElementById("cate").appendChild(newinput)
-					alert("카테고리 추가");
-				}
+					
+					 if (!confirm("카테고리를 추가하시겠습니까")) {
+					        // 취소(아니오) 버튼 클릭 시 이벤트
+					    } else {
+					    	
+					    	
+					    if(cateselect.value!='null'){
+					    	
+					    	catecount++;
+							var newcatediv = document.createElement("div");
+							newcatediv.setAttribute("id","catediv"+catecount)
+							
+							var newinput = document.createElement("input");
+							newinput.setAttribute("type", "text");
+							newinput.setAttribute("name", "mcate");
+							newinput.setAttribute("value", cateselect.value)
+							newinput.setAttribute("readonly","readonly")
+							
+							
+							var catedeletebutton = document.createElement("button");
+							catedeletebutton.setAttribute("type", "button");
+							var btntext = document.createTextNode( '삭제하기' );
+							catedeletebutton.appendChild(btntext);
+							catedeletebutton.setAttribute("value",catecount)
+							catedeletebutton.setAttribute("id", catecount);
+							catedeletebutton.addEventListener('click',catedelete)
+							
+							newcatediv.appendChild(newinput)
+							newcatediv.appendChild(catedeletebutton)
+							cateselect.options[0].setAttribute("selected","false")
+							cateselect.options[0].setAttribute("selected","true")
+							
+							document.getElementById("catecont").appendChild(newcatediv)
+					    	
+					    }	
+					    	
+				
+					    }
+					}
+				
+				
+				
+				
+				
+				
 				document.getElementById("addimg").onclick = function() {
 					var newinput = document.createElement("input");
 					newinput.setAttribute("type", "file");
@@ -67,34 +165,48 @@
 		영화제목 <input type="text" name="movietitle" /><br> 감독 <input
 			type="text" name="mdir" /><br>
 <hr />
-		<div id="actor">
-			<button type="button" id="addactor">배우추가</button>
-			배우 <input type="text" name="mactrs" id="mactrs1" />	
-			
-			<!-- 
-			<button type="button" class="actorsearch" data-popup-open="1" id="actorsearch">배우찾기</button>
-			
-			 -->
-			
-			
-			<br>
-		<!--각 actorsearch 와  mactrs value를 엮어주는 방법..  -->
-			배우 <input type="text" name="mactrs" id="mactrs2" />
-			
-			<!-- 
-			
-			<button type="button"  class="actorsearch" data-popup-open="2" id="actorsearch">배우찾기</button>
-			 -->
-			
-			<br>	
-			
 
-		</div>
+		<div id="actor">
+			 <input type="text" name="insertname" id="actortext" />	
+			<button type="button" id="addactor">배우추가</button>
+			
+			<div   id="actorcont" ></div>
+				</div>
+		
+		
 <hr />
 		<div id="cate">
-			<button type="button" id="addcate">카테고리추가</button>
+		
 		<!-- name should be "macte"  -->
-			 <input type="text" name="mcate" /><br>
+			<!--  <input type="text" name="mcate" /><br>
+			 -->
+			
+			<select id="cateselect" >
+			<option value="null">카테고리</option>
+			<option value="드라마">드라마</option>
+			<option value="멜로/로맨스">멜로/로맨스</option>
+			<option value="가족">가족</option>
+			<option value="액션">액션</option>
+			<option value="SF">SF</option>
+			<option value="모험">모험</option>
+			<option value="판타지">판타지</option>
+			<option value="스릴러">스릴러</option>
+			<option value="애니메이션">애니메이션</option>
+			<option value="공포">공포</option>
+			<option value="미스터리">미스터리</option>
+			<option value="범죄">범죄</option>
+			
+			</select>
+				<button type="button" id="addcate">카테고리추가</button>
+			
+			<div   id="catecont" >
+				
+				
+				
+			
+			
+			</div>
+			
 			
 			
 			
