@@ -1019,7 +1019,7 @@ WHERE m_index = #{m_index};
 		parameterType="ServiceFullDTO">
 		select * from basicqna where bqindex = #{bqindex}
 	</select>
-
+	<!--  -->
 	<insert id="insertfaq" parameterType="ServiceFullDTO">
 		insert into basicqna (bqcate, bqtitle, bqcont)
 		values (#{bqcate},#{bqtitle}, #{bqcont})
