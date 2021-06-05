@@ -55,7 +55,7 @@ $(function() {
 				if(data.dto!=null){
 					
 					alert(data.dto.userpw)
-					frm.action = "/user/main"
+					frm.action = "/member/login/loginForm"
 					frm.submit();
 			
 				}else{ 

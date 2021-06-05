@@ -13,10 +13,11 @@ public class MemberDTO {
 	int index, start, cstart;
 	Integer page, cpage, ticket, limit;
 	String nowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+	String joindayM, userbirthM;
 	
 	String birthDay, birthYear;
 	String userid, userpw , username , userpnum, userpnumM, useremail, kind;
-	Date userbirth, joinday, userbirthM;
+	Date userbirth, joinday;
 	
 	public void setUserbirth(String birthDay, String birthYear) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

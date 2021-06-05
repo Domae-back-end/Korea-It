@@ -17,7 +17,7 @@
 	<div class = "idouter">
 		<div class = "nameouter">아이디</div>
 		<div>
-			<div class = "dataouter">${sessionId }</div>
+			<div class = "dataouter">${sessionId }(가입일 : ${memdata.dto.joindayM })</div>
 	
 			<input type="button" class="changeButt" id="inforDelete" value="회원탈퇴" data-target="#inforDelete1"/>
 	
@@ -36,7 +36,7 @@
 		<div class = "mideouter">
 			<div class = "nameouter">생년월일</div>
 			<div>
-				<div class = "dataouter"><fmt:formatDate value="${memdata.dto.userbirthM }" pattern="yyyy년 MM월 dd일"/></div>
+				<div class = "dataouter">${memdata.dto.userbirthM }</div>
 			</div>
 		</div>
 		

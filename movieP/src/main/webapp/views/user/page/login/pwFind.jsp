@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="pwfind_main">
 	<h2>비밀번호 찾기</h2>
-	<form action="" method="post" enctype="multipart/form-data" name="frm">
+	<form action="" method="post" name="frm">
 		<div class="main">
 			<div class="outF">
 				<div class="outD">아이디</div>

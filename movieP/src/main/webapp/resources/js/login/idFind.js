@@ -31,11 +31,11 @@
 	
 	
 	$('#check').click(function(){
-		
+		console.log($('#userbirth').val())
 		$.ajax({
 	    	async : true,
 	        type : 'POST',
-	        data : JSON.stringify({username : $('#username').val(), userbirth : $('#userbirth').val(), userpnum : $('#userpnum').val()}),
+	        data : JSON.stringify({username : $('#username').val(), userbirthM : $('#userbirth').val(), userpnum : $('#userpnum').val()}),
 	        url : "/memberCheck",
 	        dataType : "json",
 			contentType : "application/json; charset=UTF-8",
@@ -44,7 +44,7 @@
 				if(data.dto!=null){
 					
 					alert(data.dto.userid)
-					frm.action = "/user/main"
+					frm.action = "/member/login/loginForm"
 					frm.submit();
 			
 				}else{ 

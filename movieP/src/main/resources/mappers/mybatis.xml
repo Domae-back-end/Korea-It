@@ -578,11 +578,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 
 			<when test="userid == null">
-				<where> <![CDATA[username = #{username} and userbirth = date_format(#{userbirth},'%Y-%m-%d') and userpnum = #{userpnum} and kind !='탈퇴']]></where>
+				<where> <![CDATA[username = #{username} and date_format(userbirth,'%Y%m%d') = #{userbirthM} and replace(userpnum,'-','') = #{userpnum} and kind !='탈퇴']]></where>
 			</when>
 
 			<when test="userpnum != null or userpnum == ''">
-				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} and kind !='탈퇴' ]]></where>
+				<where> <![CDATA[username = #{username} and userid = #{userid} and replace(userpnum,'-','') = #{userpnum} and kind !='탈퇴' ]]></where>
 			</when>
 
 			<otherwise>
@@ -692,7 +692,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</sql>
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
-		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userbirth as userbirthM, replace(userpnum,'-','') as userpnum, userpnum as userpnumM, useremail, joinday, kind 
+		select userid, userpw, username, userbirth, date_format(userbirth,'%Y년 %m월 %d일') as userbirthM,  date_format(joinday,'%Y년 %m월 %d일') as joindayM, joinday, replace(userpnum,'-','') as userpnum, userpnum as userpnumM, useremail, kind 
 		from memberinfo <include refid="checkform" />
 	</select>
 
