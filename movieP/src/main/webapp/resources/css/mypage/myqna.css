@@ -4,6 +4,10 @@
 	height: 450px;
 }
 
+.fff {
+	margin-top: 20px; 
+}
+
 .cimeminfor {
 	margin: 20px;
 	border-top: 1px solid #000;
@@ -26,6 +30,7 @@
 	background: #f7f8f9;
 	border-bottom: 1px solid #d8d9db;
 	padding-left: 5px;
+	width: 710px; 
 }
 
 .hdetail_top>ul>li {
@@ -44,6 +49,7 @@
 }
 
 .hdetail_cont {
+	width: 710px; 
 	text-align: left;
 	margin: 20px 0 0 0;
 }
@@ -66,7 +72,7 @@
 .hdetail_cont_status {
 	font-size: 20px;
 	font-weight: bold;
-	width: 800px;
+	width: 710px;
 	height: 100px;
 	background: #f7f8f9;
 	line-height: 100px;
@@ -101,12 +107,12 @@
 
 .back_list {
 	width: 100px;
-	margin: 70px auto;
+	margin: 50px auto;
+	
 }
 
 #content {
 	width: 800px;
 	position: relative;
-	float: left;
 	left: 30px;
 }
