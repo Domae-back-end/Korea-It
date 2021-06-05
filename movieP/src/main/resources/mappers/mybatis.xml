@@ -1012,28 +1012,24 @@ WHERE m_index = #{m_index};
 		parameterType="HashMap">
 		select * from basicqna order by bqindex asc
 		limit #{npDTO.start},#{npDTO.limit}
-
 	</select>
 	
 	
 	<select id="detailfaq" resultType="ServiceFullDTO"
 		parameterType="ServiceFullDTO">
 		select * from basicqna where bqindex = #{bqindex}
-
 	</select>
 
 	
 
 	<insert id="insertfaq" parameterType="ServiceFullDTO">
-		insert into basicqna (bqcate, bqtitle, bqcont, faqurl1, faqurl2)
-		values (#{bqcate},#{bqtitle}, #{bqcont} ,#{faqurl1}, #{faqurl2})
-
+		insert into basicqna (bqcate, bqtitle, bqcont)
+		values (#{bqcate},#{bqtitle}, #{bqcont})
 	</insert>
 
 	<update id="modifyfaq" parameterType="ServiceFullDTO">
 		update basicqna set bqcate = #{bqcate}, bqtitle= #{bqtitle}, 
-		bqcont = #{bqcont} , faqurl1 = #{faqurl1}, faqurl2 = #{faqurl2}
-		where bqindex = #{bqindex}
+		bqcont = #{bqcont} where bqindex = #{bqindex}
 	</update>
 	
 	<delete id="deletefaq" parameterType="ServiceFullDTO">

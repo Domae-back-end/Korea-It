@@ -85,9 +85,7 @@ public class ServiceFullDTO {
 	String bqcate; //카테고리(전체, 영화/예매, 가입, 영화관, 기타)
 	String bqtitle; //제목
 	String bqcont; //내용
-	String faqurl1;
-	String faqurl2;
-	int faqview;
+	int viewcnt;
 	
 	
 	
