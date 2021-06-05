@@ -46,7 +46,7 @@ $(function() {
 	
 						if(data.dto!=null){
 							
-							$('#id_check').text('중복된 아이디 입니다.'); 
+							$('#id_check').text('이미 사용중이거나 탈퇴한 아이디입니다.'); 
 							$('#id_check').css('color', 'red'); 
 							$("#usercheck").attr("disabled", true); 
 							$("#userid").val("");
