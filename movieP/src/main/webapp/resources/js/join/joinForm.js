@@ -224,7 +224,7 @@ $(function() {
 			$('#pnumF').attr("disabled", false);
 			$('#pnumM').val("");
 			$('#pnumL').val("");
-			$('#pnumF').find('option:first').attr('selected', 'selected');
+			$('#pnumF option:eq(0)').prop("selected", true);
 			$('#pchecknum').attr("type", 'hidden');
 			$('#checkBtn').attr("type", 'hidden');
 			$('#pnumcheck').val('인증번호 전송')

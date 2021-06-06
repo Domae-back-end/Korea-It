@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="<c:url value="/resources/js/modal/delete.js" />" ></script>    
 
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
 <input type="hidden" id="userid" value="${sessionId }"/>

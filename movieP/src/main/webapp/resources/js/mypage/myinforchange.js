@@ -4,10 +4,14 @@
  $(function() {
  	
  	$("#inforDelete").click(function(){
+	   
+	   alert("비밀번호 확인이 필요합니다.")
+	   
 	   $("#inforDelete1").modal({
-      	remote: '/views/user/page/modal/delete.jsp'
-   	});
-});
+      		remote: '/views/user/page/modal/delete.jsp'
+   		});
+	});
+	
   $('#pumnchangGo').click(function(){
  	
  		if($('#pumnchangGo').val() == "휴대폰번호 변경"){

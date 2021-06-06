@@ -5,7 +5,7 @@ $(function() {
 	
 	 $(".qwer").click(function(){
 	 	var ddd= $(this).attr("dd");
-	 	var ccc= $(this).attr("cc").replace(/ /g,"");
+	 	var ccc= $(this).attr("cc").replace(/ /g,",");
 	 	var ttt= $(this).attr("tt");
 	 	
 	 	  $("#inforpurchase1").modal({
@@ -49,10 +49,19 @@ $(function() {
 	$("input:radio[name=moivepur]").click(function(){
  
         if($("input[name=moivepur]:checked").val() == "now"){
-            $("#moiverecord").attr("disabled",true);
+            
             $("#moiveButt").attr("disabled",true);
             
-            location.reload()
+            $('#moiverecord option:eq(0)').prop("selected", true);
+            
+            var list = {
+	    		userid : document.getElementById('userid').value,
+	    		date : $('#moiverecord option:selected').val(),
+	    		pageKind : 'mypurchase'
+    		};
+    		
+    		purchaselistChange(list);
+    		$("#moiverecord").attr("disabled",true);
  
         }else{
               $("#moiverecord").attr("disabled",false);          

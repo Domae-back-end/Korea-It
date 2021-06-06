@@ -2,7 +2,9 @@
  * 
  */
  $("#checkBtn").click(function(){
+	
 	if(confirm("정말 탈퇴 하시겠습니까?")) {
+		
 		var list = {
 			userpw : document.getElementById('chkPw').value,
 			userid :  document.getElementById('userid').value,

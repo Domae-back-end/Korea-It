@@ -52,5 +52,20 @@
 #changepw{
 	margin-left: 10px;
 }
-
-
+.modal-header{
+	background: #F2F4F5;
+}
+.modal-body{
+	height: 180px;
+}
+#chkPw{
+	padding:5px;
+	height: 30px;
+	width: 200px;
+	margin-top: 35px;
+}
+#close{
+	position:relative;
+	left: -270px;
+	top: 30px;
+}
