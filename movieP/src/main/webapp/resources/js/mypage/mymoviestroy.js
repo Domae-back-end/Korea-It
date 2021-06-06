@@ -104,7 +104,8 @@ function writedelteGo(data,no){
 
 
 function writemodifyNo(data,no){
-    	
+    
+    $(".writeArea").eq(no).val($('.writetnow').eq(no).text())	
 	$(".writetnow").eq(no).css('display','block')
 	$(".writeArea").eq(no).css('display','none')
 		
