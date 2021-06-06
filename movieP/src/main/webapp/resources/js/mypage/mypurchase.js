@@ -3,13 +3,18 @@
  */
 $(function() {
 	
-	 $(".qwer").click(function(){
+	$(document).on("click", ".qwer", function(){
+	 	
 	 	var ddd= $(this).attr("dd");
 	 	var ccc= $(this).attr("cc").replace(/ /g,",");
 	 	var ttt= $(this).attr("tt");
 	 	
+	 	$("#mPrice").html(ddd)
+	 	$("#mTime").html(ccc.replace(',',' '))
+	 	$("#mType").html(ttt)
+
 	 	  $("#inforpurchase1").modal({
-		      	remote: '/views/user/page/modal/purchase.jsp?price='+ddd +'&time='+ccc+'&type='+ttt
+		      	remote: '/views/user/page/modal/purchase.jsp?price='+ddd+'&type='+ttt+'&time='+ccc
 		   	});
 	 });
 	
@@ -129,10 +134,11 @@ function purchaselistChange(list){
 						tt+= '어린이'+ data.purchase[j].C +'명'
 					tt+="</span>"
 					tt+="</div>"
-					tt+="<div><div class='purchasespace'>"+'관람일시'+ data.purchase[j].starttime+"</div>"
+					tt+="<div><div class='purchasespace'>"+'관람일시 : '+ data.purchase[j].starttime+"</div>"
 					tt+="<span>"+ '관람좌석 : '+ data.purchase[j].seatNo +"</span></div>"
-					tt+="<div class='purchasespace'>"+'결제일시 : '+ data.purchase[j].sales_time +"</div>"
-					tt+="<div class='purchasespaceButt'><button class='changeButt'>"+'결제정보'+"</button>"
+					tt+="<div class='purchasespace'>"+'결제일시 : '+ data.purchase[j].sales_time2 +"</div>"
+					tt+="<div class='purchasespaceButt'><button class='changeButt qwer' dd="+data.purchase[j].salesprice+ " cc=" + data.purchase[j].sales_time3 + " tt="+ data.purchase[j].sales_type + ">"
+					tt+='결제정보'+"</button>"
 						if(data.purchase[j].checktime > data.dto.nowDate)
 							tt+="<button class='changeButt' onclick='ticketCancel("+data.purchase[j].saleslink +")'>"+'예매취소'+"</button>"		
 						

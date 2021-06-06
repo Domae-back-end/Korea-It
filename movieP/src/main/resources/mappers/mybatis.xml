@@ -734,7 +734,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(length(ticketing.people)-length(replace(ticketing.people,'T',''))) as T,
 		(length(ticketing.people)-length(replace(ticketing.people,'A',''))) as A,
 		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time, 
-		date_format(sales_time,'%Y-%m-%d') as sales_time2, sales_time as sales_time3 from ticketing 
+		date_format(sales_time,'%Y-%m-%d') as sales_time2, date_format(sales_time,'%Y-%m-%d %H:%m:%s') as sales_time3 from ticketing 
 		left outer join sales on sales.sales_index = saleslink 
 		left outer join movieimg on sales.m_index = movieimg.m_index
 		left outer join movietime on ticketing.time_index = movietime.time_index

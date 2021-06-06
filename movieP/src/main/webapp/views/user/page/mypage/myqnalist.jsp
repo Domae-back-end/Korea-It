@@ -8,13 +8,13 @@
 			고객센터를 통해 남기신 1:1 문의내역을 확인하실 수 있습니다.
 		</p>
 	</small>
-	<form action ="" method="post" name="qq">
+	<form action ="" method="get" name="qq">
 		<input type="hidden" name="qnastate" id="qnastateGo" value="${param.qnastate }" />
 		<input type="hidden" name="qnacontent" id="qnacontentGo" value="${param.qnacontent }" />
 		<input type="hidden" name="detail" id="detail" />
 		<input type="hidden" name="page" id="page" value="${param.page }" />
 	</form>
-		<input type="hidden" id="qnastatenow" value="전체" />
+		<input type="hidden" id="qnastatenow" value="전체"/>
 		<input type="hidden" id="qnacontentnow" />
 	<form action ="" method="post" name="frm">
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />

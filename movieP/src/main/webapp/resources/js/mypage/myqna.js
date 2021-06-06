@@ -25,8 +25,11 @@ $(function() {
 
 	
 	$(document).on("click", ".qnaDetailGo", function(){
-	
+		
 		document.getElementById('qnastateGo').value =  $('#qnastatenow').val()
+		if(document.getElementById('qnastateGo').value == '')
+			document.getElementById('qnastateGo').value = '전체'
+		
 		document.getElementById('qnacontentGo').value = $('#qnacontentnow').val()
 		$('#detail').val($(this).attr("dd"));
 		$('#page').val($('.pagebtn_sel').attr("pp"));
