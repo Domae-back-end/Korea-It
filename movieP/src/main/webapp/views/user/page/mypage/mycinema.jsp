@@ -87,8 +87,8 @@
 						</div>
 					<div class="purchasespaceButt">
 						<button class="changeButt qwer" id="inforpurchase" dd="${pp.salesprice}" cc="${pp.sales_time3 }" tt="${pp.sales_type }" >결제정보</button>
-						<button class="changeButt" onclick="ticketCancel(${pp.saleslink })">예매취소</button>		
 						<c:if test="${pp.checktime > memdata.dto.nowDate }">
+						<button class="changeButt" onclick="ticketCancel(${pp.saleslink })">예매취소</button>		
 						</c:if>
 					</div>
 					</div>
