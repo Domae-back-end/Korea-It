@@ -186,7 +186,7 @@ public interface DbMapper {
    int pershistoryCnt(HashMap<String, Object> map); //상담내역화깅ㄴ갯수
 
    List<ServiceFullDTO> noticelistcate(HashMap<String, Object> map); //공지 카테별
-   int noticecatetotalCnt(HashMap<String, Object> map); //1대1총갯수(미답변)
+   int noticecatetotalCnt(HashMap<String, Object> map); //공지 카테카운트
    
    
    

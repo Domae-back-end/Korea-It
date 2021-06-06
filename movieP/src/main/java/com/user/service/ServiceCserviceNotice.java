@@ -43,16 +43,14 @@ public class ServiceCserviceNotice implements ServiceCservice {//빈 창고에 �
 		
 		if (sfDTO.getNoticecate() == null) {
 			npDTO.init(db, map);
-			res.setSfdto(db.noticelist(map));// sfdto 는 리스트.. 흠?
+			res.setSfdto(db.noticelist(map));
 			res.setOnesfdto(sfDTO);
 			res.setSnpdto(npDTO);
-			
-			
-			return res;// 이 res 안에 있는 sfdto
+			return res;
 		}
 		
 		npDTO.initnoticecate(db, map);
-		res.setSfdto(db.noticelistcate(map));// sfdto 는 리스트.. 흠?
+		res.setSfdto(db.noticelistcate(map));
 		res.setOnesfdto(sfDTO);
 		res.setSnpdto(npDTO);
 		return res;

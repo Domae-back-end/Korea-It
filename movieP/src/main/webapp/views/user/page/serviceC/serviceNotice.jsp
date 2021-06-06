@@ -41,9 +41,9 @@
 	<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
 		<input type="hidden" name="noticeindex" id="detailId" />
-		
-		
-		
+		<c:if test="${data.onesfdto.noticecate != null}">
+			<input type="hidden" name="noticecate" id="noticeCate" value="${data.onesfdto.noticecate }" />
+		</c:if>
 		
 		<div class="notice_cate">
 			<ul>

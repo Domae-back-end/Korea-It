@@ -549,7 +549,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="noticecatetotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from noticeboard
 		where noticecate like concat('%',#{sfDTO.noticecate},'%')
-		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
 
 	

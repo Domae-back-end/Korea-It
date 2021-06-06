@@ -192,30 +192,20 @@ public class ServiceNoticePageDTO {
 		limit = 20; 
 		start = (page - 1) * limit;
 
-//		ttt = dm.perstotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
-		ttt = dm.noticecatetotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
-		//
-		System.out.println("토탈cnt"+ttt);
+		ttt = dm.noticecatetotalCnt(map);
+
 		this.total = ttt / limit;
 
-		if (ttt % limit > 0) {
+		if (ttt % limit > 0)
 			total++;
-		}
 
-//		페이지가정해지면 스타트가정해짐
 		start = (page - 1) * limit;
 
 		startPage = (page - 1) / pageLimit * pageLimit + 1;
 		endPage = startPage + pageLimit - 1;
 
-		if (endPage > total) {
+		if (endPage > total)
 			endPage = total;
-		}
-		
-		
-
-		System.out.println(page + ", " + start + ", " + limit + ", " + pageLimit + ", " + total + ", " + startPage
-				+ ", " + endPage);
 	}
 	
 	

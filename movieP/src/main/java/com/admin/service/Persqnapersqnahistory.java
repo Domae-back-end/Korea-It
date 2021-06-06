@@ -40,6 +40,7 @@ public class Persqnapersqnahistory implements PageeditService {
 
 			snpdto.persold(db, map);
 			res.setSfdto(db.perslistans(map));
+			res.setOnesfdto(sfdto);
 			res.setSnpdto(snpdto);
 			return res;
 		}
@@ -47,6 +48,7 @@ public class Persqnapersqnahistory implements PageeditService {
 
 		snpdto.persoldcate(db, map);
 		res.setSfdto(db.perslistanscate(map));
+		res.setOnesfdto(sfdto);
 		res.setSnpdto(snpdto);
 
 		return res;
