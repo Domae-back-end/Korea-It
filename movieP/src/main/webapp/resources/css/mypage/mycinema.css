@@ -97,3 +97,6 @@
 	border: 1px solid #ccc;
 	float: left;
 }
+.qnaDetailGo:hover{
+	cursor: pointer;
+}

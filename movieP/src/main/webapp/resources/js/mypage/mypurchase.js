@@ -4,10 +4,12 @@
 $(function() {
 	
 	 $(".qwer").click(function(){
-	 	var ttt= $(this).attr("dd");
-	 
+	 	var ddd= $(this).attr("dd");
+	 	var ccc= $(this).attr("cc").replace(/ /g,"");
+	 	var ttt= $(this).attr("tt");
+	 	
 	 	  $("#inforpurchase1").modal({
-		      	remote: '/views/user/page/modal/purchase.jsp?saleslink=' + ttt
+		      	remote: '/views/user/page/modal/purchase.jsp?price='+ddd +'&time='+ccc+'&type='+ttt
 		   	});
 	 });
 	
