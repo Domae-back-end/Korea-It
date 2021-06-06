@@ -92,51 +92,59 @@ public class ServiceNoticePageDTO {
 				+ startPage + ", " + endPage);
 	}
 	
-	public void initpers(DbMapper dm, HashMap<String, Object> map) { //심화(카테고리별)
-		limit = 20;
-		// 게시판페이지계산.
+	public void persoldcate(DbMapper dm, HashMap<String, Object> map) { //어드민 답변완료 리스트 (카테고리별)
+		limit = 15;
 		start = (page - 1) * limit;
 
-//		ttt = dm.perstotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
 		ttt = dm.perstotalansCnt(map); // 총갯수정함. 페이지나눠야하니깐.
-		//
-		System.out.println("토탈cnt"+ttt);
+		
 		this.total = ttt / limit;
 
-		if (ttt % limit > 0) {
+		if (ttt % limit > 0)
 			total++;
-		}
 
-//		페이지가정해지면 스타트가정해짐
 		start = (page - 1) * limit;
 
 		startPage = (page - 1) / pageLimit * pageLimit + 1;
 		endPage = startPage + pageLimit - 1;
 
-		if (endPage > total) {
+		if (endPage > total)
 			endPage = total;
-		}
-
-		System.out.println(page + ", " + start + ", " + limit + ", " + pageLimit + ", " + total + ", " + startPage
-				+ ", " + endPage);
 	}
 	
-	public void initpers2(DbMapper dm, HashMap<String, Object> map) { //기본
-		// 게시판페이지계산.
-		limit = 20; 
+	
+	public void persold(DbMapper dm, HashMap<String, Object> map) { //어드민 답변완료 리스트
+		limit = 20;
 		start = (page - 1) * limit;
 
-		ttt = dm.perstotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
-//		ttt = dm.perstotalansCnt(map); // 총갯수정함. 페이지나눠야하니깐.
-		//
-		System.out.println("토탈cnt"+ttt);
+		ttt = dm.perstotalCnt2(map);
+
+		this.total = ttt / limit;
+
+		if (ttt % limit > 0) 
+			total++;
+
+		start = (page - 1) * limit;
+
+		startPage = (page - 1) / pageLimit * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
+
+		if (endPage > total)
+			endPage = total;
+	}
+	
+	public void persnew(DbMapper dm, HashMap<String, Object> map) { //어드민 미답변 리스트보기
+		limit = 2;
+		start = (page - 1) * limit;
+
+		ttt = dm.perstotalCnt(map);
+		
 		this.total = ttt / limit;
 
 		if (ttt % limit > 0) {
 			total++;
 		}
 
-//		페이지가정해지면 스타트가정해짐
 		start = (page - 1) * limit;
 
 		startPage = (page - 1) / pageLimit * pageLimit + 1;

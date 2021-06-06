@@ -467,6 +467,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select count(*) from personalqna
 		where persstate = '미답변'
 	</select>
+	
+	<!-- 어드민 1대1질문 (답변완료총갯수) -->
+	<select id="perstotalCnt2" resultType="java.lang.Integer" parameterType="HashMap">
+		select count(*) from personalqna
+		where persstate = '답변완료'
+	</select>
 
 	<!-- 어드민 1대1질문 (미답변) -->
 	<select id="persdetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
@@ -493,14 +499,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	
 <!-- ///////////////////////// -->
-	<!-- 어드민 1대1질문 (답변총갯수) -->
+	<!-- 어드민 1대1질문 (답변완료 갯수) -->
 	<select id="perstotalansCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from personalqna
 		where persstate = '답변완료' and	perscate like concat('%',#{sfdto.perscate},'%')
 	</select>
 
 	
-	<!-- 어드민 1대1질문 (답변리스트, 문의유형별) -->
+	<!-- 어드민 1대1질문 (답변완료, 문의유형별) -->
 	<select id="perslistanscate" resultType="ServiceFullDTO" parameterType="HashMap">
 		select * from personalqna 
 		where persstate = '답변완료' and perscate = #{sfdto.perscate}
@@ -515,7 +521,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where persid = #{sfDTO.persid}
 		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
-
+	
+	<!-- 상담내역(유저쪽 desc) -->
+	<select id="pershistoryuser" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from personalqna 
+		where persid = #{sfDTO.persid}
+		order by persindex desc
+		limit #{npDTO.start}, #{npDTO.limit}
+	</select>
+	
 	<!-- 상담내역확인(갯수확인) -->
 	<select id="pershistoryCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from personalqna

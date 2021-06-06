@@ -167,6 +167,7 @@ public interface DbMapper {
    List<ServiceFullDTO> perslist(HashMap<String, Object> map); //1대1문의(미답변보기)
    
    int perstotalCnt(HashMap<String, Object> map); //1대1총갯수(미답변)
+   int perstotalCnt2(HashMap<String, Object> map); //1대1총갯수(답변완료)
 
    ServiceFullDTO persdetail(ServiceFullDTO sfDTO); //1대1 디테일보기(미답변)
 
@@ -176,9 +177,11 @@ public interface DbMapper {
    
    List<ServiceFullDTO> perslistanscate(HashMap<String, Object> map); //1대1문의(답변완료보기)
    
-   int perstotalansCnt(HashMap<String, Object> map); //1대1총갯수(미답변)
+   int perstotalansCnt(HashMap<String, Object> map); //1대1총갯수(답변완료)
    
    List<ServiceFullDTO> pershistory(HashMap<String, Object> map); //상담내역화깅ㄴ
+   
+   List<ServiceFullDTO> pershistoryuser(HashMap<String, Object> map); //상담내역화r\긴 (유저) desc
    
    int pershistoryCnt(HashMap<String, Object> map); //상담내역화깅ㄴ갯수
 
