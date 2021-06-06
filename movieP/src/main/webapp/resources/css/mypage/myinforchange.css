@@ -31,12 +31,12 @@
 	text-align:left;
 }
 #useremail{
+	position:relative;
+	top:10px;
+	left:10px;
 	width: 500px;
-	margin-top: 10px;
-	margin-left: 10px;
-}
-#checknum{
-	width: 80px;
+	height: 30px;
+	padding: 5px;
 }
 .mideouter{
 	width: 700px;
@@ -66,6 +66,64 @@
 }
 #close{
 	position:relative;
-	left: -270px;
+	left: -260px;
 	top: 30px;
+}
+.changeButt{
+	top:9px;
+}
+.topB{
+	left:-30px;
+}
+.bodywidth{
+	height: 300px;
+}
+.main{
+	margin: 0 auto;
+	position:relative;
+	top: 15px;
+	margin-bottom: 20px;
+	height: 120px;
+	width: 500px;
+	border-top: 1px solid #ccc;
+	background: #fff;
+}
+.outF{
+	width: 500px;
+	height: 60px;
+	text-align: center;
+	float: left;
+	border-bottom: 1px solid #ccc;
+}
+.outT{
+	position:relative;
+	top: 15px;
+	left: 15px;
+	float: left;
+	height: 30px;
+}
+.outD{
+	width:150px;
+	height:60px;
+	line-height: 60px;
+	text-align: center;
+	float: left;
+	background: #F2F4F5;
+	border-bottom: 1px solid #ccc;
+}
+h4{
+	position:relative;
+	top:5px;
+	float: none;
+}
+.chButt {
+	position:relative;
+	top: 15px;
+	left: -15px;
+	width:100px ;
+	height: 30px;
+	line-height: 25px; 
+	border :none;
+	border-radius: 5px;
+	text-align: center;
 }
