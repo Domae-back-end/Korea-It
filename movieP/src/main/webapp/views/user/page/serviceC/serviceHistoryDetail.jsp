@@ -66,7 +66,7 @@
 		</div>
 		<div class="hdetail_bot">
 			<div class="back_list">
-				<a href="serviceHistory">목록</a>
+				<a href="serviceHistory?page=${data.npDTO.page }">목록</a>
 			</div>
 		</div>
 	</div>
