@@ -1,70 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
+<script src="<c:url value="/resources/js/modal/pnumChange.js" />" ></script>
 
-var pnumCh = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/; 
-
-$("#newpnum").on("propertychange change keyup paste input", function() {
-	   
-		var regexp = /[^0-9-]/gi
-	   $(this).val($(this).val().replace(regexp,''));
-	
-	 
-})
-
-$('#checknumButt').click(function() {
-
-
-	var phoneNumber = document.getElementById('newpnum').value;
-
-	alert("인증번호 발송 완료")
-
-	$('#userpnumchk').attr("disabled", false);
-	$('#checknewnum').attr("disabled", false);
-   
-	
-	$.ajax({
-		type: "POST",
-		url: "/memberpnumCheckSNS",
-		data: { phoneNumber: phoneNumber },
-		success: function(res) {
-
-			$('#checknewnum').click(function() {
-
-				if ($.trim(res) == $('#userpnumchk').val()) {
-
-					alert("휴대폰 인증완료")
-
-					$('#userpnumchk').val("")
-					$('#checknum').attr("disabled", true);
-					$('#userpnumchk').attr("disabled", true);
-					$('#pnumouter').text($('#newpnum').val());
-					$('#pumnchangGo').val("변경 취소");
-					$('#newpnum').val("");
-					$("#close").trigger("click");
-					
-
-				} else {
-
-					alert("휴대폰 인증을 다시 해주세요.")
-
-					$('#newpnum').val("")
-					$('#userpnumchk').val("")
-					$('#userpnumchk').attr("disabled", true);
-					$('#checknewnum').attr("disabled", true);
-					
-
-				}
-			});
-
-		}
-	});
-
-});
-
-
-
-</script>
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	<h2>핸드폰번호 변경</h2>

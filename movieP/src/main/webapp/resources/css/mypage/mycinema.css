@@ -113,7 +113,7 @@
 }
 #close{
 	position:relative;
-	left: -260px;
+	left: -255px;
 	top: 60px;
 }
 .modalouter{
@@ -145,7 +145,7 @@
 	position: relative;
 	left: 10px;
 }
-h4{
+#h4flow{
 	position:relative;
 	top:10px;
 	float: none;

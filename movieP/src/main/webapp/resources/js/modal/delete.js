@@ -24,6 +24,8 @@
 						alert("탈퇴처리되었습니다")
 						frm.action = "/logout"
 						frm.submit();
+					}else{
+						alert("비밀번호가 일치하지않습니다.")
 					}
 		     	}
 			});

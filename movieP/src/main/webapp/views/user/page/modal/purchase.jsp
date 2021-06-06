@@ -7,7 +7,7 @@
 </div>
 
 <div class="modal-body">
-	<h4>결제상세정보</h4>
+	<h4 id="h4flow" >결제상세정보</h4>
 	<div class="modalouter">
 		<div class="modalmiddle">
 			<div class="modalname">결제금액</div>

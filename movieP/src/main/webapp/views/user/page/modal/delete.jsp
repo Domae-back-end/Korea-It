@@ -1,34 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script>
-$("#checkBtn").click(function(){
-	
-	if(confirm("정말 탈퇴 하시겠습니까?")) {
-		
-		var list = {
-			userpw : document.getElementById('chkPw').value,
-			userid :  document.getElementById('userid').value,
-			kind:'탈퇴'
-		};
-		
-		$.ajax({
-	    	async : false,
-	        type : 'POST',
-	        data : JSON.stringify(list),
-	        url : "/membermodify",
-	        dataType : "json",
-			contentType : "application/json; charset=UTF-8",
-			success : function(data) {
-				if(data.cnt >0){
-					alert("탈퇴처리되었습니다")
-					frm.action = "/logout"
-					frm.submit();
-				}
-	     	}
-		});
-	}
-});
-</script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>            
+<script src="<c:url value="/resources/js/modal/delete.js" />" ></script>
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	<h2>회원 탈퇴</h2>
