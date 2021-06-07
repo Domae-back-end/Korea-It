@@ -30,7 +30,9 @@ public class Bannergetmain  implements BannerService{
 		ArrayList<BannerDTO> arr= db.getbannerimgs();
 		
 		System.out.println("arr siez:"+arr.size());
-		
+		for (BannerDTO bannerDTO : arr) {
+			System.out.println(bannerDTO.getM_index());
+		}
 		
 		return  arr ;
 	}
