@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="movieInfo" resultType="MovieInfoDTO">
 		select * from movieinfo
 		order by m_index desc
-	</select>
+	</select><!--  -->
 
 	<select id="movieTimeCheck" resultType="MovieTimeDTO"
 		parameterType="java.lang.String">
