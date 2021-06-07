@@ -7,16 +7,15 @@
 	
 	var pwnum = 0;
 	
-	$("#newpw").click(function(){
-		pwnum = 0
-		$('#newpwch').val('')
-		$('#pw_check2').text(''); 
-	});
-	
 	$("#newpw").on("propertychange change keyup paste input", function(){
 		
 		var regexp = /[^a-zA-Z0-9!@#$%^*+=-]/gi
 		$(this).val($(this).val().replace(regexp,''));
+		
+		pwnum = 0
+		$('#newpwch').val('')
+		$('#pw_check2').text(''); 
+		$('#newpwch').prop("readonly",false);	
 		
 		if (pwCh.test($('#newpw').val())) {
 			$('#pw_check').text('사용가능한 비밀번호입니다.'); 
