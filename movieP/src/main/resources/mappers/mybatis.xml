@@ -1036,6 +1036,9 @@ WHERE m_index = #{m_index};
 		delete from basicqna where bqindex = #{bqindex}
 	</delete>
 	
+	<select id="searchfaq" resultType="java.lang.String">
+		select bqcont, bqtitle from basicqna where bqindex='${bqindex}'
+	</select>
 	
 	
 	

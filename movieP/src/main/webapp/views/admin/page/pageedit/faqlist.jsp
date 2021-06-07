@@ -127,7 +127,8 @@ $(function() {
 			
 			<tr>
 				<td colspan="5" align="center">
-					<input type="text" name="search"/>
+					<input type="text" name="searchfaq"/>
+					<input type="button" value="검색"/>
 				</td>
 			</tr>
 			
