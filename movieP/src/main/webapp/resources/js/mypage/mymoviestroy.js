@@ -307,7 +307,7 @@ function pageChange(i){
 				var pp = "<div class='fff'>"
 					
 				if(data.pdto.startPage > 1)
-					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
+					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+(data.pdto.startPage-1)+ ")' value='&lt' />"
 								
 				for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
 									
@@ -319,7 +319,7 @@ function pageChange(i){
 				}			
 		     	
 		     	if(data.pdto.endPage < data.pdto.total)
-					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
+					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+(data.pdto.endPage+1)+ ")' value='&gt' />"
 		     		
 		     		pp+="</div>"
 		     		
