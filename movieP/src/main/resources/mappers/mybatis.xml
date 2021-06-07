@@ -199,6 +199,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		sectorNo = '${sectorno}'
 	</select>
 	
+	<!-- 예매울 test -->
+	<select id="pulltime_index" resultType="MovieRateDTO">
+		select time_index from ticketing where reg_date >= date_add(now(), interval -3 day)
+	</select>
+	<select id="FoundMovietitle" resultType="java.lang.String" parameterType="java.lang.Integer">
+		select movietitle from movietime where time_index = ${time_index}
+	</select>
+	<select id="FoundSector" resultType="java.lang.String">
+		select sectorno from movietime where time_index=${time_index}
+	</select>
+	
 
 	<select id="findMovie" resultType="MovieInfoDTO"
 		parameterType="java.lang.String">
@@ -761,7 +772,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="memqna" resultType="map" parameterType="MemberDTO">
-		select perscate, persindex, persid , perstitle, perscont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
+		select perscate, persindex, persid , perstitle, perscont, persacont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
 		from personalqna <include refid="qnacheck" /> 
 		order by persqtime desc
 		limit #{start},8
