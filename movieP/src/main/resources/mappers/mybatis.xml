@@ -83,7 +83,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 
 	<select id="movieDetail" resultType="MovieInfoDTO" parameterType="java.lang.Integer">
-		select * from movieinfo where time_index = #{time_index}
+		select * from movieinfo where m_index = #{m_index}
 	</select>
 
 	<!-- 리뷰 -->
