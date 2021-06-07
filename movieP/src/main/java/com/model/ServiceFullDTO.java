@@ -87,7 +87,7 @@ public class ServiceFullDTO {
 	String bqcont; //내용
 	int viewcnt;
 	
-	public String getBqcont() {
+	public String getBqcontbr() {
 		return bqcont.replaceAll("\n", "<br>");
 	}
 	
