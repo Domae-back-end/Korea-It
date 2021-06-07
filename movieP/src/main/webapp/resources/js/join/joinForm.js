@@ -76,29 +76,34 @@ $(function() {
 		}
 	});
 
+
+	$("#userpw").click(function(){
+		pwnum = 0
+		$('#userpwchk').val('')
+		$('#pw_check2').text(''); 
+		$('#userpwchk').prop("readonly",false);		
+	});
+	
 	$("#userpw").on("propertychange change keyup paste input", function(){
 		
 		var regexp = /[^a-zA-Z0-9!@#$%^*+=-]/gi
 		$(this).val($(this).val().replace(regexp,''));
 		
+		pwnum = 0
+		$('#userpwchk').val('')
+		$('#pw_check2').text(''); 
+		$('#userpwchk').prop("readonly",false);	
 		
 		if (pwCh.test($('#userpw').val())) {
 			$('#pw_check').text('사용가능한 비밀번호입니다.'); 
 			$('#pw_check').css('color', 'blue');
-			$('#userpwchk').prop("readonly",false);
+			$('#userpwchk').prop("readonly",true);
 		}else{
 			$('#pw_check').text('8~16자 영문 대 소문자, 숫자, 특수문자(!@#$%^*+=-)를 사용하십시오.'); 
 			$('#pw_check').css('color', 'red');
-			$('#userpwchk').prop("readonly",true);
+			$('#userpwchk').prop("readonly",false);
 		}
 		
-		if ($('#userpw').val() != $('#userpwchk').val() &&  pwnum == 1) {
-			
-			$('#userpwchk').val('')
-			$('#pw_check2').text('비밀번호가 일치하지 않습니다.다시 입력해주세요');  
-			$('#pw_check2').css('color', 'red');	
-			 pwnum = 0;		
-		}
 	});
 
 	$("#userpwchk").on("propertychange change keyup paste input", function(){
