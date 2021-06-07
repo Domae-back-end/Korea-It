@@ -199,6 +199,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		sectorNo = '${sectorno}'
 	</select>
 	
+	<!-- 예매울 test -->
+	<select id="pulltime_index" resultType="MovieRateDTO">
+		select time_index from ticketing where reg_date >= date_add(now(), interval -3 day)
+	</select>
+	<select id="FoundMovietitle" resultType="java.lang.String" parameterType="java.lang.Integer">
+		select movietitle from movietime where time_index = ${time_index}
+	</select>
+	<select id="FoundSector" resultType="java.lang.String">
+		select sectorno from movietime where time_index=${time_index}
+	</select>
+	
 
 	<select id="findMovie" resultType="MovieInfoDTO"
 		parameterType="java.lang.String">
