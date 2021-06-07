@@ -19,6 +19,7 @@
 			$('#pw_check').css('color', 'red');
 			$('#newpwch').prop("readonly",true);
 		}
+		
 		if ($('#newpw').val() != $('#newpwch').val() &&  pwnum == 1) {
 			$('#newpwch').val('')
 			$('#pw_check2').text('비밀번호가 일치하지 않습니다.다시 입력해주세요'); 
@@ -70,8 +71,7 @@
 			contentType : "application/json; charset=UTF-8",
 			success : function(data) {
 				
-    	
-				if(data.dto!=null && $('#newpw').val() == $('#newpwch').val()){
+				if(data.dto!=null){
 					
 					var inlist = {
 			    		userid : document.getElementById('userid').value,

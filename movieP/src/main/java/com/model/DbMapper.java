@@ -36,10 +36,11 @@ public interface DbMapper {
    MovieTimeDTO movietimefindindex(Integer index);
    int updatemovielist(MovieTimeDTO dto);
 
-   int deletemovie(MovieTimeDTO dto);
+   int deletemovie(Integer time_index);
+   MovieTimeDTO findMovieindex(Integer index);
    
    List<MovieTimeDTO> movieTimeCheck(String movietitle);
-   List<MovieTimeDTO> movieTimefind(MovieTimeDTO dto);
+   List<MovieTimeDTO> movieTimefind(String search);
    List<UserSitDTO> moviesit(Integer index);
    
    // 게시판 page 이동.
@@ -167,6 +168,7 @@ public interface DbMapper {
    List<ServiceFullDTO> perslist(HashMap<String, Object> map); //1대1문의(미답변보기)
    
    int perstotalCnt(HashMap<String, Object> map); //1대1총갯수(미답변)
+   int perstotalCnt2(HashMap<String, Object> map); //1대1총갯수(답변완료)
 
    ServiceFullDTO persdetail(ServiceFullDTO sfDTO); //1대1 디테일보기(미답변)
 
@@ -176,14 +178,16 @@ public interface DbMapper {
    
    List<ServiceFullDTO> perslistanscate(HashMap<String, Object> map); //1대1문의(답변완료보기)
    
-   int perstotalansCnt(HashMap<String, Object> map); //1대1총갯수(미답변)
+   int perstotalansCnt(HashMap<String, Object> map); //1대1총갯수(답변완료)
    
    List<ServiceFullDTO> pershistory(HashMap<String, Object> map); //상담내역화깅ㄴ
+   
+   List<ServiceFullDTO> pershistoryuser(HashMap<String, Object> map); //상담내역화r\긴 (유저) desc
    
    int pershistoryCnt(HashMap<String, Object> map); //상담내역화깅ㄴ갯수
 
    List<ServiceFullDTO> noticelistcate(HashMap<String, Object> map); //공지 카테별
-   int noticecatetotalCnt(HashMap<String, Object> map); //1대1총갯수(미답변)
+   int noticecatetotalCnt(HashMap<String, Object> map); //공지 카테카운트
    
    
    

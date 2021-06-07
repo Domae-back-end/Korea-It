@@ -1,0 +1,42 @@
+* {padding: 0px; margin: 0px; }
+ul, li {text-decoration: none; list-style: none; }
+a {text-decoration: none; }
+
+#sideBar {width: 170px; height: 500px; background: yellow; float: left; position: relative;  }
+#content {width: 800px; background: aqua; position: relative; float: left; left: 30px;  }
+.clear {clear: both; }
+
+h2 {text-align: left; font-size: 30px; margin-bottom: 20px; }
+
+#sideBar ul li {width: 170px; height: 60px; background: red; margin-bottom: 5px; line-height: 60px; display: inline-block; }
+#sideBar ul li a {font-size: 18px; width: 170px; height: 60px; display: inline-block;}
+	
+/* content 속지 */
+.qna1 {width: 800px; height: 100px; background: blue; margin-bottom: 50px; border-radius: 25px; font-size: 25px; line-height: 100px;}
+.inputText {font-size: 20px; width: 370px; height: 50px;   }
+.inputButton {font-size: 20px; width: 70px; height: 50px; line-height: 50px; }
+
+/* qna2 상단bar */
+.qna2_top {width: 800px; background: yellow; }
+.qna2_top>ul {display: block; }
+.qna2_top>ul>li {float: left; display: inline-block; width: 160px; line-height: 40px; height: 40px;  }
+.qna2_top>ul>li>button {width: 160px; height: 40px; font-size: 14px; line-height: 40px; cursor: pointer;
+						box-sizing: border-box;border: 1px solid gray; background: yellow; }
+
+/* qna2 바디 */
+.body_td {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
+.body_td tr:first-of-type>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
+.body_td tr:first-of-type>td:nth-of-type(1) {width: 50px;}
+.body_td tr:first-of-type>td:nth-of-type(2) {width: 150px;  }
+.body_td tr:first-of-type>td:nth-of-type(3) {width: 600px;  }
+.body_td tr>td:nth-of-type(1) {text-align: center; }
+.body_td tr>td:nth-of-type(2) {text-align: center; }
+.body_td tr>td:nth-of-type(3) {text-align: left; }
+
+/* 검색 search */
+.search {width: 400px; height: 50px; background: lime; margin-left: 400px; }
+.search>select {font-size: 16px; width: 100px; height: 40px;   }
+.search>input[type="text"] {font-size: 16px; width: 200px; height: 36px; }
+.search>input[type="submit"] {font-size: 16px; width: 50px; height: 40px; }
+
+.tot {text-align: left; }

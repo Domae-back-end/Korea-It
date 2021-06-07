@@ -48,23 +48,23 @@
 						</span>
 						</div>
 						<div>
-							<div class="purchasespace">관람일시 ${pp.starttime }</div>
+							<div class="purchasespace">관람일시 : ${pp.starttime }</div>
 						<span>
 							관람좌석 : ${pp.seatNo }
 						</span>
 						</div>
 						<div class="purchasespace">
-							결제일시 : ${pp.sales_time }
+							결제일시 : ${pp.sales_time2 }
 						</div>
 						<div class="purchasespaceButt">
-						<button class="changeButt qwer" id="inforpurchase" data-target="#inforpurchase1" dd="${pp.saleslink}">결제정보</button>
+						<button class="changeButt qwer" dd="${pp.salesprice}" cc="${pp.sales_time3.replace(' ',',') }" tt="${pp.sales_type }" >결제정보</button>
 						<c:if test="${pp.checktime > memdata.dto.nowDate }">
 							<button class="changeButt" onclick="ticketCancel(${pp.saleslink })">예매취소</button>		
 						</c:if>
 						</div>
 					</div>
 				</div>
-				
+ 
 			</c:forEach>
 		</div> 
 	</div>

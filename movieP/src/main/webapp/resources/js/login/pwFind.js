@@ -55,7 +55,7 @@ $(function() {
 				if(data.dto!=null){
 					
 					alert(data.dto.userpw)
-					frm.action = "/user/main"
+					frm.action = "/member/login/loginForm"
 					frm.submit();
 			
 				}else{ 
@@ -122,6 +122,7 @@ $(function() {
 	                    	  $('#checkBtn').attr("disabled", true);
 	                    	  $('#userpnum').attr("disabled", false);
 	                    	  $('#pnumcheck').val("인증번호 발송");
+	                    	  $('#pnumcheck').attr("disabled", true);
 	                    	   messch = 0;
 	                    }
 	                });
@@ -139,7 +140,7 @@ $(function() {
 	        $('#userpnum').attr("disabled", false);
 	        $('#pnumcheck').val("인증번호 발송");
 	        $('#check').attr("disabled", true);
-	         $('#pnumcheck').attr("disabled", true);
+	        $('#pnumcheck').attr("disabled", true);
 	        messch = 0;
         }
 

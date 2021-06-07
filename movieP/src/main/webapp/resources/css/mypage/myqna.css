@@ -7,7 +7,9 @@
 .fff {
 	margin-top: 20px; 
 }
-
+#serviceGo{
+	margin-bottom: 10px;
+}
 .cimeminfor {
 	margin: 20px;
 	border-top: 1px solid #000;
@@ -115,4 +117,8 @@
 	width: 800px;
 	position: relative;
 	left: 30px;
+}
+
+.qnaDetailGo:hover, .backQ:hover{
+	cursor: pointer;
 }

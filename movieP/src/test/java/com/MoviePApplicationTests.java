@@ -50,10 +50,10 @@ class MoviePApplicationTests {
 	}
 	@Test
 	void deleteTest() {
-		MovieTimeDTO dto = new MovieTimeDTO();
-		Object res = mm.deletemovie(dto);
-		System.out.println("deleteTest() : "+res);
-		assertNotNull(res);
+		//MovieTimeDTO dto = new MovieTimeDTO();
+		//Object res = mm.deletemovie(dto);
+		//System.out.println("deleteTest() : "+res);
+		//assertNotNull(res);
 	}
 	
 	

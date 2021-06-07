@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
+
 	<small>
 		<p>
 			고객센터를 통해 남기신 1:1 문의내역을 확인하실 수 있습니다.
@@ -13,6 +14,8 @@
 		<input type="hidden" name="detail" id="detail" />
 		<input type="hidden" name="page" id="page" value="${param.page }" />
 	</form>
+		<input type="hidden" id="qnastatenow" value="전체"/>
+		<input type="hidden" id="qnacontentnow" />
 	<form action ="" method="post" name="frm">
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />
 	</form>

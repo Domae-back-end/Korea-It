@@ -66,6 +66,11 @@ public class InitData { // 서버 시작시에 // 자주쓰는 주소들이나. 
 		map.get("persqna").add(new Menu("persqnanew","새로온질문"));
 		map.get("persqna").add(new Menu("persqnahistory","이전내역"));
 		
+		map.put("movietime", new ArrayList<Menu>());
+		map.get("movietime").add(new Menu("list","영화 시간표 보기"));
+		map.get("movietime").add(new Menu("insert1","영화 시간표 하나 등록"));
+		map.get("movietime").add(new Menu("insert2","영화 시간표 여러게 등록"));
+		
 		return map.get(cate);
 	}
 

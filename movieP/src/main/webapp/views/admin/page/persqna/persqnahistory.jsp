@@ -48,6 +48,7 @@
 		frm.submit()
 	}
 	
+	
 </script>
 
 
@@ -57,7 +58,9 @@
 	<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
 		<input type="hidden" name="persindex" id="detailId" />
-		
+		<c:if test="${data.onesfdto.perscate != null}">
+			<input type="hidden" name="perscate" id="persCate" value="${data.onesfdto.perscate }" />
+		</c:if>
 		<table class="td1">
 		<!-- 번호, 문의유형(일반문의, 영화정보, 회원, 예매, 분실물, 제안/건의), 아이디, 제목, 내용, 사진, 등록일, 답변칸, 답변시간, 답변상태*/ -->
 			<tr>

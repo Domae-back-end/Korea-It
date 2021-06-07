@@ -81,8 +81,16 @@ public class SalesGraphSltView implements SalesService {
 		if (res.size() > 0) {
 			result.put("answer", "yes");
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+			// timevo 가 ,   작은관으로 올때, 기존관으로 올때를 잡아야 함. 그래서 통합값을 가져와야한다.
 			
-//			if(timevo.getSectorNo().equals("작은관")||timevo.getSectorNo().equals("기존관")) {
+			if(timevo.getSectorNo().equals("작은관")||timevo.getSectorNo().equals("기존관")) {
+			
+				for (SalesDTO ss : res) {
+					ss.setSectorNo(timevo.getSectorNo());
+				System.out.println(ss.getSumall()+",,"+ss.getSumalll()+"관이름:"+ss.getSectorNo());
+				
+				result.put(sdf.format(ss.getMonthdate()) + "-" + ss.getSectorNo(), ss.getSumalll());
+				}
 //				String oldone="";
 //				int tot= 0,nowpp=0;
 //				for (SalesDTO ss : res) {
@@ -110,19 +118,21 @@ public class SalesGraphSltView implements SalesService {
 //				}
 //			
 //			
-//			}else {
+			}else {
 				
 					for (SalesDTO ss : res) {
-						System.out.println(ss.getSumall()+",,"+ss.getSumalll());
+						//if(ss.getSectorNo().equals("total")||timevo.getSectorNo().equals("관 전체"))
+						ss.setSumalll(ss.getSumall());
+						System.out.println(ss.getSumall()+",,"+ss.getSumalll()+"관이름:"+ss.getSectorNo());
 						ss.setSectorNo(timevo.getSectorNo());
 						result.put(sdf.format(ss.getMonthdate()) + "-" + ss.getSectorNo(), ss.getSumalll());
 						// System.out.println(res.indexOf(ss)+","+sdf.format(ss.getMonthdate())+"-"+ss.getSectorNo());
 					}
-			//	}
+				}
 
 		}//
 
-		System.out.println(result.size());
+		System.out.println(result.size()+"개 문제있음. ");
 
 		return result;
 	}

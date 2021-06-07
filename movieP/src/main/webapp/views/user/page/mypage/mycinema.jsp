@@ -4,6 +4,11 @@
 	<form action ="" method="get" name="qq">
 		<input type="hidden" name="detail" id="detail" />
 	</form>
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id='inforpurchase2'>
+	<div class="modal-dialog">
+   		<div class="modal-content"></div>
+	</div>
+</div>	
 <div>
 	<div class = "cimemaouter">
 		<div>
@@ -80,10 +85,13 @@
 						<div>
 							${pp.starttime }
 						</div>
+					<div class="purchasespaceButt">
+						<button class="changeButt qwer" id="inforpurchase" dd="${pp.salesprice}" cc="${pp.sales_time3 }" tt="${pp.sales_type }" >결제정보</button>
+						<c:if test="${pp.checktime > memdata.dto.nowDate }">
+						<button class="changeButt" onclick="ticketCancel(${pp.saleslink })">예매취소</button>		
+						</c:if>
 					</div>
-					<c:if test="${pp.checktime > memdata.dto.nowDate }">
-						<div class="cancelOuter"><button class="changeButt" onclick="">예매취소</button></div>			
-					</c:if>
+					</div>
 				</div>
 		</c:forEach>
 	</div>	

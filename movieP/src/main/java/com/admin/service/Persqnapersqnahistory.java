@@ -38,15 +38,17 @@ public class Persqnapersqnahistory implements PageeditService {
 		
 		if (sfdto.getPerscate() == null) {
 
-			snpdto.initpers2(db, map);
+			snpdto.persold(db, map);
 			res.setSfdto(db.perslistans(map));
+			res.setOnesfdto(sfdto);
 			res.setSnpdto(snpdto);
 			return res;
 		}
 		
 
-		snpdto.initpers(db, map);
+		snpdto.persoldcate(db, map);
 		res.setSfdto(db.perslistanscate(map));
+		res.setOnesfdto(sfdto);
 		res.setSnpdto(snpdto);
 
 		return res;

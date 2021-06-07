@@ -1,121 +1,180 @@
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-    
 <style>
-	.inputbox{
-		width: 1000px;
-		height: 100%;
-		margin: 0 auto;
-		background: olive;
+	.timelay1_1{
+		width: 100%;
+		height: 300px;
+		border: 1px solid #000;
+	}
+	.timelay1{
+		width: 100%;
+		height: 500px;
+		border: 1px solid #000;
+		overflow: scroll;
+	}
+	.timebox1{
+		float: left;
+		width: 100px;
+		height: 100px;
+		border: 1px solid #000;
+	}
+	.timebox1 > img{
+		width: 100px;
+		height: 100px;
 	}
 	.both{
 		clear: both;
 	}
-	.choice{
-		width: 100px;
-		height: 100px;
+	.timebox2{
+		width: 100px; 
+		height: 50px;
+		float: left;
+		margin-left: 30px;
+	}
+	.timebox3{
+		width: 150px; 
+		height: 50px;
 		float: left;
 	}
-	.choice > img{
-		width: 100px;
-		height: 100px;
+	timebox3 > input{
+		width: 150px;
+		height: 50px;
 	}
-	.checktime{
+	hr{
 		border: 1px solid #000;
-		color: black;
-		font-size: 18px;
-		background:white;
 	}
-	#msgto{
-		width:200px;
-		float: right;
+	.timebox3_1{
+	width: 150px;
+	height: 25px;
 	}
-	.btntimeinsert{
-		float: right;
+	.timebox4{
+		width: 300px; 
+		height: 50px;
+		float: left;
+		border: 1px solid #000;
+	}
+	.timebutton1{
+		width: 150px;
+		height: 50px;
+		border: 1px solid #000;
+		color: blue;
+	}
+	.timebox3 > input[type="submit"] {
+		width: 150px;
+		height: 50px;
+		border: 1px solid #000;
+		color: blue;
 	}
 </style>
-<script>
-
-$(function() {
-	
-	$(".checktime").click(function() {
-		var time = $('#starttime1').val();
-		var el = $('#el').val();
-		var dal = $('#dal').val();
-		var sectorno = $('#sectorno').val();
-		var movie
-	    const moviechek = document.getElementsByName('movietitle');
-		  moviechek.forEach((node) => {
-		    if(node.checked)  {
-		    	movie = node.value;
-		    }
-		  }) 
-		$.ajax({
-			url : '${pageContext.request.contextPath}/admin/movietime/check?time='+time+'&movietitle='+movie+'&sectorno='+sectorno+'&el='+
-					el+'&dal='+dal,
-			type : 'get',
-			success : function(data) {
-				if(data == 1){
-					$("#msgto").text("사용가능한 시간대 입니다.");
-				}else{
-					$("#msgto").text("사용중인 시간대 입니다.");
-				}
-			}, error : function() {
-				console.log("실패");
-			}
-		});
-	});
-	
-});
-</script>
 <form action="/admin/movietime/insertReg">
-	<input type="hidden" id="dal" value="<%=request.getParameter("dal")%>" name="dal">
-	<input type="hidden" id="el" value="<%=request.getParameter("el")%>" name="el">
-	<div class="inputbox">
-		<select name="sectorno" id="sectorno">
-			<option value="작은관1">작은관1</option>
-			<option value="작은관2">작은관2</option>
-			<option value="작은관3">작은관3</option>
-			<option value="기존관1">기존관1</option>
-			<option value="기존관2">기존관2</option>
-			<option value="기존관3">기존관3</option>
-			<option value="3D관">3D관</option>
-		</select>
-		시작 시간 :
-			<input type="time" name="starttime1" id="starttime1" /> 
-			<input type="button" value="중복체크" class="checktime"/>
-			<div id="msgto"></div>
+	<input type="hidden" name="dal" value="${param.dal }">
+	<input type="hidden" name="el" value="${param.el }">
+	<input type="hidden" name="sectorno" value="${param.sectorno }">
+		<div class="timelay1_1">
+		<div class="timebox3">
+			
+		</div>
+		<div class="timebox3">
+			요일
+		</div>
+		<div class="timebox3">
+			날짜
+		</div>
 		<div class="both"></div>
-		<input type="submit" value="시간표 추가" class="btntimeinsert">
+		<div class="timebox3">
+			멀티 시간표 설정
+		</div>
+		<div class="timebox3">
+			<div class="timebox3_1">
+				일 월 화 수 목 금 토
+			</div>
+			<div class="timebox3_1">
+				<input type="checkbox" name="dayto" value="1"/>
+				<input type="checkbox" name="dayto" value="2"/>
+				<input type="checkbox" name="dayto" value="3"/>
+				<input type="checkbox" name="dayto" value="4"/>
+				<input type="checkbox" name="dayto" value="5"/>
+				<input type="checkbox" name="dayto" value="6"/>
+				<input type="checkbox" name="dayto" value="7"/>
+			</div>
+		</div>
+		<div class="timebox3">
+			<input type="date" name="endReg_date" />
+		</div>
+		<div class="timebox2">
+			${param.sectorno }
+		</div>
+		<div class="timebox3">
+			<c:if test="${param.movietitle != null }">
+				<input type="hidden" name="movietitle" value="${param.movietitle }" />
+				<input type="hidden" name="time" value="${param.time }" />
+				<input type="hidden" name="check" value="true" />
+				<input type="submit" value="멀티 시간표 설정" />
+			</c:if>
+		</div>
+		<div class="both"></div>
+		<div class="timebox3">
+		</div>
+		<div class="timebox3">
+		</div>
+		<div class="timebox3">
+			선택 ->
+		</div>
+		<div class="timebox4">
+			${param.dal }월 ${param.el }일 ${param.sectorno } ${param.movietitle }
+		</div>
 		<div class="both"></div>
 		<hr>
-		<div class="choice">선택</div>
-		<div class="choice">이미지</div>
-		<div class="choice">영화 제목</div>
-		<div class="choice">감독</div>
-		<div class="choice">개봉일</div>
-		<div class="choice">상영 시간</div>
-		<div class="choice">평점</div>
+		<div class="timebox3">
+			싱글 시간표 설정
+		</div>
+		<div class="timebox3"></div>
+		<div class="timebox3">
+			${param.dal }월 ${param.el }일
+		</div>
+		<div class="timebox2">
+			${param.sectorno }
+		</div>
+		<div class="timebox3">
+			<c:if test="${param.movietitle != null }">
+				<a class="timebutton1" href="insertReg?dal=${param.dal }&el=${param.el }&check=false&sectorno=${param.sectorno }&movietitle=${param.movietitle }&time=${param.time }">싱글 시간표 설정</a>
+			</c:if>
+		</div>
 		<div class="both"></div>
-			<c:forEach var="a" items="${data }">
-				<div class="choice"><input type="radio" id="movietitle" name="movietitle" value="${a.movietitle }"></div>
-				<div class="choice"><img src="/img/${a.movieimg }" alt="이미지 파일 없음."></div>
-				<div class="choice">${a.movietitle }</div>
-				<div class="choice">${a.mdir }</div>
-				<div class="choice">	
-			<fmt:formatDate value="${a.mdate }" type="both"
-							pattern="yyyy-MM-dd" />
-				</div>	
-				<div class="choice">${a.mplaytime } 분</div>
-				<div class="choice">${a.star }</div>
-				<div class="both"></div>
-			</c:forEach>
-		
-		<div class="both"></div>
-		<hr>
+		<div class="timebox3">
+		</div>
+		<div class="timebox3">
+		</div>
+		<div class="timebox3">
+			선택 ->
+		</div>
+		<div class="timebox4">
+			${param.dal }월 ${param.el }일 ${param.sectorno } ${param.movietitle }
+		</div>
 	</div>
+	<div class="both"></div>
 	
+	<div class="timebox1">선택</div>
+	<div class="timebox1">영화 포스터</div>
+	<div class="timebox1">영화 제목</div>
+	<div class="timebox1">영화 시간</div>
+	<div class="timebox1">영화 감독</div>
+	<div class="timebox1">영화 장르</div>
+	<div class="timebox1">영화 별점</div>
+	<div class="both"></div>
+		
+	<div class="timelay1">
+		<c:forEach var="a" items="${data.movielist }">
+			<div class="timebox1"><a href="?time=${param.time }&sectorno=${param.sectorno }&dal=${param.dal }&el=${param.el }&movietitle=${a.movietitle }">▶</a></div>
+			<div class="timebox1"><img src="/moviedata/${a.movieimg }" alt="준비된 사진이 없음." /></div>
+			<div class="timebox1">${a.movietitle }</div>
+			<div class="timebox1">${a.mplaytime }</div>
+			<div class="timebox1">${a.mdir }</div>
+			<div class="timebox1">${a.mcate }</div>
+			<div class="timebox1">${a.star }</div>
+			<div class="both"></div>
+		</c:forEach>
+	</div>
 </form>

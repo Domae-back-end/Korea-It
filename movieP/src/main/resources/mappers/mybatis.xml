@@ -26,6 +26,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from movietime where movietitle = #{movietitle}
 	</select>
 
+	<select id="findMovieindex" resultType="MovieTimeDTO"
+		parameterType="java.lang.Integer">
+		select * from movietime where time_index = #{time_index}
+	</select>
+
 	<!-- 영화 리스트 검색기능 구현한 부분!!! -->
 	<select id="movieInfoBefore" resultType="MovieInfoDTO"
 		parameterType="java.lang.String">
@@ -77,8 +82,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 
-	<select id="movieDetail" resultType="MovieInfoDTO">
-		select * from movieinfo where m_index =#{m_index}
+	<select id="movieDetail" resultType="MovieInfoDTO" parameterType="java.lang.Integer">
+		select * from movieinfo where m_index = #{m_index}
 	</select>
 
 	<!-- 리뷰 -->
@@ -204,6 +209,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		parameterType="java.lang.String">
 		select * from movietime where movietitle = #{movietitle}
 	</select>
+
+	
 	<select  id="movietimefindindex" resultType="MovieTimeDTO" parameterType="java.lang.Integer">
 		select * from movietime where time_index = #{time_index}
 	</select>
@@ -233,9 +240,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 
 
-	<delete id="deletemovie" parameterType="MovieTimeDTO">
-		delete from movietime where time_index = #{time_index} and movietitle =
-		#{movietitle}
+	<delete id="deletemovie" parameterType="java.lang.Integer">
+		delete from movietime where time_index = #{time_index}
 	</delete>
 
 	<select id="findactor" resultType="ActorDTO"
@@ -467,6 +473,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select count(*) from personalqna
 		where persstate = '미답변'
 	</select>
+	
+	<!-- 어드민 1대1질문 (답변완료총갯수) -->
+	<select id="perstotalCnt2" resultType="java.lang.Integer" parameterType="HashMap">
+		select count(*) from personalqna
+		where persstate = '답변완료'
+	</select>
 
 	<!-- 어드민 1대1질문 (미답변) -->
 	<select id="persdetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
@@ -493,14 +505,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	
 <!-- ///////////////////////// -->
-	<!-- 어드민 1대1질문 (답변총갯수) -->
+	<!-- 어드민 1대1질문 (답변완료 갯수) -->
 	<select id="perstotalansCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from personalqna
 		where persstate = '답변완료' and	perscate like concat('%',#{sfdto.perscate},'%')
 	</select>
 
 	
-	<!-- 어드민 1대1질문 (답변리스트, 문의유형별) -->
+	<!-- 어드민 1대1질문 (답변완료, 문의유형별) -->
 	<select id="perslistanscate" resultType="ServiceFullDTO" parameterType="HashMap">
 		select * from personalqna 
 		where persstate = '답변완료' and perscate = #{sfdto.perscate}
@@ -515,7 +527,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where persid = #{sfDTO.persid}
 		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
-
+	
+	<!-- 상담내역(유저쪽 desc) -->
+	<select id="pershistoryuser" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from personalqna 
+		where persid = #{sfDTO.persid}
+		order by persindex desc
+		limit #{npDTO.start}, #{npDTO.limit}
+	</select>
+	
 	<!-- 상담내역확인(갯수확인) -->
 	<select id="pershistoryCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from personalqna
@@ -535,33 +555,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="noticecatetotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from noticeboard
 		where noticecate like concat('%',#{sfDTO.noticecate},'%')
-		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
 
 	
 	<select id="movieTimefind" resultType="MovieTimeDTO"
-		parameterType="MovieTimeDTO">
-		select * from movietime
-		<include refid="searchmovietime" />
+		parameterType="java.lang.String">
+		select * from movietime where date_format(reg_date,'%Y-%m-%d') = #{search}
 	</select>
-
-	<sql id="searchmovietime">
-		<choose>
-			<when test="time_index == 1">
-				<where>movietitle LIKE '%${search}%'</where>
-			</when>
-
-			<when test="time_index  == 2">
-				<where>date_format(reg_date,'%Y%m%d') = date_format(#{search},'%Y%m%d')</where>
-			</when>
-			<when test="time_index  == 5">
-				<where>sectorno LIKE '%${search}%'</where>
-			</when>
-
-		</choose>
-
-	</sql>
-
 
 
 
@@ -578,11 +578,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 
 			<when test="userid == null">
-				<where> <![CDATA[username = #{username} and userbirth = date_format(#{userbirth},'%Y-%m-%d') and userpnum = #{userpnum} and kind !='탈퇴']]></where>
+				<where> <![CDATA[username = #{username} and date_format(userbirth,'%Y%m%d') = #{userbirthM} and replace(userpnum,'-','') = #{userpnum} and kind !='탈퇴']]></where>
 			</when>
 
 			<when test="userpnum != null or userpnum == ''">
-				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} and kind !='탈퇴' ]]></where>
+				<where> <![CDATA[username = #{username} and userid = #{userid} and replace(userpnum,'-','') = #{userpnum} and kind !='탈퇴' ]]></where>
 			</when>
 
 			<otherwise>
@@ -692,7 +692,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</sql>
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
-		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userbirth as userbirthM, replace(userpnum,'-','') as userpnum, userpnum as userpnumM, useremail, joinday, kind 
+		select userid, userpw, username, userbirth, date_format(userbirth,'%Y년 %m월 %d일') as userbirthM,  date_format(joinday,'%Y년 %m월 %d일') as joindayM, joinday, replace(userpnum,'-','') as userpnum, userpnum as userpnumM, useremail, kind 
 		from memberinfo <include refid="checkform" />
 	</select>
 
@@ -720,7 +720,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(length(ticketing.people)-length(replace(ticketing.people,'C',''))) as C,
 		(length(ticketing.people)-length(replace(ticketing.people,'T',''))) as T,
 		(length(ticketing.people)-length(replace(ticketing.people,'A',''))) as A,
-		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time from ticketing 
+		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time, 
+		date_format(sales_time,'%Y-%m-%d') as sales_time2, date_format(sales_time,'%Y-%m-%d %H:%m:%s') as sales_time3 from ticketing 
 		left outer join sales on sales.sales_index = saleslink 
 		left outer join movieimg on sales.m_index = movieimg.m_index
 		left outer join movietime on ticketing.time_index = movietime.time_index
