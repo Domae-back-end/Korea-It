@@ -109,7 +109,7 @@ $(function() {
 						tt+="<li><span>"+'답변상태'+"</span>"+data.qna[i].persstate+"<li>"
 						tt+="</ul></div>"
 						tt+="<div class='hdetail_cont'>"
-						tt+="<p class='hdetail_cont_ques'>"+data.qna[i].persacont+"</p>"
+						tt+="<p class='hdetail_cont_ques'>"+data.qna[i].perscont.replaceAll('\n','<br>')+"</p>"
 						tt+="<p class='hdetail_cont_pic'>"
 						
 						if(data.qna[i].persimg!=null)
@@ -118,7 +118,7 @@ $(function() {
 						tt+="</p>"
 						tt+="<p class='hdetail_cont_status'><span>"+ data.qna[i].persatime
 						tt+="</span>"+data.qna[i].persstate+"</p>"
-						tt+="<p class='hdetail_cont_ans'>"+data.qna[i].persacont
+						tt+="<p class='hdetail_cont_ans'>"+data.qna[i].persacont.replaceAll('\n','<br>')
 						tt+="</p></div></div>"
 						
 						
