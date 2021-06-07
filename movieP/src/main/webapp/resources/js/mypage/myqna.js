@@ -162,7 +162,7 @@ function qnalistChange(list){
 					var tt ="<div class='fff'>"
 					tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
 					tt+="<a class='qnaDetailGo' value=" + data.qna[i].persindex + " dd=" + data.qna[i].persindex +">"
-					tt+="<div class='puchaseinner'>"+data.qna[i].perstitle+"</div>"
+					tt+="<div class='puchaseinner' id='titleOver'>"+data.qna[i].perstitle+"</div>"
 					tt+="</a>"
 					tt+="<div class='puchaseinner'>" +data.qna[i].persqtime+ "</div>"
 					tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'

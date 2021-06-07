@@ -122,4 +122,4 @@
 .qnaDetailGo:hover, .backQ:hover{
 	cursor: pointer;
 }
-.qnaDetailGo{display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+#titleOver{display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
