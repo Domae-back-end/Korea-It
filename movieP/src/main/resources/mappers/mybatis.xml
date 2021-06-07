@@ -696,7 +696,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 
 			<otherwise>
-				<![CDATA[and ticketing.reg_date < sysdate()]]>
+				<![CDATA[and CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m')) < sysdate()]]>
 			</otherwise>
 		</choose>
 
