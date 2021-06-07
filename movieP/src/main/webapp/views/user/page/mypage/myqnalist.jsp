@@ -4,11 +4,11 @@
 <div>
 
 	<small>
-		<p>
+		<p class="pMargin">
 			고객센터를 통해 남기신 1:1 문의내역을 확인하실 수 있습니다.
 		</p>
 	</small>
-	<form action ="" method="get" name="qq">
+	<form action ="" method="post" name="qq">
 		<input type="hidden" name="qnastate" id="qnastateGo" value="${param.qnastate }" />
 		<input type="hidden" name="qnacontent" id="qnacontentGo" value="${param.qnacontent }" />
 		<input type="hidden" name="detail" id="detail" />
@@ -19,7 +19,7 @@
 	<form action ="" method="post" name="frm">
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />
 	</form>
-	<div>
+	<div class="qnaMargin">
 		<select id="qnastate" name="moiverecord">
 			<option value="전체">전체</option>
 			<option value="답변완료">답변완료</option>

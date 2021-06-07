@@ -63,6 +63,8 @@ $(function() {
 	
 	if(document.getElementById("content") !=null){
 	
+		$('.outer').css('height','100%')
+	
 		if(document.getElementById('qnastate').value!= ''){
 			
 			var list = {

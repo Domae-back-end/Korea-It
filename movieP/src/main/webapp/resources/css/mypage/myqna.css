@@ -122,4 +122,19 @@
 .qnaDetailGo:hover, .backQ:hover{
 	cursor: pointer;
 }
+
 #titleOver{display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+
+.pMargin{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.qnaMargin{
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+#qnafind{
+	position: relative;
+	top: -1px;
+}
+
