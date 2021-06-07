@@ -264,6 +264,8 @@ void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 
 	ArrayList<BannerDTO> getbannerimgs();
 
+	List<MovieInfoDTO> movielistbanner();//
+
 
    
    
