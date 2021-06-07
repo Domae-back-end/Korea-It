@@ -50,7 +50,6 @@ public class MemPageDTO {
 		if (endPage > total) {
 			endPage = total;
 		}
-		
 	}
 	
 	

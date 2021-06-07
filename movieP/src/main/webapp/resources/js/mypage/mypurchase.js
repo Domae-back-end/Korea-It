@@ -152,7 +152,7 @@ function purchaselistChange(list){
 			var pp = "<div class='fff'>"
 				
 			if(data.pdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasepageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasepageChange("+(data.pdto.startPage-1)+ ")' value='&lt' />"
 							
 			for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
 								
@@ -164,8 +164,8 @@ function purchaselistChange(list){
 			}			
 	     	
 	     	if(data.pdto.endPage < data.pdto.total)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasepageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
-	     		
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasepageChange("+(data.pdto.endPage+1)+ ")' value='&gt' />"
+	     	
 	     		pp+="</div>"
 	     		
 	     		$("#pageRecord").append(pp)
@@ -180,8 +180,8 @@ function purchasepageChange(i){
 	
 	var list = {
     	userid : document.getElementById('userid').value,
-    	date :  document.getElementById('moiverecord').value,
-    	pagekind : 'mypurchase',
+    	date : document.getElementById('moiverecord').value,
+    	pageKind : 'mypurchase',
     	page : i
     };
 	
@@ -254,7 +254,7 @@ function purchasCancelepageChange(i){
 			var pp = "<div class='CCC'>"
 				
 			if(data.cpdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasCancelepageChange("+data.pdto.cstartPage-1+ ")' value='&lt' />"
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasCancelepageChange("+(data.pdto.cstartPage-1)+ ")' value='&lt' />"
 							
 			for( var i = data.cpdto.cstartPage ; i <= data.cpdto.cendPage ; i++){
 								
@@ -266,7 +266,7 @@ function purchasCancelepageChange(i){
 			}			
 	     	
 	     	if(data.cpdto.cendPage < data.cpdto.ctotal)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasCancelepageChange("+data.cpdto.cendPage+1+ ")' value='&gt' />"
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasCancelepageChange("+(data.cpdto.cendPage+1)+ ")' value='&gt' />"
 	     		
 	     		pp+="</div>"
 	     		

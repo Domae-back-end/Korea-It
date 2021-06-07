@@ -109,7 +109,7 @@ $(function() {
 						tt+="<li><span>"+'답변상태'+"</span>"+data.qna[i].persstate+"<li>"
 						tt+="</ul></div>"
 						tt+="<div class='hdetail_cont'>"
-						tt+="<p class='hdetail_cont_ques'>"+data.qna[i].perscont+"</p>"
+						tt+="<p class='hdetail_cont_ques'>"+data.qna[i].perscont.replaceAll('\n','<br>')+"</p>"
 						tt+="<p class='hdetail_cont_pic'>"
 						
 						if(data.qna[i].persimg!=null)
@@ -118,7 +118,7 @@ $(function() {
 						tt+="</p>"
 						tt+="<p class='hdetail_cont_status'><span>"+ data.qna[i].persatime
 						tt+="</span>"+data.qna[i].persstate+"</p>"
-						tt+="<p class='hdetail_cont_ans'>"+data.qna[i].persacont
+						tt+="<p class='hdetail_cont_ans'>"+data.qna[i].persacont.replaceAll('\n','<br>')
 						tt+="</p></div></div>"
 						
 						
@@ -162,7 +162,7 @@ function qnalistChange(list){
 					var tt ="<div class='fff'>"
 					tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
 					tt+="<a class='qnaDetailGo' value=" + data.qna[i].persindex + " dd=" + data.qna[i].persindex +">"
-					tt+="<div class='puchaseinner'>"+data.qna[i].perstitle+"</div>"
+					tt+="<div class='puchaseinner' id='titleOver'>"+data.qna[i].perstitle+"</div>"
 					tt+="</a>"
 					tt+="<div class='puchaseinner'>" +data.qna[i].persqtime+ "</div>"
 					tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'
@@ -175,7 +175,7 @@ function qnalistChange(list){
 			var pp = "<div class='fff'>"
 				
 			if(data.pdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+(data.pdto.startPage-1)+ ")' value='&lt' />"
 							
 			for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
 								
@@ -187,7 +187,7 @@ function qnalistChange(list){
 			}			
 	     	
 	     	if(data.pdto.endPage < data.pdto.total)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+(data.pdto.endPage+1)+ ")' value='&gt' />"
 	     		
 	     		pp+="</div>"
 	     		

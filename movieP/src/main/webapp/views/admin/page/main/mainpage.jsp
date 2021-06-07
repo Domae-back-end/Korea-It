@@ -5,6 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+	.adminmainbox{
+		width:260px;
+		height: 300px;
+		border: 1px solid #333;
+		//padding: 0px;
+	}
+
+
+</style>
+
+
 </head>
 
 
@@ -12,7 +25,9 @@
 
 
       <div class="row mb-5">
-        <div class="col-md-6">
+        
+        
+        <div class="col-md-6 adminmainbox mx-0">
           <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
               <strong class="d-inline-block mb-2 text-primary">새 고객문의</strong>
@@ -26,10 +41,12 @@
             </div>
               </div>
         </div>
-        <div class="col-md-6">
+       
+       
+        <div class="col-md-6 mx-0 adminmainbox">
           <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
-              <strong class="d-inline-block mb-2 text-success">최근 매출액</strong>
+              <strong class="d-inline-block px-0 mb-2 text-success">최근 매출액</strong>
               <h3 class="mb-0">
                 <a class="text-dark" href="#">Post title</a>
                 <h4> ${   adminmainpage_sales  }</h4>
@@ -43,7 +60,10 @@
       </div>
     </div>
 	 <div class="row mb-2">
-        <div class="col-md-6">
+       
+       
+       
+        <div class="col-md-6 mx-0  adminmainbox">
           <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
               <strong class="d-inline-block mb-2 text-primary">자주 본 FAQ</strong>
@@ -57,7 +77,9 @@
             </div>
               </div>
         </div>
-        <div class="col-md-6">
+       
+       
+        <div class="col-md-6  mx-0  adminmainbox">
           <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
               <strong class="d-inline-block mb-2 text-success">공지사항</strong>

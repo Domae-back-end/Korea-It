@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<select id="movielist" resultType="MovieInfoDTO">
 		select * from movieinfo
-	</select>
+	</select> <select id="movielistbanner" resultType="MovieInfoDTO">select * from movieinfo order by mdate desc</select>
 
 	<select id="movieInfo" resultType="MovieInfoDTO">
 		select * from movieinfo
@@ -772,7 +772,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="memqna" resultType="map" parameterType="MemberDTO">
-		select perscate, persindex, persid , perstitle, perscont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
+		select perscate, persindex, persid , perstitle, perscont, persacont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
 		from personalqna <include refid="qnacheck" /> 
 		order by persqtime desc
 		limit #{start},8
