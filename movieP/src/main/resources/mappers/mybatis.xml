@@ -791,12 +791,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
-		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid} and date_format(ticketing.reg_date,'%Y-%m')=#{date}) a, 
+		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} and date_format(ticketing.reg_date,'%Y-%m')=#{date}) a, 
 		(select COUNT(*) wc from review where userid=#{userid}) b,
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
 		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d,
 		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0) e,
-		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} 
+		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid} 
 		and ticketing.time_index in (select time_index from movietime where 
 		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) <![CDATA[<]]> sysdate())) f;
 	</select>

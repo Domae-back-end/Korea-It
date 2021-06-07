@@ -33,7 +33,7 @@
 		<div class="cimemastory">
 			<a href="/member/mypage/mymoviestroy?kind=seemovie">
 				<div class="myrecord">
-					<div class="recordinner">${memdata.cnt.nc }</div>
+					<div class="recordinner">${memdata.cnt.sc }</div>
 					<div class="recordinner">본 영화</div>
 				</div>
 			</a>

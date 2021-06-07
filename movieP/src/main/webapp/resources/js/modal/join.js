@@ -27,12 +27,13 @@ $(function() {
 	    	
 	    	alert('문자인증을 완료했습니다')
 	        
+	        
 	        $('#joinPnum').val("")                
 			$('#pnum_check').text('휴대폰 인증완료');
 			$('#pnumcheck').val('다시 입력') 
 			$("#close").trigger("click");
-	       
-	        pnumchCnt = 1;
+	       	
+	        
 	                
 		}else{
 			

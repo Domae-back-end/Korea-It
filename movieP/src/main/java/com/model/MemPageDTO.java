@@ -25,7 +25,7 @@ public class MemPageDTO {
 		
 		}else if(mdto.getPageKind()!=null && mdto.getPageKind().equals("mypurchase")) {
 			
-			pageKind ="sc";
+			pageKind ="nc";
 			limit=2;
 		
 		}else
@@ -50,6 +50,7 @@ public class MemPageDTO {
 		if (endPage > total) {
 			endPage = total;
 		}
+		System.out.println("야"+String.valueOf(map.get("sc")));
 	}
 	
 	

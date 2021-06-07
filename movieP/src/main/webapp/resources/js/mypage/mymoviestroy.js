@@ -261,7 +261,7 @@ function pageChange(i){
 				
 				if(document.getElementById('pagekind').value == "seemovie"){
 				
-					
+					console.log(data.pdto.total)
 					for(j in data.purchase){
 						
 						var state = "관람평쓰기"
