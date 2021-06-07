@@ -27,3 +27,32 @@ $(function() {
 	 });
 
 });
+
+function ticketCancel(i){
+	
+	var list = {
+		userid : document.getElementById('userid').value,
+		ticket : i
+    };
+    
+    if(confirm("예매를 취소하시겠습니까?")){
+	
+		$.ajax({
+		    	async : false,
+		        type : 'POST',
+		        data : JSON.stringify(list),
+		        url : "/memberdelete",
+		        dataType : "json",
+				contentType : "application/json; charset=UTF-8",
+				success : function(data) {
+				
+					if(data.dcnt >0 && data.ccnt >0 ){
+								
+						alert("예매가 취소되었습니다")
+						location.reload()
+					}
+		
+		     	}
+		});
+	}
+}

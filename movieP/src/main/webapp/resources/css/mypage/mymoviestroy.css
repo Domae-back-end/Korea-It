@@ -20,7 +20,15 @@
 	width:700px;
 }
 
-
+.cntTitle{
+	position: relative;
+	text-align: left;
+	left:20px;
+}
+#pageRecord{
+	position: relative;
+	top: 10px;
+}
 
 
 
