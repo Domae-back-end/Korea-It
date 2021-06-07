@@ -42,21 +42,41 @@ public class PageeditbannersaveReg implements PageeditService {
 
 	@Override
 	public Object execute(Object obj) {// 여기에 movieinfodto
+		AlterDTO al = new AlterDTO();	
 		HashMap<String, Object> map = (HashMap) obj;		
 		BannerDTO banDTO = (BannerDTO) map.get("banDTO");
 		HttpServletRequest request =(HttpServletRequest)map.get("request");
 		if(banDTO.getFf()!=null)	
 		logger.debug("fileUp 실행 : {}",banDTO.getFf().length);
-		if(banDTO.getFf()!=null){
-		fservice.fileup2(banDTO.getFf(), banDTO.getStill(), request);
+		
+		logger.debug("그대로::"+Arrays.toString(banDTO.getStill()));
+		logger.debug("바꿀애들::"+Arrays.toString(banDTO.getMovieindex()));
+		
+		al.setMsg("저장 실패입니다.(default)");
+		al.setUrl("/admin/pageedit/banner");
+		
+		boolean errorcheck=true;
+		
+		for (int i = 0; i < banDTO.getFf().length; i++) {
+			System.out.println(banDTO.getFf()[i].getSize());
+			if(banDTO.getFf()[i].getSize()<100) {
+				errorcheck=false;
+			}
+		}		
+		
+		if(errorcheck){// 같이 들어와야지.
+		fservice.fileup2(banDTO.getFf(), banDTO.getMovieindex(),banDTO.getStill(), request);
+			al.setMsg("저장 완료되었습니다.(default)");
+			al.setUrl("/admin/pageedit/banner");
 		}
-		AlterDTO al = new AlterDTO();	
+		
+		
+		
 		
 		
 		
 
-		al.setMsg("저장 완료되었습니다.(default)");
-		al.setUrl("/admin/pageedit/banner");
+	
 
 //			}
 //		}

@@ -31,7 +31,7 @@ public class BannerFileupService {
 	DbMapper db;
 	
 		
-	public void fileup2(MultipartFile[] ffs,String[] still,HttpServletRequest request) {
+	public void fileup2(MultipartFile[] ffs,String[] movieindex,String[] still,HttpServletRequest request) {
 		System.out.println("BannerfileUp ");
 		if(still==null) {
 			still= new String[] {};
@@ -53,15 +53,18 @@ public class BannerFileupService {
 		}
 		System.out.println("변경 안할애들:"+arr);
 		int mfindex=0;
-		for (int i = 1; i <= ffs.length+ still.length; i++) {
-				if(!arr.contains(i)) {
+		for (int i = 1; i <= ffs.length+ still.length; i++) {//5바귀.
+				if(!arr.contains(i)) {// 변경진행.
 					System.out.println(i+"containimg");
 					
-					BannerDTO bdto=new BannerDTO();
+					BannerDTO bdto=new BannerDTO();//정보담아.
+					
 					bdto.setBannerindex(i);
 					MultipartFile newone= ffs[mfindex];
-					String url="poster"+i+"."+newone.getOriginalFilename().split("\\.")[1];
+					
+					String url="poster"+i+"."+newone.getOriginalFilename().split("\\.")[1];//파일형식자만맞춰서.
 					bdto.setImgurl(url);//					
+					bdto.setM_index(Integer.parseInt(movieindex[mfindex]));
 					db.changeBanner(bdto);
 					Path copyOfLocation= Paths.get(foldername+"/"+url);
 					try {

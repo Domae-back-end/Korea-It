@@ -28,21 +28,24 @@ public class Bannermovieget implements PageeditService {
 		// TODO Auto-generated method stub
 		
 		
+		LinkedHashMap<String, String> resultmap= new LinkedHashMap<>();
 		
 		//db에서 가져오는게 아니라 . 링크드 해시맵으로 영화만 쫙 가져오기 .최신영화 순으로 .
 		System.out.println("Bannermovieget");
 		List<MovieInfoDTO> result=  db.movielistbanner();
+
 		
-		LinkedHashMap<String, String> resultmap= new LinkedHashMap<>();
+		resultmap.put("total", result.size()+"");
+		
+		
 		String movies="";
 		int cnt=0;
 		for (MovieInfoDTO ff : result) {
 			cnt++;
-			resultmap.put(""+cnt, ff.getMovietitle());
-			logger.info(ff.getMovietitle());
+			resultmap.put("영화"+( result.size()-cnt+1), ff.getMovietitle());
+			//logger.info(ff.getMovietitle());
 		}
-		
-		System.out.println("영화오냐"+movies);
+	
 		
 		
 		
