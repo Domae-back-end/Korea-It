@@ -36,10 +36,11 @@ public interface DbMapper {
    MovieTimeDTO movietimefindindex(Integer index);
    int updatemovielist(MovieTimeDTO dto);
 
-   int deletemovie(MovieTimeDTO dto);
+   int deletemovie(Integer time_index);
+   MovieTimeDTO findMovieindex(Integer index);
    
    List<MovieTimeDTO> movieTimeCheck(String movietitle);
-   List<MovieTimeDTO> movieTimefind(MovieTimeDTO dto);
+   List<MovieTimeDTO> movieTimefind(String search);
    List<UserSitDTO> moviesit(Integer index);
    
    // 게시판 page 이동.

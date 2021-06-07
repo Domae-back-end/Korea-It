@@ -1,7 +1,12 @@
 package com.admin.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -20,16 +25,48 @@ public class MovieTimelist implements MovieTimeService {
 	DbMapper db;
 	
 	@Override
-	public Object execute(String dal, String el, MovieTimeDTO dto) {
-		List<MovieTimeDTO> dto1 = db.movieTime();
-		List<MovieTimeDTO> res = new ArrayList<MovieTimeDTO>();
-		for (MovieTimeDTO a : dto1) {
-			if(((a.getReg_date().getMonth()+1)+"").equals(dal) &&
-					(a.getReg_date().getDate()+"").equals(el)) {
-				res.add(a); 
+	public Object execute(MovieTimeDTO dto) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		HashMap<String, Object> ar = new HashMap<>();
+		
+		ar.put("today", new Date());
+		
+		if(dto.getDal() != null) {
+			Calendar buf = Calendar.getInstance();
+			buf.set(Calendar.MONTH, Integer.parseInt(dto.getDal())-1);	
+			ar.put("el2", buf.getActualMaximum(Calendar.DATE));
+		}
+		if(dto.getEl() != null) {
+			Calendar buf = Calendar.getInstance();
+			buf.set(Calendar.MONTH, Integer.parseInt(dto.getDal())-1);
+			buf.set(Calendar.DATE, Integer.parseInt(dto.getEl()));
+			ArrayList<MovieTimeDTO> ar1 = (ArrayList<MovieTimeDTO>) db.movieTimefind(sdf.format(buf.getTime()));
+			
+			for (MovieTimeDTO a : ar1) {
+				System.out.println(a+","+a.getStarttimeInt()+","+a.getEndtimeInt());
+			}
+			
+			
+			ar.put("movietimelist", ar1);
+			
+		}
+		if(dto.getDeletetime() != null) {
+			if(!(dto.getDeletetime().contains(","))){
+				ArrayList<MovieTimeDTO> ar2 = new ArrayList<>();
+				ar2.add(db.findMovieindex(Integer.parseInt(dto.getDeletetime())));
+				ar.put("deletetime", ar2);
+			}else {
+				String[] deletetime = dto.getDeletetime().split(",");
+				ArrayList<MovieTimeDTO> ar2 = new ArrayList<>();
+				for (int i = 0; i < deletetime.length; i++) {
+					ar2.add(db.findMovieindex(Integer.parseInt(deletetime[i])));
+				}
+				ar.put("deletetime", ar2);
 			}
 		}
-		return res;
+		
+		return ar;
 	}
 	
 }

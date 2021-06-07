@@ -1,5 +1,8 @@
 package com.model;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -9,45 +12,73 @@ import lombok.Data;
 
 @Data
 public class MovieTimeDTO {
-	//movieTimeDTO
+	// movieTimeDTO
 	Integer time_index;
-	String movietitle, sectorno, starttime1,dal,el;
+	String movietitle, sectorno, dal, el;
 	Date starttime, endtime, reg_date;
-	
-	String reg_datelist;
-	String m_indexlist;
-	String sectornolist;
 
-	String search;//
-	
-	public ArrayList<MovieTimeDTO> getList(){
+	String search;
+	String time;
+	String check;
+	String endReg_date;
+	Date endReg_date_re;
+	String dayto;
+	String deletetime;
 
-		String[] buf1 = starttime1.split(",");
-		String[] buf2 = reg_datelist.split(",");
-		String[] buf3 = m_indexlist.split(",");
-		String[] buf4 = sectornolist.split(",");
-		
-		ArrayList<MovieTimeDTO> ar = new ArrayList<>();
+	SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
+	SimpleDateFormat timeDate = new SimpleDateFormat("HH:mm:00"); 
 
-		for (int i = 0; i < buf3.length; i++) {
-			MovieTimeDTO buf = new MovieTimeDTO();
-			buf.setTime_index(Integer.parseInt(buf3[i]));
-			Calendar day = Calendar.getInstance();
-			day.set(Calendar.HOUR, Integer.parseInt(buf1[i].split(":")[0]));
-			day.set(Calendar.MINUTE, Integer.parseInt(buf1[i].split(":")[1]));
-			day.set(Calendar.SECOND, Integer.parseInt(buf1[i].split(":")[2]));
-
-			day.set(Calendar.YEAR, Integer.parseInt(buf2[i].split("-")[0]));
-			day.set(Calendar.MONTH, (Integer.parseInt(buf2[i].split("-")[1])-1));
-			day.set(Calendar.DATE, Integer.parseInt(buf2[i].split("-")[2]));
-			buf.setSectorno(buf4[i]);
-			buf.setReg_date(day.getTime());
-			buf.setStarttime(day.getTime());
-			buf.setTime_index(Integer.parseInt(buf3[i]));
-			ar.add(buf);
-		}
-		
-		return ar;
+	public int getStarttimeInt() {
+		return timeToInt(starttime) / 10 * 10;
 	}
 
+	public int getEndtimeInt() {
+
+		int buf = timeToInt(endtime);
+		int res = buf / 10;
+		if (buf % 10 != 0)
+			res++;
+		return res * 10;
+	}
+
+	int timeToInt(Date dt) {
+		return Integer.parseInt(sdf.format(dt));
+	}
+
+	public Date getTimeDate(String time) {
+		Calendar ar = Calendar.getInstance();
+
+		String hour = time.substring(0, 2);
+		String min = time.substring(2, 4);
+		try {
+			ar.setTime(timeDate.parse(hour+":"+min+":00"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return ar.getTime();
+	}
+
+	public Date getEndTimeDate(int mplaytime, Date starttime) {
+		Calendar ar = Calendar.getInstance();
+		ar.setTime(starttime);
+		ar.add(Calendar.MINUTE, mplaytime);
+		return ar.getTime();
+	}
+
+	public Date getRegDate(String dal, String el) {
+		Calendar ar = Calendar.getInstance();
+		ar.set(Calendar.MONTH, Integer.parseInt(dal)-1);
+		ar.set(Calendar.DATE, Integer.parseInt(el));
+		return ar.getTime();
+	}
+	
+	public MovieTimeDTO getEndRegDate(MovieTimeDTO mdto) {
+		SimpleDateFormat year = new SimpleDateFormat("yyyy-MM-dd"); 
+		try {
+			mdto.setEndReg_date_re(year.parse(mdto.getEndReg_date()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return mdto;
+	}
 }

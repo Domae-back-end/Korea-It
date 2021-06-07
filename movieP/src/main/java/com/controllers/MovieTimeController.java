@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.admin.service.MovieService;
 import com.admin.service.MovieTimeService;
 import com.admin.service.Provider;
+import com.model.InitData;
+import com.model.Menu;
 import com.model.MovieTimeDTO;
+import com.model.PPPData;
 
 
 @Controller
@@ -26,14 +29,19 @@ public class MovieTimeController {
 	Provider pr;
 
 	@ModelAttribute("data")
-	Object data(@PathVariable String cate, String dal, String el, MovieTimeDTO dto) {
+	Object data(@PathVariable String cate, MovieTimeDTO dto) {
 		MovieTimeService sr = pr.getContext().getBean("MovieTime" + cate, MovieTimeService.class);
-		return sr.execute(dal, el, dto);
+		return sr.execute(dto);
 	}
 
 	@ModelAttribute("bodyurl")
 	String bodypageUrl(@PathVariable String cate) {
 		return "movietime/movie" + cate;
+	}
+	
+	@ModelAttribute("submenu")
+	ArrayList<Menu> submenu() {
+		return new InitData().getSubmenusbyCateName("movietime");
 	}
 	
 
@@ -43,11 +51,10 @@ public class MovieTimeController {
 		HttpSession sess= request.getSession();
 		
 		if(cate.endsWith("Reg")) {
-			
 			return "admin/page/alter";
 			
 		}
-				return "admin/loginpage";
+				return "admin/index";
 
 			
 	}
