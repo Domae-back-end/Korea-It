@@ -109,7 +109,7 @@ $(function() {
 						tt+="<li><span>"+'답변상태'+"</span>"+data.qna[i].persstate+"<li>"
 						tt+="</ul></div>"
 						tt+="<div class='hdetail_cont'>"
-						tt+="<p class='hdetail_cont_ques'>"+data.qna[i].perscont+"</p>"
+						tt+="<p class='hdetail_cont_ques'>"+data.qna[i].persacont+"</p>"
 						tt+="<p class='hdetail_cont_pic'>"
 						
 						if(data.qna[i].persimg!=null)

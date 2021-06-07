@@ -761,7 +761,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="memqna" resultType="map" parameterType="MemberDTO">
-		select perscate, persindex, persid , perstitle, perscont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
+		select perscate, persindex, persid , perstitle, replace(persacont,' ','<![CDATA[<br>]]>')  as persacont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
 		from personalqna <include refid="qnacheck" /> 
 		order by persqtime desc
 		limit #{start},8
