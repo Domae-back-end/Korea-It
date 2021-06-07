@@ -106,7 +106,7 @@ $(function() {
 		var regexp = /[^a-zA-Z0-9!@#$%^*+=-]/gi
 		$(this).val($(this).val().replace(regexp,''));
 		
-		if ($('#userpw').val() != $(this).val()) {
+		if ($('#userpw').val() != $(this).val() || $(this).val() == '') {
 			$('#pw_check2').text('비밀번호가 일치하지 않습니다.'); 
 			$('#pw_check2').css('color', 'red');	
 			pwnum = 0;			
