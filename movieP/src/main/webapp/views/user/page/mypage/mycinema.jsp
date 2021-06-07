@@ -4,6 +4,7 @@
 	<form action ="" method="get" name="qq">
 		<input type="hidden" name="detail" id="detail" />
 	</form>
+<input type="hidden" id="userid" value="${sessionId }" />	
 <div class="modal fade" data-backdrop="static" data-keyboard="false" id='inforpurchase2'>
 	<div class="modal-dialog">
    		<div class="modal-content"></div>

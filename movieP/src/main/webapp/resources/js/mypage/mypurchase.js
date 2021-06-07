@@ -234,19 +234,21 @@ function purchasCancelepageChange(i){
 		success : function(data) {
 			
 			$(".CCC").remove()
-				
+			console.log(data.cancel)	
 			if(data.cancel!=null){
 										
 				for(j in data.cancel ){
 					
 					var tt ="<div class='CCC'>"
-					tt+="<div><div class = 'puchaseinner'>"+data.cancel[j].sales_time+"</div>"
+					tt+="<div>"
+					tt+="<div class = 'puchaseinner'>"+data.cancel[j].sales_time+"</div>"
 					tt+="<div class = 'puchaseinner'>" + data.cancel[j].movietitle +"</div>"
-					tt+"<div class = 'puchaseinner'>"+ data.cancel[j].starttime +"</div>"
+					tt+="<div class = 'puchaseinner'>"+ data.cancel[j].starttime +"</div>"
 					tt+="<div class = 'puchaseinner'>"+ data.cancel[j].salesprice +"</div>"
 					tt+="</div>"
 					tt+="</div>"
 					
+				
 					$("#recordCpurchase").append(tt)	
 					
 				}
@@ -254,7 +256,7 @@ function purchasCancelepageChange(i){
 			var pp = "<div class='CCC'>"
 				
 			if(data.cpdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasCancelepageChange("+(data.pdto.cstartPage-1)+ ")' value='&lt' />"
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='purchasCancelepageChange("+(data.cpdto.cstartPage-1)+ ")' value='&lt' />"
 							
 			for( var i = data.cpdto.cstartPage ; i <= data.cpdto.cendPage ; i++){
 								

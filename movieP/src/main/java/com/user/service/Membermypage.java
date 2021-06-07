@@ -60,6 +60,7 @@ public class Membermypage implements MemberAction {
 		map.put("cpdto", cpdto);
 		
 		System.out.println(map);
+		System.out.println("야"+map.get("cancel"));
 		
 		return map;
 	}

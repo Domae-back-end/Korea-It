@@ -749,7 +749,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		left outer join movietime on sales.timetableidx = movietime.time_index
 		where sales.userid=#{userid} and sales_time > (movietime.reg_date - INTERVAL 7 DAY) and sales.salesprice <![CDATA[<]]> 0
 		order by sales.sales_time desc
-		limit #{start},2
+		limit #{cstart},2
 	</select>
 	
 	<select id="memcomment" resultType="map" parameterType="MemberDTO">

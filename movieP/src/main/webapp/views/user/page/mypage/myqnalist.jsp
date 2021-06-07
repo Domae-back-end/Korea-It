@@ -14,11 +14,14 @@
 		<input type="hidden" name="detail" id="detail" />
 		<input type="hidden" name="page" id="page" value="${param.page }" />
 	</form>
-		<input type="hidden" id="qnastatenow" value="전체"/>
+	
+		<input type="hidden" id="qnastatenow" />
 		<input type="hidden" id="qnacontentnow" />
+		
 	<form action ="" method="post" name="frm">
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />
 	</form>
+	
 	<div class="qnaMargin">
 		<select id="qnastate" name="moiverecord">
 			<option value="전체">전체</option>
@@ -45,6 +48,7 @@
 			</c:forEach>
 		</div> 
 	</div>
+	
 	<div id="pageRecord">
 		<div class="fff">
 			<c:if test="${memdata.pdto.startPage > 1}">

@@ -13,6 +13,8 @@ $(function() {
 	
     $("#userid").on("propertychange change keyup paste input", function(){
 		
+		chCnt = 0;
+		
 		var regexp = /[^a-zA-Z0-9_-]/gi
 		$(this).val($(this).val().replace(regexp,''));
 		
@@ -20,13 +22,13 @@ $(function() {
 			$('#id_check').text('아이디를 입력하세요.'); 
 			$('#id_check').css('color', 'red'); 
 			$("#usercheck").attr("disabled", true); 
-			chCnt = 0;
+			
 		
 		}else if(!idCh.test($('#userid').val())){ 
 			$('#id_check').text('5~20자의 영문 소문자, 숫자와 특수기호_와-만 사용 가능합니다.'); 
 			$('#id_check').css('color', 'red'); 
 			$("#usercheck").attr("disabled", true); 
-			chCnt = 0;
+			
 			
 		} else { 
 			$('#id_check').text('아이디 중복확인을 해주세요.'); 
@@ -81,7 +83,7 @@ $(function() {
 		pwnum = 0
 		$('#userpwchk').val('')
 		$('#pw_check2').text(''); 
-		$('#userpwchk').prop("readonly",true);		
+			
 	});
 	
 	$("#userpw").on("propertychange change keyup paste input", function(){
@@ -92,7 +94,7 @@ $(function() {
 		pwnum = 0
 		$('#userpwchk').val('')
 		$('#pw_check2').text(''); 
-		$('#userpwchk').prop("readonly",true);	
+		
 		
 		if (pwCh.test($('#userpw').val())) {
 			$('#pw_check').text('사용가능한 비밀번호입니다.'); 
