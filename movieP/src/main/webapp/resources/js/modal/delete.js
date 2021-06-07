@@ -26,9 +26,15 @@
 						frm.submit();
 					}else{
 						alert("비밀번호가 일치하지않습니다.")
+						 $("#chkPw").val('')
 					}
 		     	}
 			});
 		}
 	});
+	
+	$('.close').click(function() {
+		 $("#chkPw").val('')
+	});	
+	
  }); 
