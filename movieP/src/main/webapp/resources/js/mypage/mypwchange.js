@@ -9,6 +9,9 @@
 	
 	$("#newpw").on("propertychange change keyup paste input", function(){
 		
+		var regexp = /[^a-zA-Z0-9!@#$%^*+=-]/gi
+		$(this).val($(this).val().replace(regexp,''));
+		
 		if (pwCh.test($('#newpw').val())) {
 			$('#pw_check').text('사용가능한 비밀번호입니다.'); 
 			$('#pw_check').css('color', 'blue');
@@ -30,9 +33,13 @@
 
 	$("#newpwch").on("propertychange change keyup paste input", function(){
 		
+		var regexp = /[^a-zA-Z0-9!@#$%^*+=-]/gi
+		$(this).val($(this).val().replace(regexp,''));
+		
 		if ($('#newpw').val() != $(this).val()) {
 			$('#pw_check2').text('비밀번호가 일치하지 않습니다.'); 
 			$('#pw_check2').css('color', 'red');	
+			 
 			 pwnum = 0;	
 				
 		}else{
