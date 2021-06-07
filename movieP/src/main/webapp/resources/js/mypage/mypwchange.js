@@ -11,7 +11,7 @@
 		pwnum = 0
 		$('#newpwch').val('')
 		$('#pw_check2').text(''); 
-		$('#newpwch').prop("readonly",false);		
+		$('#newpwch').prop("readonly",true);		
 	});
 	
 	
@@ -23,17 +23,17 @@
 		pwnum = 0
 		$('#newpwch').val('')
 		$('#pw_check2').text(''); 
-		$('#newpwch').prop("readonly",false);	
+		$('#newpwch').prop("readonly",true);	
 		
 		if (pwCh.test($('#newpw').val())) {
 			$('#pw_check').text('사용가능한 비밀번호입니다.'); 
 			$('#pw_check').css('color', 'blue');
-			$('#newpwch').prop("readonly",true);
+			$('#newpwch').prop("readonly",false);
 			
 		}else{
 			$('#pw_check').text('8~16자 영문 대 소문자, 숫자, 특수문자를 사용하십시오.'); 
 			$('#pw_check').css('color', 'red');
-			$('#newpwch').prop("readonly",false);
+			$('#newpwch').prop("readonly",true);
 		}
 		
 	});
