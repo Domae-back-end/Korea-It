@@ -42,6 +42,7 @@ public class Moviebefore implements MovieAction6{
 		
 		
 		
+		
 		//3일 동안 예메된 영화의 전체 좌석수를 가져오기(분모) -- >ticketing 태이블에서 time_index 가져와서 movietime에서 sectorNo가져와서 비교하기
 		//각 영화의 예매된 좌석수를 가져온다(분자) --> time_index 이용하여 movietitle 가져와 저장하고 해당 time_index의 예매된 좌석의 수와 title 일치시키기.
 		List<MovieRateDTO> mrd = mm.pulltime_index();
