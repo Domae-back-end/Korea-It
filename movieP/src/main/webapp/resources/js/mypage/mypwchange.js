@@ -11,7 +11,6 @@
 		pwnum = 0
 		$('#newpwch').val('')
 		$('#pw_check2').text(''); 
-		$('#newpwch').prop("readonly",true);		
 	});
 	
 	
@@ -23,9 +22,9 @@
 		pwnum = 0
 		$('#newpwch').val('')
 		$('#pw_check2').text(''); 
-		$('#newpwch').prop("readonly",true);	
 		
 		if (pwCh.test($('#newpw').val())) {
+			
 			$('#pw_check').text('사용가능한 비밀번호입니다.'); 
 			$('#pw_check').css('color', 'blue');
 			$('#newpwch').prop("readonly",false);

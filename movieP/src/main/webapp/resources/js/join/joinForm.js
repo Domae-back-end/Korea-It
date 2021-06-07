@@ -8,7 +8,6 @@ var pnumCh = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 $(function() {
 	
 	var chCnt = 0;
-	var pnumchCnt = 0;
 	var pwnum = 0;
 	
     $("#userid").on("propertychange change keyup paste input", function(){
@@ -113,12 +112,16 @@ $(function() {
 		var regexp = /[^a-zA-Z0-9!@#$%^*+=-]/gi
 		$(this).val($(this).val().replace(regexp,''));
 		
-		if ($('#userpw').val() != $(this).val() || $(this).val() == '') {
+		if ($('#userpw').val() != $(this).val()) {
 			$('#pw_check2').text('비밀번호가 일치하지 않습니다.'); 
 			$('#pw_check2').css('color', 'red');	
 			pwnum = 0;			
 		
-		}else{
+		}else if($(this).val() == ''){
+			$('#pw_check2').text(''); 
+			pwnum = 0;	
+		}
+		else{
 			$('#pw_check2').text('비밀번호 일치.'); 
 			$('#pw_check2').css('color', 'blue');
 			pwnum = 1;
@@ -193,14 +196,27 @@ $(function() {
 	$('#pnumcheck').click(function(){
 			
 		if($('#pnumcheck').val() =='인증번호 전송'){
-		
+				
+			var phoneNumber = document.getElementById('userpnum').value;	
+			
 			alert("인증번호 발송 완료")
 			
+			$.ajax({
+				type: "GET",
+				url: "/memberpnumCheckSNS",
+				data: { phoneNumber: phoneNumber },
+				success: function(res) {
+		
+				document.getElementById('chk').value = res
+		
+				}
+			});
+			
+	
 			$("#joinPhoneCheck1").modal({
 				remote: '/views/user/page/modal/join.jsp'
 			});
 			
-		
 		}else{
 			
 			$('#pnum_check').text(''); 
@@ -213,7 +229,7 @@ $(function() {
 			$('#pnumF option:eq(0)').prop("selected", true);
 			$('#pnumcheck').val('인증번호 전송')
 			document.getElementById('userpnum').value = ""
-			pnumchCnt = 0;
+			document.getElementById('chk').value = 0
 		}
 		
     });
@@ -254,7 +270,7 @@ $(function() {
 			alert('휴대폰번호를 확인하세요.'); 
 			return false;  
 		} 
-		if(pnumchCnt == 0){
+		if(document.getElementById('chk').value != 1){
 			alert('휴대폰 인증 필요.'); 
 			return false;
 		}
