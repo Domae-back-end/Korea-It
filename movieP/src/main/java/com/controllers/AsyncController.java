@@ -49,7 +49,7 @@ public class AsyncController {
 	
 	
 	
-	@RequestMapping(value = "/salesGraphSltView.do")
+	@RequestMapping(value = "/salesGraphSltView")
 	@ResponseBody
 	public Map<String, Object> salesGraphSltView(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
 		

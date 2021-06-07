@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id='inforpurchase1'>
+	<div class="modal-dialog">
+   		<div class="modal-content"></div>
+	</div>
+</div>
 <div>
 	<h3>예매내역</h3>
 	<input type="hidden" name="userid" id="userid" value="${sessionId }" />
@@ -43,22 +48,23 @@
 						</span>
 						</div>
 						<div>
-							<div class="purchasespace">관람일시 ${pp.starttime }</div>
+							<div class="purchasespace">관람일시 : ${pp.starttime }</div>
 						<span>
 							관람좌석 : ${pp.seatNo }
 						</span>
 						</div>
 						<div class="purchasespace">
-							결제일시 : ${pp.sales_time }
+							결제일시 : ${pp.sales_time2 }
 						</div>
 						<div class="purchasespaceButt">
-						<button class="changeButt">결제정보</button>
+						<button class="changeButt qwer" dd="${pp.salesprice}" cc="${pp.sales_time3 }" tt="${pp.sales_type }" >결제정보</button>
 						<c:if test="${pp.checktime > memdata.dto.nowDate }">
 							<button class="changeButt" onclick="ticketCancel(${pp.saleslink })">예매취소</button>		
 						</c:if>
 						</div>
 					</div>
 				</div>
+ 
 			</c:forEach>
 		</div> 
 	</div>

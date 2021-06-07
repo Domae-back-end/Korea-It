@@ -32,7 +32,9 @@
 	margin: 18px;
 }
 .puinfor{
-	margin-left:10px;
+	position:relative;
+	top: 5px;
+	left:10px;
 	width: 300px;
 	height: 150px;
 	float: left;
@@ -49,8 +51,53 @@
 .purchasespaceButt{
 	clear:both;
 	text-align: right;
+	margin-right:5px;
 }
 .saleslink{
 	color: #00f;
 }
-
+.modal-header{
+	background: #F2F4F5;
+}
+.modal-body{
+	height: 400px;
+}
+#close{
+	position:relative;
+	left: -260px;
+	top: 60px;
+}
+.modalouter{
+	position:relative;
+	top:20px;
+	margin: 0 auto;
+	width: 500px;
+	height: 180px;
+	border-top: 1px solid #ccc;
+}
+.modalmiddle{
+	width: 500px;
+	height: 60px;
+	border-bottom: 1px solid #ccc;
+	line-height: 60px;
+}
+.modalname{
+	width: 100px;
+	height: 60px;
+	float: left;
+	background: #F2F4F5;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+.modaldata{
+	width: 400px;
+	height: 60px;
+	text-align: left;
+	position: relative;
+	left: 10px;
+}
+h4{
+	position:relative;
+	top:10px;
+	float: none;
+}

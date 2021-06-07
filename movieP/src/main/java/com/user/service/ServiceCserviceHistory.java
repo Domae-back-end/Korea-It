@@ -48,7 +48,7 @@ public class ServiceCserviceHistory implements ServiceCservice {//빈 창고에 
 		npDTO.initpershistory(db, map);
 		
 		ServiceNotiListDTO res= new ServiceNotiListDTO();
-		res.setSfdto(db.pershistory(map));
+		res.setSfdto(db.pershistoryuser(map));
 		res.setSnpdto(npDTO);
 		res.setOnesfdto(sfDTO);
 		System.out.println(sfDTO);

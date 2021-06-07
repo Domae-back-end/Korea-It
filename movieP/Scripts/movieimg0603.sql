@@ -92,7 +92,7 @@ INSERT INTO `movieimg` (`m_index`, `imgname`) VALUES
 	(10, '뮬란-실사판/still3.jpg'),
 	(10, '뮬란-실사판/still4.jpg'),
 	(10, '뮬란-실사판/still5.jpg'),
-	(10, '돌멩이/poster.jpg'),
+	(11, '돌멩이/poster.jpg'),
 	(11, '돌멩이/still1.jpg'),
 	(11, '돌멩이/still2.jpg'),
 	(11, '돌멩이/still3.jpg'),

@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+	<form action ="" method="get" name="qq">
+		<input type="hidden" name="detail" id="detail" />
+	</form>
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id='inforpurchase2'>
+	<div class="modal-dialog">
+   		<div class="modal-content"></div>
+	</div>
+</div>	
 <div>
 	<div class = "cimemaouter">
 		<div>
@@ -78,10 +85,13 @@
 						<div>
 							${pp.starttime }
 						</div>
+					<div class="purchasespaceButt">
+						<button class="changeButt qwer" id="inforpurchase" dd="${pp.salesprice}" cc="${pp.sales_time3 }" tt="${pp.sales_type }" >결제정보</button>
+						<c:if test="${pp.checktime > memdata.dto.nowDate }">
+						<button class="changeButt" onclick="ticketCancel(${pp.saleslink })">예매취소</button>		
+						</c:if>
 					</div>
-					<c:if test="${pp.checktime > memdata.dto.nowDate }">
-						<div class="cancelOuter"><button class="changeButt" onclick="">예매취소</button></div>			
-					</c:if>
+					</div>
 				</div>
 		</c:forEach>
 	</div>	
@@ -104,7 +114,7 @@
 		<c:forEach items="${memdata.qna }" var ="pp" end="1" > 
 			<div>
 				<div class="puchaseinner">${pp.persid }</div>
-				<div class="puchaseinner">${pp.perstitle }</div>
+				<a class="qnaDetailGo" value="${pp.persindex }" dd="${pp.persindex }" ><div class="puchaseinner">${pp.perstitle }</div></a>
 				<div class="puchaseinner">${pp.persqtime }</div>
 				<div class="puchaseinner">${pp.persatime }(${pp.persstate })</div>
 			</div>

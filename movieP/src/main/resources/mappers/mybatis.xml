@@ -473,6 +473,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select count(*) from personalqna
 		where persstate = '미답변'
 	</select>
+	
+	<!-- 어드민 1대1질문 (답변완료총갯수) -->
+	<select id="perstotalCnt2" resultType="java.lang.Integer" parameterType="HashMap">
+		select count(*) from personalqna
+		where persstate = '답변완료'
+	</select>
 
 	<!-- 어드민 1대1질문 (미답변) -->
 	<select id="persdetail" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
@@ -499,14 +505,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	
 <!-- ///////////////////////// -->
-	<!-- 어드민 1대1질문 (답변총갯수) -->
+	<!-- 어드민 1대1질문 (답변완료 갯수) -->
 	<select id="perstotalansCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from personalqna
 		where persstate = '답변완료' and	perscate like concat('%',#{sfdto.perscate},'%')
 	</select>
 
 	
-	<!-- 어드민 1대1질문 (답변리스트, 문의유형별) -->
+	<!-- 어드민 1대1질문 (답변완료, 문의유형별) -->
 	<select id="perslistanscate" resultType="ServiceFullDTO" parameterType="HashMap">
 		select * from personalqna 
 		where persstate = '답변완료' and perscate = #{sfdto.perscate}
@@ -521,7 +527,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where persid = #{sfDTO.persid}
 		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
-
+	
+	<!-- 상담내역(유저쪽 desc) -->
+	<select id="pershistoryuser" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from personalqna 
+		where persid = #{sfDTO.persid}
+		order by persindex desc
+		limit #{npDTO.start}, #{npDTO.limit}
+	</select>
+	
 	<!-- 상담내역확인(갯수확인) -->
 	<select id="pershistoryCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from personalqna
@@ -541,7 +555,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="noticecatetotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from noticeboard
 		where noticecate like concat('%',#{sfDTO.noticecate},'%')
-		limit #{npDTO.start}, #{npDTO.limit}
 	</select>
 
 	
@@ -565,11 +578,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 
 			<when test="userid == null">
-				<where> <![CDATA[username = #{username} and userbirth = date_format(#{userbirth},'%Y-%m-%d') and userpnum = #{userpnum} and kind !='탈퇴']]></where>
+				<where> <![CDATA[username = #{username} and date_format(userbirth,'%Y%m%d') = #{userbirthM} and replace(userpnum,'-','') = #{userpnum} and kind !='탈퇴']]></where>
 			</when>
 
 			<when test="userpnum != null or userpnum == ''">
-				<where> <![CDATA[username = #{username} and userid = #{userid} and userpnum = #{userpnum} and kind !='탈퇴' ]]></where>
+				<where> <![CDATA[username = #{username} and userid = #{userid} and replace(userpnum,'-','') = #{userpnum} and kind !='탈퇴' ]]></where>
 			</when>
 
 			<otherwise>
@@ -584,11 +597,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 		<choose>
 			<when test="qnastate == '전체' and qnacontent !=null and qnacontent !=''">
-				<where> <![CDATA[perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%') and persid=#{userid} ]]></where>
+				<where> <![CDATA[(perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%')) and persid=#{userid} ]]></where>
 			</when>
 	
 			<when test="qnastate != '전체' and qnacontent !=null and qnacontent !=''">
-				<where> <![CDATA[perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%') and persid=#{userid} and persstate =#{qnastate} ]]></where>
+				<where> <![CDATA[(perscont like CONCAT('%', #{qnacontent}, '%') or perstitle like CONCAT('%', #{qnacontent}, '%')) and persid=#{userid} and persstate =#{qnastate} ]]></where>
 			</when>
 	
 			<when test="qnastate != '전체'">
@@ -679,7 +692,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</sql>
 	
 	<select id="memlogin" resultType="MemberDTO" parameterType="MemberDTO">
-		select userid, userpw, username, date_format(userbirth,'%Y%m%d') as userbirth, userbirth as userbirthM, replace(userpnum,'-','') as userpnum, userpnum as userpnumM, useremail, joinday, kind 
+		select userid, userpw, username, userbirth, date_format(userbirth,'%Y년 %m월 %d일') as userbirthM,  date_format(joinday,'%Y년 %m월 %d일') as joindayM, joinday, replace(userpnum,'-','') as userpnum, userpnum as userpnumM, useremail, kind 
 		from memberinfo <include refid="checkform" />
 	</select>
 
@@ -707,7 +720,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(length(ticketing.people)-length(replace(ticketing.people,'C',''))) as C,
 		(length(ticketing.people)-length(replace(ticketing.people,'T',''))) as T,
 		(length(ticketing.people)-length(replace(ticketing.people,'A',''))) as A,
-		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time from ticketing 
+		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time, 
+		date_format(sales_time,'%Y-%m-%d') as sales_time2, date_format(sales_time,'%Y-%m-%d %H:%m:%s') as sales_time3 from ticketing 
 		left outer join sales on sales.sales_index = saleslink 
 		left outer join movieimg on sales.m_index = movieimg.m_index
 		left outer join movietime on ticketing.time_index = movietime.time_index
@@ -1078,7 +1092,63 @@ WHERE m_index = #{m_index};
 	
 	</select>
 	
+	<!-- 그래프 뽑아오기  -->
+	<select id="getMonthlygraph1" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where (monthdate
+
+		between #{sym} and #{eym}) 
+		
+		and  (sectorNo  like concat('%','total','%'))
+		
+	</select>
+	<select id="getMonthlygraph2" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where (monthdate
+
+		between #{sym} and #{eym}) 
+		
+		and  (sectorNo  like concat('%',#{sectorNo},'%'))
+	</select>
+	<select id="getMonthlygraph3" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where monthdate
+
+		between #{sym} and #{eym}
+	</select>
 	
+	
+	<select id="getMonthlygraph4" resultType="SalesDTO"
+		parameterType="TimeVO">
+		select * from monthsales
+
+		where (monthdate
+
+		between #{sym} and #{eym}) 
+		
+		and  (sectorNo !='total')
+	</select>
+	
+	<select id="getMonthlygraph5" resultType="SalesDTO"
+		parameterType="TimeVO">
+	
+		select monthdate,  sum(sumall) as sumalll from
+		(select * ,
+		date_format(monthdate ,"%Y-%m-%d")
+
+		as monthdatee from monthsales
+			where sectorNo like concat(#{sectorNo},'%') and  (monthdate between #{sym} and  #{eym}  )   ) t1
+		group by monthdate;
+		
+		
+		
+	</select>
 	
 	
 	

@@ -9,21 +9,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
 <script src="<c:url value="/resources/my_js/jquery-ui.min.js"/>"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+<script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href='<c:url value="/resources/css/index.css" />'>
-<script src="<c:url value="/resources/js/index.js" />" ></script>
 <link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
+
+
 <c:if test="${subMenu.url !=null }">
 	<link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${subMenu.url}.css" />'>
 </c:if>
-<script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
-<c:if test="${subMenu.url !=null }">
+<!-- 메인페이지일때문 index.js불러오기(배너 움직이는거) -->
+<c:if test="${PPPData.cate eq 'mainpage'}">
+	<script src="<c:url value="/resources/js/index.js" />" ></script>
+</c:if>
+<c:if test="${subMenu.url !=null && subMenu.url != 'myinfor' }">
 	<script src="<c:url value="/resources/js/${PPPData.cate}/${subMenu.url}.js" />" ></script>
 </c:if>
-<title>유저 메인 화면</title>
+
+<title>메가박스</title>
 </head>
 
 

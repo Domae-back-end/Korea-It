@@ -14,25 +14,11 @@ $(function() {
 		SLform.submit()
 	})
 	
-	
-	
-	
 })
 
 
 
-
-
-
-
-
 </script>
-
-
-
-
-
-
 
 <body>
 매출

@@ -1,0 +1,47 @@
+* {padding: 0px; margin: 0px; font-size: 16px;  }
+ul, li {text-decoration: none; list-style: none; }
+a {text-decoration: none; color: black; }
+a:hover {text-decoration: none; color: black; }
+
+#sideBar {width: 170px; height: 500px; float: left; position: relative; }
+#content {width: 800px; position: relative; float: left; left: 30px;  }
+.clear {clear: both; }
+
+h2 {text-align: left; font-size: 28px; margin-bottom: 30px; }
+
+#sideBar ul li:nth-of-type(1) {height: 100px; line-height: 100px; background: #444; border: 1px solid #444; border-radius: 10px 10px 0 0; }
+#sideBar ul li:nth-of-type(1) a {font-size: 20px; height: 100px; color: white; }
+#sideBar ul li {width: 170px; height: 60px; background: #F2F4F5; line-height: 60px; display: inline-block; box-sizing: border-box; border: 1px solid #d8d9db; }
+#sideBar ul li a {width: 170px; height: 60px; display: inline-block;}
+#sideBar ul li:last-child {border-radius: 0 0 10px 10px; }
+#sideBar ul li:nth-of-type(3) {background: white; }
+
+
+
+
+.td1 {font-size: 16px; border-top: 1px solid gray;  border-spacing: 0; margin-bottom: 30px;  }
+.td1 tr:first-of-type>td {background: #f2f4f5; font-weight: bold; height: 50px;  }
+.td1 tr td {border-bottom: 1px solid #eaeaea; height: 65px; }
+.td1 tr:first-of-type>td:nth-of-type(1) {width: 50px;  }
+.td1 tr:first-of-type>td:nth-of-type(2) {width: 100px;  }
+.td1 tr:first-of-type>td:nth-of-type(3) {width: 430px; }
+.td1 tr>td:nth-of-type(3) {text-align: left; }
+.td1 tr:first-of-type>td:nth-of-type(4) {width: 120px;  }
+.td1 tr:first-of-type>td:nth-of-type(5) {width: 100px;  }
+.td1 tr>td span {width: 425px; display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; height: 20px; }
+.td1 tr>td span:hover {text-decoration: underline; color: #8a8a8a; }
+
+p {margin: 5px 0;  }
+
+.td1 tr:last-child td{border-bottom: none;  height: 150px;  }
+
+/* 검색 (총갯수) */
+.search_result {text-align: left; }
+.search_result p {font-size: 14px; }
+.search_result span {font-weight: bold; }
+
+/* 페이지버튼 */
+.pagebtn {width: 32px; height: 32px; box-sizing: border-box; border-radius: 4px; border: 1px solid #dbdbdb; background: white;   }
+.pagebtn:hover {border: 1px solid black; background: white; }
+.pagebtn_sel {background: rgb(220,220,220); width: 32px; height: 32px; box-sizing: border-box; border-radius: 4px; border: none; text-align: center; }
+.pagebtn_lr {background: rgb(241,240,245)}

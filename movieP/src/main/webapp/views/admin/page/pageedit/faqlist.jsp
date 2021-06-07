@@ -54,50 +54,13 @@ $(function() {
 	
 
 	$(".deleteGo").click(function() {
-		var confirm_val = confirm("정말 삭제하시겠습니까?");
-		
-		if (confirm_val) {
-			var delArr = new Array();
-
-			$("input[class='ggno']:checked").each(function() {
-				delArr.push($(this).attr("value"));
-				/* alert($(this).attr("value")) */
-			});
-
-			$.ajax({
-				url : "faqdeleteReg",
-				type : "post",
-				data : {
-					delArr : delArr
-					},
-				success : function(res) {
-						/* text.indexOf(findString)
-						console.log(res) */ 
-					if (res.indexOf("삭제 성공") != -1) {
-						alert(delArr+"번 삭제성공!");
-						location.href = "faqlist";
-					} else {
-						alert("체크박스를 선택하세요!");
-					}
-				}
-			});
+		if(confirm("정말로 삭제하시겠습니까?")){
+			frm.submit()
 		}
-	});
+		});
 	
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	var bbb=0
@@ -130,7 +93,6 @@ $(function() {
 
 <div class="faqwrap " id="faqwrap">
 			<!-- 구분 시스템, 영화관, 기타 -->
-			<!-- 구분 시스템, 영화관, 기타 -->
 				<form action="faqlist" name="faqform">
 				
 			<table class="table table-striped">
@@ -145,19 +107,21 @@ $(function() {
 				<tr>
 					<!-- <td><input type="checkbox" name="allChk" id="allChk"/> 번호</td>  -->
 					<td>번호</td>
+					<td>분류</td>
 					<td>제목</td>
 					<td>내용</td>
 					<td>수정</td>
 					<td>삭제</td>
 				</tr>
-			<c:forEach items="${data.sfDTO }" var="faqDTO">
+			<c:forEach items="${data.sfDTO }" var="faqDTO" varStatus="no">
 				<tr id="${faqDTO.bqindex }">
+					<td>${no.index+1 }</td>
 					<td>${faqDTO.bqcate }</td>
 					<td style="border: 1px solid;">
 					<a href="javascript:detailGo(${faqDTO.bqindex })">${faqDTO.bqtitle }</a></td>
 					<td>${faqDTO.bqcont }</td>
 					<td><a href="faqmodify?bqindex=${faqDTO.bqindex }">수정하기</a></td>
-					<td><a href="faqdelete?bqindex=${faqDTO.bqindex }">삭제하기</a></td>
+					<td><a href="faqdeleteReg?bqindex=${faqDTO.bqindex }" name="frm">삭제하기</a></td>
 				</tr>
 				<tr>
 				<td colspan="3" id="${faqDTO.bqindex }" style="display: none;">${faqDTO.bqcont }</td> 

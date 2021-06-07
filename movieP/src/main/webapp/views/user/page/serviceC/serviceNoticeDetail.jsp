@@ -2,52 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
-<style>
-	* {padding: 0px; margin: 0px; font-size: 16px;  }
-	ul, li {text-decoration: none; list-style: none; }
-	a {text-decoration: none; color: black; }
-	a:hover {text-decoration: none; color: black; }
-	
-	#sideBar {width: 170px; height: 500px; float: left; position: relative; }
-	#content {width: 800px; position: relative; float: left; left: 30px;  }
-	.clear {clear: both; }
-	
-	h2 {text-align: left; font-size: 28px; margin-bottom: 30px; }
-	
-	#sideBar ul li:nth-of-type(1) {height: 100px; line-height: 100px; background: #444; border: 1px solid #444; border-radius: 10px 10px 0 0; }
-	#sideBar ul li:nth-of-type(1) a {font-size: 20px; height: 100px; color: white; }
-	#sideBar ul li {width: 170px; height: 60px; background: #F2F4F5; line-height: 60px; display: inline-block; box-sizing: border-box; border: 1px solid #d8d9db; }
-	#sideBar ul li a {width: 170px; height: 60px; display: inline-block;}
-	#sideBar ul li:last-child {border-radius: 0 0 10px 10px; }
-	#sideBar ul li:nth-of-type(6) {background: white; }
-	
-	
-	
-		
-	.detail_top{padding: 5px 0; border-top: 1px solid black; background: #f7f8f9; border-bottom: 1px solid #d8d9db;  padding-left: 5px;  }
-	.detail_top>ul>li {text-align: left; margin: 5px 0;   }
-	.detail_top>ul>li:nth-of-type(1) {font-size: 20px; font-weight: bold;  }
-	.detail_top span {width: 80px; display: inline-block;}
-
-	.detail_cont {text-align: left; margin: 20px 0;   }
-
-	.detail_bot  {text-align: left;  }
-	.detail_bot tr td:nth-of-type(1) {width: 150px; background: #f7f8f9; padding: 10px 20px; border-top: 1px solid #d8d9db;  }
-	.detail_bot tr td:nth-of-type(2) {width: 650px; border-top: 1px solid #d8d9db; }
-	.detail_bot tr:nth-of-type(2) td:nth-of-type(2) {border-bottom: 1px solid #d8d9db; }
-	.detail_bot tr:nth-of-type(2) td:nth-of-type(1) {border-bottom: 1px solid #d8d9db; }
-	
-	.detail_bot>table a {width: 650px; height: 45px; line-height: 40px; display: inline-block; }
-	
-	.back_list>a {width: 100px; height: 50px; font-size: 16px; line-height: 50px; border: 1.5px solid #1761f5; display: inline-block; text-align: center; border-radius: 5px;  }
-	.back_list {width: 100px; margin: 100px auto; }
-	
-</style>
+<title>공지사항 자세히</title>
 </head>
 
 <body>
@@ -115,7 +75,7 @@
 				</tr>
 			</table>
 			<div class="back_list">
-				<a href="serviceNotice?page=${data.npDTO.page }&noticeindex=&kind2=${data.onesfdto.kind2 }&schkey=${data.onesfdto.schkey}">목록</a>
+				<a href="serviceNotice?page=1&noticeindex=&kind2=${data.onesfdto.kind2 }&schkey=${data.onesfdto.schkey}">목록</a>
 			</div>
 		</div>
 	</div>
