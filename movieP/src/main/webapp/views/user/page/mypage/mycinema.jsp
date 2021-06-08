@@ -4,6 +4,7 @@
 	<form action ="" method="get" name="qq">
 		<input type="hidden" name="detail" id="detail" />
 	</form>
+<input type="hidden" id="userid" value="${sessionId }" />	
 <div class="modal fade" data-backdrop="static" data-keyboard="false" id='inforpurchase2'>
 	<div class="modal-dialog">
    		<div class="modal-content"></div>
@@ -33,7 +34,7 @@
 		<div class="cimemastory">
 			<a href="/member/mypage/mymoviestroy?kind=seemovie">
 				<div class="myrecord">
-					<div class="recordinner">${memdata.cnt.nc }</div>
+					<div class="recordinner">${memdata.cnt.sc }</div>
 					<div class="recordinner">본 영화</div>
 				</div>
 			</a>

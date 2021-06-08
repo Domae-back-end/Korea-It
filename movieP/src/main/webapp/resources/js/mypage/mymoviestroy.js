@@ -192,7 +192,8 @@ function pageChange(i){
 				if(document.getElementById('pagekind').value == "likemovie"){
 					
 					for(j in data.like){
-						
+							console.log(data.like[j].mlike) 
+							
 							var tt ="<div class='fff'><div class = 'likeouter'>"
 						
 							tt+= "<a href='/user/movie/moviedetail?sub=info&ind="+data.like[j].m_index+"'>"
@@ -261,7 +262,7 @@ function pageChange(i){
 				
 				if(document.getElementById('pagekind').value == "seemovie"){
 				
-					
+					console.log(data.pdto.total)
 					for(j in data.purchase){
 						
 						var state = "관람평쓰기"
@@ -270,44 +271,40 @@ function pageChange(i){
 							if(data.comment[t].cate ==  data.purchase[j].m_index)
 								state = "관람평보기"
 						}
-					
-					
-						if(data.purchase[j].checktime < data.dto.nowDate){
-						
-							var tt ="<div class='fff'><div class = 'seeouter'>"
-						
-							tt+= "<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index+"'>"
-							tt+="<div class='writeimg'>"
-							
-							if(data.purchase[j].imgname!=null){
-								tt+= "<img src='/moviedata/"+data.purchase[j].imgname + "' alt='" +data.purchase[j].movietitle+ "이미지' />"
-							
-							}else{
-								tt+='이미지없음'
-							}
-								
-							tt+="</div></a>"
-							tt+="<div class='seeContent'>"
-							tt+="<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index +"'><div class='seeContentitle'>"
-							tt+=data.purchase[j].movietitle + "</div></a>"
-							tt+="<div>"+data.purchase[j].starttime +"</div>"
-							tt+="<div>"+data.purchase[j].sectorNo +"</div>"
-							tt+="<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index +"'>"
-							tt+="<button class='changeButt' id='seewriteG'>"+state+"</button>"
-							tt+="</a></div>	</div>"
-							
-							$("#add").append(tt)
-					
-						}
-				
-					}
 
+
+						var tt ="<div class='fff'><div class = 'seeouter'>"
+						
+						tt+= "<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index+"'>"
+						tt+="<div class='writeimg'>"
+							
+						if(data.purchase[j].imgname!=null){
+							tt+= "<img src='/moviedata/"+data.purchase[j].imgname + "' alt='" +data.purchase[j].movietitle+ "이미지' />"
+							
+						}else{
+							tt+='이미지없음'
+						}
+								
+						tt+="</div></a>"
+						tt+="<div class='seeContent'>"
+						tt+="<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index +"'><div class='seeContentitle'>"
+						tt+=data.purchase[j].movietitle + "</div></a>"
+						tt+="<div>"+data.purchase[j].starttime +"</div>"
+						tt+="<div>"+data.purchase[j].sectorNo +"</div>"
+						tt+="<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index +"'>"
+						tt+="<button class='changeButt' id='seewriteG'>"+state+"</button>"
+						tt+="</a></div>	</div>"
+							
+						$("#add").append(tt)
+					
+					}
+		
 				}
 			
 				var pp = "<div class='fff'>"
 					
 				if(data.pdto.startPage > 1)
-					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
+					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+(data.pdto.startPage-1)+ ")' value='&lt' />"
 								
 				for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
 									
@@ -319,7 +316,7 @@ function pageChange(i){
 				}			
 		     	
 		     	if(data.pdto.endPage < data.pdto.total)
-					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
+					pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='pageChange("+(data.pdto.endPage+1)+ ")' value='&gt' />"
 		     		
 		     		pp+="</div>"
 		     		

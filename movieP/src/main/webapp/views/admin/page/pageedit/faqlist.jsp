@@ -35,7 +35,6 @@ $(function() {
 		faqform.submit()
 	})
 	
-	
 	$("#allChk").click(function() {
 		//alert("전체선택");
 		var chk = $("#allChk").prop("checked");
@@ -45,42 +44,16 @@ $(function() {
 		} else {
 			$(".ggno").prop("checked", false);
 		}
-
 	})
 	
 	$(".postno").click(function(){
 		$("#allChk").prop("checked", false);
 	});
-	
-
-	$(".deleteGo").click(function() {
-		if(confirm("정말로 삭제하시겠습니까?")){
-			frm.submit()
-		}
-		});
-	
-
 })
 
-
-	var bbb=0
 	function detailGo(aa) { // 제이쿼리안씀.
 		
-			console.log(bbb+",지금눌린거"+aa)
-			//var before = aa+""
-			//alert("디테일 고 누름."+aa+"+"+bbb)			
-			var clicked= document.getElementById(aa+"")
-			var prevclicked= document.getElementById(bbb+"")
-			bbb=aa
-			clicked.style.display= "block"
-			prevclicked.style.display="none"
-				
-				
-			
-			
-			
-				}
-
+	}
 	console.log("디테일 고 누름."+before)	
 
 </script>
@@ -98,10 +71,7 @@ $(function() {
 			<table class="table table-striped">
 				 <thead>
 					<td colspan="5" style="text-align: right; ">
-						
 						<a href="faqinsert">글쓰기</a>
-						<!-- <button type="button" class="modifyGo">선택글수정하기</button>  -->
-						<!-- <button type="button" class="deleteGo" >선택글삭제하기</button>  -->
 					</td>
 				</thead>
 				<tr>
@@ -110,18 +80,16 @@ $(function() {
 					<td>분류</td>
 					<td>제목</td>
 					<td>내용</td>
-					<td>수정</td>
-					<td>삭제</td>
+					<td>조회수</td>
 				</tr>
 			<c:forEach items="${data.sfDTO }" var="faqDTO" varStatus="no">
 				<tr id="${faqDTO.bqindex }">
 					<td>${no.index+1 }</td>
 					<td>${faqDTO.bqcate }</td>
 					<td style="border: 1px solid;">
-					<a href="javascript:detailGo(${faqDTO.bqindex })">${faqDTO.bqtitle }</a></td>
+					<a href="faqdetail?bqindex=${faqDTO.bqindex }">${faqDTO.bqtitle }</a></td>
 					<td>${faqDTO.bqcont }</td>
-					<td><a href="faqmodify?bqindex=${faqDTO.bqindex }">수정하기</a></td>
-					<td><a href="faqdeleteReg?bqindex=${faqDTO.bqindex }" name="frm">삭제하기</a></td>
+					<td>${faqDTO.viewcnt }</td>
 				</tr>
 				<tr>
 				<td colspan="3" id="${faqDTO.bqindex }" style="display: none;">${faqDTO.bqcont }</td> 
@@ -157,12 +125,12 @@ $(function() {
 					</c:if></td>
 			</tr>
 			
-			
-			
-			
-			
-			
-			
+			<tr>
+				<td colspan="5" align="center">
+					<input type="text" name="searchfaq"/>
+					<input type="button" value="검색"/>
+				</td>
+			</tr>
 			
 			</table>
 			<input type="hidden" name="page" value="1" id="pageIN" />

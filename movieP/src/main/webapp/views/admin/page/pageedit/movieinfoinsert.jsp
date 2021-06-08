@@ -215,6 +215,7 @@
 			<option value="액션">액션</option>
 			<option value="SF">SF</option>
 			<option value="모험">모험</option>
+			<option value="코미디">코미디</option>
 			<option value="판타지">판타지</option>
 			<option value="스릴러">스릴러</option>
 			<option value="애니메이션">애니메이션</option>

@@ -75,7 +75,11 @@
 				</tr>
 			</table>
 			<div class="back_list">
-				<a href="serviceNotice?page=1&noticeindex=&kind2=${data.onesfdto.kind2 }&schkey=${data.onesfdto.schkey}">목록</a>
+				<a href="serviceNotice?page=${data.npDTO.page }&noticeindex=&kind2=${data.onesfdto.kind2 }&schkey=${data.onesfdto.schkey}
+				<c:if test="${data.onesfdto.noticecate != null}">
+					&noticecate=${data.onesfdto.noticecate}
+				</c:if>
+				">목록</a>
 			</div>
 		</div>
 	</div>

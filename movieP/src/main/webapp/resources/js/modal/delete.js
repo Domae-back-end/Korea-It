@@ -8,8 +8,8 @@
 			
 			var list = {
 				userpw : document.getElementById('chkPw').value,
-				userid :  document.getElementById('userid').value,
-				kind:'탈퇴'
+				userid : document.getElementById('userid').value,
+				kind : '일반'
 			};
 			
 			$.ajax({
@@ -26,9 +26,15 @@
 						frm.submit();
 					}else{
 						alert("비밀번호가 일치하지않습니다.")
+						 $("#chkPw").val('')
 					}
 		     	}
 			});
 		}
 	});
+	
+	$('.close').click(function() {
+		 $("#chkPw").val('')
+	});	
+	
  }); 

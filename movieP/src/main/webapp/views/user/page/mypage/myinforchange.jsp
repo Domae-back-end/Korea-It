@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
 
-<script src="<c:url value="/resources/js/modal/delete.js" />" ></script>
-<script src="<c:url value="/resources/js/modal/pnumChange.js" />" ></script>
-
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
 <input type="hidden" id="userid" value="${sessionId }"/>
 <input type="hidden" id="userpw" value="${memdata.dto.userpw }"/>
@@ -27,9 +24,12 @@
 		<div class = "nameouter">아이디</div>
 		<div>
 			<div class = "dataouter">${sessionId }(가입일 : ${memdata.dto.joindayM })</div>
-	
+			<c:if test="${memdata.dto.kind == '일반' }">
 			<input type="button" class="changeButt" id="inforDelete" value="회원탈퇴" data-target="#inforDelete1"/>
-	
+			</c:if>
+			<c:if test="${memdata.dto.kind == '네이버' }">
+			<input type="button" class="changeButt" id="inforDeleteNaver" value="회원탈퇴" />
+			</c:if>
 		</div>
 	</div>
 	

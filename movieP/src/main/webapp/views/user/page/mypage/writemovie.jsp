@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div class="cntTitle">총 : ${memdata.cnt.wc }</div>
 <div class ="firstwritouter">
 	<input type="hidden" id="userid" value="${sessionId }"/>
 	<input type="hidden" id="pagekind" value="writemovie"/>
-	
+
 	<div id="add">
 	<div class="fff">
 	<c:forEach items="${memdata.comment }" var ="pp" varStatus="no">

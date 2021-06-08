@@ -102,7 +102,20 @@ public class AsyncController {
 		return mapres;
 	
 	}
+	//bannermovieget
+	@RequestMapping(value = "/bannermovieget", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> bannermovieget(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
+		
+		
+		
+		PageeditService sr = pr.getContext().getBean("bannermovieget",PageeditService.class);	
+		
+		HashMap<String, Object> mapres =(HashMap<String, Object>)sr.execute(map);
+		
+		return mapres;
 	
+	}
 	
 
 }

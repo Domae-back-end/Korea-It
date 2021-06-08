@@ -5,9 +5,6 @@ $(function() {
 
 	if( document.getElementById('qnastateGo') != null){
 		
-		 document.getElementById('qnastatenow').value =  document.getElementById('qnastateGo').value
-		 document.getElementById('qnacontentnow').value =  document.getElementById('qnacontentGo').value
-		
 		if(document.getElementById('qnastateGo').value != ''){
 			var list = {
 			    userid : document.getElementById('userid').value,
@@ -26,13 +23,12 @@ $(function() {
 	
 	$(document).on("click", ".qnaDetailGo", function(){
 		
-		document.getElementById('qnastateGo').value =  $('#qnastatenow').val()
 		if(document.getElementById('qnastateGo').value == '')
 			document.getElementById('qnastateGo').value = '전체'
 		
-		document.getElementById('qnacontentGo').value = $('#qnacontentnow').val()
 		$('#detail').val($(this).attr("dd"));
 		$('#page').val($('.pagebtn_sel').attr("pp"));
+		
 		qq.submit();	
 	});
 	
@@ -48,8 +44,8 @@ $(function() {
  
  	$("#qnafind").click(function(){
     	
-    	document.getElementById('qnastatenow').value =  $('#qnastate').val()
-    	document.getElementById('qnacontentnow').value =  $('#qnacontent').val()
+    	document.getElementById('qnastateGo').value =  $('#qnastate').val()
+    	document.getElementById('qnacontentGo').value =  $('#qnacontent').val()
     	
     	
     	var list = {
@@ -62,6 +58,8 @@ $(function() {
 	});
 	
 	if(document.getElementById("content") !=null){
+	
+		$('.outer').css('height','100%')
 	
 		if(document.getElementById('qnastate').value!= ''){
 			
@@ -109,7 +107,7 @@ $(function() {
 						tt+="<li><span>"+'답변상태'+"</span>"+data.qna[i].persstate+"<li>"
 						tt+="</ul></div>"
 						tt+="<div class='hdetail_cont'>"
-						tt+="<p class='hdetail_cont_ques'>"+data.qna[i].perscont+"</p>"
+						tt+="<p class='hdetail_cont_ques'>"+data.qna[i].perscont.replaceAll('\n','<br>')+"</p>"
 						tt+="<p class='hdetail_cont_pic'>"
 						
 						if(data.qna[i].persimg!=null)
@@ -118,7 +116,7 @@ $(function() {
 						tt+="</p>"
 						tt+="<p class='hdetail_cont_status'><span>"+ data.qna[i].persatime
 						tt+="</span>"+data.qna[i].persstate+"</p>"
-						tt+="<p class='hdetail_cont_ans'>"+data.qna[i].persacont
+						tt+="<p class='hdetail_cont_ans'>"+data.qna[i].persacont.replaceAll('\n','<br>')
 						tt+="</p></div></div>"
 						
 						
@@ -162,7 +160,7 @@ function qnalistChange(list){
 					var tt ="<div class='fff'>"
 					tt+="<div class='puchaseinner'>"+ data.qna[i].persid + "</div>"
 					tt+="<a class='qnaDetailGo' value=" + data.qna[i].persindex + " dd=" + data.qna[i].persindex +">"
-					tt+="<div class='puchaseinner'>"+data.qna[i].perstitle+"</div>"
+					tt+="<div class='puchaseinner' id='titleOver'>"+data.qna[i].perstitle+"</div>"
 					tt+="</a>"
 					tt+="<div class='puchaseinner'>" +data.qna[i].persqtime+ "</div>"
 					tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'
@@ -175,7 +173,7 @@ function qnalistChange(list){
 			var pp = "<div class='fff'>"
 				
 			if(data.pdto.startPage > 1)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+data.pdto.startPage-1+ ")' value='&lt' />"
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+(data.pdto.startPage-1)+ ")' value='&lt' />"
 							
 			for( var i = data.pdto.startPage ; i <= data.pdto.endPage ; i++){
 								
@@ -187,7 +185,7 @@ function qnalistChange(list){
 			}			
 	     	
 	     	if(data.pdto.endPage < data.pdto.total)
-				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+data.pdto.endPage+1+ ")' value='&gt' />"
+				pp += "<input type='button' class='btnnn pagebtn pagebtn_lr' onclick='qnapageChange("+(data.pdto.endPage+1)+ ")' value='&gt' />"
 	     		
 	     		pp+="</div>"
 	     		
@@ -200,10 +198,13 @@ function qnalistChange(list){
 
 function qnapageChange(i){
 	
+	if(document.getElementById('qnastateGo').value == '')
+			document.getElementById('qnastateGo').value = '전체'
+			
 	var list = {
     	userid : document.getElementById('userid').value,
-    	qnastate :  document.getElementById('qnastate').value,
-    	qnacontent :  $('#qnacontent').val(),
+    	qnastate :  document.getElementById('qnastateGo').value,
+    	qnacontent :  $('#qnacontentGo').val(),
     	page : i
     };
 	

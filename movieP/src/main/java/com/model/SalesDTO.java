@@ -1,5 +1,6 @@
 package com.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,11 +25,47 @@ public class SalesDTO {
 	String sales_type; // 현금, 카드 내지 환불
 	Date sales_time;
 	
+	Date salesstime;
+	Date salesetime;
 	
 	
+	public void setStarttime(String datevalue){
+		System.out.println(datevalue);
+		String[] arr= datevalue.split("-");
+		salesstime= new Date(Integer.parseInt(arr[0])-1900, Integer.parseInt(arr[1])-1,Integer.parseInt(arr[2]));		
+	}
+	
+	public void setEndtime(String datevalue){
+		System.out.println(datevalue);
+		String[] arr= datevalue.split("-");
+		salesetime= new Date(Integer.parseInt(arr[0])-1900, Integer.parseInt(arr[1])-1,Integer.parseInt(arr[2]));		
+	}
+	
+	public String getStarttime(){
+		SimpleDateFormat sdf= new SimpleDateFormat("YYY-MM-dd");
+		//sdf= new SimpleDateFormat("YYY&#39;-&#39;MM&#39;-&#39;dd");
+		
+		if(salesstime!=null) {
+		System.out.println(sdf.format(salesstime));
+		return sdf.format(salesstime);
+		}else {
+			return null;
+		}
+		
+	}//
 
 	
-	
+	public String getEndtime(){
+		SimpleDateFormat sdf= new SimpleDateFormat("YYY-MM-dd");
+		//sdf= new SimpleDateFormat("YYY&#39;-&#39;MM&#39;-&#39;dd");
+		if(salesetime!=null) {
+		System.out.println(sdf.format(salesetime));
+		return sdf.format(salesetime);
+		}else {
+			return null;
+		}
+		
+	}//
 	
 	
 	

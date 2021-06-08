@@ -51,7 +51,10 @@ p {margin: 5px 0;  }
 .search>.inputText {font-size: 16px; width: 200px; height: 38px; border: 1px solid #d8d9db; outline: none; padding: 5px; margin-left: 10px; 
 					border-radius: 5px 0 0 5px;   }
 .search>.inputButton {font-size: 16px; width: 40px; height: 38px; background-image: url("../../../views/user/img/service/search.png"); border: 1px solid #d8d9db;
-						position: absolute; left: 460px;  border-left: none; border-radius: 0 5px 5px 0;   }
+						position: absolute; left: 460px;  border-left: none; border-radius: 0 5px 5px 0; }
+.block_search {pointer-events: none; background: #ccc; }
+.block_inputButton {font-size: 16px; width: 40px; height: 38px; background-image: url("../../../views/user/img/service/search2.png"); border: 1px solid #d8d9db;
+					position: absolute; left: 460px;  border-left: none; border-radius: 0 5px 5px 0; }
 
 /* 검색 (총갯수) */
 .search_result {text-align: left; }

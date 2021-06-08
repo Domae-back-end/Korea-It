@@ -17,19 +17,32 @@ $(function() {
 })
 
 
-
+//data.salist  data.pdto  data.sadto
 </script>
 
 <body>
-매출
-데이터 출력화면
-
 데이터 있냐:${not empty data.salist}  ${data.sadto.salesckind} 
 
 <form action=""  name= "SLform">
 
 
 <input type="hidden" name="page" id="pageIN" value="${data.pdto.page}" />
+
+
+	<span>기간 
+		<input type="date" name="starttime" 
+		<c:if test="${not empty data.sadto.starttime}">  value="${data.sadto.starttime}"  </c:if>
+		
+		></input>
+		
+		  ~  	
+		
+		
+		<input type="date" name="endtime" 
+		<c:if test="${not empty data.sadto.endtime}">  value="${data.sadto.endtime}" </c:if>
+		></input>  </span>
+
+
 	<select name="salesckind">
 		<option value=""   >전체  </option>
 		<option value="userid"   >아이디별  </option>
@@ -40,10 +53,10 @@ $(function() {
 	
 	<input type="text" name="salescword" />
 	
-	
-	
-	
 	<input type="submit" value="검색" />
+	
+	
+	
 
 
 	  <table class="table table-striped">

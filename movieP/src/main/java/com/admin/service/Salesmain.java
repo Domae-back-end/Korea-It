@@ -46,6 +46,8 @@ public class Salesmain implements SalesService{
 		if(!request.getParameter("userid").equals("")) {
 		logger.info("파라미터userid:"+request.getParameter("userid"));
 		return db.getsalesbyId(request.getParameter("userid"));
+		
+		// 막장테크. 
 		}
 	}
 	HashMap<String, Object> map = new HashMap<String, Object>();
@@ -58,11 +60,13 @@ public class Salesmain implements SalesService{
 	
 	SalesListDTO result = new SalesListDTO();
 	// salist;sadto;pdto;
+	//r검색어 있을 때 아닐때 나누어서 .// jsp 에도 페이지정보.카인드 , 검색어정보 뿌려서 .
 	result.setSalist(db.getsales(map));
 	result.setPdto(pdto);// 제대로된걸 넣어준다.
-	result.setSadto(sadto);
+	result.setSadto(sadto);//검색어카테 기간 들어있
 	
-		
+
+	logger.info(result.getSadto().toString());	
 	
 	return result;
 }
