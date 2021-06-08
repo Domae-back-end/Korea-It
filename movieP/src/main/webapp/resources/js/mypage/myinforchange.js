@@ -17,9 +17,8 @@ $(function() {
 		if(confirm("탈퇴시 다시 로그인이 불가합니다. 정말로 탈퇴하시겠습니까?")){
 			
 			var list = {
-				userpw : null,
-				userid :  document.getElementById('userid').value,
-				kind:'탈퇴'
+				userid : document.getElementById('userid').value,
+				kind : '네이버'
 			};
 			
 			$.ajax({
