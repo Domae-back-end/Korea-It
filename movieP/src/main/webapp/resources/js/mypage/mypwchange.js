@@ -42,7 +42,11 @@
 		var regexp = /[^a-zA-Z0-9!@#$%^*+=-]/gi
 		$(this).val($(this).val().replace(regexp,''));
 		
-		if ($('#newpw').val() != $(this).val() || $(this).val() == '') {
+		if($(this).val() == ''){
+			$('#pw_check2').text('');
+			pwnum = 0; 
+		
+		}else if ($('#newpw').val() != $(this).val()) {
 			$('#pw_check2').text('비밀번호가 일치하지 않습니다.'); 
 			$('#pw_check2').css('color', 'red');	
 			 
@@ -91,7 +95,7 @@
 			    		userpw :  $('#newpw').val()
 	    			};
 
-					/*$.ajax({
+					$.ajax({
 				    	async : false,
 				        type : 'POST',
 				        data : JSON.stringify(inlist),
@@ -106,7 +110,7 @@
 								frm.submit();
 							}
 				     	}
-					});*/
+					});
 	
 				}else{
 					alert("현재 비밀번호를 다시 확인해주세요.")

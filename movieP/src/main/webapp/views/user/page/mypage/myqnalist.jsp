@@ -14,9 +14,6 @@
 		<input type="hidden" name="detail" id="detail" />
 		<input type="hidden" name="page" id="page" value="${param.page }" />
 	</form>
-	
-		<input type="hidden" id="qnastatenow" />
-		<input type="hidden" id="qnacontentnow" />
 		
 	<form action ="" method="post" name="frm">
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />
