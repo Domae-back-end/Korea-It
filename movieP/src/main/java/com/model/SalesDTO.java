@@ -25,7 +25,7 @@ public class SalesDTO {
 	String sales_type; // 현금, 카드 내지 환불
 	Date sales_time;
 	
-	Date salesstime;//
+	Date salesstime;
 	Date salesetime;
 	
 	
