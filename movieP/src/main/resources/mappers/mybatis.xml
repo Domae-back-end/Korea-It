@@ -631,10 +631,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 		<choose>
 			
-			<when test=" kind !=null">
+			<when test=" kind == '일반'">
 				<![CDATA[memberinfo]]>
-				<set><![CDATA[kind=#{kind}]]></set>
+				<set><![CDATA[kind='탈퇴']]></set>
 				<where> <![CDATA[userid=#{userid} and userpw=#{userpw} and kind !='탈퇴']]></where>
+			</when>
+			
+			<when test=" kind == '네이버'">
+				<![CDATA[memberinfo]]>
+				<set><![CDATA[kind='탈퇴']]></set>
+				<where> <![CDATA[userid=#{userid} and kind !='탈퇴']]></where>
 			</when>
 			
 			<when test=" content !=null">
@@ -696,7 +702,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 
 			<otherwise>
-				<![CDATA[and ticketing.reg_date < sysdate()]]>
+				<![CDATA[and CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) < sysdate()]]>
 			</otherwise>
 		</choose>
 
@@ -749,7 +755,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		left outer join movietime on sales.timetableidx = movietime.time_index
 		where sales.userid=#{userid} and sales_time > (movietime.reg_date - INTERVAL 7 DAY) and sales.salesprice <![CDATA[<]]> 0
 		order by sales.sales_time desc
-		limit #{start},2
+		limit #{cstart},2
 	</select>
 	
 	<select id="memcomment" resultType="map" parameterType="MemberDTO">
@@ -791,12 +797,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
-		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid} and date_format(ticketing.reg_date,'%Y-%m')=#{date}) a, 
+		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} and date_format(ticketing.reg_date,'%Y-%m')=#{date}) a, 
 		(select COUNT(*) wc from review where userid=#{userid}) b,
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
 		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d,
 		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0) e,
-		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} 
+		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid} 
 		and ticketing.time_index in (select time_index from movietime where 
 		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) <![CDATA[<]]> sysdate())) f;
 	</select>

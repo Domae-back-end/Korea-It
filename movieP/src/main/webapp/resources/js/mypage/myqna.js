@@ -5,9 +5,6 @@ $(function() {
 
 	if( document.getElementById('qnastateGo') != null){
 		
-		 document.getElementById('qnastatenow').value =  document.getElementById('qnastateGo').value
-		 document.getElementById('qnacontentnow').value =  document.getElementById('qnacontentGo').value
-		
 		if(document.getElementById('qnastateGo').value != ''){
 			var list = {
 			    userid : document.getElementById('userid').value,
@@ -26,13 +23,12 @@ $(function() {
 	
 	$(document).on("click", ".qnaDetailGo", function(){
 		
-		document.getElementById('qnastateGo').value =  $('#qnastatenow').val()
 		if(document.getElementById('qnastateGo').value == '')
 			document.getElementById('qnastateGo').value = '전체'
 		
-		document.getElementById('qnacontentGo').value = $('#qnacontentnow').val()
 		$('#detail').val($(this).attr("dd"));
 		$('#page').val($('.pagebtn_sel').attr("pp"));
+		
 		qq.submit();	
 	});
 	
@@ -48,8 +44,8 @@ $(function() {
  
  	$("#qnafind").click(function(){
     	
-    	document.getElementById('qnastatenow').value =  $('#qnastate').val()
-    	document.getElementById('qnacontentnow').value =  $('#qnacontent').val()
+    	document.getElementById('qnastateGo').value =  $('#qnastate').val()
+    	document.getElementById('qnacontentGo').value =  $('#qnacontent').val()
     	
     	
     	var list = {
@@ -202,10 +198,13 @@ function qnalistChange(list){
 
 function qnapageChange(i){
 	
+	if(document.getElementById('qnastateGo').value == '')
+			document.getElementById('qnastateGo').value = '전체'
+			
 	var list = {
     	userid : document.getElementById('userid').value,
-    	qnastate :  document.getElementById('qnastate').value,
-    	qnacontent :  $('#qnacontent').val(),
+    	qnastate :  document.getElementById('qnastateGo').value,
+    	qnacontent :  $('#qnacontentGo').val(),
     	page : i
     };
 	

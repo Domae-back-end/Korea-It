@@ -8,7 +8,7 @@ $(function() {
 		   	$(this).val($(this).val().replace(regexp,''));
 		   
 		   
-		   	if (pnumCh.test($(this).val()) && $(this).val()=='') {
+		   	if (pnumCh.test($(this).val()) || $(this).val()=='') {
 				
 				$('#pnum_check').text(''); 
 				$('#checknumButt').attr("disabled", false);

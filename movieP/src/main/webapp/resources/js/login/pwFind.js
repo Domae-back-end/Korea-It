@@ -86,7 +86,6 @@ $(function() {
 		});
 	});
 
-
 	$('#pnumcheck').click(function() {
 
 		if ($('#pnumcheck').val() == '인증번호 발송') {

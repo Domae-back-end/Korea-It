@@ -94,7 +94,8 @@
 				</select> -
 				<input type="text" class="pnumDes" id="pnumM" name="pnumM" maxlength="4"/> -
 				<input type="text" class="pnumDes" id="pnumL" name="pnumL" maxlength="4"/>
-				<input type="button" class="changeButt" id="pnumcheck" disabled="disabled" value="인증번호 전송"/>
+				<input type="button" class="changeButt jj" id="pnumcheck" disabled="disabled" value="인증번호 전송"/>
+				<input type="hidden" id="chk"/>
 				<div class="check_msg" id="pnum_check"></div>
 			</div>
 		</div>
