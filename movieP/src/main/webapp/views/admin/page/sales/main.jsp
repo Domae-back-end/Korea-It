@@ -9,19 +9,43 @@
 
 $(function() {
 	
-	
-	
+	var start = $("#starttime").val();
+	var end = $("#endtime").val();
 	$(".pagebtn").click(function(){ //페이지이동.
 		alert("눌렀냐?"+$(this).attr("pageval"))
 		$("#pageIN").val($(this).attr("pageval"))
+		
+		console.log($("#starttime").val()+"rr")
+		console.log($("#endtime").val() )
+		console.log($("#endtime").val()=="")
+		if($("#starttime").val()===''&&$("#endtime").val()!=''){
+			alert("기간정보를 하나 더 입력해 주세요")
+		}
+		else if($("#endtime").val()===''&&$("#starttime").val()!=''){// 논리연산자활용..
+			alert("기간정보를 하나 더 입력해 주세요")
+		}else{
+		
 		SLform.submit()
-	})
+		}
+		})
 	
 	
 	$("#searchBtn").click(function(){
-		alert("검색버튼.")
+		alert("검색버튼.")		
+		console.log($("#starttime").val()+"rr")
+		console.log($("#endtime").val() )
+		console.log($("#endtime").val()=="")
+		if($("#starttime").val()===''&&$("#endtime").val()!=''){
+			alert("기간정보를 하나 더 입력해 주세요")
+		}
+		else if($("#endtime").val()===''&&$("#starttime").val()!=''){
+			alert("기간정보를 하나 더 입력해 주세요")
+		}else{
+		
 		$("#pageIN").val(1)
 		SLform.submit()
+		}
+		
 		
 		
 	})
@@ -50,7 +74,7 @@ $(function() {
 
 
 	<span>기간 
-		<input type="date" name="starttime" 
+		<input type="date" name="starttime"  id="starttime"
 		<c:if test="${not empty data.sadto.starttime}">  value="${data.sadto.starttime}"  </c:if>
 		
 		></input>
@@ -58,7 +82,7 @@ $(function() {
 		  ~  	
 		
 		
-		<input type="date" name="endtime" 
+		<input type="date" name="endtime" id="endtime"
 		<c:if test="${not empty data.sadto.endtime}">  value="${data.sadto.endtime}" </c:if>
 		></input>  </span>
 
@@ -81,7 +105,8 @@ $(function() {
 	
 	<input type="text" name="salescword" value="${data.sadto.salescword}"  />
 	
-	<input id="searchBtn" type="submit" value="검색"  />
+<input id="searchBtn" type="button" value="검색"  /> 
+	<!-- <button type="button" id="searchBtn" >검색</button> -->
 	<!-- 버튼으로 처리하는게 어떨까 .  -->
 	
 	
