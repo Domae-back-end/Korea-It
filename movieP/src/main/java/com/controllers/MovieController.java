@@ -162,9 +162,9 @@ public class MovieController {
 			return res.execute(dd, info);
 		}
 		
-		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg") || service.equals("likeReg")) {
+		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg") || service.equals("likeReg") || service.equals("reviewModifyReg")) {
 			
-			System.out.println("라디오버튼으로부터 받은 값"+dto.getGpa());
+			//System.out.println("라디오버튼으로부터 받은 값"+dto.getGpa());
 			
 			if (dto.getPostcontent() != "") {
 				dto.setUserid((String) req.getSession().getAttribute("sessionId"));
@@ -173,6 +173,7 @@ public class MovieController {
 
 			}
 		}
+		
 		return null;
 	}
 
