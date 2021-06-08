@@ -640,10 +640,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 		<choose>
 			
-			<when test=" kind !=null">
+			<when test=" kind == '일반'">
 				<![CDATA[memberinfo]]>
-				<set><![CDATA[kind=#{kind}]]></set>
+				<set><![CDATA[kind='탈퇴']]></set>
 				<where> <![CDATA[userid=#{userid} and userpw=#{userpw} and kind !='탈퇴']]></where>
+			</when>
+			
+			<when test=" kind == '네이버'">
+				<![CDATA[memberinfo]]>
+				<set><![CDATA[kind='탈퇴']]></set>
+				<where> <![CDATA[userid=#{userid} and kind !='탈퇴']]></where>
 			</when>
 			
 			<when test=" content !=null">
@@ -705,7 +711,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 
 			<otherwise>
-				<![CDATA[and CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m')) < sysdate()]]>
+				<![CDATA[and CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) < sysdate()]]>
 			</otherwise>
 		</choose>
 

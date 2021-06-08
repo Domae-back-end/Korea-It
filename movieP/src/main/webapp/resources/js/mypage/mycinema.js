@@ -13,7 +13,7 @@ $(function() {
 	 $(".qwer").click(function(){
 	 	
 	 	var ddd= $(this).attr("dd");
-	 	var ccc= $(this).attr("cc").replace(/ /g,"");
+	 	var ccc= $(this).attr("cc").replace(/ /g,",");
 	 	var ttt= $(this).attr("tt");
 	 	
 	 	$("#mPrice").html(ddd)
