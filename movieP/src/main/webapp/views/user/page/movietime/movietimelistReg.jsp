@@ -80,16 +80,49 @@ if(request.getParameter("seatNo") != null){
 						</c:when>
 						<c:otherwise>
 							<c:set var="sit" value="A B C D E F G H I J" />
+							
 							<c:forEach var="i" begin="0" end="9">
-								<c:set var="buf" value="${fn:split(sit,' ')[i] }" />
 									<c:forEach begin="1" var="a" end="10">
+										<c:set var="buf" value="${fn:split(sit,' ')[i] }${a }" />
+										<c:set var="check" value="true" />
 										
-											<div class="sitting"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>&seatNo=<%=seatno %>,${buf }${a }&sectorno=<%=request.getParameter("sectorno")%>">${buf }${a }</a></div>
+										<c:forEach var="ac" items="${data.sitting }">
+											<c:if test="${ac.seatNo eq buf }">
+												<c:set var="check" value="false" />
+											</c:if>
+										</c:forEach>
+										
+											<c:choose>
+												<c:when test="${check eq false }">
+													<div class="sitting">${buf }</div>
+												</c:when>
+												<c:otherwise>
+													<div class="sitting"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>&seatNo=<%=seatno %>,${buf }&sectorno=<%=request.getParameter("sectorno")%>">${buf }</a></div>
+												</c:otherwise>
+											</c:choose>
 									</c:forEach>
+									
 								<div class="gill">통로</div>
-								<c:forEach begin="11" var="a" end="20">
-									<div class="sitting"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>&seatNo=<%=seatno %>,${buf }${a }&sectorno=<%=request.getParameter("sectorno")%>">${buf }${a }</a></div>
-								</c:forEach>
+								
+									<c:forEach begin="11" var="a" end="20">
+										<c:set var="buf" value="${fn:split(sit,' ')[i] }${a }" />
+										<c:set var="check" value="true" />
+										
+										<c:forEach var="ac" items="${data.sitting }">
+											<c:if test="${ac.seatNo eq buf }">
+												<c:set var="check" value="false" />
+											</c:if>
+										</c:forEach>
+									
+											<c:choose>
+												<c:when test="${check eq false }">
+													<div class="sitting">${buf }</div>
+												</c:when>
+												<c:otherwise>
+													<div class="sitting"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>&seatNo=<%=seatno %>,${buf }&sectorno=<%=request.getParameter("sectorno")%>">${buf }</a></div>
+												</c:otherwise>
+											</c:choose>
+									</c:forEach>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
@@ -104,5 +137,5 @@ if(request.getParameter("seatNo") != null){
 		</c:if>
 		<div class="clickontike"><a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&cnt3=<%=cnt3 %>&cnt2=<%=cnt2%>&cnt1=<%=cnt1%>">다시 좌석 선택하기</a></div>
 		<div class="clickontike">좌석 : <%=sitting %></div>
-		<div class="clickontike">가격 : </div>
+		<div class="clickontike">가격 : ${data.money }</div>
 	</div>

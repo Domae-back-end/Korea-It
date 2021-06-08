@@ -43,6 +43,7 @@ public interface DbMapper {
    List<MovieTimeDTO> movieTimefind(String search);
    List<UserSitDTO> moviesit(Integer index);
    
+   List<UserSitDTO> moviesitfind(Integer index);
    // 게시판 page 이동.
    int noticetotalCnt(HashMap<String, Object> map);
 

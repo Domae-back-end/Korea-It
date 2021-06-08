@@ -8,7 +8,6 @@
 		width: 1000px;
 		height: 100%;
 		margin: 0 auto;
-		background-color: #F5F5DC;
 	}
 	.both{
 		clear: both;
@@ -32,20 +31,22 @@
 	.movietitle{
 		width: 248px;
 		height: 50px;
-		color: white;
+		color: #8541AE;
 		border: 1px solid #000;
 		text-align: center;
 		line-height: 50px;
-		background: black;
+		font-size: 20px;
+		font-weight: bold;
 	}
 	.movietitle2{
 		width: 130px;
 		height: 50px;
-		color: white;
+		color: #8541AE;
 		border: 1px solid #000;
 		text-align: center;
 		line-height: 50px;
-		background: black;
+		font-size: 20px;
+		font-weight: bold;
 	}
 	.movietitlelay{
 		width: 248px;
@@ -56,11 +57,11 @@
 	.totaltiketing{
 		width: 100%;
 		height: 100px;
-		background: gray;
 		color: black;
 		text-align: center;
 		font-weight: bold;
 		font-size: 20px;
+		border: 1px solid #000;
 	}
 	.buttonticket{
 		width: 100px;
@@ -71,13 +72,12 @@
 		margin-bottom: 10px;
 		width: 100%;
 		height: 70px;
-		background: gray;
+		border: 2px solid #000;
 	}
 	.timelist1{
 		width: 100%;
 		height: 30px;
 		font-size: 20px;
-		font-weight: bold;
 		text-align: center;
 	}
 	.timelist1 > a{
@@ -88,6 +88,21 @@
 		float:left;
 		height: 50px;
 		text-align: center;
+		font-weight: bold;
+		font-size: 15px;
+	}
+	.btntimelist{
+		width: 100%;
+		height: 500px;
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 500px;
+	}
+	.btntimelist > a{
+		border: 5px solid #000;
+		padding: 5px;
+		color: black;
 	}
 </style>
 <%
@@ -137,16 +152,24 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 				</div>
 			</c:forEach>
 		</div>
-		<div class="timelist1">
-			<a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&sectorno=<%=request.getParameter("sectorno")%>">
-				예매하기
-			</a>
+		<div class="btntimelist">
+			<c:if test="${param.sectorno != null }">
+				<a href="/user/movietime/listReg?time_index=<%=request.getParameter("time_index") %>&sectorno=<%=request.getParameter("sectorno")%>">
+					예매하기
+				</a>
+			</c:if>
 		</div>
 		<div class="both"></div>
 		<div class="totaltiketing">
+			<c:if test="${param.movietitle != null }">
 			영화 : <%=request.getParameter("movietitle") %>   /
+			</c:if>
+			<c:if test="${param.dal != null }">
 			시간 : <%=request.getParameter("dal") %>월 <%=request.getParameter("el") %>일   /
+			</c:if>
+			<c:if test="${param.sectorno != null }">
 			선택 : <%=request.getParameter("sectorno") %><br>
+			</c:if>
 		</div>
 	</div> 
 </form>
