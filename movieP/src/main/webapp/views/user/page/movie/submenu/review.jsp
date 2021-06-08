@@ -142,6 +142,7 @@
 		$('#mycontent').html('<textarea name="postcontent" id="p" rows="1" cols="200"/></textarea>');
 		$('#del').html('')
 		$('#mod').html('')
+		
 	}
 	
     $('#p').on('keyup', function() {
