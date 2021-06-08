@@ -12,6 +12,35 @@ $(function() {
 		});
 	});
 
+	$("#inforDeleteNaver").click(function() {
+
+		if(confirm("탈퇴시 다시 로그인이 불가합니다. 정말로 탈퇴하시겠습니까?")){
+			
+			var list = {
+				userpw : null,
+				userid :  document.getElementById('userid').value,
+				kind:'탈퇴'
+			};
+			
+			$.ajax({
+		    	async : false,
+		        type : 'POST',
+		        data : JSON.stringify(list),
+		        url : "/membermodify",
+		        dataType : "json",
+				contentType : "application/json; charset=UTF-8",
+				success : function(data) {
+					if(data.cnt >0){
+						alert("탈퇴처리되었습니다")
+						frm.action = "/logout"
+						frm.submit();
+					}
+		     	}
+			});
+			
+		}
+	});
+
 	$('#pumnchangGo').click(function() {
 
 		if ($('#pumnchangGo').val() == '휴대폰번호 변경') {
