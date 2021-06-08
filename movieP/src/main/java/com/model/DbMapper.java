@@ -239,7 +239,7 @@ public interface DbMapper {
 void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 	int updatemonthsales(SalesDTO sdto);
 
-	Integer salestotalCnt(HashMap<String, Object> map);
+	Integer salestotalCnt(HashMap<String, Object> map);	Integer salestotalCnt2(HashMap<String, Object> map);
 
 	int salesindexlink(UserSitDTO userSitDTO);
 
@@ -272,6 +272,8 @@ void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 	ArrayList<BannerDTO> getbannerimgs();
 
 	List<MovieInfoDTO> movielistbanner();//
+
+
 
 
    

@@ -29,31 +29,29 @@ public class Salesmain implements SalesService{
 	
 	@Override
 	public Object execute(Object obj) {//request sadto
-		logger.info("salesMain");
 		HashMap<String, Object> orimap = (HashMap)obj;
 		HttpServletRequest request= (HttpServletRequest)orimap.get("request");
 		SalesDTO sadto = (SalesDTO)orimap.get("sadto");
 		SalesPageDTO pdto = (SalesPageDTO)orimap.get("pdto");
 		
 		
+		logger.info("salesMain");
+		logger.info("salesckind"+sadto.getSalesckind()+" 검색어:"+sadto.getSalescword()+"페이지넘버:"+pdto.getPage());	
+		logger.info("시작기간"+sadto.getSalesstime()+"~"+sadto.getSalesetime());
 		
-		logger.info("검색유저id"+sadto.getUserid()+"페이지넘버:"+pdto.getPage());	
 		
-		if(MovieSect.NORM1.equals("기존1관")){
-			System.out.println("true");
-		}
 	if(request.getParameter("userid")!=null)	{
 		if(!request.getParameter("userid").equals("")) {
 		logger.info("파라미터userid:"+request.getParameter("userid"));
 		return db.getsalesbyId(request.getParameter("userid"));
-		
-		// 막장테크. 
 		}
 	}
+	
+	
+	
 	HashMap<String, Object> map = new HashMap<String, Object>();
 	map.put("sadto",sadto);
-	map.put("pdto", pdto);
-	
+	map.put("pdto", pdto);	
 	pdto.init(db, map); //pdto의 내용물 변화가온다.
 	
 	

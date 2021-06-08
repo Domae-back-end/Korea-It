@@ -7,7 +7,7 @@ import lombok.Data;
 public class SalesPageDTO {// SalesPageDTO 의 init 주의.
 	Integer page = 1; // 내가누른 페이지번호
 	Integer start; // 1일때 3(limit), 2일때 6(limit*2)
-	Integer limit = 20; // 한페이지에 게시글 갯수
+	Integer limit = 8; // 한페이지에 게시글 갯수
 	Integer pageLimit = 5; // 밑에페이지번호 갯수 (1창에 4개만)
 	Integer total; // 걍 총글의 갯수
 	Integer startPage; // pagelimit에 다다르고 그담페이지번호 계산 (1일땐 1~4) (2일땐 5~8)
@@ -20,13 +20,17 @@ public class SalesPageDTO {// SalesPageDTO 의 init 주의.
 	
 	//
 	
-	public void init(DbMapper dm, HashMap<String, Object> map) {
-		// 게시판페이지계산.
-		limit = 5; 
+	public void init(DbMapper db, HashMap<String, Object> map) {
 		start = (page - 1) * limit;
 		
 		
-		ttt = dm.salestotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
+		 SalesDTO  sadto= (SalesDTO)map.get("sadto");
+		
+		if(sadto.getSalesstime()!=null&sadto.getSalesetime()!=null&&sadto.getSalesstime().before(sadto.getSalesetime())) {
+		//ttt=db.salestotalCnt2(map);
+		ttt=db.salestotalCnt(map);
+		}else {
+		ttt = db.salestotalCnt(map); }// 총갯수정함. 페이지나눠야하니깐.
 		//
 		System.out.println("Sales ttt:"+ttt);
 		this.total = ttt / limit;

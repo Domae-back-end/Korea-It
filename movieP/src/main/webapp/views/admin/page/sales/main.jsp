@@ -8,11 +8,31 @@
 
 
 $(function() {
-	$(".pagebtn").click(function(){ //페이지번호
+	
+	
+	
+	$(".pagebtn").click(function(){ //페이지이동.
 		alert("눌렀냐?"+$(this).attr("pageval"))
 		$("#pageIN").val($(this).attr("pageval"))
 		SLform.submit()
 	})
+	
+	
+	$("#searchBtn").click(function(){
+		alert("검색버튼.")
+		$("#pageIN").val(1)
+		SLform.submit()
+		
+		
+	})
+	
+	
+	
+	
+	
+	
+	
+	
 	
 })
 
@@ -44,17 +64,25 @@ $(function() {
 
 
 	<select name="salesckind">
-		<option value=""   >전체  </option>
-		<option value="userid"   >아이디별  </option>
-		<option value="movietitle"> 제목별 </option>
-		<option value="sectorNo"> 관별</option>
+		<option value="" 
+		 <c:if test="${data.sadto.salesckind == '' }"> selected="selected"</c:if>
+		 >카테고리  </option>
+		<option value="userid"
+		<c:if test="${data.sadto.salesckind == 'userid' }"> selected="selected"</c:if>
+		   >아이디별  </option>
+		<option value="movietitle"
+		<c:if test="${data.sadto.salesckind == 'movietitle' }"> selected="selected"</c:if>
+		> 제목별 </option>
+		<option value="sectorNo"
+		<c:if test="${data.sadto.salesckind == 'sectorNo' }"> selected="selected"</c:if>
+		> 관별</option>
 	
 	</select>
 	
-	<input type="text" name="salescword" />
+	<input type="text" name="salescword" value="${data.sadto.salescword}"  />
 	
-	<input type="submit" value="검색" />
-	
+	<input id="searchBtn" type="submit" value="검색"  />
+	<!-- 버튼으로 처리하는게 어떨까 .  -->
 	
 	
 

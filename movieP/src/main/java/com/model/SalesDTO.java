@@ -30,15 +30,25 @@ public class SalesDTO {
 	
 	
 	public void setStarttime(String datevalue){
-		System.out.println(datevalue);
+		
+		if(datevalue!=null&&!datevalue.equals("")) {
+		System.out.println("스타트타임:"+datevalue);
 		String[] arr= datevalue.split("-");
-		salesstime= new Date(Integer.parseInt(arr[0])-1900, Integer.parseInt(arr[1])-1,Integer.parseInt(arr[2]));		
+		salesstime= new Date(Integer.parseInt(arr[0])-1900, Integer.parseInt(arr[1])-1,Integer.parseInt(arr[2]));	
+		}else {
+			salesstime=null;
+		}
 	}
 	
 	public void setEndtime(String datevalue){
-		System.out.println(datevalue);
+		if(datevalue!=null&&!datevalue.equals("")) {// null 은 아니구나ㅏ. 그러나 빈칸으로 오는구나. 라는것이 검증됨.
+		System.out.println("엔드타임:"+datevalue);
 		String[] arr= datevalue.split("-");
-		salesetime= new Date(Integer.parseInt(arr[0])-1900, Integer.parseInt(arr[1])-1,Integer.parseInt(arr[2]));		
+		salesetime= new Date(Integer.parseInt(arr[0])-1900, Integer.parseInt(arr[1])-1,Integer.parseInt(arr[2]));
+		salesetime.setHours(23);salesetime.setMinutes(59);salesetime.setSeconds(59);;
+		}else {
+			salesetime=null;
+		}
 	}
 	
 	public String getStarttime(){
