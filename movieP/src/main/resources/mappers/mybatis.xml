@@ -124,6 +124,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
+	<!-- 리뷰 삭제하기 -->
+	<delete id="reviewdelete" parameterType="MovieReviewDTO">
+		delete from review where cnt = #{cnt} and userid=#{userid}
+	</delete>
+
+	<!-- 리뷰 수정하기 -->
+	<update id="reviewmodify" parameterType="MovieReviewDTO">
+		update review set postcontent = '${postcontent}' and gpa = '${gpa}'
+		where cnt=#{cnt} and userid = #{userid}
+	</update>
+	
 	<select id="foundmoviename" resultType="java.lang.String">
 		select movietitle from movieinfo
 		where m_index='${m_index}'
@@ -143,9 +154,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select movietitle from movieinfo where m_index='${m_index}'
 	</select>
 
-	<delete id="reviewdelete" parameterType="MovieReviewDTO">
-		delete from review where cnt = #{cnt} and userid=#{userid}
-	</delete>
+
 
 	<!-- 좋아요 -->
 	<insert id="likeupdate" parameterType="LikeDTO">

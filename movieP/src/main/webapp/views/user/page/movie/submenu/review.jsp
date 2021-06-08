@@ -24,19 +24,22 @@
 	#userinfo{
 		display: inline-block;
 		text-align: left;
-		width: 300px;
+		width: 250px;
 		height: 60px;
 	}
 	#content{
-	width: 560px;
-	height: 60px;
-	overflow:auto;
+		width: 560px;
+		height: 55px;
+		overflow:auto;
 		display: inline-block;
 	}
-	#del{
-		background: cyan;
+	#mycontent{
+		width: 500px;
+		height: 55px;
+		overflow:auto;
 		display: inline-block;
 	}
+
 	#id{
 		font-size:20px;
 	}
@@ -63,8 +66,21 @@
 	 #star>i{
 	 	color:gold;
 	 }
+	 
+	 #mystar{
+		 height: 60px;
+		 line-height:60px; 
+	 }
+	 #mystar>i{
+	 	color:gold;
+	 }
 	#del{
-	margin-top:30px;
+		margin-top:30px;
+		float: right;
+		background: none;
+	}
+	#mod{
+		margin-top:30px;
 		float: right;
 		background: none;
 	}
@@ -75,7 +91,12 @@
 		display:inline-block;
 		float:left;
 		font-size: 30px;
+		height: 57px;
+	}
+	#mycontent>textarea{
+		width: 500px;
 		height: 60px;
+		margin-top: 15px;
 	}
 
 </style>
@@ -114,11 +135,30 @@
 		
 	}
 	
+	function ModifyForm(idx, postcontent){
+		
+		var value = '<ul class="rate-area"><input type="radio" id="5-star" id = "gpa" name="gpa" value="5" /><label for="5-star" title="Amazing" checked>5 stars</label><input type="radio" id="4-star" id = "gpa" name="gpa" value="4" /><label for="4-star" title="Good">4 stars</label><input type="radio" id="3-star" id = "gpa" name="gpa" value="3" /><label for="3-star" title="Average">3 stars</label><input type="radio" id="2-star" id = "gpa" name="gpa" value="2" /><label for="2-star" title="Not Good">2 stars</label><input type="radio" id="1-star" id = "gpa" name="gpa" value="1" /><label for="1-star" title="Bad">1 star</label></ul>';
+		$('#mystar').html(value)
+		$('#mycontent').html('<textarea name="postcontent" id="p" rows="1" cols="200"/></textarea>');
+		$('#del').html('')
+		$('#mod').html('')
+	}
+	
+    $('#p').on('keyup', function() {
+
+        if($(this).val().length > 100) {
+        	alert("관람평은 100글자이상 쓸 수 없습니다.")
+            $(this).val($(this).val().substring(0, 100));
+        }
+
+
+    });
+	
+	
 	$(document).ready(function() {
 
 
 	    $('#p').on('keyup', function() {
-
 
 	        if($(this).val().length > 100) {
 	        	alert("관람평은 100글자이상 쓸 수 없습니다.")
@@ -166,7 +206,7 @@
 		<div id="id">${myreview.userid }</div>
 		<div id="time">${myreview.posttime_s }</div>
 	</div>
-	<div id="star" style="display:inline-block;">
+	<div id="mystar" style="display:inline-block;">
 		<c:forEach begin="1" end="${myreview.gpa }" var="st" varStatus="no">
 		<i class="fas fa-star"></i>
 		</c:forEach>
@@ -174,9 +214,12 @@
 			<i class="far fa-star"></i>
 		</c:forEach>
 	</div>
-	<div id= "content">${myreview.postcontent }</div>
+	<div id= "mycontent">${myreview.postcontent }</div>
 	<div id="del"> <a href="javascript:deleteGo(${myreview.cnt})">
 	<i class="far fa-trash-alt"></i>
+	</a></div>
+	<div id="mod"> <a href="javascript:ModifyForm(${myreview.cnt}, '${myreview.postcontent }' )">
+	<i class="fas fa-edit"></i>
 	</a></div>
 </div>
 </div>
@@ -192,18 +235,18 @@
 
 	<div id="star" style="display:inline-block">
 		<c:forEach begin="1" end="${r.gpa }" var="st" varStatus="no">
-		<i class="fas fa-star"></i>
+			<i class="fas fa-star"></i>
 		</c:forEach>
 		<c:forEach begin="1" end="${5-r.gpa }" var="st">
 			<i class="far fa-star"></i>
 		</c:forEach>
 	</div>
 	<div id= "content">${r.postcontent }</div>
-	<div id="del"> <a href="javascript:deleteGo(${r.cnt})">
-	<i class="far fa-trash-alt"></i>
-	</a></div>
 </div>
 </c:forEach>
+
+
+
 <div id ="num">
 <c:if test="${moviereview.pdto.startPage > 1}">
 		    	
