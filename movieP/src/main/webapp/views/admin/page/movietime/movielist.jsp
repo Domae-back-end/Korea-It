@@ -117,8 +117,6 @@ hr{
 		</c:forEach>
 		
 		<div class="both"></div>
-		
-		<div class="movietimebox10"><a href="">수정</a></div>
 		<c:forEach var="a" items="${data.deletetime }">	
 			<div class="movietimebox10">${a.movietitle }</div>
 		</c:forEach>
