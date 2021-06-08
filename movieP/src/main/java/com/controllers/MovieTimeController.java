@@ -39,11 +39,6 @@ public class MovieTimeController {
 		return "movietime/movie" + cate;
 	}
 	
-	@ModelAttribute("submenu")
-	ArrayList<Menu> submenu() {
-		return new InitData().getSubmenusbyCateName("movietime");
-	}
-	
 
 	@RequestMapping
 	String mainpage(@PathVariable String cate,HttpServletRequest request) {

@@ -12,6 +12,8 @@ public class UserSitDTO {
 	Date reg_date;
 	Integer choice;
 	String reg_time;
+	
+	
 	public UserSitDTO(Integer time_index, String seatNo, String userid, String peoString,Date reg_date,int saleString) {
 		this.time_index = time_index;
 		this.seatNo = seatNo;
@@ -28,7 +30,10 @@ public class UserSitDTO {
 		this.reg_time = reg_time;
 		this.saleslink = saleString;
 	}
-	
+
+	public UserSitDTO(String seatNo) {
+		this.seatNo = seatNo;
+	}
 	public UserSitDTO() {
 	}
 }

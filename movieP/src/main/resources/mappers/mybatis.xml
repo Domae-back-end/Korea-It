@@ -9,6 +9,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		order by time_index desc
 	</select>
 	
+	<select id="moviesitfind" resultType="UserSitDTO">
+		select * from ticketing where time_index = #{index}
+	</select>
+	
 	<select id="moviesit" resultType="UserSitDTO" parameterType="java.lang.Integer">
 		select * from ticketing where time_index = #{index}
 	</select>

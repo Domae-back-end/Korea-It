@@ -107,6 +107,10 @@ hr{
 	border: 1px solid #000;
 	float: right;
 }
+.movietimelay1_3{
+	width: 360px;
+	margin: 0 auto;
+}
 </style>
 <div class="movietimedelete">
 	<c:if test="${param.deletetime != null }">
@@ -130,8 +134,18 @@ hr{
 	</c:forEach>
 </div>
 <c:if test="${param.dal != null }">
-	<div class="movietimelay1">
-		<c:forEach var="a" begin="1" end="${data.el2 }">
+	<div class="movietimelay1_3">
+		<div class="movietimedal">일</div>
+		<div class="movietimedal">월</div>
+		<div class="movietimedal">화</div>
+		<div class="movietimedal">수</div>
+		<div class="movietimedal">목</div>
+		<div class="movietimedal">금</div>
+		<div class="movietimedal">토</div>
+		<c:forEach var="a" begin="2" end="${data.el2 }">
+			<div class="movietimedal"><a href="?dal=${param.dal }&el=${a}"></a></div>
+		</c:forEach>
+		<c:forEach var="a" begin="1" end="${data.el3 }">
 			<div class="movietimedal"><a href="?dal=${param.dal }&el=${a}">${a }</a></div>
 		</c:forEach>
 	</div>
@@ -205,7 +219,6 @@ hr{
 		</div>
 	</div>
 </c:if>
-
 
 
 
