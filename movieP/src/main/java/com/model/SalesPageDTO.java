@@ -27,7 +27,7 @@ public class SalesPageDTO {// SalesPageDTO 의 init 주의.
 		 SalesDTO  sadto= (SalesDTO)map.get("sadto");
 		
 		if(sadto.getSalesstime()!=null&sadto.getSalesetime()!=null&&sadto.getSalesstime().before(sadto.getSalesetime())) {
-		//ttt=db.salestotalCnt2(map);
+		//ttt=db.salestotalCnt2(map);//
 		ttt=db.salestotalCnt(map);
 		}else {
 		ttt = db.salestotalCnt(map); }// 총갯수정함. 페이지나눠야하니깐.
