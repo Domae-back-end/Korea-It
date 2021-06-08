@@ -19,6 +19,11 @@
 <script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
 <script>
 
+function enterkey() {
+    if (window.event.keyCode == 13) {
+    	$(".sbtn").click();
+    }
+}
 
 function likeGo(idx){
 	
@@ -30,7 +35,7 @@ $(function(){
 
 	$(".sbtn").click(function(){
 		var value = $(".search").val();
-		location.replace("?cg=<%=cg%>&sch="+$(".search").val());
+		location.replace("moviemain?cg=<%=cg%>&sch="+$(".search").val());
 	})
 	
 	
@@ -84,6 +89,9 @@ $(function(){
 		display:inline-block;
 		width:1000px;
 		text-align: center;
+		height: 50px;
+		margin-top: 10px;
+		text-align: right;
 	}
 	form{
 		width: 1000px;
@@ -107,10 +115,8 @@ $(function(){
 	<div class ="btn2"><a href = "?cg=expect">상영예정작</a></div>
 </div>
 <div id="searchbutton">
-	<form action="" name = "frm">
-		<input class="search" type = "text"/>
-	<input class="sbtn" type="button" value="검색" />
-	</form>
+		<input class="search" type = "text" onkeyup="enterkey()" value="${param.sch}"/>
+		<input class="sbtn" type="button" value="검색" />
 </div>
 <div class = "wrapper">
 	<jsp:include page = "<%=cgUrl %>"/>
