@@ -32,13 +32,12 @@ public class NaverLoginBO {
 		return oauthService.getAuthorizationUrl();
 	}
 
-	/* 네이버아이디로 Callback 처리 및 AccessToken 획득 Method */
 	public OAuth2AccessToken getAccessToken(HttpSession session, String code, String state) throws IOException {
 		String sessionState = getSession(session);
 		if (StringUtils.pathEquals(sessionState, state)) {
 			OAuth20Service oauthService = new ServiceBuilder().apiKey(CLIENT_ID).apiSecret(CLIENT_SECRET)
 					.callback(REDIRECT_URI).state(state).build(NaverLoginApi.instance());
-			/* Scribe에서 제공하는 AccessToken 획득 기능으로 네아로 Access Token을 획득 */
+			
 			OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
 			return accessToken;
 		}

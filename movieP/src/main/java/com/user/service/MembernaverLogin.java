@@ -43,6 +43,7 @@ public class MembernaverLogin implements MemberNaverAction {
 		if(mdCh==null) {
 			dm.memjoin(dto);
 		}
+			
 		return userid;
 	}
 
