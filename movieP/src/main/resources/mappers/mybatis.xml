@@ -134,9 +134,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 
 	<!-- 리뷰 수정하기 -->
-	<update id="reviewmodify" parameterType="MovieReviewDTO">
-		update review set postcontent = '${postcontent}' and gpa = '${gpa}'
-		where cnt=#{cnt} and userid = #{userid}
+	<update id="reviewmodify" parameterType="MovieReviewModDTO">
+		update review set postcontent = '${postcontent}' , gpa = '${gpa}'
+		where cnt='${cnt}' and userid = '${userid}'
 	</update>
 	
 	<select id="foundmoviename" resultType="java.lang.String">

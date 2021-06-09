@@ -9,6 +9,7 @@ import com.model.AlterDTO;
 import com.model.DbMapper;
 import com.model.MovieAction6;
 import com.model.MovieReviewDTO;
+import com.model.MovieReviewModDTO;
 
 @Service
 public class MoviereviewModifyReg implements MovieAction6{
@@ -19,13 +20,13 @@ public class MoviereviewModifyReg implements MovieAction6{
 	@Override
 	public Object execute(Object dto1) {
 		//System.out.println("MovieReviewdeleteReg 서비스빈. 영화번호"+dto.getCate());
-		MovieReviewDTO dto = (MovieReviewDTO)dto1;
+		MovieReviewModDTO rnd = (MovieReviewModDTO)dto1;
 		
 		AlterDTO alt = new AlterDTO();
-		alt.setMsg(dto.getUserid()+"님 관람평 수정 완료.");
-		alt.setUrl( "moviedetail?sub=review&ind="+dto.getCate());
+		alt.setMsg(rnd.getUserid()+"님 관람평 수정 완료.");
+		alt.setUrl( "moviedetail?sub=review&ind="+rnd.getCate());
 		
-		if(dto.getUserid()==null) {
+		if(rnd.getUserid()==null) {
 			alt.setMsg("로그인이 필요한 기능입니다.");
 			alt.setUrl("/member/login/loginForm");
 			return alt;
@@ -33,9 +34,10 @@ public class MoviereviewModifyReg implements MovieAction6{
 		
 		//관람평 수정시 해당 cnt값 업데이트하기.
 		
-		Integer ss = mm.reviewdelete(dto);
+		rnd.IntegerRating();
+		Integer ss = mm.reviewmodify(rnd);
 		if(ss == 0) {
-			alt.setMsg("삭제 실패");
+			alt.setMsg("수정 실패");
 		}
 		
 		return alt;

@@ -76,7 +76,7 @@ public interface DbMapper {
    //리뷰 삭제하기
    Integer reviewdelete(MovieReviewDTO dto);
    //리뷰 수정하기
-   Integer reviewmodify(MovieReviewDTO dto);
+   Integer reviewmodify(MovieReviewModDTO rnd);
    
    //endtime 가져오기
    DateDTO BringEndTime(Integer time_index);
