@@ -182,7 +182,7 @@
 		})
 		
 			function insertvalidcheck(){// 유효성체킹. 
-				
+			//	
 			if (document.getElementById("movietitle").value == "") {
 				alert("제목을 입력해주세요");
 				return false;
