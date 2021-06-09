@@ -38,10 +38,16 @@ public class MembernaverLogin implements MemberNaverAction {
 		
 		Optional<MemberDTO> dtoo = Optional.ofNullable(dm.memlogin(dto));
 		
-		MemberDTO mdCh = dm.memlogin(dto);	
+		MemberDTO dtoChk = new MemberDTO();
+		dtoChk.setUserid(userid);
+		MemberDTO mdCh = dm.memlogin(dtoChk);	
 		
 		if(mdCh==null) {
 			dm.memjoin(dto);
+		}else {
+			if(mdCh.getKind().equals("탈퇴")) { 
+				return null;
+			}
 		}
 			
 		return userid;

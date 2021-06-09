@@ -291,7 +291,7 @@ function pageChange(i){
 						tt+=data.purchase[j].movietitle + "</div></a>"
 						tt+="<div>"+data.purchase[j].starttime +"</div>"
 						tt+="<div>"+data.purchase[j].sectorNo +"</div>"
-						tt+="<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index +"'>"
+						tt+="<a href='/user/movie/moviedetail?sub=review&ind="+data.purchase[j].m_index +"'>"
 						tt+="<button class='changeButt' id='seewriteG'>"+state+"</button>"
 						tt+="</a></div>	</div>"
 							
