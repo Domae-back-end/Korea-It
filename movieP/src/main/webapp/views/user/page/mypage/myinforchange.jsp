@@ -23,10 +23,14 @@
 	<div class = "idouter">
 		<div class = "nameouter">아이디</div>
 		<div>
-			<div class = "dataouter">${sessionId }(가입일 : ${memdata.dto.joindayM })</div>
-	
-			<input type="button" class="changeButt" id="inforDelete" value="회원탈퇴" data-target="#inforDelete1"/>
-	
+			<c:if test="${memdata.dto.kind == '일반' }">
+				<div class = "dataouter">${sessionId }(가입일 : ${memdata.dto.joindayM })</div>
+				<input type="button" class="changeButt" id="inforDelete" value="회원탈퇴" data-target="#inforDelete1"/>
+			</c:if>
+			<c:if test="${memdata.dto.kind == '네이버' }">
+				<div class = "dataouter"><small>${sessionId }</small>(가입일 : ${memdata.dto.joindayM })</div>
+				<input type="button" class="changeButt" id="inforDeleteNaver" value="회원탈퇴" />
+			</c:if>
 		</div>
 	</div>
 	
@@ -53,6 +57,7 @@
 				<div class = "dataouter" id="pnumouter">${memdata.dto.userpnumM }</div>
 				<div class="emailouter">
 					<input type="button" class="changeButt topB" id="pumnchangGo" value="휴대폰번호 변경"/>
+					<span class="spanMM"></span>
 				</div>
 			</div>
 		</div>
@@ -72,7 +77,7 @@
 					</c:when>
 					<c:when test="${memdata.dto.kind == '네이버' }">
 						<input type="button" class="changeButt" id="changepw" disabled="disabled" value="비밀번호 변경" />
-						<small>네이버로그인 비밀번호 변경 불가.</small>
+						<p class = "naverMess">네이버로그인 비밀번호 변경 불가.</p>
 					</c:when>
 				</c:choose>
 			

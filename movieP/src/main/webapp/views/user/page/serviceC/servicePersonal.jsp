@@ -74,7 +74,7 @@
 					
 					<td>
 						<div class="upload_box">
-							<p>* JPG, JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다.</p>
+							<p>* JPG, JPEG, PNG 형식의 1MB 이하의 파일만 첨부 가능합니다.</p>
 							<label for="upfileG" class="upfile_class">파일선택</label>
 							<input type="file" name="file" id="upfileG" class="upload_hidden" onchange="checkfile(this, this.value)"/>
 							<input class="upload_name" value="파일선택" disabled="disabled">

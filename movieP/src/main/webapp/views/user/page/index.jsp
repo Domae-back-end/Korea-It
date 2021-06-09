@@ -51,9 +51,9 @@
 	<ul class="slides ulss" style="width: 420px; transform: translateX(-5180px);">
 	
 			<c:forEach items="${bannerimgs}" var="aaa" varStatus="no" >
-				<li><img src="../../banner/${aaa.imgurl}" alt="sss"></li>
+				<li><a href="/user/movie/moviedetail?sub=info&ind=${aaa.m_index}"><img src="../../banner/${aaa.imgurl}" alt="sss"></a></li>
 				
-			</c:forEach>
+			</c:forEach><!--  -->
 	
 	</ul>
 	<span class="prev"><img src="/banner/p_left.png" alt="" /></span>

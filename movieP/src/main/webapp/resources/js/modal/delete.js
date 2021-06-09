@@ -8,8 +8,8 @@
 			
 			var list = {
 				userpw : document.getElementById('chkPw').value,
-				userid :  document.getElementById('userid').value,
-				kind:'탈퇴'
+				userid : document.getElementById('userid').value,
+				kind : '일반'
 			};
 			
 			$.ajax({

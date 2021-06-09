@@ -59,7 +59,12 @@ public class LoginController {
 		
 		session.setAttribute("sessionId", res.execute(response_obj));
 		model.addAttribute("result", apiResult);
-
+		
+		if(res.execute(response_obj)==null) {
+			model.addAttribute("url","/member/login/loginForm");
+			return "/user/page/login/naverLogin";
+		}
+		
 		return "user/home";
 	}
 

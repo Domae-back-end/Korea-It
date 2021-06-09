@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="/resources/css/movie/5star.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/movie/5star2.css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 <style>
 
@@ -24,23 +25,32 @@
 	#userinfo{
 		display: inline-block;
 		text-align: left;
-		width: 300px;
+		width: 250px;
 		height: 60px;
 	}
 	#content{
-	width: 560px;
-	height: 60px;
-	overflow:auto;
+		width: 560px;
+		height: 55px;
+		overflow:auto;
 		display: inline-block;
 	}
-	#del{
-		background: cyan;
+	#mycontent{
+		width: 500px;
+		height: 55px;
 		display: inline-block;
 	}
+
 	#id{
 		font-size:20px;
 	}
 	#p{
+		margin-left: 50px;
+		text-align:center;
+		width: 540px;
+		height: 60px;
+		resize:none;
+	}
+	#myp{
 		margin-left: 50px;
 		text-align:center;
 		width: 540px;
@@ -63,8 +73,22 @@
 	 #star>i{
 	 	color:gold;
 	 }
+	 
+	 #mystar{
+		 height: 60px;
+		 line-height:60px; 
+		 width: 150px;
+	 }
+	 #mystar>i{
+	 	color:gold;
+	 }
 	#del{
-	margin-top:30px;
+		margin-top:30px;
+		float: right;
+		background: none;
+	}
+	#mod{
+		margin-top:30px;
 		float: right;
 		background: none;
 	}
@@ -75,9 +99,16 @@
 		display:inline-block;
 		float:left;
 		font-size: 30px;
-		height: 60px;
+		height: 57px;
 	}
-
+	#mycontent>textarea{
+		width: 450px;
+		height: 55px;
+		margin-top: 7px;
+	}
+	#reviewModifyForm{
+		width: 1000px;
+	}
 </style>
 
 <script>
@@ -106,6 +137,22 @@
 		
 	}
 	
+	function checkstar2(){
+
+		if($("#myp").val() == ""){
+			alert("내용을 등록하세요");
+			return false;
+		}
+		
+		var Value = $('input:radio[name=rating1]:checked').val();
+		if( Value==null){
+			alert(Value+" 평점을 등록하세요");
+			return false;
+		}
+		return true;
+		
+	}
+	
 	function deleteGo(idx){
 		//console.log(idx)
 		// cate영화의, idx 번 글 삭제. 
@@ -114,12 +161,44 @@
 		
 	}
 	
+	function ModifyForm(idx, postcontent){
+		
+		var value = '<div class="rating-css" style="display: inline-block"><div class="star-icon">'
+		      +'<input type="radio" name="rating1" id="rating1" value="1">'
+	      +'<label for="rating1" class="fa fa-star"></label>'
+	      +'<input type="radio" name="rating1" id="rating2" value="2">'
+	      +'<label for="rating2" class="fa fa-star"></label>'
+	      +'<input type="radio" name="rating1" id="rating3" value="3">'
+	      +'<label for="rating3" class="fa fa-star"></label>'
+	      +'<input type="radio" name="rating1" id="rating4" value="4">'
+	      +'<label for="rating4" class="fa fa-star"></label>'
+	      +'<input type="radio" name="rating1" id="rating5" value="5">'
+	      +'<label for="rating5" class="fa fa-star"></label>'
+	      +'</div></div>';
+		$('#mystar').html(value)
+		$('#mycontent').html('<textarea name="postcontent" id="myp" rows="1" cols="200"/></textarea>');
+		$('#del').html('')
+		$('#mod').html('<input type="submit" value="수정"/>')
+		
+	}
+	
+
+	
+	
 	$(document).ready(function() {
 
 
 	    $('#p').on('keyup', function() {
 
+	        if($(this).val().length > 100) {
+	        	alert("관람평은 100글자이상 쓸 수 없습니다.")
+	            $(this).val($(this).val().substring(0, 100));
+	        }
 
+
+	    });
+	    
+	    $('#myp').on('keyup', function() {
 	        if($(this).val().length > 100) {
 	        	alert("관람평은 100글자이상 쓸 수 없습니다.")
 	            $(this).val($(this).val().substring(0, 100));
@@ -162,22 +241,31 @@
 <c:if test="${myreview !=null }">
 <div id= "myr">
 <div id = "aa" style="border: 3px dotted #f00;">
+<div style="display: inline-block; height: 60px;">
+	<form id="reviewModifyForm" action="reviewModifyReg" method="post" onsubmit="return checkstar2()">
+	<input id= "cnt" name="cnt" type="hidden" value="${myreview.cnt }"/>
+	<input id= "cate" name="cate" type="hidden" value="${myreview.cate }"/>
 	<div id= "userinfo">
-		<div id="id">${myreview.userid }</div>
+		<div id="sid">${myreview.userid }</div>
 		<div id="time">${myreview.posttime_s }</div>
 	</div>
-	<div id="star" style="display:inline-block;">
-		<c:forEach begin="1" end="${myreview.gpa }" var="st" varStatus="no">
-		<i class="fas fa-star"></i>
-		</c:forEach>
-		<c:forEach begin="1" end="${5-myreview.gpa }" var="st">
-			<i class="far fa-star"></i>
-		</c:forEach>
+	<div id="mystar" style="display:inline-block;">
+			<c:forEach begin="1" end="${myreview.gpa }" var="st" varStatus="no">
+			<i class="fas fa-star"></i>
+			</c:forEach>
+			<c:forEach begin="1" end="${5-myreview.gpa }" var="st">
+				<i class="far fa-star"></i>
+			</c:forEach>
+		</div>
+		<div id= "mycontent">${myreview.postcontent }</div>
+		<div id="del"> <a href="javascript:deleteGo(${myreview.cnt})">
+		<i class="far fa-trash-alt"></i>
+		</a></div>
+		<div id="mod"> <a href="javascript:ModifyForm(${myreview.cnt}, '${myreview.postcontent }' )">
+		<i class="fas fa-edit"></i>
+		</a></div>
+	</form>
 	</div>
-	<div id= "content">${myreview.postcontent }</div>
-	<div id="del"> <a href="javascript:deleteGo(${myreview.cnt})">
-	<i class="far fa-trash-alt"></i>
-	</a></div>
 </div>
 </div>
 </c:if>
@@ -192,18 +280,18 @@
 
 	<div id="star" style="display:inline-block">
 		<c:forEach begin="1" end="${r.gpa }" var="st" varStatus="no">
-		<i class="fas fa-star"></i>
+			<i class="fas fa-star"></i>
 		</c:forEach>
 		<c:forEach begin="1" end="${5-r.gpa }" var="st">
 			<i class="far fa-star"></i>
 		</c:forEach>
 	</div>
 	<div id= "content">${r.postcontent }</div>
-	<div id="del"> <a href="javascript:deleteGo(${r.cnt})">
-	<i class="far fa-trash-alt"></i>
-	</a></div>
 </div>
 </c:forEach>
+
+
+
 <div id ="num">
 <c:if test="${moviereview.pdto.startPage > 1}">
 		    	

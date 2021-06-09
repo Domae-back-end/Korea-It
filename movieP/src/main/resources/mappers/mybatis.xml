@@ -9,17 +9,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		order by time_index desc
 	</select>
 	
+	<select id="moviesitfind" resultType="UserSitDTO">
+		select * from ticketing where time_index = #{index}
+	</select>
+	
 	<select id="moviesit" resultType="UserSitDTO" parameterType="java.lang.Integer">
 		select * from ticketing where time_index = #{index}
 	</select>
 	<select id="movielist" resultType="MovieInfoDTO">
 		select * from movieinfo
-	</select>
+	</select> <select id="movielistbanner" resultType="MovieInfoDTO">select * from movieinfo order by mdate desc</select>
 
 	<select id="movieInfo" resultType="MovieInfoDTO">
 		select * from movieinfo
 		order by m_index desc
-	</select>
+	</select><!--  -->
 
 	<select id="movieTimeCheck" resultType="MovieTimeDTO"
 		parameterType="java.lang.String">
@@ -124,6 +128,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
+	<!-- 리뷰 삭제하기 -->
+	<delete id="reviewdelete" parameterType="MovieReviewDTO">
+		delete from review where cnt = #{cnt} and userid=#{userid}
+	</delete>
+
+	<!-- 리뷰 수정하기 -->
+	<update id="reviewmodify" parameterType="MovieReviewModDTO">
+		update review set postcontent = '${postcontent}' , gpa = '${gpa}'
+		where cnt='${cnt}' and userid = '${userid}'
+	</update>
+	
 	<select id="foundmoviename" resultType="java.lang.String">
 		select movietitle from movieinfo
 		where m_index='${m_index}'
@@ -143,9 +158,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select movietitle from movieinfo where m_index='${m_index}'
 	</select>
 
-	<delete id="reviewdelete" parameterType="MovieReviewDTO">
-		delete from review where cnt = #{cnt} and userid=#{userid}
-	</delete>
+
 
 	<!-- 좋아요 -->
 	<insert id="likeupdate" parameterType="LikeDTO">
@@ -197,6 +210,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="pullSeatNum" parameterType="java.lang.String" resultType="java.lang.Integer">
 		select count(*) from movietime m where reg_date >= date_add(now(), interval -3 day) and
 		sectorNo = '${sectorno}'
+	</select>
+	
+	<!-- 예매울 test -->
+	<select id="pulltime_index" resultType="MovieRateDTO">
+		select time_index from ticketing where reg_date >= date_add(now(), interval -3 day)
+	</select>
+	<select id="FoundMovietitle" resultType="java.lang.String" parameterType="java.lang.Integer">
+		select movietitle from movietime where time_index = ${time_index}
+	</select>
+	<select id="FoundSector" resultType="java.lang.String">
+		select sectorno from movietime where time_index=${time_index}
 	</select>
 	
 
@@ -350,7 +374,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 
 	<update id="changeBanner" parameterType="BannerDTO">
-		update bannerimg set imgurl= #{imgurl} where bannerindex= #{bannerindex}
+		update bannerimg set imgurl= #{imgurl}, m_index=#{m_index} where bannerindex= #{bannerindex}
 	</update>
 
 	<delete id="deleteBanner" parameterType="BannerDTO">
@@ -620,10 +644,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 		<choose>
 			
-			<when test=" kind !=null">
+			<when test=" kind == '일반'">
 				<![CDATA[memberinfo]]>
-				<set><![CDATA[kind=#{kind}]]></set>
+				<set><![CDATA[kind='탈퇴']]></set>
 				<where> <![CDATA[userid=#{userid} and userpw=#{userpw} and kind !='탈퇴']]></where>
+			</when>
+			
+			<when test=" kind == '네이버'">
+				<![CDATA[memberinfo]]>
+				<set><![CDATA[kind='탈퇴']]></set>
+				<where> <![CDATA[userid=#{userid} and kind !='탈퇴']]></where>
 			</when>
 			
 			<when test=" content !=null">
@@ -685,7 +715,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			</when>
 
 			<otherwise>
-				<![CDATA[and ticketing.reg_date < sysdate()]]>
+				<![CDATA[and CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) < sysdate()]]>
 			</otherwise>
 		</choose>
 
@@ -716,7 +746,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select imgname, movietime.movietitle, movietime.sectorNo,
 		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m'))as starttime,
 		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) as checktime,
-		sales.m_index, saleslink, sales_type, salesprice, GROUP_CONCAT(DISTINCT seatNo) as seatNo,
+		sales.m_index, saleslink, sales_type, salesprice, GROUP_CONCAT(DISTINCT seatNo order by LEFT(seatNo, 1), CAST(SUBSTR(seatNo, 2) AS UNSIGNED) ) as seatNo,
 		(length(ticketing.people)-length(replace(ticketing.people,'C',''))) as C,
 		(length(ticketing.people)-length(replace(ticketing.people,'T',''))) as T,
 		(length(ticketing.people)-length(replace(ticketing.people,'A',''))) as A,
@@ -738,7 +768,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		left outer join movietime on sales.timetableidx = movietime.time_index
 		where sales.userid=#{userid} and sales_time > (movietime.reg_date - INTERVAL 7 DAY) and sales.salesprice <![CDATA[<]]> 0
 		order by sales.sales_time desc
-		limit #{start},2
+		limit #{cstart},2
 	</select>
 	
 	<select id="memcomment" resultType="map" parameterType="MemberDTO">
@@ -761,7 +791,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="memqna" resultType="map" parameterType="MemberDTO">
-		select perscate, persindex, persid , perstitle, perscont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
+		select perscate, persindex, persid , perstitle, perscont, persacont, persimg ,date_format(persqtime,'%Y-%m-%d') as persqtime, date_format(persatime,'%Y-%m-%d') as persatime, persstate 
 		from personalqna <include refid="qnacheck" /> 
 		order by persqtime desc
 		limit #{start},8
@@ -780,12 +810,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="memcount" resultType="map" parameterType="MemberDTO">
 		select * from 
-		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid} and date_format(ticketing.reg_date,'%Y-%m')=#{date}) a, 
+		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} and date_format(ticketing.reg_date,'%Y-%m')=#{date}) a, 
 		(select COUNT(*) wc from review where userid=#{userid}) b,
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
 		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d,
 		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0) e,
-		(select COUNT(distinct saleslink) nc from ticketing where userid=#{userid} 
+		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid} 
 		and ticketing.time_index in (select time_index from movietime where 
 		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) <![CDATA[<]]> sysdate())) f;
 	</select>
@@ -1154,6 +1184,101 @@ WHERE m_index = #{m_index};
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="salestotalCnt2" resultType="Integer"
+		parameterType="HashMap">
+		select count(*) from sales
+		
+		<choose>
+			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
+				<where>
+					${sadto.salesckind} like '%${sadto.salescword}%'
+					and		
+					sales_time  between #{sadto.salesstime} and #{sadto.salesetime}
+					
+					 
+				</where>
+			</when>			
+				<otherwise>
+					<where>
+		 	sales_time  between #{sadto.salesstime} and #{sadto.salesetime}
+		 		</where>	
+			</otherwise>
+		</choose>
+		
+		
+		
+		
+		order by sales_time desc		
+	</select>
+	
+	<select id="getsalesdaily" resultType="SalesDTO" parameterType="HashMap">
+		select * from sales		
+		<choose>
+			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
+				<where>
+					${sadto.salesckind} like '%${sadto.salescword}%'
+					
+				and 	sales_time  between #{sadto.salesstime} and #{sadto.salesetime}	
+				</where>
+			</when>		
+			<otherwise>
+				<where>
+		 	sales_time  between #{sadto.salesstime} and #{sadto.salesetime}
+		 		</where>	
+			</otherwise>
+			
+				
+		</choose>	
+		
+		 order by sales_time desc		 
+		limit #{pdto.start}, #{pdto.limit}		 
+	</select>
 	
 	
 	

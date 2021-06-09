@@ -5,20 +5,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
 
 <script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
 <script src="<c:url value="/resources/my_js/jquery-ui.min.js"/>"></script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
 <script src="<c:url value="/resources/js/${PPPData.cate}/${PPPData.service}.js" />" ></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<link rel="stylesheet" href='<c:url value="/resources/css/${PPPData.cate}/${PPPData.service}.css" />'>
+
+<title>회원가입</title>
 </head>
 <body>
 <h1>기본정보</h1>
-<form action ="joinReg" method="post" enctype="multipart/form-data" name="frm">
-	
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id='joinPhoneCheck1'>
+	<div class="modal-dialog">
+	<div class="modal-content"></div>
+	</div>
+</div>
+<form action ="" method="post" enctype="multipart/form-data" name="frm">
 	<input type="hidden" name="userpnum" id="userpnum">
 	<input type="hidden" name="useremail" id="useremail">
     <input type="hidden" name="birthYear" id="birthYear">
@@ -88,9 +94,8 @@
 				</select> -
 				<input type="text" class="pnumDes" id="pnumM" name="pnumM" maxlength="4"/> -
 				<input type="text" class="pnumDes" id="pnumL" name="pnumL" maxlength="4"/>
-				<input type="button" class="changeButt" id="pnumcheck" disabled="disabled" value="인증번호 전송"/>
-				<input type="hidden" class="pnumDes" id="pchecknum" maxlength="4" autocomplete="off" />
-				<input type="hidden" class="changeButt" id="checkBtn" value="확인"/>
+				<input type="button" class="changeButt jj" id="pnumcheck" disabled="disabled" value="인증번호 전송"/>
+				<input type="hidden" id="chk"/>
 				<div class="check_msg" id="pnum_check"></div>
 			</div>
 		</div>

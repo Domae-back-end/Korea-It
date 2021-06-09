@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.admin.service.Adminaccservice;
+
+import com.admin.service.Admincoreservice;
 import com.admin.service.PageeditService;
 import com.admin.service.Provider;
 import com.github.scribejava.core.model.OAuth2AccessToken;
@@ -47,7 +48,7 @@ public class AdminAccountController {
 		System.out.println("account-"+service+"실행");
 		//System.out.println("Mdto:"+mdto); //  AdminaccloginReg
 		System.out.println("adacDTO=="+adacDTO);
-		Adminaccservice sr = pr.getContext().getBean("adminacc"+service,Adminaccservice.class);		
+		Admincoreservice sr = pr.getContext().getBean("adminacc"+service,Admincoreservice.class);		
 				// loginReg  logout
 		Map<String, Object> obj= new HashMap<String, Object>();
 		obj.put("adacDTO", adacDTO);

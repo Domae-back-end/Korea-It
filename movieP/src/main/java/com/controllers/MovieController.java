@@ -22,6 +22,7 @@ import com.model.MovieAction5;
 import com.model.MovieAction6;
 import com.model.MovieInfoDTO;
 import com.model.MovieReviewDTO;
+import com.model.MovieReviewModDTO;
 import com.model.MoviepageDTO;
 import com.model.PPPData;
 
@@ -145,7 +146,7 @@ public class MovieController {
 	}
 
 	@ModelAttribute("data")
-	Object reviewreg(HttpServletRequest req, MovieReviewDTO dto, @PathVariable String service) {
+	Object reviewreg(HttpServletRequest req, MovieReviewDTO dto, @PathVariable String service, MovieReviewModDTO rnd) {
 		
 		System.out.println("현재 로그인된 ID: "+req.getSession().getAttribute("sessionId"));
 		
@@ -164,14 +165,23 @@ public class MovieController {
 		
 		if (service.equals("reviewinsertReg") || service.equals("reviewdeleteReg") || service.equals("likeReg")) {
 			
-			System.out.println("라디오버튼으로부터 받은 값"+dto.getGpa());
-			
+			//System.out.println("라디오버튼으로부터 받은 값"+dto.getGpa());
+			System.out.println("ccccccccccccccccnt   "+rnd);
 			if (dto.getPostcontent() != "") {
 				dto.setUserid((String) req.getSession().getAttribute("sessionId"));
 				MovieAction6 res = pr.getContext().getBean("movie" + service, MovieAction6.class);
 				return res.execute(dto);
 
 			}
+		}
+		if(service.equals("reviewModifyReg")) {
+			if (rnd.getPostcontent() != "") {
+				rnd.setUserid((String) req.getSession().getAttribute("sessionId"));
+				MovieAction6 res = pr.getContext().getBean("movie" + service, MovieAction6.class);
+				return res.execute(rnd);
+
+			}
+			
 		}
 		return null;
 	}

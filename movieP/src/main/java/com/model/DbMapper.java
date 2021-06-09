@@ -43,6 +43,7 @@ public interface DbMapper {
    List<MovieTimeDTO> movieTimefind(String search);
    List<UserSitDTO> moviesit(Integer index);
    
+   List<UserSitDTO> moviesitfind(Integer index);
    // 게시판 page 이동.
    int noticetotalCnt(HashMap<String, Object> map);
 
@@ -74,6 +75,9 @@ public interface DbMapper {
    Integer reviewinsert(MovieReviewDTO dto);
    //리뷰 삭제하기
    Integer reviewdelete(MovieReviewDTO dto);
+   //리뷰 수정하기
+   Integer reviewmodify(MovieReviewModDTO rnd);
+   
    //endtime 가져오기
    DateDTO BringEndTime(Integer time_index);
    //index로 movietitle검색
@@ -97,7 +101,11 @@ public interface DbMapper {
    Integer detailCount(Integer m_index);
    //관 입력하면 3일동안의 관의 개수 나옴
    Integer pullSeatNum(String sectorno);
-
+   
+   /* 예매율 계산 test */
+   List<MovieRateDTO> pulltime_index();
+   String FoundMovietitle(Integer time_index);
+   String FoundSector(Integer sector);
    
    MovieInfoDTO pullmovieinfo(String movietitle);
 
@@ -232,7 +240,7 @@ public interface DbMapper {
    void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 	int updatemonthsales(SalesDTO sdto);
 
-	Integer salestotalCnt(HashMap<String, Object> map);
+	Integer salestotalCnt(HashMap<String, Object> map);	Integer salestotalCnt2(HashMap<String, Object> map);
 
 	int salesindexlink(UserSitDTO userSitDTO);
 
@@ -263,6 +271,12 @@ public interface DbMapper {
 	AdminaccDTO adminloginCheck(AdminaccDTO adacDTO);
 
 	ArrayList<BannerDTO> getbannerimgs();
+
+	List<MovieInfoDTO> movielistbanner();//
+
+	List<SalesDTO> getsalesdaily(HashMap<String, Object> map);
+
+
 
 
    

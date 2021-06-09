@@ -73,17 +73,16 @@ $(function() {
 
 <body>영화제목 : ${data.midto.movietitle} :: 디테일 <br>
 
-<div  id="detailwrapper">
+
 
 
 <div  id="upperpart">
 <button type="button" id="movinfomodify" class="btn btn-info" value="${data.midto.m_index}" >수정</button>
 <button type="button" id="movinfodelete" class="btn btn-info" value="${data.midto.m_index}">삭제</button>
-<!--   상영중// 상영중/미상영중 구별.  -->
-<button type="button" id="modechange" class="btn btn-info">비활성화</button>
+
 </div>
 
-
+<div  id="detailwrapper">
 <div  id="mtitlepart">
 <h1>제목 :  ${data.midto.movietitle} }</h1>
 </div>

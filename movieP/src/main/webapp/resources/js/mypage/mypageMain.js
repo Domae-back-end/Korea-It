@@ -3,6 +3,14 @@
  */
  $(function() {
  
+ 	$('.sessnull').click(function(){
+ 		
+ 		if(document.getElementById('vv').value == ''){
+ 			alert('로그인 상태가 아니므로 이용이 불가능 합니다.')
+ 			return false;
+ 		}	
+ 	});
+ 	
 	$('#check').click(function(){
 		
 		$.ajax({

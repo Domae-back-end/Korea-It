@@ -57,7 +57,7 @@
 
 .body {
 	display: inline-block;
-	width: 1000px;
+	width: 1030px;
 	height: 100%;
 	border: 1px solid red;
 }

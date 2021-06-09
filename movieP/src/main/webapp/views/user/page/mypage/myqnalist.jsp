@@ -4,22 +4,23 @@
 <div>
 
 	<small>
-		<p>
+		<p class="pMargin">
 			고객센터를 통해 남기신 1:1 문의내역을 확인하실 수 있습니다.
 		</p>
 	</small>
-	<form action ="" method="get" name="qq">
+	
+	<form action ="" method="post" name="qq">
 		<input type="hidden" name="qnastate" id="qnastateGo" value="${param.qnastate }" />
 		<input type="hidden" name="qnacontent" id="qnacontentGo" value="${param.qnacontent }" />
 		<input type="hidden" name="detail" id="detail" />
 		<input type="hidden" name="page" id="page" value="${param.page }" />
 	</form>
-		<input type="hidden" id="qnastatenow" value="전체"/>
-		<input type="hidden" id="qnacontentnow" />
+		
 	<form action ="" method="post" name="frm">
 	<input type="button" class="changeButt" id ="serviceGo" value="1:1문의하기" />
 	</form>
-	<div>
+	
+	<div class="qnaMargin">
 		<select id="qnastate" name="moiverecord">
 			<option value="전체">전체</option>
 			<option value="답변완료">답변완료</option>
@@ -39,12 +40,13 @@
 		<div class="fff">
 			<c:forEach items="${memdata.qna }" var ="pp" > 
 				<div class="puchaseinner">${pp.persid }</div>
-				<a class="qnaDetailGo" value="${pp.persindex }" dd="${pp.persindex }" ><div class="puchaseinner">${pp.perstitle }</div></a>
+				<a class="qnaDetailGo" value="${pp.persindex }" dd="${pp.persindex }" ><div class="puchaseinner" id="titleOver">${pp.perstitle }</div></a>
 				<div class="puchaseinner">${pp.persqtime }</div>
 				<div class="puchaseinner">${pp.persatime }(${pp.persstate })</div>
 			</c:forEach>
 		</div> 
 	</div>
+	
 	<div id="pageRecord">
 		<div class="fff">
 			<c:if test="${memdata.pdto.startPage > 1}">

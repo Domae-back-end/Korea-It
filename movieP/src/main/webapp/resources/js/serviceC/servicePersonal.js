@@ -39,8 +39,8 @@ function checkfile(input, inputV) {
         input.value = null;
 	}
 	
-	if (input.files && input.files[0].size > (5 * 1024 * 1024)) {
-        alert("파일 사이즈가 5mb 를 넘습니다.");
+	if (input.files && input.files[0].size > (1 * 1024 * 1024)) {
+        alert("파일 사이즈가 1mb 를 넘습니다.");
         
         $('.upload_name').val('파일선택')
         input.value = null;

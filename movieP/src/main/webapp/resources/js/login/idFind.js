@@ -4,7 +4,10 @@
  $(function() {
 	
 	$("#username").on("propertychange change keyup paste input", function(){
-	
+		
+		var regexp = /[^a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ]/gi
+		$(this).val($(this).val().replace(regexp,''));
+		
 		if($('#username').val()!='' && $('#userbirth').val()!='' && $('#userpnum').val()!='' )
 				$('#check').attr('disabled',false)
 		else
@@ -12,7 +15,10 @@
 	});
 	
 	$("#userbirth").on("propertychange change keyup paste input", function(){
-	
+		
+		var regexp = /[^0-9]/gi
+		$(this).val($(this).val().replace(regexp,''));
+		
 		if($('#username').val()!='' && $('#userpnum').val()!='' && $('#userbirth').val()!='' )
 				$('#check').attr('disabled',false)
 		else
@@ -21,7 +27,10 @@
 	});
 	
 	$("#userpnum").on("propertychange change keyup paste input", function(){
-	
+		
+		var regexp = /[^0-9]/gi
+		$(this).val($(this).val().replace(regexp,''));
+		
 		if($('#userbirth').val()!='' && $('#username').val()!='' && $('#userpnum').val()!='')
 				$('#check').attr('disabled',false)
 		else
@@ -43,7 +52,7 @@
 				
 				if(data.dto!=null){
 					
-					alert(data.dto.userid)
+					alert('아이디 : '+data.dto.userid)
 					frm.action = "/member/login/loginForm"
 					frm.submit();
 			

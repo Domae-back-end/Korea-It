@@ -35,7 +35,9 @@ public class MovieTimelist implements MovieTimeService {
 		if(dto.getDal() != null) {
 			Calendar buf = Calendar.getInstance();
 			buf.set(Calendar.MONTH, Integer.parseInt(dto.getDal())-1);	
-			ar.put("el2", buf.getActualMaximum(Calendar.DATE));
+			buf.set(Calendar.DAY_OF_MONTH, 1);
+			ar.put("el2", buf.get(Calendar.DAY_OF_WEEK));
+			ar.put("el3", buf.getActualMaximum(Calendar.DATE));
 		}
 		if(dto.getEl() != null) {
 			Calendar buf = Calendar.getInstance();

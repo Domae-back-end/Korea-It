@@ -271,15 +271,16 @@ $(document).ready(function(){
 
 
 <br>
-<button id="graphdateGoBtn" class="Btn" value="1"  type="button">달별로조회</button> 
-
+<!-- <button id="graphdateGoBtn" class="Btn" value="1"  type="button">달별로조회</button> 
+ -->
 <select id="sectorNo">
 <option>관 전체</option><option>작은관</option><option>기존관</option><option>3D관</option><option>작은관1</option><option>작은관2</option><option>작은관3</option><option>기존관1</option><option>기존관2</option><option>기존관3</option>
 <!-- set   -->
 </select>
 
 <button id="graphdateGoBtn" class="Btn" value="2"  type="button">관 선택조회하기</button> 
-<button id="graphdateGoBtn" class="Btn" value="3"  type="button">통합보기</button> 
+
+<!-- <button id="graphdateGoBtn" class="Btn" value="3"  type="button">통합보기</button>  -->
 
 <!-- 
 <button id="graphdateGoBtn2"  type="button">관별로보기</button> 

@@ -127,3 +127,13 @@ h4{
 	border-radius: 5px;
 	text-align: center;
 }
+.naverMess{
+	position: relative;
+	left: 120px;
+	top : -15px;
+}
+.spanMM{
+	position: relative;
+	top : 10px;
+	left: -20px;
+}

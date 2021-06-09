@@ -1,7 +1,19 @@
 /**
  * 
  */
+var emailCh = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
 $(function() {
+
+	$("#useremail").on("propertychange change keyup paste input", function(){	
+		
+		var regexp = /[^a-zA-Z0-9_.@-]/gi
+		$(this).val($(this).val().replace(regexp,''))
+		
+		emChk = 0; 
+		if (emailCh.test($('#useremail').val())) {
+			emChk = 1;
+		}
+	});
 
 	$("#inforDelete").click(function() {
 
@@ -10,6 +22,34 @@ $(function() {
 		$("#inforDelete1").modal({
 			remote: '/views/user/page/modal/delete.jsp'
 		});
+	});
+
+	$("#inforDeleteNaver").click(function() {
+
+		if(confirm("탈퇴시 다시 로그인이 불가합니다. 정말로 탈퇴하시겠습니까?")){
+			
+			var list = {
+				userid : document.getElementById('userid').value,
+				kind : '네이버'
+			};
+			
+			$.ajax({
+		    	async : false,
+		        type : 'POST',
+		        data : JSON.stringify(list),
+		        url : "/membermodify",
+		        dataType : "json",
+				contentType : "application/json; charset=UTF-8",
+				success : function(data) {
+					if(data.cnt >0){
+						alert("탈퇴처리되었습니다")
+						frm.action = "/logout"
+						frm.submit();
+					}
+		     	}
+			});
+			
+		}
 	});
 
 	$('#pumnchangGo').click(function() {
@@ -29,6 +69,7 @@ $(function() {
 
 			$('#pnumouter').text($('#userpnum').val());
 			$('#pumnchangGo').val('휴대폰번호 변경')
+			$('.spanMM').text('')
 		}
 
 	});
@@ -46,7 +87,10 @@ $(function() {
 
 	$("#informodifyGo").click(function() {
 
-
+		if(emChk == 0){
+			alert('이메일 양식을 확인해주세요')
+			return false
+		}
 		var num = $('#pnumouter').text()
 		console.log(num)
 

@@ -18,7 +18,7 @@ form>div:nth-of-type(2){
 	height: 80px;
 	border-color: #fff;
 }
-div>div {
+div>.boxF {
 	height: 75px;
 	border-bottom: 1px solid rgb(192, 192, 192);
 } 
@@ -32,6 +32,8 @@ div>div {
 	clear:both;
 }
 .boxF>div:first-of-type {
+	height: 75px;
+	border-bottom: 1px solid rgb(192, 192, 192);
 	width:150px;
 	text-align: center;
 	line-height:75px;
@@ -83,4 +85,23 @@ select{
 	width: 80px;
 	height: 30px;
 	margin-top: 10px;
+}
+.modal-header{
+	background: #F2F4F5;
+}
+.modal-body{
+	height: 180px;
+	padding: 0px;
+}
+#joinPnum{
+	padding:5px;
+	height: 30px;
+	width: 200px;
+	margin-top: 35px;
+	margin-left: -20px;	
+}
+#close{
+	position:relative;
+	left: -280px;
+	top: 30px;
 }

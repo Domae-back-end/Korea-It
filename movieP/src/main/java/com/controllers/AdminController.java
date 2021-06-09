@@ -36,10 +36,19 @@ public class AdminController {
 		return null;
 	}
 	
+//	@ModelAttribute("newqna") //1번째 div박스.
+//	String newask( ) {
+//		System.out.println("메인페이지");
+//		
+//		
+//		return "새로운질문들3개";
+//	}
+	
 	
 
-	@ModelAttribute("adminmainpage_sales")
+	@ModelAttribute("adminmainpage_sales") // 2번째 div박스.
 	String latestsales( ) {
+		
 		System.out.println("메인페이지");
 		
 		
@@ -47,8 +56,22 @@ public class AdminController {
 	}
 	
 	
+//	@ModelAttribute("hotfaq") //3번째 div박스.
+//	String popularfaq( ) {
+//		System.out.println("메인페이지");
+//		
+//		
+//		return "조회수핫한자찾질3개";
+//	}
+		
 	
-	
+//	@ModelAttribute("recentnotice") //4번째 div박스.
+//	String hotnotice( ) {
+//		System.out.println("메인페이지");
+//		
+//		
+//		return "최근공지사항3개";
+//	}
 	
 	
 	

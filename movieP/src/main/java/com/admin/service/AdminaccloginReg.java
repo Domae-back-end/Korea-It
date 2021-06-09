@@ -13,7 +13,7 @@ import com.model.AdminaccDTO;
 import com.model.AlterDTO;
 import com.model.DbMapper;
 @Service
-public class AdminaccloginReg implements Adminaccservice {
+public class AdminaccloginReg implements Admincoreservice {
 	
 	
 

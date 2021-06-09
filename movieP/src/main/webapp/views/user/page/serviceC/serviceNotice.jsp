@@ -41,9 +41,14 @@
 	<form action="" name="frm">
 		<input type="hidden" name="page" id="pageIN" value="${data.snpdto.page}" />
 		<input type="hidden" name="noticeindex" id="detailId" />
+		
+		
 		<c:if test="${data.onesfdto.noticecate != null}">
 			<input type="hidden" name="noticecate" id="noticeCate" value="${data.onesfdto.noticecate }" />
 		</c:if>
+		
+		
+		
 		
 		<div class="notice_cate">
 			<ul>
@@ -64,12 +69,21 @@
 		
 		<div class="search">
 		<a href="serviceNotice" class="search_reset">초기화</a>
-			<select name="kind2" >
+			<select name="kind2"  
+				<c:if test="${data.onesfdto.noticecate != null }"> class="block_search"</c:if>
+			>
 				<option value="noticetitle" <c:if test="${data.onesfdto.kind2 == 'noticetitle' }"> selected="selected"</c:if>>제목</option>
 				<option value="noticecont" <c:if test="${data.onesfdto.kind2 == 'noticecont' }"> selected="selected"</c:if>>내용</option>
 			</select>
-			<input type="text" name="schkey" value="${data.onesfdto.schkey }" class="inputText"/> <!-- 요놈이문제 -->
-			<input type="submit" value="" class="smtGo inputButton" />
+			<input type="text" name="schkey" value="${data.onesfdto.schkey }" class="inputText 
+				<c:if test="${data.onesfdto.noticecate != null }"> block_search"  placeholder="초기화를 해주세요</c:if>
+			" />
+			<input type="submit" value="" class="smtGo  
+				<c:choose>
+				<c:when test="${data.onesfdto.noticecate != null }"> block_search block_inputButton</c:when>
+				<c:otherwise> inputButton</c:otherwise>
+				</c:choose>
+			" />
 		</div>
 		
 		
