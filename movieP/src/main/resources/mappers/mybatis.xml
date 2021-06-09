@@ -1234,9 +1234,22 @@ WHERE m_index = #{m_index};
 			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
 				<where>
 					${sadto.salesckind} like '%${sadto.salescword}%'
+					and		
+					sales_time  between #{sadto.salesstime} and #{sadto.salesetime}
+					
+					 
 				</where>
 			</when>			
+				<otherwise>
+					<where>
+		 	sales_time  between #{sadto.salesstime} and #{sadto.salesetime}
+		 		</where>	
+			</otherwise>
 		</choose>
+		
+		
+		
+		
 		order by sales_time desc		
 	</select>
 	
@@ -1246,9 +1259,19 @@ WHERE m_index = #{m_index};
 			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
 				<where>
 					${sadto.salesckind} like '%${sadto.salescword}%'
+					
+				and 	sales_time  between #{sadto.salesstime} and #{sadto.salesetime}	
 				</where>
-			</when>			
-		</choose>		
+			</when>		
+			<otherwise>
+				<where>
+		 	sales_time  between #{sadto.salesstime} and #{sadto.salesetime}
+		 		</where>	
+			</otherwise>
+			
+				
+		</choose>	
+		
 		 order by sales_time desc		 
 		limit #{pdto.start}, #{pdto.limit}		 
 	</select>
