@@ -69,6 +69,7 @@ $(function() {
 
 			$('#pnumouter').text($('#userpnum').val());
 			$('#pumnchangGo').val('휴대폰번호 변경')
+			$('.spanMM').text('')
 		}
 
 	});

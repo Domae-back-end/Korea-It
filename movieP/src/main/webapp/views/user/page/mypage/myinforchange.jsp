@@ -57,6 +57,7 @@
 				<div class = "dataouter" id="pnumouter">${memdata.dto.userpnumM }</div>
 				<div class="emailouter">
 					<input type="button" class="changeButt topB" id="pumnchangGo" value="휴대폰번호 변경"/>
+					<span class="spanMM"></span>
 				</div>
 			</div>
 		</div>

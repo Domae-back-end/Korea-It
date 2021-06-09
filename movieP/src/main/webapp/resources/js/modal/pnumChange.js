@@ -56,6 +56,7 @@ $(function() {
 			$('#pnumouter').text($('#newpnum').val());
 			$('#pumnchangGo').val("변경 취소");
 			$('#newpnum').val('');
+			$('.spanMM').text('등록버튼을 눌러야 변경 완료됩니다.')
 			$("#close").trigger("click");
 	
 			} else {
