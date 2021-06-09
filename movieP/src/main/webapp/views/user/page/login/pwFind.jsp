@@ -4,6 +4,8 @@
 <div id="pwfind_main">
 	<h2>비밀번호 찾기</h2>
 	<form action="" method="post" name="frm">
+	<input type="hidden" id="userpw" name="userpw" />
+	<input type="hidden" id="paramID" name="userid" />
 		<div class="main">
 			<div class="outF">
 				<div class="outD">아이디</div>

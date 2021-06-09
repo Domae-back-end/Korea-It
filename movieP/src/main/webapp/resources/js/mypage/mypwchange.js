@@ -62,7 +62,10 @@
 	
 	$("#pwmodifyGo").click(function(){
     	
-    	if($('#nowpw').val() == ''){
+    	if(document.getElementById('paramID').value != '')
+    		document.getElementById('userid').value = document.getElementById('paramID').value
+    	console.log(document.getElementById('userid').value)
+    	if(document.getElementById('nowpw').value == '' && document.getElementById('userpw').value != '' ){
     	
     		alert("현재 비밀번호를 입력해주세요.")
     		return false;
@@ -74,10 +77,14 @@
     		return false;
     	}
     	
+    	$('#nowpw').attr("disabled", false);
+    	
     	var list = {
     		userid : document.getElementById('userid').value,
-    		userpw :  document.getElementById('nowpw').value
+    		userpw : document.getElementById('nowpw').value
     	};
+    	
+    	$('#nowpw').attr("disabled", true);
     	
     	$.ajax({
 	    	async : false,
@@ -106,7 +113,7 @@
 							
 							if(data.cnt>0){
 								alert("비밀번호 변경이 완료되었습니다.")
-								frm.action = "/member/mypage/mypageMain"
+								frm.action = "/logout"
 								frm.submit();
 							}
 				     	}

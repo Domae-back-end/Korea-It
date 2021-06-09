@@ -75,8 +75,9 @@ $(function() {
 
 				if (data.dto != null) {
 
-					alert(data.dto.userpw)
-					frm.action = "/member/login/loginForm"
+					document.getElementById('userpw').value = data.dto.userpw
+					document.getElementById('paramID').value = data.dto.userid
+					frm.action = "/member/mypage/mypwchange"
 					frm.submit();
 
 				} else {

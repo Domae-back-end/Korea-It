@@ -52,7 +52,7 @@
 				
 				if(data.dto!=null){
 					
-					alert(data.dto.userid)
+					alert('아이디 : '+data.dto.userid)
 					frm.action = "/member/login/loginForm"
 					frm.submit();
 			

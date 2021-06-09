@@ -1,7 +1,19 @@
 /**
  * 
  */
+var emailCh = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
 $(function() {
+
+	$("#useremail").on("propertychange change keyup paste input", function(){	
+		
+		var regexp = /[^a-zA-Z0-9_.@-]/gi
+		$(this).val($(this).val().replace(regexp,''))
+		
+		emChk = 0; 
+		if (emailCh.test($('#useremail').val())) {
+			emChk = 1;
+		}
+	});
 
 	$("#inforDelete").click(function() {
 
@@ -74,7 +86,10 @@ $(function() {
 
 	$("#informodifyGo").click(function() {
 
-
+		if(emChk == 0){
+			alert('이메일 양식을 확인해주세요')
+			return false
+		}
 		var num = $('#pnumouter').text()
 		console.log(num)
 
