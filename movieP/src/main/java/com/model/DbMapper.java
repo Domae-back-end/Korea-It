@@ -220,7 +220,7 @@ public interface DbMapper {
    int modifyfaq(ServiceFullDTO sfDTO);
    int deletefaq(ServiceFullDTO sfDTO);
    ServiceFullDTO detailfaq(ServiceFullDTO sfDTO);
-
+   void addcntfaq(ServiceFullDTO sfDTO);
    int updatepostername(MovieInfoDTO mdto);
    
    //김인호추가
@@ -229,7 +229,7 @@ public interface DbMapper {
    int updateMovieinfo(MovieInfoDTO mdto);
 // 스케쥴러작동월매출
    List<SalesDTO> getyesterdaysalesdistinct(HashMap<String, Object> map);
-void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
+   void insertmonthsales(SalesDTO forfirstday);// 첫날에 튜플 추가용.
 	int updatemonthsales(SalesDTO sdto);
 
 	Integer salestotalCnt(HashMap<String, Object> map);

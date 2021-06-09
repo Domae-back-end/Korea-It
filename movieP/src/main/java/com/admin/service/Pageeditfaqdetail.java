@@ -1,10 +1,8 @@
 package com.admin.service;
 
-import java.io.PrintWriter;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
 
@@ -25,6 +23,8 @@ public class Pageeditfaqdetail implements  PageeditService {
 
 		HashMap<String, Object> orimap = (HashMap) obj;		
 		ServiceFullDTO sfDTO= (ServiceFullDTO)orimap.get("sfDTO");
+		
+		db.addcntfaq(sfDTO);
 		
 		return db.detailfaq(sfDTO);
 	}

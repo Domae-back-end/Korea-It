@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.model.DbMapper">
-
+	<!--  -->
 	<select id="movieTime" resultType="MovieTimeDTO">
 		select * from movietime
 		order by time_index desc
@@ -1027,6 +1027,10 @@ WHERE m_index = #{m_index};
 		values (#{bqcate},#{bqtitle}, #{bqcont})
 	</insert>
 
+	<update id="addcntfaq" parameterType="ServiceFullDTO">
+		update basicqna set viewcnt = viewcnt + 1 where bqindex = #{bqindex}
+	</update>
+	
 	<update id="modifyfaq" parameterType="ServiceFullDTO">
 		update basicqna set bqcate = #{bqcate}, bqtitle= #{bqtitle}, 
 		bqcont = #{bqcont} where bqindex = #{bqindex}

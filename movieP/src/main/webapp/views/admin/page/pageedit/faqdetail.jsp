@@ -6,12 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ_Detail</title>
+<script>
+function deleteGo(){
+	if(confirm("정말로 삭제하시겠습니까?")){
+		frm.action="/admin/pageedit/faqdeleteReg"
+		frm.submit()
+	}
+}
+
+function modifyGo(){
+		frm.action="/admin/pageedit/faqmodifyReg"
+		frm.submit()
+}
+</script>
 </head>
 <body>
 <h1>FAQ_Detail</h1>
-<form action="/admin/pageedit/faqdetailReg" method="post">
+<form action="/admin/pageedit/faqdetailReg" method="post" name="frm">
 <input type="hidden" name="bqindex" value="${data.bqindex }">
-<input type="hidden" name="page" value="${data.bqindex }">
+<input type="hidden" name="page" value="${pdto.page }">
 	<table class="table table-striped">
 		<tr>
 			<td>카테고리</td>
@@ -23,12 +36,13 @@
 			<td>${data.bqcate }</td>
 			<td>${data.viewcnt }</td>
 			<td>${data.bqtitle }</td>
-			<td>${data.bqcont }</td>
+			<td>${data.bqcontbr }</td>
 		</tr>
 		<tr>
 			<td colspan="4" align="right">
 				<a href="faqmodify?bqindex=${data.bqindex}">수정</a>
-				<a href="faqdeleteReg?bqindex=${data.bqindex}">삭제</a>
+				<input type="button" onclick="deleteGo()" value="삭제" />
+				<a href="faqlist?bqindex=${data.bqindex}&page=${param.page}">뒤로</a>
 			</td>
 		</tr>
 	</table>

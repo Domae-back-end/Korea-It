@@ -51,11 +51,6 @@ $(function() {
 	});
 })
 
-	function detailGo(aa) { // 제이쿼리안씀.
-		
-	}
-	console.log("디테일 고 누름."+before)	
-
 </script>
 
 </head>
@@ -87,8 +82,8 @@ $(function() {
 					<td>${no.index+1 }</td>
 					<td>${faqDTO.bqcate }</td>
 					<td style="border: 1px solid;">
-					<a href="faqdetail?bqindex=${faqDTO.bqindex }">${faqDTO.bqtitle }</a></td>
-					<td>${faqDTO.bqcont }</td>
+					<a href="faqdetail?bqindex=${faqDTO.bqindex }&pageIN=${data.pdto.page}">${faqDTO.bqtitle }</a></td>
+					<td>${faqDTO.bqcontbr }</td>
 					<td>${faqDTO.viewcnt }</td>
 				</tr>
 				<tr>

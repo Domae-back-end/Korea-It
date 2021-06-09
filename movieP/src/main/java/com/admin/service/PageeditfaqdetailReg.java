@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.model.AlterDTO;
 import com.model.DbMapper;
-import com.model.MovieInfoDTO;
 import com.model.ServiceFullDTO;
 @Service
 public class PageeditfaqdetailReg implements PageeditService {
@@ -20,12 +19,13 @@ public class PageeditfaqdetailReg implements PageeditService {
 
 	@Override
 	public Object execute(Object obj) {
-		System.out.println("pageeditfaqmodifyReg");
+		System.out.println("pageeditfaqdetailReg");
 		HashMap<String, Object> map = (HashMap) obj;		
 		ServiceFullDTO sfDTO = (ServiceFullDTO) map.get("sfDTO");
 		
 		db.detailfaq(sfDTO);
-
+		
+		
 		AlterDTO al = new AlterDTO();	
 		al.setUrl("/admin/pageedit/faqdetail");
 		

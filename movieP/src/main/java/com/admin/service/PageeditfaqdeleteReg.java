@@ -12,8 +12,6 @@ import com.model.DbMapper;
 import com.model.ServiceFullDTO;
 import com.model.ServiceNoticePageDTO;
 
-import edu.emory.mathcs.backport.java.util.Arrays;
-
 //Service단
 @Service
 public class PageeditfaqdeleteReg implements PageeditService {
