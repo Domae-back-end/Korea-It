@@ -36,12 +36,12 @@ public class AdminController {
 		return null;
 	}
 	
-//	@ModelAttribute("adminmainpage_newask") //1번째 div박스.
+//	@ModelAttribute("newqna") //1번째 div박스.
 //	String newask( ) {
 //		System.out.println("메인페이지");
 //		
 //		
-//		return "매출 들어갈 자리임";
+//		return "새로운질문들3개";
 //	}
 	
 	
@@ -56,21 +56,21 @@ public class AdminController {
 	}
 	
 	
-//	@ModelAttribute("adminmainpage_popularfaq") //3번째 div박스.
+//	@ModelAttribute("hotfaq") //3번째 div박스.
 //	String popularfaq( ) {
 //		System.out.println("메인페이지");
 //		
 //		
-//		return "매출 들어갈 자리임";
+//		return "조회수핫한자찾질3개";
 //	}
 		
 	
-//	@ModelAttribute("adminmainpage_hotnotice") //4번째 div박스.
+//	@ModelAttribute("recentnotice") //4번째 div박스.
 //	String hotnotice( ) {
 //		System.out.println("메인페이지");
 //		
 //		
-//		return "매출 들어갈 자리임";
+//		return "최근공지사항3개";
 //	}
 	
 	

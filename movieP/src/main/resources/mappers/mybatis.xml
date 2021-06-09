@@ -1226,11 +1226,32 @@ WHERE m_index = #{m_index};
 	
 	
 	
+	<select id="salestotalCnt2" resultType="Integer"
+		parameterType="HashMap">
+		select count(*) from sales
+		
+		<choose>
+			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
+				<where>
+					${sadto.salesckind} like '%${sadto.salescword}%'
+				</where>
+			</when>			
+		</choose>
+		order by sales_time desc		
+	</select>
 	
-	
-	
-	
-	
+	<select id="getsalesdaily" resultType="SalesDTO" parameterType="HashMap">
+		select * from sales		
+		<choose>
+			<when test="sadto.salesckind!=null and sadto.salesckind!='' ">
+				<where>
+					${sadto.salesckind} like '%${sadto.salescword}%'
+				</where>
+			</when>			
+		</choose>		
+		 order by sales_time desc		 
+		limit #{pdto.start}, #{pdto.limit}		 
+	</select>
 	
 	
 	
