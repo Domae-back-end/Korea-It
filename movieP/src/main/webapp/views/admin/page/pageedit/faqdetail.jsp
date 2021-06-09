@@ -15,7 +15,7 @@ function deleteGo(){
 }
 
 function modifyGo(){
-		frm.action="/admin/pageedit/faqmodifyReg"
+		frm.action="faqmodify"
 		frm.submit()
 }
 </script>

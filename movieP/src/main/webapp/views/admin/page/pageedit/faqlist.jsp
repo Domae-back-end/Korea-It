@@ -83,7 +83,7 @@ $(function() {
 					<td>${faqDTO.bqcate }</td>
 					<td style="border: 1px solid;">
 					<a href="faqdetail?bqindex=${faqDTO.bqindex }&pageIN=${data.pdto.page}">${faqDTO.bqtitle }</a></td>
-					<td>${faqDTO.bqcontbr }</td>
+					<td>${faqDTO.bqcont }</td>
 					<td>${faqDTO.viewcnt }</td>
 				</tr>
 				<tr>
