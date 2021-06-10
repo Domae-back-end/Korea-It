@@ -1,0 +1,188 @@
+@charset "UTF-8";
+	#detail{
+		background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ),url("/moviedata/${moviedetail.movieimg }");
+		width: 1000px;
+		height: 565px;
+		display:inline-block;
+		
+	}
+
+	#title{
+		width: 1000px;
+		height: 50px;
+		font-size: 30px;
+		color:white;
+		text-align: left;
+		
+	}
+	
+	#poster{
+		width: 300px;
+		margin-right: 50px;
+		float:right;
+		margin-bottom: 0px;
+	}
+	
+	#poster>img{
+		width: 300px;
+		height: 450px;
+	}
+	
+	#link{
+		background: #f00;
+		font-size:30px;
+		display: inline-block;
+		margin-right: 130px;
+		border: 1px solid #f00;
+		border-radius: 10px;
+	}
+	#link>a{
+		color: white;
+		text-decoration: none;
+	}
+	#sub1{
+	height: 50px;
+		margin-top: 10px;
+		border-bottom: 2px solid #000;
+	}
+	#sub1>div{
+		display: inline-block;
+
+	}
+	#sub1>div:hover{
+		border-left: 2px solid #000;
+		border-top: 2px solid #000;
+		border-right: 2px solid #000;;
+		border-bottom: 2px solid #fff;
+		
+	}
+	
+	#sub1>div>a{
+		display: inline-block;
+		width: 200px;
+		font-size: 30px;
+		text-decoration: none;
+	}
+	#gpa{
+		width: 1000px;
+		display: inline-block;
+		font-size:30px;
+	}
+	#gpa>div>i{
+		color:gold;
+		font-size:30px;
+	}
+	#back{
+		background-image: "/moviedata/${moviedetail.movieimg }";
+	}
+	#plot{
+		width: 1000px;
+		background: pink;
+	}
+	
+	<!--리부-->
+	
+	
+	#reviewwrapper{
+		width: 1000px;
+		display: inline-block;
+		text-align: left;
+	}
+	#reviewForm{
+		
+		height:60px;
+	}
+	
+	#aa{
+		height: 80px;
+		border : 1px solid #ccc;
+		border-radius: 10px;
+		margin-bottom: 10px;
+	}
+	#userinfo{
+		display: inline-block;
+		text-align: left;
+		width: 250px;
+		height: 60px;
+	}
+	#content{
+		width: 560px;
+		height: 55px;
+		overflow:auto;
+		display: inline-block;
+	}
+	#mycontent{
+		width: 500px;
+		height: 55px;
+		display: inline-block;
+	}
+
+	#id{
+		font-size:20px;
+	}
+	#p{
+		margin-left: 50px;
+		text-align:center;
+		width: 540px;
+		height: 60px;
+		resize:none;
+	}
+	#myp{
+		margin-left: 50px;
+		text-align:center;
+		width: 540px;
+		height: 60px;
+		resize:none;
+	}
+	#b{
+		height: 60px;
+		text-align: center;
+		vertical-align: middle;
+		margin-bottom: 50px;
+	}
+
+	 #star{
+		 height: 60px;
+		 line-height:60px; 
+	 }
+	 #star>i{
+	 	color:gold;
+	 }
+	 
+	 #mystar{
+		 height: 60px;
+		 line-height:60px; 
+		 width: 150px;
+	 }
+	 #mystar>i{
+	 	color:gold;
+	 }
+	#del{
+		margin-top:30px;
+		float: right;
+		background: none;
+	}
+	#mod{
+		margin-top:30px;
+		float: right;
+		background: none;
+	}
+	#num{
+		text-align: center;
+	}
+	#sid{
+		display:inline-block;
+		float:left;
+		font-size: 30px;
+		height: 57px;
+	}
+	#mycontent>textarea{
+		width: 450px;
+		height: 55px;
+		margin-top: 7px;
+	}
+	#reviewModifyForm{
+		width: 1000px;
+	}
+
+	

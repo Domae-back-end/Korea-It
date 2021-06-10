@@ -2,60 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href = "/resources/css/movie/piccss.css"/>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style>
-.container{
-	width: 470px;
-	height: 600px;
-}
-	.item{
-		width: 470px;
-		height: 600px;
-		vertical-align: center;	
-		object-fit: contain;
-	}
-	.item active{
-		width: 470px;
-		height: 600px;
-		vertical-align: center;	
-		object-fit: contain;
-	}
-	.item>img{
-		width: 470px;
-		height: 600px;
-	}
-	.item active>img{
-		width: 470px;
-		height: 600px;
-	}
-	.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    display: block;
-    max-width: none;
-    height: 100%;
-    object-fit: contain;
-}
-.carousel-control{
-	width: auto;
-}
 
-	
-</style>
 <script>
 <% int cnt =0;%>
 </script>
 <c:forEach items="${movieimage }" var="i" varStatus="no">
 	<%cnt = cnt+1; %>
 </c:forEach>
-<style>
-	#p{
-		font-size: 30px;
-	}
-</style>
-
-<div id="p">${moviedetail.movietitle } 영화에 대한 <%=cnt %>개의 스틸컷이 있어요!</div>
+<div id="pic">${moviedetail.movietitle } 영화에 대한 <%=cnt %>개의 스틸컷이 있어요!</div>
 <%
 	if(cnt > 0){
 %>

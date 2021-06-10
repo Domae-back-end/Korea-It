@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href = "/resources/css/movie/moviemaincss.css"/>
+
 <title>movie main</title>
 <% int cnt =0; %>
 <c:forEach items="${moviedata }">
@@ -42,72 +46,6 @@ $(function(){
 })	
 
 </script>
-
-<style>
-	.wrapper{
-		width: 1000px;
-		height: 100%;
-		text-align: left;
-	}
-
-	.pp{
-		background: #c5f7f5;
-		color: white;
-		width: 1000px;
-	}
-	
-	.pp>div{
-		display: inline-block;
-		width: 250px;
-		font-size: 30px;	
-	}	
-	.pp>div>a{
-		text-decoration: none;
-	}
-	.pp>div>a:hover{
-		border: 1px solid #a00;
-	}
-	
-	#movieinfomation{
-		display: inline-block;
-		margin: 35px;
-		text-align: cetner;
-	}
-	td{
-		width: 200px;
-		text-align: center;
-	}
-	#pos>a>img{
-		width:250px;
-		height:400px;
-	}
-	#sh{
-		width:1000px;
-		float: right;
-	}
-	#searchbutton{
-		display:inline-block;
-		width:1000px;
-		text-align: center;
-		height: 50px;
-		margin-top: 10px;
-		text-align: right;
-	}
-	form{
-		width: 1000px;
-		hegith: 50px;
-		margin-top: 10px;
-		text-align: right;
-	}
-	.search{
-		display:inline-block;
-	}
-	.sbtn{
-	display:inline-block;
-	}
-
-</style>
-
 </head>
 <body>
 <div class = "pp">

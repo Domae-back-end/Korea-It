@@ -695,10 +695,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 				<![CDATA[userlikes]]>
 				<where> <![CDATA[userid=#{userid} and m_index=#{index}]]></where>
 			</when>
-			<when test=" kind !=null">
-				<![CDATA[memberinfo]]>
-				<where> <![CDATA[userid=#{userid} and kind ='네이버']]></where>
-			</when>
 			<when test=" ticket !=null">
 				<![CDATA[ticketing]]>
 				<where> <![CDATA[userid=#{userid} and saleslink =#{ticket}]]></where>
