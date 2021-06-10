@@ -175,6 +175,7 @@ public class MovieController {
 			}
 		}
 		if(service.equals("reviewModifyReg")) {
+			
 			if (rnd.getPostcontent() != "") {
 				rnd.setUserid((String) req.getSession().getAttribute("sessionId"));
 				MovieAction6 res = pr.getContext().getBean("movie" + service, MovieAction6.class);
