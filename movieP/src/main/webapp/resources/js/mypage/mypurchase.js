@@ -119,7 +119,7 @@ function purchaselistChange(list){
 					
 					var tt ="<div class='fff'><div class = 'purchaseMainouter'>"
 					
-					tt+= "<a href='/user/movie/moviedetail?sub=review&ind="+data.purchase[j].m_index+"'>"
+					tt+= "<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index+"'>"
 					tt+="<div class='purchaseimg'>"
 					
 					if(data.purchase[j].imgname!=null){

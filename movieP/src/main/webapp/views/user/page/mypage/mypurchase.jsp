@@ -22,7 +22,7 @@
 		<div class="fff">
 			<c:forEach items="${memdata.purchase }" var ="pp" > 
 				<div class = "purchaseMainouter">
-					<a href="/user/movie/moviedetail?sub=review&ind=${pp.m_index }">
+					<a href="/user/movie/moviedetail?sub=info&ind=${pp.m_index }">
 						<div class="purchaseimg">
 							<c:choose>
 								<c:when test="${pp.imgname!=null }">
@@ -96,7 +96,8 @@
 		</div>
 	</div>
 	
-	<h3>예매 취소내역</h3>
+	<h3>예매 취소내역</h3> 
+	<p class="ppSmall"><small>(상영일 기준 7일간 취소내역을 확인하실 수 있습니다.)</small></p>
 	<div class="cimeminfor" id="recordCpurchase">
 		<div id="titleinner">
 			<div class="puchaseinner">취소일시</div>

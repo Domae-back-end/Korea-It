@@ -110,9 +110,16 @@ h4{
 	height: 25px;
 }
 #recordCpurchase{
+	margin-top: -1px;
 	border-bottom:none;
 }
 .pageCP{
 	position: relative;
 	top:20px;
+}
+.ppSmall{
+	position: relative;
+	text-align:left;
+	top:-8px;
+	left: 30px;
 }
