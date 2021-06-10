@@ -61,7 +61,7 @@
 	<div class="mycinemapuouter">
 		<c:forEach items="${memdata.purchase }" var ="pp" end="1" > 
 				<div class="writeouter" id="writeouter">
-					<a href="/user/movie/moviedetail?sub=infor&ind=${pp.m_index }">
+					<a href="/user/movie/moviedetail?sub=info&ind=${pp.m_index }">
 						<div class="writeimg">
 							<c:choose>
 								<c:when test="${pp.imgname!=null }">
