@@ -44,7 +44,7 @@
  		
  		}else{
  			
- 			locaion.href = "/member/mypage/mypageMain"
+ 			location.href = "/member/mypage/mypageMain"
  		}
 
 	});

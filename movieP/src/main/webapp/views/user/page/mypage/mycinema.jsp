@@ -59,9 +59,9 @@
 		<div class = "seemore"><a href="/member/mypage/mypurchase">더보기 ></a></div>
 	</div>
 	<div class="mycinemapuouter">
-		<c:forEach items="${memdata.purchase }" var ="pp" end="1" varStatus="no"> 
+		<c:forEach items="${memdata.purchase }" var ="pp" end="1" > 
 				<div class="writeouter" id="writeouter">
-					<a href="/user/movie/moviedetail?sub=review&ind=${pp.m_index }">
+					<a href="/user/movie/moviedetail?sub=infor&ind=${pp.m_index }">
 						<div class="writeimg">
 							<c:choose>
 								<c:when test="${pp.imgname!=null }">
@@ -77,10 +77,10 @@
 						<div class="sales_time">
 							결제일시 : ${pp.sales_time }
 						</div>
-						<div>
+						<div class="puinforText">
 							<span class="saleslink">${pp.saleslink }</span> | ${pp.movietitle }
 						</div>
-						<div>
+						<div class="puinforText">
 							${pp.sectorNo }
 						</div>
 						<div>
@@ -100,12 +100,12 @@
 </div>
 
 <div>
-	<div class="mycinemaRecordouter">
+	<div class="mycinemaRecordouter" id = "mycinemaQnaouter">
 		<h4>나의 문의내역</h4>
 		<div class = "seemore"><a href="/member/mypage/myqna">더보기 ></a></div>
 	</div>
 
-	<div class="cimeminfor">
+	<div class="cimeminfor"  id = "mycinemaQnaouter">
 		<div id="titleinner">
 			<div class="puchaseinner">작성자</div>
 			<div class="puchaseinner">제목</div>

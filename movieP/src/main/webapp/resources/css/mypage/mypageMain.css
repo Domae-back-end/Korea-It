@@ -99,6 +99,8 @@ h4{
 }
 
 #pageRecord{
+	position:relative;
+	top: 15px;
 	clear: both;
 }
 

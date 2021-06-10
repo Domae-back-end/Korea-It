@@ -166,7 +166,7 @@ function qnalistChange(list){
 					tt+="<div class='puchaseinner'>" +data.qna[i].persatime+'('+data.qna[i].persstate+')'
 					tt+="</div></div>"
 
-					$("#qnaRecord").append(tt)	
+					$("#qqq").append(tt)	
 					
 				}
 					

@@ -145,7 +145,7 @@ function purchaselistChange(list){
 						
 					tt+="</div></div></div>"
 					
-					$("#recordpurchase").append(tt)	
+					$("#aaa").append(tt)	
 					
 				}
 					
@@ -249,7 +249,7 @@ function purchasCancelepageChange(i){
 					tt+="</div>"
 					
 				
-					$("#recordCpurchase").append(tt)	
+					$("#CP").append(tt)	
 					
 				}
 					

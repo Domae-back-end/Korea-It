@@ -210,9 +210,9 @@ function pageChange(i){
 							tt+="<a href='/user/movie/moviedetail?sub=info&ind="+data.like[j].m_index+"'>"
 							tt+="<div class='liketitle'>"+data.like[j].movietitle+"</div></a>"
 							tt+="<div><button class='likeButt' onclick='likeButt("+data.like[j].m_index+")' >"
-							tt+=data.like[j].mlike+"</button></div>"
+							tt+='♥ '+data.like[j].mlike+"</button></div>"
 							tt+="<a href='/user/movietime/list?movietitle="+data.like[j].movietitle +"'>"
-							tt+="<input type='button' class='changeButt' value='예매하기' />"
+							tt+="<input type='button' class='changeButt'  id='liketicketGo' value='예매하기' />"
 							tt+="</a></div>"
 							
 							$("#add").append(tt)
