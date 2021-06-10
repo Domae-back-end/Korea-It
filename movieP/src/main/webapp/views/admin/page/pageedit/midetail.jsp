@@ -70,13 +70,16 @@ $(function() {
         .detail_cont{clear:both;border: 1px solid;display: inline-block;}
         .bg_img{height:240px;width: 240px;}
         .box_basic:nth-child(1){display: inline;}
-    	#moviedetailtb tr td:nth-of-type(1){background-color: beige;}
-
-
+    	.moviedetailtb tr td:nth-of-type(1){background-color: #eee;width: 150px;}
+    	.moviedetailtb tr td:nth-of-type(2){background-color: #fff;width: 650px;}
+		.moviedetailtb tr td{border-bottom:1px solid #333;padding: 5px;}
+		.moviedetailtb{width:800px;text-align: left;box-sizing: border-box;}
+		
+		
 
     </style>
 
-<body>영화제목 : ${data.midto.movietitle} :: 디테일 <br>
+<body>
 
 
 

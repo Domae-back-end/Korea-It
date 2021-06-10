@@ -54,7 +54,7 @@ public class InitData { // 서버 시작시에 // 자주쓰는 주소들이나. 
 		map.put("sales", new ArrayList<Menu>());
 		map.get("sales").add(new Menu("main","매출보기"));
 		map.get("sales").add(new Menu("graph","그래프로조회"));
-		map.get("sales").add(new Menu("","추가가능"));
+		
 		
 		map.put("pageedit", new ArrayList<Menu>());		
 		map.get("pageedit").add(new Menu("banner","메인베너관리"));
