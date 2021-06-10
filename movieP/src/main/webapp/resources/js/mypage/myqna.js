@@ -3,6 +3,14 @@
  */
 $(function() {
 
+	if(document.getElementById("vv") !=null){
+		
+		if(document.getElementById("vv").value == ''){
+			alert("로그인 후 이용해주세요.")
+			location.href = '/user/mainpage/main'
+		}
+	}
+	
 	if( document.getElementById('qnastateGo') != null){
 		
 		if(document.getElementById('qnastateGo').value != ''){

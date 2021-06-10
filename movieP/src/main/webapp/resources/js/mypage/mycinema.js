@@ -3,6 +3,15 @@
  */
 $(function() { 
 	 
+	if(document.getElementById("userid") !=null){
+	
+		if(document.getElementById("userid").value == ''){
+			alert("로그인 후 이용해주세요.")
+			location.href = '/user/mainpage/main'
+		}
+	
+	}
+	
 	 $(document).on("click", ".qnaDetailGo", function(){
 		
 			$('#detail').val($(this).attr("dd"));
