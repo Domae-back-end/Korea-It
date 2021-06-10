@@ -36,8 +36,17 @@
 	});
 	
 	$('#mainGo').click(function(){
-		frm.action = "/member/mypage/mypageMain"
-		frm.submit();
+		
+		if(document.getElementById('vv').value == ''){
+ 			
+ 			frm.action = "/user/mainpage/main"
+ 			frm.submit();
+ 		
+ 		}else{
+ 			
+ 			locaion.href = "/member/mypage/mypageMain"
+ 		}
+
 	});
 	
 });
