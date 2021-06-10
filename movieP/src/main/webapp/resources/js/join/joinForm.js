@@ -10,6 +10,80 @@ $(function() {
 	var pwnum = 0;
 	var emChk = 0;
 	
+	if(document.getElementById("birthY") !=null){
+		
+		var date = new Date();
+		var currYear = date.getFullYear();
+		var option;
+		
+		option = new Option();
+		option.value = '';
+		option.text = '년 선택';
+			
+		document.getElementById("birthY").options.add(option);
+		
+		for(var i = currYear-1; i >= currYear-55; i--){
+
+			option = new Option();
+			option.value = i;
+			option.text = i ;
+			document.getElementById("birthY").options.add(option);
+			
+		}
+	}	
+	
+	
+	$("select[name=birthY]").on("change", function(){
+		
+		$('#birthM').children('option').remove();
+		$('#birthD').children('option').remove();
+		
+		var option;
+		
+		option = new Option();
+		option.value = '';
+		option.text = '월 선택';
+		
+		document.getElementById("birthM").options.add(option);
+		
+		for(var i = 1; i <= 12; i++){
+		
+			option = new Option();
+			option.value = i;
+			option.text = i ;
+			document.getElementById("birthM").options.add(option);
+			
+		}
+			
+	});
+	
+	$("select[name=birthM]").on("change", function(){
+		
+		$('#birthD').children('option').remove();
+		
+		var year = document.getElementById("birthY").value
+		var month = document.getElementById("birthM").value
+		var day=new Date(new Date(year,month,1)-86400000).getDate();
+		
+		var option;
+		
+		option = new Option();
+		option.value = '';
+		option.text = '일 선택';
+		
+		document.getElementById("birthD").options.add(option);
+
+		for(var i = 1; i <= day; i++){
+		
+			option = new Option();
+			option.value = i;
+			option.text = i ;
+			document.getElementById("birthD").options.add(option);
+		}
+
+	});
+	
+	
     $("#userid").on("propertychange change keyup paste input", function(){
 		
 		chCnt = 0;
@@ -304,12 +378,18 @@ $(function() {
 		if (!pwCh.test($('#userpw').val()) ||  pwnum == 0){
  			alert('비밀번호를 확인하세요.'); 
 			return false;
-		} 
+		}
+		if(document.getElementById('birthY').value == '' || document.getElementById('birthM').value == '' || document.getElementById('birthD').value == ''){
+			
+			alert('생년월일을 확인해주세요.'); 
+			return false; 
+			
+		}  
 		if (!pnumCh.test($('#userpnum').val())) { 
 			
 			alert('휴대폰번호를 확인하세요.'); 
 			return false;  
-		} 
+		}
 		if(document.getElementById('chk').value != 1){
 			alert('휴대폰 인증 필요.'); 
 			return false;

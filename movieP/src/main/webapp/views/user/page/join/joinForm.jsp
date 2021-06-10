@@ -65,24 +65,16 @@
 			<div><span>√</span>생년월일</div>
 			<div>
 				<select id="birthY" name="birthY">
-					<c:forEach var="i" begin="1966" end="2020" step="1" >
-						<option value="${i }">${i }</option>
-					</c:forEach>	
 				</select>
 						<label>년</label>
 				<select id="birthM" name="birthM">
-					<c:forEach var="i" begin="1" end="12" step="1" >
-						<option value="${i }">${i }</option>
-					</c:forEach>	
 				</select>
 						<label>월</label>
 				<select id="birthD" name="birthD">
-					<c:forEach var="i" begin="1" end="31" step="1" >
-						<option value="${i }">${i }</option>
-					</c:forEach>		
 				</select>
 				<label>일</label>
-			</div>			
+			<div class="check_msg" id="birth_check">회원가입 이후에 생년월일은 변경 불가능합니다.</div>			
+			</div>
 		</div>
 		<div class = "boxF" id ="boxS">
 			<div id ="boxS"><span>√</span>휴대폰 번호</div>
