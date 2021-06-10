@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
 
 <form action="" method="post" enctype="multipart/form-data" name="frm" >
+
 <input type="hidden" id="userid" value="${sessionId }"/>
 <input type="hidden" id="userpw" value="${memdata.dto.userpw }"/>
 <input type="hidden" id="userpnum" value="${memdata.dto.userpnumM }"/>
