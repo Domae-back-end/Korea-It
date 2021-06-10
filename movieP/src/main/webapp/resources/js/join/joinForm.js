@@ -22,7 +22,7 @@ $(function() {
 			
 		document.getElementById("birthY").options.add(option);
 		
-		for(var i = currYear-1; i >= currYear-55; i--){
+		for(var i = currYear-55; i <= currYear-1; i++){
 
 			option = new Option();
 			option.value = i;
