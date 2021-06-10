@@ -26,6 +26,11 @@ public class MoviereviewModifyReg implements MovieAction6{
 		alt.setMsg(rnd.getUserid()+"님 관람평 수정 완료.");
 		alt.setUrl( "moviedetail?sub=review&ind="+rnd.getCate());
 		
+		if(rnd.getPostcontent().length() > 100) {
+			alt.setMsg("관람평을 70자 이내로 써주세요.");
+			return alt;
+		}
+		
 		if(rnd.getUserid()==null) {
 			alt.setMsg("로그인이 필요한 기능입니다.");
 			alt.setUrl("/member/login/loginForm");

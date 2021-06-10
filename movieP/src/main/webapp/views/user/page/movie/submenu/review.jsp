@@ -14,6 +14,7 @@
 			$("#pageIN").val( $(this).attr("dd") )
 			reviewpage.submit()
 		})
+		
 	})
 	
 	function checkstar(){
@@ -59,7 +60,7 @@
 	function ModifyForm(idx, postcontent){
 		
 		var value = '<div class="rating-css" style="display: inline-block"><div class="star-icon">'
-		      +'<input type="radio" name="rating1" id="rating1" value="1">'
+		      +'<input type="radio" name="rating1" id="rating1" value="1" checked>'
 	      +'<label for="rating1" class="fa fa-star"></label>'
 	      +'<input type="radio" name="rating1" id="rating2" value="2">'
 	      +'<label for="rating2" class="fa fa-star"></label>'
@@ -71,19 +72,19 @@
 	      +'<label for="rating5" class="fa fa-star"></label>'
 	      +'</div></div>';
 		$('#mystar').html(value)
-		$('#mycontent').html('<textarea name="postcontent" id="myp" rows="1" cols="200"/></textarea>');
+		$('#mycontent').html('<textarea name="postcontent" id="p" rows="1" cols="200"/>${myreview.postcontent} </textarea>');
 		$('#del').html('')
 		$('#mod').html('<input type="submit" value="수정"/>')
 		
 	}
 	
-
 	
+
 	
 	$(document).ready(function() {
 
 
-	    $('#p').on('keyup', function() {
+	    $('textarea').on('keyup', function() {
 
 	        if($(this).val().length > 100) {
 	        	alert("관람평은 100글자이상 쓸 수 없습니다.")
@@ -93,17 +94,26 @@
 
 	    });
 	    
-	    $('#myp').on('keyup', function() {
-	        if($(this).val().length > 100) {
-	        	alert("관람평은 100글자이상 쓸 수 없습니다.")
-	            $(this).val($(this).val().substring(0, 100));
+	    
+	
+	    
+
+
+	});
+	
+	$(window).ready(function() {
+	    $('textarea').on('keyup', function() {
+
+	        if($(this).val().length > 70) {
+	        	alert("관람평은 70글자이상 쓸 수 없습니다.")
+	            $(this).val($(this).val().substring(0, 70));
 	        }
 
 
 	    });
-
-
 	});
+	
+
 	
 </script>
 
@@ -126,7 +136,7 @@
 			  <input type="radio" id="2-star" id = "gpa" name="gpa" value="2" /><label for="2-star" title="Not Good">2 stars</label>
 			  <input type="radio" id="1-star" id = "gpa" name="gpa" value="1" /><label for="1-star" title="Bad">1 star</label>
 			</ul>
-			<textarea name="postcontent" id="p" rows="1" cols="200" onKeyUp="javascript:fnChkByte(this,'100')" placeholder="관람평을 입력 해 주세요. 최대 100글자까지 가능합니다."></textarea>
+			<textarea name="postcontent" id="p" rows="1" cols="200" placeholder="관람평을 입력 해 주세요. 최대 100글자까지 가능합니다."></textarea>
 			<input type="hidden" name="cate" id="cate" value="${param.ind}" />
 			<input type="hidden" name="cnt" id="cnt"  />
 			<input type="submit" value="관람평 작성" id="b">
@@ -141,7 +151,7 @@
 	<input id= "cnt" name="cnt" type="hidden" value="${myreview.cnt }"/>
 	<input id= "cate" name="cate" type="hidden" value="${myreview.cate }"/>
 	<div id= "userinfo">
-		<div id="sid">${myreview.userid }</div>
+		<div id="id">${myreview.userid }</div>
 		<div id="time">${myreview.posttime_s }</div>
 	</div>
 	<div id="mystar" style="display:inline-block;">
@@ -153,11 +163,11 @@
 			</c:forEach>
 		</div>
 		<div id= "mycontent">${myreview.postcontent }</div>
-		<div id="del"> <a href="javascript:deleteGo(${myreview.cnt})">
-		<i class="far fa-trash-alt"></i>
-		</a></div>
 		<div id="mod"> <a href="javascript:ModifyForm(${myreview.cnt}, '${myreview.postcontent }' )">
 		<i class="fas fa-edit"></i>
+		</a></div>
+		<div id="del"> <a href="javascript:deleteGo(${myreview.cnt})">
+		<i class="far fa-trash-alt"></i>
 		</a></div>
 	</form>
 	</div>
