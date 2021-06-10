@@ -27,25 +27,9 @@
 
 $(function() {
 	$(".pbtn").click(function(){ //페이지번호
-		alert("눌렀냐?"+$(this).attr("pagetoGo"))
 		$("#pageIN").val($(this).attr("pagetoGo"))
 		faqform.submit()
 	})
-	
-	$("#allChk").click(function() {
-		//alert("전체선택");
-		var chk = $("#allChk").prop("checked");
-
-		if (chk) {
-			$(".ggno").prop("checked", true);
-		} else {
-			$(".ggno").prop("checked", false);
-		}
-	})
-	
-	$(".postno").click(function(){
-		$("#allChk").prop("checked", false);
-	});
 })
 
 </script>
@@ -62,7 +46,7 @@ $(function() {
 				
 			<table class="table table-striped">
 				 <thead>
-					<td colspan="5" style="text-align: right; ">
+					<td colspan="5" style="text-align: right">
 						<a href="faqinsert">글쓰기</a>
 					</td>
 				</thead>
@@ -74,7 +58,7 @@ $(function() {
 					<td>내용</td>
 					<td>조회수</td>
 				</tr>
-			<c:forEach items="${data.sfDTO }" var="faqDTO" varStatus="no">
+			<c:forEach items="${data.sfList }" var="faqDTO" varStatus="no">
 				<tr id="${faqDTO.bqindex }">
 					<td>${no.index+1 }</td>
 					<td>${faqDTO.bqcate }</td>
@@ -120,11 +104,13 @@ $(function() {
 			<tr>
 				<td colspan="5" align="center">
 				
-				<form action="">
-					<input type="text" name="searchfaq"/>
+					<select name="kind">
+						<option value="bqtitle" <c:if test="${data.sfdto.kind=='bqtitle' }">selected="selected"</c:if> >제목</option>
+						<option value="bqcate"<c:if test="${data.sfdto.kind=='bqcate' }">selected="selected"</c:if> >카테고리</option>
+					</select>	
+					<input type="text" name="searchfaq" value="${data.sfdto.searchfaq }"/>
 					<input type="submit" value="검색"/>
 					
-					</form>
 				</td>
 			</tr>
 			
@@ -132,3 +118,4 @@ $(function() {
 			<input type="hidden" name="page" value="1" id="pageIN" />
 		</form>
 		</div>
+</body>

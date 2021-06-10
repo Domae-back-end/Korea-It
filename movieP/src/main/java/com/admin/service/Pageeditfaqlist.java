@@ -45,7 +45,8 @@ public class Pageeditfaqlist implements SalesService, PageeditService {
 		HashMap<String, Object> result = new HashMap<String, Object>();	
 		map.put("npDTO", npDTO);//init 돌린뒤의 npDTO/	
 		map.put("sfDTO",sfDTO);
-		result.put("sfDTO", db.getfaq(map));		
+		result.put("sfdto",sfDTO);
+		result.put("sfList", db.getfaq(map));		
 		result.put("pdto", npDTO);
 		
 		System.out.println("이번에나올게시물수:"+db.getfaq(map).size());

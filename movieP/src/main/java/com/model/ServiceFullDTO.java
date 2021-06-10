@@ -86,7 +86,7 @@ public class ServiceFullDTO {
 	String bqtitle; //제목
 	String bqcont; //내용
 	String kind, searchfaq;
-	int viewcnt; //조회수
+	int viewcnt = 0; //조회수
 	
 	public String getBqcontbr() {
 		

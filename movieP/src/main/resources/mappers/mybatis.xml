@@ -1029,26 +1029,23 @@ WHERE m_index = #{m_index};
 	<select id="faqtotalCnt" resultType="java.lang.Integer"
 		parameterType="HashMap">
 		select count(*) from basicqna
-		<choose>
-			<when test="sfDTO.schkey!=null and sfDTO.schkey!='' ">
-				<where>
-					${sfDTO.kind2} like '%${sfDTO.sch}%'
-				</where>
-			</when>
-		</choose>
-		 
+		<include refid="searchGO" />
 	</select>
+	
+	<sql id="searchGO">
+		<if test="sfDTO.searchfaq != null and sfDTO.searchfaq != '' ">
+			<where>
+				${sfDTO.kind} like '%${sfDTO.searchfaq}%'
+			</where>
+		</if>
+	</sql>
 	
 	<select id="getfaq" resultType="ServiceFullDTO"
 		parameterType="HashMap">
 		select * from basicqna 
 		
-		<if test="sfDTO.searchfaq != null and sfDTO.searchfaq != '' ">
-			<where>
-				bqtitle like '%${sfDTO.searchfaq}%'
-			</where>
-		</if>
-		
+		<include refid="searchGO" />
+			
 		order by bqindex asc
 		limit #{npDTO.start},#{npDTO.limit}
 	</select>
