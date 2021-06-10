@@ -98,6 +98,7 @@
 	
 	<h3>예매 취소내역</h3> 
 	<p class="ppSmall"><small>(상영일 기준 7일간 취소내역을 확인하실 수 있습니다.)</small></p>
+	
 	<div class="cimeminfor" id="recordCpurchase">
 		<div id="titleinner">
 			<div class="puchaseinner">취소일시</div>
