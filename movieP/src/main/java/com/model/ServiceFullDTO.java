@@ -89,6 +89,11 @@ public class ServiceFullDTO {
 	int viewcnt; //조회수
 	
 	public String getBqcontbr() {
+		
+		if(bqcont == "") {
+			return bqcont;
+		}
+		
 		return bqcont.replaceAll("\n", "<br>");
 	}
 	

@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+
 <style>
 	* {padding: 0px; margin: 0px; }
 	ul, li {text-decoration: none; list-style: none; }
@@ -83,7 +80,7 @@ $(function() {
 					<td>${faqDTO.bqcate }</td>
 					<td style="border: 1px solid;">
 					<a href="faqdetail?bqindex=${faqDTO.bqindex }&pageIN=${data.pdto.page}">${faqDTO.bqtitle }</a></td>
-					<td>${faqDTO.bqcont }</td>
+					<td>${faqDTO.bqcontbr }</td>
 					<td>${faqDTO.viewcnt }</td>
 				</tr>
 				<tr>
@@ -122,8 +119,12 @@ $(function() {
 			
 			<tr>
 				<td colspan="5" align="center">
+				
+				<form action="">
 					<input type="text" name="searchfaq"/>
-					<input type="button" value="검색"/>
+					<input type="submit" value="검색"/>
+					
+					</form>
 				</td>
 			</tr>
 			
@@ -131,5 +132,3 @@ $(function() {
 			<input type="hidden" name="page" value="1" id="pageIN" />
 		</form>
 		</div>
-</body>
-</html>

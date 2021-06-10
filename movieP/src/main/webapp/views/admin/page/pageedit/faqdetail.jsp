@@ -41,6 +41,7 @@ function modifyGo(){
 		<tr>
 			<td colspan="4" align="right">
 				<a href="faqmodify?bqindex=${data.bqindex }">수정</a>
+				<input type="button" onclick="modifyGo()" value="수정" />
 				<input type="button" onclick="deleteGo()" value="삭제" />
 				<a href="faqlist?bqindex=${data.bqindex}&page=${param.page}">뒤로</a>
 			</td>

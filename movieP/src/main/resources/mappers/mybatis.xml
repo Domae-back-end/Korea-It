@@ -1041,7 +1041,15 @@ WHERE m_index = #{m_index};
 	
 	<select id="getfaq" resultType="ServiceFullDTO"
 		parameterType="HashMap">
-		select * from basicqna order by bqindex asc
+		select * from basicqna 
+		
+		<if test="sfDTO.searchfaq != null and sfDTO.searchfaq != '' ">
+			<where>
+				bqtitle like '%${sfDTO.searchfaq}%'
+			</where>
+		</if>
+		
+		order by bqindex asc
 		limit #{npDTO.start},#{npDTO.limit}
 	</select>
 	
