@@ -33,7 +33,7 @@ public class ServiceNoticePageDTO {
 	
 	public void init(DbMapper dm, HashMap<String, Object> map) {
 		// 게시판페이지계산.
-		limit = 20; 
+		limit = 13; 
 		start = (page - 1) * limit;
 
 		ttt = dm.noticetotalCnt(map); // 총갯수정함. 페이지나눠야하니깐.
@@ -189,7 +189,7 @@ public class ServiceNoticePageDTO {
 	
 	
 	public void initnoticecate(DbMapper dm, HashMap<String, Object> map) { //심화(공지사항 카테고리)
-		limit = 20; 
+		limit = 13; 
 		start = (page - 1) * limit;
 
 		ttt = dm.noticecatetotalCnt(map);
