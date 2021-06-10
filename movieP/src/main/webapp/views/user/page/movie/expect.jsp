@@ -6,16 +6,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<style>
-#movieinfomation{
- 	border: 1px solid #aaa;
- 	border-radius: 20px;
- 	box-shadow: 10px 10px 10px 10px gray;
- }
-</style>
  <c:forEach items="${moviedataafter }" var="mm" varStatus="no">
     <table id="movieinfomation">
-      <tr><td>${no.index +1}</td></tr>
+      <tr><td style="font-size: 25px;">${no.index +1}</td></tr>
       <tr>
       <td id="pos">
       <a href = "/user/movie/moviedetail?sub=info&ind=${mm.m_index}">

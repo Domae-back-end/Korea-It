@@ -38,8 +38,16 @@ public class Movieafter implements MovieAction6{
 		Iterator<MovieInfoDTO> it = list.iterator();
 		while(it.hasNext()) {
 			MovieInfoDTO aa = it.next();
+			aa.setGpa(mm.calcGPA(aa.getM_index()));
 			aa.setMlike(mm.selectlike(aa.getM_index()));
+			aa.setMovietitle(mm.foundmoviename(aa.getM_index()));
+			if(aa.getGpa() == null) {
+				aa.setGpa(mm.calcGPA(0));
+			}
 		}
+		
+	
+		
 		
 		//3일 동안 예메된 영화의 전체 좌석수를 가져오기(분모) -- >ticketing 태이블에서 time_index 가져와서 movietime에서 sectorNo가져와서 비교하기
 		//각 영화의 예매된 좌석수를 가져온다(분자) --> time_index 이용하여 movietitle 가져와 저장하고 해당 time_index의 예매된 좌석의 수와 title 일치시키기.
@@ -69,7 +77,6 @@ public class Movieafter implements MovieAction6{
 			int ticketingSeat =0;
 			ticketingSeat += rate.get(mapkey);
 
-			System.out.println("key: "+mapkey+" 현재 예매된 좌석 수: "+ticketingSeat);
 		}
 		
 		//각 영화의 분자구하기
@@ -89,21 +96,19 @@ public class Movieafter implements MovieAction6{
 			}
 		}
 		
-		System.out.println("%%%%%%%%%%%%%%%%%%%%"+mrd);
-		System.out.println("%%%%%%%%%%%%%%%%%%%%"+rate);
 
 		
 		Iterator<MovieInfoDTO> it3 = list.iterator();
 		while(it3.hasNext()) {
 			MovieInfoDTO dd = it3.next();
 			if(rate.get(dd.getMovietitle()) != null) {
-				System.out.println("&&&&&&&&&&&&&&&&&&&&&&"+rate.get(dd.getMovietitle()) / totalSeat);
+				//System.out.println("&&&&&&&&&&&&&&&&&&&&&&"+rate.get(dd.getMovietitle()) / totalSeat);
 				 double k = Math.round( ((double)rate.get(dd.getMovietitle()) / totalSeat)*100)/100.0;
 				dd.setRes_rate(k);
 			}else {
 				dd.setRes_rate(0.0);
 			}
-			System.out.println("제목: "+dd.getMovietitle() + "예매율: "+dd.getRes_rate());
+			//System.out.println("제목: "+dd.getMovietitle() + "예매율: "+dd.getRes_rate());
 		}
 
 

@@ -7,24 +7,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-
-<style>
- #like{
- 	background: pink;
- 	
- }
- 
- #movieinfomation{
- 	border: 1px solid #aaa;
- 	border-radius: 20px;
- 	box-shadow: 10px 10px 10px 10px gray;
- }
-</style>
 
 <c:forEach items="${moviedatabefore }" var="mm" varStatus="no">
    <table id="movieinfomation">
-      <tr><td>${no.index +1}</td></tr>
+      <tr><td style="font-size: 25px;">${no.index +1}</td></tr>
       <tr>
       <td id="pos">
       <a href = "/user/movie/moviedetail?sub=info&ind=${mm.m_index}">
