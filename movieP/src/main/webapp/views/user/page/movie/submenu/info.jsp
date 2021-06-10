@@ -1,14 +1,8 @@
+
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<style>
-	#plot{
-		width: 1000px;
-		background: pink;
-	}
-</style>
 
 <%
 	int cnt =0;
@@ -16,7 +10,7 @@
 <c:forEach items="${movieactor }" var="n">
 	<% cnt = cnt+1; %>
 </c:forEach>
-<div id="plot">${moviedetail.mplot }</div><hr>
+<div id="plot">줄거리<br> ${moviedetail.mplot }</div><hr>
 <div id="dirc">
 감독: ${moviedetail.mdir }
 개봉일: ${moviedetail.mdate_s }

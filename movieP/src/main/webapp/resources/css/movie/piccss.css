@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.container{
+	width: 470px;
+	height: 600px;
+}
+	.item{
+		width: 470px;
+		height: 600px;
+		vertical-align: center;	
+		object-fit: contain;
+	}
+	.item active{
+		width: 470px;
+		height: 600px;
+		vertical-align: center;	
+		object-fit: contain;
+	}
+	.item>img{
+		width: 470px;
+		height: 600px;
+	}
+	.item active>img{
+		width: 470px;
+		height: 600px;
+	}
+	.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    display: block;
+    max-width: none;
+    height: 100%;
+    object-fit: contain;
+	}
+	.carousel-control{
+		width: auto;
+	}
+	#pic{
+		font-size: 30px;
+	}
