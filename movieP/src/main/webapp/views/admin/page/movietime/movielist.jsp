@@ -120,11 +120,6 @@ hr{
 			<div class="movietimebox10">${a.movietitle }</div>
 		</c:forEach>
 		
-		<div class="both"></div>
-		<c:forEach var="a" items="${data.deletetime }">	
-			<div class="movietimebox10">${a.movietitle }</div>
-		</c:forEach>
-		
 	</c:if>
 </div>
 <hr>
