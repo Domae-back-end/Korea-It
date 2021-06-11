@@ -34,7 +34,7 @@ public class AdminController {
 
 	@ModelAttribute("submenu")
 	ArrayList<Menu> subMenu( ) {// 관리자 메인페이지 
-		System.out.println("메인페이지");
+		System.out.println("메인페이지");//
 		
 		
 		return null;
