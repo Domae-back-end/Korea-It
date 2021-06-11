@@ -14,7 +14,7 @@ h2 {text-align: left; font-size: 28px; margin-bottom: 30px; }
 #sideBar ul li {width: 170px; height: 60px; background: #F2F4F5; line-height: 60px; display: inline-block; box-sizing: border-box; border: 1px solid #d8d9db; }
 #sideBar ul li a {width: 170px; height: 60px; display: inline-block;}
 #sideBar ul li:last-child {border-radius: 0 0 10px 10px; }
-#sideBar ul li:nth-of-type(2) {background: white; }
+#sideBar ul li:nth-of-type(4) {background: white; }
 	
 /* content 속지 */
 .qna1 {width: 800px; height: 100px; background: blue; margin-bottom: 50px; border-radius: 25px; font-size: 25px; line-height: 100px;}
