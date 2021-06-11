@@ -28,7 +28,7 @@ public class Pageeditnoticemodify implements PageeditService {
 	public Object execute(Object obj) {//map
 		
 		HashMap<String, Object> orimap = (HashMap)obj;
-		ServiceNoticePageDTO npDTO=   (ServiceNoticePageDTO)orimap.get("npDTO");
+		ServiceNoticePageDTO npDTO = (ServiceNoticePageDTO)orimap.get("npDTO");
 		ServiceFullDTO sfDTO = (ServiceFullDTO)orimap.get("sfDTO");
 
 		

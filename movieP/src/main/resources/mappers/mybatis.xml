@@ -580,11 +580,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select count(*) from noticeboard
 		where noticecate like concat('%',#{sfDTO.noticecate},'%')
 	</select>
-
 	
-	<select id="movieTimefind" resultType="MovieTimeDTO"
-		parameterType="java.lang.String">
-		select * from movietime where date_format(reg_date,'%Y-%m-%d') = #{search}
+	<!-- 어드민 메인 3개만가져오기 (1대1문의) -->
+	<select id="persview" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from personalqna
+		where persstate = '미답변'
+		limit 0,3
+	</select>
+	
+	<!-- 어드민 메인 3개만가져오기 (공지사항) -->
+	<select id="notiview" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from noticeboard
+		order by noticeindex desc
+		limit 0,3
 	</select>
 
 
@@ -593,6 +601,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 
 
+
+
+
+
+
+
+
+
+
+
+	
+	<select id="movieTimefind" resultType="MovieTimeDTO"
+		parameterType="java.lang.String">
+		select * from movietime where date_format(reg_date,'%Y-%m-%d') = #{search}
+	</select>
 
 	<sql id="checkform">
 
@@ -1023,8 +1046,7 @@ WHERE m_index = #{m_index};
 	<!-- FAQ    -->	
 	<!--  -->
 	<!--자찾질 가져오기 -->
-	<select id="faqtotalCnt" resultType="java.lang.Integer"
-		parameterType="HashMap">
+	<select id="faqtotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from basicqna
 		<include refid="searchGO" />
 	</select>
@@ -1037,8 +1059,7 @@ WHERE m_index = #{m_index};
 		</if>
 	</sql>
 	
-	<select id="getfaq" resultType="ServiceFullDTO"
-		parameterType="HashMap">
+	<select id="getfaq" resultType="ServiceFullDTO" parameterType="HashMap">
 		select * from basicqna 
 		
 		<include refid="searchGO" />
@@ -1048,8 +1069,7 @@ WHERE m_index = #{m_index};
 	</select>
 	
 	
-	<select id="detailfaq" resultType="ServiceFullDTO"
-		parameterType="ServiceFullDTO">
+	<select id="detailfaq" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
 		select * from basicqna where bqindex = #{bqindex}
 	</select>
 	<!--  -->
@@ -1074,6 +1094,11 @@ WHERE m_index = #{m_index};
 	
 	<select id="searchfaq" resultType="java.lang.String">
 		select bqcont, bqtitle from basicqna where bqindex='${bqindex}'
+	</select>
+	
+	<select id="faqview" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from basicqna order by viewcnt desc
+		limit 0,3
 	</select>
 	
 	

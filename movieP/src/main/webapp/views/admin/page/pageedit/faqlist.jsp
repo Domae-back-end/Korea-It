@@ -47,11 +47,10 @@ $(function() {
 			<table class="table table-striped">
 				 <thead>
 					<td colspan="5" style="text-align: right">
-						<a href="faqinsert">글쓰기</a>
+						<a href="faqinsert?page=${data.pdto.page}">글쓰기</a>
 					</td>
 				</thead>
 				<tr>
-					<!-- <td><input type="checkbox" name="allChk" id="allChk"/> 번호</td>  -->
 					<td>번호</td>
 					<td>분류</td>
 					<td>제목</td>
@@ -63,7 +62,7 @@ $(function() {
 					<td>${no.index+1 }</td>
 					<td>${faqDTO.bqcate }</td>
 					<td style="border: 1px solid;">
-					<a href="faqdetail?bqindex=${faqDTO.bqindex }&pageIN=${data.pdto.page}">${faqDTO.bqtitle }</a></td>
+					<a href="faqdetail?bqindex=${faqDTO.bqindex }&page=${data.pdto.page}">${faqDTO.bqtitle }</a></td>
 					<td>${faqDTO.bqcontbr }</td>
 					<td>${faqDTO.viewcnt }</td>
 				</tr>

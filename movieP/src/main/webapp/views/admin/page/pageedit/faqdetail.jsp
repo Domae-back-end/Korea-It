@@ -12,7 +12,7 @@ function deleteGo(){
 }
 
 function modifyGo(){
-		frm.action="faqmodify"
+		frm.action="faqmodify?bqindex=${data.sfDTO.bqindex}&page=${data.npDTO.page}"
 		frm.submit()
 }
 </script>
@@ -20,26 +20,28 @@ function modifyGo(){
 <body>
 <h1>FAQ_Detail</h1>
 <form action="/admin/pageedit/faqdetail" method="post" name="frm">
-<input type="hidden" name="bqindex" value="${data.bqindex }">
-<input type="hidden" name="pageIN" value="${pdto.page }">
+<input type="hidden" name="bqindex" value="${data.sfDTO.bqindex }">
+<input type="hidden" name="page" value="${data.npDTO.page }">
 	<table class="table table-striped">
 		<tr>
+			<td>ID</td>
 			<td>카테고리</td>
 			<td>조회수</td>
 			<td>제목</td>
 			<td>내용</td>
 		</tr>
 		<tr>
-			<td>${data.bqcate }</td>
-			<td>${data.viewcnt }</td>
-			<td>${data.bqtitle }</td>
-			<td>${data.bqcontbr }</td>
+			<td>${data.sfDTO.bqindex }</td>
+			<td>${data.sfDTO.bqcate }</td>
+			<td>${data.sfDTO.viewcnt }</td>
+			<td>${data.sfDTO.bqtitle }</td>
+			<td>${data.sfDTO.bqcontbr }</td>
 		</tr>
 		<tr>
-			<td colspan="4" align="right">
+			<td colspan="5" align="right">
 				<input type="button" onclick="modifyGo()" value="수정" />
 				<input type="button" onclick="deleteGo()" value="삭제" />
-				<a href="faqlist?bqindex=${data.bqindex}&pageIN=${param.page}">뒤로</a>
+				<a href="faqlist?bqindex=${data.sfDTO.bqindex}&page=${data.npDTO.page}">뒤로</a>
 			</td>
 		</tr>
 	</table>

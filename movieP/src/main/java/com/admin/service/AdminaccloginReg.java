@@ -22,7 +22,7 @@ public class AdminaccloginReg implements Admincoreservice {
 
 
 	@Override
-	public Object execute(Map<String, Object> obj) {
+	public Object execute(HashMap<String, Object> obj) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> orimap = (HashMap)obj;
 		HttpServletRequest request=   (HttpServletRequest)orimap.get("request");

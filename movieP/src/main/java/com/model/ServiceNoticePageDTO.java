@@ -137,7 +137,7 @@ public class ServiceNoticePageDTO {
 	}
 	
 	public void persnew(DbMapper dm, HashMap<String, Object> map) { //어드민 미답변 리스트보기
-		limit = 2;
+		limit = 11;
 		start = (page - 1) * limit;
 
 		ttt = dm.perstotalCnt(map);

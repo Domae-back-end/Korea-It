@@ -50,7 +50,7 @@ public class AdminAccountController {
 		System.out.println("adacDTO=="+adacDTO);
 		Admincoreservice sr = pr.getContext().getBean("adminacc"+service,Admincoreservice.class);		
 				// loginReg  logout
-		Map<String, Object> obj= new HashMap<String, Object>();
+		HashMap<String, Object> obj= new HashMap<String, Object>();
 		obj.put("adacDTO", adacDTO);
 		obj.put("request", request);
 		obj.put("response",response);

@@ -4,33 +4,30 @@ import java.util.HashMap;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.model.AdminListDTO;
 import com.model.DbMapper;
 import com.model.ServiceFullDTO;
 import com.model.ServiceNoticePageDTO;
 @Service
-public class Pageeditfaqdetail implements  PageeditService {
-
+public class Pageeditfaqview implements SalesService, PageeditService {
 	@Resource
 	DbMapper db;
-
+	
+	Logger logger = LoggerFactory.getLogger(getClass());
 	@Override
 	public Object execute(Object obj) {
-
+		
 		HashMap<String, Object> orimap = (HashMap) obj;		
 		ServiceFullDTO sfDTO= (ServiceFullDTO)orimap.get("sfDTO");
-		ServiceNoticePageDTO npDTO = (ServiceNoticePageDTO)orimap.get("npDTO");
 		
+		HashMap<String, Object> result = new HashMap<String, Object>();	
+		result.put("sfdto",sfDTO);
 		
-		
-		
-		db.addcntfaq(sfDTO);
-		HashMap<String, Object> res = new HashMap<>();		
-		res.put("sfDTO", db.detailfaq(sfDTO));
-		res.put("npDTO", npDTO);
-		
-		return res;
+		return result;
 	}
 
 }

@@ -23,6 +23,7 @@ public class PageeditfaqinsertReg implements PageeditService {
 		System.out.println("pageeditfaqinsertReg");
 		HashMap<String, Object> map = (HashMap) obj;		
 		ServiceFullDTO sfDTO = (ServiceFullDTO) map.get("sfDTO");
+		
 		System.out.println(sfDTO);
 		db.insertfaq(sfDTO);
 		
