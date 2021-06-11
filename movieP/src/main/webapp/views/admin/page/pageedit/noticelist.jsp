@@ -11,17 +11,27 @@
 	* {padding: 0px; margin: 0px; }
 	ul, li {text-decoration: none; list-style: none; }
 	a {text-decoration: none; }
-	
-	/* 나의속성 어디에..? */
+
 	
 	/* 공지테이블 */
 	.td1 {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
+	.td1 tr:nth-of-type(1)>td a, 
+	.td1 tr:nth-of-type(1)>td button {width: 60px; height: 30px; line-height: 30px; display: inline-block;
+									text-align: center; border: none; border-radius: 5px; background: #dbdbdb; color: black; }
+	.td1 tr:nth-of-type(1)>td a:hover {text-decoration: underline; color: black; }
+	.td1 tr:nth-of-type(1)>td button:hover {text-decoration: underline; color: black; }
+	
 	.td1 tr:nth-of-type(2)>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
+	.td1 tr td {height: 30px; }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(1) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(2) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(3) {width: 400px;  }
+	.td1 tr td:nth-of-type(3) {text-align: left;   }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(4) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(5) {width: 100px;  }
+	.td1 tr:last-of-type {height: 100px; }
+	
+	
 	
 </style>
 

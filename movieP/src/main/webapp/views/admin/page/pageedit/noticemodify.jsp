@@ -13,7 +13,24 @@
 	a {text-decoration: none; }
 	.clear {clear: both; }
 	
-	.notice_modi {background: yellow; }
+	.notice_modi { text-align: left;}
+	
+	.notice_modi tr td:nth-of-type(1) {width: 150px; padding: 5px; background: #F2F4F5;  }
+	.notice_modi tr td:nth-of-type(2) {width: 700px; padding: 5px; }
+	.notice_modi select {font-size: 16px; height: 30px; width: 200px; text-align: left;  border: 1px solid #d8d9db; outline: none; }
+	.notice_modi .title {width: 670px; font-size: 16px; height: 30px;  border: 1px solid #d8d9db; } 
+	.notice_modi textarea {width: 670px; font-size: 16px; height: 500px; resize: vertical; border: 1px solid #d8d9db; }
+	.notice_modi textarea:focus, .sub:focus, .title:focus, select:focus {border: 1px solid black; outline: none; }
+	
+	.sbm {width: 100px; height: 50px; line-height: 50px; font-size: 16px; background: #dbdbdb; color: black; 
+		margin: 50px 0; text-align: center; border: none; border-radius: 5px; display: inline-block; }
+	.sbm:hover {text-decoration: none; color: black;  }
+	
+	
+	
+	
+	
+	
 	
 </style>
 <title>asdf</title>
@@ -48,9 +65,9 @@
 					<td><textarea name="noticecont" cols="30" rows="5" id="contG">${data.now.noticecont }</textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2" style="text-align: center;">
+					<td colspan="2" style="text-align: center; background: none; border-bottom: none; ">
 						<input type="submit" value="수정" class="sbm"/>
-						<a href="noticelist?page=${data.npDTO.page }">메인으로</a><!-- ${data} -->
+						<a href="noticelist?page=${data.npDTO.page }" class="sbm">메인으로</a><!-- ${data} -->
 					</td>
 				</tr>
 			</table>

@@ -32,7 +32,7 @@ h2 {text-align: left; font-size: 28px; margin-bottom: 30px; }
 .detail_bot tr:nth-of-type(2) td:nth-of-type(2) {border-bottom: 1px solid #d8d9db; }
 .detail_bot tr:nth-of-type(2) td:nth-of-type(1) {border-bottom: 1px solid #d8d9db; }
 
-.detail_bot>table a {width: 650px; height: 45px; line-height: 40px; display: inline-block; }
+.detail_bot>table a {width: 650px; height: 45px; line-height: 45px; display: inline-block; }
 
 .back_list>a {width: 100px; height: 50px; font-size: 16px; line-height: 50px; border: 1.5px solid #1761f5; display: inline-block; text-align: center; border-radius: 5px;  }
 .back_list {width: 100px; margin: 100px auto; }
