@@ -152,7 +152,7 @@
 						<td>${no.index+1 }</td>
 						<td>${notiDTO.noticecateKr }</td>
 						<td>
-							<a href="admin/persqna/persqnadetail?page=${data.snpdto.page}&persindex=${notiDTO.noticeindex }">${notiDTO.noticetitle }</a>
+							<a href="admin/pageedit/noticedetail?page=${data.snpdto.page}&noticeindex=${notiDTO.noticeindex }">${notiDTO.noticetitle }</a>
 						</td>
 						<td>${notiDTO.noticeview}</td>
 					</tr>

@@ -18,7 +18,7 @@
 	.td1 tr:nth-of-type(1)>td a, 
 	.td1 tr:nth-of-type(1)>td button {width: 60px; height: 30px; line-height: 30px; display: inline-block;
 									text-align: center; border: none; border-radius: 5px; background: #dbdbdb; color: black; }
-	.td1 tr:nth-of-type(1)>td a:hover {text-decoration: underline; color: black; }
+	.td1 tr:nth-of-type(1)>td a:hover, 
 	.td1 tr:nth-of-type(1)>td button:hover {text-decoration: underline; color: black; }
 	
 	.td1 tr:nth-of-type(2)>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }

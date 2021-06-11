@@ -14,8 +14,11 @@
 	
 	.clear {clear: both; }
 	
-	.notice_detail {}
-	
+	.td1 tr:nth-of-type(1)>td a, 
+	.td1 tr:nth-of-type(1)>td button {width: 60px; height: 30px; line-height: 30px; display: inline-block;
+									text-align: center; border: none; border-radius: 5px; background: #dbdbdb; color: black; }
+	.td1 tr:nth-of-type(1)>td a:hover, 
+	.td1 tr:nth-of-type(1)>td button:hover {text-decoration: underline; color: black; }
 	
 	.detail_top{padding: 5px 0; border-bottom: 1px solid black; background: #f7f8f9;  }
 	.detail_top>ul>li {text-align: left; margin: 5px 0; padding: 5px;   }
