@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.model.DbMapper;
 import com.model.ServiceFullDTO;
+import com.model.ServiceNoticePageDTO;
 @Service
 public class Pageeditfaqmodify implements  PageeditService {
 	
@@ -25,7 +26,13 @@ public class Pageeditfaqmodify implements  PageeditService {
 
 		HashMap<String, Object> orimap = (HashMap) obj;		
 		ServiceFullDTO sfDTO= (ServiceFullDTO)orimap.get("sfDTO");
-		return db.detailfaq(sfDTO);
+		ServiceNoticePageDTO npDTO = (ServiceNoticePageDTO)orimap.get("npDTO");
+		
+		HashMap<String, Object> res = new HashMap<>();
+		res.put("sfDTO", db.detailfaq(sfDTO));
+		res.put("npDTO", npDTO);
+		
+		return res;
 	}
 
 }

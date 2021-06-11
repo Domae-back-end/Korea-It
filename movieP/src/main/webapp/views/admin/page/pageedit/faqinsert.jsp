@@ -9,6 +9,7 @@
 <body>
 <h1>자찾질 글쓰기</h1>
 <form action="/admin/pageedit/faqinsertReg" method="post">
+<input type="hidden" name="page" value="${data.npDTO.page }">
 			질문카테고리 
 			<select name="bqcate">
 				<option value="영화/예매"> 영화/예매    </option>
@@ -20,11 +21,9 @@
 			질문 제목 <input type="text" name="bqtitle" />
 			<br>
 			질문 내용 <textarea name="bqcont" rows="5" cols="30"></textarea>
-			<br>
-			안내 링크 2<input type="text" name="faqurl1" />
-			<br>
-			안내 링크 2<input type="text" name="faqurl2" />
+			
 <input type="submit" value="등록하기"/>
+<a href="faqlist?page=${data.npDTO.page}">뒤로</a>
 </form>
 
 
