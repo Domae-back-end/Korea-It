@@ -16,7 +16,7 @@ public class Persqnapersqnanew implements PageeditService {
 	DbMapper db;
 
 	@Override
-	public Object execute(Object obj) {// map
+	public Object execute(Object obj) {
 		HashMap<String, Object> orimap = (HashMap) obj;
 		ServiceNoticePageDTO snpdto = (ServiceNoticePageDTO) orimap.get("snpdto");
 		ServiceFullDTO sfdto = (ServiceFullDTO) orimap.get("sfdto");

@@ -580,11 +580,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select count(*) from noticeboard
 		where noticecate like concat('%',#{sfDTO.noticecate},'%')
 	</select>
-
 	
-	<select id="movieTimefind" resultType="MovieTimeDTO"
-		parameterType="java.lang.String">
-		select * from movietime where date_format(reg_date,'%Y-%m-%d') = #{search}
+	<!-- 어드민 메인 3개만가져오기 (1대1문의) -->
+	<select id="persview" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from personalqna
+		where persstate = '미답변'
+		limit 0,3
+	</select>
+	
+	<!-- 어드민 메인 3개만가져오기 (공지사항) -->
+	<select id="notiview" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from noticeboard
+		order by noticeindex desc
+		limit 0,3
 	</select>
 
 
@@ -593,6 +601,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 
 
+
+
+
+
+
+
+
+
+
+
+	
+	<select id="movieTimefind" resultType="MovieTimeDTO"
+		parameterType="java.lang.String">
+		select * from movietime where date_format(reg_date,'%Y-%m-%d') = #{search}
+	</select>
 
 	<sql id="checkform">
 

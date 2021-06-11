@@ -197,6 +197,10 @@ public interface DbMapper {
    List<ServiceFullDTO> noticelistcate(HashMap<String, Object> map); //공지 카테별
    int noticecatetotalCnt(HashMap<String, Object> map); //공지 카테카운트
    
+   List<ServiceFullDTO> persview(HashMap<String, Object> map); //어드민메인 3개만보기 (1대1
+   List<ServiceFullDTO> notiview(HashMap<String, Object> map); //어드민메인 3개만보기 (공지
+
+   
    
    
    

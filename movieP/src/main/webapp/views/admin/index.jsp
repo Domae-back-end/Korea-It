@@ -76,9 +76,7 @@
 			<c:choose>
 				<c:when test="${not empty submenu}">
 					width:900px;
-
 				</c:when>
-
 			</c:choose>
 			">
 				<jsp:include page="page/${bodyurl }.jsp" />

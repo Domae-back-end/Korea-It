@@ -75,7 +75,7 @@
 				<td>${nsfdto.perscateKr }</td>
 				<td><a href="javascript:detailGo(${nsfdto.persindex })">${nsfdto.perstitle }</a></td>
 				<td>
-					<fmt:formatDate value="${nsfdto.persqtime}" type="both" pattern="yyy.MM.dd"/>					
+					<fmt:formatDate value="${nsfdto.persqtime}" type="both" pattern="yyy.MM.dd"/>
 				</td>
 				<td>${nsfdto.persid }</td>
 				<td>${nsfdto.persstate }</td>

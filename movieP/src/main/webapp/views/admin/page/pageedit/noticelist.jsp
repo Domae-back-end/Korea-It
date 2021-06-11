@@ -161,7 +161,7 @@
 			<c:forEach items="${data.sfdto }" var="nDTO" varStatus="no" >
 				<tr>
 					<td><input type="checkbox" name="postno" class="postno" value="${nDTO.noticeindex }"/> ${nDTO.noticeindex }</td>
-					<td>${nDTO.noticecate }</td>
+					<td>${nDTO.noticecateKr }</td>
 					<td><a href="javascript:detailGo(${nDTO.noticeindex })">${nDTO.noticetitle }</a></td>
 					<td>
 						<fmt:formatDate value="${nDTO.noticetime}" type="both" pattern="yyy.MM.dd"/>					
