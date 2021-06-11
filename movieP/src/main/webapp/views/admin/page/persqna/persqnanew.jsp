@@ -14,13 +14,18 @@
 	
 	/* 공지테이블 */
 	.td1 {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
+	.td1 tr td {height: 30px; }
 	.td1 tr:nth-of-type(1)>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
 	.td1 tr:nth-of-type(1)>td:nth-of-type(1) {width: 50px;  }
 	.td1 tr:nth-of-type(1)>td:nth-of-type(2) {width: 100px;  }
 	.td1 tr:nth-of-type(1)>td:nth-of-type(3) {width: 350px;  }
+	.td1 tr td:nth-of-type(3) {text-align: left;   }
 	.td1 tr:nth-of-type(1)>td:nth-of-type(4) {width: 100px;  }
 	.td1 tr:nth-of-type(1)>td:nth-of-type(5) {width: 100px;  }
 	.td1 tr:nth-of-type(1)>td:nth-of-type(6) {width: 100px;  }
+	
+	.td1 tr:last-of-type {height: 100px; }
+
 </style>
 </head>
 <script>

@@ -41,7 +41,7 @@
 
 .containerr {
 	width: 1000px;
-	height: 90%;
+	/* height: 90%; */
 	margin: 0px;
 	padding: 0px;
 	display: flex;

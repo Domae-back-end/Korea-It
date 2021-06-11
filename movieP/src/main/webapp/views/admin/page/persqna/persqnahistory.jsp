@@ -16,14 +16,20 @@
 	
 	/* 공지테이블 */
 	.td1 {font-size: 16px; border-top: 1px solid gray; border-bottom: 1px solid gray; border-spacing: 0; }
+	.td1 tr td {padding: 5px 0; }
 	.td1 tr:nth-of-type(1)>td {height: 50px; }
+	.td1 tr:nth-of-type(1)>td a {width: 80px; height: 30px; line-height: 30px; display: inline-block;
+								text-align: center; border: none; border-radius: 5px; background: #dbdbdb; color: black;}
 	.td1 tr:nth-of-type(2)>td {background: yellow; font-weight: bold; border-bottom: 1px solid gray; }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(1) {width: 50px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(2) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(3) {width: 350px;  }
+	.td1 tr td:nth-of-type(3) {text-align: left; }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(4) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(5) {width: 100px;  }
 	.td1 tr:nth-of-type(2)>td:nth-of-type(6) {width: 100px;  }
+	.td1 tr:last-of-type {height: 100px; }
+	
 </style>
 </head>
 <script>
