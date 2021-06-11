@@ -42,7 +42,7 @@ public class ServiceCserviceHome implements ServiceCservice {//빈 창고에 등
 		
 		ServiceNotiListDTO res= new ServiceNotiListDTO();
 		
-		res.setSfdto(db.noticelist(map));// sfdto 는 리스트.. 흠?
+		res.setSfdto(db.noticelist(map));
 		res.setOnesfdto(sfDTO);
 		res.setSnpdto(npDTO);
 

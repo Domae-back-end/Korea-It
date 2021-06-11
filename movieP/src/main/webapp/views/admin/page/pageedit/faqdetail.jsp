@@ -24,18 +24,19 @@ function modifyGo(){
 <input type="hidden" name="page" value="${data.npDTO.page }">
 	<table class="table table-striped">
 		<tr>
-			<td>ID</td>
-			<td>카테고리</td>
-			<td>조회수</td>
-			<td>제목</td>
-			<td>내용</td>
+			<td>ID</td><td>${data.sfDTO.bqindex }</td>
 		</tr>
 		<tr>
-			<td>${data.sfDTO.bqindex }</td>
-			<td>${data.sfDTO.bqcate }</td>
-			<td>${data.sfDTO.viewcnt }</td>
-			<td>${data.sfDTO.bqtitle }</td>
-			<td>${data.sfDTO.bqcontbr }</td>
+			<td>카테고리</td><td>${data.sfDTO.bqcate }</td>
+		</tr>
+		<tr>
+			<td>조회수</td><td>${data.sfDTO.viewcnt }</td>
+		</tr>
+		<tr>
+			<td>제목</td><td>${data.sfDTO.bqtitle }</td>
+		</tr>
+		<tr>
+			<td>내용</td><td>${data.sfDTO.bqcontbr }</td>
 		</tr>
 		<tr>
 			<td colspan="5" align="right">

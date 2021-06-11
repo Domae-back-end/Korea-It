@@ -20,7 +20,7 @@ $(function() {
 		<li><a href="serviceHome">고객센터</a></li>
 		<li><a href="serviceHome">고객센터 홈</a></li>
 		<c:choose>
-			<c:when test="${empty data.onesfdto.persid }">
+			<c:when test="${empty sessionScope.sessionId }">
 				<li><a href="../../member/login/loginForm">상담내역 확인</a></li>
 			</c:when>
 			<c:otherwise>
@@ -29,7 +29,7 @@ $(function() {
 		</c:choose>
 		<li><a href="serviceQna">자주 묻는 질문</a></li>
 		<c:choose>
-			<c:when test="${empty data.onesfdto.persid }">
+			<c:when test="${empty sessionScope.sessionId }">
 				<li><a href="../../member/login/loginForm">1대1 문의</a></li>
 			</c:when>
 			<c:otherwise>
