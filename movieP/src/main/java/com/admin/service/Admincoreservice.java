@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface Admincoreservice {
 
-	HashMap<String, Object> execute(HashMap<String, Object> obj);
+	Object execute(HashMap<String, Object> obj);
 
 	
 }

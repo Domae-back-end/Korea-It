@@ -60,14 +60,14 @@ public class AdminController {
 	}
 	
 	@ModelAttribute("data")
-	HashMap<String, Object> mainpagedata( ) {
+	Object mainpagedata( ) {
 		System.out.println("메인페이지");
 		HashMap<String, Object> nomeaning= new HashMap<String, Object>();
 		Admincoreservice sr = pr.getContext().getBean("adminmainpageService",Admincoreservice.class);
 		Object result = sr.execute(nomeaning);
 		
 		
-		return sr.execute(nomeaning);
+		return result;
 	}
 	
 	
