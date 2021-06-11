@@ -3,6 +3,7 @@ package com.controllers;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.admin.service.Admincoreservice;
+import com.admin.service.Provider;
 import com.model.Menu;
 
 @Controller
@@ -20,7 +23,8 @@ import com.model.Menu;
 public class AdminController {
 	
 	Logger logger = LoggerFactory.getLogger(getClass());
-	
+	@Resource
+	Provider pr;
 	
 	@ModelAttribute("bodyurl")
 	String bodypageUrl() {
@@ -29,23 +33,23 @@ public class AdminController {
 	}
 
 	@ModelAttribute("submenu")
-	ArrayList<Menu> subMenu( ) {
+	ArrayList<Menu> subMenu( ) {// 관리자 메인페이지 
 		System.out.println("메인페이지");
 		
 		
 		return null;
 	}
 	
-//	@ModelAttribute("newqna") //1번째 div박스.
-//	String newask( ) {
-//		System.out.println("메인페이지");
-//		
-//		
-//		return "새로운질문들3개";
-//	}
-	
-	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@ModelAttribute("adminmainpage_sales") // 2번째 div박스.
 	String latestsales( ) {
 		
@@ -55,23 +59,16 @@ public class AdminController {
 		return "매출 들어갈 자리임";
 	}
 	
-	
-//	@ModelAttribute("hotfaq") //3번째 div박스.
-//	String popularfaq( ) {
-//		System.out.println("메인페이지");
-//		
-//		
-//		return "조회수핫한자찾질3개";
-//	}
+	@ModelAttribute("data")
+	HashMap<String, Object> mainpagedata( ) {
+		System.out.println("메인페이지");
+		HashMap<String, Object> nomeaning= new HashMap<String, Object>();
+		Admincoreservice sr = pr.getContext().getBean("adminmainpageService",Admincoreservice.class);
+		Object result = sr.execute(nomeaning);
 		
-	
-//	@ModelAttribute("recentnotice") //4번째 div박스.
-//	String hotnotice( ) {
-//		System.out.println("메인페이지");
-//		
-//		
-//		return "최근공지사항3개";
-//	}
+		
+		return sr.execute(nomeaning);
+	}
 	
 	
 	

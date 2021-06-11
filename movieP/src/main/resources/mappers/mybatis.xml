@@ -1023,8 +1023,7 @@ WHERE m_index = #{m_index};
 	<!-- FAQ    -->	
 	<!--  -->
 	<!--자찾질 가져오기 -->
-	<select id="faqtotalCnt" resultType="java.lang.Integer"
-		parameterType="HashMap">
+	<select id="faqtotalCnt" resultType="java.lang.Integer" parameterType="HashMap">
 		select count(*) from basicqna
 		<include refid="searchGO" />
 	</select>
@@ -1037,8 +1036,7 @@ WHERE m_index = #{m_index};
 		</if>
 	</sql>
 	
-	<select id="getfaq" resultType="ServiceFullDTO"
-		parameterType="HashMap">
+	<select id="getfaq" resultType="ServiceFullDTO" parameterType="HashMap">
 		select * from basicqna 
 		
 		<include refid="searchGO" />
@@ -1048,8 +1046,7 @@ WHERE m_index = #{m_index};
 	</select>
 	
 	
-	<select id="detailfaq" resultType="ServiceFullDTO"
-		parameterType="ServiceFullDTO">
+	<select id="detailfaq" resultType="ServiceFullDTO" parameterType="ServiceFullDTO">
 		select * from basicqna where bqindex = #{bqindex}
 	</select>
 	<!--  -->
@@ -1074,6 +1071,11 @@ WHERE m_index = #{m_index};
 	
 	<select id="searchfaq" resultType="java.lang.String">
 		select bqcont, bqtitle from basicqna where bqindex='${bqindex}'
+	</select>
+	
+	<select id="faqview" resultType="ServiceFullDTO" parameterType="HashMap">
+		select * from basicqna order by viewcnt desc
+		limit 0,3
 	</select>
 	
 	

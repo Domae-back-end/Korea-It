@@ -51,7 +51,6 @@ $(function() {
 					</td>
 				</thead>
 				<tr>
-					<!-- <td><input type="checkbox" name="allChk" id="allChk"/> 번호</td>  -->
 					<td>번호</td>
 					<td>분류</td>
 					<td>제목</td>

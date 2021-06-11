@@ -228,6 +228,7 @@ public interface DbMapper {
    int modifyfaq(ServiceFullDTO sfDTO);
    int deletefaq(ServiceFullDTO sfDTO);
    ServiceFullDTO detailfaq(ServiceFullDTO sfDTO);
+   List<ServiceFullDTO> faqview(HashMap<String, Object> map);
    void addcntfaq(ServiceFullDTO sfDTO);
    int updatepostername(MovieInfoDTO mdto);
    

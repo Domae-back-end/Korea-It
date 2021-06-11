@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +71,31 @@
               <h3 class="mb-0">
                 <a class="text-dark" href="#">view젤높은거</a>
               </h3>
-              
+              <table class="table table-striped">
+              <thead>
+	              <td colspan="4" align="right">
+	                <a href="admin/pageedit/faqlist">더보기</a>
+	              </td>
+              </thead>
+              <tr>
+					<td>번호</td>
+					<td>분류</td>
+					<td>제목</td>
+					<td>조회수</td>
+				</tr>
+              <c:forEach items="${data.sfview }" var="faqDTO" varStatus="no">
+				<tr id="${faqDTO.bqindex }">
+					<td>${no.index+1 }</td>
+					<td>${faqDTO.bqcate }</td>
+					<td style="border: 1px solid;">
+					<a href="faqdetail?bqindex=${faqDTO.bqindex }&page=${data.pdto.page}">${faqDTO.bqtitle }</a></td>
+					<td>${faqDTO.viewcnt }</td>
+				</tr>
+				<tr>
+				<td colspan="3" id="${faqDTO.bqindex }" style="display: none;">${faqDTO.bqcont }</td> 
+				</tr>
+			</c:forEach>
+			</table>
            <!--    <div class="mb-1 text-muted">Nov 12</div>
               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
               <a href="#">Continue reading</a> -->
