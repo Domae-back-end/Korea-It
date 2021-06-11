@@ -88,7 +88,7 @@
 					<td>${no.index+1 }</td>
 					<td>${faqDTO.bqcate }</td>
 					<td style="border: 1px solid;">
-					<a href="faqdetail?bqindex=${faqDTO.bqindex }&page=${data.pdto.page}">${faqDTO.bqtitle }</a></td>
+					<a href="admin/pageedit/faqdetail?bqindex=${faqDTO.bqindex }&page=${data.pdto.page}">${faqDTO.bqtitle }</a></td>
 					<td>${faqDTO.viewcnt }</td>
 				</tr>
 				<tr>
