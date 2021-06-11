@@ -1,0 +1,18 @@
+* {padding: 0px; margin: 0px; font-size: 16px;  }
+ul, li {text-decoration: none; list-style: none; }
+a {text-decoration: none; color: black; }
+a:hover {text-decoration: none; color: black; }
+
+#sideBar {width: 170px; height: 500px; float: left; position: relative; }
+#content {width: 800px; position: relative; float: left; left: 30px;  }
+.clear {clear: both; }
+
+h2 {text-align: left; font-size: 28px; margin-bottom: 30px; }
+
+#sideBar ul li:nth-of-type(1) {height: 100px; line-height: 100px; background: #444; border: 1px solid #444; border-radius: 10px 10px 0 0; }
+#sideBar ul li:nth-of-type(1) a {font-size: 20px; height: 100px; color: white; }
+#sideBar ul li {width: 170px; height: 60px; background: #F2F4F5; line-height: 60px; display: inline-block; box-sizing: border-box; border: 1px solid #d8d9db; }
+#sideBar ul li a {width: 170px; height: 60px; display: inline-block;}
+#sideBar ul li:last-child {border-radius: 0 0 10px 10px; }
+#sideBar ul li:nth-of-type(2) {background: white; }
+	

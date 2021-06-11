@@ -24,5 +24,4 @@ public class ServiceNotiListDTO {
 	ServiceFullDTO now;
 	ServiceNoticePageDTO npDTO;
 	
-	
 }
