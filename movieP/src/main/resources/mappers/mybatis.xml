@@ -1064,7 +1064,7 @@ WHERE m_index = #{m_index};
 		
 		<include refid="searchGO" />
 			
-		order by bqindex asc
+		order by bqindex desc
 		limit #{npDTO.start},#{npDTO.limit}
 	</select>
 	
