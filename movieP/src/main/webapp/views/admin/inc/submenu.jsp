@@ -15,9 +15,9 @@
 
 			<c:forEach var="i" items="${submenu }">
 
-				<a href="${i.url}">${i.title }</a>
-				<br>
-
+			<a href="${i.url}"><button class="mb-3 btn btn-secondary col-md-12">${i.title }
+			
+						</button>	</a>
 			</c:forEach>
 		</c:when>
 

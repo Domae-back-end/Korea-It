@@ -30,8 +30,10 @@
 	height: 30px;
 }
 .seemore{
+	position: relative;
+	top:12px;
 	width: 300px;
-	margin-left:450px;
+	left:450px;
 	text-align: right;
 }
 .mycinemaRecordouter{
@@ -55,6 +57,9 @@
 }
 .saleslink{
 	color: #00f;
+}
+.puinforText{
+	margin-bottom:5px;
 }
 #writeouter{
 	width: 740px;
@@ -102,7 +107,7 @@
 }
 .purchasespaceButt{
 	position : relative;
-	top: -10px;
+	top: -20px;
 	text-align: right;
 }
 .modal-header{
@@ -149,4 +154,8 @@
 	position:relative;
 	top:10px;
 	float: none;
+}
+#mycinemaQnaouter{
+	position:relative;
+	top:13px;
 }

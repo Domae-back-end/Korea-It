@@ -3,6 +3,15 @@
  */
 $(function() {
 	
+	if(document.getElementById("userid") !=null){
+	
+		if(document.getElementById("userid").value == ''){
+			alert("로그인 후 이용해주세요.")
+			location.href = '/user/mainpage/main'
+		}
+	
+	}
+	
 	$(document).on("click", ".qwer", function(){
 	 	
 	 	var ddd= $(this).attr("dd");
@@ -110,7 +119,7 @@ function purchaselistChange(list){
 					
 					var tt ="<div class='fff'><div class = 'purchaseMainouter'>"
 					
-					tt+= "<a href='/user/movie/moviedetail?sub=review&ind="+data.purchase[j].m_index+"'>"
+					tt+= "<a href='/user/movie/moviedetail?sub=info&ind="+data.purchase[j].m_index+"'>"
 					tt+="<div class='purchaseimg'>"
 					
 					if(data.purchase[j].imgname!=null){
@@ -145,7 +154,7 @@ function purchaselistChange(list){
 						
 					tt+="</div></div></div>"
 					
-					$("#recordpurchase").append(tt)	
+					$("#aaa").append(tt)	
 					
 				}
 					
@@ -249,7 +258,7 @@ function purchasCancelepageChange(i){
 					tt+="</div>"
 					
 				
-					$("#recordCpurchase").append(tt)	
+					$("#CP").append(tt)	
 					
 				}
 					

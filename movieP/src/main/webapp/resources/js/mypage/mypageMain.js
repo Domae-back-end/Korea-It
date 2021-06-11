@@ -2,7 +2,7 @@
  * 
  */
  $(function() {
- 
+ 	
  	$('.sessnull').click(function(){
  		
  		if(document.getElementById('vv').value == ''){
@@ -44,7 +44,7 @@
  		
  		}else{
  			
- 			locaion.href = "/member/mypage/mypageMain"
+ 			location.href = "/member/mypage/mypageMain"
  		}
 
 	});

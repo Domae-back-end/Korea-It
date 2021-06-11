@@ -4,6 +4,14 @@
 var emailCh = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
 $(function() {
 
+	if(document.getElementById("userid") !=null){
+		
+		if(document.getElementById("userid").value == ''){
+			alert("로그인 후 이용해주세요.")
+			location.href = '/user/mainpage/main'
+		}
+	}
+	
 	$("#useremail").on("propertychange change keyup paste input", function(){	
 		
 		var regexp = /[^a-zA-Z0-9_.@-]/gi

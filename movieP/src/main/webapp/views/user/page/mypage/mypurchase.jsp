@@ -10,16 +10,19 @@
 	<h3>예매내역</h3>
 	<input type="hidden" name="userid" id="userid" value="${sessionId }" />
 	<div class="purchouter">
+		<span class="purchPosition">
 		<input type="radio" name="moivepur" id="now" value="now" checked="checked" />예매내역
 		<input type="radio" name="moivepur" id="past" value="past"/>지난내역
 		<select id="moiverecord" name="moiverecord" disabled="disabled" ></select>
+		</span>
 		<input type="button" class="changeButt"  id="moiveButt" value="조회" disabled="disabled"  />
 	</div>
 	<div class="cimeminfor" id="recordpurchase">
+		<div id="aaa">
 		<div class="fff">
 			<c:forEach items="${memdata.purchase }" var ="pp" > 
 				<div class = "purchaseMainouter">
-					<a href="/user/movie/moviedetail?sub=review&ind=${pp.m_index }">
+					<a href="/user/movie/moviedetail?sub=info&ind=${pp.m_index }">
 						<div class="purchaseimg">
 							<c:choose>
 								<c:when test="${pp.imgname!=null }">
@@ -67,31 +70,35 @@
  
 			</c:forEach>
 		</div> 
-	</div>
-	<div id="pageRecord">
-		<div class="fff">
-			<c:if test="${memdata.pdto.startPage > 1}">
-		    	<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.pdto.startPage-1})" value="&lt" />
-			</c:if>
-		            
-			<c:forEach begin="${memdata.pdto.startPage}" end="${memdata.pdto.endPage}" step="1" var="i">
-				<c:choose>
-					<c:when test="${i == memdata.pdto.page}">
-						<input type="text" class="pagebtn_sel" value="${i }" readonly/>
-					</c:when>
-					<c:otherwise>
-						<input type="button" class="btnnn pagebtn" onclick="purchasepageChange(${i})" value="${i}" />
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-		            
-			<c:if test="${memdata.pdto.endPage < memdata.pdto.total}">
-		    	<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.pdto.endPage+1})" value="&gt" />
-			</c:if>
+		</div>
+		
+		<div id="pageRecord">
+			<div class="fff">
+				<c:if test="${memdata.pdto.startPage > 1}">
+			    	<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.pdto.startPage-1})" value="&lt" />
+				</c:if>
+			            
+				<c:forEach begin="${memdata.pdto.startPage}" end="${memdata.pdto.endPage}" step="1" var="i">
+					<c:choose>
+						<c:when test="${i == memdata.pdto.page}">
+							<input type="text" class="pagebtn_sel" value="${i }" readonly/>
+						</c:when>
+						<c:otherwise>
+							<input type="button" class="btnnn pagebtn" onclick="purchasepageChange(${i})" value="${i}" />
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			            
+				<c:if test="${memdata.pdto.endPage < memdata.pdto.total}">
+			    	<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasepageChange(${memdata.pdto.endPage+1})" value="&gt" />
+				</c:if>
+			</div>
 		</div>
 	</div>
 	
-	<h3>예매 취소내역</h3>
+	<h3>예매 취소내역</h3> 
+	<p class="ppSmall"><small>(상영일 기준 7일간 취소내역을 확인하실 수 있습니다.)</small></p>
+	
 	<div class="cimeminfor" id="recordCpurchase">
 		<div id="titleinner">
 			<div class="puchaseinner">취소일시</div>
@@ -99,6 +106,7 @@
 			<div class="puchaseinner">상영일시</div>
 			<div class="puchaseinner">취소금액</div>
 		</div>
+		<div id="CP">
 		<div class="CCC"> 
 		<c:forEach items="${memdata.cancel }" var ="pp">
 				<div>
@@ -109,27 +117,31 @@
 				</div>
 		</c:forEach>
 		</div>
+		</div>
+		
+		<div class="pageCP" id="pageCRecord">
+			<div class="CCC">
+				<c:if test="${memdata.cpdto.cstartPage > 1}">
+					<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasCancelepageChange(${memdata.cpdto.cstartPage-1})" value="&lt" />
+				</c:if>
+					            
+				<c:forEach begin="${memdata.cpdto.cstartPage}" end="${memdata.cpdto.cendPage}" step="1" var="i">
+					<c:choose>
+						<c:when test="${i == memdata.cpdto.cpage}">
+							<input type="text" class="pagebtn_sel" value="${i }" readonly/>
+						</c:when>
+						<c:otherwise>
+							<input type="button" class="btnnn pagebtn" onclick="purchasCancelepageChange(${i})" value="${i}" />
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+					            
+				<c:if test="${memdata.cpdto.cendPage < memdata.cpdto.ctotal}">
+					<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasCancelepageChange(${memdata.cpdto.cendPage+1})" value="&gt" />
+				</c:if>
+			</div>
+		</div>
 	</div>
-</div>
-<div id="pageCRecord">
-	<div class="CCC">
-		<c:if test="${memdata.cpdto.cstartPage > 1}">
-		    <input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasCancelepageChange(${memdata.cpdto.cstartPage-1})" value="&lt" />
-		</c:if>
-		            
-		<c:forEach begin="${memdata.cpdto.cstartPage}" end="${memdata.cpdto.cendPage}" step="1" var="i">
-			<c:choose>
-				<c:when test="${i == memdata.cpdto.cpage}">
-					<input type="text" class="pagebtn_sel" value="${i }" readonly/>
-				</c:when>
-				<c:otherwise>
-					<input type="button" class="btnnn pagebtn" onclick="purchasCancelepageChange(${i})" value="${i}" />
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		            
-		<c:if test="${memdata.cpdto.cendPage < memdata.cpdto.ctotal}">
-		    <input type="button" class="btnnn pagebtn pagebtn_lr" onclick="purchasCancelepageChange(${memdata.cpdto.cendPage+1})" value="&gt" />
-		</c:if>
-	</div>
+		
+	
 </div>

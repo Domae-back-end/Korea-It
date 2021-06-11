@@ -37,6 +37,7 @@
 			<div class="puchaseinner">작성일</div>
 			<div class="puchaseinner">답변일(답변상태)</div>
 		</div>
+		<div id="qqq">
 		<div class="fff">
 			<c:forEach items="${memdata.qna }" var ="pp" > 
 				<div class="puchaseinner">${pp.persid }</div>
@@ -45,28 +46,30 @@
 				<div class="puchaseinner">${pp.persatime }(${pp.persstate })</div>
 			</c:forEach>
 		</div> 
-	</div>
-	
-	<div id="pageRecord">
-		<div class="fff">
-			<c:if test="${memdata.pdto.startPage > 1}">
-	    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="qnapageChange(${memdata.pdto.startPage-1})" value="&lt" />
-			</c:if>
-	            
-			<c:forEach begin="${memdata.pdto.startPage}" end="${memdata.pdto.endPage}" step="1" var="i">
-				<c:choose>
-					<c:when test="${i == memdata.pdto.page}">
-						<input type="text" class="pagebtn_sel" value="${i }" pp="${i }" readonly/>
-					</c:when>
-					<c:otherwise>
-						<input type="button" class="btnnn pagebtn" onclick="qnapageChange(${i})" value="${i}" />
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-	            
-			<c:if test="${memdata.pdto.endPage < memdata.pdto.total}">
-	    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="qnapageChange(${memdata.pdto.endPage+1})" value="&gt" />
-			</c:if>
+		</div>
+		
+		<div id="pageRecord">
+			<div class="fff">
+				<c:if test="${memdata.pdto.startPage > 1}">
+		    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="qnapageChange(${memdata.pdto.startPage-1})" value="&lt" />
+				</c:if>
+		            
+				<c:forEach begin="${memdata.pdto.startPage}" end="${memdata.pdto.endPage}" step="1" var="i">
+					<c:choose>
+						<c:when test="${i == memdata.pdto.page}">
+							<input type="text" class="pagebtn_sel" value="${i }" pp="${i }" readonly/>
+						</c:when>
+						<c:otherwise>
+							<input type="button" class="btnnn pagebtn" onclick="qnapageChange(${i})" value="${i}" />
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+		            
+				<c:if test="${memdata.pdto.endPage < memdata.pdto.total}">
+		    		<input type="button" class="btnnn pagebtn pagebtn_lr" onclick="qnapageChange(${memdata.pdto.endPage+1})" value="&gt" />
+				</c:if>
+			</div>
 		</div>
 	</div>
+	
 </div>

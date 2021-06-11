@@ -21,6 +21,7 @@
 #recordpurchase{
 	height: 440px;
 	border: 0px;
+	margin-bottom: 80px;
 }
 .purchaseimg , .purchaseimg>img{
 	width:120px;
@@ -100,4 +101,25 @@ h4{
 	position:relative;
 	top:10px;
 	float: none;
+}
+.purchPosition{
+	position: relative;
+	top:6px;
+}
+#moiverecord{
+	height: 25px;
+}
+#recordCpurchase{
+	margin-top: -1px;
+	border-bottom:none;
+}
+.pageCP{
+	position: relative;
+	top:20px;
+}
+.ppSmall{
+	position: relative;
+	text-align:left;
+	top:-8px;
+	left: 30px;
 }

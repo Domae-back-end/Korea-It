@@ -10,7 +10,7 @@
 <c:forEach items="${movieactor }" var="n">
 	<% cnt = cnt+1; %>
 </c:forEach>
-<div id="plot">줄거리<br> ${moviedetail.mplot }</div><hr>
+<div id="plot"><div id="splot">줄거리</div><br> ${moviedetail.mplot }</div><hr>
 <div id="dirc">
 감독: ${moviedetail.mdir }
 개봉일: ${moviedetail.mdate_s }

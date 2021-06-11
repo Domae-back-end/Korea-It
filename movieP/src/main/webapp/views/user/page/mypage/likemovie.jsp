@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="cntTitle">총 : ${memdata.cnt.lc }</div>
+<div class="cntTitle">총 개수 : ${memdata.cnt.lc }개</div>
 <div>
 	<input type="hidden" id="like" value="취소"/>
 	<input type="hidden" id="userid" value="${sessionId }"/>
@@ -24,9 +24,9 @@
 				</div>
 			</a>
 			<a href="/user/movie/moviedetail?sub=info&ind=${pp.m_index }"><div class="liketitle">${pp.movietitle }</div></a>
-			<div><button class="likeButt" onclick="likeButt(${pp.m_index })" >${pp.mlike }</button></div>
+			<div><button class="likeButt" onclick="likeButt(${pp.m_index })" >♥ ${pp.mlike }</button></div>
 			<a href="/user/movietime/list?movietitle=${pp.movietitle }">
-				<input type="button" class="changeButt" value="예매하기" />
+				<input type="button" class="changeButt"  id="liketicketGo" value="예매하기" />
 			</a>
 		</div>
 	</c:forEach>

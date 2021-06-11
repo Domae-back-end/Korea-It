@@ -24,6 +24,7 @@
 	position: relative;
 	text-align: left;
 	left:20px;
+	top: -10px;
 }
 #pageRecord{
 	position: relative;
@@ -37,7 +38,6 @@
 	height:360px;
 	width:231px;
 	margin-bottom: 10px;
-	border: 1px solid #ccc;
 	float: left;
 }
 .likeButt{
@@ -46,12 +46,18 @@
 	width:50px;
 	background-color:#fff;
 	color: #000;
-	border: 1px solid #000;
+	border: 1px solid #ccc;
 	border-radius: 5px;
 	margin-top: 7px;
 	margin-left: 40px;
 	float: left;
 	position: relative;
+	background:  #F2F4F5;
+}
+#liketicketGo{
+	position: relative;
+	top:7px;
+	border: 1px solid #ccc;
 }
 .likeimg, .likeimg>img{
 	height:280px;
