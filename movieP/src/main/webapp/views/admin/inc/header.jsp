@@ -14,7 +14,7 @@
 		})
 
 	})
-   $(document).ready(function () { 
+   $(document).ready(function () { //
         $("#admin").click(function() {location.replace("/admin");
        })
    })	
