@@ -84,6 +84,8 @@ public class MovieTimeinsertReg implements MovieTimeService {
 						for (MovieTimeDTO a : realar) {
 							db.insertMovieTime(a);
 						}
+					}else {
+						alter.setMsg("입력하신 것들 중 중복되는 시간이 있습니다.");
 					}
 					
 				}
