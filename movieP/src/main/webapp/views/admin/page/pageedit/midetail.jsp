@@ -6,12 +6,12 @@
 <script>
 $(function() {
 	function detailGo(aa) { //디테일페이지꺼
-		alert("detailGo 눌렀냐?"+aa)
+		//alert("detailGo 눌렀냐?"+aa)
 		frm.action = "noticedetail"
 		
 		$("#detailId").val(aa)
 		
-		alert(aa+"번으로 이동")
+		//alert(aa+"번으로 이동")
 		frm.submit()
 	}
 	
@@ -21,7 +21,7 @@ $(function() {
 		if (confirm_val) {
 			var deleteno;
 			deleteNo= ($(this).attr("value"));
-			alert(deleteNo);
+			//alert(deleteNo);
 			$.ajax({
 				url : "movieinfoDelReg",
 				type : "post",
@@ -32,10 +32,10 @@ $(function() {
 						
 						console.log(res)
 					if (res.indexOf("삭제 성공") != -1) {
-						alert(deleteNo+"번 삭제성공!");
+						//alert(deleteNo+"번 삭제성공!");
 						location.href = "movieinfolist";
 					} else {
-						alert("삭제가 취소되었습니다!");
+						//alert("삭제가 취소되었습니다!");
 					}
 				}
 			});
@@ -49,7 +49,7 @@ $(function() {
 		
 		
 		if (modArr.length == 1) {
-			confirm(modArr+"번을 수정하시겠습니까?");
+			//confirm(modArr+"번을 수정하시겠습니까?");
 			location.href = "movieinfomodify?page="+${data.pdto.page }+"&m_index="+${data.midto.m_index };
 		}
 		
@@ -74,7 +74,7 @@ $(function() {
     	.moviedetailtb tr td:nth-of-type(2){background-color: #fff;width: 650px;}
 		.moviedetailtb tr td{border-bottom:1px solid #333;padding: 5px;}
 		.moviedetailtb{width:800px;text-align: left;box-sizing: border-box;}
-		
+		#golist a:visited{color:#fff;}
 		
 
     </style>
@@ -86,7 +86,6 @@ $(function() {
 
 <div  id="upperpart">
 <%-- <button type="button" id="movinfomodify" class="btn btn-info" value="${data.midto.m_index}" >수정</button> --%>
-<button type="button" id="movinfodelete" class="btn btn-info" value="${data.midto.m_index}">삭제</button>
 
 </div>
 
@@ -108,66 +107,54 @@ $(function() {
             
             <table class="moviedetailtb">
 				<tr>
-					<td>감독 <span class="must_star">*</span></td>
+					<td>감독 </td>
 					<td>${data.midto.mdir}</td>
 				</tr>
 				<tr>
-					<td>출연베우 <span class="must_star">*</span></td>
+					<td>출연베우 </td>
 					<td>${data.midto.mactrs}</td>
 				</tr>
 				<tr>
-					<td>장르 <span class="must_star">*</span></td>
+					<td>장르 </td>
 					<td>
 						${data.midto.mcate}
 					</td>
 				</tr>
 				<tr>
-					<td>러닝타임 <span class="must_star">*</span></td>
+					<td>러닝타임 </td>
 					<td>${data.midto.mplaytime}</td>
 				</tr>
 				<tr>
-					<td>줄거리 <span class="must_star">*</span></td>
+					<td>줄거리 </td>
 					<td>${data.midto.mplotBr}</td>
 				</tr>
 				<tr>
-					<td></td>
+					<td>좋아요 수</td>
 					
 					<td>
-						<div class="upload_box">
-						
-							
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" style="text-align: center; background: none; border-bottom: none; ">
 					
+						${data.midto.mlike}개
+							
+						
 					</td>
 				</tr>
+			
 			</table>
 			
 			 <div class="info_poster">
-                     <hr/>
+                    
               <img class="bg_img" src="../../moviedata/${data.midto.movietitle}/poster.jpg" alt="dd">
                
                 
         </div>
              
                 </div>
-                <div class="inner_cont"> 
-                        <div class="list_cont">
-                        <dt>평점</dt>
-                        <dd><span class="ico_movie ico_star"></span>6.2</dd>
-                        </div>
-                        <div class="list_cont">
-                            <dt>예매율</dt>
-                            <dd></dd>
-                        </div>
-    
-                 
-                </div>
+               
             </div>
-             <div id="bottompart">	<button type="button" id="golist" class="btn btn-warning">	<a href="movieinfolist?page=${data.pdto.page }">목록${data.pdto.page }</a></button>
+             <div id="bottompart">
+             <button type="button" id="movinfodelete" class="btn btn-danger" value="${data.midto.m_index}">삭제</button>
+             
+             	<button type="button" id="golist" class="btn btn-success">	<a href="movieinfolist?page=${data.pdto.page }">목록으로</a></button>
 	</div>
         </div>
 

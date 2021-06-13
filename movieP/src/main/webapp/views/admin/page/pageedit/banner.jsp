@@ -12,7 +12,7 @@
 </head>
 </head>
 <body>
-<h2> 배너등관리 &#36;data => ${empty data}</h2>
+<h2> 배너 관리</h2>
 
 <script type="text/javascript">
 
@@ -34,7 +34,7 @@
 			
 			
 			var wanted= $(this).val()
-			alert("사진 수정"+$(this).val()+":"+"#bancontainer 몇번쨰??    "+wanted)
+			//alert("사진 수정"+$(this).val()+":"+"#bancontainer 몇번쨰??    "+wanted)
 			
 			var xhttp= new XMLHttpRequest();
 			
@@ -154,7 +154,7 @@
         if ($("#changeexists").val() === '1') {
             return true;
         } else {
-            alert("변경 사항이 없습니다.");
+            //alert("변경 사항이 없습니다.");
             return false;
         }
     }
@@ -174,7 +174,7 @@
 
 <div id="bannercontainer">
 <h2>${contextPath}</h2>
-<h1>ddd</h1>
+
 <form name="saveform" method="post" enctype="multipart/form-data" >
 <c:forEach var="i" items="${data}" >
 

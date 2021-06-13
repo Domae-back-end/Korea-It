@@ -32,7 +32,7 @@ public class Pageeditmidetail implements PageeditService {
 	
 	@Override
 	public Object execute(Object obj) {
-		System.out.println("영화정보디테일서비스");
+		System.out.println("영화정보디테일");
 		HashMap<String, Object> map = (HashMap) obj;		
 		System.out.println("들어온pdto:"+map.get("pdto"));
 		ServiceNoticePageDTO pdto= (ServiceNoticePageDTO)map.get("npDTO");
@@ -48,14 +48,17 @@ public class Pageeditmidetail implements PageeditService {
 			String movietitle= res.getMovietitle();
 			System.out.println(res);
 			if(db.pullactor(m_index)!=null) {
+				mactrs="";
 			for (ActorDTO ee : db.pullactor(m_index)) {
-				mactrs+=ee.getActorid()+",";
+				
+				mactrs+=ee.getActorname()+",";
 			}
 		
 			mactrs=mactrs.substring(0, mactrs.length()-1);
 			}
 			
 			if(db.pullcate(m_index)!=null) {
+				mcate="";
 			for (CateDTO ee : db.pullcate(m_index)) {
 				mcate+=ee.getCate()+",";
 			}

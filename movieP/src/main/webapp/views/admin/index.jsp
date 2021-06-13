@@ -48,7 +48,7 @@
 		background:#eee;
 		display: inline-block;
 		width: 150px;
-		height: 900px;
+		height: 100%;
 		/* border: 5px solid blue; */
 		box-shadow: 1px 0 0 0 #aaa inset; 
 	}

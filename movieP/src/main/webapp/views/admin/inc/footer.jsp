@@ -3,11 +3,11 @@
 	<script>
 	   $(document).ready(function () { 
 		        $("#admin").click(function() {		       	 
-		       	 alert("관리자페이지 ㄱㄱ")
+		 
 		       	location.replace("/admin");
 		       })		           
 		        $("#user").click(function() {		       	 
-		       	 alert("영화관메인페이지 ㄱㄱ.")
+		    
 		       	location.replace("/user/main");
 		       })
 	   })	</script>

@@ -12,7 +12,7 @@ $(function() {
 	var start = $("#starttime").val();
 	var end = $("#endtime").val();
 	$(".pagebtn").click(function(){ //페이지이동.
-		alert("눌렀냐?"+$(this).attr("pageval"))
+		//alert($(this).attr("pageval"))
 		$("#pageIN").val($(this).attr("pageval"))
 		
 		console.log($("#starttime").val()+"rr")
@@ -31,7 +31,7 @@ $(function() {
 	
 	
 	$("#searchBtn").click(function(){
-		alert("검색버튼.")		
+			
 		console.log($("#starttime").val()+"rr")
 		console.log($("#endtime").val() )
 		console.log($("#endtime").val()=="")
@@ -65,7 +65,7 @@ $(function() {
 </script>
 
 <body>
-데이터 있냐:${not empty data.salist}  ${data.sadto.salesckind} 
+
 
 <form action=""  name= "SLform">
 
