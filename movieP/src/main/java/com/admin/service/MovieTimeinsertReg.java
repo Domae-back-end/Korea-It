@@ -33,6 +33,10 @@ public class MovieTimeinsertReg implements MovieTimeService {
 		dto.setEndtime(dto.getEndTimeDate(buf.getMplaytime(), dto.getStarttime()));
 		dto.setReg_date(dto.getRegDate(dto.getDal(), dto.getEl()));
 
+		ArrayList<MovieTimeDTO> realar = new ArrayList<>();
+		ArrayList<MovieTimeDTO> timedto = (ArrayList<MovieTimeDTO>) db.movieTime();
+		boolean check = true;
+		
 		if (dto.getCheck().equals("false")) {
 			db.insertMovieTime(dto);
 		} else {
@@ -60,8 +64,14 @@ public class MovieTimeinsertReg implements MovieTimeService {
 						for (int i = 0; i < ar.length; i++) {
 							if (start.get(Calendar.DAY_OF_WEEK) == Integer.parseInt(ar[i])) {
 								dto.setReg_date(start.getTime());
-								db.insertMovieTime(dto);
+								realar.add(dto);
 								System.out.println(sdf.format(dto.getReg_date()));
+								break;
+							}
+						}
+						for (MovieTimeDTO a : timedto) {
+							if(!(a.getStarttime().after(dto.getStarttime()) && a.getEndtime().before(dto.getStarttime() ))) {
+								check = false;
 								break;
 							}
 						}
@@ -69,6 +79,15 @@ public class MovieTimeinsertReg implements MovieTimeService {
 							break;
 						}
 					}
+					
+					if(check) {
+						for (MovieTimeDTO a : realar) {
+							db.insertMovieTime(a);
+						}
+					}else {
+						alter.setMsg("입력하신 것들 중 중복되는 시간이 있습니다.");
+					}
+					
 				}
 			}
 
