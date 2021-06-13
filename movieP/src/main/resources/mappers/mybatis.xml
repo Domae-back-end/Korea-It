@@ -731,6 +731,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<choose>
 			<when test="pageKind == 'mypurchase'">
 				<![CDATA[and date_format(ticketing.reg_date,'%Y-%m')=#{date}]]>
+				<if test="date == nowDate.substring(0,8)">
+					<![CDATA[ and date_format(ticketing.reg_date - INTERVAL 1 MONTH,'%Y-%m')=#{date}]]>
+				</if>
 			</when>
 
 			<otherwise>
