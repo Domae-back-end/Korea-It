@@ -25,11 +25,14 @@
 	
 	.adminheader {
 		width: 1000px;
-		height: 100px;
-		border: 2px dashed red;
+		height: 37px;
+		border-left: 1px solid  #aaa;
+		border-right: 1px solid  #aaa;
+		box-shadow: 1px 0 0 0 #aaa inset; 
 	}
 	.main {
 		text-align: center;	width: 1000px;	height: 100%;	margin: 0 auto;	height: 900px;
+		box-shadow: 1px 0 0 0 #aaa inset; 
 	}
 	
 	.containerr {
@@ -38,22 +41,32 @@
 		margin: 0px;
 		padding: 0px;
 		display: flex;
-		border: 2px dashed #ddd;
+		/* border: 2px dashed #ddd; */
 	}
 	
 	.aside {
+		background:#eee;
 		display: inline-block;
 		width: 150px;
 		height: 900px;
-		border: 5px solid blue;
+		/* border: 5px solid blue; */
+		box-shadow: 1px 0 0 0 #aaa inset; 
 	}
 	
 	.body {
-		display: inline-block;
-		width: 1030px;
-		height: 100%;
-		border: 1px solid red;
+		width: 1030px;		height: 100%;		display: inline-block; /* 		border: 1px solid red; */
+		box-shadow: 1px 0 1px 1px #aaa inset; 		
 	}
+	
+	/*adminheader> div>  nav 속 button들있고, 또는 a 태그가 있음.  */
+	.adminheader div nav{
+		width:906px;display:flex;justify-content:space-between;
+	}
+	.adminheader div nav button{
+		width:170px;
+	}
+	
+	
 </style>
 </head>
 

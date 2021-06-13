@@ -6,26 +6,22 @@
 
 		$(".btn1").click(function() {
 			const togo = $(this).val()
-			alert("/admin/" + togo + "/main기능 메인으로 이동.")
 			location.replace("/admin/" + togo + "/list");
 		})
 		$(".menugobtn").click(function() {
 			const togo = $(this).val()
-			alert("/admin/" + togo + "기능으로 이동.")
 			location.replace("/admin/" + togo );
 		})
 
 	})
    $(document).ready(function () { 
-        $("#admin").click(function() {		       	 
-       	 alert("관리자페이지 ㄱㄱ")
-       	location.replace("/admin");
+        $("#admin").click(function() {location.replace("/admin");
        })
    })	
 </script>
 
 
-<body>
+
 	<div class="d-flex flex-column flex-md-row align-items-center px-20 px-md-10 mb-6 bg-white border-bottom box-shadow">
 	<nav class="mx-auto">
 		<button type="button" id="admin" class="btn btn-success menugobtn">메인</button>
@@ -38,5 +34,3 @@
 	<a class="btn btn-outline-primary" href="/adminlogout">로그아웃</a>
 
 	</div>
-</body>
-</html>
