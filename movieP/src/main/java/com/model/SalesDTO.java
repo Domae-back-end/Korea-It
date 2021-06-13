@@ -77,7 +77,10 @@ public class SalesDTO {
 		
 	}//
 	
-	
+	public String getMonthman() {
+		SimpleDateFormat sdf= new SimpleDateFormat("YYY-MM");
+		return sdf.format(monthdate);
+	}
 	
 	
 	
@@ -106,6 +109,8 @@ public class SalesDTO {
 	int totalsale=0;
 	int totalrefund=0;
 	Date monthdate,monthdatee;
+	
+	
 	
 	String firstday;
 	

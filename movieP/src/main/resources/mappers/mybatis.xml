@@ -1307,7 +1307,8 @@ WHERE m_index = #{m_index};
 		limit #{pdto.start}, #{pdto.limit}		 
 	</select>
 	
-	
+	<select id="adminmainsales" resultType="SalesDTO">SELECT * FROM monthsales WHERE sectorNo ='total' AND monthdate
+BETWEEN DATE_ADD(NOW(),interval-3 MONTH) AND  NOW()</select>
 	
 	
 	<!--concat('%',#{daysaletime},'%') mysql. -->

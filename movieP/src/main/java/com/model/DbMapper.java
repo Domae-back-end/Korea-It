@@ -281,6 +281,8 @@ public interface DbMapper {
 
 	List<SalesDTO> getsalesdaily(HashMap<String, Object> map);
 
+	List<SalesDTO> adminmainsales();
+
 
 
 

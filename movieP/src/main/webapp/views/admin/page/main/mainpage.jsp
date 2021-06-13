@@ -18,6 +18,8 @@
 .table_base tr>td:nth-of-type(3) {width: 206px; }
 .table_base tr>td:nth-of-type(4) {width: 100px; }
 
+#mainSaleTr td{width:200px;}
+#mainSaleTr2 td{width:200px;}
 
 </style>
 </head>
@@ -64,33 +66,27 @@
 	<div class="col-md-6 mx-0 adminmainbox">
 		<div class="card flex-md-row mb-4 box-shadow h-md-250">
 			<div class="card-body d-flex flex-column align-items-start">
-				<strong class="d-inline-block px-0 mb-2 text-success">최근 매출액</strong>
-				<!-- 인호님파트 -->
-				<%-- <table class="table table-striped table_base">
+				<strong class="d-inline-block px-0 mb-2 text-success">월 순매출액(최근3개월)</strong>
+				<!-- salesview인호님파트 -->
+				<table class="table table-striped table_base">
 					<tr>
 						<td colspan="4" align="right">
-							<a href="admin/persqna/persqnanew">더보기</a>
+							<a href="admin/sales/main">더보기</a>
 						</td>
 					</tr>
-					<tr>
-						<td>번호</td>
-						<td>문의유형</td>
-						<td>제목</td>
-						<td>등록일</td>
+					<tr id="mainSaleTr2">
+						<td>월</td>
+						<td>금액</td>
+					
 					</tr>
-				<c:forEach items="${data.persview }" var="persDTO" varStatus="no">
-					<tr id="${persDTO.persindex }">
-						<td>${no.index+1 }</td>
-						<td>${persDTO.perscateKr }</td>
-						<td>
-							<a href="admin/persqna/persqnadetail?page=${data.snpdto.page}&persindex=${persDTO.persindex }">${persDTO.perstitle }</a>
-						</td>
-						<td>
-							<fmt:formatDate value="${persDTO.persqtime}" type="both" pattern="yyy.MM.dd"/>
-						</td>
+				<c:forEach items="${data.salesview }" var="salesview" varStatus="no">
+					<tr id="mainSaleTr">
+						<td>${salesview.monthman }</td>
+						<td>${salesview.sumall }</td>
+						
 					</tr>
 				</c:forEach>
-				</table> --%>
+				</table>
 			</div>
 		</div>
 	</div>
