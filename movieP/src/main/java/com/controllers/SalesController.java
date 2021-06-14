@@ -19,6 +19,7 @@ import com.admin.service.Provider;
 import com.admin.service.SalesService;
 import com.model.InitData;
 import com.model.Menu;
+import com.model.PPPData;
 import com.model.SalesDTO;
 import com.model.SalesPageDTO;
 
@@ -56,7 +57,12 @@ public class SalesController {
 	ArrayList<Menu> subMenu( ) {
 		return InitData.getSubmenusbyCateName("sales");
 	}
-	
+	@ModelAttribute("ppp")
+	PPPData servicename(@PathVariable String service ) {
+		PPPData aa= new PPPData();
+		aa.setService(service);
+		return aa;
+	}	
 	
 	@ModelAttribute("nowday")
 	String gotoday( ) {
