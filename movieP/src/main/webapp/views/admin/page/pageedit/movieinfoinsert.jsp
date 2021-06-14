@@ -37,7 +37,11 @@
 		
 		<div id="movietitleb" class="row">
 			<div class="col-md-4">영화제목</div>
-			<div class="col-md-8">  <input type="text" name="movietitle" id="movietitle" /></div>
+			<div class="col-md-8"> 
+			 <input type="text" name="movietitle" id="movietitle"
+			 oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣./-]/g, '').replace(/(\..*)\./g, '$1');" 
+		
+			  /></div>
 		
 		</div><hr>
 		
@@ -45,7 +49,9 @@
 		<div class="col-md-4">
 		 감독</div>
 		 <div class="col-md-8">
-		 <input	type="text" name="mdir" id="mdir" /></div></div><hr />
+		 <input	type="text" name="mdir" id="mdir"
+		 oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣.]/g, '').replace(/(\..*)\./g, '$1');" 
+		 /></div></div><hr />
 
 
 
@@ -56,7 +62,9 @@
 		<div id="actor" class="row">
 			<div class="col-md-4">배우 </div>
 			<div class="col-md-3"> </div>
-			 <input class="col-md-2" type="text" name="insertname" id="actortext" />	
+			 <input class="col-md-2" type="text" name="insertname" id="actortext" 
+			 oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣.]/g, '').replace(/(\..*)\./g, '$1');" 
+		 />	
 			<button class="col-md-2" type="button" id="addactor"  class="mb-3">배우추가</button>
 			
 	
@@ -108,13 +116,17 @@
 		<div class="row">
 		<div class="col-md-4">상영시간 </div>
 			<div class="col-md-3"> </div>
-		<input	type="text" name="mplaytime" id="mplaytime" /></div><br>
+		<input	type="text" name="mplaytime" id="mplaytime" 
+		oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
+		 /><span> 분</span></div><br>
 		<hr />
 		<div class="row">
 		
 		 <div class="col-md-4"> 줄거리 </div>
 			<div class="col-md-3"> </div>
-		 <textarea name="mplot" rows="5" cols="30"   id="mplot" ></textarea>
+		 <textarea name="mplot" rows="5" cols="30"   id="mplot" 
+		 oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣.]/gi, '').replace(/(\..*)\./g, '$1');" 
+		></textarea>
 		 
 		</div>
 		<br>
@@ -343,11 +355,11 @@
 				var fileLen = inputV.length; 
 				var fileLas = inputV.lastIndexOf(".");
 				var fileExt = inputV.substring(fileLas+1, fileLen).toLowerCase();
-				alert("체크파일")
+			
 				if (fileExt != "jpg" && fileExt != "png" && fileExt != "jpeg") {
 				var msg="확장자를 확인하세요"
 					
-					 if (input.files && input.files[0].size > (1 * 1024 * 1024)) {
+					 if (input.files && input.files[0].size > (1*1024*1024)) {
 					       msg="파일 사이즈가 1mb 를 넘습니다.";
 					        
 					      
