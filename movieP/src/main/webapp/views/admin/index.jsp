@@ -28,11 +28,13 @@
 		height: 37px;
 		border-left: 1px solid  #aaa;
 		border-right: 1px solid  #aaa;
-		box-shadow: 1px 0 0 0 #aaa inset; 
+		/* box-shadow: 1px 0 0 0 #aaa inset;  */
+		border: 1px solid black; box-sizing: border-box;
 	}
 	.main {
-		text-align: center;	width: 1000px;	height: 100%;	margin: 0 auto;	height: 900px;
-		box-shadow: 1px 0 0 0 #aaa inset; 
+		text-align: center;	width: 1000px;	/* height: 100%; */	margin: 0 auto;	/* height: 900px; */
+		/* box-shadow: 1px 0 0 0 #aaa inset;  */
+		border: 1px solid black; box-sizing: border-box;
 	}
 	
 	.containerr {
@@ -48,14 +50,16 @@
 		background:#eee;
 		display: inline-block;
 		width: 150px;
-		height: 100%;
+		/* height: 100%; */
 		/* border: 5px solid blue; */
-		box-shadow: 1px 0 0 0 #aaa inset; 
+		/* box-shadow: 1px 0 0 0 #aaa inset;  */
+		border: 1px solid black; box-sizing: border-box;
 	}
 	
 	.body {
-		width: 1030px;		height: 100%;		display: inline-block; /* 		border: 1px solid red; */
-		box-shadow: 1px 0 1px 1px #aaa inset; 		
+		width: 1030px;		/* height: 100%; */		display: inline-block; /* 		border: 1px solid red; */
+		/* box-shadow: 1px 0 1px 1px #aaa inset;  */	
+		border: 1px solid black; box-sizing: border-box;	
 	}
 	
 	/*adminheader> div>  nav 속 button들있고, 또는 a 태그가 있음.  */

@@ -91,7 +91,7 @@ $(function() {
 
 
 <div  id="mtitlepart">
-<h1>제목 :  ${data.midto.movietitle} }</h1>
+<h1>${data.midto.movietitle} </h1>
 </div>
 
 
