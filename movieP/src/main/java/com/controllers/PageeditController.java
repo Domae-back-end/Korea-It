@@ -20,6 +20,7 @@ import com.model.InitData;
 import com.model.Menu;
 import com.model.MinfoPageDTO;
 import com.model.MovieInfoDTO;
+import com.model.PPPData;
 import com.model.ServiceFullDTO;
 import com.model.ServiceNoticePageDTO;
 
@@ -66,6 +67,12 @@ public class PageeditController {
 	@ModelAttribute("submenu")
 	ArrayList<Menu> subMenu( ) {
 		return InitData.getSubmenusbyCateName("pageedit");
+	}	
+	@ModelAttribute("ppp")
+	PPPData servicename(@PathVariable String service ) {
+		PPPData aa= new PPPData();
+		aa.setService(service);
+		return aa;
 	}	
 	@RequestMapping
 	String view(@PathVariable String service) {	
