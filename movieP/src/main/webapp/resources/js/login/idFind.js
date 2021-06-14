@@ -40,7 +40,7 @@
 	
 	
 	$('#check').click(function(){
-		console.log($('#userbirth').val())
+		
 		$.ajax({
 	    	async : true,
 	        type : 'POST',
