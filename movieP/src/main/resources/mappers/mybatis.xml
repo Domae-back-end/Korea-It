@@ -1078,8 +1078,8 @@ WHERE m_index = #{m_index};
 	<!--  -->
 	<!--  -->
 	<insert id="insertfaq" parameterType="ServiceFullDTO">
-		insert into basicqna (bqcate, bqtitle, bqcont)
-		values (#{bqcate},#{bqtitle}, #{bqcont})
+		insert into basicqna (bqcate, bqtitle, bqcont, viewcnt)
+		values (#{bqcate},#{bqtitle}, #{bqcont}, 0)
 	</insert>
 
 	<update id="addcntfaq" parameterType="ServiceFullDTO">
