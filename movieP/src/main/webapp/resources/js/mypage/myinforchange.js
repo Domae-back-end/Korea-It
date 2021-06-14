@@ -4,6 +4,7 @@
 var emailCh = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
 $(function() {
 
+	var emChk = 1; 
 	if(document.getElementById("userid") !=null){
 		
 		if(document.getElementById("userid").value == ''){
@@ -100,7 +101,6 @@ $(function() {
 			return false
 		}
 		var num = $('#pnumouter').text()
-		console.log(num)
 
 		var list = {
 			useremail: document.getElementById('useremail').value,

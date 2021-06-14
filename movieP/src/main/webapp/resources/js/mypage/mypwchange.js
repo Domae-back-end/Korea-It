@@ -84,7 +84,8 @@
     		userpw : document.getElementById('nowpw').value
     	};
     	
-    	$('#nowpw').attr("disabled", true);
+    	if(document.getElementById('paramID').value != '')
+    		$('#nowpw').attr("disabled", true);
     	
     	$.ajax({
 	    	async : false,

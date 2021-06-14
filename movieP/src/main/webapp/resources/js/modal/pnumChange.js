@@ -48,7 +48,7 @@ $(function() {
 				
 		if($.trim(resch) == $('#userpnumchk').val()) {
 	
-			alert("휴대폰 인증완료");
+			alert("휴대폰 인증완료.");
 	
 			$('#userpnumchk').val('');
 			$('#checknum').attr("disabled", true);
@@ -60,7 +60,7 @@ $(function() {
 			$("#close").trigger("click");
 	
 			} else {
-						
+				alert("인증번호가 일치하지않습니다.");		
 				$('#newpnum').val("")
 				$('#userpnumchk').val("")
 				$('#userpnumchk').attr("disabled", true);
