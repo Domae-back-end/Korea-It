@@ -90,13 +90,13 @@
 			
 			</select>
 				<button type="button" id="addcate"  class="mb-3">카테고리추가</button>
-			
+			</div>
 			<div   id="catecont" >
 				
 			</div>
 			
 			
-		</div>
+		
 		<hr />
 		<div class="row">
 		<div class="col-md-4">개봉일 </div>
