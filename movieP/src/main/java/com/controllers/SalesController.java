@@ -60,7 +60,7 @@ public class SalesController {
 	
 	@ModelAttribute("nowday")
 	String gotoday( ) {
-		SimpleDateFormat sdf= new SimpleDateFormat("YYYY월 MM월 dd일");
+		SimpleDateFormat sdf= new SimpleDateFormat("MM월 dd일");
 		Date today = new Date();
 		today.setDate(today.getDate()-1);
 		

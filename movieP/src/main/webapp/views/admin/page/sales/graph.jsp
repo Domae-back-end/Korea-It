@@ -311,10 +311,10 @@ $(document).ready(function(){
     <tbody id="salegraphtablebody">
     
     
-
+<!-- 
       <tr>
-				<td>dddd</td>       
-      </tr>
+				<td></td>       
+      </tr> -->
 
 
 
