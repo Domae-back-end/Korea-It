@@ -132,7 +132,7 @@ $(function() {
       <tr>
         <td>${i.sales_index }</td>
           <td>${i.userid }</td>
-        <td>${i.ticket_index }</td>
+        <td>${i.timetableidx }</td>
         <td>${i.salesprice }</td>
          <td>${i.movietitle }</td>
          <td>${i.sectorNo }</td>       
