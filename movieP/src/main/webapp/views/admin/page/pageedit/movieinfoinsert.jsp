@@ -59,15 +59,19 @@
 			 <input class="col-md-2" type="text" name="insertname" id="actortext" />	
 			<button class="col-md-2" type="button" id="addactor"  class="mb-3">배우추가</button>
 			
-			<div   id="actorcont" ></div>
+	
 				</div>
-		
-		
+				<div id="actor2">
+				<div   id="actorcont" ></div>
+		</div>
 		
 		
 		
 <hr />
-		<div id="cate">		
+		<div id="cate" class="row">		
+			<div class="col-md-4">카테고리 </div>
+			<div class="col-md-3"> </div>
+			
 			<select id="cateselect" >
 			<option value="null">카테고리</option>
 			<option value="드라마">드라마</option>
@@ -89,25 +93,30 @@
 			
 			<div   id="catecont" >
 				
-				
-				
-			
-			
 			</div>
-			
-			
-			
-			
-			
 			
 			
 		</div>
 		<hr />
-		개봉일 <input type="date" name="moviedate" id="moviedate" /><br> <!--setMoviedate  -->
+		<div class="row">
+		<div class="col-md-4">개봉일 </div>
+			<div class="col-md-3"> </div>
+	
+		
+		<input type="date" name="moviedate" id="moviedate" /></div><br> <!--setMoviedate  -->
 		<hr />
-		상영시간(숫자!) <input	type="text" name="mplaytime" id="mplaytime" /><br>
+		<div class="row">
+		<div class="col-md-4">상영시간 </div>
+			<div class="col-md-3"> </div>
+		<input	type="text" name="mplaytime" id="mplaytime" /></div><br>
 		<hr />
-		 줄거리<br><textarea name="mplot" rows="5" cols="30"   id="mplot" ></textarea>
+		<div class="row">
+		
+		 <div class="col-md-4"> 줄거리 </div>
+			<div class="col-md-3"> </div>
+		 <textarea name="mplot" rows="5" cols="30"   id="mplot" ></textarea>
+		 
+		</div>
 		<br>
 		<hr />
 		<div id="image">
