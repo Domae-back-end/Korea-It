@@ -6,11 +6,12 @@
 
 	<nav>
 		<ul>
-			<li><a href="/member/mypage/mycinema" class="sessnull" >나의 영화관</a></li>
-			<li><a href="/member/mypage/mypurchase" class="sessnull" >예매내역</a></li>
-			<li><a href="/member/mypage/mymoviestroy?kind=seemovie" class="sessnull">나의 무비스토리</a></li>
-			<li><a href="/member/mypage/myqna" class="sessnull">문의내역</a></li>
-			
+			<c:if test="${sessionId != null }">
+				<li><a href="/member/mypage/mycinema">나의 영화관</a></li>
+				<li><a href="/member/mypage/mypurchase">예매내역</a></li>
+				<li><a href="/member/mypage/mymoviestroy?kind=seemovie">나의 무비스토리</a></li>
+				<li><a href="/member/mypage/myqna">문의내역</a></li>
+			</c:if>
 			<c:choose>
 				<c:when test="${memdata.dto.kind == '일반' }">
 					<li><a href="/member/mypage/myinfor">내 정보수정</a></li>
@@ -20,6 +21,7 @@
 				</c:when>
 			</c:choose>
 		</ul>
+	
 	</nav>
 	
 	<div class="outer">

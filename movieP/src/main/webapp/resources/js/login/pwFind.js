@@ -31,6 +31,12 @@ $(function() {
 
 	});
 
+	$("#userpnumchk").on("propertychange change keyup paste input", function() {
+	
+		var regexp = /[^0-9]/gi
+		$(this).val($(this).val().replace(regexp,''));
+	});
+	
 	$("#userpnum").on("propertychange change keyup paste input", function() {
 		
 		var regexp = /[^0-9]/gi
@@ -83,6 +89,7 @@ $(function() {
 
 				} else {
 					alert("해당 정보의 아이디가 존재하지않습니다.")
+					$('#userpnum').attr("disabled", true);
 				}
 			}
 		});

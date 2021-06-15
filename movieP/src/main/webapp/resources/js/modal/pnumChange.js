@@ -21,6 +21,13 @@ $(function() {
 	
 	})
 	
+	$("#userpnumchk").on("propertychange change keyup paste input", function() {
+		
+		var regexp = /[^0-9]/gi
+		$(this).val($(this).val().replace(regexp,''));
+	
+	});
+	
 	var resch = ''
 	
 	$('#checknumButt').click(function() {
