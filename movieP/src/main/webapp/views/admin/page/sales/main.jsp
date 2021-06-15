@@ -117,7 +117,7 @@ $(function() {
       <tr>
         <th>매출번호</th>
         <th>고객id</th>
-        <th>예매고유번호</th>
+        <th>시간표번호</th>
             <th>매출액</th>
             
         <th>상품명/영화명</th>
