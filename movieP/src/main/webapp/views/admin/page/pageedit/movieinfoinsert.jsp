@@ -39,7 +39,7 @@
 			<div class="col-md-4">영화제목</div>
 			<div class="col-md-8"> 
 			 <input type="text" name="movietitle" id="movietitle"
-			 oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣./-]/g, '').replace(/(\..*)\./g, '$1');" 
+			 oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣- ]/g, '').replace(/(\..*)\./g, '$1');" 
 		
 			  /></div>
 		
@@ -125,7 +125,7 @@
 		 <div class="col-md-4"> 줄거리 </div>
 			<div class="col-md-3"> </div>
 		 <textarea name="mplot" rows="5" cols="30"   id="mplot" 
-		 oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣.]/gi, '').replace(/(\..*)\./g, '$1');" 
+		 oninput="this.value = this.value.replace(/[^ㄱ-ㅎ가-힣.- !~]/gi, '').replace(/(\..*)\./g, '$1');" 
 		></textarea>
 		 
 		</div>

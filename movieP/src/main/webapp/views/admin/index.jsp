@@ -15,7 +15,7 @@
 <script src="<c:url value="/resources/my_js/jquery-3.6.0.js"/>"></script>
 <jsp:useBean id="currTime" class="java.util.Date" />
 
-<title><fmt:formatDate value="${currTime}" pattern="dd일 hh-mm실행" />관리자 메인 화면</title>
+<title><fmt:formatDate value="${currTime}" pattern="" />관리자 메인 화면</title>
 
 <style>
 	* {
