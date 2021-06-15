@@ -74,7 +74,8 @@ $(function() {
 			success: function(data) {
 
 				if (data.dto != null) {
-
+					
+					alert("해당 아이디의 비밀번호 변경페이지로 이동합니다.")
 					document.getElementById('userpw').value = data.dto.userpw
 					document.getElementById('paramID').value = data.dto.userid
 					frm.action = "/member/mypage/mypwchange"
