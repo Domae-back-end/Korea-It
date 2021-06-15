@@ -27,7 +27,7 @@
 	<script src="<c:url value="/resources/js/${PPPData.cate}/${subMenu.url}.js" />" ></script>
 </c:if>
 
-<title>메가박스</title>
+<title>MUZIK</title>
 </head>
 
 
