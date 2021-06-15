@@ -53,7 +53,7 @@ public class Pageeditmidetail implements PageeditService {
 				
 				mactrs+=ee.getActorname()+",";
 			}
-		
+			if(mactrs.length()>2)
 			mactrs=mactrs.substring(0, mactrs.length()-1);
 			}
 			
