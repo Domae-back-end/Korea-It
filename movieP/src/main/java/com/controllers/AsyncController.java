@@ -81,7 +81,7 @@ public class AsyncController {
 	@ResponseBody
 	public Map<String, Object> salesGraphSales(@RequestBody Map<String,String> map, HttpServletRequest req, HttpSession httpSession) {// @RequestBody
 		
-		//
+		
 		
 		SalesService sr = pr.getContext().getBean("salesGraphSales",SalesService.class);	
 		//SalesGraphSltView , 
