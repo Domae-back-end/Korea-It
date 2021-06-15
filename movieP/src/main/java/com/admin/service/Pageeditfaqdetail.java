@@ -21,8 +21,7 @@ public class Pageeditfaqdetail implements  PageeditService {
 		HashMap<String, Object> orimap = (HashMap) obj;		
 		ServiceFullDTO sfDTO= (ServiceFullDTO)orimap.get("sfDTO");
 		ServiceNoticePageDTO npDTO = (ServiceNoticePageDTO)orimap.get("npDTO");
-		
-		
+	
 		HashMap<String, Object> res = new HashMap<>();		
 		res.put("sfDTO", db.detailfaq(sfDTO));
 		res.put("npDTO", npDTO);
