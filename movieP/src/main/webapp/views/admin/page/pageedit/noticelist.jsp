@@ -123,12 +123,20 @@
 	
 	
 	function detailGo(aa) { //디테일페이지꺼
+<<<<<<< HEAD
 		//alert("detailGo 눌렀냐?"+aa)
+=======
+		
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 		frm.action = "noticedetail"
 		
 		$("#detailId").val(aa)
 		
+<<<<<<< HEAD
 		//alert(aa+"번으로 이동")
+=======
+		
+>>>>>>> branch 'master' of https://github.com/Final-Project12354/movieProj.git
 		frm.submit()
 	}
 	
