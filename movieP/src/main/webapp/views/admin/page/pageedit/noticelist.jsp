@@ -123,12 +123,12 @@
 	
 	
 	function detailGo(aa) { //디테일페이지꺼
-		alert("detailGo 눌렀냐?"+aa)
+		
 		frm.action = "noticedetail"
 		
 		$("#detailId").val(aa)
 		
-		alert(aa+"번으로 이동")
+		
 		frm.submit()
 	}
 	
