@@ -24,6 +24,7 @@ public class MovieTimeinsertReg implements MovieTimeService {
 	public Object execute(MovieTimeDTO dto) {
 		AlterDTO alter = new AlterDTO();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss");
 
 		alter.setMsg("등록됨");
 		alter.setUrl("/admin/movietime/list?dal=" + dto.getDal() + "&el=" + dto.getEl());
@@ -35,7 +36,6 @@ public class MovieTimeinsertReg implements MovieTimeService {
 
 		ArrayList<MovieTimeDTO> realar = new ArrayList<>();
 		ArrayList<MovieTimeDTO> timedto = (ArrayList<MovieTimeDTO>) db.movieTime();
-		boolean check = true;
 		
 		if (dto.getCheck().equals("false")) {
 			db.insertMovieTime(dto);
@@ -70,9 +70,11 @@ public class MovieTimeinsertReg implements MovieTimeService {
 							}
 						}
 						for (MovieTimeDTO a : timedto) {
-							if(!(a.getStarttime().after(dto.getStarttime()) && a.getEndtime().before(dto.getStarttime() ))) {
-								check = false;
-								break;
+							if(dto.getSectorno().equals(a.getSectorno()) && dto.getMovietitle().equals(a.getMovietitle())) {
+								if(dto.getStarttime().before(a.getEndtime()) && dto.getStarttime().after(a.getStarttime())) {
+									alter.setMsg("입력하신 것들 중 중복되는 시간이 있습니다.");
+									return alter;
+								}
 							}
 						}
 						if (sdf.format(start.getTime()).equals(sdf.format(finish.getTime()))) {
@@ -80,13 +82,10 @@ public class MovieTimeinsertReg implements MovieTimeService {
 						}
 					}
 					
-					if(check) {
-						for (MovieTimeDTO a : realar) {
-							db.insertMovieTime(a);
-						}
-					}else {
-						alter.setMsg("입력하신 것들 중 중복되는 시간이 있습니다.");
+					for (MovieTimeDTO a : realar) {
+						db.insertMovieTime(a);
 					}
+					
 					
 				}
 			}
