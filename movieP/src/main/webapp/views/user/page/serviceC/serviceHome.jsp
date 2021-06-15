@@ -44,8 +44,9 @@
 	
 	<div class="search_Box">
 		<div class="qna1">
+		<!-- serviceQna?kind=bqtitle&searchfaq=ti&page=1 -->
 			<label for="name">자주 묻는 질문</label>
-			<input type="text" id="name" class="inputText" >
+			<input type="text" id="name" class="inputText" >			
 			<input type="submit" value="" class="inputButton">
 		</div>
 	</div>
