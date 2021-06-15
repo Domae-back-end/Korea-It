@@ -25,6 +25,7 @@
 			<br>
 			질문 내용 <textarea name="bqcont" rows="5" cols="30">${data.sfDTO.bqcont }</textarea>
 			
+			
 <input type="submit" value="수정하기"/>
 <a href="faqdetail?bqindex=${data.sfDTO.bqindex}&page=${data.npDTO.page}">뒤로</a>
 </form>
