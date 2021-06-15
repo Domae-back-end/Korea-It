@@ -788,7 +788,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d(%a) '), date_format(movietime.starttime,'%H:%m'))as starttime,
 		date_format(sales_time,'%Y-%m-%d (%H:%m)') as sales_time from sales 
 		left outer join movietime on sales.timetableidx = movietime.time_index
-		where sales.userid=#{userid} and sales_time > (movietime.reg_date - INTERVAL 7 DAY) and sales.salesprice <![CDATA[<]]> 0
+		where sales.userid=#{userid} and sales_time > (movietime.reg_date - INTERVAL 20 DAY) and sales.salesprice <![CDATA[<]]> 0
 		order by sales.sales_time desc
 		limit #{cstart},2
 	</select>
@@ -836,7 +836,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(select COUNT(*) wc from review where userid=#{userid}) b,
 		(select COUNT(*) lc from userlikes where userid=#{userid}) c,
 		(select COUNT(*) qc from personalqna <include refid="qnacheck" /> ) d,
-		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0) e,
+		(select COUNT(*) cc from sales  where userid=#{userid} and salesprice <![CDATA[<]]> 0 and sales_time > ((select movietime.reg_date from movietime where sales.timetableidx = movietime.time_index ) - INTERVAL 20 DAY) )e,
 		(select COUNT(distinct saleslink) sc from ticketing where userid=#{userid} 
 		and ticketing.time_index in (select time_index from movietime where 
 		CONCAT(date_format(movietime.reg_date,'%Y-%m-%d '), date_format(movietime.starttime,'%H:%m:%s')) <![CDATA[<]]> sysdate())) f;
