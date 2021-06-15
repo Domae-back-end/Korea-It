@@ -111,6 +111,16 @@ hr{
 	width: 360px;
 	margin: 0 auto;
 }
+.timelist1_10{
+	width: 90px;
+	height: 50px;
+	float: left;
+	border: 1px solid #000;
+	background: black;
+}
+.timelist1_10 > a {
+	color: white;
+}
 </style>
 <div class="movietimedelete">
 	<c:if test="${param.deletetime != null }">
@@ -190,10 +200,10 @@ hr{
 									<c:if test="<%=check %>">
 										<c:choose>
 											<c:when test="${param.deletetime != null }">
-												<div class="timelist1"><a class="movietitlebtn" href="?dal=${param.dal }&el=${param.el}&deletetime=${param.deletetime},${ae.time_index}">${ae.movietitle }</a></div>
+												<div class="timelist1_10"><a class="movietitlebtn" href="?dal=${param.dal }&el=${param.el}&deletetime=${param.deletetime},${ae.time_index}">${ae.movietitle }</a></div>
 											</c:when>
 											<c:otherwise>
-												<div class="timelist1"><a class="movietitlebtn" href="?dal=${param.dal }&el=${param.el}&deletetime=${ae.time_index}">${ae.movietitle }</a></div>
+												<div class="timelist1_10"><a class="movietitlebtn" href="?dal=${param.dal }&el=${param.el}&deletetime=${ae.time_index}">${ae.movietitle }</a></div>
 											</c:otherwise>
 										</c:choose>
 										<% check = false; %>
