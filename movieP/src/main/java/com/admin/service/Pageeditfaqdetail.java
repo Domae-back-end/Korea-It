@@ -23,9 +23,6 @@ public class Pageeditfaqdetail implements  PageeditService {
 		ServiceNoticePageDTO npDTO = (ServiceNoticePageDTO)orimap.get("npDTO");
 		
 		
-		
-		
-		db.addcntfaq(sfDTO);
 		HashMap<String, Object> res = new HashMap<>();		
 		res.put("sfDTO", db.detailfaq(sfDTO));
 		res.put("npDTO", npDTO);
